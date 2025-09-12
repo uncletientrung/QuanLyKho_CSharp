@@ -16,7 +16,7 @@ namespace QuanLyKho_CSharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Test_Connection());
+            Application.Run(new frmMain());
         }
     }
 }
