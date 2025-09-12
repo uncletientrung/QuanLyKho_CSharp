@@ -116,6 +116,12 @@
     <Compile Include="DTO\SanPhamDTO.cs" />
     <Compile Include="DTO\SizeDTO.cs" />
     <Compile Include="DTO\TaiKhoanDTO.cs" />
+    <Compile Include="DTO\ThongKeDTO\ThongKeDoanhThuDTO.cs" />
+    <Compile Include="DTO\ThongKeDTO\ThongKeKhachHangDTO.cs" />
+    <Compile Include="DTO\ThongKeDTO\ThongKeNhaCungCapDTO.cs" />
+    <Compile Include="DTO\ThongKeDTO\ThongKeTheoThangDTO.cs" />
+    <Compile Include="DTO\ThongKeDTO\ThongKeTonKhoDTO.cs" />
+    <Compile Include="DTO\ThongKeDTO\ThongKeTungNgayTrongThangDTO.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
