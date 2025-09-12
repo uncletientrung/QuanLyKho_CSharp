@@ -98,12 +98,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\ChatLieuDTO.cs" />
+    <Compile Include="DTO\ChiTietKiemKe.cs" />
+    <Compile Include="DTO\ChiTietPhieuNhapDTO.cs" />
+    <Compile Include="DTO\ChiTietPhieuXuat.cs" />
+    <Compile Include="DTO\ChiTietQuyenDTO.cs" />
+    <Compile Include="DTO\DanhMucChucNangDTO.cs" />
+    <Compile Include="DTO\KhachHangDTO.cs" />
+    <Compile Include="DTO\KhuVucKhoDTO.cs" />
+    <Compile Include="DTO\LoaiDTO.cs" />
+    <Compile Include="DTO\NhanVienDTO.cs" />
+    <Compile Include="DTO\NhomQuyen.cs" />
+    <Compile Include="DTO\PhieuDTO.cs" />
+    <Compile Include="DTO\PhieuKiemKeDTO.cs" />
+    <Compile Include="DTO\PhieuNhapDTO.cs" />
+    <Compile Include="DTO\PhieuXuatDTO.cs" />
+    <Compile Include="DTO\SanPhamDTO.cs" />
+    <Compile Include="DTO\SizeDTO.cs" />
+    <Compile Include="DTO\TaiKhoanDTO.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\NhaCungCap.cs" />
     <Compile Include="Test_Connection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,8 +161,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

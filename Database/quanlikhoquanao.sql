@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 12, 2025 lúc 07:40 PM
+-- Thời gian đã tạo: Th9 12, 2025 lúc 11:33 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -43,8 +43,7 @@ CREATE TABLE `ctkiemke` (
   `masp` int(11) DEFAULT NULL,
   `tonchinhanh` int(50) NOT NULL DEFAULT 0,
   `tonthucthe` int(50) NOT NULL DEFAULT 0,
-  `ghchu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `lech` int(50) NOT NULL DEFAULT 0
+  `ghichu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -123,7 +122,6 @@ INSERT INTO `danhmucchucnang` (`machucnang`, `tenchucnang`, `trangthai`) VALUES
 
 CREATE TABLE `khachhang` (
   `makh` int(11) NOT NULL,
-  `hokhachhang` varchar(255) DEFAULT NULL,
   `tenkhachhang` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `ngaysinh` date DEFAULT NULL,
@@ -135,23 +133,23 @@ CREATE TABLE `khachhang` (
 -- Đang đổ dữ liệu cho bảng `khachhang`
 --
 
-INSERT INTO `khachhang` (`makh`, `hokhachhang`, `tenkhachhang`, `email`, `ngaysinh`, `sdt`, `trangthai`) VALUES
-(1, 'Nguyễn Văn', 'An', 'an.nguyen@example.com', '1996-05-14', '0912345678', 1),
-(2, 'Trần Thị', 'Bình', 'binh.tran@example.com', '1988-10-22', '0987654321', 1),
-(3, 'Lê Minh', 'Cường', 'cuong.le@example.com', '1995-07-30', '0909876543', 1),
-(4, 'Phạm Thảo', 'Dung', 'dung.pham@example.com', '2000-03-15', '0965123456', 1),
-(5, 'Đặng Hữu', 'Đức', 'duc.dang@example.com', '1985-08-05', '0978456123', 1),
-(6, 'Hồ Lan', 'Hương	', 'huong.ho@example.com', '1993-11-25', '0911122233', 1),
-(7, 'Bùi Khánh', 'Hòa', 'hoa.bui@example.com', '1998-06-18', '0922233344', 1),
-(8, 'Võ Hoàng', 'Khang', 'khang.vo@example.com', '1987-09-12', '0933344455', 1),
-(9, 'Nguyễn Mai', 'Linh', 'linh.nguyen@example.com', '1996-04-07', '0944455566', 1),
-(10, 'Trịnh Ngọc', 'Minh', 'minh.trinh@example.com', '2002-02-28', '0955566677', 1),
-(11, 'Dương Thanh', 'Nam', 'nam.duong@example.com', '1990-12-01', '0966677788', 1),
-(12, 'Phan Anh', 'Quân', 'quan.phan@example.com	', '1989-07-19', '0977788899', 1),
-(13, 'Lương Thu', 'Trang', 'trang.luong@example.com', '1997-01-23', '0988899000', 1),
-(14, 'Lương ', 'Thuận', 'thihachcf@gmail.com', '2005-01-01', '0352447642', 1),
-(15, 'Trung', 'Trung', 'thihahcf@gmail.com', '2022-11-11', '0352447642', 1),
-(16, 'Lê ', 'Văn Luyện', 'thi@gmail.com', '2005-12-12', '0987654321', 1);
+INSERT INTO `khachhang` (`makh`, `tenkhachhang`, `email`, `ngaysinh`, `sdt`, `trangthai`) VALUES
+(1, 'An', 'an.nguyen@example.com', '1996-05-14', '0912345678', 1),
+(2, 'Bình', 'binh.tran@example.com', '1988-10-22', '0987654321', 1),
+(3, 'Cường', 'cuong.le@example.com', '1995-07-30', '0909876543', 1),
+(4, 'Dung', 'dung.pham@example.com', '2000-03-15', '0965123456', 1),
+(5, 'Đức', 'duc.dang@example.com', '1985-08-05', '0978456123', 1),
+(6, 'Hương	', 'huong.ho@example.com', '1993-11-25', '0911122233', 1),
+(7, 'Hòa', 'hoa.bui@example.com', '1998-06-18', '0922233344', 1),
+(8, 'Khang', 'khang.vo@example.com', '1987-09-12', '0933344455', 1),
+(9, 'Linh', 'linh.nguyen@example.com', '1996-04-07', '0944455566', 1),
+(10, 'Minh', 'minh.trinh@example.com', '2002-02-28', '0955566677', 1),
+(11, 'Nam', 'nam.duong@example.com', '1990-12-01', '0966677788', 1),
+(12, 'Quân', 'quan.phan@example.com	', '1989-07-19', '0977788899', 1),
+(13, 'Trang', 'trang.luong@example.com', '1997-01-23', '0988899000', 1),
+(14, 'Thuận', 'thihachcf@gmail.com', '2005-01-01', '0352447642', 1),
+(15, 'Trung', 'thihahcf@gmail.com', '2022-11-11', '0352447642', 1),
+(16, 'Văn Luyện', 'thi@gmail.com', '2005-12-12', '0987654321', 1);
 
 -- --------------------------------------------------------
 
@@ -249,8 +247,8 @@ CREATE TABLE `phieukiemke` (
   `trangthai` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `ghichu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `makhuvuc` int(11) DEFAULT NULL,
-  `nhanvientao` int(11) DEFAULT NULL,
-  `nhanvienkiem` int(11) DEFAULT NULL
+  `manhanvientao` int(11) DEFAULT NULL,
+  `manhanvienkiem` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -310,7 +308,7 @@ CREATE TABLE `sanpham` (
 CREATE TABLE `size` (
   `masize` int(11) NOT NULL,
   `tensize` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `ghi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+  `ghichu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -420,8 +418,8 @@ ALTER TABLE `nhomquyen`
 ALTER TABLE `phieukiemke`
   ADD PRIMARY KEY (`maphieukiemke`),
   ADD KEY `FK_phieukiemke_khuvuc` (`makhuvuc`),
-  ADD KEY `FK_phieukiemke_nhanvien` (`nhanvienkiem`),
-  ADD KEY `FK_phieukiemke_taikhoan` (`nhanvientao`);
+  ADD KEY `FK_phieukiemke_nhanvien` (`manhanvienkiem`),
+  ADD KEY `FK_phieukiemke_taikhoan` (`manhanvientao`);
 
 --
 -- Chỉ mục cho bảng `phieunhap`
@@ -574,8 +572,8 @@ ALTER TABLE `ctphieuxuat`
 --
 ALTER TABLE `phieukiemke`
   ADD CONSTRAINT `FK_phieukiemke_khuvuc` FOREIGN KEY (`makhuvuc`) REFERENCES `khuvuckho` (`makhuvuc`) ON DELETE SET NULL,
-  ADD CONSTRAINT `FK_phieukiemke_nhanvien` FOREIGN KEY (`nhanvienkiem`) REFERENCES `nhanvien` (`manv`) ON DELETE SET NULL,
-  ADD CONSTRAINT `FK_phieukiemke_taikhoan` FOREIGN KEY (`nhanvientao`) REFERENCES `taikhoan` (`manv`) ON DELETE SET NULL;
+  ADD CONSTRAINT `FK_phieukiemke_nhanvien` FOREIGN KEY (`manhanvienkiem`) REFERENCES `nhanvien` (`manv`) ON DELETE SET NULL,
+  ADD CONSTRAINT `FK_phieukiemke_taikhoan` FOREIGN KEY (`manhanvientao`) REFERENCES `taikhoan` (`manv`) ON DELETE SET NULL;
 
 --
 -- Các ràng buộc cho bảng `phieunhap`
