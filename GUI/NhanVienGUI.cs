@@ -10,24 +10,19 @@ using System.Windows.Forms;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.DAO;
 using System.Windows.Forms.VisualStyles;
+using QuanLyKho_CSharp.BUS;
 
 namespace QuanLyKho_CSharp.GUI
 {
     public partial class NhanVienGUI : Form
     {
-        private static BindingList<NhanVienDTO> listNV;
+        
+        private NhanVienBUS nvBUS = new NhanVienBUS();
+        private BindingList<NhanVienDTO> listNV;
+
         public NhanVienGUI()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NhanVienGUI_Load(object sender, EventArgs e)
-        {
             DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
             DGVNhanVien.AllowUserToResizeColumns = false; // chặn thay đổi kích thước cột
             DGVNhanVien.AllowUserToAddRows = false;      // chặn thêm dòng
@@ -37,9 +32,20 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
             DGVNhanVien.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giũa
 
+            listNV = nvBUS.getListNV();
 
-            NhanVienDAO nhanVienDAO = new NhanVienDAO();
-            listNV = NhanVienDAO.getInstance().SelectAll();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NhanVienGUI_Load(object sender, EventArgs e)
+        {
+
+
+
             DGVNhanVien.Columns.Add("MaNV", "Mã nhân viên");
             DGVNhanVien.Columns["MaNV"].Width = 120;
 
@@ -62,10 +68,9 @@ namespace QuanLyKho_CSharp.GUI
             foreach (NhanVienDTO nv in listNV)
             {
                 DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
-                    ,nv.Ngaysinh.ToString("dd/MM/yyyy"), nv.Trangthai);
+                    , nv.Ngaysinh.ToString("dd/MM/yyyy"), nv.Trangthai);
 
             }
-            
 
             // Tạo 3 cái nút ở table
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -76,7 +81,6 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns.Add(btn);
             DGVNhanVien.Columns["Actions"].Width = 150;
         }
-
         private void DGVNhanVien_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex == DGVNhanVien.Columns["Actions"].Index && e.RowIndex >= 0)
@@ -145,7 +149,6 @@ namespace QuanLyKho_CSharp.GUI
         {
 
         }
-
         private void DGVNhanVien_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //e.ColumnIndex, e.RowIndex → xác định cell được click

@@ -36,15 +36,15 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.DGVNhanVien = new System.Windows.Forms.DataGridView();
+            this.txSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).BeginInit();
             this.SuspendLayout();
             // 
             // lbFormName
             // 
             this.lbFormName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFormName.Location = new System.Drawing.Point(3, 3);
+            this.lbFormName.Location = new System.Drawing.Point(693, 1);
             this.lbFormName.Name = "lbFormName";
             this.lbFormName.Size = new System.Drawing.Size(148, 41);
             this.lbFormName.TabIndex = 0;
@@ -57,8 +57,8 @@
             this.btnExcel.FlatAppearance.BorderSize = 0;
             this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExcel.Location = new System.Drawing.Point(768, 42);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnExcel.Location = new System.Drawing.Point(89, 82);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(1);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(73, 35);
             this.btnExcel.TabIndex = 1;
@@ -70,7 +70,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(688, 42);
+            this.btnAdd.Location = new System.Drawing.Point(12, 82);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(73, 35);
             this.btnAdd.TabIndex = 2;
@@ -84,21 +84,13 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(12, 82);
+            this.btnSearch.Location = new System.Drawing.Point(75, 1);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(87, 35);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(105, 82);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 35);
-            this.textBox1.TabIndex = 4;
             // 
             // DGVNhanVien
             // 
@@ -137,14 +129,22 @@
             this.DGVNhanVien.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DGVNhanVien_CellPainting);
             this.DGVNhanVien.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVNhanVien_MouseClick);
             // 
+            // txSearch
+            // 
+            this.txSearch.Location = new System.Drawing.Point(169, 1);
+            this.txSearch.Multiline = true;
+            this.txSearch.Name = "txSearch";
+            this.txSearch.Size = new System.Drawing.Size(503, 35);
+            this.txSearch.TabIndex = 6;
+            // 
             // NhanVienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(851, 482);
+            this.Controls.Add(this.txSearch);
             this.Controls.Add(this.DGVNhanVien);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnExcel);
@@ -165,7 +165,7 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView DGVNhanVien;
+        private System.Windows.Forms.TextBox txSearch;
     }
 }
