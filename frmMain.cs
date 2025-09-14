@@ -57,5 +57,10 @@ namespace QuanLyKho_CSharp
         {
             OpenChildForm(new NhanVienGUI());
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
