@@ -60,6 +60,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Test_Connection";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Test_Connection_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

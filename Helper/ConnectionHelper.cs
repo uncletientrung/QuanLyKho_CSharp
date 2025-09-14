@@ -14,7 +14,7 @@ namespace QuanLyKho_CSharp.Helper
                                 "user=root;" +
                                 "database=quanlikhoquanao;" +
                                 "password=;";
-        private static MySqlConnection conn;
+        public static MySqlConnection conn;
 
         public static void getConnection() // Lấy kết nối 
         {

@@ -33,5 +33,10 @@ namespace QuanLyKho_CSharp
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Test_Connection_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

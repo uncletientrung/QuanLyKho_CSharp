@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho_CSharp.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,6 +51,11 @@ namespace QuanLyKho_CSharp
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Test_Connection());
+        }
+
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new NhanVienGUI());
         }
     }
 }
