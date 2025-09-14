@@ -20,6 +20,11 @@ namespace QuanLyKho_CSharp
         }
         private void OpenChildForm(Form childForm)
         {
+            
+            if (currentFormChild != null && currentFormChild.GetType() == childForm.GetType())
+            {
+                return;
+            }
             if (currentFormChild != null) // Đóng form con hiện tại nếu đang mở
             {
                 currentFormChild.Close();

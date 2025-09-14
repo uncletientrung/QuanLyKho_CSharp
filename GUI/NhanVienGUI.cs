@@ -44,8 +44,6 @@ namespace QuanLyKho_CSharp.GUI
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
 
-
-
             DGVNhanVien.Columns.Add("MaNV", "Mã nhân viên");
             DGVNhanVien.Columns["MaNV"].Width = 120;
 
@@ -164,6 +162,11 @@ namespace QuanLyKho_CSharp.GUI
                 else if (xRel < padding * 2 + buttonWidth * 2) MessageBox.Show("Bấm Xóa");
                 else MessageBox.Show("Bấm Xem");
             }
+        }
+
+        private void DGVNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

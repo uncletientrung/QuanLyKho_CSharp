@@ -125,6 +125,7 @@
             this.DGVNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVNhanVien.Size = new System.Drawing.Size(829, 347);
             this.DGVNhanVien.TabIndex = 5;
+            this.DGVNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVNhanVien_CellContentClick);
             this.DGVNhanVien.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGVNhanVien_CellMouseClick);
             this.DGVNhanVien.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DGVNhanVien_CellPainting);
             this.DGVNhanVien.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVNhanVien_MouseClick);
