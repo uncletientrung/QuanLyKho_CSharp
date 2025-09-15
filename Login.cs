@@ -19,6 +19,7 @@ namespace QuanLyKho_CSharp.GUI
         public Login()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
@@ -55,6 +56,11 @@ namespace QuanLyKho_CSharp.GUI
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
