@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections;
@@ -22,41 +23,23 @@ namespace QuanLyKho_CSharp.DAO
         }
         public int Insert(NhanVienDTO t) { 
             int result = 0;
-            try
-            {
-                string sql = $"INSERT into nhanvien(tennv, gioitinh, sdt, ngaysinh, trangthai) " +
+            string sql = $"INSERT into nhanvien(tennv, gioitinh, sdt, ngaysinh, trangthai) " +
                     $"values ({t.Tennv}, {t.Gioitinh},{t.Sdt},{t.Ngaysinh},{t.Trangthai})";
-                ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
-                {
-                    result = cmd.ExecuteNonQuery(); // Lấy số kết quả thực thi thành công   
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Lỗi thực thi: {ex.Message}");
-            }
-            finally { ConnectionHelper.closeConnection(); }
-            return result; 
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
-        public int Update(NhanVienDTO t) { return 0; }
-        public int Delete(int t) {
-
+        public int Update(NhanVienDTO t)
+        {
             int result = 0;
-            try
-            {
-                string sql = $"UPDATE nhanvien Set trangthai= 0 Where manv={t}";
-                ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
-                {
-                    result = cmd.ExecuteNonQuery(); // Lấy số kết quả thực thi thành công   
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Lỗi thực thi: {ex.Message}");
-            }
-            finally { ConnectionHelper.closeConnection(); }
+            string sql = $"UPDATE nhanvien Set tennv= {t.Tennv}, gioitinh= {t.Gioitinh}," +
+                   $" sdt={t.Sdt}, ngaysinh={t.Ngaysinh} WHERE manv={t.Manv}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
+        }
+        public int Delete(int t) {
+            int result = 0;
+            string sql = $"UPDATE nhanvien Set trangthai= 0 WHERE manv={t}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
         public BindingList<NhanVienDTO> SelectAll() {
@@ -93,7 +76,55 @@ namespace QuanLyKho_CSharp.DAO
 
             return result;
         }
-        public NhanVienDTO SelectById(string t) { return null; }
-        public int GetAutoIncrement() { return 0; }
+        public NhanVienDTO SelectById(int t) {
+            NhanVienDTO result = new NhanVienDTO();
+            try
+            {
+                string sql = $"SELECT * FROM nhanvien WHERE manv = {t}";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn)) // conn phải public hoặc tạo getter
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Manv = reader.GetInt32("manv");
+                        result.Tennv = reader.GetString("tennv");
+                        result.Sdt = reader.GetString("sdt");
+                        result.Ngaysinh = reader.GetDateTime("ngaysinh");
+                        result.Trangthai = reader.GetInt32("trangthai");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result; 
+        }
+        public int GetAutoIncrement()
+        {
+            int result = 0;
+            try
+            {
+                string sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES " +
+                             "WHERE TABLE_SCHEMA = 'your_database_name' " +
+                             "AND TABLE_NAME = 'nhanvien'";
+
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    object value = cmd.ExecuteScalar();
+                    if (value != null && value != DBNull.Value)
+                    {
+                        result = Convert.ToInt32(value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+            }
+            return result;
+        }
     }
 }

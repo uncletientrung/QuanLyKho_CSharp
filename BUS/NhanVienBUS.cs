@@ -22,13 +22,35 @@ namespace QuanLyKho_CSharp.BUS
         {
             listNV=nvDAO.SelectAll();
         }
-        public int removeNhanVien(int maNV)
+        public Boolean removeNhanVien(int maNV) // Xóa trong database trước rồi xóa list
         {
-            int result = 0;
-
-            result=nvDAO.Delete(maNV);
+            NhanVienDTO nvXoa=nvDAO.SelectById(maNV);
+            Boolean result = nvDAO.Delete(maNV) !=0;
+            if (result)
+            {
+                foreach(NhanVienDTO nv in listNV)
+                {
+                    if (nv.Equals(nvXoa)){
+                        listNV.Remove(nv);
+                        return result;
+                    }
+                }
+            }
             return result;
-            
+
+        }
+        public Boolean insertNhanVien(NhanVienDTO NV)
+        {
+            Boolean result = nvDAO.Insert(NV) !=0;
+            if (result)
+            {
+                listNV.Add(NV);
+            }
+            return true;
+        }
+        public int getAutoMaNV()
+        {
+            return nvDAO.GetAutoIncrement();
         }
     }
 }

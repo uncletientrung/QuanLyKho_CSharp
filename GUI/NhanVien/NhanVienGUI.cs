@@ -63,17 +63,13 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
             DGVNhanVien.Columns["TrangThai"].Width = 116;
             DGVNhanVien.RowTemplate.Height = 40;
-
             foreach (NhanVienDTO nv in listNV)
             {
                 if (nv.Trangthai == 1)
                 {
-
                     DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
                    , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
                 }
-               
-
             }
 
             // Tạo 3 cái nút ở table
@@ -166,13 +162,13 @@ namespace QuanLyKho_CSharp.GUI
                                         
                 if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
                 {
-                    AddNhanVienForm addNV=new AddNhanVienForm();
-                    addNV.ShowDialog();
+                   MessageBox.Show("Bấm Ssửa");
                 }
                 else if (xRel < padding * 2 + buttonWidth * 2)
                 {
                     
-                    // Cells["manv"] là ô dựa trên dataSource, Column["manv"] là cột dữ liệu của DGV
+                    // Cells["manv"] là ô dựa trên dataSource,
+                    // Column["manv"] là cột dữ liệu của DGV
                     int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
                     nvBUS.removeNhanVien(manv);
                     //MessageBox.Show("Bấm Xóa");
@@ -189,7 +185,14 @@ namespace QuanLyKho_CSharp.GUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Can ba Minh THua");
+            AddNhanVienForm addNV = new AddNhanVienForm();
+            addNV.ShowDialog();
+        }
+
+        
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

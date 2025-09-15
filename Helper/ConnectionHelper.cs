@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using QuanLyKho_CSharp.GUI;
 
 namespace QuanLyKho_CSharp.Helper
 {
@@ -25,7 +26,8 @@ namespace QuanLyKho_CSharp.Helper
         {
             if (conn != null && conn.State == ConnectionState.Open) conn.Close();
         }
-    
+
+        #region Trả về dataTable
         public static DataTable getDataTable(string query) // thực hiện lệnh Select
         {
             DataTable result = new DataTable();
@@ -47,6 +49,7 @@ namespace QuanLyKho_CSharp.Helper
             }
             return result;
         }
+        #endregion
 
         public static int getExecuteNonQuery(string query)
         {
@@ -66,5 +69,6 @@ namespace QuanLyKho_CSharp.Helper
             finally { closeConnection(); }
             return result ;
         }
+        
     }
 }

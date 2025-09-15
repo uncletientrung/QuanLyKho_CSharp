@@ -64,6 +64,7 @@
             this.btnExcel.TabIndex = 1;
             this.btnExcel.Text = "Xuất Excel";
             this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnAdd
             // 
