@@ -148,9 +148,6 @@
     <Compile Include="Helper\NotificationSuccessful.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helper\NotificationSuccessful.Designer.cs">
-      <DependentUpon>NotificationSuccessful.cs</DependentUpon>
-    </Compile>
     <Compile Include="Test_Connection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhanVien\NhanVienGUI.resx">
       <DependentUpon>NhanVienGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\NotificationSuccessful.resx">
+      <DependentUpon>NotificationSuccessful.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

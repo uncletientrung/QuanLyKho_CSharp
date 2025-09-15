@@ -16,6 +16,7 @@ namespace QuanLyKho_CSharp.BUS
 
         public BindingList<NhanVienDTO> getListNV()
         {
+            listNV = nvDAO.SelectAll();
             return listNV;
         }
         public NhanVienBUS()

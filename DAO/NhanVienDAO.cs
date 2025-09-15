@@ -24,7 +24,8 @@ namespace QuanLyKho_CSharp.DAO
         public int Insert(NhanVienDTO t) { 
             int result = 0;
             string sql = $"INSERT into nhanvien(tennv, gioitinh, sdt, ngaysinh, trangthai) " +
-                    $"values ({t.Tennv}, {t.Gioitinh},{t.Sdt},{t.Ngaysinh},{t.Trangthai})";
+                    $"values ('{t.Tennv}', {t.Gioitinh},'{t.Sdt}'," +
+                    $"'{t.Ngaysinh:yyyy-MM-dd}',{t.Trangthai})";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }

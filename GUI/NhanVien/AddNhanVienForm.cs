@@ -29,6 +29,7 @@ namespace QuanLyKho_CSharp.GUI.NhanVien
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.DialogResult=DialogResult.Cancel;
             Close();
         }
 
@@ -39,6 +40,7 @@ namespace QuanLyKho_CSharp.GUI.NhanVien
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             if(txbName.Text.Length > 0)
             {
                 DateTime birhday = dtpDate.Value;
@@ -54,8 +56,8 @@ namespace QuanLyKho_CSharp.GUI.NhanVien
                 else
                 {
                     string sdt=txbPhone.Text.Trim();
-                    string pattern = @"^(0|\+84)(03|05|07|08|09)[0-9]{8})$";
-                    if(sdt.Length==0)
+                    string pattern = @"^(0|\+84)(3[2-9]|5[2-9]|7[0|6-9]|8[1-9]|9[0-9])[0-9]{7}$";
+                    if (sdt.Length==0)
                     {
                         MessageBox.Show(
                              "Số điện thoại không được để trống!",
@@ -80,6 +82,8 @@ namespace QuanLyKho_CSharp.GUI.NhanVien
                         if (rbtnGay.Checked) sex = 3;
                         NhanVienDTO nvInsert = new NhanVienDTO(
                             nvBUS.getAutoMaNV(), txbName.Text, sex,sdt, birhday, 1);
+                        nvBUS.insertNhanVien(nvInsert);
+                        this.DialogResult = DialogResult.OK; // Biến lưu giữ khi bấm thêm
                     }
                 }
             }

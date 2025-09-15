@@ -12,6 +12,7 @@ using QuanLyKho_CSharp.DAO;
 using System.Windows.Forms.VisualStyles;
 using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.GUI.NhanVien;
+using QuanLyKho_CSharp.Helper;
 
 namespace QuanLyKho_CSharp.GUI
 {
@@ -171,6 +172,7 @@ namespace QuanLyKho_CSharp.GUI
                     // Column["manv"] là cột dữ liệu của DGV
                     int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
                     nvBUS.removeNhanVien(manv);
+                    refreshDataGridView();
                     //MessageBox.Show("Bấm Xóa");
                 }
                    
@@ -187,12 +189,33 @@ namespace QuanLyKho_CSharp.GUI
         {
             AddNhanVienForm addNV = new AddNhanVienForm();
             addNV.ShowDialog();
+            if(addNV.DialogResult== DialogResult.OK)
+            {
+                refreshDataGridView();
+                NotificationSuccessful toast = new NotificationSuccessful();
+                toast.Show();
+            }
         }
 
         
         private void btnExcel_Click(object sender, EventArgs e)
         {
+            NotificationSuccessful toast = new NotificationSuccessful();
+            toast.Show();
+        }
+        private void refreshDataGridView()
+        {
+            DGVNhanVien.Rows.Clear();
 
+            listNV=nvBUS.getListNV();
+            foreach (NhanVienDTO nv in listNV)
+            {
+                if (nv.Trangthai == 1)
+                {
+                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
+                   , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+                }
+            }
         }
     }
 }
