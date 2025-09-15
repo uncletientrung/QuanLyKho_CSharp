@@ -100,7 +100,7 @@ namespace QuanLyKho_CSharp.DAO
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show(result.ToString());
+            
             return result; 
         }
         public int GetAutoIncrement()
