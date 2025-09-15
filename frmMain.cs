@@ -67,5 +67,10 @@ namespace QuanLyKho_CSharp
         {
             Close();
         }
+
+        private void avatar_Logout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
