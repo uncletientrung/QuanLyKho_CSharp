@@ -53,5 +53,6 @@ namespace QuanLyKho_CSharp.DTO
             get { return trangthai; }
             set { trangthai = value; }
         }
+
     }
 }

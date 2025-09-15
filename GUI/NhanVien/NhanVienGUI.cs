@@ -66,10 +66,10 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns["SDT"].Width = 200;
 
             DGVNhanVien.Columns.Add("NgaySinh", "Ngày sinh");
-            DGVNhanVien.Columns["NgaySinh"].Width = 100;
+            DGVNhanVien.Columns["NgaySinh"].Width = 130;
 
             DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
-            DGVNhanVien.Columns["TrangThai"].Width = 116;
+            DGVNhanVien.Columns["TrangThai"].Width = 154;
             DGVNhanVien.RowTemplate.Height = 40;
             foreach (NhanVienDTO nv in listNV)
             {
