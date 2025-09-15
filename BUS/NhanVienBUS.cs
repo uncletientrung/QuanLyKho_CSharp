@@ -22,5 +22,13 @@ namespace QuanLyKho_CSharp.BUS
         {
             listNV=nvDAO.SelectAll();
         }
+        public int removeNhanVien(int maNV)
+        {
+            int result = 0;
+
+            result=nvDAO.Delete(maNV);
+            return result;
+            
+        }
     }
 }

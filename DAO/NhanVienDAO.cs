@@ -3,6 +3,7 @@ using MySqlX.XDevAPI.Common;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.Helper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,9 +20,45 @@ namespace QuanLyKho_CSharp.DAO
         {
             return new NhanVienDAO();
         }
-        public int Insert(NhanVienDTO t) { /* code */ return 0; }
+        public int Insert(NhanVienDTO t) { 
+            int result = 0;
+            try
+            {
+                string sql = $"INSERT into nhanvien(tennv, gioitinh, sdt, ngaysinh, trangthai) " +
+                    $"values ({t.Tennv}, {t.Gioitinh},{t.Sdt},{t.Ngaysinh},{t.Trangthai})";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    result = cmd.ExecuteNonQuery(); // Lấy số kết quả thực thi thành công   
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi thực thi: {ex.Message}");
+            }
+            finally { ConnectionHelper.closeConnection(); }
+            return result; 
+        }
         public int Update(NhanVienDTO t) { return 0; }
-        public int Delete(string t) { return 0; }
+        public int Delete(int t) {
+
+            int result = 0;
+            try
+            {
+                string sql = $"UPDATE nhanvien Set trangthai= 0 Where manv={t}";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    result = cmd.ExecuteNonQuery(); // Lấy số kết quả thực thi thành công   
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi thực thi: {ex.Message}");
+            }
+            finally { ConnectionHelper.closeConnection(); }
+            return result;
+        }
         public BindingList<NhanVienDTO> SelectAll() {
             BindingList<NhanVienDTO> result = new BindingList<NhanVienDTO>();
             try

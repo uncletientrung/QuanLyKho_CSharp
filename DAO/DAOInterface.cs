@@ -11,7 +11,7 @@ namespace QuanLyKho_CSharp.DAO
     {
         int Insert(T t);
         int Update(T t);
-        int Delete(string t);
+        int Delete(int t);
         BindingList<T> SelectAll();
         T SelectById(string t);
         int GetAutoIncrement();

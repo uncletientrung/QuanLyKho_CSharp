@@ -11,6 +11,7 @@ using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.DAO;
 using System.Windows.Forms.VisualStyles;
 using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.GUI.NhanVien;
 
 namespace QuanLyKho_CSharp.GUI
 {
@@ -65,8 +66,13 @@ namespace QuanLyKho_CSharp.GUI
 
             foreach (NhanVienDTO nv in listNV)
             {
-                DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
-                    , nv.Ngaysinh.ToString("dd/MM/yyyy"), nv.Trangthai);
+                if (nv.Trangthai == 1)
+                {
+
+                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
+                   , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+                }
+               
 
             }
 
@@ -157,9 +163,21 @@ namespace QuanLyKho_CSharp.GUI
                 int buttonWidth = 50;
                 int padding = 5;
                 int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
-
-                if (xRel < padding + buttonWidth) MessageBox.Show("Bấm Sửa"); // kiểm tra trên tọa độ x
-                else if (xRel < padding * 2 + buttonWidth * 2) MessageBox.Show("Bấm Xóa");
+                                        
+                if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
+                {
+                    AddNhanVienForm addNV=new AddNhanVienForm();
+                    addNV.ShowDialog();
+                }
+                else if (xRel < padding * 2 + buttonWidth * 2)
+                {
+                    
+                    // Cells["manv"] là ô dựa trên dataSource, Column["manv"] là cột dữ liệu của DGV
+                    int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
+                    nvBUS.removeNhanVien(manv);
+                    //MessageBox.Show("Bấm Xóa");
+                }
+                   
                 else MessageBox.Show("Bấm Xem");
             }
         }
@@ -167,6 +185,11 @@ namespace QuanLyKho_CSharp.GUI
         private void DGVNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Can ba Minh THua");
         }
     }
 }

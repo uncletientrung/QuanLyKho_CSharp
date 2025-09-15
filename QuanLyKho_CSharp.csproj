@@ -133,10 +133,16 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\NhaCungCap.cs" />
-    <Compile Include="GUI\NhanVienGUI.cs">
+    <Compile Include="GUI\NhanVien\AddNhanVienForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\NhanVienGUI.Designer.cs">
+    <Compile Include="GUI\NhanVien\AddNhanVienForm.Designer.cs">
+      <DependentUpon>AddNhanVienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhanVien\NhanVienGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhanVien\NhanVienGUI.Designer.cs">
       <DependentUpon>NhanVienGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Test_Connection.cs">
@@ -151,7 +157,10 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\NhanVienGUI.resx">
+    <EmbeddedResource Include="GUI\NhanVien\AddNhanVienForm.resx">
+      <DependentUpon>AddNhanVienForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhanVien\NhanVienGUI.resx">
       <DependentUpon>NhanVienGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
