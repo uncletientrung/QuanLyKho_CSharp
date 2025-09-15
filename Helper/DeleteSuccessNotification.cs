@@ -8,21 +8,21 @@ using System.Windows.Forms;
 
 namespace QuanLyKho_CSharp.Helper
 {
-    public class NotificationSuccessful : Form
+    public class DeleteSuccessNotification : Form
     {
         private Timer timer;
         private ProgressBar progressBar;
         private int timeShown = 1000; // tổng thời gian hiển thị (ms)
         private int elapsed = 0;      // thời gian đã trôi qua
-        public NotificationSuccessful()
+        public DeleteSuccessNotification()
         {
             // Cấu hình form nhỏ
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.Manual;
-            this.BackColor = Color.FromArgb(95, 207, 51);
+            this.BackColor = Color.FromArgb(72, 128, 255);
             this.Size = new Size(300, 70);
             this.TopMost = true;
-            this.ForeColor=Color.White;
+            this.ForeColor = Color.White;
 
             // Vị trí (góc dưới phải)
             int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2;
@@ -31,7 +31,7 @@ namespace QuanLyKho_CSharp.Helper
 
             // Label
             Label lbl = new Label();
-            lbl.Text = "THÊM THÀNH CÔNG";
+            lbl.Text = "XÓA THÀNH CÔNG";
             lbl.Dock = DockStyle.Fill;
             lbl.Height = 30;
             lbl.TextAlign = ContentAlignment.MiddleCenter;
@@ -73,16 +73,16 @@ namespace QuanLyKho_CSharp.Helper
         {
             this.SuspendLayout();
             // 
-            // NotificationSuccessful
+            // DeleteSuccessNotification
             // 
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "NotificationSuccessful";
-            this.Load += new System.EventHandler(this.NotificationSuccessful_Load);
+            this.Name = "DeleteSuccessNotification";
+            this.Load += new System.EventHandler(this.DeleteSuccessNotification_Load);
             this.ResumeLayout(false);
 
         }
 
-        private void NotificationSuccessful_Load(object sender, EventArgs e)
+        private void DeleteSuccessNotification_Load(object sender, EventArgs e)
         {
 
         }

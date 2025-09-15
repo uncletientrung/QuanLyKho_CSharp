@@ -192,7 +192,7 @@ namespace QuanLyKho_CSharp.GUI
             if(addNV.DialogResult== DialogResult.OK)
             {
                 refreshDataGridView();
-                NotificationSuccessful toast = new NotificationSuccessful();
+                AddSuccessNotification toast = new AddSuccessNotification();
                 toast.Show();
             }
         }
@@ -200,7 +200,7 @@ namespace QuanLyKho_CSharp.GUI
         
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            NotificationSuccessful toast = new NotificationSuccessful();
+            AddSuccessNotification toast = new AddSuccessNotification();
             toast.Show();
         }
         private void refreshDataGridView()

@@ -145,7 +145,13 @@
     <Compile Include="GUI\NhanVien\NhanVienGUI.Designer.cs">
       <DependentUpon>NhanVienGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\NotificationSuccessful.cs">
+    <Compile Include="Helper\AddSuccessNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\DeleteSuccessNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\UpdateSuccessNotification.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Test_Connection.cs">
@@ -166,8 +172,11 @@
     <EmbeddedResource Include="GUI\NhanVien\NhanVienGUI.resx">
       <DependentUpon>NhanVienGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Helper\NotificationSuccessful.resx">
-      <DependentUpon>NotificationSuccessful.cs</DependentUpon>
+    <EmbeddedResource Include="Helper\AddSuccessNotification.resx">
+      <DependentUpon>AddSuccessNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\DeleteSuccessNotification.resx">
+      <DependentUpon>DeleteSuccessNotification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
