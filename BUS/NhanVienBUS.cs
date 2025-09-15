@@ -38,7 +38,6 @@ namespace QuanLyKho_CSharp.BUS
                 }
             }
             return result;
-
         }
         public Boolean insertNhanVien(NhanVienDTO NV)
         {
@@ -52,6 +51,30 @@ namespace QuanLyKho_CSharp.BUS
         public int getAutoMaNV()
         {
             return nvDAO.GetAutoIncrement();
+        }
+        public NhanVienDTO getNVById(int maNV)
+        {
+            NhanVienDTO nv = nvDAO.SelectById(maNV);
+            return nv;
+        }
+        public Boolean updateNhanVien(NhanVienDTO nvSua)
+        {
+            Boolean result= nvDAO.Update(nvSua) !=0;
+            if (result)
+            {
+                foreach(NhanVienDTO nv in listNV)
+                {
+                    if (nv.Manv == nvSua.Manv)
+                    {
+                        nv.Tennv = nvSua.Tennv;
+                        nv.Gioitinh = nvSua.Gioitinh;
+                        nv.Sdt = nvSua.Sdt;
+                        nv.Ngaysinh = nvSua.Ngaysinh;
+                        return result;
+                    }
+                }
+            }
+            return result;
         }
     }
 }

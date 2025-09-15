@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Mysqlx.Crud;
+using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DAO;
+using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.NhanVien;
+using QuanLyKho_CSharp.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,12 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyKho_CSharp.DTO;
-using QuanLyKho_CSharp.DAO;
 using System.Windows.Forms.VisualStyles;
-using QuanLyKho_CSharp.BUS;
-using QuanLyKho_CSharp.GUI.NhanVien;
-using QuanLyKho_CSharp.Helper;
 
 namespace QuanLyKho_CSharp.GUI
 {
@@ -25,7 +26,9 @@ namespace QuanLyKho_CSharp.GUI
         public NhanVienGUI()
         {
             InitializeComponent();
+            DGVNhanVien.ClearSelection();
             DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
+            DGVNhanVien.AllowUserToResizeRows = false; // Chặn kéo dài row
             DGVNhanVien.AllowUserToResizeColumns = false; // chặn thay đổi kích thước cột
             DGVNhanVien.AllowUserToAddRows = false;      // chặn thêm dòng
             DGVNhanVien.ReadOnly = true;                // chặn chỉnh sửa dữ liệu
@@ -160,23 +163,38 @@ namespace QuanLyKho_CSharp.GUI
                 int buttonWidth = 50;
                 int padding = 5;
                 int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
-                                        
+                // Cells["manv"] là ô dựa trên dataSource,
+                // Column["manv"] là cột dữ liệu của DGV
+                int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
+                NhanVienDTO NhanVienDuocChon = nvBUS.getNVById(manv);
                 if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
                 {
-                   MessageBox.Show("Bấm Ssửa");
+                    UpdateNhanVienForm updateNV = new UpdateNhanVienForm(NhanVienDuocChon);
+                    updateNV.ShowDialog();
+                    if (updateNV.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView();
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
+
                 }
                 else if (xRel < padding * 2 + buttonWidth * 2)
                 {
-                    
-                    // Cells["manv"] là ô dựa trên dataSource,
-                    // Column["manv"] là cột dữ liệu của DGV
-                    int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
-                    nvBUS.removeNhanVien(manv);
-                    refreshDataGridView();
-                    //MessageBox.Show("Bấm Xóa");
+                    DeleteNhanVienForm deleteNV = new DeleteNhanVienForm(NhanVienDuocChon);
+                    deleteNV.ShowDialog();
+                    if (deleteNV.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView();
+                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                        tb.Show();
+                    }
                 }
-                   
-                else MessageBox.Show("Bấm Xem");
+                else {
+                    DetailNhanVienForm detailNV = new DetailNhanVienForm(NhanVienDuocChon);
+                    detailNV.ShowDialog();
+                }
+               
             }
         }
 
@@ -192,22 +210,21 @@ namespace QuanLyKho_CSharp.GUI
             if(addNV.DialogResult== DialogResult.OK)
             {
                 refreshDataGridView();
-                AddSuccessNotification toast = new AddSuccessNotification();
-                toast.Show();
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
             }
-        }
-
-        
+        }   
         private void btnExcel_Click(object sender, EventArgs e)
         {
             AddSuccessNotification toast = new AddSuccessNotification();
             toast.Show();
         }
-        private void refreshDataGridView()
+        private void refreshDataGridView() // Tải lại DataGridView
         {
             DGVNhanVien.Rows.Clear();
+            DGVNhanVien.ClearSelection();
 
-            listNV=nvBUS.getListNV();
+            listNV =nvBUS.getListNV();
             foreach (NhanVienDTO nv in listNV)
             {
                 if (nv.Trangthai == 1)

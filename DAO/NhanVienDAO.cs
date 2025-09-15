@@ -32,8 +32,8 @@ namespace QuanLyKho_CSharp.DAO
         public int Update(NhanVienDTO t)
         {
             int result = 0;
-            string sql = $"UPDATE nhanvien Set tennv= {t.Tennv}, gioitinh= {t.Gioitinh}," +
-                   $" sdt={t.Sdt}, ngaysinh={t.Ngaysinh} WHERE manv={t.Manv}";
+            string sql = $"UPDATE nhanvien Set tennv= '{t.Tennv}', gioitinh= {t.Gioitinh}," +
+                   $" sdt='{t.Sdt}', ngaysinh='{t.Ngaysinh:yyyy-MM-dd}' WHERE manv={t.Manv}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
