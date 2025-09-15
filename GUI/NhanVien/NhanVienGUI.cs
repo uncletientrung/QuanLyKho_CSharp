@@ -1,4 +1,5 @@
 ﻿using Mysqlx.Crud;
+using Org.BouncyCastle.Utilities.Encoders;
 using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
@@ -14,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyKho_CSharp.GUI
 {
@@ -26,6 +28,8 @@ namespace QuanLyKho_CSharp.GUI
         public NhanVienGUI()
         {
             InitializeComponent();
+            txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
+            txSearch.ForeColor = Color.Gray;
             DGVNhanVien.ClearSelection();
             DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
             DGVNhanVien.AllowUserToResizeRows = false; // Chặn kéo dài row
@@ -53,13 +57,13 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns["MaNV"].Width = 120;
 
             DGVNhanVien.Columns.Add("TenNV", "Họ và Tên");
-            DGVNhanVien.Columns["TenNV"].Width = 150;
+            DGVNhanVien.Columns["TenNV"].Width = 250;
 
             DGVNhanVien.Columns.Add("GioiTinh", "Giới tính");
-            DGVNhanVien.Columns["GioiTinh"].Width = 90;
+            DGVNhanVien.Columns["GioiTinh"].Width = 140;
 
             DGVNhanVien.Columns.Add("SDT", "Số điện thoại");
-            DGVNhanVien.Columns["SDT"].Width = 100;
+            DGVNhanVien.Columns["SDT"].Width = 200;
 
             DGVNhanVien.Columns.Add("NgaySinh", "Ngày sinh");
             DGVNhanVien.Columns["NgaySinh"].Width = 100;
@@ -71,7 +75,8 @@ namespace QuanLyKho_CSharp.GUI
             {
                 if (nv.Trangthai == 1)
                 {
-                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
+                    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
+                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
                    , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
                 }
             }
@@ -229,9 +234,26 @@ namespace QuanLyKho_CSharp.GUI
             {
                 if (nv.Trangthai == 1)
                 {
-                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
+                    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
+                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
                    , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
                 }
+            }
+        }
+
+        private void txSearch_Enter(object sender, EventArgs e)
+        {
+            if (txSearch.Text == "Nhập mã, tên hoặc số điện thoại nhân viên để tìm")
+                txSearch.Text = "";
+                txSearch.ForeColor = Color.Black;
+        }
+
+        private void txSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txSearch.Text)) // Kiểm tra rỗng, null và khoảng trắng
+            {
+                txSearch.ForeColor = Color.Gray;
+                txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
             }
         }
     }
