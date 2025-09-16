@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Drawing;
+
 namespace QuanLyKho_CSharp.Properties
 {
 
@@ -33,6 +35,8 @@ namespace QuanLyKho_CSharp.Properties
         internal Resources()
         {
         }
+
+        public static Image no_image { get; internal set; }
 
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.

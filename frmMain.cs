@@ -51,7 +51,7 @@ namespace QuanLyKho_CSharp
 
         private void btnTonKho_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new SanPhamGUI());
         }
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
