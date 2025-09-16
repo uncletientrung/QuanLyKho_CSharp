@@ -33,24 +33,26 @@ namespace QuanLyKho_CSharp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlLeftMenu = new System.Windows.Forms.Panel();
+            this.tablelayoutLeftmenu = new System.Windows.Forms.TableLayoutPanel();
             this.btnPhanQuyen = new System.Windows.Forms.Button();
-            this.btnTaiKhoan = new System.Windows.Forms.Button();
-            this.btnBaoCao = new System.Windows.Forms.Button();
-            this.btnKiemKe = new System.Windows.Forms.Button();
-            this.btnNhanVien = new System.Windows.Forms.Button();
-            this.btnKhachHang = new System.Windows.Forms.Button();
-            this.btnThongTin = new System.Windows.Forms.Button();
-            this.btnPhieuXuat = new System.Windows.Forms.Button();
-            this.btnPhieuNhap = new System.Windows.Forms.Button();
-            this.btnTonKho = new System.Windows.Forms.Button();
-            this.lbUser = new System.Windows.Forms.Label();
             this.btnTrangChu = new System.Windows.Forms.Button();
+            this.btnTaiKhoan = new System.Windows.Forms.Button();
+            this.btnTonKho = new System.Windows.Forms.Button();
+            this.btnBaoCao = new System.Windows.Forms.Button();
+            this.btnPhieuNhap = new System.Windows.Forms.Button();
+            this.btnKiemKe = new System.Windows.Forms.Button();
+            this.btnPhieuXuat = new System.Windows.Forms.Button();
+            this.btnNhanVien = new System.Windows.Forms.Button();
+            this.btnThongTin = new System.Windows.Forms.Button();
+            this.btnKhachHang = new System.Windows.Forms.Button();
+            this.lbUser = new System.Windows.Forms.Label();
             this.avatar = new System.Windows.Forms.PictureBox();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.avatar_Logout = new System.Windows.Forms.PictureBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlLeftMenu.SuspendLayout();
+            this.tablelayoutLeftmenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar_Logout)).BeginInit();
@@ -58,127 +60,177 @@ namespace QuanLyKho_CSharp
             // 
             // pnlLeftMenu
             // 
+            this.pnlLeftMenu.AutoScroll = true;
             this.pnlLeftMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlLeftMenu.Controls.Add(this.btnPhanQuyen);
-            this.pnlLeftMenu.Controls.Add(this.btnTaiKhoan);
-            this.pnlLeftMenu.Controls.Add(this.btnBaoCao);
-            this.pnlLeftMenu.Controls.Add(this.btnKiemKe);
-            this.pnlLeftMenu.Controls.Add(this.btnNhanVien);
-            this.pnlLeftMenu.Controls.Add(this.btnKhachHang);
-            this.pnlLeftMenu.Controls.Add(this.btnThongTin);
-            this.pnlLeftMenu.Controls.Add(this.btnPhieuXuat);
-            this.pnlLeftMenu.Controls.Add(this.btnPhieuNhap);
-            this.pnlLeftMenu.Controls.Add(this.btnTonKho);
+            this.pnlLeftMenu.Controls.Add(this.tablelayoutLeftmenu);
             this.pnlLeftMenu.Controls.Add(this.lbUser);
-            this.pnlLeftMenu.Controls.Add(this.btnTrangChu);
             this.pnlLeftMenu.Controls.Add(this.avatar);
             this.pnlLeftMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlLeftMenu.Name = "pnlLeftMenu";
-            this.pnlLeftMenu.Size = new System.Drawing.Size(197, 573);
+            this.pnlLeftMenu.Size = new System.Drawing.Size(197, 640);
             this.pnlLeftMenu.TabIndex = 0;
+            // 
+            // tablelayoutLeftmenu
+            // 
+            this.tablelayoutLeftmenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tablelayoutLeftmenu.AutoScroll = true;
+            this.tablelayoutLeftmenu.AutoSize = true;
+            this.tablelayoutLeftmenu.ColumnCount = 1;
+            this.tablelayoutLeftmenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tablelayoutLeftmenu.Controls.Add(this.btnPhanQuyen, 0, 10);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnTrangChu, 0, 0);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnTaiKhoan, 0, 9);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnTonKho, 0, 1);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnBaoCao, 0, 8);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnPhieuNhap, 0, 2);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnKiemKe, 0, 7);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnPhieuXuat, 0, 3);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnNhanVien, 0, 6);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnThongTin, 0, 4);
+            this.tablelayoutLeftmenu.Controls.Add(this.btnKhachHang, 0, 5);
+            this.tablelayoutLeftmenu.Location = new System.Drawing.Point(3, 105);
+            this.tablelayoutLeftmenu.Name = "tablelayoutLeftmenu";
+            this.tablelayoutLeftmenu.RowCount = 11;
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tablelayoutLeftmenu.Size = new System.Drawing.Size(197, 605);
+            this.tablelayoutLeftmenu.TabIndex = 3;
             // 
             // btnPhanQuyen
             // 
-            this.btnPhanQuyen.Location = new System.Drawing.Point(14, 514);
+            this.btnPhanQuyen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPhanQuyen.Location = new System.Drawing.Point(3, 543);
             this.btnPhanQuyen.Name = "btnPhanQuyen";
-            this.btnPhanQuyen.Size = new System.Drawing.Size(166, 36);
+            this.btnPhanQuyen.Size = new System.Drawing.Size(191, 59);
             this.btnPhanQuyen.TabIndex = 12;
             this.btnPhanQuyen.Text = "Phân quyền";
             this.btnPhanQuyen.UseVisualStyleBackColor = true;
             // 
+            // btnTrangChu
+            // 
+            this.btnTrangChu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTrangChu.Location = new System.Drawing.Point(3, 2);
+            this.btnTrangChu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTrangChu.Name = "btnTrangChu";
+            this.btnTrangChu.Size = new System.Drawing.Size(191, 50);
+            this.btnTrangChu.TabIndex = 1;
+            this.btnTrangChu.Text = "Trang chủ";
+            this.btnTrangChu.UseVisualStyleBackColor = true;
+            this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
+            // 
             // btnTaiKhoan
             // 
-            this.btnTaiKhoan.Location = new System.Drawing.Point(14, 473);
+            this.btnTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTaiKhoan.Location = new System.Drawing.Point(3, 488);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(166, 36);
+            this.btnTaiKhoan.Size = new System.Drawing.Size(191, 50);
             this.btnTaiKhoan.TabIndex = 11;
             this.btnTaiKhoan.Text = "Tài khoản";
             this.btnTaiKhoan.UseVisualStyleBackColor = true;
             // 
+            // btnTonKho
+            // 
+            this.btnTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTonKho.Location = new System.Drawing.Point(3, 56);
+            this.btnTonKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTonKho.Name = "btnTonKho";
+            this.btnTonKho.Size = new System.Drawing.Size(191, 50);
+            this.btnTonKho.TabIndex = 3;
+            this.btnTonKho.Text = "Tồn kho";
+            this.btnTonKho.UseVisualStyleBackColor = true;
+            this.btnTonKho.Click += new System.EventHandler(this.btnTonKho_Click);
+            // 
             // btnBaoCao
             // 
-            this.btnBaoCao.Location = new System.Drawing.Point(14, 433);
+            this.btnBaoCao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBaoCao.Location = new System.Drawing.Point(3, 434);
             this.btnBaoCao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Size = new System.Drawing.Size(166, 36);
+            this.btnBaoCao.Size = new System.Drawing.Size(191, 50);
             this.btnBaoCao.TabIndex = 10;
             this.btnBaoCao.Text = "Báo cáo";
             this.btnBaoCao.UseVisualStyleBackColor = true;
             // 
+            // btnPhieuNhap
+            // 
+            this.btnPhieuNhap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPhieuNhap.Location = new System.Drawing.Point(3, 110);
+            this.btnPhieuNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPhieuNhap.Name = "btnPhieuNhap";
+            this.btnPhieuNhap.Size = new System.Drawing.Size(191, 50);
+            this.btnPhieuNhap.TabIndex = 4;
+            this.btnPhieuNhap.Text = "Nhập hàng";
+            this.btnPhieuNhap.UseVisualStyleBackColor = true;
+            // 
             // btnKiemKe
             // 
-            this.btnKiemKe.Location = new System.Drawing.Point(14, 393);
+            this.btnKiemKe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKiemKe.Location = new System.Drawing.Point(3, 380);
             this.btnKiemKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKiemKe.Name = "btnKiemKe";
-            this.btnKiemKe.Size = new System.Drawing.Size(166, 36);
+            this.btnKiemKe.Size = new System.Drawing.Size(191, 50);
             this.btnKiemKe.TabIndex = 9;
             this.btnKiemKe.Text = "Kiểm kê";
             this.btnKiemKe.UseVisualStyleBackColor = true;
             // 
+            // btnPhieuXuat
+            // 
+            this.btnPhieuXuat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPhieuXuat.Location = new System.Drawing.Point(3, 164);
+            this.btnPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPhieuXuat.Name = "btnPhieuXuat";
+            this.btnPhieuXuat.Size = new System.Drawing.Size(191, 50);
+            this.btnPhieuXuat.TabIndex = 5;
+            this.btnPhieuXuat.Text = "Xuất hàng";
+            this.btnPhieuXuat.UseVisualStyleBackColor = true;
+            // 
             // btnNhanVien
             // 
-            this.btnNhanVien.Location = new System.Drawing.Point(14, 353);
+            this.btnNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNhanVien.Location = new System.Drawing.Point(3, 326);
             this.btnNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(166, 36);
+            this.btnNhanVien.Size = new System.Drawing.Size(191, 50);
             this.btnNhanVien.TabIndex = 8;
             this.btnNhanVien.Text = "Nhân viên";
             this.btnNhanVien.UseVisualStyleBackColor = true;
             this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
             // 
-            // btnKhachHang
-            // 
-            this.btnKhachHang.Location = new System.Drawing.Point(14, 313);
-            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(166, 36);
-            this.btnKhachHang.TabIndex = 7;
-            this.btnKhachHang.Text = "Khách hàng";
-            this.btnKhachHang.UseVisualStyleBackColor = true;
-            // 
             // btnThongTin
             // 
-            this.btnThongTin.Location = new System.Drawing.Point(14, 273);
+            this.btnThongTin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnThongTin.Location = new System.Drawing.Point(3, 218);
             this.btnThongTin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongTin.Name = "btnThongTin";
-            this.btnThongTin.Size = new System.Drawing.Size(166, 36);
+            this.btnThongTin.Size = new System.Drawing.Size(191, 50);
             this.btnThongTin.TabIndex = 6;
             this.btnThongTin.Text = "Thông tin";
             this.btnThongTin.UseVisualStyleBackColor = true;
             // 
-            // btnPhieuXuat
+            // btnKhachHang
             // 
-            this.btnPhieuXuat.Location = new System.Drawing.Point(12, 233);
-            this.btnPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPhieuXuat.Name = "btnPhieuXuat";
-            this.btnPhieuXuat.Size = new System.Drawing.Size(166, 36);
-            this.btnPhieuXuat.TabIndex = 5;
-            this.btnPhieuXuat.Text = "Xuất hàng";
-            this.btnPhieuXuat.UseVisualStyleBackColor = true;
-            // 
-            // btnPhieuNhap
-            // 
-            this.btnPhieuNhap.Location = new System.Drawing.Point(12, 192);
-            this.btnPhieuNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPhieuNhap.Name = "btnPhieuNhap";
-            this.btnPhieuNhap.Size = new System.Drawing.Size(166, 36);
-            this.btnPhieuNhap.TabIndex = 4;
-            this.btnPhieuNhap.Text = "Nhập hàng";
-            this.btnPhieuNhap.UseVisualStyleBackColor = true;
-            // 
-            // btnTonKho
-            // 
-            this.btnTonKho.Location = new System.Drawing.Point(14, 152);
-            this.btnTonKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTonKho.Name = "btnTonKho";
-            this.btnTonKho.Size = new System.Drawing.Size(166, 36);
-            this.btnTonKho.TabIndex = 3;
-            this.btnTonKho.Text = "Tồn kho";
-            this.btnTonKho.UseVisualStyleBackColor = true;
-            this.btnTonKho.Click += new System.EventHandler(this.btnTonKho_Click);
+            this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKhachHang.Location = new System.Drawing.Point(3, 272);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(191, 50);
+            this.btnKhachHang.TabIndex = 7;
+            this.btnKhachHang.Text = "Khách hàng";
+            this.btnKhachHang.UseVisualStyleBackColor = true;
             // 
             // lbUser
             // 
@@ -191,20 +243,8 @@ namespace QuanLyKho_CSharp
             this.lbUser.Text = "Hi, user";
             this.lbUser.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnTrangChu
-            // 
-            this.btnTrangChu.Location = new System.Drawing.Point(14, 108);
-            this.btnTrangChu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTrangChu.Name = "btnTrangChu";
-            this.btnTrangChu.Size = new System.Drawing.Size(166, 40);
-            this.btnTrangChu.TabIndex = 1;
-            this.btnTrangChu.Text = "Trang chủ";
-            this.btnTrangChu.UseVisualStyleBackColor = true;
-            this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
-            // 
             // avatar
             // 
-            this.avatar.Dock = System.Windows.Forms.DockStyle.Top;
             this.avatar.Image = ((System.Drawing.Image)(resources.GetObject("avatar.Image")));
             this.avatar.InitialImage = null;
             this.avatar.Location = new System.Drawing.Point(0, 0);
@@ -224,17 +264,19 @@ namespace QuanLyKho_CSharp
             this.pnlTop.Location = new System.Drawing.Point(197, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(867, 52);
+            this.pnlTop.Size = new System.Drawing.Size(867, 78);
             this.pnlTop.TabIndex = 1;
             // 
             // btnLogout
             // 
+            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogout.BackColor = System.Drawing.Color.Transparent;
             this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.ForeColor = System.Drawing.Color.Red;
-            this.btnLogout.Location = new System.Drawing.Point(747, 21);
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogout.Location = new System.Drawing.Point(783, 35);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 23);
@@ -245,20 +287,24 @@ namespace QuanLyKho_CSharp
             // 
             // avatar_Logout
             // 
+            this.avatar_Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.avatar_Logout.Image = ((System.Drawing.Image)(resources.GetObject("avatar_Logout.Image")));
-            this.avatar_Logout.Location = new System.Drawing.Point(701, 12);
+            this.avatar_Logout.Location = new System.Drawing.Point(738, 21);
             this.avatar_Logout.Name = "avatar_Logout";
             this.avatar_Logout.Size = new System.Drawing.Size(42, 37);
             this.avatar_Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.avatar_Logout.TabIndex = 0;
             this.avatar_Logout.TabStop = false;
+            this.avatar_Logout.Click += new System.EventHandler(this.avatar_Logout_Click);
             // 
             // pnlBody
             // 
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(197, 52);
+            this.pnlBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBody.Location = new System.Drawing.Point(197, 78);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(867, 521);
+            this.pnlBody.Size = new System.Drawing.Size(867, 562);
             this.pnlBody.TabIndex = 2;
             // 
             // frmMain
@@ -266,7 +312,7 @@ namespace QuanLyKho_CSharp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1064, 573);
+            this.ClientSize = new System.Drawing.Size(1064, 640);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlLeftMenu);
@@ -274,10 +320,11 @@ namespace QuanLyKho_CSharp
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMain";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlLeftMenu.ResumeLayout(false);
             this.pnlLeftMenu.PerformLayout();
+            this.tablelayoutLeftmenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.avatar_Logout)).EndInit();
@@ -289,21 +336,22 @@ namespace QuanLyKho_CSharp
 
         private System.Windows.Forms.Panel pnlLeftMenu;
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Button btnTrangChu;
         private System.Windows.Forms.PictureBox avatar;
         private System.Windows.Forms.Label lbUser;
-        private System.Windows.Forms.Button btnTaiKhoan;
-        private System.Windows.Forms.Button btnBaoCao;
-        private System.Windows.Forms.Button btnKiemKe;
-        private System.Windows.Forms.Button btnNhanVien;
-        private System.Windows.Forms.Button btnKhachHang;
-        private System.Windows.Forms.Button btnThongTin;
-        private System.Windows.Forms.Button btnPhieuXuat;
-        private System.Windows.Forms.Button btnPhieuNhap;
-        private System.Windows.Forms.Button btnTonKho;
-        private System.Windows.Forms.Button btnPhanQuyen;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox avatar_Logout;
         private System.Windows.Forms.Panel pnlBody;
+        private TableLayoutPanel tablelayoutLeftmenu;
+        private Button btnPhanQuyen;
+        private Button btnTrangChu;
+        private Button btnTaiKhoan;
+        private Button btnTonKho;
+        private Button btnBaoCao;
+        private Button btnPhieuNhap;
+        private Button btnKiemKe;
+        private Button btnPhieuXuat;
+        private Button btnNhanVien;
+        private Button btnThongTin;
+        private Button btnKhachHang;
     }
 }

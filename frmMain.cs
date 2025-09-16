@@ -20,6 +20,11 @@ namespace QuanLyKho_CSharp
         }
         private void OpenChildForm(Form childForm)
         {
+            
+            if (currentFormChild != null && currentFormChild.GetType() == childForm.GetType())
+            {
+                return;
+            }
             if (currentFormChild != null) // Đóng form con hiện tại nếu đang mở
             {
                 currentFormChild.Close();
@@ -61,6 +66,11 @@ namespace QuanLyKho_CSharp
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void avatar_Logout_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

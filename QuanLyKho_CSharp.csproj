@@ -98,8 +98,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\TaiKhoanBUS.cs" />
+    <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
+    <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DTO\ChatLieuDTO.cs" />
     <Compile Include="DTO\ChiTietKiemKe.cs" />
@@ -132,11 +135,50 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\NhaCungCap.cs" />
-    <Compile Include="GUI\NhanVienGUI.cs">
+    <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\NhanVienGUI.Designer.cs">
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhanVien\AddNhanVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhanVien\AddNhanVienForm.Designer.cs">
+      <DependentUpon>AddNhanVienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhanVien\DeleteNhanVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhanVien\DeleteNhanVienForm.Designer.cs">
+      <DependentUpon>DeleteNhanVienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhanVien\DetailNhanVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhanVien\DetailNhanVienForm.Designer.cs">
+      <DependentUpon>DetailNhanVienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhanVien\NhanVienGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhanVien\NhanVienGUI.Designer.cs">
       <DependentUpon>NhanVienGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhanVien\UpdateNhanVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhanVien\UpdateNhanVienForm.Designer.cs">
+      <DependentUpon>UpdateNhanVienForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AddSuccessNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\DeleteSuccessNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\UpdateSuccessNotification.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Test_Connection.cs">
       <SubType>Form</SubType>
@@ -150,8 +192,29 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\NhanVienGUI.resx">
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhanVien\AddNhanVienForm.resx">
+      <DependentUpon>AddNhanVienForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhanVien\DeleteNhanVienForm.resx">
+      <DependentUpon>DeleteNhanVienForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhanVien\DetailNhanVienForm.resx">
+      <DependentUpon>DetailNhanVienForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhanVien\NhanVienGUI.resx">
       <DependentUpon>NhanVienGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhanVien\UpdateNhanVienForm.resx">
+      <DependentUpon>UpdateNhanVienForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\AddSuccessNotification.resx">
+      <DependentUpon>AddSuccessNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\DeleteSuccessNotification.resx">
+      <DependentUpon>DeleteSuccessNotification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -187,10 +250,16 @@
     <Content Include="images\icon\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\icon\password.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\icon\remove.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\icon\search.png" />
+    <Content Include="images\icon\user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\ui.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

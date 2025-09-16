@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Mysqlx.Crud;
+using Org.BouncyCastle.Utilities.Encoders;
+using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DAO;
+using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.NhanVien;
+using QuanLyKho_CSharp.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,18 +14,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyKho_CSharp.DTO;
-using QuanLyKho_CSharp.DAO;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyKho_CSharp.GUI
 {
     public partial class NhanVienGUI : Form
     {
-        private static BindingList<NhanVienDTO> listNV;
+        
+        private NhanVienBUS nvBUS = new NhanVienBUS();
+        private BindingList<NhanVienDTO> listNV;
+
         public NhanVienGUI()
         {
             InitializeComponent();
+            txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
+            txSearch.ForeColor = Color.Gray;
+            DGVNhanVien.ClearSelection();
+            DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
+            DGVNhanVien.AllowUserToResizeRows = false; // Chặn kéo dài row
+            DGVNhanVien.AllowUserToResizeColumns = false; // chặn thay đổi kích thước cột
+            DGVNhanVien.AllowUserToAddRows = false;      // chặn thêm dòng
+            DGVNhanVien.ReadOnly = true;                // chặn chỉnh sửa dữ liệu
+            DGVNhanVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Bôi full row
+            DGVNhanVien.MultiSelect = false; // Nếu muốn chỉ chọn 1 row tại 1 thời điểm
+            DGVNhanVien.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
+            DGVNhanVien.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giũa
+
+            listNV = nvBUS.getListNV();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -28,44 +52,34 @@ namespace QuanLyKho_CSharp.GUI
 
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
-            DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
-            DGVNhanVien.AllowUserToResizeColumns = false; // chặn thay đổi kích thước cột
-            DGVNhanVien.AllowUserToAddRows = false;      // chặn thêm dòng
-            DGVNhanVien.ReadOnly = true;                // chặn chỉnh sửa dữ liệu
-            DGVNhanVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Bôi full row
-            DGVNhanVien.MultiSelect = false; // Nếu muốn chỉ chọn 1 row tại 1 thời điểm
-            DGVNhanVien.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
-            DGVNhanVien.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giũa
 
-
-            NhanVienDAO nhanVienDAO = new NhanVienDAO();
-            listNV = NhanVienDAO.getInstance().SelectAll();
             DGVNhanVien.Columns.Add("MaNV", "Mã nhân viên");
             DGVNhanVien.Columns["MaNV"].Width = 120;
 
             DGVNhanVien.Columns.Add("TenNV", "Họ và Tên");
-            DGVNhanVien.Columns["TenNV"].Width = 150;
+            DGVNhanVien.Columns["TenNV"].Width = 250;
 
             DGVNhanVien.Columns.Add("GioiTinh", "Giới tính");
-            DGVNhanVien.Columns["GioiTinh"].Width = 90;
+            DGVNhanVien.Columns["GioiTinh"].Width = 140;
 
             DGVNhanVien.Columns.Add("SDT", "Số điện thoại");
-            DGVNhanVien.Columns["SDT"].Width = 100;
+            DGVNhanVien.Columns["SDT"].Width = 200;
 
             DGVNhanVien.Columns.Add("NgaySinh", "Ngày sinh");
-            DGVNhanVien.Columns["NgaySinh"].Width = 100;
+            DGVNhanVien.Columns["NgaySinh"].Width = 130;
 
             DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
-            DGVNhanVien.Columns["TrangThai"].Width = 116;
+            DGVNhanVien.Columns["TrangThai"].Width = 154;
             DGVNhanVien.RowTemplate.Height = 40;
-
             foreach (NhanVienDTO nv in listNV)
             {
-                DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, nv.Gioitinh, nv.Sdt
-                    ,nv.Ngaysinh.ToString("dd/MM/yyyy"), nv.Trangthai);
-
+                if (nv.Trangthai == 1)
+                {
+                    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
+                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
+                   , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+                }
             }
-            
 
             // Tạo 3 cái nút ở table
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -76,7 +90,6 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns.Add(btn);
             DGVNhanVien.Columns["Actions"].Width = 150;
         }
-
         private void DGVNhanVien_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex == DGVNhanVien.Columns["Actions"].Index && e.RowIndex >= 0)
@@ -145,7 +158,6 @@ namespace QuanLyKho_CSharp.GUI
         {
 
         }
-
         private void DGVNhanVien_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //e.ColumnIndex, e.RowIndex → xác định cell được click
@@ -156,10 +168,92 @@ namespace QuanLyKho_CSharp.GUI
                 int buttonWidth = 50;
                 int padding = 5;
                 int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
+                // Cells["manv"] là ô dựa trên dataSource,
+                // Column["manv"] là cột dữ liệu của DGV
+                int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
+                NhanVienDTO NhanVienDuocChon = nvBUS.getNVById(manv);
+                if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
+                {
+                    UpdateNhanVienForm updateNV = new UpdateNhanVienForm(NhanVienDuocChon);
+                    updateNV.ShowDialog();
+                    if (updateNV.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView();
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
 
-                if (xRel < padding + buttonWidth) MessageBox.Show("Bấm Sửa"); // kiểm tra trên tọa độ x
-                else if (xRel < padding * 2 + buttonWidth * 2) MessageBox.Show("Bấm Xóa");
-                else MessageBox.Show("Bấm Xem");
+                }
+                else if (xRel < padding * 2 + buttonWidth * 2)
+                {
+                    DeleteNhanVienForm deleteNV = new DeleteNhanVienForm(NhanVienDuocChon);
+                    deleteNV.ShowDialog();
+                    if (deleteNV.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView();
+                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                        tb.Show();
+                    }
+                }
+                else {
+                    DetailNhanVienForm detailNV = new DetailNhanVienForm(NhanVienDuocChon);
+                    detailNV.ShowDialog();
+                }
+               
+            }
+        }
+
+        private void DGVNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddNhanVienForm addNV = new AddNhanVienForm();
+            addNV.ShowDialog();
+            if(addNV.DialogResult== DialogResult.OK)
+            {
+                refreshDataGridView();
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
+            }
+        }   
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            AddSuccessNotification toast = new AddSuccessNotification();
+            toast.Show();
+        }
+        private void refreshDataGridView() // Tải lại DataGridView
+        {
+            DGVNhanVien.Rows.Clear();
+            DGVNhanVien.ClearSelection();
+
+            listNV =nvBUS.getListNV();
+            foreach (NhanVienDTO nv in listNV)
+            {
+                if (nv.Trangthai == 1)
+                {
+                    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
+                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
+                   , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+                }
+            }
+        }
+
+        private void txSearch_Enter(object sender, EventArgs e)
+        {
+            if (txSearch.Text == "Nhập mã, tên hoặc số điện thoại nhân viên để tìm")
+                txSearch.Text = "";
+                txSearch.ForeColor = Color.Black;
+        }
+
+        private void txSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txSearch.Text)) // Kiểm tra rỗng, null và khoảng trắng
+            {
+                txSearch.ForeColor = Color.Gray;
+                txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
             }
         }
     }
