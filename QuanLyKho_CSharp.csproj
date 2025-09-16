@@ -107,20 +107,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="BUS\NhomQuyenBUS.cs" />
-=======
     <Compile Include="BUS\SanPhamBUS.cs" />
->>>>>>> 6d3be4dc25157c090fee5ff46d17a3eec32a5ee5
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
-<<<<<<< HEAD
     <Compile Include="DAO\NhomQuyenDAO.cs" />
-=======
     <Compile Include="DAO\SanPhamDAO.cs" />
->>>>>>> 6d3be4dc25157c090fee5ff46d17a3eec32a5ee5
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DTO\ChatLieuDTO.cs" />
@@ -154,7 +148,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\NhaCungCap.cs" />
-<<<<<<< HEAD
+
     <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,13 +166,11 @@
     </Compile>
     <Compile Include="GUI\TaiKhoan\DetailTaiKhoanForm.Designer.cs">
       <DependentUpon>DetailTaiKhoanForm.cs</DependentUpon>
-=======
     <Compile Include="GUI\SanPham\SanPhamGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\SanPham\SanPhamGUI.Designer.cs">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
->>>>>>> 6d3be4dc25157c090fee5ff46d17a3eec32a5ee5
     </Compile>
     <Compile Include="GUI\TaiKhoan\TaiKhoanGUI.cs">
       <SubType>Form</SubType>
@@ -249,7 +241,7 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
+
     <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
       <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,10 +256,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\UpdateTaiKhoanForm.resx">
       <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
-=======
     <EmbeddedResource Include="GUI\SanPham\SanPhamGUI.resx">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
->>>>>>> 6d3be4dc25157c090fee5ff46d17a3eec32a5ee5
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
