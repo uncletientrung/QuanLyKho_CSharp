@@ -152,7 +152,7 @@
             this.lbAddTaiKhoan.Text = "Chi Tiết Tài Khoản";
             this.lbAddTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // DetailTaiKhoanForm
+            // Detail2TaiKhoanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -169,10 +169,10 @@
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "DetailTaiKhoanForm";
+            this.Name = "Detail2TaiKhoanForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailTaiKhoanForm";
-            this.Load += new System.EventHandler(this.DetailTaiKhoanForm_Load);
+            this.Load += new System.EventHandler(this.Detail2TaiKhoanForm_Load);
             this.panelTop.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

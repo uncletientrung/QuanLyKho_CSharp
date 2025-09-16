@@ -18,7 +18,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             InitializeComponent();
         }
 
-        private void DetailTaiKhoanForm_Load(object sender, EventArgs e)
+        private void Detail2TaiKhoanForm_Load(object sender, EventArgs e)
         {
 
         }
