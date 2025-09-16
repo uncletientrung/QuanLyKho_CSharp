@@ -166,6 +166,7 @@
     </Compile>
     <Compile Include="GUI\TaiKhoan\DetailTaiKhoanForm.Designer.cs">
       <DependentUpon>DetailTaiKhoanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\SanPham\SanPhamGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +257,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\UpdateTaiKhoanForm.resx">
       <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\SanPhamGUI.resx">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
     </EmbeddedResource>
