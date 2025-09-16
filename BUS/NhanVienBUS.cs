@@ -76,5 +76,17 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+        public BindingList<NhanVienDTO> SearchNhanVien(string search)
+        {
+            BindingList<NhanVienDTO> result = new BindingList<NhanVienDTO>();
+            foreach(NhanVienDTO nv in listNV)
+            {
+                if (nv.Tennv.Contains(search))
+                {
+                    result.Add(nv);
+                }
+            }
+            return result;
+        }
     }
 }
