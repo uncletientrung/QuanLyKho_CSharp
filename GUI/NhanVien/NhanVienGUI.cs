@@ -190,14 +190,17 @@ namespace QuanLyKho_CSharp.GUI
                     deleteNV.ShowDialog();
                     if (deleteNV.DialogResult == DialogResult.OK)
                     {
-                        refreshDataGridView(nvBUS.getListNV());
+                        
                         DeleteSuccessNotification tb = new DeleteSuccessNotification();
                         tb.Show();
+                        refreshDataGridView(nvBUS.getListNV());
                     }
                 }
                 else {
                     DetailNhanVienForm detailNV = new DetailNhanVienForm(NhanVienDuocChon);
                     detailNV.ShowDialog();
+                    
+
                 }
                
             }
@@ -223,6 +226,7 @@ namespace QuanLyKho_CSharp.GUI
         {
             AddSuccessNotification toast = new AddSuccessNotification();
             toast.Show();
+            refreshDataGridView(nvBUS.getListNV());
         }
         
 
@@ -256,7 +260,6 @@ namespace QuanLyKho_CSharp.GUI
         private void refreshDataGridView(BindingList<NhanVienDTO> listRefresh) // Tải lại DataGridView
         {
             DGVNhanVien.Rows.Clear();
-            DGVNhanVien.ClearSelection();
 
             foreach (NhanVienDTO nv in listRefresh)
             {
@@ -267,6 +270,8 @@ namespace QuanLyKho_CSharp.GUI
                    , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
                 }
             }
+            DGVNhanVien.ClearSelection();
+
         }
     }
 }

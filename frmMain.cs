@@ -66,7 +66,10 @@ namespace QuanLyKho_CSharp
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Close();
+            this.DialogResult = DialogResult.Abort;
+            this.Close();
+
+
         }
 
         private void avatar_Logout_Click(object sender, EventArgs e)

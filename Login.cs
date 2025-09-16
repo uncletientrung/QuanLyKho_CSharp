@@ -36,10 +36,10 @@ namespace QuanLyKho_CSharp.GUI
             {
                 if(user.Equals(tk.Tendangnhap) && pass.Equals(tk.Matkhau))
                 {
-                    this.Hide(); // Ẩn
-                    new frmMain().ShowDialog(this);
-                    this.Close();
                     this.DialogResult = DialogResult.OK;
+                    this.Close();
+                    return;
+                    
                 }
             }
             if(this.DialogResult != DialogResult.OK)

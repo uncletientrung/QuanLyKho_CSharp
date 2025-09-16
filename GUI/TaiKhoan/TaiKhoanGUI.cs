@@ -170,6 +170,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
                 {
                     DetailTaiKhoanForm detailNV = new DetailTaiKhoanForm(TaiKhoanDuocChon);
                     detailNV.ShowDialog();
+
                 }
 
             }
@@ -177,7 +178,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         private void refreshDataGridView(BindingList<TaiKhoanDTO> listRefresh) // Tải lại DataGridView
         {
             DGVTaiKhoan.Rows.Clear();
-            DGVTaiKhoan.ClearSelection();
+            
 
             foreach (TaiKhoanDTO tk in listRefresh)
             {
@@ -187,6 +188,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
                         tk.Manhomquyen, "Hoạt động");
                 }
             }
+            DGVTaiKhoan.ClearSelection();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
