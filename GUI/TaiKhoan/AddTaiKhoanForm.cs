@@ -20,7 +20,6 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         private BindingList<NhomQuyenDTO> listNQ;
         private BindingList<NhanVienDTO> listNV;
         private BindingList<TaiKhoanDTO> listTK;
-        private NhomQuyenDTO nqDuocChon;
         private NhanVienDTO nvDuocChon;
         public AddTaiKhoanForm()
         {

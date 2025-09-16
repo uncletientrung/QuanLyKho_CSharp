@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbbNhanVien = new System.Windows.Forms.ComboBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.cbbNhomQuyen = new System.Windows.Forms.ComboBox();
@@ -37,19 +37,19 @@
             this.lbPhone = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.txbUser = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
             this.panelTop = new System.Windows.Forms.Panel();
             this.lbAddTaiKhoan = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbbNhanVien
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(143, 110);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 28);
-            this.comboBox1.TabIndex = 64;
+            this.cbbNhanVien.FormattingEnabled = true;
+            this.cbbNhanVien.Location = new System.Drawing.Point(143, 110);
+            this.cbbNhanVien.Name = "cbbNhanVien";
+            this.cbbNhanVien.Size = new System.Drawing.Size(262, 28);
+            this.cbbNhanVien.TabIndex = 64;
             // 
             // label1
             // 
@@ -80,6 +80,7 @@
             this.btnClose.TabIndex = 61;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lbDate
             // 
@@ -119,15 +120,15 @@
             this.lbName.TabIndex = 56;
             this.lbName.Text = "Tên đăng nhập";
             // 
-            // txbUser
+            // txtUser
             // 
-            this.txbUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbUser.Location = new System.Drawing.Point(143, 156);
-            this.txbUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txbUser.Multiline = true;
-            this.txbUser.Name = "txbUser";
-            this.txbUser.Size = new System.Drawing.Size(262, 31);
-            this.txbUser.TabIndex = 55;
+            this.txtUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.Location = new System.Drawing.Point(143, 156);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtUser.Multiline = true;
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(262, 31);
+            this.txtUser.TabIndex = 55;
             // 
             // panelTop
             // 
@@ -152,12 +153,12 @@
             this.lbAddTaiKhoan.Text = "Chi Tiết Tài Khoản";
             this.lbAddTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Detail2TaiKhoanForm
+            // DetailTaiKhoanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 381);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbbNhanVien);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbbNhomQuyen);
             this.Controls.Add(this.btnClose);
@@ -165,11 +166,11 @@
             this.Controls.Add(this.lbPhone);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lbName);
-            this.Controls.Add(this.txbUser);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.panelTop);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Detail2TaiKhoanForm";
+            this.Name = "DetailTaiKhoanForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailTaiKhoanForm";
             this.Load += new System.EventHandler(this.Detail2TaiKhoanForm_Load);
@@ -181,7 +182,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbbNhanVien;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbbNhomQuyen;
@@ -190,7 +191,7 @@
         private System.Windows.Forms.Label lbPhone;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.TextBox txbUser;
+        private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label lbAddTaiKhoan;
     }

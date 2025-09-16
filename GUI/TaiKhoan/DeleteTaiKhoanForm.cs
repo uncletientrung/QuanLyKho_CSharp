@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DTO;
+﻿using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,28 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
 {
     public partial class DeleteTaiKhoanForm : Form
     {
-        public DeleteTaiKhoanForm(TaiKhoanDTO tk)
+        private TaiKhoanBUS tkBUS= new TaiKhoanBUS();
+        private TaiKhoanDTO tk;
+        public DeleteTaiKhoanForm(TaiKhoanDTO _tk)
         {
             InitializeComponent();
+            tk = _tk;
         }
 
         private void DeleteTaiKhoanForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            tkBUS.DeleteTK(tk.Manv);
+            this.DialogResult= DialogResult.OK;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -29,13 +29,7 @@ namespace QuanLyKho_CSharp.BUS
             Boolean result = nvDAO.Delete(maNV) !=0;
             if (result)
             {
-                foreach(NhanVienDTO nv in listNV)
-                {
-                    if (nv.Equals(nvXoa)){
-                        listNV.Remove(nv);
-                        return result;
-                    }
-                }
+                listNV.Remove(nvXoa);
             }
             return result;
         }

@@ -38,6 +38,15 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+        public Boolean DeleteTK(int id)
+        {
+            Boolean result = tkDAO.Delete(id) != 0;
+            if (result)
+            {
+                listTK.Remove(getTKById(id));
+            }
+            return result;
+        }
         
     }
 }
