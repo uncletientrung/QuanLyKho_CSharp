@@ -41,22 +41,24 @@
             this.txbUser = new System.Windows.Forms.TextBox();
             this.panelTop = new System.Windows.Forms.Panel();
             this.lbAddTaiKhoan = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtConfirmPass = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbbNhanVien
             // 
             this.cbbNhanVien.FormattingEnabled = true;
-            this.cbbNhanVien.Location = new System.Drawing.Point(143, 111);
+            this.cbbNhanVien.Location = new System.Drawing.Point(143, 86);
             this.cbbNhanVien.Name = "cbbNhanVien";
             this.cbbNhanVien.Size = new System.Drawing.Size(262, 28);
-            this.cbbNhanVien.TabIndex = 53;
+            this.cbbNhanVien.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 114);
+            this.label1.Location = new System.Drawing.Point(27, 89);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 20);
@@ -66,10 +68,10 @@
             // cbbNhomQuyen
             // 
             this.cbbNhomQuyen.FormattingEnabled = true;
-            this.cbbNhomQuyen.Location = new System.Drawing.Point(143, 254);
+            this.cbbNhomQuyen.Location = new System.Drawing.Point(143, 278);
             this.cbbNhomQuyen.Name = "cbbNhomQuyen";
             this.cbbNhomQuyen.Size = new System.Drawing.Size(262, 28);
-            this.cbbNhomQuyen.TabIndex = 51;
+            this.cbbNhomQuyen.TabIndex = 4;
             // 
             // btnClose
             // 
@@ -81,6 +83,7 @@
             this.btnClose.TabIndex = 50;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -91,16 +94,16 @@
             this.btnSave.Location = new System.Drawing.Point(102, 328);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(114, 41);
-            this.btnSave.TabIndex = 49;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lbDate
             // 
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(27, 211);
+            this.lbDate.Location = new System.Drawing.Point(27, 186);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(75, 20);
             this.lbDate.TabIndex = 48;
@@ -110,7 +113,7 @@
             // 
             this.lbPhone.AutoSize = true;
             this.lbPhone.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhone.Location = new System.Drawing.Point(27, 257);
+            this.lbPhone.Location = new System.Drawing.Point(27, 281);
             this.lbPhone.Name = "lbPhone";
             this.lbPhone.Size = new System.Drawing.Size(100, 20);
             this.lbPhone.TabIndex = 47;
@@ -118,16 +121,17 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(143, 208);
+            this.txtPassword.Location = new System.Drawing.Point(143, 183);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(262, 27);
-            this.txtPassword.TabIndex = 46;
+            this.txtPassword.TabIndex = 2;
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(27, 161);
+            this.lbName.Location = new System.Drawing.Point(27, 136);
             this.lbName.Margin = new System.Windows.Forms.Padding(0);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(112, 20);
@@ -137,12 +141,12 @@
             // txbUser
             // 
             this.txbUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbUser.Location = new System.Drawing.Point(143, 157);
+            this.txbUser.Location = new System.Drawing.Point(143, 132);
             this.txbUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbUser.Multiline = true;
             this.txbUser.Name = "txbUser";
             this.txbUser.Size = new System.Drawing.Size(262, 31);
-            this.txbUser.TabIndex = 44;
+            this.txbUser.TabIndex = 1;
             // 
             // panelTop
             // 
@@ -167,11 +171,31 @@
             this.lbAddTaiKhoan.Text = "Thêm Tài Khoản";
             this.lbAddTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(27, 233);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 20);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Nhập lại";
+            // 
+            // txtConfirmPass
+            // 
+            this.txtConfirmPass.Location = new System.Drawing.Point(143, 230);
+            this.txtConfirmPass.Name = "txtConfirmPass";
+            this.txtConfirmPass.PasswordChar = '*';
+            this.txtConfirmPass.Size = new System.Drawing.Size(262, 27);
+            this.txtConfirmPass.TabIndex = 3;
+            // 
             // AddTaiKhoanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 381);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtConfirmPass);
             this.Controls.Add(this.cbbNhanVien);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbbNhomQuyen);
@@ -211,5 +235,7 @@
         private System.Windows.Forms.TextBox txbUser;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label lbAddTaiKhoan;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtConfirmPass;
     }
 }

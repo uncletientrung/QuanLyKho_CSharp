@@ -19,6 +19,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private BindingList<NhomQuyenDTO> listNQ;
         private BindingList<NhanVienDTO> listNV;
+        private BindingList<TaiKhoanDTO> listTK;
         private NhomQuyenDTO nqDuocChon;
         private NhanVienDTO nvDuocChon;
         public AddTaiKhoanForm()
@@ -37,39 +38,116 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             listNQ= nqBUS.getListNQ();
             foreach (NhomQuyenDTO nq in listNQ)
             {
-                cbbNhomQuyen.Items.Add(nq.Tennhomquyen);
+                if(nq.Trangthai == 1)
+                {
+                    cbbNhomQuyen.Items.Add(nq.Manhomquyen + ". " + nq.Tennhomquyen);
+                }
+                
             }
-            cbbNhomQuyen.SelectedIndex = 1;
 
             // Nhân viên
-            
+            cbbNhanVien.Items.Add("Chọn nhân viên");
             listNV=nvBUS.getListNV();
-            MessageBox.Show(listNV.Count.ToString());
             foreach (NhanVienDTO nv in listNV)
             {
-                cbbNhanVien.Items.Add(nv.Manv +". " + nv.Tennv);
+                if(nv.Trangthai == 1)
+                {
+                    cbbNhanVien.Items.Add(nv.Manv + ". " + nv.Tennv);
+                }
+                
             }
-            cbbNhomQuyen.SelectedIndex = -1;
+
+            cbbNhanVien.SelectedIndex = 0;
+            cbbNhomQuyen.SelectedIndex = 1;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //nvDuocChon=
-            //if(txbUser.Text != "")
-            //{
-            //    string user=txbUser.Text;
-            //    if(txtPassword.Text != "")
-            //    {
-            //        string password= txtPassword.Text;
-            //        //TaiKhoanDTO tk= new TaiKhoanDTO(user, password, );
-            //        //tkBUS.InsertTK()
-            //    }
-            //}
+            if (cbbNhanVien.Text.Equals("Chọn nhân viên"))
+            {
+                MessageBox.Show(
+                              "Vui lòng chọn nhân viên được cấp tài khoản",
+                              "Lỗi dữ liệu",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Error
+                          );
+                return;
+            }
+            int manv = int.Parse(cbbNhanVien.Text.ToString().Split('.')[0]);
+            nvDuocChon = nvBUS.getNVById(manv);
+            int manhomquyen= int.Parse(cbbNhomQuyen.Text.ToString().Split('.')[0]);
+
+            if (!IsAccountExist(manv))
+            {
+                if (txbUser.Text != "")
+                {
+                    string user = txbUser.Text;
+                    if (txtPassword.Text == "")
+                    {
+                        MessageBox.Show(
+                              "Mật khẩu không được để trống",
+                              "Lỗi dữ liệu",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Error
+                          );
+                    }
+                    else if(txtPassword.Text != txtConfirmPass.Text)
+                    {
+                        MessageBox.Show(
+                              "2 mật khẩu khác nhau",
+                              "Lỗi dữ liệu",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Error
+                          );
+
+                    }
+                    else
+                    {
+                        string password = txtPassword.Text;
+                        TaiKhoanDTO tk = new TaiKhoanDTO(manv, user, password, manhomquyen, 1);
+                        tkBUS.InsertTK(tk);
+                        this.DialogResult=DialogResult.OK;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(
+                              "Tài khoản không được để trống",
+                              "Lỗi dữ liệu",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Error
+                          );
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                              "Nhân viên này đã được cấp tài khoản",
+                              "Lỗi dữ liệu",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Error
+                          );
+            }
+           
+        }
+        private Boolean IsAccountExist(int manv) 
+        {
+            listTK=tkBUS.getListTK();
+            foreach(TaiKhoanDTO tk in listTK)
+            {
+                if(tk.Manv == manv)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        private void btnSave_Click_1(object sender, EventArgs e)
-        {
 
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -57,8 +57,8 @@ namespace QuanLyKho_CSharp.DAO
         public int Insert(TaiKhoanDTO t)
         {
             int result = 0;
-            string sql = $"INSERT into taikhoan(tendangnhap, matkhau, manhomquyen, trangthai) " +
-                    $"values ('{t.Tendangnhap}', '{t.Matkhau}',{t.Manhomquyen}," +
+            string sql = $"INSERT into taikhoan(manv, tendangnhap, matkhau, manhomquyen, trangthai) " +
+                    $"values ({t.Manv},'{t.Tendangnhap}', '{t.Matkhau}',{t.Manhomquyen}," +
                     $"{t.Trangthai})";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;

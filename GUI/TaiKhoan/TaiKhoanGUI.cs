@@ -179,7 +179,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             DGVTaiKhoan.Rows.Clear();
             DGVTaiKhoan.ClearSelection();
 
-            foreach (TaiKhoanDTO tk in listTK)
+            foreach (TaiKhoanDTO tk in listRefresh)
             {
                 if (tk.Trangthai == 1)
                 {
@@ -193,17 +193,21 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         {
             AddTaiKhoanForm addTK = new AddTaiKhoanForm();
             addTK.ShowDialog();
+
             if(addTK.DialogResult == DialogResult.OK)
             {
                 AddSuccessNotification tb = new AddSuccessNotification();
                 tb.Show();
+                refreshDataGridView(tkBUS.getListTK());
             }
+            
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
             AddSuccessNotification tb = new AddSuccessNotification();
             tb.Show();
+            refreshDataGridView(tkBUS.getListTK());
         }
     }
 }
