@@ -143,9 +143,10 @@
             // 
             // txbPhone
             // 
+            this.txbPhone.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txbPhone.Location = new System.Drawing.Point(140, 204);
             this.txbPhone.Name = "txbPhone";
-            this.txbPhone.Size = new System.Drawing.Size(262, 20);
+            this.txbPhone.Size = new System.Drawing.Size(262, 29);
             this.txbPhone.TabIndex = 19;
             // 
             // lbSex

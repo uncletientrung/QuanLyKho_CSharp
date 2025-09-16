@@ -111,7 +111,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DGVNhanVien.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DGVNhanVien.Location = new System.Drawing.Point(4, 3);
+            this.DGVNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVNhanVien.Location = new System.Drawing.Point(0, 0);
             this.DGVNhanVien.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DGVNhanVien.MultiSelect = false;
             this.DGVNhanVien.Name = "DGVNhanVien";
@@ -124,7 +125,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGVNhanVien.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DGVNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVNhanVien.Size = new System.Drawing.Size(1147, 490);
+            this.DGVNhanVien.Size = new System.Drawing.Size(1156, 499);
             this.DGVNhanVien.TabIndex = 5;
             this.DGVNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVNhanVien_CellContentClick);
             this.DGVNhanVien.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGVNhanVien_CellMouseClick);
@@ -148,9 +149,9 @@
             // 
             this.panel1.Controls.Add(this.DGVNhanVien);
             this.panel1.Location = new System.Drawing.Point(5, 118);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1155, 520);
+            this.panel1.Size = new System.Drawing.Size(1156, 499);
             this.panel1.TabIndex = 7;
             // 
             // pictureBox1
@@ -226,7 +227,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1159, 541);
+            this.ClientSize = new System.Drawing.Size(1170, 622);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.lbFormName);

@@ -1,4 +1,4 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿ using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
@@ -23,5 +23,21 @@ namespace QuanLyKho_CSharp.BUS
             listTK = tkDAO.SelectAll();
             return listTK;
         }
+        public TaiKhoanDTO getTKById(int id)
+        {
+            TaiKhoanDTO result = new TaiKhoanDTO();
+            result= tkDAO.SelectById(id);
+            return result;
+        }
+        public Boolean InsertTK(TaiKhoanDTO tk)
+        {
+            Boolean result = tkDAO.Insert(tk) !=0;
+            if (result)
+            {
+                listTK.Add(tk);
+            }
+            return result;
+        }
+        
     }
 }

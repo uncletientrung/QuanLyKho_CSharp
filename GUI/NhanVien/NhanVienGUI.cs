@@ -66,7 +66,7 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns["SDT"].Width = 200;
 
             DGVNhanVien.Columns.Add("NgaySinh", "Ngày sinh");
-            DGVNhanVien.Columns["NgaySinh"].Width = 130;
+            DGVNhanVien.Columns["NgaySinh"].Width = 140;
 
             DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
             DGVNhanVien.Columns["TrangThai"].Width = 154;

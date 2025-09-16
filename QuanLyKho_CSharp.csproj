@@ -98,10 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\NhomQuyenBUS.cs" />
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
+    <Compile Include="DAO\NhomQuyenDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DTO\ChatLieuDTO.cs" />
@@ -114,7 +116,7 @@
     <Compile Include="DTO\KhuVucKhoDTO.cs" />
     <Compile Include="DTO\LoaiDTO.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
-    <Compile Include="DTO\NhomQuyen.cs" />
+    <Compile Include="DTO\NhomQuyenDTO.cs" />
     <Compile Include="DTO\PhieuDTO.cs" />
     <Compile Include="DTO\PhieuKiemKeDTO.cs" />
     <Compile Include="DTO\PhieuNhapDTO.cs" />
@@ -135,11 +137,35 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\NhaCungCap.cs" />
+    <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.Designer.cs">
+      <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\DeleteTaiKhoanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\DeleteTaiKhoanForm.Designer.cs">
+      <DependentUpon>DeleteTaiKhoanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\DetailTaiKhoanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\DetailTaiKhoanForm.Designer.cs">
+      <DependentUpon>DetailTaiKhoanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TaiKhoan\TaiKhoanGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\TaiKhoan\TaiKhoanGUI.Designer.cs">
       <DependentUpon>TaiKhoanGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\UpdateTaiKhoanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\UpdateTaiKhoanForm.Designer.cs">
+      <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -197,6 +223,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
+      <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TaiKhoan\DeleteTaiKhoanForm.resx">
+      <DependentUpon>DeleteTaiKhoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TaiKhoan\DetailTaiKhoanForm.resx">
+      <DependentUpon>DetailTaiKhoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TaiKhoan\TaiKhoanGUI.resx">
+      <DependentUpon>TaiKhoanGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TaiKhoan\UpdateTaiKhoanForm.resx">
+      <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

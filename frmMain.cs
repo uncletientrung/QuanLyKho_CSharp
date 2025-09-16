@@ -1,4 +1,5 @@
 ﻿using QuanLyKho_CSharp.GUI;
+using QuanLyKho_CSharp.GUI.TaiKhoan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,6 +72,11 @@ namespace QuanLyKho_CSharp
         private void avatar_Logout_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new TaiKhoanGUI());
         }
     }
 }
