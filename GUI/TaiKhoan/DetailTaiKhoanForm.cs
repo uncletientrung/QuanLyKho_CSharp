@@ -64,8 +64,6 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
                         cbbNhanVien.SelectedItem = nv.Manv + ". " + nv.Tennv;
                     }
                 }
-                
-
             }
 
         }

@@ -72,12 +72,23 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
                           );
                 return;
             }
+            
             int manv = int.Parse(cbbNhanVien.Text.ToString().Split('.')[0]);
             nvDuocChon = nvBUS.getNVById(manv);
             int manhomquyen= int.Parse(cbbNhomQuyen.Text.ToString().Split('.')[0]);
 
             if (!IsAccountExist(manv))
             {
+                if (IsUsernameExist(txbUser.Text))
+                {
+                    MessageBox.Show(
+                                  "Tên đăng nhập đã tồn tại",
+                                  "Lỗi dữ liệu",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error
+                              );
+                    return;
+                }
                 if (txbUser.Text != "")
                 {
                     string user = txbUser.Text;
@@ -135,6 +146,18 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             foreach(TaiKhoanDTO tk in listTK)
             {
                 if(tk.Manv == manv)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private Boolean IsUsernameExist(string username)
+        {
+            listTK = tkBUS.getListTK();
+            foreach (TaiKhoanDTO tk in listTK)
+            {
+                if (tk.Tendangnhap == username)
                 {
                     return true;
                 }

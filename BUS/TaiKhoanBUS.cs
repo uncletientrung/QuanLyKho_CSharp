@@ -47,6 +47,24 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+        public Boolean UpdateTK(TaiKhoanDTO tkUpdate)
+        {
+            Boolean result= tkDAO.Update(tkUpdate) != 0;
+            if (result)
+            {
+                foreach(TaiKhoanDTO tk in listTK)
+                {
+                    if(tk.Manv == tkUpdate.Manv)
+                    {
+                        tk.Tendangnhap = tkUpdate.Tendangnhap;
+                        tk.Matkhau= tkUpdate.Matkhau;
+                        tk.Manhomquyen = tkUpdate.Manhomquyen;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
         
     }
 }
