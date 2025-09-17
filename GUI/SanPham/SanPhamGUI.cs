@@ -84,32 +84,30 @@ namespace QuanLyKho_CSharp.GUI
             dgvSanPham.Columns["Actions"].Width = 160;
 
             LoadDataToGrid();
+            string testIconPath = "images/icon/edit.png";
+            Image testIcon = LoadImageSafe(testIconPath);
+            MessageBox.Show(testIcon == Properties.Resources.no_image
+                ? $"Không thể tải icon: {testIconPath}"
+                : $"Tải icon thành công: {testIconPath}");
 
 
         }
 
         private void LoadDataToGrid()
         {
-            // Lấy danh sách sản phẩm từ BUS (BindingList<SanPhamDTO>)
-            var listSP = spBUS.getListSP();  // đổi tên hàm theo BUS của bạn
-
-            // Xóa dữ liệu cũ để tránh lặp dòng
+            var listSP = spBUS.getListSP();
             dgvSanPham.Rows.Clear();
-
-            // Duyệt danh sách và thêm vào DataGridView
             foreach (SanPhamDTO sp in listSP)
             {
-                // Nếu HinhAnh là đường dẫn file ảnh, bạn có thể load thành Image
                 Image img = null;
                 if (!string.IsNullOrEmpty(sp.Hinhanh) && File.Exists(sp.Hinhanh))
                 {
                     img = LoadImageSafe(sp.Hinhanh);
                 }
-
                 dgvSanPham.Rows.Add(
                     sp.Masp,
                     sp.Tensp,
-                    img,           // Cột ảnh
+                    img,
                     sp.Soluong,
                     sp.Dongia,
                     sp.Machatlieu,
@@ -118,8 +116,6 @@ namespace QuanLyKho_CSharp.GUI
                     sp.Masize
                 );
             }
-
-            // Làm đẹp thêm (tuỳ chọn)
             dgvSanPham.ClearSelection();
         }
 
