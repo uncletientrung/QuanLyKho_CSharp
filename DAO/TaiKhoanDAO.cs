@@ -48,17 +48,20 @@ namespace QuanLyKho_CSharp.DAO
 
         public int Delete(int t)
         {
-            throw new NotImplementedException();
-        }
-
-        public int GetAutoIncrement()
-        {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"UPDATE taikhoan Set trangthai= 0 WHERE manv={t}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public int Insert(TaiKhoanDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"INSERT into taikhoan(manv, tendangnhap, matkhau, manhomquyen, trangthai) " +
+                    $"values ({t.Manv},'{t.Tendangnhap}', '{t.Matkhau}',{t.Manhomquyen}," +
+                    $"{t.Trangthai})";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public BindingList<TaiKhoanDTO> SelectAll()
@@ -91,19 +94,71 @@ namespace QuanLyKho_CSharp.DAO
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
+            return result;
+        }
+        public int Update(TaiKhoanDTO t)
+        {
+            int result = 0;
+            string sql = $"UPDATE taikhoan Set tendangnhap= '{t.Tendangnhap}', matkhau= '{t.Matkhau}'," +
+                   $" manhomquyen={t.Manhomquyen}, trangthai={t.Trangthai} WHERE manv={t.Manv}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
 
         public TaiKhoanDTO SelectById(int t)
         {
-            throw new NotImplementedException();
+            TaiKhoanDTO result = new TaiKhoanDTO();
+            try
+            {
+                string sql = $"SELECT * FROM taikhoan WHERE manv = {t}";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn)) // conn phải public hoặc tạo getter
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Manv = reader.GetInt32("manv");
+                        result.Tendangnhap = reader.GetString("tendangnhap");
+                        result.Matkhau = reader.GetString("matkhau");
+                        result.Manhomquyen = reader.GetInt32("manhomquyen");
+                        result.Trangthai = reader.GetInt32("trangthai");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return result;
         }
 
-        public int Update(TaiKhoanDTO t)
+       
+        public int GetAutoIncrement()
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                string sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES " +
+                             "WHERE TABLE_SCHEMA = 'your_database_name' " +
+                             "AND TABLE_NAME = 'taikhoan'";
+
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    object value = cmd.ExecuteScalar();
+                    if (value != null && value != DBNull.Value)
+                    {
+                        result = Convert.ToInt32(value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+            }
+            return result;
         }
     }
+
 }

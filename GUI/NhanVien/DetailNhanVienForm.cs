@@ -25,13 +25,13 @@ namespace QuanLyKho_CSharp.GUI.NhanVien
         private void DetailNhanVienForm_Load(object sender, EventArgs e)
         {
             txbName.Text = nv.Tennv.ToString();
-            txbName.ReadOnly = true; //Chặn sửa
+            txbName.Enabled = false; //Chặn sửa
 
             dtpDate.Text = nv.Ngaysinh.Date.ToString();
             dtpDate.Enabled = false; // Chặn sửa
 
             txbPhone.Text=nv.Sdt.ToString();
-            txbPhone.ReadOnly = true; //Chặn sửa
+            txbPhone.Enabled = false; //Chặn sửa
 
             if (nv.Gioitinh == 1) rbtnMale.Checked = true;
             rbtnMale.Enabled = false; // Chặn sửa

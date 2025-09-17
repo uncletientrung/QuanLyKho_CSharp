@@ -1,4 +1,5 @@
 ﻿using QuanLyKho_CSharp.GUI;
+using QuanLyKho_CSharp.GUI.TaiKhoan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace QuanLyKho_CSharp
         {
             InitializeComponent();
         }
-        private void OpenChildForm(Form childForm)
+        private void OpenChildForm(Form childForm, Button btn)
         {
             
             if (currentFormChild != null && currentFormChild.GetType() == childForm.GetType())
@@ -38,6 +39,21 @@ namespace QuanLyKho_CSharp
             pnlBody.Tag = childForm; 
             childForm.BringToFront();
             childForm.Show(); // hiển thị form con
+
+            ResetButton();
+            btn.BackColor = Color.DodgerBlue;
+            btn.ForeColor = Color.White;
+        }
+        private void ResetButton()
+        {
+            foreach(Control ctrl in tablelayoutLeftmenu.Controls)
+            {
+                if(ctrl is Button btn)
+                {
+                    btn.BackColor = Color.Gainsboro;
+                    btn.ForeColor = Color.Black;
+                }
+            }
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -51,26 +67,35 @@ namespace QuanLyKho_CSharp
 
         private void btnTonKho_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new SanPhamGUI(), btnTonKho);
 
         }
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Test_Connection());
+            OpenChildForm(new Test_Connection(), btnTrangChu);
         }
 
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new NhanVienGUI());
+            OpenChildForm(new NhanVienGUI(), btnNhanVien);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Close();
+            this.DialogResult = DialogResult.Abort;
+            this.Close();
+
+
         }
 
         private void avatar_Logout_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new TaiKhoanGUI(), btnTaiKhoan);
         }
     }
 }

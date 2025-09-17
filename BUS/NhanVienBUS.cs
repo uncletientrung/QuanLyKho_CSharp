@@ -29,13 +29,7 @@ namespace QuanLyKho_CSharp.BUS
             Boolean result = nvDAO.Delete(maNV) !=0;
             if (result)
             {
-                foreach(NhanVienDTO nv in listNV)
-                {
-                    if (nv.Equals(nvXoa)){
-                        listNV.Remove(nv);
-                        return result;
-                    }
-                }
+                listNV.Remove(nvXoa);
             }
             return result;
         }
@@ -72,6 +66,20 @@ namespace QuanLyKho_CSharp.BUS
                         nv.Ngaysinh = nvSua.Ngaysinh;
                         return result;
                     }
+                }
+            }
+            return result;
+        }
+        public BindingList<NhanVienDTO> SearchNhanVien(string search)
+        {
+            BindingList<NhanVienDTO> result = new BindingList<NhanVienDTO>();
+            foreach(NhanVienDTO nv in listNV)
+            {
+                if (nv.Tennv.ToLower().Contains(search.ToLower()) ||
+                    nv.Manv.ToString().Contains(search) ||
+                    nv.Sdt.ToLower().Contains(search.ToLower()))
+                {
+                    result.Add(nv);
                 }
             }
             return result;

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace QuanLyKho_CSharp.DTO
 {
-    public class NhomQuyen
+    public class NhomQuyenDTO
     {
         private int manhomquyen;
         private string tennhomquyen;
         private int trangthai;
 
-        public NhomQuyen() { }
+        public NhomQuyenDTO() { }
 
-        public NhomQuyen(int _manhomquyen, string _tennhomquyen, int _trangthai)
+        public NhomQuyenDTO(int _manhomquyen, string _tennhomquyen, int _trangthai)
         {
             manhomquyen = _manhomquyen;
             tennhomquyen = _tennhomquyen;
