@@ -273,5 +273,10 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.ClearSelection();
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
