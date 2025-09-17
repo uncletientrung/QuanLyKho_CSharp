@@ -312,12 +312,20 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="images\icon\account.png" />
+    <Content Include="images\icon\check.png" />
+    <Content Include="images\icon\customer.png" />
     <Content Include="images\icon\detail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\icon\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\icon\home.png" />
+    <Content Include="images\icon\importPro.png" />
+    <Content Include="images\icon\information.png" />
+    <Content Include="images\icon\inventory.png" />
+    <Content Include="images\icon\invoice.png" />
     <Content Include="images\icon\password.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -325,6 +333,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\icon\search.png" />
+    <Content Include="images\icon\staff.png" />
+    <Content Include="images\icon\statistic.png" />
     <Content Include="images\icon\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -121,19 +121,26 @@ namespace QuanLyKho_CSharp
             // 
             // btnTrangChu
             // 
+            this.btnTrangChu.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnTrangChu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnTrangChu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTrangChu.ForeColor = System.Drawing.Color.Black;
+            this.btnTrangChu.Image = ((System.Drawing.Image)(resources.GetObject("btnTrangChu.Image")));
+            this.btnTrangChu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrangChu.Location = new System.Drawing.Point(3, 2);
             this.btnTrangChu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTrangChu.Name = "btnTrangChu";
             this.btnTrangChu.Size = new System.Drawing.Size(191, 50);
             this.btnTrangChu.TabIndex = 1;
             this.btnTrangChu.Text = "Trang chủ";
-            this.btnTrangChu.UseVisualStyleBackColor = true;
+            this.btnTrangChu.UseVisualStyleBackColor = false;
             this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
             // 
             // btnTaiKhoan
             // 
             this.btnTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("btnTaiKhoan.Image")));
+            this.btnTaiKhoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTaiKhoan.Location = new System.Drawing.Point(3, 488);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
@@ -147,6 +154,8 @@ namespace QuanLyKho_CSharp
             // 
             this.btnTonKho.BackColor = System.Drawing.Color.Gainsboro;
             this.btnTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTonKho.Image = ((System.Drawing.Image)(resources.GetObject("btnTonKho.Image")));
+            this.btnTonKho.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTonKho.Location = new System.Drawing.Point(3, 56);
             this.btnTonKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTonKho.Name = "btnTonKho";
@@ -159,6 +168,8 @@ namespace QuanLyKho_CSharp
             // btnBaoCao
             // 
             this.btnBaoCao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBaoCao.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCao.Image")));
+            this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBaoCao.Location = new System.Drawing.Point(3, 434);
             this.btnBaoCao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBaoCao.Name = "btnBaoCao";
@@ -170,6 +181,8 @@ namespace QuanLyKho_CSharp
             // btnPhieuNhap
             // 
             this.btnPhieuNhap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPhieuNhap.Image = ((System.Drawing.Image)(resources.GetObject("btnPhieuNhap.Image")));
+            this.btnPhieuNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPhieuNhap.Location = new System.Drawing.Point(3, 110);
             this.btnPhieuNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPhieuNhap.Name = "btnPhieuNhap";
@@ -181,6 +194,8 @@ namespace QuanLyKho_CSharp
             // btnKiemKe
             // 
             this.btnKiemKe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKiemKe.Image = ((System.Drawing.Image)(resources.GetObject("btnKiemKe.Image")));
+            this.btnKiemKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKiemKe.Location = new System.Drawing.Point(3, 380);
             this.btnKiemKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKiemKe.Name = "btnKiemKe";
@@ -192,6 +207,8 @@ namespace QuanLyKho_CSharp
             // btnPhieuXuat
             // 
             this.btnPhieuXuat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPhieuXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnPhieuXuat.Image")));
+            this.btnPhieuXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPhieuXuat.Location = new System.Drawing.Point(3, 164);
             this.btnPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPhieuXuat.Name = "btnPhieuXuat";
@@ -203,6 +220,8 @@ namespace QuanLyKho_CSharp
             // btnNhanVien
             // 
             this.btnNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNhanVien.Image = ((System.Drawing.Image)(resources.GetObject("btnNhanVien.Image")));
+            this.btnNhanVien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNhanVien.Location = new System.Drawing.Point(3, 326);
             this.btnNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNhanVien.Name = "btnNhanVien";
@@ -215,6 +234,8 @@ namespace QuanLyKho_CSharp
             // btnThongTin
             // 
             this.btnThongTin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnThongTin.Image = ((System.Drawing.Image)(resources.GetObject("btnThongTin.Image")));
+            this.btnThongTin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThongTin.Location = new System.Drawing.Point(3, 218);
             this.btnThongTin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongTin.Name = "btnThongTin";
@@ -226,6 +247,8 @@ namespace QuanLyKho_CSharp
             // btnKhachHang
             // 
             this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKhachHang.Image = ((System.Drawing.Image)(resources.GetObject("btnKhachHang.Image")));
+            this.btnKhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKhachHang.Location = new System.Drawing.Point(3, 272);
             this.btnKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKhachHang.Name = "btnKhachHang";
