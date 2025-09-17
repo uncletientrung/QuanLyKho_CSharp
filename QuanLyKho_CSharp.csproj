@@ -107,11 +107,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\NhomQuyenBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
     <Compile Include="DAO\NhomQuyenDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
@@ -148,6 +150,12 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\NhaCungCap.cs" />
+    <Compile Include="GUI\KhachHang\KhachHangGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
+      <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +249,9 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
+      <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
       <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,9 +321,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GUI\KhachHang\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="images\icon\account.png" />
     <Content Include="images\icon\check.png" />
