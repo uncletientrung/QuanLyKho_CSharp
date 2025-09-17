@@ -145,6 +145,7 @@ namespace QuanLyKho_CSharp
             // 
             // btnTonKho
             // 
+            this.btnTonKho.BackColor = System.Drawing.Color.Gainsboro;
             this.btnTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTonKho.Location = new System.Drawing.Point(3, 56);
             this.btnTonKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -152,7 +153,7 @@ namespace QuanLyKho_CSharp
             this.btnTonKho.Size = new System.Drawing.Size(191, 50);
             this.btnTonKho.TabIndex = 3;
             this.btnTonKho.Text = "Tồn kho";
-            this.btnTonKho.UseVisualStyleBackColor = true;
+            this.btnTonKho.UseVisualStyleBackColor = false;
             this.btnTonKho.Click += new System.EventHandler(this.btnTonKho_Click);
             // 
             // btnBaoCao
