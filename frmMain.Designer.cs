@@ -256,6 +256,8 @@ namespace QuanLyKho_CSharp
             this.btnKhachHang.TabIndex = 7;
             this.btnKhachHang.Text = "Khách hàng";
             this.btnKhachHang.UseVisualStyleBackColor = true;
+            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+
             // 
             // lbUser
             // 

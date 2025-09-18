@@ -99,6 +99,7 @@
             this.Controls.Add(this.label1);
             this.Name = "XacNhanHoanHang";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.XacNhanHoanHang_Load);
             this.ResumeLayout(false);
 
         }

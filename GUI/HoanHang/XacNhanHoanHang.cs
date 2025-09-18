@@ -34,5 +34,10 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             this.DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void XacNhanHoanHang_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -124,6 +124,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGVNhanVien.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DGVNhanVien.RowHeadersWidth = 51;
             this.DGVNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVNhanVien.Size = new System.Drawing.Size(1156, 499);
             this.DGVNhanVien.TabIndex = 5;
@@ -139,7 +140,7 @@
             this.txSearch.Location = new System.Drawing.Point(70, 15);
             this.txSearch.Margin = new System.Windows.Forms.Padding(0);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(462, 29);
+            this.txSearch.Size = new System.Drawing.Size(462, 34);
             this.txSearch.TabIndex = 6;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             this.txSearch.Enter += new System.EventHandler(this.txSearch_Enter);
@@ -179,6 +180,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(771, 61);
             this.panel2.TabIndex = 9;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label2
             // 
@@ -186,7 +188,7 @@
             this.label2.Location = new System.Drawing.Point(643, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 15);
+            this.label2.Size = new System.Drawing.Size(15, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "-";
             // 
@@ -197,7 +199,7 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(659, 17);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(90, 23);
+            this.dateTimePicker2.Size = new System.Drawing.Size(90, 27);
             this.dateTimePicker2.TabIndex = 11;
             // 
             // label1
@@ -208,7 +210,7 @@
             this.label1.Location = new System.Drawing.Point(562, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 12);
+            this.label1.Size = new System.Drawing.Size(110, 15);
             this.label1.TabIndex = 10;
             this.label1.Text = "Từ ngày - đến ngày";
             // 
@@ -219,12 +221,12 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(548, 18);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(90, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(90, 27);
             this.dateTimePicker1.TabIndex = 9;
             // 
             // NhanVienGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1170, 622);

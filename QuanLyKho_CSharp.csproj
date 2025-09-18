@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>packages\BouncyCastle.Cryptography.2.5.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
@@ -57,8 +60,8 @@
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=9.4.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>packages\MySql.Data.9.4.0\lib\net462\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=8.0.33.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.33\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>packages\MySqlConnector.2.4.0\lib\net471\MySqlConnector.dll</HintPath>
@@ -107,11 +110,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\NhomQuyenBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
     <Compile Include="DAO\NhomQuyenDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
@@ -148,6 +153,24 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\NhaCungCap.cs" />
+    <Compile Include="GUI\HoanHang\LuaChonSPHoanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\HoanHang\LuaChonSPHoanHang.Designer.cs">
+      <DependentUpon>LuaChonSPHoanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\HoanHang\XacNhanHoanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\HoanHang\XacNhanHoanHang.Designer.cs">
+      <DependentUpon>XacNhanHoanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KhachHang\KhachHangGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
+      <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +263,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
+      <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
       <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
@@ -338,8 +364,12 @@
     <Content Include="images\icon\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\stocks\ao1.png" />
-    <Content Include="images\stocks\ao2.png" />
+    <Content Include="images\stocks\ao1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\ao2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\ui.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -35,6 +35,22 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
         private void LuaChonSPHoanHang_Load(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
