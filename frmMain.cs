@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace QuanLyKho_CSharp
 {
@@ -28,6 +29,7 @@ namespace QuanLyKho_CSharp
             }
             if (currentFormChild != null) // Đóng form con hiện tại nếu đang mở
             {
+                this.pnlBody.Controls.Clear();
                 currentFormChild.Close();
             }
             currentFormChild = childForm; // Gán current cho form được chọn
@@ -44,6 +46,7 @@ namespace QuanLyKho_CSharp
             btn.BackColor = Color.DodgerBlue;
             btn.ForeColor = Color.White;
         }
+
         private void ResetButton()
         {
             foreach(Control ctrl in tablelayoutLeftmenu.Controls)
