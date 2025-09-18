@@ -16,7 +16,9 @@ namespace QuanLyKho_CSharp
 {
     public partial class frmMain : Form
     {
-        private Form currentFormChild; // Biến giữ form con hiện tại
+        private Form currentFormChild;// Biến giữ form con hiện tại
+
+        private Button currentButton; //biến giữ button hiện tại
 
         public frmMain()
         {
@@ -25,42 +27,46 @@ namespace QuanLyKho_CSharp
 
         private void OpenChildForm(Form childForm, Button btn)
         {
-            // Luôn đóng form hiện tại trước
+            //  Nếu form hiện tại cùng loại và cùng button -> Không làm gì
+            if (currentFormChild != null
+                && currentFormChild.GetType() == childForm.GetType()
+                && currentButton == btn)
+            {
+                // Đang ở đúng form đó, không cần reload
+                return;
+            }
+
+            // Đóng form cũ
             if (currentFormChild != null)
             {
                 this.pnlBody.Controls.Clear();
                 currentFormChild.Close();
-                currentFormChild.Dispose(); // Giải phóng bộ nhớ
+                currentFormChild.Dispose();
             }
 
-            // Clear panel trước khi add form mới
+            // Xoá panel và thêm form mới
             pnlBody.Controls.Clear();
-
-            // Gán current cho form được chọn
             currentFormChild = childForm;
+            currentButton = btn; // Cập nhật nút hiện tại
 
-            // Cấu hình form con
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-
-            // Thêm form con vào panel
             pnlBody.Controls.Add(childForm);
             pnlBody.Tag = childForm;
 
-            // Hiển thị form
             childForm.BringToFront();
             childForm.Show();
 
-            // Reset button colors
+            // Reset màu các nút và tô sáng nút đang chọn
             ResetButton();
             btn.BackColor = Color.DodgerBlue;
             btn.ForeColor = Color.White;
 
-            // Force refresh layout
             pnlBody.PerformLayout();
             this.PerformLayout();
         }
+
 
         private void ResetButton()
         {
