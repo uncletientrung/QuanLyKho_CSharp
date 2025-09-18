@@ -15,8 +15,7 @@ namespace QuanLyKho_CSharp
 {
     public partial class frmMain : Form
     {
-        private Form currentFormChild;
-        // Biến giữ form con hiện tại
+        private Form currentFormChild;// Biến giữ form con hiện tại
 
         private Button currentButton; //biến giữ button hiện tại
 
@@ -27,7 +26,7 @@ namespace QuanLyKho_CSharp
 
         private void OpenChildForm(Form childForm, Button btn)
         {
-            // 🔎 Nếu form hiện tại cùng loại và cùng button -> Không làm gì
+            //  Nếu form hiện tại cùng loại và cùng button -> Không làm gì
             if (currentFormChild != null
                 && currentFormChild.GetType() == childForm.GetType()
                 && currentButton == btn)
