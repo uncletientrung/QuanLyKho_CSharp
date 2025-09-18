@@ -81,7 +81,7 @@ namespace QuanLyKho_CSharp.GUI
                 dgvSanPham.RowTemplate.Height = 40;
 
                 dgvSanPham.Columns.Add("SoLuong", "Số lượng");
-                dgvSanPham.Columns["SoLuong"].Width = 50;
+                dgvSanPham.Columns["SoLuong"].Width = 100;
 
                 dgvSanPham.Columns.Add("Gia", "Đơn giá");
                 dgvSanPham.Columns["Gia"].Width = 120;
@@ -90,10 +90,10 @@ namespace QuanLyKho_CSharp.GUI
                 dgvSanPham.Columns["Machatlieu"].Width = 100;
 
                 dgvSanPham.Columns.Add("Loai", "Loại");
-                dgvSanPham.Columns["Loai"].Width = 120;
+                dgvSanPham.Columns["Loai"].Width = 119;
 
                 dgvSanPham.Columns.Add("Khuvuc", "Khu vực");
-                dgvSanPham.Columns["Khuvuc"].Width = 120;
+                dgvSanPham.Columns["Khuvuc"].Width = 145;
 
                 dgvSanPham.Columns.Add("Size", "Size");
                 dgvSanPham.Columns["Size"].Width = 120;
