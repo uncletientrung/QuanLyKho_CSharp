@@ -3,6 +3,8 @@ using Org.BouncyCastle.Utilities.Encoders;
 using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.NhanVien;
+using QuanLyKho_CSharp.GUI.SanPham;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
@@ -278,9 +280,48 @@ namespace QuanLyKho_CSharp.GUI
                 int totalButtons = 3;
                 int buttonWidth = (dgvSanPham.Columns["Actions"].Width - padding * (totalButtons + 1)) / totalButtons;
                 int xRel = e.Location.X;
-                int masp = Convert.ToInt32(dgvSanPham.Rows[e.RowIndex].Cells["MaSP"].Value);
-                SanPhamDTO sp = spBUS.getSPById(masp);
+                int masp = int.Parse(dgvSanPham.Rows[e.RowIndex].Cells["masp"].Value.ToString());
+                SanPhamDTO spduocchon = spBUS.getSPById(masp);
+                if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
+                {
+                    DetailSanPhamForm detailSanPham = new DetailSanPhamForm(spduocchon);
+                    detailSanPham.ShowDialog();
+                    if (detailSanPham.DialogResult == DialogResult.OK)
+                    {
+                        LoadDataToGrid();
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
+
+                }
+                else if (xRel < padding * 2 + buttonWidth * 2)
+                {
+                    //DeleteNhanVienForm deleteNV = new DeleteNhanVienForm(spduocchon);
+                    //deleteNV.ShowDialog();
+                    //if (deleteNV.DialogResult == DialogResult.OK)
+                    //{
+
+                    //    DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                    //    tb.Show();
+                    //    LoadDataToGrid();
+                    //}
+                }
+                else
+                {
+                    DetailSanPhamForm detailSanPham = new DetailSanPhamForm(spduocchon);
+                    detailSanPham.ShowDialog();
+                    if (detailSanPham.DialogResult == DialogResult.OK)
+                    {
+                        LoadDataToGrid();
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
+
+
+                }
+
             }
+        
         }
     }
 }

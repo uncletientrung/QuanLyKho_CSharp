@@ -1,4 +1,6 @@
-﻿namespace QuanLyKho_CSharp.GUI
+﻿
+
+namespace QuanLyKho_CSharp.GUI
 {
     partial class NhanVienGUI
     {

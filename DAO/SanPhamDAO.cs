@@ -51,7 +51,7 @@ namespace QuanLyKho_CSharp.DAO
             SanPhamDTO sanPhamResult = new SanPhamDTO();
             try
             {
-                string sql = $"select from sanpham where masp={masp}";
+                string sql = $"select * from sanpham where masp={masp}";
                 ConnectionHelper.getConnection();
                 using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
                 using (MySqlDataReader reader = cmd.ExecuteReader())

@@ -346,6 +346,7 @@ namespace QuanLyKho_CSharp
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlLeftMenu.ResumeLayout(false);
             this.pnlLeftMenu.PerformLayout();
