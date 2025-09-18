@@ -26,5 +26,10 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
         {
 
         }
+
+        private void DGVKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
