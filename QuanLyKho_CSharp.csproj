@@ -177,6 +177,12 @@
     <Compile Include="GUI\SanPham\DetailSanPhamForm.Designer.cs">
       <DependentUpon>DetailSanPhamForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\SanPham\UpdateSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SanPham\UpdateSanPhamForm.Designer.cs">
+      <DependentUpon>UpdateSanPhamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\DetailSanPhamForm.resx">
       <DependentUpon>DetailSanPhamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SanPham\UpdateSanPhamForm.resx">
+      <DependentUpon>UpdateSanPhamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
       <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
