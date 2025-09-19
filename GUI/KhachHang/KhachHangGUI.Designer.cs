@@ -32,64 +32,67 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KhachHangGUI));
-            this.KHbtnAdd = new System.Windows.Forms.Button();
-            this.KHbtnExcel = new System.Windows.Forms.Button();
-            this.lbFormNameKH = new System.Windows.Forms.Label();
-            this.DGVKhachHang = new System.Windows.Forms.DataGridView();
-            this.khSearch = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.lbFormName = new System.Windows.Forms.Label();
+            this.DGVNhanVien = new System.Windows.Forms.DataGridView();
+            this.txSearch = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.KHdateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.KHdateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVKhachHang)).BeginInit();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // KHbtnAdd
+            // btnAdd
             // 
-            this.KHbtnAdd.BackColor = System.Drawing.Color.White;
-            this.KHbtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.KHbtnAdd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KHbtnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.KHbtnAdd.Location = new System.Drawing.Point(856, 8);
-            this.KHbtnAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.KHbtnAdd.Name = "KHbtnAdd";
-            this.KHbtnAdd.Size = new System.Drawing.Size(85, 40);
-            this.KHbtnAdd.TabIndex = 12;
-            this.KHbtnAdd.Text = "+ Thêm";
-            this.KHbtnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.White;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnAdd.Location = new System.Drawing.Point(856, 8);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(85, 40);
+            this.btnAdd.TabIndex = 12;
+            this.btnAdd.Text = "+ Thêm";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // KHbtnExcel
+            // btnExcel
             // 
-            this.KHbtnExcel.BackColor = System.Drawing.Color.White;
-            this.KHbtnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.KHbtnExcel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KHbtnExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(51)))));
-            this.KHbtnExcel.Location = new System.Drawing.Point(1060, 73);
-            this.KHbtnExcel.Margin = new System.Windows.Forms.Padding(1);
-            this.KHbtnExcel.Name = "KHbtnExcel";
-            this.KHbtnExcel.Size = new System.Drawing.Size(98, 43);
-            this.KHbtnExcel.TabIndex = 11;
-            this.KHbtnExcel.Text = "Xuất Excel";
-            this.KHbtnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.BackColor = System.Drawing.Color.White;
+            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(51)))));
+            this.btnExcel.Location = new System.Drawing.Point(1060, 73);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(1);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(98, 43);
+            this.btnExcel.TabIndex = 11;
+            this.btnExcel.Text = "Xuất Excel";
+            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // lbFormNameKH
+            // lbFormName
             // 
-            this.lbFormNameKH.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFormNameKH.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lbFormNameKH.Location = new System.Drawing.Point(26, 82);
-            this.lbFormNameKH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbFormNameKH.Name = "lbFormNameKH";
-            this.lbFormNameKH.Size = new System.Drawing.Size(173, 35);
-            this.lbFormNameKH.TabIndex = 10;
-            this.lbFormNameKH.Text = "Khách Hànng";
+            this.lbFormName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFormName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lbFormName.Location = new System.Drawing.Point(26, 82);
+            this.lbFormName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbFormName.Name = "lbFormName";
+            this.lbFormName.Size = new System.Drawing.Size(173, 35);
+            this.lbFormName.TabIndex = 10;
+            this.lbFormName.Text = "Nhân viên";
+            this.lbFormName.Click += new System.EventHandler(this.lbFormName_Click);
             // 
-            // DGVKhachHang
+            // DGVNhanVien
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -98,8 +101,8 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.DGVKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.DGVNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,12 +110,12 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVKhachHang.DefaultCellStyle = dataGridViewCellStyle8;
-            this.DGVKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVKhachHang.Location = new System.Drawing.Point(0, 0);
-            this.DGVKhachHang.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DGVKhachHang.MultiSelect = false;
-            this.DGVKhachHang.Name = "DGVKhachHang";
+            this.DGVNhanVien.DefaultCellStyle = dataGridViewCellStyle8;
+            this.DGVNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVNhanVien.Location = new System.Drawing.Point(0, 0);
+            this.DGVNhanVien.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DGVNhanVien.MultiSelect = false;
+            this.DGVNhanVien.Name = "DGVNhanVien";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -120,32 +123,32 @@
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVKhachHang.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.DGVKhachHang.RowHeadersWidth = 51;
-            this.DGVKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVKhachHang.Size = new System.Drawing.Size(1156, 499);
-            this.DGVKhachHang.TabIndex = 5;
-            this.DGVKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVKhachHang_CellContentClick);
+            this.DGVNhanVien.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.DGVNhanVien.RowHeadersWidth = 51;
+            this.DGVNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVNhanVien.Size = new System.Drawing.Size(1156, 499);
+            this.DGVNhanVien.TabIndex = 5;
             // 
-            // khSearch
+            // txSearch
             // 
-            this.khSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.khSearch.ForeColor = System.Drawing.Color.Black;
-            this.khSearch.Location = new System.Drawing.Point(70, 15);
-            this.khSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.khSearch.Name = "khSearch";
-            this.khSearch.Size = new System.Drawing.Size(462, 34);
-            this.khSearch.TabIndex = 6;
-            this.khSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
+            this.txSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSearch.ForeColor = System.Drawing.Color.Black;
+            this.txSearch.Location = new System.Drawing.Point(70, 15);
+            this.txSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.txSearch.Name = "txSearch";
+            this.txSearch.Size = new System.Drawing.Size(462, 29);
+            this.txSearch.TabIndex = 6;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged_1);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.DGVKhachHang);
+            this.panel1.Controls.Add(this.DGVNhanVien);
             this.panel1.Location = new System.Drawing.Point(7, 120);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1156, 499);
             this.panel1.TabIndex = 13;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -162,16 +165,17 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.KHdateTimePicker2);
+            this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.KHdateTimePicker1);
+            this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.khSearch);
+            this.panel2.Controls.Add(this.txSearch);
             this.panel2.Location = new System.Drawing.Point(78, 3);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(771, 61);
             this.panel2.TabIndex = 14;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label2
             // 
@@ -179,19 +183,19 @@
             this.label2.Location = new System.Drawing.Point(643, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(11, 16);
+            this.label2.Size = new System.Drawing.Size(12, 15);
             this.label2.TabIndex = 10;
             this.label2.Text = "-";
             // 
-            // KHdateTimePicker2
+            // dateTimePicker2
             // 
-            this.KHdateTimePicker2.CustomFormat = "dd-MM-yyyy";
-            this.KHdateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.KHdateTimePicker2.Location = new System.Drawing.Point(659, 17);
-            this.KHdateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.KHdateTimePicker2.Name = "KHdateTimePicker2";
-            this.KHdateTimePicker2.Size = new System.Drawing.Size(90, 22);
-            this.KHdateTimePicker2.TabIndex = 11;
+            this.dateTimePicker2.CustomFormat = "dd-MM-yyyy";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(659, 17);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(90, 23);
+            this.dateTimePicker2.TabIndex = 11;
             // 
             // label1
             // 
@@ -201,35 +205,35 @@
             this.label1.Location = new System.Drawing.Point(562, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 15);
+            this.label1.Size = new System.Drawing.Size(80, 12);
             this.label1.TabIndex = 10;
             this.label1.Text = "Từ ngày - đến ngày";
             // 
-            // KHdateTimePicker1
+            // dateTimePicker1
             // 
-            this.KHdateTimePicker1.CustomFormat = "dd-MM-yyyy";
-            this.KHdateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.KHdateTimePicker1.Location = new System.Drawing.Point(548, 18);
-            this.KHdateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.KHdateTimePicker1.Name = "KHdateTimePicker1";
-            this.KHdateTimePicker1.Size = new System.Drawing.Size(90, 22);
-            this.KHdateTimePicker1.TabIndex = 9;
-            this.KHdateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.CustomFormat = "dd-MM-yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(548, 18);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(90, 23);
+            this.dateTimePicker1.TabIndex = 9;
             // 
             // KhachHangGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1170, 622);
-            this.Controls.Add(this.KHbtnAdd);
-            this.Controls.Add(this.KHbtnExcel);
-            this.Controls.Add(this.lbFormNameKH);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnExcel);
+            this.Controls.Add(this.lbFormName);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "KhachHangGUI";
-            this.Text = "KhachHangGUI";
-            ((System.ComponentModel.ISupportInitialize)(this.DGVKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -240,17 +244,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Button KHbtnAdd;
-        private System.Windows.Forms.Button KHbtnExcel;
-        private System.Windows.Forms.Label lbFormNameKH;
-        private System.Windows.Forms.DataGridView DGVKhachHang;
-        private System.Windows.Forms.TextBox khSearch;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.Label lbFormName;
+        private System.Windows.Forms.DataGridView DGVNhanVien;
+        private System.Windows.Forms.TextBox txSearch;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker KHdateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker KHdateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

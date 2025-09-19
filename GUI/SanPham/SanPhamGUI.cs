@@ -129,17 +129,10 @@ namespace QuanLyKho_CSharp.GUI
 
         private void LoadDataToGrid()
         {
-            
-
             try
             {
-                // Sử dụng listSP đã có từ constructor
-                if (listSP == null)
-                {
-                    listSP = spBUS.getListSP();
-                }
-
-                
+                // Always fetch the latest data from the database
+                listSP = spBUS.getListSP();
 
                 dgvSanPham.Rows.Clear();
 
@@ -166,7 +159,6 @@ namespace QuanLyKho_CSharp.GUI
                     );
                 }
 
-                
                 dgvSanPham.ClearSelection();
             }
             catch (Exception ex)
@@ -216,6 +208,8 @@ namespace QuanLyKho_CSharp.GUI
                 return Properties.Resources.no_image;
             }
         }
+
+       
 
         private void dgvSanPham_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -284,9 +278,9 @@ namespace QuanLyKho_CSharp.GUI
                 SanPhamDTO spduocchon = spBUS.getSPById(masp);
                 if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
                 {
-                    DetailSanPhamForm detailSanPham = new DetailSanPhamForm(spduocchon);
-                    detailSanPham.ShowDialog();
-                    if (detailSanPham.DialogResult == DialogResult.OK)
+                    UpdateSanPhamForm updateSanPham = new UpdateSanPhamForm(spduocchon);
+                    updateSanPham.ShowDialog();
+                    if (updateSanPham.DialogResult == DialogResult.OK)
                     {
                         LoadDataToGrid();
                         UpdateSuccessNotification tb = new UpdateSuccessNotification();
@@ -308,6 +302,9 @@ namespace QuanLyKho_CSharp.GUI
                 }
                 else
                 {
+                   
+
+
                     DetailSanPhamForm detailSanPham = new DetailSanPhamForm(spduocchon);
                     detailSanPham.ShowDialog();
                     if (detailSanPham.DialogResult == DialogResult.OK)

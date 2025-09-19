@@ -58,7 +58,7 @@
             // 
             // lblChiTietSanPham
             // 
-            this.lblChiTietSanPham.BackColor = System.Drawing.Color.Blue;
+            this.lblChiTietSanPham.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.lblChiTietSanPham.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChiTietSanPham.ForeColor = System.Drawing.Color.AliceBlue;
             this.lblChiTietSanPham.Location = new System.Drawing.Point(0, 2);
@@ -195,7 +195,7 @@
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(299, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(535, 425);
+            this.panel1.Size = new System.Drawing.Size(535, 397);
             this.panel1.TabIndex = 16;
             // 
             // label8
