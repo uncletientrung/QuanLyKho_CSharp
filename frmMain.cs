@@ -1,6 +1,7 @@
 ﻿using QuanLyKho_CSharp.GUI;
 using QuanLyKho_CSharp.GUI.KhachHang;
 using QuanLyKho_CSharp.GUI.TaiKhoan;
+using QuanLyKho_CSharp.GUI.PhanQuyen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,6 +123,11 @@ namespace QuanLyKho_CSharp
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
             OpenChildForm(new TaiKhoanGUI(), btnTaiKhoan);
+        }
+
+        private void btnPhanQuyen_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new NhomQuyenGUI(), btnPhanQuyen);
         }
     }
 }

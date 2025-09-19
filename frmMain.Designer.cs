@@ -112,12 +112,15 @@ namespace QuanLyKho_CSharp
             // btnPhanQuyen
             // 
             this.btnPhanQuyen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPhanQuyen.Image = ((System.Drawing.Image)(resources.GetObject("btnPhanQuyen.Image")));
+            this.btnPhanQuyen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPhanQuyen.Location = new System.Drawing.Point(3, 563);
             this.btnPhanQuyen.Name = "btnPhanQuyen";
             this.btnPhanQuyen.Size = new System.Drawing.Size(191, 61);
             this.btnPhanQuyen.TabIndex = 12;
             this.btnPhanQuyen.Text = "Phân quyền";
             this.btnPhanQuyen.UseVisualStyleBackColor = true;
+            this.btnPhanQuyen.Click += new System.EventHandler(this.btnPhanQuyen_Click);
             // 
             // btnTrangChu
             // 
