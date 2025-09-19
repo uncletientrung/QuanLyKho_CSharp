@@ -308,9 +308,9 @@ namespace QuanLyKho_CSharp.GUI
                 }
                 else
                 {
-                    DetailSanPhamForm detailSanPham = new DetailSanPhamForm(spduocchon);
-                    detailSanPham.ShowDialog();
-                    if (detailSanPham.DialogResult == DialogResult.OK)
+                    UpdateSanPhamForm updateSanPham = new UpdateSanPhamForm(spduocchon);
+                    updateSanPham.ShowDialog();
+                    if (updateSanPham.DialogResult == DialogResult.OK)
                     {
                         LoadDataToGrid();
                         UpdateSuccessNotification tb = new UpdateSuccessNotification();

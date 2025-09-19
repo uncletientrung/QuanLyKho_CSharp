@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho_CSharp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace QuanLyKho_CSharp.GUI.SanPham
 {
     public partial class UpdateSanPhamForm : Form
     {
-        public UpdateSanPhamForm()
+        SanPhamDTO sp;
+        public UpdateSanPhamForm(SanPhamDTO _sp)
         {
+            this.sp= _sp;
             InitializeComponent();
         }
 
@@ -25,6 +28,16 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void UpdateSanPhamForm_Load(object sender, EventArgs e)
+        {
+            txtMaSanPham.Enabled = false;
         }
     }
 }
