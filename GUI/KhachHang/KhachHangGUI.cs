@@ -31,5 +31,37 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
         {
 
         }
+
+        private void lbFormName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            if (txSearch.Text != "Nhập mã, tên hoặc số điện thoại nhân viên để tìm")
+            {
+            }
+        }
     }
 }
