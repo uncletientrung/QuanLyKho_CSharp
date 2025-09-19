@@ -135,7 +135,7 @@
             this.btnChonanh.TabIndex = 0;
             this.btnChonanh.Text = "Chọn ảnh";
             this.btnChonanh.UseVisualStyleBackColor = false;
-            this.btnChonanh.Click += new System.EventHandler(this.button1_Click);
+            this.btnChonanh.Click += new System.EventHandler(this.chonAnh_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -289,6 +289,7 @@
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Size = new System.Drawing.Size(368, 38);
             this.txtDonGia.TabIndex = 11;
+            this.txtDonGia.TextChanged += new System.EventHandler(this.txtDonGia_TextChanged);
             // 
             // txtMaChatLieu
             // 
@@ -345,6 +346,7 @@
             this.btnSua.TabIndex = 0;
             this.btnSua.Text = "Lưu";
             this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label10
             // 
