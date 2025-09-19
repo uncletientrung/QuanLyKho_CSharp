@@ -93,7 +93,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             open.Filter = "Image Files|*.jpg;*.jpeg;*.png";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                // Hiển thị ảnh mới lên PictureBox
+                // Hiển thị ảnh mới lên Pic bõ
                 picHinhanh.Image = Image.FromFile(open.FileName);
 
                 // Đường dẫn ảnh người dùng chọn
@@ -104,15 +104,33 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 if (!Directory.Exists(thuMucDich))
                     Directory.CreateDirectory(thuMucDich);
 
-                // Lấy tên file gốc (giữ nguyên tên ảnh của người dùng)
-                string tenFileMoi = Path.GetFileName(fileNguon);
-                string fileDich = Path.Combine(thuMucDich, tenFileMoi);
+                // Lấy tên file của ảnh cũ từ sp.Hinhanh (e.g., "images/stocks/ao1.png")
+                string tenFileCu = Path.GetFileName(sp.Hinhanh); // Lấy tên file từ đường dẫn hiện tại
+                string fileDich;
 
-                // Nếu đã có file trùng tên thì xóa để thay bằng file mới
+                // Nếu sản phẩm đã có ảnh, sử dụng tên file cũ; nếu không, tạo tên file mới
+                if (!string.IsNullOrEmpty(tenFileCu) && File.Exists(Path.Combine(thuMucDich, tenFileCu)))
+                {
+                    fileDich = Path.Combine(thuMucDich, tenFileCu); // Sử dụng tên file cũ
+                }
+                else
+                {
+                    // Nếu không có ảnh cũ, sử dụng tên file mới
+                    tenFileCu = Path.GetFileName(fileNguon);
+                    fileDich = Path.Combine(thuMucDich, tenFileCu);
+                }
+
+                // Xóa file cũ nếu tồn tại
                 if (File.Exists(fileDich))
                 {
                     try
                     {
+                        // Giải phóng tài nguyên ảnh trong pix box trước khi xóa
+                        if (picHinhanh.Image != null)
+                        {
+                            picHinhanh.Image.Dispose();
+                            picHinhanh.Image = null;
+                        }
                         File.Delete(fileDich);
                     }
                     catch (Exception ex)
@@ -122,11 +140,12 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                     }
                 }
 
-                // Copy ảnh vào thư mục đích
+                // Copy ảnh mới vào thư mục đích với tên file cũ
                 try
                 {
                     File.Copy(fileNguon, fileDich, true);
-                    duongDanAnhMoi = $"images/stocks/{tenFileMoi}";
+                    duongDanAnhMoi = $"images/stocks/{tenFileCu}"; // Lưu đường dẫn tương đối
+                    picHinhanh.Image = Image.FromFile(fileDich); // Tải lại ảnh vào pix box
                 }
                 catch (Exception ex)
                 {
@@ -134,6 +153,8 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 }
             }
         }
+
+       
 
 
         private void label2_Click(object sender, EventArgs e)

@@ -209,6 +209,8 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
+       
+
         private void dgvSanPham_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex == dgvSanPham.Columns["Actions"].Index && e.RowIndex >= 0)
