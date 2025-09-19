@@ -264,7 +264,7 @@ namespace QuanLyKho_CSharp
             this.lbUser.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUser.Location = new System.Drawing.Point(67, 82);
             this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(60, 20);
+            this.lbUser.Size = new System.Drawing.Size(49, 17);
             this.lbUser.TabIndex = 2;
             this.lbUser.Text = "Hi, user";
             this.lbUser.Click += new System.EventHandler(this.label1_Click);
@@ -335,7 +335,7 @@ namespace QuanLyKho_CSharp
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1064, 623);

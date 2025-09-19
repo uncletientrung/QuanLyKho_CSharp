@@ -24,7 +24,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         public TaiKhoanGUI()
         {
             InitializeComponent();
-            txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
+            txSearch.Text = "Nhập mã, tên đăng nhập tài khoản để tìm";
             txSearch.ForeColor = Color.Gray;
             DGVTaiKhoan.ClearSelection();
             DGVTaiKhoan.RowHeadersVisible = false; // Tắt cột header
@@ -175,22 +175,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
 
             }
         }
-        private void refreshDataGridView(BindingList<TaiKhoanDTO> listRefresh) // Tải lại DataGridView
-        {
-            DGVTaiKhoan.Rows.Clear();
-            
-
-            foreach (TaiKhoanDTO tk in listRefresh)
-            {
-                if (tk.Trangthai == 1)
-                {
-                    DGVTaiKhoan.Rows.Add(tk.Manv, tk.Tendangnhap, tk.Matkhau,
-                        tk.Manhomquyen, "Hoạt động");
-                }
-            }
-            DGVTaiKhoan.ClearSelection();
-        }
-
+       
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddTaiKhoanForm addTK = new AddTaiKhoanForm();
@@ -210,6 +195,49 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             AddSuccessNotification tb = new AddSuccessNotification();
             tb.Show();
             refreshDataGridView(tkBUS.getListTK());
+        }
+
+        private void txSearch_TextChanged(object sender, EventArgs e)
+        {
+            if(txSearch.Text != "Nhập mã, tên đăng nhập tài khoản để tìm")
+            {
+                string TextSearch=txSearch.Text.Trim();
+                BindingList<TaiKhoanDTO> listSearch=tkBUS.SearchTaiKhoan(TextSearch);
+                refreshDataGridView(listSearch);
+            }
+        }
+        private void refreshDataGridView(BindingList<TaiKhoanDTO> listRefresh) // Tải lại DataGridView
+        {
+            DGVTaiKhoan.Rows.Clear();
+
+
+            foreach (TaiKhoanDTO tk in listRefresh)
+            {
+                if (tk.Trangthai == 1)
+                {
+                    DGVTaiKhoan.Rows.Add(tk.Manv, tk.Tendangnhap, tk.Matkhau,
+                        tk.Manhomquyen, "Hoạt động");
+                }
+            }
+            DGVTaiKhoan.ClearSelection();
+        }
+
+        private void txSearch_Enter(object sender, EventArgs e)
+        {
+            if(txSearch.Text == "Nhập mã, tên đăng nhập tài khoản để tìm")
+            {
+                txSearch.Text = "";
+                txSearch.ForeColor = Color.Black;
+            }
+        }
+
+        private void txSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txSearch.Text))
+            {
+                txSearch.Text = "Nhập mã, tên đăng nhập tài khoản để tìm";
+                txSearch.ForeColor = Color.Gray;
+            }
         }
     }
 }

@@ -65,6 +65,18 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
-        
+        public BindingList<TaiKhoanDTO> SearchTaiKhoan(string text)
+        {
+            BindingList<TaiKhoanDTO> result= new BindingList<TaiKhoanDTO> ();
+            foreach(TaiKhoanDTO tk in listTK)
+            {
+                if(tk.Tendangnhap.ToLower().Contains(text.ToLower()) ||
+                   tk.Manv.ToString().ToLower().Contains(text.ToLower()))
+                {
+                    result.Add(tk);
+                }
+            }
+            return result;
+        }
     }
 }
