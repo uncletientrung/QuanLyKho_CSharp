@@ -55,6 +55,7 @@
             this.picHinhanh = new System.Windows.Forms.PictureBox();
             this.btnSua = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnDong = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -92,6 +93,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnDong);
             this.panel4.Controls.Add(this.btnSua);
             this.panel4.Location = new System.Drawing.Point(1, 459);
             this.panel4.Name = "panel4";
@@ -324,11 +326,11 @@
             this.btnSua.AutoSize = true;
             this.btnSua.BackColor = System.Drawing.Color.Lime;
             this.btnSua.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(336, 34);
+            this.btnSua.Location = new System.Drawing.Point(208, 34);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(143, 52);
             this.btnSua.TabIndex = 0;
-            this.btnSua.Text = "Xác Nhận";
+            this.btnSua.Text = "Lưu";
             this.btnSua.UseVisualStyleBackColor = false;
             // 
             // label10
@@ -339,6 +341,18 @@
             this.label10.Size = new System.Drawing.Size(124, 16);
             this.label10.TabIndex = 1;
             this.label10.Text = "Định dạng .png, .jpg";
+            // 
+            // btnDong
+            // 
+            this.btnDong.AutoSize = true;
+            this.btnDong.BackColor = System.Drawing.Color.Red;
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Location = new System.Drawing.Point(444, 34);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(143, 52);
+            this.btnDong.TabIndex = 1;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.UseVisualStyleBackColor = false;
             // 
             // UpdateSanPhamForm
             // 
@@ -394,5 +408,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox picHinhanh;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnDong;
     }
 }
