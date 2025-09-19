@@ -115,7 +115,7 @@ namespace QuanLyKho_CSharp.GUI
             this.DGVNhanVien.DefaultCellStyle = dataGridViewCellStyle8;
             this.DGVNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVNhanVien.Location = new System.Drawing.Point(0, 0);
-            this.DGVNhanVien.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DGVNhanVien.Margin = new System.Windows.Forms.Padding(0);
             this.DGVNhanVien.MultiSelect = false;
             this.DGVNhanVien.Name = "DGVNhanVien";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
