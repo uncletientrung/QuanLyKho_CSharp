@@ -1,4 +1,6 @@
 ﻿using QuanLyKho_CSharp.GUI;
+using QuanLyKho_CSharp.GUI.NhomQuyen;
+using QuanLyKho_CSharp.GUI.PhanQuyen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
