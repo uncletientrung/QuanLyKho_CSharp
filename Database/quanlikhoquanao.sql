@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2025 at 11:33 AM
+-- Generation Time: Sep 20, 2025 at 05:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -110,17 +110,16 @@ CREATE TABLE `danhmucchucnang` (
 --
 
 INSERT INTO `danhmucchucnang` (`machucnang`, `tenchucnang`, `trangthai`) VALUES
-(1, 'Quản lý nhân viên', 1),
-(2, 'Quản lý khách hàng', 1),
-(3, 'Quản lý nhà cung cấp', 1),
-(4, 'Quản lý nhà xuất bản', 1),
-(5, 'Quản lý tác giả', 1),
-(6, 'Quản lý thể loại', 1),
-(7, 'Quản lý nhóm quyền', 1),
-(8, 'Quản lý tài khoản', 1),
-(9, 'Quản lý nhập hàng', 1),
-(10, 'Quản lý xuất hàng', 1),
-(11, 'Quản lý thống kê', 1);
+(1, 'nhanvien', 1),
+(2, 'khachhang', 1),
+(3, 'thongtin', 1),
+(4, 'tonkho', 1),
+(5, 'nhaphang', 1),
+(6, 'xuathang', 1),
+(7, 'kiemke', 1),
+(8, 'baocao', 1),
+(9, 'taikhoan', 1),
+(10, 'phanquyen', 1);
 
 -- --------------------------------------------------------
 
@@ -236,8 +235,8 @@ CREATE TABLE `nhanvien` (
 
 INSERT INTO `nhanvien` (`manv`, `tennv`, `gioitinh`, `sdt`, `ngaysinh`, `trangthai`) VALUES
 (1, 'Nguyễn Tiến Trung', 1, '0352447642', '2000-03-15', 1),
-(2, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 0),
-(3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 0),
+(2, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
+(3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 1),
 (4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1);
 
 -- --------------------------------------------------------
@@ -259,7 +258,9 @@ CREATE TABLE `nhomquyen` (
 INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 (1, 'Quản lý', 1),
 (2, 'Nhân viên', 1),
-(3, 'Quản lý kho', 1);
+(3, 'Quản lý kho', 1),
+(21, 'test1', 0),
+(22, 'test2', 0);
 
 -- --------------------------------------------------------
 
@@ -378,6 +379,7 @@ CREATE TABLE `taikhoan` (
 
 INSERT INTO `taikhoan` (`manv`, `tendangnhap`, `matkhau`, `manhomquyen`, `trangthai`) VALUES
 (1, 'trung123', '12345', 3, 1),
+(3, 'thuan123', '123', 3, 0),
 (6, 'admin', '12345', 1, 1);
 
 --
@@ -557,7 +559,7 @@ ALTER TABLE `nhanvien`
 -- AUTO_INCREMENT for table `nhomquyen`
 --
 ALTER TABLE `nhomquyen`
-  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `phieukiemke`
