@@ -1,5 +1,6 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.NhomQuyen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,7 +41,7 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
             DGVPhanQuyen.Columns["TenNQ"].Width = 730;
 
             DGVPhanQuyen.Columns.Add("TrangThai", "Trạng thái");
-            DGVPhanQuyen.Columns["TrangThai"].Width = 154;
+            DGVPhanQuyen.Columns["TrangThai"].Width = 153;
             DGVPhanQuyen.RowTemplate.Height = 40;
             refreshDataGridView(listNQ);
         }
@@ -57,7 +58,8 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            AddNhomQuyenForm addNhomQuyenForm = new AddNhomQuyenForm();
+            addNhomQuyenForm.ShowDialog();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

@@ -6,13 +6,15 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyKho_CSharp.BUS
 {
     public class NhomQuyenBUS
     {
-        public readonly NhomQuyenDAO nqDAO= NhomQuyenDAO.getInstance();
-        public BindingList<NhomQuyenDTO> listNQ;
+        private readonly NhomQuyenDAO nqDAO= NhomQuyenDAO.getInstance();
+        private readonly ChiTietQuyenDAO ctnqDAO = ChiTietQuyenDAO.getInstance();
+        private BindingList<NhomQuyenDTO> listNQ;
         
         public NhomQuyenBUS()
         {
@@ -27,6 +29,28 @@ namespace QuanLyKho_CSharp.BUS
         {
             NhomQuyenDTO result = new NhomQuyenDTO();
             result=nqDAO.SelectById(id);
+            return result;
+        }
+        public int getAutoMaNQ()
+        {
+
+            return nqDAO.GetAutoIncrement();
+        }
+        
+        public Boolean addCTNhomQuyen(BindingList<ChiTietQuyenDTO> listCTQ)
+        {
+            bool result = ctnqDAO.Insert(listCTQ) !=0;
+            return result;
+        }
+        public Boolean addNhomQuyen(int maNQ,string TenNQ, BindingList<ChiTietQuyenDTO> listCTQ)
+        {
+            NhomQuyenDTO nq = new NhomQuyenDTO(maNQ, TenNQ, 1);
+            Boolean result= nqDAO.Insert(nq) !=0;
+            if (result)
+            {
+                listNQ.Add(nq);
+                addCTNhomQuyen(listCTQ);
+            }
             return result;
         }
 

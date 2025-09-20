@@ -113,7 +113,7 @@ namespace QuanLyKho_CSharp.DAO
             try
             {
                 string sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES " +
-                             "WHERE TABLE_SCHEMA = 'your_database_name' " +
+                             "WHERE TABLE_SCHEMA = 'quanlikhoquanao' " +
                              "AND TABLE_NAME = 'khachhang'";
 
                 ConnectionHelper.getConnection();

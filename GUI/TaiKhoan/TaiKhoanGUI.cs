@@ -55,7 +55,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             DGVTaiKhoan.Columns["MaNhomQuyen"].Width = 210;
 
             DGVTaiKhoan.Columns.Add("TrangThai", "Trạng thái");
-            DGVTaiKhoan.Columns["TrangThai"].Width = 154;
+            DGVTaiKhoan.Columns["TrangThai"].Width = 153;
             DGVTaiKhoan.RowTemplate.Height = 40;
 
             foreach (TaiKhoanDTO tk in listTK)

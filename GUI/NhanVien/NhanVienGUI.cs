@@ -60,7 +60,7 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns["TenNV"].Width = 250;
 
             DGVNhanVien.Columns.Add("GioiTinh", "Giới tính");
-            DGVNhanVien.Columns["GioiTinh"].Width = 134;
+            DGVNhanVien.Columns["GioiTinh"].Width = 140;
 
             DGVNhanVien.Columns.Add("SDT", "Số điện thoại");
             DGVNhanVien.Columns["SDT"].Width = 200;
@@ -69,7 +69,7 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns["NgaySinh"].Width = 140;
 
             DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
-            DGVNhanVien.Columns["TrangThai"].Width = 154;
+            DGVNhanVien.Columns["TrangThai"].Width = 153;
             DGVNhanVien.RowTemplate.Height = 40;
             foreach (NhanVienDTO nv in listNV)
             {

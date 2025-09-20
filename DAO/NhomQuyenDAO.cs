@@ -31,7 +31,7 @@ namespace QuanLyKho_CSharp.DAO
             try
             {
                 string sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES " +
-                             "WHERE TABLE_SCHEMA = 'your_database_name' " +
+                             "WHERE TABLE_SCHEMA = 'quanlikhoquanao' " +
                              "AND TABLE_NAME = 'nhomquyen'";
 
                 ConnectionHelper.getConnection();
@@ -43,6 +43,7 @@ namespace QuanLyKho_CSharp.DAO
                         result = Convert.ToInt32(value);
                     }
                 }
+                ConnectionHelper.closeConnection();
             }
             catch (Exception ex)
             {
@@ -83,6 +84,7 @@ namespace QuanLyKho_CSharp.DAO
                         result.Add(nv);
                     }
                 }
+                ConnectionHelper.closeConnection();
             }
             catch (Exception ex)
             {
@@ -106,6 +108,7 @@ namespace QuanLyKho_CSharp.DAO
                     result.Tennhomquyen = reader.GetString("tennhomquyen");
                     result.Trangthai = reader.GetInt32("trangthai");
                 }
+                ConnectionHelper.closeConnection();
             }
             catch (Exception ex)
             {

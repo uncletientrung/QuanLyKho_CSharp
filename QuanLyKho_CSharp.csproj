@@ -110,12 +110,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\DanhMucChucNangBUS.cs" />
     <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\NhomQuyenBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
+    <Compile Include="DAO\ChiTietQuyenDAO.cs" />
+    <Compile Include="DAO\DanhMucChucNangDAO.cs" />
     <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
     <Compile Include="DAO\NhomQuyenDAO.cs" />
@@ -299,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhomQuyen\AddNhomQuyenForm.resx">
       <DependentUpon>AddNhomQuyenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhomQuyen\DetailNhomQuyenForm.resx">
+      <DependentUpon>DetailNhomQuyenForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhomQuyen\NhomQuyenGUI.resx">
       <DependentUpon>NhomQuyenGUI.cs</DependentUpon>
