@@ -175,14 +175,14 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
                 }
                 else if (xRel < padding * 2 + buttonWidth * 2)
                 {
-                    //DeleteTaiKhoanForm deleteNV = new DeleteTaiKhoanForm(TaiKhoanDuocChon);
-                    //deleteNV.ShowDialog();
-                    //if (deleteNV.DialogResult == DialogResult.OK)
-                    //{
-                    //    refreshDataGridView(tkBUS.getListTK());
-                    //    DeleteSuccessNotification tb = new DeleteSuccessNotification();
-                    //    tb.Show();
-                    //}
+                    DeleteNhomQuyenForm deleteNV = new DeleteNhomQuyenForm(NhomQuyenDuocChon);
+                    deleteNV.ShowDialog();
+                    if (deleteNV.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView(nqBUS.getListNQ());
+                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                        tb.Show();
+                    }
                 }
                 else
                 {

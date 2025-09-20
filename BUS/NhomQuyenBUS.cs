@@ -60,6 +60,19 @@ namespace QuanLyKho_CSharp.BUS
             result= ctnqDAO.SelectAll(manhomquyen);
             return result;
         }
+        public Boolean DeleteNhomQuyen(int manhomquyen)
+        {
+            Boolean result= nqDAO.Delete(manhomquyen) !=0;
+            if(result) // Xoa được trong db rồi xóa trong list
+            {
+                NhomQuyenDTO nqXoa = this.getNQById(manhomquyen);
+                listNQ.Remove(nqXoa);
+                // Xóa hẳn chi tiết
+                ctnqDAO.Delete(manhomquyen);
+            }
+            return result;
+        }
+
         
 
     }

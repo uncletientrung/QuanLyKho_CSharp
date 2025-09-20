@@ -17,9 +17,12 @@ namespace QuanLyKho_CSharp.DAO
         {
             return new ChiTietQuyenDAO();
         }
-        public int Delete(int ma)
+        public int Delete(int manhomquyen)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"DELETE FROM ctquyen WHERE manhomquyen = {manhomquyen}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public int Insert(BindingList<ChiTietQuyenDTO> listCTNQ)
