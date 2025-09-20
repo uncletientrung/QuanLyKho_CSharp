@@ -219,7 +219,6 @@
   <DependentUpon>UpdateSanPhamForm.cs</DependentUpon>
 </Compile>
 
-    </Compile>
     <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,7 +333,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\UpdateSanPhamForm.resx">
       <DependentUpon>UpdateSanPhamForm.cs</DependentUpon>
->>>>>>> f71fcab5df2a5f05281fb2e9a9e1a35684bb5cc7
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
       <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
