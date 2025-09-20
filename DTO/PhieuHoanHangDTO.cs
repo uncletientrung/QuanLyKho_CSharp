@@ -9,8 +9,8 @@ namespace QuanLyKho_CSharp.DTO
     public class PhieuHoanHangDTO
     {
         // contructor
-        public HoanHangDTO() { }
-        public HoanHangDTO(int _maphieuhoan, int _maphieuxuat, int _manhanvien, decimal _tongtien, DateTime _thoigian)
+        public PhieuHoanHangDTO() { }
+        public PhieuHoanHangDTO(int _maphieuhoan, int _maphieuxuat, int _manhanvien, decimal _tongtien, DateTime _thoigian)
         {
             maphieuhoan = _maphieuhoan;
             maphieuxuat = _maphieuxuat;
