@@ -23,5 +23,15 @@ namespace QuanLyKho_CSharp.DAO
         }
         public PhieuHoanHangDTO SelectById(string t) { return null; }
         public int GetAutoIncrement() { return 0; }
+
+        public int Delete(int t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PhieuHoanHangDTO SelectById(int t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

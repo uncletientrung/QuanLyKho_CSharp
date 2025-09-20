@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace QuanLyKho_CSharp.DAO
 {
-    public class ChiTietHoanHangDAO : DAOInterface<ChiTietHoanHangDTO>, ChiTietInterface<ChiTietHoanHangDTO>
+    public class ChiTietHoanHangDAO :ChiTietInterface<ChiTietHoanHangDTO>
     {
         public static ChiTietHoanHangDAO getInstance() => new ChiTietHoanHangDAO();
 
@@ -28,5 +28,25 @@ namespace QuanLyKho_CSharp.DAO
         }
         public ChiTietHoanHangDTO SelectById(string t) { return null; }
         public int GetAutoIncrement() { return 0; }
+
+        public int Insert(BindingList<ChiTietHoanHangDTO> list)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Delete(int ma)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(BindingList<ChiTietHoanHangDTO> t, int ma)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BindingList<ChiTietHoanHangDTO> SelectAll(int ma)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
