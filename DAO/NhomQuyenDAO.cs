@@ -19,17 +19,45 @@ namespace QuanLyKho_CSharp.DAO
         }
         public int Delete(int t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"UPDATE nhomquyen Set trangthai= 0 WHERE manhomquyen={t}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public int GetAutoIncrement()
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                string sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES " +
+                             "WHERE TABLE_SCHEMA = 'your_database_name' " +
+                             "AND TABLE_NAME = 'nhomquyen'";
+
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    object value = cmd.ExecuteScalar();
+                    if (value != null && value != DBNull.Value)
+                    {
+                        result = Convert.ToInt32(value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+            }
+            return result;
         }
 
         public int Insert(NhomQuyenDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"INSERT into nhomquyen(tennhomquyen, trangthai) " +
+                    $"values ('{t.Tennhomquyen}',{t.Trangthai})";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public BindingList<NhomQuyenDTO> SelectAll()
@@ -89,7 +117,11 @@ namespace QuanLyKho_CSharp.DAO
 
         public int Update(NhomQuyenDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"UPDATE nhomquyen Set tennhomquyen= '{t.Tennhomquyen}', trangthai= {t.Trangthai}," +
+                   $"WHERE manv={t.Manhomquyen}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
     }
 }

@@ -3,6 +3,8 @@ using Org.BouncyCastle.Utilities.Encoders;
 using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.NhanVien;
+using QuanLyKho_CSharp.GUI.SanPham;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
@@ -23,9 +25,23 @@ namespace QuanLyKho_CSharp.GUI
     {
         private SanPhamBUS spBUS = new SanPhamBUS();
         private BindingList<SanPhamDTO> listSP;
+
         public SanPhamGUI()
         {
+            
+
             InitializeComponent();
+            ConfigureDataGridView();
+
+            listSP = spBUS.getListSP();
+            
+
+            // Gọi setup ngay trong constructor thay vì đợi Load event
+            SetupColumnsAndLoadData();
+        }
+
+        private void ConfigureDataGridView()
+        {
             dgvSanPham.ClearSelection();
             dgvSanPham.RowHeadersVisible = false;
             dgvSanPham.AllowUserToResizeRows = false;
@@ -36,89 +52,122 @@ namespace QuanLyKho_CSharp.GUI
             dgvSanPham.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvSanPham.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            listSP = spBUS.getListSP();
-            dgvSanPham.CellPainting += new DataGridViewCellPaintingEventHandler(dgvSanPham_CellPainting);
+            // Đăng ký events
+            dgvSanPham.CellPainting += dgvSanPham_CellPainting;
+            dgvSanPham.CellMouseClick += dgvSanPham_CellMouseClick;
+        }
+
+        private void SetupColumnsAndLoadData()
+        {
+           
+
+            try
+            {
+                // Clear existing columns first
+                dgvSanPham.Columns.Clear();
+
+                dgvSanPham.Columns.Add("MaSP", "Mã SP");
+                dgvSanPham.Columns["MaSP"].Width = 120;
+
+                dgvSanPham.Columns.Add("TenSP", "Tên sản phẩm");
+                dgvSanPham.Columns["TenSP"].Width = 220;
+
+                // Cột ảnh 
+                DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
+                imgCol.Name = "HinhAnh";
+                imgCol.HeaderText = "Ảnh";
+                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                imgCol.Width = 130;
+                dgvSanPham.Columns.Add(imgCol);
+
+                dgvSanPham.RowTemplate.Height = 40;
+
+                dgvSanPham.Columns.Add("SoLuong", "Số lượng");
+                dgvSanPham.Columns["SoLuong"].Width = 100;
+
+                dgvSanPham.Columns.Add("Gia", "Đơn giá");
+                dgvSanPham.Columns["Gia"].Width = 120;
+
+                dgvSanPham.Columns.Add("Machatlieu", "Chất liệu");
+                dgvSanPham.Columns["Machatlieu"].Width = 100;
+
+                dgvSanPham.Columns.Add("Loai", "Loại");
+                dgvSanPham.Columns["Loai"].Width = 119;
+
+                dgvSanPham.Columns.Add("Khuvuc", "Khu vực");
+                dgvSanPham.Columns["Khuvuc"].Width = 145;
+
+                dgvSanPham.Columns.Add("Size", "Size");
+                dgvSanPham.Columns["Size"].Width = 120;
+
+                // Thêm cột hành động
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                btn.HeaderText = "Hành động";
+                btn.Name = "Actions";
+                dgvSanPham.Columns.Add(btn);
+                dgvSanPham.Columns["Actions"].Width = 160;
+
+               
+                LoadDataToGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi trong SetupColumnsAndLoadData: {ex.Message}", "Debug Error");
+            }
         }
 
         private void SanPhamGUI_Load(object sender, EventArgs e)
         {
-            dgvSanPham.Columns.Add("MaSP", "Mã SP");
-            dgvSanPham.Columns["MaSP"].Width = 120;
+            
 
-            dgvSanPham.Columns.Add("TenSP", "Tên sản phẩm");
-            dgvSanPham.Columns["TenSP"].Width = 220;
-
-            // Cột ảnh 
-            DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
-            imgCol.Name = "HinhAnh";
-            imgCol.HeaderText = "Ảnh";
-            imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            imgCol.Width = 130;
-            dgvSanPham.Columns.Add(imgCol);
-
-            dgvSanPham.RowTemplate.Height = 40;
-
-            dgvSanPham.Columns.Add("SoLuong", "Số lượng");
-            dgvSanPham.Columns["SoLuong"].Width = 50;
-
-            dgvSanPham.Columns.Add("Gia", "Đơn giá");
-            dgvSanPham.Columns["Gia"].Width = 120;
-
-            dgvSanPham.Columns.Add("Machatlieu", "Chất liệu");
-            dgvSanPham.Columns["Machatlieu"].Width = 100;
-
-            dgvSanPham.Columns.Add("Loai", "Loại");
-            dgvSanPham.Columns["Loai"].Width = 120;
-
-            dgvSanPham.Columns.Add("Khuvuc", "Khu vực");
-            dgvSanPham.Columns["Khuvuc"].Width = 120;
-
-            dgvSanPham.Columns.Add("Size", "Size");
-            dgvSanPham.Columns["Size"].Width = 120;
-
-            // Thêm cột hành động
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.HeaderText = "Hành động";
-            btn.Name = "Actions";
-            dgvSanPham.Columns.Add(btn);
-            dgvSanPham.Columns["Actions"].Width = 160;
-
-            LoadDataToGrid();
-            string testIconPath = "images/icon/edit.png";
-            Image testIcon = LoadImageSafe(testIconPath);
-            MessageBox.Show(testIcon == Properties.Resources.no_image
-                ? $"Không thể tải icon: {testIconPath}"
-                : $"Tải icon thành công: {testIconPath}");
-
-
+            // Nếu chưa setup thì setup ở đây
+            if (dgvSanPham.Columns.Count == 0)
+            {
+                SetupColumnsAndLoadData();
+            }
         }
 
         private void LoadDataToGrid()
         {
-            var listSP = spBUS.getListSP();
-            dgvSanPham.Rows.Clear();
-            foreach (SanPhamDTO sp in listSP)
+            try
             {
-                Image img = null;
-                if (!string.IsNullOrEmpty(sp.Hinhanh) && File.Exists(sp.Hinhanh))
+                // Always fetch the latest data from the database
+                listSP = spBUS.getListSP();
+
+                dgvSanPham.Rows.Clear();
+
+                if (listSP == null || listSP.Count == 0)
                 {
-                    img = LoadImageSafe(sp.Hinhanh);
+                    MessageBox.Show("Không có dữ liệu sản phẩm để hiển thị.", "Debug - No Data");
+                    return;
                 }
-                dgvSanPham.Rows.Add(
-                    sp.Masp,
-                    sp.Tensp,
-                    img,
-                    sp.Soluong,
-                    sp.Dongia,
-                    sp.Machatlieu,
-                    sp.Maloai,
-                    sp.Makhuvuc,
-                    sp.Masize
-                );
+
+                foreach (SanPhamDTO sp in listSP)
+                {
+                    Image img = LoadImageSafe(sp.Hinhanh);
+
+                    dgvSanPham.Rows.Add(
+                        sp.Masp,
+                        sp.Tensp,
+                        img,
+                        sp.Soluong,
+                        sp.Dongia,
+                        sp.Machatlieu,
+                        sp.Maloai,
+                        sp.Makhuvuc,
+                        sp.Masize
+                    );
+                }
+
+                dgvSanPham.ClearSelection();
             }
-            dgvSanPham.ClearSelection();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi trong LoadDataToGrid: {ex.Message}\n{ex.StackTrace}", "Debug Error");
+            }
         }
 
+        // Giữ nguyên tất cả methods khác
         private Image LoadImageSafe(string relativePath)
         {
             try
@@ -126,16 +175,13 @@ namespace QuanLyKho_CSharp.GUI
                 if (string.IsNullOrEmpty(relativePath))
                 {
                     Console.WriteLine("Đường dẫn rỗng, trả về ảnh mặc định.");
-                    return Properties.Resources.no_image; // Đưa 1 ảnh mặc định vào 
+                    return Properties.Resources.no_image;
                 }
 
-                // Ghép đường dẫn tương đối
                 string path = Path.Combine(Application.StartupPath, relativePath.Replace("/", "\\"));
 
-                // Kiểm tra file tồn tại
                 if (!File.Exists(path))
                 {
-                    // Thử tìm trong thư mục gốc dự án
                     string alt = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\", relativePath.Replace("/", "\\"));
                     alt = Path.GetFullPath(alt);
                     if (File.Exists(alt))
@@ -149,12 +195,11 @@ namespace QuanLyKho_CSharp.GUI
                     }
                 }
 
-                // Đọc bytes và tạo Image từ MemoryStream
                 byte[] bytes = File.ReadAllBytes(path);
                 using (var ms = new MemoryStream(bytes))
                 {
                     Image im = Image.FromStream(ms);
-                    return new Bitmap(im); // Clone để không bị dispose khi ms đóng
+                    return new Bitmap(im);
                 }
             }
             catch (Exception ex)
@@ -164,11 +209,13 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
+       
+
         private void dgvSanPham_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex == dgvSanPham.Columns["Actions"].Index && e.RowIndex >= 0)
             {
-                e.PaintBackground(e.CellBounds, true); // Vẽ nền cell mặc định
+                e.PaintBackground(e.CellBounds, true);
 
                 int padding = 5;
                 int totalButtons = 3;
@@ -177,14 +224,12 @@ namespace QuanLyKho_CSharp.GUI
                 Rectangle btnXoa = new Rectangle(btnSua.Right + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
                 Rectangle btnXem = new Rectangle(btnXoa.Right + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
 
-                // Vẽ các nút
                 ButtonRenderer.DrawButton(e.Graphics, btnXem, "", this.Font, false, PushButtonState.Normal);
                 ButtonRenderer.DrawButton(e.Graphics, btnSua, "", this.Font, false, PushButtonState.Normal);
                 ButtonRenderer.DrawButton(e.Graphics, btnXoa, "", this.Font, false, PushButtonState.Normal);
 
                 try
                 {
-                    // Tải hình ảnh bằng LoadImageSafe
                     Image imgSua = LoadImageSafe("images/icon/edit.png");
                     Image imgXoa = LoadImageSafe("images/icon/remove.png");
                     Image imgXem = LoadImageSafe("images/icon/detail.png");
@@ -192,7 +237,6 @@ namespace QuanLyKho_CSharp.GUI
                     int targetWidth = 24;
                     int targetHeight = 24;
 
-                    // Vẽ hình ảnh, căn giữa nút
                     e.Graphics.DrawImage(imgSua, new Rectangle(
                         btnSua.Left + (btnSua.Width - targetWidth) / 2 + 3,
                         btnSua.Top + (btnSua.Height - targetHeight) / 2 + 3,
@@ -218,7 +262,7 @@ namespace QuanLyKho_CSharp.GUI
                     MessageBox.Show($"Lỗi khi tải hình ảnh: {ex.Message}");
                 }
 
-                e.Handled = true; // Ngăn DataGridView vẽ thêm
+                e.Handled = true;
             }
         }
 
@@ -230,9 +274,51 @@ namespace QuanLyKho_CSharp.GUI
                 int totalButtons = 3;
                 int buttonWidth = (dgvSanPham.Columns["Actions"].Width - padding * (totalButtons + 1)) / totalButtons;
                 int xRel = e.Location.X;
-                int masp = Convert.ToInt32(dgvSanPham.Rows[e.RowIndex].Cells["MaSP"].Value);
-                SanPhamDTO sp = spBUS.getSPById(masp);
+                int masp = int.Parse(dgvSanPham.Rows[e.RowIndex].Cells["masp"].Value.ToString());
+                SanPhamDTO spduocchon = spBUS.getSPById(masp);
+                if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
+                {
+                    UpdateSanPhamForm updateSanPham = new UpdateSanPhamForm(spduocchon);
+                    updateSanPham.ShowDialog();
+                    if (updateSanPham.DialogResult == DialogResult.OK)
+                    {
+                        LoadDataToGrid();
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
+
+                }
+                else if (xRel < padding * 2 + buttonWidth * 2)
+                {
+                    //DeleteNhanVienForm deleteNV = new DeleteNhanVienForm(spduocchon);
+                    //deleteNV.ShowDialog();
+                    //if (deleteNV.DialogResult == DialogResult.OK)
+                    //{
+
+                    //    DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                    //    tb.Show();
+                    //    LoadDataToGrid();
+                    //}
+                }
+                else
+                {
+                   
+
+
+                    DetailSanPhamForm detailSanPham = new DetailSanPhamForm(spduocchon);
+                    detailSanPham.ShowDialog();
+                    if (detailSanPham.DialogResult == DialogResult.OK)
+                    {
+                        LoadDataToGrid();
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
+
+
+                }
+
             }
+        
         }
     }
 }

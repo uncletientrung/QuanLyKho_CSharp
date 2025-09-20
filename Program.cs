@@ -1,4 +1,6 @@
 ﻿using QuanLyKho_CSharp.GUI;
+using QuanLyKho_CSharp.GUI.NhomQuyen;
+using QuanLyKho_CSharp.GUI.PhanQuyen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,27 +19,27 @@ namespace QuanLyKho_CSharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmMain()); // Lười đăng nhập thì xài cái này
-            while (true)
-            {
-                Login loginForm = new Login();
-                if (loginForm.ShowDialog() == DialogResult.OK)
-                {
-                    frmMain mainForm = new frmMain();
-                    if (mainForm.ShowDialog() == DialogResult.Abort)
-                    { 
-                        continue;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    break; // nếu thoát ở màn hình Login thì break luôn
-                }
-            }
+            Application.Run(new frmMain()); // Lười đăng nhập thì xài cái này
+            //while (true)
+            //{
+            //    Login loginForm = new Login();
+            //    if (loginForm.ShowDialog() == DialogResult.OK)
+            //    {
+            //        frmMain mainForm = new frmMain();
+            //        if (mainForm.ShowDialog() == DialogResult.Abort)
+            //        { 
+            //            continue;
+            //        }
+            //        else
+            //        {
+            //            break;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        break; // nếu thoát ở màn hình Login thì break luôn
+            //    }
+            //}
         }
     }
 }
