@@ -115,14 +115,17 @@
     <Compile Include="BUS\SanPhamBUS.cs" />
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
+    <Compile Include="DAO\ChiTietHoanHangDAO.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
     <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
     <Compile Include="DAO\NhomQuyenDAO.cs" />
+    <Compile Include="DAO\PhieuHoanHangDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DTO\ChatLieuDTO.cs" />
+    <Compile Include="DTO\ChiTietHoanHangDTO.cs" />
     <Compile Include="DTO\ChiTietKiemKe.cs" />
     <Compile Include="DTO\ChiTietPhieuNhapDTO.cs" />
     <Compile Include="DTO\ChiTietPhieuXuat.cs" />
@@ -134,6 +137,7 @@
     <Compile Include="DTO\NhanVienDTO.cs" />
     <Compile Include="DTO\NhomQuyenDTO.cs" />
     <Compile Include="DTO\PhieuDTO.cs" />
+    <Compile Include="DTO\PhieuHoanHangDTO.cs" />
     <Compile Include="DTO\PhieuKiemKeDTO.cs" />
     <Compile Include="DTO\PhieuNhapDTO.cs" />
     <Compile Include="DTO\PhieuXuatDTO.cs" />
@@ -170,6 +174,18 @@
     </Compile>
     <Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KiemKe\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemKe\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KiemKe\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemKe\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
       <SubType>Form</SubType>
@@ -264,8 +280,14 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\HoanHang\LuaChonSPHoanHang.resx">
+      <DependentUpon>LuaChonSPHoanHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KiemKe\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
       <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
