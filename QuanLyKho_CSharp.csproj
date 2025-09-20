@@ -175,6 +175,7 @@
     <Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="GUI\KiemKe\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +187,37 @@
     </Compile>
     <Compile Include="GUI\KiemKe\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+=======
+    <Compile Include="GUI\NhomQuyen\DetailNhomQuyenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhomQuyen\DetailNhomQuyenForm.Designer.cs">
+      <DependentUpon>DetailNhomQuyenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhomQuyen\AddNhomQuyenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhomQuyen\AddNhomQuyenForm.Designer.cs">
+      <DependentUpon>AddNhomQuyenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhomQuyen\NhomQuyenGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhomQuyen\NhomQuyenGUI.Designer.cs">
+      <DependentUpon>NhomQuyenGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SanPham\DetailSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SanPham\DetailSanPhamForm.Designer.cs">
+      <DependentUpon>DetailSanPhamForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SanPham\UpdateSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SanPham\UpdateSanPhamForm.Designer.cs">
+      <DependentUpon>UpdateSanPhamForm.cs</DependentUpon>
+>>>>>>> f71fcab5df2a5f05281fb2e9a9e1a35684bb5cc7
     </Compile>
     <Compile Include="GUI\TaiKhoan\AddTaiKhoanForm.cs">
       <SubType>Form</SubType>
@@ -286,8 +318,22 @@
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="GUI\KiemKe\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="GUI\NhomQuyen\AddNhomQuyenForm.resx">
+      <DependentUpon>AddNhomQuyenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhomQuyen\NhomQuyenGUI.resx">
+      <DependentUpon>NhomQuyenGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SanPham\DetailSanPhamForm.resx">
+      <DependentUpon>DetailSanPhamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SanPham\UpdateSanPhamForm.resx">
+      <DependentUpon>UpdateSanPhamForm.cs</DependentUpon>
+>>>>>>> f71fcab5df2a5f05281fb2e9a9e1a35684bb5cc7
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\TaiKhoan\AddTaiKhoanForm.resx">
       <DependentUpon>AddTaiKhoanForm.cs</DependentUpon>
@@ -374,6 +420,7 @@
     <Content Include="images\icon\information.png" />
     <Content Include="images\icon\inventory.png" />
     <Content Include="images\icon\invoice.png" />
+    <Content Include="images\icon\keys_security_door_key_passkey_password_icon_256486.png" />
     <Content Include="images\icon\password.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -386,8 +433,15 @@
     <Content Include="images\icon\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\stocks\ao1.png" />
-    <Content Include="images\stocks\ao2.png" />
+    <Content Include="images\stocks\ao1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\ao2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\ao3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\ui.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
