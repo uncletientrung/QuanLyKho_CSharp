@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿using MySqlX.XDevAPI.Common;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,13 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+        public BindingList<ChiTietQuyenDTO> getListCTNQByIdNQ(int manhomquyen)
+        {
+            BindingList<ChiTietQuyenDTO> result = new BindingList<ChiTietQuyenDTO>();
+            result= ctnqDAO.SelectAll(manhomquyen);
+            return result;
+        }
+        
 
     }
 }
