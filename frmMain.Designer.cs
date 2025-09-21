@@ -206,6 +206,7 @@ namespace QuanLyKho_CSharp
             this.btnKiemKe.TabIndex = 9;
             this.btnKiemKe.Text = "Kiểm kê";
             this.btnKiemKe.UseVisualStyleBackColor = true;
+            this.btnKiemKe.Click += new System.EventHandler(this.btnKiemKe_Click);
             // 
             // btnPhieuXuat
             // 
@@ -219,6 +220,7 @@ namespace QuanLyKho_CSharp
             this.btnPhieuXuat.TabIndex = 5;
             this.btnPhieuXuat.Text = "Xuất hàng";
             this.btnPhieuXuat.UseVisualStyleBackColor = true;
+            this.btnPhieuXuat.Click += new System.EventHandler(this.btnPhieuXuat_Click);
             // 
             // btnNhanVien
             // 

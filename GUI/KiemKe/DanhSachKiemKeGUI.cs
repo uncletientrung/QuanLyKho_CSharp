@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyKho_CSharp.GUI.KiemKe
 {
-    public partial class Form1 : Form
+    public partial class DanhSachKiemKeGUI : Form
     {
-        public Form1()
+        public DanhSachKiemKeGUI()
         {
             InitializeComponent();
         }
@@ -30,6 +30,18 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txSearch.Text != "Nhập mã sản phẩm, ngày nhập hoặc tên sản phẩm để tìm")
+            {
+            }
         }
     }
 }
