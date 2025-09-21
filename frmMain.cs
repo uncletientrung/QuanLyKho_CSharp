@@ -2,6 +2,7 @@
 using QuanLyKho_CSharp.GUI.KhachHang;
 using QuanLyKho_CSharp.GUI.TaiKhoan;
 using QuanLyKho_CSharp.GUI.PhanQuyen;
+using QuanLyKho_CSharp.GUI.PhieuNhap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -100,6 +101,11 @@ namespace QuanLyKho_CSharp
             OpenChildForm(new Test_Connection(), btnTrangChu);
         }
 
+        private void btnPhieuNhap_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new PhieuNhapGUI(), btnPhieuNhap);
+        }
+
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
             OpenChildForm(new KhachHangGUI(), btnKhachHang);
@@ -128,6 +134,11 @@ namespace QuanLyKho_CSharp
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
             OpenChildForm(new NhomQuyenGUI(), btnPhanQuyen);
+        }
+
+        private void pnlBody_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
