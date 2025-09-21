@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿using MySqlX.XDevAPI.Common;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,26 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+        public BindingList<ChiTietQuyenDTO> getListCTNQByIdNQ(int manhomquyen)
+        {
+            BindingList<ChiTietQuyenDTO> result = new BindingList<ChiTietQuyenDTO>();
+            result= ctnqDAO.SelectAll(manhomquyen);
+            return result;
+        }
+        public Boolean DeleteNhomQuyen(int manhomquyen)
+        {
+            Boolean result= nqDAO.Delete(manhomquyen) !=0;
+            if(result) // Xoa được trong db rồi xóa trong list
+            {
+                NhomQuyenDTO nqXoa = this.getNQById(manhomquyen);
+                listNQ.Remove(nqXoa);
+                // Xóa hẳn chi tiết
+                ctnqDAO.Delete(manhomquyen);
+            }
+            return result;
+        }
+
+        
 
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +32,20 @@ namespace QuanLyKho_CSharp.BUS
                 if (item.Tenchucnang.Equals(nameCN))
                 {
                     result = item.Machucnang;
+                    break;
+                }
+            }
+            return result;
+        }
+        public string getNameById(int id)
+        {
+            string result = "";
+            listDMCN = dmcnDAO.SelectAll();
+            foreach (DanhMucChucNangDTO item in listDMCN)
+            {
+                if (item.Machucnang == id)
+                {
+                    result = item.Tenchucnang;
                     break;
                 }
             }

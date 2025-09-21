@@ -1,6 +1,7 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.GUI.NhomQuyen;
+using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,6 +61,12 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         {
             AddNhomQuyenForm addNhomQuyenForm = new AddNhomQuyenForm();
             addNhomQuyenForm.ShowDialog();
+            if(addNhomQuyenForm.DialogResult== DialogResult.OK)
+            {
+                refreshDataGridView(nqBUS.getListNQ());
+                AddSuccessNotification tb= new AddSuccessNotification();
+                tb.Show();
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -148,10 +155,11 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         {
             if (e.ColumnIndex == DGVPhanQuyen.Columns["Actions"].Index && e.RowIndex >= 0)
             {
+               
                 int buttonWidth = 50;
                 int padding = 5;
                 int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
-                int manhomquyen = int.Parse(DGVPhanQuyen.Rows[e.RowIndex].Cells["manhomquyen"].Value.ToString());
+                int manhomquyen = int.Parse(DGVPhanQuyen.Rows[e.RowIndex].Cells["MaNQ"].Value.ToString());
                 NhomQuyenDTO NhomQuyenDuocChon = nqBUS.getNQById(manhomquyen);
                 if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
                 {
@@ -167,19 +175,20 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
                 }
                 else if (xRel < padding * 2 + buttonWidth * 2)
                 {
-                    //DeleteTaiKhoanForm deleteNV = new DeleteTaiKhoanForm(TaiKhoanDuocChon);
-                    //deleteNV.ShowDialog();
-                    //if (deleteNV.DialogResult == DialogResult.OK)
-                    //{
-                    //    refreshDataGridView(tkBUS.getListTK());
-                    //    DeleteSuccessNotification tb = new DeleteSuccessNotification();
-                    //    tb.Show();
-                    //}
+                    DeleteNhomQuyenForm deleteNV = new DeleteNhomQuyenForm(NhomQuyenDuocChon);
+                    deleteNV.ShowDialog();
+                    if (deleteNV.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView(nqBUS.getListNQ());
+                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                        tb.Show();
+                    }
                 }
                 else
                 {
-                    //DetailTaiKhoanForm detailNV = new DetailTaiKhoanForm(TaiKhoanDuocChon);
-                    //detailNV.ShowDialog();
+                    DetailNhomQuyenForm detailNV = new DetailNhomQuyenForm(NhomQuyenDuocChon);
+                    detailNV.ShowDialog();
+
 
                 }
 

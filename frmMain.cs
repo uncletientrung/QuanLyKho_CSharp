@@ -1,8 +1,12 @@
 ﻿using QuanLyKho_CSharp.GUI;
 using QuanLyKho_CSharp.GUI.KhachHang;
-using QuanLyKho_CSharp.GUI.TaiKhoan;
+using QuanLyKho_CSharp.GUI.KiemKe;
 using QuanLyKho_CSharp.GUI.PhanQuyen;
+<<<<<<< HEAD
 using QuanLyKho_CSharp.GUI.PhieuNhap;
+=======
+using QuanLyKho_CSharp.GUI.TaiKhoan;
+>>>>>>> e780fefde8ac76c6f2aa4ff094f63956d820166e
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -136,9 +140,21 @@ namespace QuanLyKho_CSharp
             OpenChildForm(new NhomQuyenGUI(), btnPhanQuyen);
         }
 
+<<<<<<< HEAD
         private void pnlBody_Paint(object sender, PaintEventArgs e)
         {
 
         }
+=======
+        private void btnPhieuXuat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnKiemKe_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DanhSachKiemKeGUI(), btnKiemKe);
+        }
+>>>>>>> e780fefde8ac76c6f2aa4ff094f63956d820166e
     }
 }

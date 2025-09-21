@@ -120,6 +120,7 @@
     <Compile Include="DAO\ChiTietHoanHangDAO.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
     <Compile Include="DAO\ChiTietQuyenDAO.cs" />
+    <Compile Include="DAO\KiemKeDAO.cs" />
     <Compile Include="DAO\DanhMucChucNangDAO.cs" />
     <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
@@ -181,11 +182,19 @@
     <Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="GUI\KiemKe\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\KiemKe\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+=======
+    <Compile Include="GUI\KiemKe\DanhSachKiemKeGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemKe\DanhSachKiemKeGUI.Designer.cs">
+      <DependentUpon>DanhSachKiemKeGUI.cs</DependentUpon>
+>>>>>>> e780fefde8ac76c6f2aa4ff094f63956d820166e
     </Compile>
     <Compile Include="GUI\KiemKe\Form2.cs">
       <SubType>Form</SubType>
@@ -193,6 +202,15 @@
     <Compile Include="GUI\KiemKe\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="GUI\NhomQuyen\DeleteNhomQuyenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhomQuyen\DeleteNhomQuyenForm.Designer.cs">
+      <DependentUpon>DeleteNhomQuyenForm.cs</DependentUpon>
+    </Compile>
+>>>>>>> e780fefde8ac76c6f2aa4ff094f63956d820166e
     <Compile Include="GUI\NhomQuyen\DetailNhomQuyenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,12 +229,15 @@
     <Compile Include="GUI\NhomQuyen\NhomQuyenGUI.Designer.cs">
       <DependentUpon>NhomQuyenGUI.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="GUI\PhieuNhap\PhieuNhapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\PhieuNhap\PhieuNhapGUI.Designer.cs">
       <DependentUpon>PhieuNhapGUI.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> e780fefde8ac76c6f2aa4ff094f63956d820166e
     <Compile Include="GUI\SanPham\DetailSanPhamForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,11 +349,19 @@
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="GUI\KiemKe\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="GUI\KiemKe\DanhSachKiemKeGUI.resx">
+      <DependentUpon>DanhSachKiemKeGUI.cs</DependentUpon>
+>>>>>>> e780fefde8ac76c6f2aa4ff094f63956d820166e
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhomQuyen\AddNhomQuyenForm.resx">
       <DependentUpon>AddNhomQuyenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhomQuyen\DeleteNhomQuyenForm.resx">
+      <DependentUpon>DeleteNhomQuyenForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhomQuyen\DetailNhomQuyenForm.resx">
       <DependentUpon>DetailNhomQuyenForm.cs</DependentUpon>

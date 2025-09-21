@@ -72,10 +72,8 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             DGVAddNhomQuyen.Columns.Add(chkThemNhanh);
             DGVAddNhomQuyen.Columns["Fast"].Width = 120;
 
-            DGVAddNhomQuyen.RowHeadersWidth = 120;
+            DGVAddNhomQuyen.RowHeadersWidth = 120; 
             DGVAddNhomQuyen.RowTemplate.Height = 30;
-
-
 
         }
  

@@ -63,5 +63,15 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
             {
             }
         }
+
+        private void KhachHangGUI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DGVNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
