@@ -181,10 +181,10 @@
 		<Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
 			<DependentUpon>KhachHangGUI.cs</DependentUpon>
 		</Compile>
-		<Compile Include="GUI\KiemKe\Form1.cs">
+		<Compile Include="GUI\KiemKe\DanhSachKiemKeGUI.cs">
 			<SubType>Form</SubType>
 		</Compile>
-		<Compile Include="GUI\KiemKe\Form1.Designer.cs">
+		<Compile Include="GUI\KiemKe\DanhSachKiemKeGUI.Designer.cs">
 			<DependentUpon>Form1.cs</DependentUpon>
 		</Compile>
 		<Compile Include="GUI\KiemKe\Form2.cs">
@@ -328,8 +328,8 @@
 		<EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
 			<DependentUpon>KhachHangGUI.cs</DependentUpon>
 		</EmbeddedResource>
-		<EmbeddedResource Include="GUI\KiemKe\Form1.resx">
-			<DependentUpon>Form1.cs</DependentUpon>
+		 <EmbeddedResource Include="GUI\KiemKe\Form1.resx">
+			 <DependentUpon>DanhSachKiemKeGUI.cs</DependentUpon>
 		</EmbeddedResource>
 		<EmbeddedResource Include="GUI\NhomQuyen\AddNhomQuyenForm.resx">
 			<DependentUpon>AddNhomQuyenForm.cs</DependentUpon>
