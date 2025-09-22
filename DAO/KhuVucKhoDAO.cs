@@ -43,7 +43,7 @@ namespace QuanLyKho_CSharp.DAO
 
         public BindingList<KhuVucKhoDTO> SelectAll()
         {
-            BindingList<KhuVucKhoDTO> result = new BindingList<KhuVucKhoDTO>;
+            BindingList<KhuVucKhoDTO> result = new BindingList<KhuVucKhoDTO>();
             try {
                 string sql = "select * from khuvuckho";
                 //mo ket noi 
@@ -79,7 +79,5 @@ namespace QuanLyKho_CSharp.DAO
         {
             throw new NotImplementedException();
         }
-
-        public 
     }
 }

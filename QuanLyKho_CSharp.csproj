@@ -194,6 +194,12 @@
     <Compile Include="GUI\KiemKe\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+	<Compile Include="GUI\NhomQuyen\DeleteNhomQuyenForm.cs">
+		<SubType>Form</SubType>
+	</Compile>
+	<Compile Include="GUI\NhomQuyen\DeleteNhomQuyenForm.Designer.cs">
+		<DependentUpon>DeleteNhomQuyenForm.cs</DependentUpon>
+	</Compile>  
     <Compile Include="GUI\NhomQuyen\DetailNhomQuyenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +338,9 @@
     <EmbeddedResource Include="GUI\KiemKe\DanhSachKiemKeGUI.resx">
       <DependentUpon>DanhSachKiemKeGUI.cs</DependentUpon>
     </EmbeddedResource>
+	<EmbeddedResource Include="GUI\NhomQuyen\DeleteNhomQuyenForm.resx">
+		<DependentUpon>DeleteNhomQuyenForm.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="GUI\NhomQuyen\AddNhomQuyenForm.resx">
       <DependentUpon>AddNhomQuyenForm.cs</DependentUpon>
     </EmbeddedResource>
