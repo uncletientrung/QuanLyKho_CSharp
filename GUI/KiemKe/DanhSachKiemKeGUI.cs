@@ -17,17 +17,22 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void lbFormName_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnExcel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -39,9 +44,12 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         private void txSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txSearch.Text != "Nhập mã sản phẩm, ngày nhập hoặc tên sản phẩm để tìm")
-            {
-            }
+            if (txSearch.Text != "Nhập mã phiếu, tên hàng hoá để tìm kiếm"){}
+        }
+
+        private void DanhSachKiemKeGUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
