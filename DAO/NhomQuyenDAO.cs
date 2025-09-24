@@ -121,8 +121,8 @@ namespace QuanLyKho_CSharp.DAO
         public int Update(NhomQuyenDTO t)
         {
             int result = 0;
-            string sql = $"UPDATE nhomquyen Set tennhomquyen= '{t.Tennhomquyen}', trangthai= {t.Trangthai}," +
-                   $"WHERE manv={t.Manhomquyen}";
+           string sql = $"UPDATE nhomquyen SET tennhomquyen = '{t.Tennhomquyen}', trangthai = {t.Trangthai} " +
+             $"WHERE manhomquyen = {t.Manhomquyen}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }

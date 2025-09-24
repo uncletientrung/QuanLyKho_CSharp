@@ -96,9 +96,14 @@ namespace QuanLyKho_CSharp.DAO
             return result;
         }
 
-        public int Update(BindingList<ChiTietQuyenDTO> t, int ma)
+        public int Update(BindingList<ChiTietQuyenDTO> listCTNQ, int maNhomQuyen)
         {
-            throw new NotImplementedException();
+            int result = this.Delete(maNhomQuyen);
+            if(result != 0)
+            {
+                result = this.Insert(listCTNQ);
+            }
+            return result;
         }
     }
 }

@@ -163,14 +163,14 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
                 NhomQuyenDTO NhomQuyenDuocChon = nqBUS.getNQById(manhomquyen);
                 if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
                 {
-                    //UpdateTaiKhoanForm updateNV = new UpdateTaiKhoanForm(TaiKhoanDuocChon);
-                    //updateNV.ShowDialog();
-                    //if (updateNV.DialogResult == DialogResult.OK)
-                    //{
-                    //    refreshDataGridView(tkBUS.getListTK());
-                    //    UpdateSuccessNotification tb = new UpdateSuccessNotification();
-                    //    tb.Show();
-                    //}
+                    UpdateNhomQuyenForm updateNV = new UpdateNhomQuyenForm(NhomQuyenDuocChon);
+                    updateNV.ShowDialog();
+                    if (updateNV.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView(nqBUS.getListNQ());
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
 
                 }
                 else if (xRel < padding * 2 + buttonWidth * 2)

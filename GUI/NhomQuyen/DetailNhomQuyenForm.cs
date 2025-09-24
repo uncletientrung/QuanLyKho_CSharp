@@ -140,9 +140,9 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                     foreach( ChiTietQuyenDTO ctq in ListCT)
                     {
                         string nameChucNang = dmncBUS.getNameById(ctq.Machucnang).ToLower();
-                        string tagColumn= DGVDetailNhomQuyen.Rows[i].Tag.ToString().ToLower();
+                        string tagRow= DGVDetailNhomQuyen.Rows[i].Tag.ToString().ToLower();
                         string headerCRUD = DGVDetailNhomQuyen.Columns[j].HeaderText.ToLower().ToLower();
-                        if(nameChucNang.Equals(tagColumn) && 
+                        if(nameChucNang.Equals(tagRow) && 
                            ctq.Hanhdong.ToLower().Equals(headerCRUD)) // Nếu chi tiết = hanhdong 
                         {
                             DGVDetailNhomQuyen.Rows[i].Cells[j].Value = true;

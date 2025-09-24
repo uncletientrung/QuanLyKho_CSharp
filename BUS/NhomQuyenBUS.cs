@@ -54,13 +54,15 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+
+        // Lấy chi tiết quyền bằng mã nhóm quyền
         public BindingList<ChiTietQuyenDTO> getListCTNQByIdNQ(int manhomquyen)
         {
             BindingList<ChiTietQuyenDTO> result = new BindingList<ChiTietQuyenDTO>();
             result= ctnqDAO.SelectAll(manhomquyen);
             return result;
         }
-        public Boolean DeleteNhomQuyen(int manhomquyen)
+        public Boolean DeleteNhomQuyen(int manhomquyen) 
         {
             Boolean result= nqDAO.Delete(manhomquyen) !=0;
             if(result) // Xoa được trong db rồi xóa trong list
@@ -70,6 +72,23 @@ namespace QuanLyKho_CSharp.BUS
                 // Xóa hẳn chi tiết
                 ctnqDAO.Delete(manhomquyen);
             }
+            return result;
+        }
+        // Sửa nhóm quyền
+        public Boolean UpdateNhomQuyen(NhomQuyenDTO NQ, BindingList<ChiTietQuyenDTO> listCTQ)
+        {
+            Boolean result = nqDAO.Update(NQ) != 0;
+            if(result) // sửa trên database được thì sửa vào list rồi sửa chi tiết
+            {
+                NhomQuyenDTO nqCheck =listNQ.FirstOrDefault(x => x.Manhomquyen == NQ.Manhomquyen);
+                if(nqCheck != null)
+                {
+                    nqCheck.Tennhomquyen = NQ.Tennhomquyen;
+                    nqCheck.Trangthai= NQ.Trangthai;
+                    // Sửa chi tiết trong database
+                    ctnqDAO.Update(listCTQ, NQ.Manhomquyen);
+                }
+            }   
             return result;
         }
 
