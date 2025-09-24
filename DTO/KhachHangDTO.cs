@@ -62,5 +62,9 @@ namespace QuanLyKho_CSharp.DTO
             get { return trangthai; }
             set { trangthai = value; }
         }
+        override public string ToString()
+        {
+            return $"ID: {Makh}, Tên: {Tenkhachhang}, SĐT: {Sdt}, Email: {email} Ngày sinh: {Ngaysinh:dd/MM/yyyy}, Trạng thái: {Trangthai}";
+        }
     }
 }

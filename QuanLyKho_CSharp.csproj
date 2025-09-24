@@ -121,8 +121,8 @@
     <Compile Include="DAO\ChiTietInterface.cs" />
     <Compile Include="DAO\ChiTietQuyenDAO.cs" />
     <Compile Include="DAO\DanhMucChucNangDAO.cs" />
-    <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\KhuVucKhoDAO.cs" />
     <Compile Include="DAO\NhomQuyenDAO.cs" />
     <Compile Include="DAO\PhieuHoanHangDAO.cs" />

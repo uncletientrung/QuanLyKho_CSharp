@@ -1,8 +1,16 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI;
 using QuanLyKho_CSharp.Helper;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyKho_CSharp.DAO
@@ -13,46 +21,38 @@ namespace QuanLyKho_CSharp.DAO
         {
             return new KhachHangDAO();
         }
-
-        // Thêm khách hàng
-        public int Insert(KhachHangDTO kh)
+        public int Insert(KhachHangDTO t)
         {
             int result = 0;
-            string sql = $"INSERT INTO khachhang(tenkhachhang, email, ngaysinh, sdt, trangthai) " +
-                         $"VALUES ('{kh.Tenkhachhang}', '{kh.Email}', '{kh.Ngaysinh:yyyy-MM-dd}', '{kh.Sdt}', {kh.Trangthai})";
+            string sql = $"INSERT into khachhang(tenkhachhang, email, ngaysinh, sdt, trangthai) " +
+                    $"values ('{t.Tenkhachhang}', '{t.Email}','{t.Ngaysinh:yyyy-MM-dd}','{t.Sdt}',{t.Trangthai})";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
-
-        // Sửa khách hàng
-        public int Update(KhachHangDTO kh)
+        public int Update(KhachHangDTO t)
         {
             int result = 0;
-            string sql = $"UPDATE khachhang SET tenkhachhang='{kh.Tenkhachhang}', email='{kh.Email}', " +
-                         $"ngaysinh='{kh.Ngaysinh:yyyy-MM-dd}', sdt='{kh.Sdt}' " +
-                         $"WHERE makh={kh.Makh}";
+            string sql = $"UPDATE khachhang Set tenkhachhang= '{t.Tenkhachhang}', email= '{t.Email}'," +
+                   $" sdt='{t.Sdt}', ngaysinh='{t.Ngaysinh:yyyy-MM-dd}' WHERE makh={t.Makh}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
-
-        // Xóa (mềm) khách hàng
-        public int Delete(int makh)
+        public int Delete(int t)
         {
             int result = 0;
-            string sql = $"UPDATE khachhang SET trangthai=0 WHERE makh={makh}";
+            string sql = $"UPDATE khachhang Set trangthai= 0 WHERE makh={t}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
-
-        // Lấy tất cả khách hàng
         public BindingList<KhachHangDTO> SelectAll()
         {
             BindingList<KhachHangDTO> result = new BindingList<KhachHangDTO>();
             try
             {
                 string sql = "SELECT * FROM khachhang";
+                // Mở kết nối
                 ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn)) // conn phải public hoặc tạo getter
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -72,65 +72,68 @@ namespace QuanLyKho_CSharp.DAO
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi lấy danh sách khách hàng: " + ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
         }
-
-        // Lấy khách hàng theo ID
-        public KhachHangDTO SelectById(int makh)
+        
+        public KhachHangDTO SelectById(int t)
         {
-            KhachHangDTO kh = new KhachHangDTO();
+            KhachHangDTO result = new KhachHangDTO();
             try
             {
-                string sql = $"SELECT * FROM khachhang WHERE makh={makh}";
+                string sql = $"SELECT * FROM khachhang WHERE makh={t}";
+                // Mở kết nối
                 ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn)) // conn phải public hoặc tạo getter
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        kh.Makh = reader.GetInt32("makh");
-                        kh.Tenkhachhang = reader.GetString("tenkhachhang");
-                        kh.Email = reader.GetString("email");
-                        kh.Ngaysinh = reader.GetDateTime("ngaysinh");
-                        kh.Sdt = reader.GetString("sdt");
-                        kh.Trangthai = reader.GetInt32("trangthai");
+                        result = new KhachHangDTO
+                        {
+                            Makh = reader.GetInt32("makh"),
+                            Tenkhachhang = reader.GetString("tenkhachhang"),
+                            Email = reader.GetString("email"),
+                            Ngaysinh = reader.GetDateTime("ngaysinh"),
+                            Sdt = reader.GetString("sdt"),
+                            Trangthai = reader.GetInt32("trangthai")
+                        };
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi lấy khách hàng theo ID: " + ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return kh;
+            return result;
         }
-
-        // Lấy AUTO_INCREMENT tiếp theo
         public int GetAutoIncrement()
         {
             int result = 0;
             try
             {
-                string sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES " +
-                             "WHERE TABLE_SCHEMA = 'quanlikhoquanao' " +
-                             "AND TABLE_NAME = 'khachhang'";
-
+                string sql = "SELECT AUTO_INCREMENT " +
+                    "FROM information_schema.TABLES " +
+                    "WHERE TABLE_SCHEMA = 'quanlykho' " +
+                    "AND TABLE_NAME = 'khachhang';";
+                // Mở kết nối
                 ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn)) // conn phải public hoặc tạo getter
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    object value = cmd.ExecuteScalar();
-                    if (value != null && value != DBNull.Value)
+                    if (reader.Read())
                     {
-                        result = Convert.ToInt32(value);
+                        result = reader.GetInt32("AUTO_INCREMENT");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
         }
+
     }
 }

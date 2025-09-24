@@ -1,4 +1,24 @@
-﻿namespace QuanLyKho_CSharp.GUI.KhachHang
+﻿using Mysqlx.Crud;
+using Org.BouncyCastle.Utilities.Encoders;
+using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DAO;
+using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.KhachHang;
+using QuanLyKho_CSharp.Helper;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+
+namespace QuanLyKho_CSharp.GUI.KhachHang
 {
     partial class KhachHangGUI
     {
@@ -28,15 +48,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KhachHangGUI));
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.lbFormName = new System.Windows.Forms.Label();
-            this.DGVNhanVien = new System.Windows.Forms.DataGridView();
-            this.txSearch = new System.Windows.Forms.TextBox();
+            this.DGVKhachHang = new System.Windows.Forms.DataGridView();
+            this.khSearch = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -44,7 +64,7 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVKhachHang)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -89,61 +109,61 @@
             this.lbFormName.Name = "lbFormName";
             this.lbFormName.Size = new System.Drawing.Size(173, 35);
             this.lbFormName.TabIndex = 10;
-            this.lbFormName.Text = "Nhân viên";
+            this.lbFormName.Text = "Khách hàng";
             this.lbFormName.Click += new System.EventHandler(this.lbFormName_Click);
             // 
-            // DGVNhanVien
+            // DGVKhachHang
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGVNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVNhanVien.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DGVNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVNhanVien.Location = new System.Drawing.Point(0, 0);
-            this.DGVNhanVien.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DGVNhanVien.MultiSelect = false;
-            this.DGVNhanVien.Name = "DGVNhanVien";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVNhanVien.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DGVNhanVien.RowHeadersWidth = 51;
-            this.DGVNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVNhanVien.Size = new System.Drawing.Size(1156, 499);
-            this.DGVNhanVien.TabIndex = 5;
-            this.DGVNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVNhanVien_CellContentClick);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DGVKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVKhachHang.DefaultCellStyle = dataGridViewCellStyle5;
+            this.DGVKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVKhachHang.Location = new System.Drawing.Point(0, 0);
+            this.DGVKhachHang.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DGVKhachHang.MultiSelect = false;
+            this.DGVKhachHang.Name = "DGVKhachHang";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVKhachHang.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.DGVKhachHang.RowHeadersWidth = 51;
+            this.DGVKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVKhachHang.Size = new System.Drawing.Size(1156, 499);
+            this.DGVKhachHang.TabIndex = 5;
+            this.DGVKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVNhanVien_CellContentClick);
             // 
-            // txSearch
+            // khSearch
             // 
-            this.txSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txSearch.ForeColor = System.Drawing.Color.Black;
-            this.txSearch.Location = new System.Drawing.Point(70, 15);
-            this.txSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(462, 29);
-            this.txSearch.TabIndex = 6;
-            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged_1);
+            this.khSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.khSearch.ForeColor = System.Drawing.Color.Black;
+            this.khSearch.Location = new System.Drawing.Point(70, 15);
+            this.khSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.khSearch.Name = "khSearch";
+            this.khSearch.Size = new System.Drawing.Size(462, 29);
+            this.khSearch.TabIndex = 6;
+            this.khSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged_1);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.DGVNhanVien);
+            this.panel1.Controls.Add(this.DGVKhachHang);
             this.panel1.Location = new System.Drawing.Point(7, 120);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
@@ -170,7 +190,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.txSearch);
+            this.panel2.Controls.Add(this.khSearch);
             this.panel2.Location = new System.Drawing.Point(78, 3);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
@@ -235,7 +255,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "KhachHangGUI";
             this.Load += new System.EventHandler(this.KhachHangGUI_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVKhachHang)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -249,8 +269,8 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Label lbFormName;
-        private System.Windows.Forms.DataGridView DGVNhanVien;
-        private System.Windows.Forms.TextBox txSearch;
+        private System.Windows.Forms.DataGridView DGVKhachHang;
+        private System.Windows.Forms.TextBox khSearch;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
