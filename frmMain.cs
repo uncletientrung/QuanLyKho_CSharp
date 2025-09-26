@@ -4,6 +4,7 @@ using QuanLyKho_CSharp.GUI.KiemKe;
 using QuanLyKho_CSharp.GUI.PhanQuyen;
 using QuanLyKho_CSharp.GUI.PhieuNhap;
 using QuanLyKho_CSharp.GUI.TaiKhoan;
+using QuanLyKho_CSharp.GUI.ThongTin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -151,6 +152,12 @@ namespace QuanLyKho_CSharp
         private void btnKiemKe_Click(object sender, EventArgs e)
         {
             OpenChildForm(new DanhSachKiemKeGUI(), btnKiemKe);
+        }
+
+        private void btnThongTin_Click(object sender, EventArgs e)
+        {
+            try { OpenChildForm(new ThongTinGUI(), btnThongTin); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
     }

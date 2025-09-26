@@ -249,6 +249,7 @@ namespace QuanLyKho_CSharp
             this.btnThongTin.TabIndex = 6;
             this.btnThongTin.Text = "Thông tin";
             this.btnThongTin.UseVisualStyleBackColor = true;
+            this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
             // 
             // btnKhachHang
             // 
