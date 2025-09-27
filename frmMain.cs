@@ -27,6 +27,8 @@ namespace QuanLyKho_CSharp
         public frmMain()
         {
             InitializeComponent();
+
+            CustomizeDesign();
         }
 
         private void OpenChildForm(Form childForm, Button btn)
@@ -62,28 +64,53 @@ namespace QuanLyKho_CSharp
             childForm.BringToFront();
             childForm.Show();
 
-            // Reset màu các nút và tô sáng nút đang chọn
-            ResetButton();
-            btn.BackColor = Color.DodgerBlue;
-            btn.ForeColor = Color.White;
 
             pnlBody.PerformLayout();
             this.PerformLayout();
         }
 
-
-        private void ResetButton()
+        #region Xử lý ẩn hiện nút Menu phụ
+        private void CustomizeDesign() // Trạng thái tắt button ban đầu
         {
-            foreach (Control ctrl in tablelayoutLeftmenu.Controls)
-            {
-                if (ctrl is Button btn)
-                {
-                    btn.BackColor = Color.Gainsboro;
-                    btn.ForeColor = Color.Black;
-                }
-            }
+            panelQuanLyKho.Visible = false;
+            panelDanhMuc.Visible = false;
+            panelQuanLyHeThong.Visible = false;
         }
+        private void hideSideMenu() // Ẩn các nút còn lại khi ấn
+        {
+            if (panelQuanLyKho.Visible) panelQuanLyKho.Visible=false;
+            if (panelDanhMuc.Visible) panelDanhMuc.Visible=false;
+            if (panelQuanLyHeThong.Visible) panelQuanLyHeThong.Visible=false;
+        }
+        private void ShowSideMenu(Panel sidemenu)
+        {
+            if(sidemenu.Visible == false)
+            {
+                hideSideMenu();
+                sidemenu.Visible=true;
+            }
+            else
+            {
+                sidemenu.Visible = false ;
+            }
 
+        }
+        #endregion
+
+        #region 3 nút Menu phụ
+        private void btnQuanLyKho_Click(object sender, EventArgs e)
+        {
+            ShowSideMenu(panelQuanLyKho);
+        }
+        private void btnDanhMuc_Click(object sender, EventArgs e)
+        {
+            ShowSideMenu(panelDanhMuc);
+        }
+        private void btnQuanLyHeThong_Click(object sender, EventArgs e)
+        {
+            ShowSideMenu(panelQuanLyHeThong);
+        }
+        #endregion
         private void label1_Click(object sender, EventArgs e)
         {
         }
@@ -160,5 +187,11 @@ namespace QuanLyKho_CSharp
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
+        private void pnlLeftMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
     }
 }
