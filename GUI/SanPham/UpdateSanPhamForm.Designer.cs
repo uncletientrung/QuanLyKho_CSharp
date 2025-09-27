@@ -373,7 +373,7 @@
             // 
             // cboMaKhuVuc
             // 
-            this.cboMaKhuVuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMaKhuVuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaKhuVuc.FormattingEnabled = true;
             this.cboMaKhuVuc.Location = new System.Drawing.Point(161, 267);
             this.cboMaKhuVuc.Name = "cboMaKhuVuc";
