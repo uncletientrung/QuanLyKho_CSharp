@@ -28,144 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.btnNhaCungCap = new System.Windows.Forms.Button();
+            this.btnChatLieu = new System.Windows.Forms.Button();
+            this.btnLoai = new System.Windows.Forms.Button();
+            this.btnSize = new System.Windows.Forms.Button();
+            this.btnKhuVuc = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.btnKhuVuc, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnSize, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnLoai, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnChatLieu, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnNhaCungCap, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 681);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(51, 9);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label1.Location = new System.Drawing.Point(518, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 36);
-            this.label1.TabIndex = 2;
+            this.label1.Size = new System.Drawing.Size(228, 50);
+            this.label1.TabIndex = 0;
             this.label1.Text = "THÔNG TIN";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button5
+            // btnNhaCungCap
             // 
-            this.button5.BackColor = System.Drawing.Color.Pink;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(215, 340);
-            this.button5.Margin = new System.Windows.Forms.Padding(175, 20, 20, 20);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(250, 100);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Khu vực";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            this.button5.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button5.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.btnNhaCungCap.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNhaCungCap.AutoSize = true;
+            this.btnNhaCungCap.BackColor = System.Drawing.Color.LightPink;
+            this.btnNhaCungCap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNhaCungCap.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhaCungCap.Location = new System.Drawing.Point(356, 176);
+            this.btnNhaCungCap.Margin = new System.Windows.Forms.Padding(300, 20, 20, 20);
+            this.btnNhaCungCap.Name = "btnNhaCungCap";
+            this.btnNhaCungCap.Size = new System.Drawing.Size(200, 90);
+            this.btnNhaCungCap.TabIndex = 1;
+            this.btnNhaCungCap.Text = "Nhà cung cấp";
+            this.btnNhaCungCap.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnChatLieu
             // 
-            this.button4.BackColor = System.Drawing.Color.Pink;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.flowLayoutPanel1.SetFlowBreak(this.button4, true);
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(410, 200);
-            this.button4.Margin = new System.Windows.Forms.Padding(80, 20, 20, 20);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(250, 100);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Size";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button4.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.btnChatLieu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChatLieu.AutoSize = true;
+            this.btnChatLieu.BackColor = System.Drawing.Color.LightPink;
+            this.btnChatLieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChatLieu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChatLieu.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnChatLieu.Location = new System.Drawing.Point(708, 176);
+            this.btnChatLieu.Margin = new System.Windows.Forms.Padding(20, 20, 300, 20);
+            this.btnChatLieu.Name = "btnChatLieu";
+            this.btnChatLieu.Size = new System.Drawing.Size(200, 90);
+            this.btnChatLieu.TabIndex = 2;
+            this.btnChatLieu.Text = "Chất liệu";
+            this.btnChatLieu.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnLoai
             // 
-            this.button3.BackColor = System.Drawing.Color.Pink;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(60, 200);
-            this.button3.Margin = new System.Windows.Forms.Padding(20);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(250, 100);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Loại";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button3.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.btnLoai.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLoai.AutoSize = true;
+            this.btnLoai.BackColor = System.Drawing.Color.LightPink;
+            this.btnLoai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoai.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoai.Location = new System.Drawing.Point(356, 346);
+            this.btnLoai.Margin = new System.Windows.Forms.Padding(300, 20, 20, 20);
+            this.btnLoai.Name = "btnLoai";
+            this.btnLoai.Size = new System.Drawing.Size(200, 90);
+            this.btnLoai.TabIndex = 3;
+            this.btnLoai.Text = "Loại";
+            this.btnLoai.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnSize
             // 
-            this.button2.BackColor = System.Drawing.Color.Pink;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.flowLayoutPanel1.SetFlowBreak(this.button2, true);
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(410, 60);
-            this.button2.Margin = new System.Windows.Forms.Padding(80, 20, 20, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(250, 100);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Chất liệu";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.btnSize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSize.AutoSize = true;
+            this.btnSize.BackColor = System.Drawing.Color.LightPink;
+            this.btnSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSize.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSize.Location = new System.Drawing.Point(708, 346);
+            this.btnSize.Margin = new System.Windows.Forms.Padding(20, 20, 300, 20);
+            this.btnSize.Name = "btnSize";
+            this.btnSize.Size = new System.Drawing.Size(200, 90);
+            this.btnSize.TabIndex = 4;
+            this.btnSize.Text = "Size";
+            this.btnSize.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnKhuVuc
             // 
-            this.button1.BackColor = System.Drawing.Color.Pink;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(60, 60);
-            this.button1.Margin = new System.Windows.Forms.Padding(20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 100);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Nhà cung cấp";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button3);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
-            this.flowLayoutPanel1.Controls.Add(this.button5);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(40);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1057, 664);
-            this.flowLayoutPanel1.TabIndex = 1;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.btnKhuVuc.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnKhuVuc.AutoSize = true;
+            this.btnKhuVuc.BackColor = System.Drawing.Color.LightPink;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnKhuVuc, 2);
+            this.btnKhuVuc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKhuVuc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhuVuc.Location = new System.Drawing.Point(532, 501);
+            this.btnKhuVuc.Margin = new System.Windows.Forms.Padding(20, 20, 20, 90);
+            this.btnKhuVuc.Name = "btnKhuVuc";
+            this.btnKhuVuc.Size = new System.Drawing.Size(200, 85);
+            this.btnKhuVuc.TabIndex = 5;
+            this.btnKhuVuc.Text = "Khu vực";
+            this.btnKhuVuc.UseVisualStyleBackColor = false;
             // 
             // ThongTinGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1057, 664);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ThongTinGUI";
-            this.Text = "KhachHangGUI";
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnNhaCungCap;
+        private System.Windows.Forms.Button btnSize;
+        private System.Windows.Forms.Button btnLoai;
+        private System.Windows.Forms.Button btnChatLieu;
+        private System.Windows.Forms.Button btnKhuVuc;
     }
 }
