@@ -67,10 +67,10 @@ namespace QuanLyKho_CSharp.GUI
                 dgvSanPham.Columns.Clear();
 
                 dgvSanPham.Columns.Add("MaSP", "Mã SP");
-                dgvSanPham.Columns["MaSP"].Width = 120;
+                dgvSanPham.Columns["MaSP"].Width = 50;
 
                 dgvSanPham.Columns.Add("TenSP", "Tên sản phẩm");
-                dgvSanPham.Columns["TenSP"].Width = 220;
+                dgvSanPham.Columns["TenSP"].Width = 210;
 
                 // Cột ảnh 
                 DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
@@ -86,26 +86,26 @@ namespace QuanLyKho_CSharp.GUI
                 dgvSanPham.Columns["SoLuong"].Width = 100;
 
                 dgvSanPham.Columns.Add("Gia", "Đơn giá");
-                dgvSanPham.Columns["Gia"].Width = 120;
+                dgvSanPham.Columns["Gia"].Width = 100;
 
                 dgvSanPham.Columns.Add("Machatlieu", "Chất liệu");
-                dgvSanPham.Columns["Machatlieu"].Width = 100;
+                dgvSanPham.Columns["Machatlieu"].Width = 80;
 
                 dgvSanPham.Columns.Add("Loai", "Loại");
-                dgvSanPham.Columns["Loai"].Width = 119;
+                dgvSanPham.Columns["Loai"].Width = 80;
 
                 dgvSanPham.Columns.Add("Khuvuc", "Khu vực");
-                dgvSanPham.Columns["Khuvuc"].Width = 145;
+                dgvSanPham.Columns["Khuvuc"].Width = 170;
 
                 dgvSanPham.Columns.Add("Size", "Size");
-                dgvSanPham.Columns["Size"].Width = 120;
+                dgvSanPham.Columns["Size"].Width = 60;
 
                 // Thêm cột hành động
                 DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
                 btn.HeaderText = "Hành động";
                 btn.Name = "Actions";
                 dgvSanPham.Columns.Add(btn);
-                dgvSanPham.Columns["Actions"].Width = 160;
+                dgvSanPham.Columns["Actions"].Width = 150;
 
                
                 LoadDataToGrid();
