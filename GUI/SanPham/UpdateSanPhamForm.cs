@@ -19,6 +19,9 @@ namespace QuanLyKho_CSharp.GUI.SanPham
     {
         SanPhamDTO sp;
         private SanPhamBUS spBUS= new SanPhamBUS();
+        private KhuVucKhoBUS kvBUS = new KhuVucKhoBUS();
+
+        private BindingList<KhuVucKhoDTO> listKV;
         private string duongDanAnhMoi=null;//tao bien de sau khi bam nut chon anh se lay duoc duong dan
         public UpdateSanPhamForm(SanPhamDTO _sp)
         {
@@ -177,9 +180,17 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             txtSoLuong.Text=sp.Soluong.ToString();
             txtDonGia.Text=sp.Dongia.ToString();
             txtMaChatLieu.Text=sp.Machatlieu.ToString();
-            txtMaKhuVuc.Text=sp.Makhuvuc.ToString();
+            //txtMaKhuVuc.Text=sp.Makhuvuc.ToString();
             txtMaLoai.Text=sp.Maloai.ToString();    
             txtMaSize.Text=sp.Masize.ToString();
+
+
+            
+            listKV= kvBUS.getKhuVucKhoList();
+            foreach(KhuVucKhoDTO kv in listKV)
+            {
+                cboMaKhuVuc.Items.Add(kv.Makhuvuc + ". "+kv.Tenkhuvuc);
+            }
 
            
         }
@@ -234,15 +245,16 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                                 }
                                 else
                                 {
-                                    int maKhuVucMoi;
-                                    if (!int.TryParse(txtMaKhuVuc.Text, out maKhuVucMoi))
-                                    {
-                                        MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
-                                        txtMaKhuVuc.Focus();
-                                        return;
-                                    }
-                                    else
-                                    {
+                                    //int maKhuVucMoi;
+                                    //if (//!int.TryParse(txtMaKhuVuc.Text, out maKhuVucMoi)0==0)
+                                    //{
+                                    //    //MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
+                                    //    //txtMaKhuVuc.Focus();
+                                    //    //return;
+                                        
+                                    //}
+                                    //else
+                                    //{
                                         int maSizeMoi;
                                         if (!int.TryParse(txtMaSize.Text, out maSizeMoi))
                                         {
@@ -253,13 +265,14 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                                         else
                                         {
                                             string duongDanLuuDB = duongDanAnhMoi ?? sp.Hinhanh;
+                                            int maKhuVucMoi = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
                                             SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi);
                                             spBUS.updateSanPham(sanPhamUpdate);
                                             this.DialogResult = DialogResult.OK;
                                             this.Close();
 
                                         }
-                                    }
+                                    
                                 }
                             }
 

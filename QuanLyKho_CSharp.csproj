@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="BUS\DanhMucChucNangBUS.cs" />
     <Compile Include="BUS\KhachHangBUS.cs" />
+    <Compile Include="BUS\KhuVucKhoBUS.cs" />
     <Compile Include="BUS\NhomQuyenBUS.cs" />
     <Compile Include="BUS\PhieuNhapBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
