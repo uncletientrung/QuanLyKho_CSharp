@@ -225,6 +225,12 @@
     <Compile Include="GUI\NhomQuyen\UpdateNhomQuyenForm.Designer.cs">
       <DependentUpon>UpdateNhomQuyenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PhieuNhap\AddPhieuNhapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhieuNhap\AddPhieuNhapForm.Designer.cs">
+      <DependentUpon>AddPhieuNhapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PhieuNhap\PhieuNhapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhomQuyen\UpdateNhomQuyenForm.resx">
       <DependentUpon>UpdateNhomQuyenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhieuNhap\AddPhieuNhapForm.resx">
+      <DependentUpon>AddPhieuNhapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuNhap\PhieuNhapGUI.resx">
       <DependentUpon>PhieuNhapGUI.cs</DependentUpon>

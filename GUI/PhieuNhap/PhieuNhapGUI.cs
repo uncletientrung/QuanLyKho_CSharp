@@ -230,9 +230,19 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            // Thêm phiếu nhập mới
-            MessageBox.Show("Chức năng thêm phiếu nhập", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Tìm frmMain từ ParentForm
+            frmMain mainForm = this.ParentForm as frmMain;
+            if (mainForm != null)
+            {
+                // Sử dụng reflection để gọi OpenChildForm
+                var method = mainForm.GetType().GetMethod("OpenChildForm",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (method != null)
+                {
+                    method.Invoke(mainForm, new object[] { new AddPhieuNhapForm(), null });
+                }
+            }
         }
 
         private void btnXuat_Click(object sender, EventArgs e)
