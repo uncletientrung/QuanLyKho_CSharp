@@ -26,5 +26,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
