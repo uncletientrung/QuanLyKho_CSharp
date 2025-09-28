@@ -21,11 +21,10 @@ namespace QuanLyKho_CSharp.DAO
         {
             return new PhieuNhapDAO();
         }
+
         public int Insert(PhieuNhapDTO t)
         {
             int result = 0;
-            // maphieunhap là AUTO_INCREMENT nên không cần gán
-            // dùng '' cho {} nếu là chuỗi || thời gian
             string sql = $"INSERT INTO phieunhap(manv, thoigiantao, tongtien, trangthai, mancc) " +
                         $"values ({t.Manv}, '{t.Thoigiantao:yyyy-MM-dd HH:mm:ss}', {t.Tongtien}, {t.Trangthai}, {t.Mancc})";
             result = ConnectionHelper.getExecuteNonQuery(sql);
@@ -51,36 +50,35 @@ namespace QuanLyKho_CSharp.DAO
         }
 
         public BindingList<PhieuNhapDTO> SelectAll()
+{
+    BindingList<PhieuNhapDTO> result = new BindingList<PhieuNhapDTO>();
+    try
+    {
+        string sql = "SELECT * FROM phieunhap WHERE trangthai = 1";
+        
+        // Sử dụng ConnectionHelper.getDataTable thay vì tự mở kết nối
+        DataTable dt = ConnectionHelper.getDataTable(sql);
+        
+        foreach (DataRow row in dt.Rows)
         {
-            BindingList<PhieuNhapDTO> result = new BindingList<PhieuNhapDTO>();
-            try
+            PhieuNhapDTO phieuNhap = new PhieuNhapDTO
             {
-                string sql = "SELECT * FROM phieunhap";
-                ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        PhieuNhapDTO phieuNhap = new PhieuNhapDTO
-                        {
-                            Maphieu = reader.GetInt32("maphieunhap"),
-                            Manv = reader.GetInt32("manv"),
-                            Thoigiantao = reader.GetDateTime("thoigiantao"),
-                            Tongtien = reader.GetInt32("tongtien"),
-                            Trangthai = reader.GetInt32("trangthai"),
-                            Mancc = reader.GetInt32("mancc")
-                        };
-                        result.Add(phieuNhap);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return result;
+                Maphieu = Convert.ToInt32(row["maphieunhap"]),
+                Manv = Convert.ToInt32(row["manv"]),
+                Thoigiantao = Convert.ToDateTime(row["thoigiantao"]),
+                Tongtien = Convert.ToInt32(row["tongtien"]),
+                Trangthai = Convert.ToInt32(row["trangthai"]),
+                Mancc = Convert.ToInt32(row["mancc"])
+            };
+            result.Add(phieuNhap);
         }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Lỗi khi đọc dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+    return result;
+}
 
         public PhieuNhapDTO SelectById(int t)
         {
@@ -107,6 +105,10 @@ namespace QuanLyKho_CSharp.DAO
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConnectionHelper.closeConnection();
+            }
             return result;
         }
 
@@ -132,6 +134,10 @@ namespace QuanLyKho_CSharp.DAO
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+            }
+            finally
+            {
+                ConnectionHelper.closeConnection();
             }
             return result;
         }

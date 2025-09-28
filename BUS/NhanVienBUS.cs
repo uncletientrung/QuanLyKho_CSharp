@@ -23,6 +23,17 @@ namespace QuanLyKho_CSharp.BUS
         {
             listNV=nvDAO.SelectAll();
         }
+        public string getNamebyID(int maNV)
+        {
+            NhanVienDTO nv = listNV.FirstOrDefault(x => x.Manv == maNV);
+
+            if (nv != null)
+            {
+                return nv.Tennv;
+            }
+
+            return "Không tìm thấy";
+        }
         public Boolean removeNhanVien(int maNV) // Xóa trong database trước rồi xóa list
         {
             NhanVienDTO nvXoa=nvDAO.SelectById(maNV);

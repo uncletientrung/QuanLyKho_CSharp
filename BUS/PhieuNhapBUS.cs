@@ -24,5 +24,77 @@ namespace QuanLyKho_CSharp.BUS
         {
             listPN = pnDAO.SelectAll();
         }
+
+        public Boolean removePhieuNhap(int maPhieu)
+        {
+            PhieuNhapDTO pnXoa = pnDAO.SelectById(maPhieu);
+            Boolean result = pnDAO.Delete(maPhieu) != 0;
+            if (result)
+            {
+                listPN.Remove(pnXoa);
+            }
+            return result;
+        }
+
+        public Boolean insertPhieuNhap(PhieuNhapDTO pn)
+        {
+            Boolean result = pnDAO.Insert(pn) != 0;
+            if (result)
+            {
+                listPN.Add(pn);
+            }
+            return result;
+        }
+
+        public int getAutoMaPhieuNhap()
+        {
+            return pnDAO.GetAutoIncrement();
+        }
+
+        public PhieuNhapDTO getPhieuNhapById(int maPhieu)
+        {
+            PhieuNhapDTO pn = pnDAO.SelectById(maPhieu);
+            return pn;
+        }
+
+        public Boolean updatePhieuNhap(PhieuNhapDTO pnSua)
+        {
+            Boolean result = pnDAO.Update(pnSua) != 0;
+            if (result)
+            {
+                foreach (PhieuNhapDTO pn in listPN)
+                {
+                    if (pn.Maphieu == pnSua.Maphieu)
+                    {
+                        pn.Manv = pnSua.Manv;
+                        pn.Mancc = pnSua.Mancc;
+                        pn.Thoigiantao = pnSua.Thoigiantao;
+                        pn.Tongtien = pnSua.Tongtien;
+                        pn.Trangthai = pnSua.Trangthai;
+                        return result;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public BindingList<PhieuNhapDTO> SearchPhieuNhap(string search)
+        {
+            BindingList<PhieuNhapDTO> result = new BindingList<PhieuNhapDTO>();
+            foreach (PhieuNhapDTO pn in listPN)
+            {
+                if (pn.Maphieu.ToString().Contains(search) ||
+                    pn.Manv.ToString().Contains(search) ||
+                    pn.Mancc.ToString().Contains(search) ||
+                    pn.Tongtien.ToString().Contains(search) ||
+                    pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm:ss").Contains(search))
+                {
+                    result.Add(pn);
+                }
+            }
+            return result;
+        }
+
+
     }
 }
