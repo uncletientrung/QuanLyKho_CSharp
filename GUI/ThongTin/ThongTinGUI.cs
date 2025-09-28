@@ -80,5 +80,12 @@ namespace QuanLyKho_CSharp.GUI.ThongTin
                 ctrl.Region = new Region(path);
             }
         }
+
+        private void btnNhaCungCap_Click(object sender, EventArgs e)
+        {
+            NhaCungCap frm = new NhaCungCap();
+            frm.Show();
+            this.Hide();
+        }
     }
 }

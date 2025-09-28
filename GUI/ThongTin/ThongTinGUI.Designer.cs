@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnKhuVuc = new System.Windows.Forms.Button();
+            this.btnSize = new System.Windows.Forms.Button();
+            this.btnLoai = new System.Windows.Forms.Button();
+            this.btnChatLieu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNhaCungCap = new System.Windows.Forms.Button();
-            this.btnChatLieu = new System.Windows.Forms.Button();
-            this.btnLoai = new System.Windows.Forms.Button();
-            this.btnSize = new System.Windows.Forms.Button();
-            this.btnKhuVuc = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,68 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 681);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btnKhuVuc
+            // 
+            this.btnKhuVuc.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnKhuVuc.AutoSize = true;
+            this.btnKhuVuc.BackColor = System.Drawing.Color.LightPink;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnKhuVuc, 2);
+            this.btnKhuVuc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKhuVuc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhuVuc.Location = new System.Drawing.Point(532, 501);
+            this.btnKhuVuc.Margin = new System.Windows.Forms.Padding(20, 20, 20, 90);
+            this.btnKhuVuc.Name = "btnKhuVuc";
+            this.btnKhuVuc.Size = new System.Drawing.Size(200, 85);
+            this.btnKhuVuc.TabIndex = 5;
+            this.btnKhuVuc.Text = "Khu vực";
+            this.btnKhuVuc.UseVisualStyleBackColor = false;
+            // 
+            // btnSize
+            // 
+            this.btnSize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSize.AutoSize = true;
+            this.btnSize.BackColor = System.Drawing.Color.LightPink;
+            this.btnSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSize.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSize.Location = new System.Drawing.Point(708, 346);
+            this.btnSize.Margin = new System.Windows.Forms.Padding(20, 20, 300, 20);
+            this.btnSize.Name = "btnSize";
+            this.btnSize.Size = new System.Drawing.Size(200, 90);
+            this.btnSize.TabIndex = 4;
+            this.btnSize.Text = "Size";
+            this.btnSize.UseVisualStyleBackColor = false;
+            // 
+            // btnLoai
+            // 
+            this.btnLoai.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLoai.AutoSize = true;
+            this.btnLoai.BackColor = System.Drawing.Color.LightPink;
+            this.btnLoai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoai.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoai.Location = new System.Drawing.Point(356, 346);
+            this.btnLoai.Margin = new System.Windows.Forms.Padding(300, 20, 20, 20);
+            this.btnLoai.Name = "btnLoai";
+            this.btnLoai.Size = new System.Drawing.Size(200, 90);
+            this.btnLoai.TabIndex = 3;
+            this.btnLoai.Text = "Loại";
+            this.btnLoai.UseVisualStyleBackColor = false;
+            // 
+            // btnChatLieu
+            // 
+            this.btnChatLieu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChatLieu.AutoSize = true;
+            this.btnChatLieu.BackColor = System.Drawing.Color.LightPink;
+            this.btnChatLieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChatLieu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChatLieu.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnChatLieu.Location = new System.Drawing.Point(708, 176);
+            this.btnChatLieu.Margin = new System.Windows.Forms.Padding(20, 20, 300, 20);
+            this.btnChatLieu.Name = "btnChatLieu";
+            this.btnChatLieu.Size = new System.Drawing.Size(200, 90);
+            this.btnChatLieu.TabIndex = 2;
+            this.btnChatLieu.Text = "Chất liệu";
+            this.btnChatLieu.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -90,68 +152,7 @@
             this.btnNhaCungCap.TabIndex = 1;
             this.btnNhaCungCap.Text = "Nhà cung cấp";
             this.btnNhaCungCap.UseVisualStyleBackColor = false;
-            // 
-            // btnChatLieu
-            // 
-            this.btnChatLieu.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnChatLieu.AutoSize = true;
-            this.btnChatLieu.BackColor = System.Drawing.Color.LightPink;
-            this.btnChatLieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChatLieu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChatLieu.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnChatLieu.Location = new System.Drawing.Point(708, 176);
-            this.btnChatLieu.Margin = new System.Windows.Forms.Padding(20, 20, 300, 20);
-            this.btnChatLieu.Name = "btnChatLieu";
-            this.btnChatLieu.Size = new System.Drawing.Size(200, 90);
-            this.btnChatLieu.TabIndex = 2;
-            this.btnChatLieu.Text = "Chất liệu";
-            this.btnChatLieu.UseVisualStyleBackColor = false;
-            // 
-            // btnLoai
-            // 
-            this.btnLoai.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLoai.AutoSize = true;
-            this.btnLoai.BackColor = System.Drawing.Color.LightPink;
-            this.btnLoai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoai.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoai.Location = new System.Drawing.Point(356, 346);
-            this.btnLoai.Margin = new System.Windows.Forms.Padding(300, 20, 20, 20);
-            this.btnLoai.Name = "btnLoai";
-            this.btnLoai.Size = new System.Drawing.Size(200, 90);
-            this.btnLoai.TabIndex = 3;
-            this.btnLoai.Text = "Loại";
-            this.btnLoai.UseVisualStyleBackColor = false;
-            // 
-            // btnSize
-            // 
-            this.btnSize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSize.AutoSize = true;
-            this.btnSize.BackColor = System.Drawing.Color.LightPink;
-            this.btnSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSize.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSize.Location = new System.Drawing.Point(708, 346);
-            this.btnSize.Margin = new System.Windows.Forms.Padding(20, 20, 300, 20);
-            this.btnSize.Name = "btnSize";
-            this.btnSize.Size = new System.Drawing.Size(200, 90);
-            this.btnSize.TabIndex = 4;
-            this.btnSize.Text = "Size";
-            this.btnSize.UseVisualStyleBackColor = false;
-            // 
-            // btnKhuVuc
-            // 
-            this.btnKhuVuc.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnKhuVuc.AutoSize = true;
-            this.btnKhuVuc.BackColor = System.Drawing.Color.LightPink;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnKhuVuc, 2);
-            this.btnKhuVuc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKhuVuc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhuVuc.Location = new System.Drawing.Point(532, 501);
-            this.btnKhuVuc.Margin = new System.Windows.Forms.Padding(20, 20, 20, 90);
-            this.btnKhuVuc.Name = "btnKhuVuc";
-            this.btnKhuVuc.Size = new System.Drawing.Size(200, 85);
-            this.btnKhuVuc.TabIndex = 5;
-            this.btnKhuVuc.Text = "Khu vực";
-            this.btnKhuVuc.UseVisualStyleBackColor = false;
+            this.btnNhaCungCap.Click += new System.EventHandler(this.btnNhaCungCap_Click);
             // 
             // ThongTinGUI
             // 
