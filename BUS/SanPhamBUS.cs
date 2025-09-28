@@ -81,6 +81,21 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+
+        public BindingList<SanPhamDTO> TimkiemSanPham(string searchString)
+        {
+            BindingList<SanPhamDTO> result = new BindingList<SanPhamDTO> ();
+            foreach (SanPhamDTO sp in listSP) {
+                if (sp.Tensp.ToLower().Contains(searchString.ToLower()) ||
+                    sp.Maloai.ToString().Contains(searchString) ||
+                    sp.Makhuvuc.ToString().Contains(searchString) ||
+                    sp.Dongia.ToString().Contains(searchString))
+                {
+                    result.Add(sp);
+                }
+            }
+            return result;
+        }
     }
 
 }

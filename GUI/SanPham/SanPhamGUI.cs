@@ -320,5 +320,53 @@ namespace QuanLyKho_CSharp.GUI
             }
         
         }
+
+
+        private void LoadDataToGridFind(BindingList<SanPhamDTO> newList)
+        {
+            try
+            {
+                
+                
+
+                dgvSanPham.Rows.Clear();
+
+                if (listSP == null || listSP.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu sản phẩm để hiển thị.", "Debug - No Data");
+                    return;
+                }
+
+                foreach (SanPhamDTO sp in newList)
+                {
+                    Image img = LoadImageSafe(sp.Hinhanh);
+
+                    dgvSanPham.Rows.Add(
+                        sp.Masp,
+                        sp.Tensp,
+                        img,
+                        sp.Soluong,
+                        sp.Dongia,
+                        sp.Machatlieu,
+                        sp.Maloai,
+                        sp.Makhuvuc,
+                        sp.Masize
+                    );
+                }
+
+                dgvSanPham.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi trong LoadDataToGrid: {ex.Message}\n{ex.StackTrace}", "Debug Error");
+            }
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string searchString = txtTimKiem.Text.Trim();
+            BindingList<SanPhamDTO> listSP = spBUS.TimkiemSanPham(searchString);
+            LoadDataToGridFind(listSP);
+        }
     }
 }

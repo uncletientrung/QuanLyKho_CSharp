@@ -190,6 +190,10 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             foreach(KhuVucKhoDTO kv in listKV)
             {
                 cboMaKhuVuc.Items.Add(kv.Makhuvuc + ". "+kv.Tenkhuvuc);
+                if (kv.Makhuvuc == sp.Makhuvuc)
+                {
+                    cboMaKhuVuc.SelectedItem = kv.Makhuvuc + ". " + kv.Tenkhuvuc;
+                }
             }
 
            
