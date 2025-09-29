@@ -82,17 +82,10 @@ namespace QuanLyKho_CSharp.BUS
         }
         public BindingList<NhanVienDTO> SearchNhanVien(string search)
         {
-            BindingList<NhanVienDTO> result = new BindingList<NhanVienDTO>();
-            foreach(NhanVienDTO nv in listNV)
-            {
-                if (nv.Tennv.ToLower().Contains(search.ToLower()) ||
-                    nv.Manv.ToString().Contains(search) ||
-                    nv.Sdt.ToLower().Contains(search.ToLower()))
-                {
-                    result.Add(nv);
-                }
-            }
-            return result;
+            List<NhanVienDTO> result = listNV.Where( nv => nv.Tennv.ToLower().Contains(search.ToLower()) ||
+                                        nv.Manv.ToString().Contains(search) ||
+                                        nv.Sdt.ToLower().Contains(search.ToLower())).ToList();
+            return new BindingList<NhanVienDTO>(result);
         }
     }
 }
