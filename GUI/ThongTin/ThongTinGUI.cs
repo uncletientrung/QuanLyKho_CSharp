@@ -83,9 +83,10 @@ namespace QuanLyKho_CSharp.GUI.ThongTin
 
         private void btnNhaCungCap_Click(object sender, EventArgs e)
         {
-            NhaCungCap frm = new NhaCungCap();
-            frm.Show();
-            this.Hide();
+            using (NhaCungCap frm = new NhaCungCap())
+            {
+                frm.ShowDialog(); 
+            }
         }
     }
 }
