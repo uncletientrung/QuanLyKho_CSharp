@@ -137,6 +137,7 @@
             this.dgvSanPham.RowTemplate.Height = 24;
             this.dgvSanPham.Size = new System.Drawing.Size(1164, 476);
             this.dgvSanPham.TabIndex = 1;
+            this.dgvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellContentClick);
             // 
             // SanPhamGUI
             // 

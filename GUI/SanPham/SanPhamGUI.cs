@@ -384,5 +384,10 @@ namespace QuanLyKho_CSharp.GUI
             BindingList<SanPhamDTO> listSP = spBUS.TimkiemSanPham(searchString);
             LoadDataToGridFind(listSP);
         }
+
+        private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

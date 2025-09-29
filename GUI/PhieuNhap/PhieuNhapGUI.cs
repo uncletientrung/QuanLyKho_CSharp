@@ -79,7 +79,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
             dataGridView1.RowTemplate.Height = 40;
 
-            // Thêm cột nút hành động giống NhanVienGUI
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             btn.HeaderText = "Thao tác";
             btn.Name = "Actions";
