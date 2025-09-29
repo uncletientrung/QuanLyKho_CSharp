@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿using Google.Protobuf.Collections;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace QuanLyKho_CSharp.BUS
     {
         public readonly SanPhamDAO spDAO = SanPhamDAO.getInstance();
         private BindingList<SanPhamDTO> listSP;
+       
 
         public BindingList<SanPhamDTO> getListSP()
         {
@@ -96,6 +98,9 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+
+
+        
     }
 
 }

@@ -24,6 +24,7 @@ namespace QuanLyKho_CSharp.GUI
     public partial class SanPhamGUI : Form
     {
         private SanPhamBUS spBUS = new SanPhamBUS();
+        
         private KhuVucKhoBUS khuVucKhoBUS = new KhuVucKhoBUS();
         private BindingList<SanPhamDTO> listSP;
         private BindingList<KhuVucKhoDTO> listKV;
@@ -129,23 +130,7 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
-        public String LayTenKhuVuc(SanPhamDTO sp)
-        {
-            listKV = khuVucKhoBUS.getKhuVucKhoList();
-            String kvuc;
-
-            foreach (KhuVucKhoDTO kv in listKV)
-            {
-                if (sp.Makhuvuc == kv.Makhuvuc)
-                {
-                    kvuc = kv.Tenkhuvuc;
-                    return kvuc;
-                }
-            }
-            return "Không xác định";
-
-
-        }
+        
 
         private void LoadDataToGrid()
         {
@@ -167,7 +152,7 @@ namespace QuanLyKho_CSharp.GUI
                 foreach (SanPhamDTO sp in listSP)
                 {
                     Image img = LoadImageSafe(sp.Hinhanh);
-                    String tenKhuVuc = LayTenKhuVuc(sp);
+                    String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
                     
 
                     dgvSanPham.Rows.Add(
@@ -365,7 +350,7 @@ namespace QuanLyKho_CSharp.GUI
                 foreach (SanPhamDTO sp in newList)
                 {
                     Image img = LoadImageSafe(sp.Hinhanh);
-                    String tenKhuVuc = LayTenKhuVuc(sp);
+                    String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
 
                     dgvSanPham.Rows.Add(
                         sp.Masp,

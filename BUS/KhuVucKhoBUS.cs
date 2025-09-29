@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿using Google.Protobuf.Collections;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace QuanLyKho_CSharp.BUS
     internal class KhuVucKhoBUS
     {
         public readonly KhuVucKhoDAO khuVucKhoDAO = KhuVucKhoDAO.getInstance();
-        BindingList<KhuVucKhoDTO> listKVK;
+        private BindingList<KhuVucKhoDTO> listKVK;
 
 
         public BindingList<KhuVucKhoDTO> getKhuVucKhoList()
@@ -23,6 +24,19 @@ namespace QuanLyKho_CSharp.BUS
 
         public KhuVucKhoBUS() {
             listKVK = khuVucKhoDAO.SelectAll();
+        }
+
+        public String LayTenKhuVuc(SanPhamDTO sp)
+        {
+
+
+            KhuVucKhoDTO khuVucDTO;
+            khuVucDTO = listKVK.FirstOrDefault(kv => kv.Makhuvuc == sp.Makhuvuc);
+            return khuVucDTO.Tenkhuvuc.ToString();
+
+           
+
+
         }
 
 
