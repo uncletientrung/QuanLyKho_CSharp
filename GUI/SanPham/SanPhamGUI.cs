@@ -129,7 +129,7 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
-        public String ChuyenTenKhuVuc(SanPhamDTO sp)
+        public String LayTenKhuVuc(SanPhamDTO sp)
         {
             listKV = khuVucKhoBUS.getKhuVucKhoList();
             String kvuc;
@@ -167,7 +167,7 @@ namespace QuanLyKho_CSharp.GUI
                 foreach (SanPhamDTO sp in listSP)
                 {
                     Image img = LoadImageSafe(sp.Hinhanh);
-                    String kvuc = ChuyenTenKhuVuc(sp);
+                    String tenKhuVuc = LayTenKhuVuc(sp);
                     
 
                     dgvSanPham.Rows.Add(
@@ -178,7 +178,7 @@ namespace QuanLyKho_CSharp.GUI
                         sp.Dongia,
                         sp.Machatlieu,
                         sp.Maloai,
-                        kvuc,
+                        tenKhuVuc,
                         //sp.Makhuvuc,
                         sp.Masize
                     );
@@ -365,6 +365,7 @@ namespace QuanLyKho_CSharp.GUI
                 foreach (SanPhamDTO sp in newList)
                 {
                     Image img = LoadImageSafe(sp.Hinhanh);
+                    String tenKhuVuc = LayTenKhuVuc(sp);
 
                     dgvSanPham.Rows.Add(
                         sp.Masp,
@@ -374,7 +375,7 @@ namespace QuanLyKho_CSharp.GUI
                         sp.Dongia,
                         sp.Machatlieu,
                         sp.Maloai,
-                        sp.Makhuvuc,
+                        tenKhuVuc,
                         sp.Masize
                     );
                 }
