@@ -73,7 +73,7 @@ namespace QuanLyKho_CSharp.GUI
                 dgvSanPham.Columns["MaSP"].Width = 50;
 
                 dgvSanPham.Columns.Add("TenSP", "Tên sản phẩm");
-                dgvSanPham.Columns["TenSP"].Width = 210;
+                dgvSanPham.Columns["TenSP"].Width = 207;
 
                 // Cột ảnh 
                 DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
@@ -98,7 +98,7 @@ namespace QuanLyKho_CSharp.GUI
                 dgvSanPham.Columns["Loai"].Width = 80;
 
                 dgvSanPham.Columns.Add("Khuvuc", "Khu vực");
-                dgvSanPham.Columns["Khuvuc"].Width = 170;
+                dgvSanPham.Columns["Khuvuc"].Width = 169;
 
                 dgvSanPham.Columns.Add("Size", "Size");
                 dgvSanPham.Columns["Size"].Width = 60;
@@ -109,8 +109,13 @@ namespace QuanLyKho_CSharp.GUI
                 btn.Name = "Actions";
                 dgvSanPham.Columns.Add(btn);
                 dgvSanPham.Columns["Actions"].Width = 150;
+                foreach (DataGridViewColumn col in dgvSanPham.Columns)// cho căn giữa
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
 
-               
+
+
                 LoadDataToGrid();
             }
             catch (Exception ex)

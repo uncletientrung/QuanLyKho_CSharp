@@ -69,11 +69,11 @@
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(0, 1);
+            this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Location = new System.Drawing.Point(0, 9);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTimKiem.Multiline = true;
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(263, 47);
+            this.txtTimKiem.Size = new System.Drawing.Size(263, 34);
             this.txtTimKiem.TabIndex = 0;
             this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
@@ -120,9 +120,9 @@
             this.lblNhanVien.ForeColor = System.Drawing.Color.Blue;
             this.lblNhanVien.Location = new System.Drawing.Point(4, 4);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(182, 45);
+            this.lblNhanVien.Size = new System.Drawing.Size(149, 45);
             this.lblNhanVien.TabIndex = 0;
-            this.lblNhanVien.Text = "Nhân Viên";
+            this.lblNhanVien.Text = "Tồn Kho";
             // 
             // dgvSanPham
             // 
