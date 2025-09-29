@@ -86,7 +86,7 @@ namespace QuanLyKho_CSharp
         {
             if(sidemenu.Visible == false)
             {
-                hideSideMenu();
+                //hideSideMenu();
                 sidemenu.Visible=true;
             }
             else
@@ -97,7 +97,7 @@ namespace QuanLyKho_CSharp
         }
         #endregion
 
-        #region 3 nút Menu phụ
+        #region 4 nút Menu phụ
         private void btnQuanLyKho_Click(object sender, EventArgs e)
         {
             ShowSideMenu(panelQuanLyKho);
@@ -109,6 +109,10 @@ namespace QuanLyKho_CSharp
         private void btnQuanLyHeThong_Click(object sender, EventArgs e)
         {
             ShowSideMenu(panelQuanLyHeThong);
+        }
+        private void btnThongTin_Click(object sender, EventArgs e)
+        {
+            ShowSideMenu(panelThongTin);
         }
         #endregion
         private void label1_Click(object sender, EventArgs e)
@@ -181,11 +185,7 @@ namespace QuanLyKho_CSharp
             OpenChildForm(new DanhSachKiemKeGUI(), btnKiemKe);
         }
 
-        private void btnThongTin_Click(object sender, EventArgs e)
-        {
-            try { OpenChildForm(new ThongTinGUI(), btnThongTin); }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
+        
 
         private void pnlLeftMenu_Paint(object sender, PaintEventArgs e)
         {
