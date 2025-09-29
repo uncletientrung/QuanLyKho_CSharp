@@ -71,14 +71,12 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
             DGVNhanVien.Columns["TrangThai"].Width = 153;
             DGVNhanVien.RowTemplate.Height = 40;
-            foreach (NhanVienDTO nv in listNV)
+            foreach (NhanVienDTO nv in listNV.Where(nv => nv.Trangthai ==1))
             {
-                if (nv.Trangthai == 1)
-                {
-                    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
-                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
-                   , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
-                }
+                string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
+                DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
+                , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+                
             }
 
             // Tạo 3 cái nút ở table
@@ -261,14 +259,11 @@ namespace QuanLyKho_CSharp.GUI
         {
             DGVNhanVien.Rows.Clear();
 
-            foreach (NhanVienDTO nv in listRefresh)
+            foreach (NhanVienDTO nv in listRefresh.Where(nv => nv.Trangthai == 1))
             {
-                if (nv.Trangthai == 1)
-                {
-                    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
-                    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
-                   , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
-                }
+                string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
+                DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
+                , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
             }
             DGVNhanVien.ClearSelection();
 

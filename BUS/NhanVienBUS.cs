@@ -67,17 +67,16 @@ namespace QuanLyKho_CSharp.BUS
             Boolean result= nvDAO.Update(nvSua) !=0;
             if (result)
             {
-                foreach(NhanVienDTO nv in listNV)
+                NhanVienDTO nv= listNV.FirstOrDefault(x => x.Manv ==  nvSua.Manv);
+                if (nv != null)
                 {
-                    if (nv.Manv == nvSua.Manv)
-                    {
-                        nv.Tennv = nvSua.Tennv;
-                        nv.Gioitinh = nvSua.Gioitinh;
-                        nv.Sdt = nvSua.Sdt;
-                        nv.Ngaysinh = nvSua.Ngaysinh;
-                        return result;
-                    }
+                    nv.Tennv = nvSua.Tennv;
+                    nv.Gioitinh = nvSua.Gioitinh;
+                    nv.Sdt = nvSua.Sdt;
+                    nv.Ngaysinh = nvSua.Ngaysinh;
+                    return result;
                 }
+
             }
             return result;
         }
