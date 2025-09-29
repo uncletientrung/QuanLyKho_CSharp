@@ -31,7 +31,7 @@ namespace QuanLyKho_CSharp.BUS
 
 
             KhuVucKhoDTO khuVucDTO;
-            khuVucDTO = listKVK.FirstOrDefault(kv => kv.Makhuvuc == sp.Makhuvuc);
+            khuVucDTO = listKVK.FirstOrDefault(kv => kv.Makhuvuc == sp.Makhuvuc);//tra ve doi tượng đầu tiên đúng ddieuf kiện
             return khuVucDTO.Tenkhuvuc.ToString();
 
            

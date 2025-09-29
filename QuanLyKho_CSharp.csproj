@@ -237,6 +237,12 @@
     <Compile Include="GUI\PhieuNhap\PhieuNhapGUI.Designer.cs">
       <DependentUpon>PhieuNhapGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\SanPham\DeleteSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SanPham\DeleteSanPhamForm.Designer.cs">
+      <DependentUpon>DeleteSanPhamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\SanPham\DetailSanPhamForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuNhap\PhieuNhapGUI.resx">
       <DependentUpon>PhieuNhapGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SanPham\DeleteSanPhamForm.resx">
+      <DependentUpon>DeleteSanPhamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\DetailSanPhamForm.resx">
       <DependentUpon>DetailSanPhamForm.cs</DependentUpon>

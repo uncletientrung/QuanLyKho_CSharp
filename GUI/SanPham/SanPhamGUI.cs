@@ -300,15 +300,15 @@ namespace QuanLyKho_CSharp.GUI
                 }
                 else if (xRel < padding * 2 + buttonWidth * 2)
                 {
-                    //DeleteNhanVienForm deleteNV = new DeleteNhanVienForm(spduocchon);
-                    //deleteNV.ShowDialog();
-                    //if (deleteNV.DialogResult == DialogResult.OK)
-                    //{
+                    DeleteSanPhamForm deleteSP = new DeleteSanPhamForm(spduocchon);
+                    deleteSP.ShowDialog();
+                    if (deleteSP.DialogResult == DialogResult.OK)
+                    {
 
-                    //    DeleteSuccessNotification tb = new DeleteSuccessNotification();
-                    //    tb.Show();
-                    //    LoadDataToGrid();
-                    //}
+                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                        tb.Show();
+                        LoadDataToGrid();
+                    }
                 }
                 else
                 {
