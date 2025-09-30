@@ -24,7 +24,17 @@ namespace QuanLyKho_CSharp.BUS
         {
             listKH=khDAO.SelectAll();
         }
+        public string getNamebyID(int maKH)
+        {
+            KhachHangDTO nv = listKH.FirstOrDefault(x => x.Makh == maKH);
 
+            if (nv != null)
+            {
+                return nv.Tenkhachhang;
+            }
+
+            return "Không tìm thấy";
+        }
         public Boolean removeKhachHang(int maKH) 
         {
             KhachHangDTO khXoa=khDAO.SelectById(maKH);

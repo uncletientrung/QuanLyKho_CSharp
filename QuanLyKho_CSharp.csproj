@@ -60,8 +60,8 @@
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.2\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.33.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>packages\MySql.Data.8.0.33\lib\net462\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=9.4.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.9.4.0\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>packages\MySqlConnector.2.4.0\lib\net471\MySqlConnector.dll</HintPath>
@@ -116,6 +116,7 @@
     <Compile Include="BUS\NhaCungCapBUS.cs" />
     <Compile Include="BUS\NhomQuyenBUS.cs" />
     <Compile Include="BUS\PhieuNhapBUS.cs" />
+    <Compile Include="BUS\PhieuXuatBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
@@ -238,6 +239,18 @@
     </Compile>
     <Compile Include="GUI\PhieuNhap\PhieuNhapGUI.Designer.cs">
       <DependentUpon>PhieuNhapGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PhieuXuat\AddPhieuXuatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhieuXuat\AddPhieuXuatForm.Designer.cs">
+      <DependentUpon>AddPhieuXuatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PhieuXuat\PhieuXuatGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhieuXuat\PhieuXuatGUI.Designer.cs">
+      <DependentUpon>PhieuXuatGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\SanPham\DeleteSanPhamForm.cs">
       <SubType>Form</SubType>
@@ -386,6 +399,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuNhap\PhieuNhapGUI.resx">
       <DependentUpon>PhieuNhapGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhieuXuat\AddPhieuXuatForm.resx">
+      <DependentUpon>AddPhieuXuatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhieuXuat\PhieuXuatGUI.resx">
+      <DependentUpon>PhieuXuatGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\DeleteSanPhamForm.resx">
       <DependentUpon>DeleteSanPhamForm.cs</DependentUpon>
