@@ -22,7 +22,7 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         public NhomQuyenGUI()
         {
             InitializeComponent();
-            txSearch.Text = "Nhập mã, tên đăng nhập tài khoản để tìm";
+            txSearch.Text = "Nhập mã hoặc tên nhóm quyền để tìm";
             txSearch.ForeColor = Color.Gray;
             DGVPhanQuyen.ClearSelection();
             DGVPhanQuyen.RowHeadersVisible = false; // Tắt cột header
@@ -194,6 +194,35 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
 
             }
         }
+        
+
+        private void DGVPhanQuyen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        #region Xử lý tìm kiểm
+        private void txSearch_Enter(object sender, EventArgs e)
+        {
+            if (txSearch.Text == "Nhập mã hoặc tên nhóm quyền để tìm")
+                txSearch.Text = "";
+            txSearch.ForeColor = Color.Black;
+        }
+
+        private void txSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txSearch.Text)) // Kiểm tra rỗng, null và khoảng trắng
+            {
+                txSearch.ForeColor = Color.Gray;
+                txSearch.Text = "Nhập mã hoặc tên nhóm quyền để tìm";
+            }
+        }
+        private void txSearch_TextChanged(object sender, EventArgs e)
+        {
+            string textSearch= txSearch.Text;
+            listNQ= nqBUS.searchNhomQuyen(textSearch);
+            refreshDataGridView(listNQ);
+        }
+        #endregion
         private void refreshDataGridView(BindingList<NhomQuyenDTO> listRefresh) // Tải lại DataGridView
         {
             DGVPhanQuyen.Rows.Clear();
@@ -203,15 +232,10 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
             {
                 if (nq.Trangthai == 1)
                 {
-                    DGVPhanQuyen.Rows.Add(nq.Manhomquyen, nq.Tennhomquyen,"Hoạt động");
+                    DGVPhanQuyen.Rows.Add(nq.Manhomquyen, nq.Tennhomquyen, "Hoạt động");
                 }
             }
             DGVPhanQuyen.ClearSelection();
-        }
-
-        private void DGVPhanQuyen_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

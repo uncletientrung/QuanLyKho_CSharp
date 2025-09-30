@@ -52,31 +52,23 @@ namespace QuanLyKho_CSharp.BUS
             Boolean result= tkDAO.Update(tkUpdate) != 0;
             if (result)
             {
-                foreach(TaiKhoanDTO tk in listTK)
+                var tk = listTK.FirstOrDefault(item => item.Manv == tkUpdate.Manv);
+                if(tk != null)
                 {
-                    if(tk.Manv == tkUpdate.Manv)
-                    {
-                        tk.Tendangnhap = tkUpdate.Tendangnhap;
-                        tk.Matkhau= tkUpdate.Matkhau;
-                        tk.Manhomquyen = tkUpdate.Manhomquyen;
-                        break;
-                    }
+                    tk.Tendangnhap = tkUpdate.Tendangnhap;
+                    tk.Matkhau = tkUpdate.Matkhau;
+                    tk.Manhomquyen = tkUpdate.Manhomquyen;
                 }
             }
             return result;
         }
         public BindingList<TaiKhoanDTO> SearchTaiKhoan(string text)
         {
-            BindingList<TaiKhoanDTO> result= new BindingList<TaiKhoanDTO> ();
-            foreach(TaiKhoanDTO tk in listTK)
-            {
-                if(tk.Tendangnhap.ToLower().Contains(text.ToLower()) ||
-                   tk.Manv.ToString().ToLower().Contains(text.ToLower()))
-                {
-                    result.Add(tk);
-                }
-            }
-            return result;
+            var result = listTK.Where(
+                                    item => item.Tendangnhap.ToLower().Contains(text.ToLower()) ||
+                                    item.Manv.ToString().ToLower().Contains(text.ToLower())).ToList();
+            return new BindingList<TaiKhoanDTO>(result);
+
         }
     }
 }

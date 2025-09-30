@@ -92,6 +92,14 @@ namespace QuanLyKho_CSharp.BUS
             return result;
         }
 
+        public BindingList<NhomQuyenDTO> searchNhomQuyen(string text){
+            var result = listNQ.Where(
+                        item => item.Tennhomquyen.ToString().ToLower().Contains(text.ToLower()) ||
+                                item.Manhomquyen.ToString().Contains(text.ToLower())).ToList();
+            return new BindingList<NhomQuyenDTO>(result);
+
+        }
+
         
 
     }
