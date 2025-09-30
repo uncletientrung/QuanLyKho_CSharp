@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,57 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             // Khởi tạo danh sách sản phẩm được thêm
             listSPDuocThem = new BindingList<SanPhamDTO>();
         }
+        private Image LoadImageSafe(string relativePath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(relativePath))
+                {
+                    // Trả về ảnh mặc định nếu không có đường dẫn
+                    return CreateEmptyImage();
+                }
 
+                string path = Path.Combine(Application.StartupPath, relativePath.Replace("/", "\\"));
+
+                if (!File.Exists(path))
+                {
+                    // Thử tìm theo đường dẫn khác
+                    string alt = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\", relativePath.Replace("/", "\\"));
+                    alt = Path.GetFullPath(alt);
+                    if (File.Exists(alt))
+                    {
+                        path = alt;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"File không tồn tại: {path}");
+                        return CreateEmptyImage();
+                    }
+                }
+
+                byte[] bytes = File.ReadAllBytes(path);
+                using (var ms = new MemoryStream(bytes))
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi tải ảnh {relativePath}: {ex.Message}");
+                return CreateEmptyImage();
+            }
+        }
+
+        private Image CreateEmptyImage()
+        {
+            // Tạo ảnh trống màu trắng
+            Bitmap emptyImage = new Bitmap(50, 50);
+            using (Graphics g = Graphics.FromImage(emptyImage))
+            {
+                g.Clear(Color.White);
+            }
+            return emptyImage;
+        }
         private void LoadData()
         {
             listSP = spBUS.getListSP();
@@ -70,6 +121,13 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
             dgvSPtrongKho.Columns.Add("MaSP", "Mã SP");
             dgvSPtrongKho.Columns.Add("TenSP", "Tên sản phẩm");
+
+            DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
+            imgCol.Name = "HinhAnh";
+            imgCol.HeaderText = "Ảnh";
+            imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvSPtrongKho.Columns.Add(imgCol);
+
             dgvSPtrongKho.Columns.Add("DonGia", "Đơn giá");
             dgvSPtrongKho.Columns.Add("SoLuong", "Số lượng");
 
@@ -78,19 +136,24 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
-            dgvSPtrongKho.Columns["MaSP"].FillWeight = 15;      // 15%
-            dgvSPtrongKho.Columns["TenSP"].FillWeight = 50;     // 50%
+            dgvSPtrongKho.Columns["MaSP"].FillWeight = 10;      // 10%
+            dgvSPtrongKho.Columns["TenSP"].FillWeight = 40;     // 40%
+            dgvSPtrongKho.Columns["HinhAnh"].FillWeight = 15;   // 15%
             dgvSPtrongKho.Columns["DonGia"].FillWeight = 20;    // 20%
             dgvSPtrongKho.Columns["SoLuong"].FillWeight = 15;   // 15%
+
+            dgvSPtrongKho.RowTemplate.Height = 40; // set height
 
             // Thêm dữ liệu
             if (listSP != null && listSP.Count > 0)
             {
                 foreach (SanPhamDTO sp in listSP)
                 {
+                Image productImage = LoadImageSafe(sp.Hinhanh); // truyền đối tượng ko phải string
                     dgvSPtrongKho.Rows.Add(
                         sp.Masp,
                         sp.Tensp,
+                        productImage,
                         sp.Dongia,
                         sp.Soluong
                     );
@@ -189,9 +252,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             {
                 foreach (SanPhamDTO sp in filteredList)
                 {
+
+                    Image productImage = LoadImageSafe(sp.Hinhanh); // truyền đối tượng ko phải string
                     dgvSPtrongKho.Rows.Add(
                         sp.Masp,
                         sp.Tensp,
+                        productImage,
                         sp.Dongia,
                         sp.Soluong
                     );
@@ -387,6 +453,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void AddPhieuNhapForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

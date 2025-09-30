@@ -70,12 +70,6 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
-            this.buttonThemSP.Click += new System.EventHandler(this.buttonThemSP_Click);
-            this.buttonSuaSP.Click += new System.EventHandler(this.buttonSuaSP_Click);
-            this.buttonXoaSP.Click += new System.EventHandler(this.buttonXoaSP_Click);
-            this.buttonNhapHang.Click += new System.EventHandler(this.buttonNhapHang_Click);
-            this.buttonNhapExcel.Click += new System.EventHandler(this.buttonNhapExcel_Click);
-            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
             // panel2
             // 
@@ -127,6 +121,7 @@
             this.txSearch.Name = "txSearch";
             this.txSearch.Size = new System.Drawing.Size(606, 34);
             this.txSearch.TabIndex = 6;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -230,6 +225,7 @@
             this.buttonThemSP.TabIndex = 0;
             this.buttonThemSP.Text = "Thêm sản phẩm";
             this.buttonThemSP.UseVisualStyleBackColor = true;
+            this.buttonThemSP.Click += new System.EventHandler(this.buttonThemSP_Click);
             // 
             // buttonNhapExcel
             // 
@@ -242,6 +238,7 @@
             this.buttonNhapExcel.TabIndex = 1;
             this.buttonNhapExcel.Text = "Nhập Excel";
             this.buttonNhapExcel.UseVisualStyleBackColor = true;
+            this.buttonNhapExcel.Click += new System.EventHandler(this.buttonNhapExcel_Click);
             // 
             // buttonSuaSP
             // 
@@ -254,6 +251,7 @@
             this.buttonSuaSP.TabIndex = 2;
             this.buttonSuaSP.Text = "Sửa sản phẩm";
             this.buttonSuaSP.UseVisualStyleBackColor = true;
+            this.buttonSuaSP.Click += new System.EventHandler(this.buttonSuaSP_Click);
             // 
             // buttonXoaSP
             // 
@@ -266,6 +264,7 @@
             this.buttonXoaSP.TabIndex = 3;
             this.buttonXoaSP.Text = "Xoá sản phẩm";
             this.buttonXoaSP.UseVisualStyleBackColor = true;
+            this.buttonXoaSP.Click += new System.EventHandler(this.buttonXoaSP_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -414,6 +413,7 @@
             this.buttonNhapHang.TabIndex = 0;
             this.buttonNhapHang.Text = "Nhập hàng";
             this.buttonNhapHang.UseVisualStyleBackColor = true;
+            this.buttonNhapHang.Click += new System.EventHandler(this.buttonNhapHang_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -466,6 +466,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "AddPhieuNhapForm";
             this.Text = "AddPhieuNhapForm";
+            this.Load += new System.EventHandler(this.AddPhieuNhapForm_Load);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

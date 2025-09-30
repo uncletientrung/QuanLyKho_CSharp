@@ -86,7 +86,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             btn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(btn);
             btn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView1.Columns["Actions"].Width = 150;
+            dataGridView1.Columns["Actions"].Width = 100;
         }
 
         private void LoadDataIntoGridView()
@@ -124,34 +124,24 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 e.PaintBackground(e.CellBounds, true);
 
                 int padding = 5;
-                int totalButtons = 3;
+                int totalButtons = 2;
                 int buttonWidth = (e.CellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
 
-                Rectangle btnSua = new Rectangle(e.CellBounds.Left + padding, e.CellBounds.Top + padding,
+                Rectangle btnXem = new Rectangle(e.CellBounds.Left + padding, e.CellBounds.Top + padding,
                     buttonWidth, e.CellBounds.Height - 2 * padding);
-                Rectangle btnXoa = new Rectangle(btnSua.Right + padding, e.CellBounds.Top + padding,
-                    buttonWidth, e.CellBounds.Height - 2 * padding);
-                Rectangle btnXem = new Rectangle(btnXoa.Right + padding, e.CellBounds.Top + padding,
+                Rectangle btnXoa = new Rectangle(btnXem.Right + padding, e.CellBounds.Top + padding,
                     buttonWidth, e.CellBounds.Height - 2 * padding);
 
                 ButtonRenderer.DrawButton(e.Graphics, btnXem, "", this.Font, false, PushButtonState.Normal);
-                ButtonRenderer.DrawButton(e.Graphics, btnSua, "", this.Font, false, PushButtonState.Normal);
                 ButtonRenderer.DrawButton(e.Graphics, btnXoa, "", this.Font, false, PushButtonState.Normal);
 
                 try
                 {
-                    Image imgSua = Image.FromFile("images\\icon\\edit.png");
                     Image imgXoa = Image.FromFile("images\\icon\\remove.png");
                     Image imgXem = Image.FromFile("images\\icon\\detail.png");
 
                     int targetWidth = 24;
                     int targetHeight = 24;
-
-                    e.Graphics.DrawImage(imgSua, new Rectangle(
-                        btnSua.Left + (btnSua.Width - targetWidth) / 2 + 3,
-                        btnSua.Top + (btnSua.Height - targetHeight) / 2 + 3,
-                        targetWidth - 5,
-                        targetHeight - 5));
 
                     e.Graphics.DrawImage(imgXem, new Rectangle(
                         btnXem.Left + (btnXem.Width - targetWidth) / 2,
@@ -166,7 +156,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                         targetHeight));
 
                     imgXem.Dispose();
-                    imgSua.Dispose();
                     imgXoa.Dispose();
                 }
                 catch (Exception)
@@ -189,15 +178,16 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 int maPhieu = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["MaPhieu"].Value.ToString());
                 PhieuNhapDTO phieuDuocChon = pnBUS.getPhieuNhapById(maPhieu);
 
-                if (xRel < padding + buttonWidth)
+                if (xRel < padding + buttonWidth) // nút Xem
                 {
-                    // Sửa phiếu nhập
-                    MessageBox.Show($"Sửa phiếu nhập: {maPhieu}", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string tenNV = nvBUS.getNamebyID(phieuDuocChon.Manv);
+                    MessageBox.Show($"Chi tiết phiếu nhập:\nMã phiếu: {maPhieu}\nNhân viên: {tenNV}\n" +
+                        $"Mã NCC: {phieuDuocChon.Mancc}\nThời gian: {phieuDuocChon.Thoigiantao:dd/MM/yyyy HH:mm}\n" +
+                        $"Tổng tiền: {phieuDuocChon.Tongtien:N0}",
+                        "Chi tiết phiếu nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (xRel < padding * 2 + buttonWidth * 2)
+                else // nút Xóa
                 {
-                    // Xóa phiếu nhập
                     if (MessageBox.Show($"Bạn có chắc muốn xóa phiếu nhập {maPhieu}?", "Xác nhận xóa",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
@@ -214,15 +204,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                }
-                else
-                {
-                    // Xem chi tiết
-                    string tenNV = nvBUS.getNamebyID(phieuDuocChon.Manv);
-                    MessageBox.Show($"Chi tiết phiếu nhập:\nMã phiếu: {maPhieu}\nNhân viên: {tenNV}\n" +
-                        $"Mã NCC: {phieuDuocChon.Mancc}\nThời gian: {phieuDuocChon.Thoigiantao:dd/MM/yyyy HH:mm}\n" +
-                        $"Tổng tiền: {phieuDuocChon.Tongtien:N0}",
-                        "Chi tiết phiếu nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
