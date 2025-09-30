@@ -60,7 +60,7 @@ namespace QuanLyKho_CSharp.GUI
             this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(51)))));
-            this.btnExcel.Location = new System.Drawing.Point(1049, 0);
+            this.btnExcel.Location = new System.Drawing.Point(1002, 0);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(1);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(98, 55);
@@ -118,7 +118,7 @@ namespace QuanLyKho_CSharp.GUI
             this.DGVNhanVien.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DGVNhanVien.RowHeadersWidth = 51;
             this.DGVNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVNhanVien.Size = new System.Drawing.Size(1147, 499);
+            this.DGVNhanVien.Size = new System.Drawing.Size(1103, 499);
             this.DGVNhanVien.TabIndex = 5;
             this.DGVNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVNhanVien_CellContentClick);
             this.DGVNhanVien.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGVNhanVien_CellMouseClick);
@@ -142,10 +142,10 @@ namespace QuanLyKho_CSharp.GUI
             // 
             this.panelBottom.Controls.Add(this.DGVNhanVien);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 122);
-            this.panelBottom.Margin = new System.Windows.Forms.Padding(0);
+            this.panelBottom.Location = new System.Drawing.Point(5, 92);
+            this.panelBottom.Margin = new System.Windows.Forms.Padding(5);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(1147, 499);
+            this.panelBottom.Size = new System.Drawing.Size(1103, 499);
             this.panelBottom.TabIndex = 7;
             // 
             // pictureBox1
@@ -222,7 +222,7 @@ namespace QuanLyKho_CSharp.GUI
             this.panelCenter.Controls.Add(this.btnExcel);
             this.panelCenter.Location = new System.Drawing.Point(0, 67);
             this.panelCenter.Name = "panelCenter";
-            this.panelCenter.Size = new System.Drawing.Size(1147, 55);
+            this.panelCenter.Size = new System.Drawing.Size(1100, 55);
             this.panelCenter.TabIndex = 10;
             // 
             // NhanVienGUI
@@ -230,7 +230,7 @@ namespace QuanLyKho_CSharp.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1147, 621);
+            this.ClientSize = new System.Drawing.Size(1113, 596);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelCenter);
@@ -238,6 +238,7 @@ namespace QuanLyKho_CSharp.GUI
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "NhanVienGUI";
+            this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "NhanVienGUI";
             this.Load += new System.EventHandler(this.NhanVienGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).EndInit();

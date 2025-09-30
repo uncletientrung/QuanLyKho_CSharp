@@ -303,6 +303,7 @@
     <Compile Include="GUI\ThongTin\ThongTinGUI.Designer.cs">
       <DependentUpon>ThongTinGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ScreenSize.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

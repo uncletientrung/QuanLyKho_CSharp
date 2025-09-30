@@ -52,24 +52,26 @@ namespace QuanLyKho_CSharp.GUI
 
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
+            DGVNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Tự động lấp đầy
 
             DGVNhanVien.Columns.Add("MaNV", "Mã nhân viên");
-            DGVNhanVien.Columns["MaNV"].Width = 120;
+            DGVNhanVien.Columns["MaNV"].FillWeight = 10; // phần trăm tương đối
 
             DGVNhanVien.Columns.Add("TenNV", "Họ và Tên");
-            DGVNhanVien.Columns["TenNV"].Width = 250;
+            DGVNhanVien.Columns["TenNV"].FillWeight = 25;
 
             DGVNhanVien.Columns.Add("GioiTinh", "Giới tính");
-            DGVNhanVien.Columns["GioiTinh"].Width = 140;
+            DGVNhanVien.Columns["GioiTinh"].FillWeight = 10;
 
             DGVNhanVien.Columns.Add("SDT", "Số điện thoại");
-            DGVNhanVien.Columns["SDT"].Width = 200;
+            DGVNhanVien.Columns["SDT"].FillWeight = 20;
 
             DGVNhanVien.Columns.Add("NgaySinh", "Ngày sinh");
-            DGVNhanVien.Columns["NgaySinh"].Width = 140;
+            DGVNhanVien.Columns["NgaySinh"].FillWeight = 10;
 
             DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
-            DGVNhanVien.Columns["TrangThai"].Width = 153;
+            DGVNhanVien.Columns["TrangThai"].FillWeight = 10;
+
             DGVNhanVien.RowTemplate.Height = 40;
             foreach (NhanVienDTO nv in listNV.Where(nv => nv.Trangthai ==1))
             {
@@ -86,7 +88,7 @@ namespace QuanLyKho_CSharp.GUI
             btn.Text = "Hit me"; // Text của button
             btn.UseColumnTextForButtonValue = true; // true để mỗi row đều hiện
             DGVNhanVien.Columns.Add(btn);
-            DGVNhanVien.Columns["Actions"].Width = 150;
+            DGVNhanVien.Columns["Actions"].FillWeight = 15;
         }
         private void DGVNhanVien_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
