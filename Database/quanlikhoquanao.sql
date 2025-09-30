@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2025 at 01:17 PM
+-- Generation Time: Sep 30, 2025 at 05:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -87,6 +87,14 @@ CREATE TABLE `ctphieuxuat` (
   `soluong` int(11) NOT NULL DEFAULT 0,
   `dongia` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ctphieuxuat`
+--
+
+INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`) VALUES
+(1, 2, 2, 60000),
+(2, 1, 2, 80000);
 
 -- --------------------------------------------------------
 
@@ -337,6 +345,14 @@ CREATE TABLE `phieuxuat` (
   `tongtien` bigint(20) DEFAULT 0,
   `trangthai` tinyint(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `phieuxuat`
+--
+
+INSERT INTO `phieuxuat` (`maphieuxuat`, `manv`, `makh`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
+(1, 1, 1, '2025-09-30 21:29:28', 100000, 1),
+(2, 1, 10, '2025-09-30 21:29:28', 200000, 1);
 
 -- --------------------------------------------------------
 
