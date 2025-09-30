@@ -61,7 +61,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
             dataGridView1.Columns.Add("MaPhieu", "Mã phiếu");
             dataGridView1.Columns.Add("TenNV", "Tên nhân viên");
-            dataGridView1.Columns.Add("MaKH", "Mã KH");
+            dataGridView1.Columns.Add("TenKH", "Tên KH");
             dataGridView1.Columns.Add("ThoiGian", "Thời gian tạo");
             dataGridView1.Columns.Add("TongTien", "Tổng tiền");
             dataGridView1.Columns.Add("TrangThai", "Trạng thái");
@@ -72,13 +72,23 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
 
             dataGridView1.Columns["MaPhieu"].FillWeight = 10;
-            dataGridView1.Columns["TenNV"].FillWeight = 20;
-            dataGridView1.Columns["MaKH"].FillWeight = 10;
+            dataGridView1.Columns["TenNV"].FillWeight = 15;
+            dataGridView1.Columns["TenKH"].FillWeight = 15;
             dataGridView1.Columns["ThoiGian"].FillWeight = 20;
-            dataGridView1.Columns["TongTien"].FillWeight = 20;
-            dataGridView1.Columns["TrangThai"].FillWeight = 20;
+            dataGridView1.Columns["TongTien"].FillWeight = 15;
+            dataGridView1.Columns["TrangThai"].FillWeight = 15;
 
-            dataGridView1.RowTemplate.Height = 40;
+            dataGridView1.RowTemplate.Height = 40; // set height
+
+            // THÊM CỘT HOÀN HÀNG
+            DataGridViewButtonColumn btnHoanHang = new DataGridViewButtonColumn();
+            btnHoanHang.HeaderText = "Hoàn hàng";
+            btnHoanHang.Name = "HoanHang";
+            btnHoanHang.Text = "OK";
+            btnHoanHang.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(btnHoanHang);
+            btnHoanHang.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridView1.Columns["HoanHang"].Width = 100;
 
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             btn.HeaderText = "Thao tác";
@@ -121,6 +131,17 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            // Vẽ cho cột Hoàn hàng
+            if (e.ColumnIndex == dataGridView1.Columns["HoanHang"].Index && e.RowIndex >= 0)
+            {
+                e.PaintBackground(e.CellBounds, true);
+
+                ButtonRenderer.DrawButton(e.Graphics, e.CellBounds, "Hoàn hàng", this.Font,
+                    false, PushButtonState.Normal);
+
+                e.Handled = true;
+            }
+
             if (e.ColumnIndex == dataGridView1.Columns["Actions"].Index && e.RowIndex >= 0)
             {
                 e.PaintBackground(e.CellBounds, true);

@@ -49,15 +49,15 @@
             this.txSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.boxNVxuat = new System.Windows.Forms.TextBox();
-            this.boxMaPhieu = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboBoxKH = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxKH = new System.Windows.Forms.ComboBox();
             this.linkNewKH = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.boxMaPhieu = new System.Windows.Forms.TextBox();
+            this.boxNVxuat = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).BeginInit();
@@ -350,60 +350,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(443, 1054);
             this.tableLayoutPanel5.TabIndex = 12;
             // 
-            // boxNVxuat
-            // 
-            this.boxNVxuat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boxNVxuat.Enabled = false;
-            this.boxNVxuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.boxNVxuat.Location = new System.Drawing.Point(15, 185);
-            this.boxNVxuat.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
-            this.boxNVxuat.Name = "boxNVxuat";
-            this.boxNVxuat.ReadOnly = true;
-            this.boxNVxuat.Size = new System.Drawing.Size(407, 32);
-            this.boxNVxuat.TabIndex = 4;
-            this.boxNVxuat.TabStop = false;
-            this.boxNVxuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // boxMaPhieu
-            // 
-            this.boxMaPhieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boxMaPhieu.Enabled = false;
-            this.boxMaPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.boxMaPhieu.Location = new System.Drawing.Point(15, 62);
-            this.boxMaPhieu.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
-            this.boxMaPhieu.Name = "boxMaPhieu";
-            this.boxMaPhieu.ReadOnly = true;
-            this.boxMaPhieu.Size = new System.Drawing.Size(407, 32);
-            this.boxMaPhieu.TabIndex = 3;
-            this.boxMaPhieu.TabStop = false;
-            this.boxMaPhieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(3, 123);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(431, 49);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nhân viên xuất";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(431, 49);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã phiếu xuất";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
@@ -426,6 +372,31 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.31732F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(437, 371);
             this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // comboBoxKH
+            // 
+            this.comboBoxKH.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBoxKH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.comboBoxKH.FormattingEnabled = true;
+            this.comboBoxKH.Location = new System.Drawing.Point(15, 308);
+            this.comboBoxKH.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
+            this.comboBoxKH.Name = "comboBoxKH";
+            this.comboBoxKH.Size = new System.Drawing.Size(407, 33);
+            this.comboBoxKH.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(431, 49);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã phiếu xuất";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tableLayoutPanel9
             // 
@@ -456,18 +427,6 @@
             this.label3.Text = "Khách hàng";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // comboBoxKH
-            // 
-            this.comboBoxKH.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBoxKH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.comboBoxKH.FormattingEnabled = true;
-            this.comboBoxKH.Location = new System.Drawing.Point(15, 308);
-            this.comboBoxKH.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
-            this.comboBoxKH.Name = "comboBoxKH";
-            this.comboBoxKH.Size = new System.Drawing.Size(407, 33);
-            this.comboBoxKH.TabIndex = 6;
-            // 
             // linkNewKH
             // 
             this.linkNewKH.AutoSize = true;
@@ -479,6 +438,47 @@
             this.linkNewKH.TabIndex = 8;
             this.linkNewKH.TabStop = true;
             this.linkNewKH.Text = "Thêm mới";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(3, 123);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(431, 49);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nhân viên xuất";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // boxMaPhieu
+            // 
+            this.boxMaPhieu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boxMaPhieu.Enabled = false;
+            this.boxMaPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.boxMaPhieu.Location = new System.Drawing.Point(15, 62);
+            this.boxMaPhieu.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
+            this.boxMaPhieu.Name = "boxMaPhieu";
+            this.boxMaPhieu.ReadOnly = true;
+            this.boxMaPhieu.Size = new System.Drawing.Size(407, 32);
+            this.boxMaPhieu.TabIndex = 3;
+            this.boxMaPhieu.TabStop = false;
+            this.boxMaPhieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // boxNVxuat
+            // 
+            this.boxNVxuat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boxNVxuat.Enabled = false;
+            this.boxNVxuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.boxNVxuat.Location = new System.Drawing.Point(15, 185);
+            this.boxNVxuat.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
+            this.boxNVxuat.Name = "boxNVxuat";
+            this.boxNVxuat.ReadOnly = true;
+            this.boxNVxuat.Size = new System.Drawing.Size(407, 32);
+            this.boxNVxuat.TabIndex = 4;
+            this.boxNVxuat.TabStop = false;
+            this.boxNVxuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AddPhieuXuatForm
             // 

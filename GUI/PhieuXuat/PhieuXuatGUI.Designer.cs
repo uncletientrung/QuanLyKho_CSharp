@@ -75,38 +75,6 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
-            // Sự kiện cho btnXuat
-            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
-
-            // Sự kiện cho txtSearchNV
-            this.txtSearchNV.TextChanged += new System.EventHandler(this.txtSearchNV_TextChanged);
-            this.txtSearchNV.Enter += new System.EventHandler(this.txtSearchNV_Enter);
-            this.txtSearchNV.Leave += new System.EventHandler(this.txtSearchNV_Leave);
-
-            // Sự kiện cho txtSearchKH
-            this.txtSearchKH.TextChanged += new System.EventHandler(this.txtSearchKH_TextChanged);
-            this.txtSearchKH.Enter += new System.EventHandler(this.txtSearchKH_Enter);
-            this.txtSearchKH.Leave += new System.EventHandler(this.txtSearchKH_Leave);
-
-            // Sự kiện cho numericUpDown1 và numericUpDown2
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
-
-            // Sự kiện cho dateTimeBegin và dateTimeEnd
-            this.dateTimeBegin.ValueChanged += new System.EventHandler(this.dateTimeBegin_ValueChanged);
-            this.dateTimeEnd.ValueChanged += new System.EventHandler(this.dateTimeEnd_ValueChanged);
-
-            // Sự kiện cho dataGridView1
-            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
-
-            // Sự kiện cho groupBox
-            this.grBoxTimKiem.Enter += new System.EventHandler(this.groupBox1_Enter);
-
-            // Sự kiện cho các panel và tableLayoutPanel
-            this.tlPheaderLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
-            this.panelKhung.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // dataGridView1
             // 
@@ -120,6 +88,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(790, 282);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // btnThem
             // 
@@ -147,6 +117,7 @@
             this.btnXuat.TabIndex = 1;
             this.btnXuat.Text = "Xuất";
             this.btnXuat.UseVisualStyleBackColor = true;
+            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -167,6 +138,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(150, 136);
             this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
             // 
             // txtNhanVienPN
             // 
@@ -192,6 +164,9 @@
             this.txtSearchNV.Size = new System.Drawing.Size(121, 29);
             this.txtSearchNV.TabIndex = 0;
             this.txtSearchNV.WordWrap = false;
+            this.txtSearchNV.TextChanged += new System.EventHandler(this.txtSearchNV_TextChanged);
+            this.txtSearchNV.Enter += new System.EventHandler(this.txtSearchNV_Enter);
+            this.txtSearchNV.Leave += new System.EventHandler(this.txtSearchNV_Leave);
             // 
             // panel2
             // 
@@ -253,6 +228,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(78, 32);
             this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // tableLayoutPanel5
             // 
@@ -283,6 +259,9 @@
             this.txtSearchKH.Name = "txtSearchKH";
             this.txtSearchKH.Size = new System.Drawing.Size(121, 29);
             this.txtSearchKH.TabIndex = 0;
+            this.txtSearchKH.TextChanged += new System.EventHandler(this.txtSearchKH_TextChanged);
+            this.txtSearchKH.Enter += new System.EventHandler(this.txtSearchKH_Enter);
+            this.txtSearchKH.Leave += new System.EventHandler(this.txtSearchKH_Leave);
             // 
             // panelKhung
             // 
@@ -296,6 +275,7 @@
             this.panelKhung.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.panelKhung.Size = new System.Drawing.Size(800, 450);
             this.panelKhung.TabIndex = 2;
+            this.panelKhung.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panelHeader
             // 
@@ -339,6 +319,7 @@
             this.grBoxTimKiem.TabIndex = 1;
             this.grBoxTimKiem.TabStop = false;
             this.grBoxTimKiem.Text = "Tìm kiếm";
+            this.grBoxTimKiem.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // tlPheaderLeft
             // 
@@ -363,6 +344,7 @@
             this.tlPheaderLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlPheaderLeft.Size = new System.Drawing.Size(596, 115);
             this.tlPheaderLeft.TabIndex = 0;
+            this.tlPheaderLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel8
             // 
@@ -394,6 +376,7 @@
             this.dateTimeEnd.Name = "dateTimeEnd";
             this.dateTimeEnd.Size = new System.Drawing.Size(64, 32);
             this.dateTimeEnd.TabIndex = 3;
+            this.dateTimeEnd.ValueChanged += new System.EventHandler(this.dateTimeEnd_ValueChanged);
             // 
             // txtTimeEnd
             // 
@@ -438,6 +421,7 @@
             this.dateTimeBegin.Size = new System.Drawing.Size(78, 32);
             this.dateTimeBegin.TabIndex = 2;
             this.dateTimeBegin.Value = new System.DateTime(2025, 9, 18, 0, 0, 0, 0);
+            this.dateTimeBegin.ValueChanged += new System.EventHandler(this.dateTimeBegin_ValueChanged);
             // 
             // txtTimeBegin
             // 
@@ -500,6 +484,7 @@
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(64, 32);
             this.numericUpDown2.TabIndex = 4;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // tableLayoutPanel4
             // 
@@ -551,6 +536,7 @@
             this.Controls.Add(this.panelKhung);
             this.Name = "PhieuXuatGUI";
             this.Text = "PhieuXuatGUI";
+            this.Load += new System.EventHandler(this.PhieuXuat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
