@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2025 at 05:24 PM
+-- Generation Time: Sep 30, 2025 at 01:17 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,6 +67,14 @@ CREATE TABLE `ctphieunhap` (
   `dongia` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ctphieunhap`
+--
+
+INSERT INTO `ctphieunhap` (`maphieunhap`, `masp`, `soluong`, `dongia`) VALUES
+(1, 2, 5, 60000),
+(2, 1, 2, 80000);
+
 -- --------------------------------------------------------
 
 --
@@ -110,16 +118,17 @@ CREATE TABLE `danhmucchucnang` (
 --
 
 INSERT INTO `danhmucchucnang` (`machucnang`, `tenchucnang`, `trangthai`) VALUES
-(1, 'nhanvien', 1),
-(2, 'khachhang', 1),
-(3, 'thongtin', 1),
-(4, 'tonkho', 1),
-(5, 'nhaphang', 1),
-(6, 'xuathang', 1),
-(7, 'kiemke', 1),
-(8, 'baocao', 1),
-(9, 'taikhoan', 1),
-(10, 'phanquyen', 1);
+(1, 'Quản lý nhân viên', 1),
+(2, 'Quản lý khách hàng', 1),
+(3, 'Quản lý nhà cung cấp', 1),
+(4, 'Quản lý nhà xuất bản', 1),
+(5, 'Quản lý tác giả', 1),
+(6, 'Quản lý thể loại', 1),
+(7, 'Quản lý nhóm quyền', 1),
+(8, 'Quản lý tài khoản', 1),
+(9, 'Quản lý nhập hàng', 1),
+(10, 'Quản lý xuất hàng', 1),
+(11, 'Quản lý thống kê', 1);
 
 -- --------------------------------------------------------
 
@@ -214,6 +223,15 @@ CREATE TABLE `nhacungcap` (
   `trangthai` tinyint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `nhacungcap`
+--
+
+INSERT INTO `nhacungcap` (`mancc`, `tenncc`, `diachincc`, `sdt`, `email`, `trangthai`) VALUES
+(1, 'Công ty Dệt may VN', 'TP.HCM', '02838456789', 'detmay@gmail.com', 1),
+(2, 'Công ty Thời trang MCK', 'TP.HCM', '02838245678', 'thoitrangMCK@gmail.com', 1),
+(3, 'Xưởng may Hải Hậu', 'TP.HCM', '02838345679', 'Brighton@gmail.com', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -235,9 +253,12 @@ CREATE TABLE `nhanvien` (
 
 INSERT INTO `nhanvien` (`manv`, `tennv`, `gioitinh`, `sdt`, `ngaysinh`, `trangthai`) VALUES
 (1, 'Nguyễn Tiến Trung', 1, '0352447642', '2000-03-15', 1),
-(2, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
-(3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 1),
-(4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1);
+(2, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 0),
+(3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 0),
+(4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
+(5, 'thai binh', 1, '0934254291', '2006-09-14', 1),
+(6, 'Facebook', 1, '02838476789', '2004-09-14', 1),
+(7, 'Tung nui', 1, '0865676567', '2025-09-09', 1);
 
 -- --------------------------------------------------------
 
@@ -258,9 +279,7 @@ CREATE TABLE `nhomquyen` (
 INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 (1, 'Quản lý', 1),
 (2, 'Nhân viên', 1),
-(3, 'Quản lý kho', 1),
-(21, 'test1', 0),
-(22, 'test2', 0);
+(3, 'Quản lý kho', 1);
 
 -- --------------------------------------------------------
 
@@ -293,6 +312,16 @@ CREATE TABLE `phieunhap` (
   `tongtien` bigint(20) NOT NULL DEFAULT 0,
   `trangthai` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `phieunhap`
+--
+
+INSERT INTO `phieunhap` (`maphieunhap`, `manv`, `mancc`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
+(1, 1, 1, '2025-09-11 17:19:00', 210000, 1),
+(2, 1, 2, '2025-09-09 17:19:00', 120000, 1),
+(3, 6, 3, '2025-09-10 17:20:24', 88000, 0),
+(4, 6, 1, '2025-09-15 17:20:24', 190000, 1);
 
 -- --------------------------------------------------------
 
@@ -379,7 +408,6 @@ CREATE TABLE `taikhoan` (
 
 INSERT INTO `taikhoan` (`manv`, `tendangnhap`, `matkhau`, `manhomquyen`, `trangthai`) VALUES
 (1, 'trung123', '12345', 3, 1),
-(3, 'thuan123', '123', 3, 0),
 (6, 'admin', '12345', 1, 1);
 
 --
@@ -547,19 +575,19 @@ ALTER TABLE `loai`
 -- AUTO_INCREMENT for table `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
-  MODIFY `mancc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `mancc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `nhomquyen`
 --
 ALTER TABLE `nhomquyen`
-  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `phieukiemke`
