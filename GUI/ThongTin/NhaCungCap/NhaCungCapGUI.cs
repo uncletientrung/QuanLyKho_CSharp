@@ -16,5 +16,10 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         {
             InitializeComponent();
         }
+
+        private void NhaCungCapGUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
