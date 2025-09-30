@@ -41,6 +41,12 @@ namespace QuanLyKho_CSharp
             this.panelDanhMuc = new System.Windows.Forms.Panel();
             this.btnBaoCao = new System.Windows.Forms.Button();
             this.btnKhachHang = new System.Windows.Forms.Button();
+            this.panelThongTin = new System.Windows.Forms.Panel();
+            this.btnKhuVuc = new System.Windows.Forms.Button();
+            this.btnLoai = new System.Windows.Forms.Button();
+            this.btnSize = new System.Windows.Forms.Button();
+            this.btnChatLieu = new System.Windows.Forms.Button();
+            this.btnNhaCungCap = new System.Windows.Forms.Button();
             this.btnThongTin = new System.Windows.Forms.Button();
             this.btnDanhMuc = new System.Windows.Forms.Button();
             this.panelQuanLyKho = new System.Windows.Forms.Panel();
@@ -58,21 +64,15 @@ namespace QuanLyKho_CSharp
             this.avatar_Logout = new System.Windows.Forms.PictureBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.mySqlCommandBuilder1 = new MySqlConnector.MySqlCommandBuilder();
-            this.panelThongTin = new System.Windows.Forms.Panel();
-            this.btnNhaCungCap = new System.Windows.Forms.Button();
-            this.btnChatLieu = new System.Windows.Forms.Button();
-            this.btnSize = new System.Windows.Forms.Button();
-            this.btnLoai = new System.Windows.Forms.Button();
-            this.btnKhuVuc = new System.Windows.Forms.Button();
             this.pnlLeftMenu.SuspendLayout();
             this.panelQuanLyHeThong.SuspendLayout();
             this.panelDanhMuc.SuspendLayout();
+            this.panelThongTin.SuspendLayout();
             this.panelQuanLyKho.SuspendLayout();
             this.panelAvatar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar_Logout)).BeginInit();
-            this.panelThongTin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlLeftMenu
@@ -209,6 +209,89 @@ namespace QuanLyKho_CSharp
             this.btnKhachHang.Text = "Khách hàng";
             this.btnKhachHang.UseVisualStyleBackColor = true;
             this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+            // 
+            // panelThongTin
+            // 
+            this.panelThongTin.Controls.Add(this.btnKhuVuc);
+            this.panelThongTin.Controls.Add(this.btnLoai);
+            this.panelThongTin.Controls.Add(this.btnSize);
+            this.panelThongTin.Controls.Add(this.btnChatLieu);
+            this.panelThongTin.Controls.Add(this.btnNhaCungCap);
+            this.panelThongTin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelThongTin.Location = new System.Drawing.Point(0, 40);
+            this.panelThongTin.Name = "panelThongTin";
+            this.panelThongTin.Size = new System.Drawing.Size(219, 199);
+            this.panelThongTin.TabIndex = 7;
+            // 
+            // btnKhuVuc
+            // 
+            this.btnKhuVuc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnKhuVuc.Image = ((System.Drawing.Image)(resources.GetObject("btnKhuVuc.Image")));
+            this.btnKhuVuc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKhuVuc.Location = new System.Drawing.Point(0, 160);
+            this.btnKhuVuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnKhuVuc.Name = "btnKhuVuc";
+            this.btnKhuVuc.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnKhuVuc.Size = new System.Drawing.Size(219, 40);
+            this.btnKhuVuc.TabIndex = 11;
+            this.btnKhuVuc.Text = "Khu Vực";
+            this.btnKhuVuc.UseVisualStyleBackColor = true;
+            // 
+            // btnLoai
+            // 
+            this.btnLoai.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLoai.Image = ((System.Drawing.Image)(resources.GetObject("btnLoai.Image")));
+            this.btnLoai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLoai.Location = new System.Drawing.Point(0, 120);
+            this.btnLoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoai.Name = "btnLoai";
+            this.btnLoai.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnLoai.Size = new System.Drawing.Size(219, 40);
+            this.btnLoai.TabIndex = 10;
+            this.btnLoai.Text = "Loại";
+            this.btnLoai.UseVisualStyleBackColor = true;
+            // 
+            // btnSize
+            // 
+            this.btnSize.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSize.Image = ((System.Drawing.Image)(resources.GetObject("btnSize.Image")));
+            this.btnSize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSize.Location = new System.Drawing.Point(0, 80);
+            this.btnSize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSize.Name = "btnSize";
+            this.btnSize.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnSize.Size = new System.Drawing.Size(219, 40);
+            this.btnSize.TabIndex = 9;
+            this.btnSize.Text = "Size";
+            this.btnSize.UseVisualStyleBackColor = true;
+            // 
+            // btnChatLieu
+            // 
+            this.btnChatLieu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChatLieu.Image = ((System.Drawing.Image)(resources.GetObject("btnChatLieu.Image")));
+            this.btnChatLieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChatLieu.Location = new System.Drawing.Point(0, 40);
+            this.btnChatLieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChatLieu.Name = "btnChatLieu";
+            this.btnChatLieu.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnChatLieu.Size = new System.Drawing.Size(219, 40);
+            this.btnChatLieu.TabIndex = 8;
+            this.btnChatLieu.Text = "Chất liệu";
+            this.btnChatLieu.UseVisualStyleBackColor = true;
+            // 
+            // btnNhaCungCap
+            // 
+            this.btnNhaCungCap.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNhaCungCap.Image = ((System.Drawing.Image)(resources.GetObject("btnNhaCungCap.Image")));
+            this.btnNhaCungCap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNhaCungCap.Location = new System.Drawing.Point(0, 0);
+            this.btnNhaCungCap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNhaCungCap.Name = "btnNhaCungCap";
+            this.btnNhaCungCap.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.btnNhaCungCap.Size = new System.Drawing.Size(219, 40);
+            this.btnNhaCungCap.TabIndex = 7;
+            this.btnNhaCungCap.Text = "Nhà cung cấp";
+            this.btnNhaCungCap.UseVisualStyleBackColor = true;
             // 
             // btnThongTin
             // 
@@ -441,89 +524,6 @@ namespace QuanLyKho_CSharp
             this.mySqlCommandBuilder1.QuotePrefix = "`";
             this.mySqlCommandBuilder1.QuoteSuffix = "`";
             // 
-            // panelThongTin
-            // 
-            this.panelThongTin.Controls.Add(this.btnKhuVuc);
-            this.panelThongTin.Controls.Add(this.btnLoai);
-            this.panelThongTin.Controls.Add(this.btnSize);
-            this.panelThongTin.Controls.Add(this.btnChatLieu);
-            this.panelThongTin.Controls.Add(this.btnNhaCungCap);
-            this.panelThongTin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelThongTin.Location = new System.Drawing.Point(0, 40);
-            this.panelThongTin.Name = "panelThongTin";
-            this.panelThongTin.Size = new System.Drawing.Size(219, 199);
-            this.panelThongTin.TabIndex = 7;
-            // 
-            // btnNhaCungCap
-            // 
-            this.btnNhaCungCap.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNhaCungCap.Image = ((System.Drawing.Image)(resources.GetObject("btnNhaCungCap.Image")));
-            this.btnNhaCungCap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNhaCungCap.Location = new System.Drawing.Point(0, 0);
-            this.btnNhaCungCap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnNhaCungCap.Name = "btnNhaCungCap";
-            this.btnNhaCungCap.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnNhaCungCap.Size = new System.Drawing.Size(219, 40);
-            this.btnNhaCungCap.TabIndex = 7;
-            this.btnNhaCungCap.Text = "Nhà cung cấp";
-            this.btnNhaCungCap.UseVisualStyleBackColor = true;
-            // 
-            // btnChatLieu
-            // 
-            this.btnChatLieu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChatLieu.Image = ((System.Drawing.Image)(resources.GetObject("btnChatLieu.Image")));
-            this.btnChatLieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChatLieu.Location = new System.Drawing.Point(0, 40);
-            this.btnChatLieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnChatLieu.Name = "btnChatLieu";
-            this.btnChatLieu.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnChatLieu.Size = new System.Drawing.Size(219, 40);
-            this.btnChatLieu.TabIndex = 8;
-            this.btnChatLieu.Text = "Chất liệu";
-            this.btnChatLieu.UseVisualStyleBackColor = true;
-            // 
-            // btnSize
-            // 
-            this.btnSize.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSize.Image = ((System.Drawing.Image)(resources.GetObject("btnSize.Image")));
-            this.btnSize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSize.Location = new System.Drawing.Point(0, 80);
-            this.btnSize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSize.Name = "btnSize";
-            this.btnSize.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnSize.Size = new System.Drawing.Size(219, 40);
-            this.btnSize.TabIndex = 9;
-            this.btnSize.Text = "Size";
-            this.btnSize.UseVisualStyleBackColor = true;
-            // 
-            // btnLoai
-            // 
-            this.btnLoai.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLoai.Image = ((System.Drawing.Image)(resources.GetObject("btnLoai.Image")));
-            this.btnLoai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoai.Location = new System.Drawing.Point(0, 120);
-            this.btnLoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLoai.Name = "btnLoai";
-            this.btnLoai.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnLoai.Size = new System.Drawing.Size(219, 40);
-            this.btnLoai.TabIndex = 10;
-            this.btnLoai.Text = "Loại";
-            this.btnLoai.UseVisualStyleBackColor = true;
-            // 
-            // btnKhuVuc
-            // 
-            this.btnKhuVuc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnKhuVuc.Image = ((System.Drawing.Image)(resources.GetObject("btnKhuVuc.Image")));
-            this.btnKhuVuc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKhuVuc.Location = new System.Drawing.Point(0, 160);
-            this.btnKhuVuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnKhuVuc.Name = "btnKhuVuc";
-            this.btnKhuVuc.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnKhuVuc.Size = new System.Drawing.Size(219, 40);
-            this.btnKhuVuc.TabIndex = 11;
-            this.btnKhuVuc.Text = "Khu Vực";
-            this.btnKhuVuc.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,6 +541,7 @@ namespace QuanLyKho_CSharp
             this.pnlLeftMenu.ResumeLayout(false);
             this.panelQuanLyHeThong.ResumeLayout(false);
             this.panelDanhMuc.ResumeLayout(false);
+            this.panelThongTin.ResumeLayout(false);
             this.panelQuanLyKho.ResumeLayout(false);
             this.panelAvatar.ResumeLayout(false);
             this.panelAvatar.PerformLayout();
@@ -548,7 +549,6 @@ namespace QuanLyKho_CSharp
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar_Logout)).EndInit();
-            this.panelThongTin.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

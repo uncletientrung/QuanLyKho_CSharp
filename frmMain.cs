@@ -75,18 +75,22 @@ namespace QuanLyKho_CSharp
             panelQuanLyKho.Visible = false;
             panelDanhMuc.Visible = false;
             panelQuanLyHeThong.Visible = false;
+            panelThongTin.Visible = false;
         }
         private void hideSideMenu() // Ẩn các nút còn lại khi ấn
         {
             if (panelQuanLyKho.Visible) panelQuanLyKho.Visible=false;
             if (panelDanhMuc.Visible) panelDanhMuc.Visible=false;
             if (panelQuanLyHeThong.Visible) panelQuanLyHeThong.Visible=false;
+            if(panelThongTin.Visible) panelThongTin.Visible=false;  
         }
         private void ShowSideMenu(Panel sidemenu)
         {
+
             if(sidemenu.Visible == false)
             {
-                //hideSideMenu();
+                if(sidemenu != panelThongTin) hideSideMenu();
+
                 sidemenu.Visible=true;
             }
             else
