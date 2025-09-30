@@ -113,6 +113,7 @@
     <Compile Include="BUS\DanhMucChucNangBUS.cs" />
     <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\KhuVucKhoBUS.cs" />
+    <Compile Include="BUS\NhaCungCapBUS.cs" />
     <Compile Include="BUS\NhomQuyenBUS.cs" />
     <Compile Include="BUS\PhieuNhapBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="DAO\DAOInterface.cs" />
     <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\KhuVucKhoDAO.cs" />
+    <Compile Include="DAO\NhaCungCapDAO.cs" />
     <Compile Include="DAO\NhomQuyenDAO.cs" />
     <Compile Include="DAO\PhieuHoanHangDAO.cs" />
     <Compile Include="DAO\PhieuNhapDAO.cs" />
@@ -164,7 +166,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="DTO\NhaCungCap.cs" />
+    <Compile Include="DTO\NhaCungCapDTO.cs" />
     <Compile Include="GUI\HoanHang\LuaChonSPHoanHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,17 +293,11 @@
     <Compile Include="GUI\TaiKhoan\UpdateTaiKhoanForm.Designer.cs">
       <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThongTin\NhaCungCap.cs">
+    <Compile Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ThongTin\NhaCungCap.Designer.cs">
-      <DependentUpon>NhaCungCap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ThongTin\ThongTinGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ThongTin\ThongTinGUI.Designer.cs">
-      <DependentUpon>ThongTinGUI.cs</DependentUpon>
+    <Compile Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.Designer.cs">
+      <DependentUpon>NhaCungCapGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\ScreenSize.cs" />
     <Compile Include="Login.cs">
@@ -417,12 +413,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\SanPhamGUI.resx">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThongTin\NhaCungCap.resx">
-      <DependentUpon>NhaCungCap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThongTin\ThongTinGUI.resx">
-      <DependentUpon>ThongTinGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

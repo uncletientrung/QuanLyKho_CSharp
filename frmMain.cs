@@ -4,7 +4,7 @@ using QuanLyKho_CSharp.GUI.KiemKe;
 using QuanLyKho_CSharp.GUI.PhanQuyen;
 using QuanLyKho_CSharp.GUI.PhieuNhap;
 using QuanLyKho_CSharp.GUI.TaiKhoan;
-using QuanLyKho_CSharp.GUI.ThongTin;
+using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

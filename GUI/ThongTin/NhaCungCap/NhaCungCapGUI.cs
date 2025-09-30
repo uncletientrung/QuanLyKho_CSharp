@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKho_CSharp.GUI.ThongTin
+namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
 {
-    public partial class NhaCungCap : Form
+    public partial class NhaCungCapGUI : Form
     {
-        public NhaCungCap()
+        public NhaCungCapGUI()
         {
             InitializeComponent();
         }

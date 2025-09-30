@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyKho_CSharp
 {
-    public class NhaCungCap
+    public class NhaCungCapDTO
     {
         private int mancc;
         private string tenncc;
@@ -15,9 +15,9 @@ namespace QuanLyKho_CSharp
         private string email;
         private int trangthai;
 
-        public NhaCungCap() { }
+        public NhaCungCapDTO() { }
 
-        public NhaCungCap(int _mancc, string _tenncc, string _diachincc, string _sdt, string _email, int _trangthai)
+        public NhaCungCapDTO(int _mancc, string _tenncc, string _diachincc, string _sdt, string _email, int _trangthai)
         {
             mancc = _mancc;
             tenncc = _tenncc;
