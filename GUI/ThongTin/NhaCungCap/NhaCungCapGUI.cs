@@ -21,5 +21,10 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         {
 
         }
+
+        private void lblThongTinTieuDe_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
