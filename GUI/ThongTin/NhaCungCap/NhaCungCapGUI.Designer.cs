@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.plnTieuDe = new System.Windows.Forms.Panel();
             this.pnlThongTin = new System.Windows.Forms.Panel();
             this.pnlTimKiem = new System.Windows.Forms.Panel();
@@ -50,6 +51,13 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.pnlDanhSach = new System.Windows.Forms.Panel();
             this.DGVNhaCungCap = new System.Windows.Forms.DataGridView();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plnTieuDe.SuspendLayout();
             this.pnlThongTin.SuspendLayout();
             this.pnlTimKiem.SuspendLayout();
@@ -263,14 +271,64 @@
             // DGVNhaCungCap
             // 
             this.DGVNhaCungCap.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.DGVNhaCungCap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVNhaCungCap.BackgroundColor = System.Drawing.Color.White;
             this.DGVNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVNhaCungCap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.MaNCC,
+            this.TenNhaCungCap,
+            this.DiaChi,
+            this.SDT,
+            this.Email,
+            this.TrangThai});
             this.DGVNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVNhaCungCap.Location = new System.Drawing.Point(0, 0);
             this.DGVNhaCungCap.Name = "DGVNhaCungCap";
             this.DGVNhaCungCap.RowHeadersVisible = false;
             this.DGVNhaCungCap.Size = new System.Drawing.Size(1113, 280);
             this.DGVNhaCungCap.TabIndex = 0;
+            // 
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
+            this.STT.Width = 50;
+            // 
+            // MaNCC
+            // 
+            this.MaNCC.HeaderText = "Mã NCC";
+            this.MaNCC.Name = "MaNCC";
+            // 
+            // TenNhaCungCap
+            // 
+            this.TenNhaCungCap.HeaderText = "Tên nhà cung cấp";
+            this.TenNhaCungCap.Name = "TenNhaCungCap";
+            this.TenNhaCungCap.Width = 200;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.HeaderText = "Địa chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Width = 300;
+            // 
+            // SDT
+            // 
+            this.SDT.HeaderText = "SĐT";
+            this.SDT.Name = "SDT";
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Width = 200;
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.HeaderText = "Trạng thái";
+            this.TrangThai.Name = "TrangThai";
             // 
             // NhaCungCapGUI
             // 
@@ -320,5 +378,12 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Panel pnlDanhSach;
         private System.Windows.Forms.DataGridView DGVNhaCungCap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenNhaCungCap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }
