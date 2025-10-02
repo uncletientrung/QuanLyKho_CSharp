@@ -314,6 +314,9 @@
     <Compile Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.Designer.cs">
       <DependentUpon>NhaCungCapGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\component\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Helper\ScreenSize.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
