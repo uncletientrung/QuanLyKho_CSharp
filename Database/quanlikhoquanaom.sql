@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 30, 2025 at 05:06 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 02, 2025 lúc 06:26 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quanlikhoquanao`
+-- Cơ sở dữ liệu: `quanlikhoquanaom`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatlieu`
+-- Cấu trúc bảng cho bảng `chatlieu`
 --
 
 CREATE TABLE `chatlieu` (
@@ -33,17 +33,27 @@ CREATE TABLE `chatlieu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `chatlieu`
+-- Đang đổ dữ liệu cho bảng `chatlieu`
 --
 
 INSERT INTO `chatlieu` (`machatlieu`, `tenchatlieu`) VALUES
-(1, 'Vải thun'),
-(2, 'Vải jean');
+(1, 'Cotton'),
+(2, 'Polyester'),
+(3, 'Len'),
+(4, 'Jean'),
+(5, 'Lụa'),
+(6, 'Vải bố'),
+(7, 'Nỉ'),
+(8, 'Vải lanh'),
+(9, 'Denim'),
+(10, 'Nhung'),
+(11, 'Vải thun Spandex'),
+(12, 'Vải kaki');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctkiemke`
+-- Cấu trúc bảng cho bảng `ctkiemke`
 --
 
 CREATE TABLE `ctkiemke` (
@@ -57,7 +67,7 @@ CREATE TABLE `ctkiemke` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctphieunhap`
+-- Cấu trúc bảng cho bảng `ctphieunhap`
 --
 
 CREATE TABLE `ctphieunhap` (
@@ -68,17 +78,20 @@ CREATE TABLE `ctphieunhap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `ctphieunhap`
+-- Đang đổ dữ liệu cho bảng `ctphieunhap`
 --
 
 INSERT INTO `ctphieunhap` (`maphieunhap`, `masp`, `soluong`, `dongia`) VALUES
-(1, 2, 5, 60000),
-(2, 1, 2, 80000);
+(35, 1, 1000, 80000),
+(36, 2, 50, 60000),
+(36, 3, 10, 67000),
+(37, 2, 20, 60000),
+(37, 3, 20, 67000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctphieuxuat`
+-- Cấu trúc bảng cho bảng `ctphieuxuat`
 --
 
 CREATE TABLE `ctphieuxuat` (
@@ -89,17 +102,20 @@ CREATE TABLE `ctphieuxuat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `ctphieuxuat`
+-- Đang đổ dữ liệu cho bảng `ctphieuxuat`
 --
 
 INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`) VALUES
-(1, 2, 2, 60000),
-(2, 1, 2, 80000);
+(199, 2, 1, 60000),
+(199, 1, 1, 80000),
+(200, 3, 100, 67000),
+(201, 1, 1, 80000),
+(201, 3, 57, 67000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctquyen`
+-- Cấu trúc bảng cho bảng `ctquyen`
 --
 
 CREATE TABLE `ctquyen` (
@@ -112,7 +128,7 @@ CREATE TABLE `ctquyen` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `danhmucchucnang`
+-- Cấu trúc bảng cho bảng `danhmucchucnang`
 --
 
 CREATE TABLE `danhmucchucnang` (
@@ -122,26 +138,25 @@ CREATE TABLE `danhmucchucnang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `danhmucchucnang`
+-- Đang đổ dữ liệu cho bảng `danhmucchucnang`
 --
 
 INSERT INTO `danhmucchucnang` (`machucnang`, `tenchucnang`, `trangthai`) VALUES
-(1, 'Quản lý nhân viên', 1),
-(2, 'Quản lý khách hàng', 1),
-(3, 'Quản lý nhà cung cấp', 1),
-(4, 'Quản lý nhà xuất bản', 1),
-(5, 'Quản lý tác giả', 1),
-(6, 'Quản lý thể loại', 1),
-(7, 'Quản lý nhóm quyền', 1),
-(8, 'Quản lý tài khoản', 1),
-(9, 'Quản lý nhập hàng', 1),
-(10, 'Quản lý xuất hàng', 1),
-(11, 'Quản lý thống kê', 1);
+(1, 'nhanvien', 1),
+(2, 'khachhang', 1),
+(3, 'thongtin', 1),
+(4, 'tonkho', 1),
+(5, 'nhaphang', 1),
+(6, 'xuathang', 1),
+(7, 'kiemke', 1),
+(8, 'baocao', 1),
+(9, 'taikhoan', 1),
+(10, 'phanquyen', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khachhang`
+-- Cấu trúc bảng cho bảng `khachhang`
 --
 
 CREATE TABLE `khachhang` (
@@ -154,7 +169,7 @@ CREATE TABLE `khachhang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `khachhang`
+-- Đang đổ dữ liệu cho bảng `khachhang`
 --
 
 INSERT INTO `khachhang` (`makh`, `tenkhachhang`, `email`, `ngaysinh`, `sdt`, `trangthai`) VALUES
@@ -178,7 +193,7 @@ INSERT INTO `khachhang` (`makh`, `tenkhachhang`, `email`, `ngaysinh`, `sdt`, `tr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khuvuckho`
+-- Cấu trúc bảng cho bảng `khuvuckho`
 --
 
 CREATE TABLE `khuvuckho` (
@@ -190,16 +205,20 @@ CREATE TABLE `khuvuckho` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `khuvuckho`
+-- Đang đổ dữ liệu cho bảng `khuvuckho`
 --
 
 INSERT INTO `khuvuckho` (`makhuvuc`, `tenkhuvuc`, `diachi`, `sdt`, `email`) VALUES
-(1, 'Chi nhánh phía nam', 'TPHCM', '0909777888', 'khuvucphianam@gmail.com');
+(1, 'Kho Trung Tâm', '123 Đường Lê Lợi, Quận 1, TP.HCM', '02812345678', 'trungtam@kho.com'),
+(2, 'Kho Miền Bắc', '456 Đường Hoàng Hoa Thám, Hà Nội', '02487654321', 'mienbac@kho.com'),
+(3, 'Kho Miền Nam', '789 Đường Trần Hưng Đạo, Cần Thơ', '02921234567', 'miennam@kho.com'),
+(4, 'Kho Hàng Hóa Nhỏ', '12 Đường Nguyễn Huệ, Đà Nẵng', '02363891234', 'khohoahoc@kho.com'),
+(5, 'Kho Dự Phòng', '99 Đường Phạm Văn Đồng, Bình Dương', '02743876543', 'duphong@kho.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loai`
+-- Cấu trúc bảng cho bảng `loai`
 --
 
 CREATE TABLE `loai` (
@@ -208,18 +227,29 @@ CREATE TABLE `loai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `loai`
+-- Đang đổ dữ liệu cho bảng `loai`
 --
 
 INSERT INTO `loai` (`maloai`, `tenloai`) VALUES
-(1, 'Cao cấp'),
-(2, 'Bình dân'),
-(3, '2hand');
+(1, 'Áo thun'),
+(2, 'Áo sơ mi'),
+(3, 'Áo khoác'),
+(4, 'Áo len'),
+(5, 'Quần jeans'),
+(6, 'Quần tây'),
+(7, 'Chân váy'),
+(8, 'Váy liền'),
+(9, 'Đầm maxi'),
+(10, 'Áo hoodie'),
+(11, 'Áo khoác gió'),
+(12, 'Quần short'),
+(13, 'Áo ba lỗ'),
+(14, 'Áo polo');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhacungcap`
+-- Cấu trúc bảng cho bảng `nhacungcap`
 --
 
 CREATE TABLE `nhacungcap` (
@@ -232,18 +262,21 @@ CREATE TABLE `nhacungcap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `nhacungcap`
+-- Đang đổ dữ liệu cho bảng `nhacungcap`
 --
 
 INSERT INTO `nhacungcap` (`mancc`, `tenncc`, `diachincc`, `sdt`, `email`, `trangthai`) VALUES
-(1, 'Công ty Dệt may VN', 'TP.HCM', '02838456789', 'detmay@gmail.com', 1),
-(2, 'Công ty Thời trang MCK', 'TP.HCM', '02838245678', 'thoitrangMCK@gmail.com', 1),
-(3, 'Xưởng may Hải Hậu', 'TP.HCM', '02838345679', 'Brighton@gmail.com', 1);
+(9, 'Fashion Global Ltd', '10 Downing Street, London, UK', '+44 20 7946 0958', 'contact@fashionglobal.com', 1),
+(10, 'Textile World Inc', '500 Fifth Avenue, New York, USA', '+1 212 555 0199', 'sales@textileworld.com', 1),
+(11, 'Euro Fabrics GmbH', 'Kaiserstraße 45, Berlin, Germany', '+49 30 12345678', 'info@eurofabrics.de', 1),
+(12, 'Silk Route Co', '1 Rue de la Paix, Paris, France', '+33 1 23456789', 'support@silkroute.fr', 1),
+(13, 'Shenzhen Textile Co', 'No. 88, Futian Rd, Shenzhen, China', '+86 755 1234 5678', 'contact@sztextile.cn', 1),
+(14, 'Beijing Fashion Importers', 'No. 10, Wangfujing Street, Beijing, China', '+86 10 8765 4321', 'sales@bjfashion.cn', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhanvien`
+-- Cấu trúc bảng cho bảng `nhanvien`
 --
 
 CREATE TABLE `nhanvien` (
@@ -256,22 +289,19 @@ CREATE TABLE `nhanvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `nhanvien`
+-- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
 INSERT INTO `nhanvien` (`manv`, `tennv`, `gioitinh`, `sdt`, `ngaysinh`, `trangthai`) VALUES
 (1, 'Nguyễn Tiến Trung', 1, '0352447642', '2000-03-15', 1),
-(2, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 0),
-(3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 0),
-(4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
-(5, 'thai binh', 1, '0934254291', '2006-09-14', 1),
-(6, 'Facebook', 1, '02838476789', '2004-09-14', 1),
-(7, 'Tung nui', 1, '0865676567', '2025-09-09', 1);
+(2, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
+(3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 1),
+(4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhomquyen`
+-- Cấu trúc bảng cho bảng `nhomquyen`
 --
 
 CREATE TABLE `nhomquyen` (
@@ -281,18 +311,20 @@ CREATE TABLE `nhomquyen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `nhomquyen`
+-- Đang đổ dữ liệu cho bảng `nhomquyen`
 --
 
 INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 (1, 'Quản lý', 1),
 (2, 'Nhân viên', 1),
-(3, 'Quản lý kho', 1);
+(3, 'Quản lý kho', 1),
+(21, 'test1', 0),
+(22, 'test2', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phieukiemke`
+-- Cấu trúc bảng cho bảng `phieukiemke`
 --
 
 CREATE TABLE `phieukiemke` (
@@ -309,7 +341,7 @@ CREATE TABLE `phieukiemke` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phieunhap`
+-- Cấu trúc bảng cho bảng `phieunhap`
 --
 
 CREATE TABLE `phieunhap` (
@@ -322,19 +354,18 @@ CREATE TABLE `phieunhap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `phieunhap`
+-- Đang đổ dữ liệu cho bảng `phieunhap`
 --
 
 INSERT INTO `phieunhap` (`maphieunhap`, `manv`, `mancc`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
-(1, 1, 1, '2025-09-11 17:19:00', 210000, 1),
-(2, 1, 2, '2025-09-09 17:19:00', 120000, 1),
-(3, 6, 3, '2025-09-10 17:20:24', 88000, 0),
-(4, 6, 1, '2025-09-15 17:20:24', 190000, 1);
+(35, 6, 14, '2025-10-02 16:53:55', 80000000, 1),
+(36, 6, 11, '2025-10-02 16:57:59', 3670000, 1),
+(37, 6, 13, '2025-10-02 16:57:59', 2540000, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phieuxuat`
+-- Cấu trúc bảng cho bảng `phieuxuat`
 --
 
 CREATE TABLE `phieuxuat` (
@@ -347,17 +378,18 @@ CREATE TABLE `phieuxuat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `phieuxuat`
+-- Đang đổ dữ liệu cho bảng `phieuxuat`
 --
 
 INSERT INTO `phieuxuat` (`maphieuxuat`, `manv`, `makh`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
-(1, 1, 1, '2025-09-30 21:29:28', 100000, 1),
-(2, 1, 10, '2025-09-30 21:29:28', 200000, 1);
+(199, 6, 1, '2025-10-02 16:35:46', 140000, 1),
+(200, 6, 3, '2025-10-02 16:38:23', 6700000, 1),
+(201, 6, 2, '2025-10-02 16:39:57', 3899000, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sanpham`
+-- Cấu trúc bảng cho bảng `sanpham`
 --
 
 CREATE TABLE `sanpham` (
@@ -373,18 +405,18 @@ CREATE TABLE `sanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `sanpham`
+-- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
 INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `soluong`, `dongia`, `machatlieu`, `maloai`, `makhuvuc`, `masize`) VALUES
-(1, 'Áo thun', 'images/stocks/ao1.png', 1000, 80000, 1, 1, 1, 3),
-(2, 'ao polo', 'images/stocks/ao2.png', 70, 60000, 1, 2, 1, 5),
+(1, 'Áo Lovepik', 'images/stocks/ao1.png', 1000, 80000, 1, 1, 1, 3),
+(2, 'áo thun trắng', 'images/stocks/ao2.png', 70, 60000, 1, 2, 1, 5),
 (3, 'áo da bò', 'images/stocks/ao3.png', 30, 67000, 2, 1, 1, 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `size`
+-- Cấu trúc bảng cho bảng `size`
 --
 
 CREATE TABLE `size` (
@@ -394,20 +426,22 @@ CREATE TABLE `size` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `size`
+-- Đang đổ dữ liệu cho bảng `size`
 --
 
 INSERT INTO `size` (`masize`, `tensize`, `ghichu`) VALUES
-(1, 'S', 'Người nhỏ'),
-(2, 'M', 'Người hơi nhỏ'),
-(3, 'L', 'Người bình thường'),
-(4, 'XL', 'Người hơi to'),
-(5, 'XXL', 'Người to');
+(1, 'XS', '40–45kg, 150–155cm'),
+(2, 'S', '45–50kg, 155–160cm'),
+(3, 'M', '50–60kg, 160–165cm'),
+(4, 'L', '60–70kg, 165–170cm'),
+(5, 'XL', '70–80kg, 170–175cm'),
+(6, 'XXL', '80–90kg, 175–180cm'),
+(7, 'XXXL', '90–100kg, 180–185cm');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `taikhoan`
+-- Cấu trúc bảng cho bảng `taikhoan`
 --
 
 CREATE TABLE `taikhoan` (
@@ -419,94 +453,95 @@ CREATE TABLE `taikhoan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `taikhoan`
+-- Đang đổ dữ liệu cho bảng `taikhoan`
 --
 
 INSERT INTO `taikhoan` (`manv`, `tendangnhap`, `matkhau`, `manhomquyen`, `trangthai`) VALUES
 (1, 'trung123', '12345', 3, 1),
+(3, 'thuan123', '123', 3, 0),
 (6, 'admin', '12345', 1, 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `chatlieu`
+-- Chỉ mục cho bảng `chatlieu`
 --
 ALTER TABLE `chatlieu`
   ADD PRIMARY KEY (`machatlieu`);
 
 --
--- Indexes for table `ctkiemke`
+-- Chỉ mục cho bảng `ctkiemke`
 --
 ALTER TABLE `ctkiemke`
   ADD KEY `FK_ctkiemke_phieukiemke` (`maphieukiemke`),
   ADD KEY `FK_ctkiemke_sanpham` (`masp`);
 
 --
--- Indexes for table `ctphieunhap`
+-- Chỉ mục cho bảng `ctphieunhap`
 --
 ALTER TABLE `ctphieunhap`
   ADD KEY `FK_ctphieunhap_phieunhap` (`maphieunhap`),
   ADD KEY `FK_ctphieunhap_sanpham` (`masp`);
 
 --
--- Indexes for table `ctphieuxuat`
+-- Chỉ mục cho bảng `ctphieuxuat`
 --
 ALTER TABLE `ctphieuxuat`
   ADD KEY `FK_ctphieuxuat_sanpham` (`masp`),
   ADD KEY `FK_ctphieuxuat_phieuxuat` (`maphieuxuat`);
 
 --
--- Indexes for table `ctquyen`
+-- Chỉ mục cho bảng `ctquyen`
 --
 ALTER TABLE `ctquyen`
   ADD PRIMARY KEY (`manhomquyen`,`machucnang`,`hanhdong`);
 
 --
--- Indexes for table `danhmucchucnang`
+-- Chỉ mục cho bảng `danhmucchucnang`
 --
 ALTER TABLE `danhmucchucnang`
   ADD PRIMARY KEY (`machucnang`);
 
 --
--- Indexes for table `khachhang`
+-- Chỉ mục cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
   ADD PRIMARY KEY (`makh`);
 
 --
--- Indexes for table `khuvuckho`
+-- Chỉ mục cho bảng `khuvuckho`
 --
 ALTER TABLE `khuvuckho`
   ADD PRIMARY KEY (`makhuvuc`);
 
 --
--- Indexes for table `loai`
+-- Chỉ mục cho bảng `loai`
 --
 ALTER TABLE `loai`
   ADD PRIMARY KEY (`maloai`);
 
 --
--- Indexes for table `nhacungcap`
+-- Chỉ mục cho bảng `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
   ADD PRIMARY KEY (`mancc`);
 
 --
--- Indexes for table `nhanvien`
+-- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`manv`);
 
 --
--- Indexes for table `nhomquyen`
+-- Chỉ mục cho bảng `nhomquyen`
 --
 ALTER TABLE `nhomquyen`
   ADD PRIMARY KEY (`manhomquyen`);
 
 --
--- Indexes for table `phieukiemke`
+-- Chỉ mục cho bảng `phieukiemke`
 --
 ALTER TABLE `phieukiemke`
   ADD PRIMARY KEY (`maphieukiemke`),
@@ -515,7 +550,7 @@ ALTER TABLE `phieukiemke`
   ADD KEY `FK_phieukiemke_taikhoan` (`manhanvientao`);
 
 --
--- Indexes for table `phieunhap`
+-- Chỉ mục cho bảng `phieunhap`
 --
 ALTER TABLE `phieunhap`
   ADD PRIMARY KEY (`maphieunhap`),
@@ -523,7 +558,7 @@ ALTER TABLE `phieunhap`
   ADD KEY `FK_phieunhap_taikhoan` (`manv`);
 
 --
--- Indexes for table `phieuxuat`
+-- Chỉ mục cho bảng `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
   ADD PRIMARY KEY (`maphieuxuat`),
@@ -531,7 +566,7 @@ ALTER TABLE `phieuxuat`
   ADD KEY `FK_phieuxuat_taikhoan` (`manv`);
 
 --
--- Indexes for table `sanpham`
+-- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD PRIMARY KEY (`masp`),
@@ -541,127 +576,127 @@ ALTER TABLE `sanpham`
   ADD KEY `FK_sanpham_khucvuc` (`makhuvuc`);
 
 --
--- Indexes for table `size`
+-- Chỉ mục cho bảng `size`
 --
 ALTER TABLE `size`
   ADD PRIMARY KEY (`masize`);
 
 --
--- Indexes for table `taikhoan`
+-- Chỉ mục cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
   ADD PRIMARY KEY (`manv`),
   ADD KEY `FK_taikhoan_nhomquyen` (`manhomquyen`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `chatlieu`
+-- AUTO_INCREMENT cho bảng `chatlieu`
 --
 ALTER TABLE `chatlieu`
-  MODIFY `machatlieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `machatlieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `danhmucchucnang`
+-- AUTO_INCREMENT cho bảng `danhmucchucnang`
 --
 ALTER TABLE `danhmucchucnang`
   MODIFY `machucnang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `khachhang`
+-- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
   MODIFY `makh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `khuvuckho`
+-- AUTO_INCREMENT cho bảng `khuvuckho`
 --
 ALTER TABLE `khuvuckho`
-  MODIFY `makhuvuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `makhuvuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `loai`
+-- AUTO_INCREMENT cho bảng `loai`
 --
 ALTER TABLE `loai`
-  MODIFY `maloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `maloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `nhacungcap`
+-- AUTO_INCREMENT cho bảng `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
-  MODIFY `mancc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `mancc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `nhanvien`
+-- AUTO_INCREMENT cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `nhomquyen`
+-- AUTO_INCREMENT cho bảng `nhomquyen`
 --
 ALTER TABLE `nhomquyen`
-  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `phieukiemke`
+-- AUTO_INCREMENT cho bảng `phieukiemke`
 --
 ALTER TABLE `phieukiemke`
   MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `phieunhap`
+-- AUTO_INCREMENT cho bảng `phieunhap`
 --
 ALTER TABLE `phieunhap`
-  MODIFY `maphieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `maphieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT for table `phieuxuat`
+-- AUTO_INCREMENT cho bảng `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
-  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
--- AUTO_INCREMENT for table `sanpham`
+-- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `size`
+-- AUTO_INCREMENT cho bảng `size`
 --
 ALTER TABLE `size`
-  MODIFY `masize` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `masize` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `ctkiemke`
+-- Các ràng buộc cho bảng `ctkiemke`
 --
 ALTER TABLE `ctkiemke`
   ADD CONSTRAINT `FK_ctkiemke_phieukiemke` FOREIGN KEY (`maphieukiemke`) REFERENCES `phieukiemke` (`maphieukiemke`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_ctkiemke_sanpham` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`) ON DELETE SET NULL;
 
 --
--- Constraints for table `ctphieunhap`
+-- Các ràng buộc cho bảng `ctphieunhap`
 --
 ALTER TABLE `ctphieunhap`
   ADD CONSTRAINT `FK_ctphieunhap_phieunhap` FOREIGN KEY (`maphieunhap`) REFERENCES `phieunhap` (`maphieunhap`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_ctphieunhap_sanpham` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`) ON DELETE SET NULL;
 
 --
--- Constraints for table `ctphieuxuat`
+-- Các ràng buộc cho bảng `ctphieuxuat`
 --
 ALTER TABLE `ctphieuxuat`
   ADD CONSTRAINT `FK_ctphieuxuat_phieuxuat` FOREIGN KEY (`maphieuxuat`) REFERENCES `phieuxuat` (`maphieuxuat`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_ctphieuxuat_sanpham` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`) ON DELETE SET NULL;
 
 --
--- Constraints for table `phieukiemke`
+-- Các ràng buộc cho bảng `phieukiemke`
 --
 ALTER TABLE `phieukiemke`
   ADD CONSTRAINT `FK_phieukiemke_khuvuc` FOREIGN KEY (`makhuvuc`) REFERENCES `khuvuckho` (`makhuvuc`) ON DELETE SET NULL,
@@ -669,21 +704,21 @@ ALTER TABLE `phieukiemke`
   ADD CONSTRAINT `FK_phieukiemke_taikhoan` FOREIGN KEY (`manhanvientao`) REFERENCES `taikhoan` (`manv`) ON DELETE SET NULL;
 
 --
--- Constraints for table `phieunhap`
+-- Các ràng buộc cho bảng `phieunhap`
 --
 ALTER TABLE `phieunhap`
   ADD CONSTRAINT `FK_phieunhap_nhacungcap` FOREIGN KEY (`mancc`) REFERENCES `nhacungcap` (`mancc`) ON DELETE SET NULL,
   ADD CONSTRAINT `FK_phieunhap_taikhoan` FOREIGN KEY (`manv`) REFERENCES `taikhoan` (`manv`) ON DELETE SET NULL;
 
 --
--- Constraints for table `phieuxuat`
+-- Các ràng buộc cho bảng `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
   ADD CONSTRAINT `FK_phieuxuat_khachhang` FOREIGN KEY (`makh`) REFERENCES `khachhang` (`makh`) ON DELETE SET NULL,
   ADD CONSTRAINT `FK_phieuxuat_taikhoan` FOREIGN KEY (`manv`) REFERENCES `taikhoan` (`manv`) ON DELETE SET NULL;
 
 --
--- Constraints for table `sanpham`
+-- Các ràng buộc cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD CONSTRAINT `FK_sanpham_chatlieu` FOREIGN KEY (`machatlieu`) REFERENCES `chatlieu` (`machatlieu`) ON DELETE SET NULL,
