@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
 namespace QuanLyKho_CSharp

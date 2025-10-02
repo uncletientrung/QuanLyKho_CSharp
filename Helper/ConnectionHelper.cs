@@ -13,7 +13,7 @@ namespace QuanLyKho_CSharp.Helper
     {
         private static string connStr = "server=localhost;" +
                                 "user=root;" +
-                                "database=quanlikhoquanao;" +
+                                "database=quanlikhoquanaom;" +
                                 "password=;";
         public static MySqlConnection conn;
 

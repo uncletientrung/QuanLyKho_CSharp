@@ -29,6 +29,7 @@ namespace QuanLyKho_CSharp
         {
             InitializeComponent();
 
+
             CustomizeDesign();
         }
 
