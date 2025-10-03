@@ -42,21 +42,21 @@
             this.txtTenSanPham = new System.Windows.Forms.TextBox();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.txtDonGia = new System.Windows.Forms.TextBox();
-            this.txtMaChatLieu = new System.Windows.Forms.TextBox();
             this.txtMaLoai = new System.Windows.Forms.TextBox();
-            this.txtMaSize = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtMaSize = new System.Windows.Forms.TextBox();
+            this.cboMaKhuVuc = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.btnChonanh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.picHinhanh = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnDong = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cboMaKhuVuc = new System.Windows.Forms.ComboBox();
+            this.cboTenChatLieu = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -100,6 +100,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.77528F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.22472F));
+            this.tableLayoutPanel1.Controls.Add(this.cboTenChatLieu, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 4);
@@ -110,7 +111,6 @@
             this.tableLayoutPanel1.Controls.Add(this.txtTenSanPham, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtSoLuong, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtDonGia, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtMaChatLieu, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtMaLoai, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
@@ -229,15 +229,6 @@
             this.txtDonGia.TabIndex = 11;
             this.txtDonGia.TextChanged += new System.EventHandler(this.txtDonGia_TextChanged);
             // 
-            // txtMaChatLieu
-            // 
-            this.txtMaChatLieu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaChatLieu.Location = new System.Drawing.Point(161, 179);
-            this.txtMaChatLieu.Multiline = true;
-            this.txtMaChatLieu.Name = "txtMaChatLieu";
-            this.txtMaChatLieu.Size = new System.Drawing.Size(368, 38);
-            this.txtMaChatLieu.TabIndex = 12;
-            // 
             // txtMaLoai
             // 
             this.txtMaLoai.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,15 +237,6 @@
             this.txtMaLoai.Name = "txtMaLoai";
             this.txtMaLoai.Size = new System.Drawing.Size(368, 38);
             this.txtMaLoai.TabIndex = 13;
-            // 
-            // txtMaSize
-            // 
-            this.txtMaSize.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSize.Location = new System.Drawing.Point(161, 311);
-            this.txtMaSize.Multiline = true;
-            this.txtMaSize.Name = "txtMaSize";
-            this.txtMaSize.Size = new System.Drawing.Size(368, 39);
-            this.txtMaSize.TabIndex = 15;
             // 
             // label5
             // 
@@ -275,6 +257,25 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã sản phẩm:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtMaSize
+            // 
+            this.txtMaSize.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaSize.Location = new System.Drawing.Point(161, 311);
+            this.txtMaSize.Multiline = true;
+            this.txtMaSize.Name = "txtMaSize";
+            this.txtMaSize.Size = new System.Drawing.Size(368, 39);
+            this.txtMaSize.TabIndex = 15;
+            // 
+            // cboMaKhuVuc
+            // 
+            this.cboMaKhuVuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMaKhuVuc.FormattingEnabled = true;
+            this.cboMaKhuVuc.Location = new System.Drawing.Point(161, 267);
+            this.cboMaKhuVuc.Name = "cboMaKhuVuc";
+            this.cboMaKhuVuc.Size = new System.Drawing.Size(368, 33);
+            this.cboMaKhuVuc.Sorted = true;
+            this.cboMaKhuVuc.TabIndex = 16;
             // 
             // panel3
             // 
@@ -337,6 +338,14 @@
             this.panel4.Size = new System.Drawing.Size(836, 99);
             this.panel4.TabIndex = 3;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(683, 64);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(8, 24);
+            this.comboBox1.TabIndex = 2;
+            // 
             // btnDong
             // 
             this.btnDong.AutoSize = true;
@@ -363,23 +372,15 @@
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // comboBox1
+            // cboTenChatLieu
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(683, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(8, 24);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // cboMaKhuVuc
-            // 
-            this.cboMaKhuVuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboMaKhuVuc.FormattingEnabled = true;
-            this.cboMaKhuVuc.Location = new System.Drawing.Point(161, 267);
-            this.cboMaKhuVuc.Name = "cboMaKhuVuc";
-            this.cboMaKhuVuc.Size = new System.Drawing.Size(368, 33);
-            this.cboMaKhuVuc.Sorted = true;
-            this.cboMaKhuVuc.TabIndex = 16;
+            this.cboTenChatLieu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTenChatLieu.FormattingEnabled = true;
+            this.cboTenChatLieu.Location = new System.Drawing.Point(161, 179);
+            this.cboTenChatLieu.Name = "cboTenChatLieu";
+            this.cboTenChatLieu.Size = new System.Drawing.Size(368, 33);
+            this.cboTenChatLieu.Sorted = true;
+            this.cboTenChatLieu.TabIndex = 17;
             // 
             // UpdateSanPhamForm
             // 
@@ -429,7 +430,6 @@
         private System.Windows.Forms.TextBox txtTenSanPham;
         private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.TextBox txtDonGia;
-        private System.Windows.Forms.TextBox txtMaChatLieu;
         private System.Windows.Forms.TextBox txtMaLoai;
         private System.Windows.Forms.TextBox txtMaSize;
         private System.Windows.Forms.Label label10;
@@ -438,5 +438,6 @@
         private System.Windows.Forms.Button btnDong;
         private System.Windows.Forms.ComboBox cboMaKhuVuc;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboTenChatLieu;
     }
 }

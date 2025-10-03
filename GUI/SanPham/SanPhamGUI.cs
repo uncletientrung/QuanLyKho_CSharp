@@ -24,10 +24,11 @@ namespace QuanLyKho_CSharp.GUI
     public partial class SanPhamGUI : Form
     {
         private SanPhamBUS spBUS = new SanPhamBUS();
-        
         private KhuVucKhoBUS khuVucKhoBUS = new KhuVucKhoBUS();
+        private ChatLieuBUS chatLieuBUS = new ChatLieuBUS();
         private BindingList<SanPhamDTO> listSP;
         private BindingList<KhuVucKhoDTO> listKV;
+        private BindingList<ChatLieuDTO> listCL;
 
         public SanPhamGUI()
         {
@@ -158,6 +159,7 @@ namespace QuanLyKho_CSharp.GUI
                 {
                     Image img = LoadImageSafe(sp.Hinhanh);
                     String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
+                    String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
                     
 
                     dgvSanPham.Rows.Add(
@@ -166,10 +168,9 @@ namespace QuanLyKho_CSharp.GUI
                         img,
                         sp.Soluong,
                         sp.Dongia,
-                        sp.Machatlieu,
+                        tenChatLieu,
                         sp.Maloai,
                         tenKhuVuc,
-                        //sp.Makhuvuc,
                         sp.Masize
                     );
                 }
@@ -356,6 +357,7 @@ namespace QuanLyKho_CSharp.GUI
                 {
                     Image img = LoadImageSafe(sp.Hinhanh);
                     String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
+                    String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
 
                     dgvSanPham.Rows.Add(
                         sp.Masp,
@@ -363,7 +365,7 @@ namespace QuanLyKho_CSharp.GUI
                         img,
                         sp.Soluong,
                         sp.Dongia,
-                        sp.Machatlieu,
+                        tenChatLieu,
                         sp.Maloai,
                         tenKhuVuc,
                         sp.Masize

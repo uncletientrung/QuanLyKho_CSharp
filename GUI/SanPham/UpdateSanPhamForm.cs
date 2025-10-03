@@ -20,8 +20,10 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         SanPhamDTO sp;
         private SanPhamBUS spBUS= new SanPhamBUS();
         private KhuVucKhoBUS kvBUS = new KhuVucKhoBUS();
+        private ChatLieuBUS clBUS = new ChatLieuBUS();
 
         private BindingList<KhuVucKhoDTO> listKV;
+        private BindingList<ChatLieuDTO> listCL;
         private string duongDanAnhMoi=null;//tao bien de sau khi bam nut chon anh se lay duoc duong dan
         public UpdateSanPhamForm(SanPhamDTO _sp)
         {
@@ -179,7 +181,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             txtTenSanPham.Text=sp.Tensp.ToString();
             txtSoLuong.Text=sp.Soluong.ToString();
             txtDonGia.Text=sp.Dongia.ToString();
-            txtMaChatLieu.Text=sp.Machatlieu.ToString();
+            //txtMaChatLieu.Text=sp.Machatlieu.ToString();
             //txtMaKhuVuc.Text=sp.Makhuvuc.ToString();
             txtMaLoai.Text=sp.Maloai.ToString();    
             txtMaSize.Text=sp.Masize.ToString();
@@ -190,9 +192,19 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             foreach(KhuVucKhoDTO kv in listKV)
             {
                 cboMaKhuVuc.Items.Add(kv.Makhuvuc + ". "+kv.Tenkhuvuc);
-                if (kv.Makhuvuc == sp.Makhuvuc)
+                if (kv.Makhuvuc == sp.Makhuvuc)// dong nay de hien thi cai dang duoc chon len cbo
                 {
                     cboMaKhuVuc.SelectedItem = kv.Makhuvuc + ". " + kv.Tenkhuvuc;
+                }
+            }
+
+            listCL = clBUS.getChatLieuList();
+            foreach(ChatLieuDTO cl in listCL)
+            {
+                cboTenChatLieu.Items.Add(cl.Machatlieu + ". " + cl.Tenchatlieu);
+                if(cl.Machatlieu== sp.Machatlieu)
+                {
+                    cboTenChatLieu.SelectedItem= cl.Machatlieu+""
                 }
             }
 
@@ -231,15 +243,15 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                         }
                         else
                         {
-                            int maChatLieuMoi;
-                            if (!int.TryParse(txtMaChatLieu.Text, out maChatLieuMoi))
-                            {
-                                MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
-                                txtMaChatLieu.Focus();
-                                return;
-                            }
-                            else
-                            {
+                            //int maChatLieuMoi;
+                            //if (!int.TryParse(txtMaChatLieu.Text, out maChatLieuMoi))
+                            //{
+                            //    MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
+                            //    txtMaChatLieu.Focus();
+                            //    return;
+                            //}
+                            //else
+                            //{
                                 int maLoaiMoi;
                                 if (!int.TryParse(txtMaLoai.Text, out maLoaiMoi))
                                 {
@@ -270,6 +282,8 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                                         {
                                             string duongDanLuuDB = duongDanAnhMoi ?? sp.Hinhanh;
                                             int maKhuVucMoi = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
+                                            int maChatLieuMoi = int.Parse(cboTenChatLieu.Text.ToString().Split('.')[0]);
+                                    
                                             SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi);
                                             spBUS.updateSanPham(sanPhamUpdate);
                                             this.DialogResult = DialogResult.OK;
@@ -277,7 +291,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
 
                                         }
                                     
-                                }
+                                
                             }
 
                         }
