@@ -159,6 +159,11 @@ namespace QuanLyKho_CSharp
             OpenChildForm(new NhanVienGUI(), btnNhanVien);
         }
 
+        private void btnNhaCungCap_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new NhaCungCapGUI(), btnNhaCungCap);
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Abort;

@@ -308,6 +308,12 @@
     <Compile Include="GUI\TaiKhoan\UpdateTaiKhoanForm.Designer.cs">
       <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.Designer.cs">
+      <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\SanPhamGUI.resx">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.resx">
+      <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.resx">
       <DependentUpon>NhaCungCapGUI.cs</DependentUpon>

@@ -293,6 +293,7 @@ namespace QuanLyKho_CSharp
             this.btnNhaCungCap.TabIndex = 7;
             this.btnNhaCungCap.Text = "Nhà cung cấp";
             this.btnNhaCungCap.UseVisualStyleBackColor = true;
+            this.btnNhaCungCap.Click += new System.EventHandler(this.btnNhaCungCap_Click);
             // 
             // btnThongTin
             // 
