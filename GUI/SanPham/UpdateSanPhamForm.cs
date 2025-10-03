@@ -204,7 +204,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 cboTenChatLieu.Items.Add(cl.Machatlieu + ". " + cl.Tenchatlieu);
                 if(cl.Machatlieu== sp.Machatlieu)
                 {
-                    cboTenChatLieu.SelectedItem= cl.Machatlieu+""
+                    cboTenChatLieu.SelectedItem= cl.Machatlieu+"" + cl.Tenchatlieu;
                 }
             }
 
