@@ -39,6 +39,7 @@ namespace QuanLyKho_CSharp.GUI
             
 
             InitializeComponent();
+
             ConfigureDataGridView();
 
             listSP = spBUS.getListSP();
@@ -65,61 +66,62 @@ namespace QuanLyKho_CSharp.GUI
             dgvSanPham.CellMouseClick += dgvSanPham_CellMouseClick;
         }
 
+       
+
         private void SetupColumnsAndLoadData()
         {
-           
-
             try
             {
-                // Clear existing columns first
                 dgvSanPham.Columns.Clear();
 
+                
                 dgvSanPham.Columns.Add("MaSP", "Mã");
-                dgvSanPham.Columns["MaSP"].Width = 50;
-
                 dgvSanPham.Columns.Add("TenSP", "Tên sản phẩm");
-                dgvSanPham.Columns["TenSP"].Width = 207;
-
-                // Cột ảnh 
-                DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
-                imgCol.Name = "HinhAnh";
-                imgCol.HeaderText = "Hình ảnh";
-                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                imgCol.Width = 130;
-                dgvSanPham.Columns.Add(imgCol);
-
-                dgvSanPham.RowTemplate.Height = 40;
-
-                dgvSanPham.Columns.Add("SoLuong", "Số lượng");
-                dgvSanPham.Columns["SoLuong"].Width = 100;
-
-                dgvSanPham.Columns.Add("Gia", "Đơn giá");
-                dgvSanPham.Columns["Gia"].Width = 100;
-
-                dgvSanPham.Columns.Add("Machatlieu", "Chất liệu");
-                dgvSanPham.Columns["Machatlieu"].Width = 80;
-
-                dgvSanPham.Columns.Add("Loai", "Loại");
-                dgvSanPham.Columns["Loai"].Width = 80;
-
-                dgvSanPham.Columns.Add("Khuvuc", "Khu vực");
-                dgvSanPham.Columns["Khuvuc"].Width = 169;
-
-                dgvSanPham.Columns.Add("Size", "Size");
-                dgvSanPham.Columns["Size"].Width = 60;
-
-                // Thêm cột hành động
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                btn.HeaderText = "Hành động";
-                btn.Name = "Actions";
-                dgvSanPham.Columns.Add(btn);
-                dgvSanPham.Columns["Actions"].Width = 150;
-                foreach (DataGridViewColumn col in dgvSanPham.Columns)// cho căn giữa
+                DataGridViewImageColumn imgCol = new DataGridViewImageColumn
                 {
+                    Name = "HinhAnh",
+                    HeaderText = "Hình ảnh",
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                dgvSanPham.Columns.Add(imgCol);
+                dgvSanPham.Columns.Add("SoLuong", "Số lượng");
+                dgvSanPham.Columns.Add("Gia", "Đơn giá");
+                dgvSanPham.Columns.Add("Machatlieu", "Chất liệu");
+                dgvSanPham.Columns.Add("Loai", "Loại");
+                dgvSanPham.Columns.Add("Khuvuc", "Khu vực");
+                dgvSanPham.Columns.Add("Size", "Size");
+
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+                {
+                    HeaderText = "Hành động",
+                    Name = "Actions"
+                };
+                dgvSanPham.Columns.Add(btn);
+
+                
+                foreach (DataGridViewColumn col in dgvSanPham.Columns)
+                {
+                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
 
+                
+                dgvSanPham.Columns["MaSP"].FillWeight = 10;
+                dgvSanPham.Columns["TenSP"].FillWeight = 20;
+                dgvSanPham.Columns["HinhAnh"].FillWeight = 15;
+                dgvSanPham.Columns["SoLuong"].FillWeight = 10;
+                dgvSanPham.Columns["Gia"].FillWeight = 10;
+                dgvSanPham.Columns["Machatlieu"].FillWeight = 10;
+                dgvSanPham.Columns["Loai"].FillWeight = 10;
+                dgvSanPham.Columns["Khuvuc"].FillWeight = 15;
+                dgvSanPham.Columns["Size"].FillWeight = 10;
+                dgvSanPham.Columns["Actions"].FillWeight = 15;
 
+                
+                dgvSanPham.Columns["Actions"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Actions"].Width = 150;
+
+                dgvSanPham.RowTemplate.Height = 50;
 
                 LoadDataToGrid();
             }
