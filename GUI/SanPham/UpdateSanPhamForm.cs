@@ -221,10 +221,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             txtTenSanPham.Text=sp.Tensp.ToString();
             txtSoLuong.Text=sp.Soluong.ToString();
             txtDonGia.Text=sp.Dongia.ToString();
-            //txtMaChatLieu.Text=sp.Machatlieu.ToString();
-            //txtMaKhuVuc.Text=sp.Makhuvuc.ToString();
-            //txtMaLoai.Text=sp.Maloai.ToString();    
-            //txtMaSize.Text=sp.Masize.ToString();
+            
 
 
             

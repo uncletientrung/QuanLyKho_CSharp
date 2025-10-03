@@ -258,6 +258,12 @@
     <Compile Include="GUI\PhieuXuat\PhieuXuatGUI.Designer.cs">
       <DependentUpon>PhieuXuatGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\SanPham\AddSanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SanPham\AddSanPhamForm.Designer.cs">
+      <DependentUpon>AddSanPhamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\SanPham\DeleteSanPhamForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -420,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuXuat\PhieuXuatGUI.resx">
       <DependentUpon>PhieuXuatGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SanPham\AddSanPhamForm.resx">
+      <DependentUpon>AddSanPhamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\DeleteSanPhamForm.resx">
       <DependentUpon>DeleteSanPhamForm.cs</DependentUpon>

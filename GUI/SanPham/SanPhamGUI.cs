@@ -401,5 +401,18 @@ namespace QuanLyKho_CSharp.GUI
         {
 
         }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+           
+            AddSanPhamForm addSP = new AddSanPhamForm();
+            addSP.ShowDialog();
+            if(addSP.DialogResult == DialogResult.OK)
+            {
+                LoadDataToGrid();
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
+            }
+        }
     }
 }
