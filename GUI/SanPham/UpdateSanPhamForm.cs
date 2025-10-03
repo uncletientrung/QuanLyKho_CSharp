@@ -21,9 +21,14 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         private SanPhamBUS spBUS= new SanPhamBUS();
         private KhuVucKhoBUS kvBUS = new KhuVucKhoBUS();
         private ChatLieuBUS clBUS = new ChatLieuBUS();
+        private LoaiBUS loaiBUS = new LoaiBUS();
+        private SizeBUS sizeBUS = new SizeBUS();
 
         private BindingList<KhuVucKhoDTO> listKV;
         private BindingList<ChatLieuDTO> listCL;
+        private BindingList<LoaiDTO> listLoai;
+        private BindingList<SizeDTO> listSize;
+
         private string duongDanAnhMoi=null;//tao bien de sau khi bam nut chon anh se lay duoc duong dan
         public UpdateSanPhamForm(SanPhamDTO _sp)
         {
@@ -183,8 +188,8 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             txtDonGia.Text=sp.Dongia.ToString();
             //txtMaChatLieu.Text=sp.Machatlieu.ToString();
             //txtMaKhuVuc.Text=sp.Makhuvuc.ToString();
-            txtMaLoai.Text=sp.Maloai.ToString();    
-            txtMaSize.Text=sp.Masize.ToString();
+            //txtMaLoai.Text=sp.Maloai.ToString();    
+            //txtMaSize.Text=sp.Masize.ToString();
 
 
             
@@ -207,6 +212,28 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                     cboTenChatLieu.SelectedItem= cl.Machatlieu+"" + cl.Tenchatlieu;
                 }
             }
+
+            listLoai= loaiBUS.getLoaiList();
+            foreach(LoaiDTO loai in listLoai)
+            {
+                cboMaLoai.Items.Add(loai.Maloai + ". " + loai.Tenloai);
+                if (loai.Maloai == sp.Maloai)
+                {
+                    cboMaLoai.SelectedItem = loai.Maloai + "" + loai.Tenloai;
+                }
+
+            }
+
+            listSize= sizeBUS.getSizeList();
+            foreach(SizeDTO size in listSize)
+            {
+                cboMaSize.Items.Add(size.Masize + ". " + size.Tensize);
+                if (size.Masize == sp.Masize)
+                {
+                    cboMaSize.SelectedItem = size.Masize + "" + size.Tensize;
+                }
+            }
+
 
            
         }
@@ -240,61 +267,20 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Error);
 
-                        }
-                        else
-                        {
-                            //int maChatLieuMoi;
-                            //if (!int.TryParse(txtMaChatLieu.Text, out maChatLieuMoi))
-                            //{
-                            //    MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
-                            //    txtMaChatLieu.Focus();
-                            //    return;
-                            //}
-                            //else
-                            //{
-                                int maLoaiMoi;
-                                if (!int.TryParse(txtMaLoai.Text, out maLoaiMoi))
-                                {
-                                    MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
-                                    txtMaLoai.Focus();
-                                    return;
-                                }
-                                else
-                                {
-                                    //int maKhuVucMoi;
-                                    //if (//!int.TryParse(txtMaKhuVuc.Text, out maKhuVucMoi)0==0)
-                                    //{
-                                    //    //MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
-                                    //    //txtMaKhuVuc.Focus();
-                                    //    //return;
-                                        
-                                    //}
-                                    //else
-                                    //{
-                                        int maSizeMoi;
-                                        if (!int.TryParse(txtMaSize.Text, out maSizeMoi))
-                                        {
-                                            MessageBox.Show("Vui lòng nhập số hợp lệ!", "Lỗi nhập liệu");
-                                            txtMaSize.Focus();
-                                            return;
-                                        }
-                                        else
-                                        {
-                                            string duongDanLuuDB = duongDanAnhMoi ?? sp.Hinhanh;
-                                            int maKhuVucMoi = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
-                                            int maChatLieuMoi = int.Parse(cboTenChatLieu.Text.ToString().Split('.')[0]);
-                                    
-                                            SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi);
-                                            spBUS.updateSanPham(sanPhamUpdate);
-                                            this.DialogResult = DialogResult.OK;
-                                            this.Close();
+                        } else {
+                            string duongDanLuuDB = duongDanAnhMoi ?? sp.Hinhanh;
+                            int maKhuVucMoi = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
+                            int maChatLieuMoi = int.Parse(cboTenChatLieu.Text.ToString().Split('.')[0]);
+                            int maLoaiMoi = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
+                            int maSizeMoi = int.Parse(cboMaSize.Text.ToString().Split('.')[0]);
 
-                                        }
-                                    
-                                
-                            }
+                            SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi);
+                            spBUS.updateSanPham(sanPhamUpdate);
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
 
-                        }
+                         }
+           
                     }
                 }
                 else

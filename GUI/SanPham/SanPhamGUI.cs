@@ -26,9 +26,13 @@ namespace QuanLyKho_CSharp.GUI
         private SanPhamBUS spBUS = new SanPhamBUS();
         private KhuVucKhoBUS khuVucKhoBUS = new KhuVucKhoBUS();
         private ChatLieuBUS chatLieuBUS = new ChatLieuBUS();
+        private SizeBUS sizeBUS = new SizeBUS();
+        private LoaiBUS loaiBUS = new LoaiBUS();
         private BindingList<SanPhamDTO> listSP;
         private BindingList<KhuVucKhoDTO> listKV;
         private BindingList<ChatLieuDTO> listCL;
+        private BindingList<SizeDTO> listSize;
+        private BindingList<LoaiDTO> listLoai;
 
         public SanPhamGUI()
         {
@@ -70,7 +74,7 @@ namespace QuanLyKho_CSharp.GUI
                 // Clear existing columns first
                 dgvSanPham.Columns.Clear();
 
-                dgvSanPham.Columns.Add("MaSP", "Mã SP");
+                dgvSanPham.Columns.Add("MaSP", "Mã");
                 dgvSanPham.Columns["MaSP"].Width = 50;
 
                 dgvSanPham.Columns.Add("TenSP", "Tên sản phẩm");
@@ -79,7 +83,7 @@ namespace QuanLyKho_CSharp.GUI
                 // Cột ảnh 
                 DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
                 imgCol.Name = "HinhAnh";
-                imgCol.HeaderText = "Ảnh";
+                imgCol.HeaderText = "Hình ảnh";
                 imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 imgCol.Width = 130;
                 dgvSanPham.Columns.Add(imgCol);
@@ -160,6 +164,8 @@ namespace QuanLyKho_CSharp.GUI
                     Image img = LoadImageSafe(sp.Hinhanh);
                     String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
                     String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
+                    String tenLoai = loaiBUS.LayTenLoai(sp);
+                    String tenSize = sizeBUS.LayTenSize(sp);
                     
 
                     dgvSanPham.Rows.Add(
@@ -169,9 +175,9 @@ namespace QuanLyKho_CSharp.GUI
                         sp.Soluong,
                         sp.Dongia,
                         tenChatLieu,
-                        sp.Maloai,
+                        tenLoai,
                         tenKhuVuc,
-                        sp.Masize
+                        tenSize
                     );
                 }
 
@@ -358,6 +364,8 @@ namespace QuanLyKho_CSharp.GUI
                     Image img = LoadImageSafe(sp.Hinhanh);
                     String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
                     String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
+                    String tenLoai = loaiBUS.LayTenLoai(sp);
+                    String tenSize = sizeBUS.LayTenSize(sp);
 
                     dgvSanPham.Rows.Add(
                         sp.Masp,
@@ -366,9 +374,9 @@ namespace QuanLyKho_CSharp.GUI
                         sp.Soluong,
                         sp.Dongia,
                         tenChatLieu,
-                        sp.Maloai,
+                        tenLoai,
                         tenKhuVuc,
-                        sp.Masize
+                        tenSize
                     );
                 }
 
