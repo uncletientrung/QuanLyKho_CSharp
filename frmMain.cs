@@ -1,4 +1,6 @@
-﻿using QuanLyKho_CSharp.GUI;
+﻿using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI;
 using QuanLyKho_CSharp.GUI.KhachHang;
 using QuanLyKho_CSharp.GUI.KiemKe;
 using QuanLyKho_CSharp.GUI.PhanQuyen;
@@ -24,13 +26,68 @@ namespace QuanLyKho_CSharp
         private Form currentFormChild;// Biến giữ form con hiện tại
 
         private Button currentButton; //biến giữ button hiện tại
+        private TaiKhoanDTO tkLogin;
+        private NhomQuyenBUS nvBUS = new NhomQuyenBUS();
+        private DanhMucChucNangBUS dmncBUS = new DanhMucChucNangBUS();
+        private BindingList<Button> listButton;
 
-        public frmMain()
+
+        public frmMain(TaiKhoanDTO _tkLogin)
         {
             InitializeComponent();
-
-
             CustomizeDesign();
+            setTagForButton();
+
+            // Kiểm tra xem nhóm quyền tài khoản
+            tkLogin = _tkLogin;
+            BindingList<ChiTietQuyenDTO> listctq = nvBUS.getListCTNQByIdNQ(tkLogin.Manhomquyen);
+            foreach (ChiTietQuyenDTO ctq in listctq)
+            {
+                if (!listButton.Any(btn => btn.Tag == "tonkho") && !listButton.Any(btn => btn.Tag == "phieuxuat") &&
+                    !listButton.Any(btn => btn.Tag == "phieunhap") && !listButton.Any(btn => btn.Tag == "kiemke"))
+                {
+                    btnquanlykho.Visible = true; // Hiển thị nút quản lý kho
+                }
+                if (!listButton.Any(btn => btn.Tag == "thongtin") &&
+                    !listButton.Any(btn => btn.Tag == "khachhang") &&
+                    !listButton.Any(btn => btn.Tag == "baocao"))
+                {
+                    btnDanhMuc.Visible = true; // Hiển thị nút danh mục
+                }
+                if (!listButton.Any(btn => btn.Tag == "nhanvien") &&
+                    !listButton.Any(btn => btn.Tag == "taikhoan") &&
+                    !listButton.Any(btn => btn.Tag == "phanquyen"))
+                {
+                    btnQuanLyHeThong.Visible = true; // Hiển thị nút quản lý hệ thống
+                }
+            }
+
+
+
+        }
+
+        public void setTagForButton()
+        {
+            btnquanlykho.Tag = "quanlykho";
+            btnTonKho.Tag = "tonkho";
+            btnPhieuXuat.Tag = "phieuxuat";
+            btnPhieuNhap.Tag = "phieunhap";
+            btnKiemKe.Tag = "kiemke";
+
+            btnDanhMuc.Tag = "danhmuc";
+            btnKhachHang.Tag = "khachhang";
+            btnBaoCao.Tag = "baocao";
+            btnThongTin.Tag = "thongtin";
+            btnNhaCungCap.Tag = "nhacungcap";
+            btnChatLieu.Tag = "chatlieu";
+            btnLoai.Tag = "loai";
+            btnSize.Tag = "size";
+            btnKhuVuc.Tag = "khuvuc";
+
+            btnQuanLyHeThong.Tag = "quanlyhethong";
+            btnNhanVien.Tag = "nhanvien";
+            btnTaiKhoan.Tag = "taikhoan";
+            btnPhanQuyen.Tag = "phanquyen";
         }
 
         private void OpenChildForm(Form childForm, Button btn)
@@ -81,23 +138,23 @@ namespace QuanLyKho_CSharp
         }
         private void hideSideMenu() // Ẩn các nút còn lại khi ấn
         {
-            if (panelQuanLyKho.Visible) panelQuanLyKho.Visible=false;
-            if (panelDanhMuc.Visible) panelDanhMuc.Visible=false;
-            if (panelQuanLyHeThong.Visible) panelQuanLyHeThong.Visible=false;
-            if(panelThongTin.Visible) panelThongTin.Visible=false;  
+            if (panelQuanLyKho.Visible) panelQuanLyKho.Visible = false;
+            if (panelDanhMuc.Visible) panelDanhMuc.Visible = false;
+            if (panelQuanLyHeThong.Visible) panelQuanLyHeThong.Visible = false;
+            if (panelThongTin.Visible) panelThongTin.Visible = false;
         }
         private void ShowSideMenu(Panel sidemenu)
         {
 
-            if(sidemenu.Visible == false)
+            if (sidemenu.Visible == false)
             {
-                if(sidemenu != panelThongTin) hideSideMenu();
+                if (sidemenu != panelThongTin) hideSideMenu();
 
-                sidemenu.Visible=true;
+                sidemenu.Visible = true;
             }
             else
             {
-                sidemenu.Visible = false ;
+                sidemenu.Visible = false;
             }
 
         }
@@ -131,7 +188,7 @@ namespace QuanLyKho_CSharp
 
         private void btnTonKho_Click(object sender, EventArgs e)
         {
-            
+
             OpenChildForm(new SanPhamGUI(), btnTonKho);
         }
 
@@ -190,13 +247,13 @@ namespace QuanLyKho_CSharp
             OpenChildForm(new DanhSachKiemKeGUI(), btnKiemKe);
         }
 
-        
+
 
         private void pnlLeftMenu_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        
+
     }
 }

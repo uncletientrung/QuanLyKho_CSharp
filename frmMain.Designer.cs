@@ -55,7 +55,7 @@ namespace QuanLyKho_CSharp
             this.btnPhieuNhap = new System.Windows.Forms.Button();
             this.btnPhieuXuat = new System.Windows.Forms.Button();
             this.btnTonKho = new System.Windows.Forms.Button();
-            this.btnQuanLyKho = new System.Windows.Forms.Button();
+            this.btnquanlykho = new System.Windows.Forms.Button();
             this.btnTrangChu = new System.Windows.Forms.Button();
             this.panelAvatar = new System.Windows.Forms.Panel();
             this.avatar = new System.Windows.Forms.PictureBox();
@@ -85,7 +85,7 @@ namespace QuanLyKho_CSharp
             this.pnlLeftMenu.Controls.Add(this.panelDanhMuc);
             this.pnlLeftMenu.Controls.Add(this.btnDanhMuc);
             this.pnlLeftMenu.Controls.Add(this.panelQuanLyKho);
-            this.pnlLeftMenu.Controls.Add(this.btnQuanLyKho);
+            this.pnlLeftMenu.Controls.Add(this.btnquanlykho);
             this.pnlLeftMenu.Controls.Add(this.btnTrangChu);
             this.pnlLeftMenu.Controls.Add(this.panelAvatar);
             this.pnlLeftMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -399,22 +399,22 @@ namespace QuanLyKho_CSharp
             this.btnTonKho.UseVisualStyleBackColor = false;
             this.btnTonKho.Click += new System.EventHandler(this.btnTonKho_Click);
             // 
-            // btnQuanLyKho
+            // btnquanlykho
             // 
-            this.btnQuanLyKho.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnQuanLyKho.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnQuanLyKho.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQuanLyKho.ForeColor = System.Drawing.Color.Black;
-            this.btnQuanLyKho.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyKho.Image")));
-            this.btnQuanLyKho.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuanLyKho.Location = new System.Drawing.Point(0, 134);
-            this.btnQuanLyKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnQuanLyKho.Name = "btnQuanLyKho";
-            this.btnQuanLyKho.Size = new System.Drawing.Size(219, 40);
-            this.btnQuanLyKho.TabIndex = 4;
-            this.btnQuanLyKho.Text = "Quản lý kho";
-            this.btnQuanLyKho.UseVisualStyleBackColor = false;
-            this.btnQuanLyKho.Click += new System.EventHandler(this.btnQuanLyKho_Click);
+            this.btnquanlykho.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnquanlykho.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnquanlykho.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnquanlykho.ForeColor = System.Drawing.Color.Black;
+            this.btnquanlykho.Image = ((System.Drawing.Image)(resources.GetObject("btnquanlykho.Image")));
+            this.btnquanlykho.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnquanlykho.Location = new System.Drawing.Point(0, 134);
+            this.btnquanlykho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnquanlykho.Name = "btnquanlykho";
+            this.btnquanlykho.Size = new System.Drawing.Size(219, 40);
+            this.btnquanlykho.TabIndex = 4;
+            this.btnquanlykho.Text = "Quản lý kho";
+            this.btnquanlykho.UseVisualStyleBackColor = false;
+            this.btnquanlykho.Click += new System.EventHandler(this.btnQuanLyKho_Click);
             // 
             // btnTrangChu
             // 
@@ -577,7 +577,7 @@ namespace QuanLyKho_CSharp
         private Button btnKhachHang;
         private Panel panelAvatar;
         private Panel panelQuanLyKho;
-        private Button btnQuanLyKho;
+        private Button btnquanlykho;
         private Panel panelDanhMuc;
         private Button btnDanhMuc;
         private Button btnQuanLyHeThong;

@@ -120,7 +120,7 @@ namespace QuanLyKho_CSharp.GUI
             this.txSearch.Location = new System.Drawing.Point(0, 0);
             this.txSearch.Margin = new System.Windows.Forms.Padding(0);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(347, 26);
+            this.txSearch.Size = new System.Drawing.Size(347, 22);
             this.txSearch.TabIndex = 6;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             this.txSearch.Enter += new System.EventHandler(this.txSearch_Enter);
@@ -170,7 +170,7 @@ namespace QuanLyKho_CSharp.GUI
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(209, 28);
+            this.label2.Size = new System.Drawing.Size(169, 21);
             this.label2.TabIndex = 9;
             this.label2.Text = "Danh sách nhân viên";
             // 
@@ -204,7 +204,7 @@ namespace QuanLyKho_CSharp.GUI
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 32);
+            this.label1.Size = new System.Drawing.Size(172, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Quản lý nhân viên";
             // 
@@ -226,7 +226,7 @@ namespace QuanLyKho_CSharp.GUI
             // 
             // NhanVienGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 596);

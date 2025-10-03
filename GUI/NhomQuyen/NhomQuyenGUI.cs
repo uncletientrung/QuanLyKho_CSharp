@@ -17,7 +17,7 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
 {
     public partial class NhomQuyenGUI : Form
     {
-        private NhomQuyenBUS nqBUS= new NhomQuyenBUS();
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private BindingList<NhomQuyenDTO> listNQ;
         public NhomQuyenGUI()
         {
@@ -61,10 +61,10 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         {
             AddNhomQuyenForm addNhomQuyenForm = new AddNhomQuyenForm();
             addNhomQuyenForm.ShowDialog();
-            if(addNhomQuyenForm.DialogResult== DialogResult.OK)
+            if (addNhomQuyenForm.DialogResult == DialogResult.OK)
             {
                 refreshDataGridView(nqBUS.getListNQ());
-                AddSuccessNotification tb= new AddSuccessNotification();
+                AddSuccessNotification tb = new AddSuccessNotification();
                 tb.Show();
             }
         }
@@ -155,7 +155,7 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         {
             if (e.ColumnIndex == DGVPhanQuyen.Columns["Actions"].Index && e.RowIndex >= 0)
             {
-               
+
                 int buttonWidth = 50;
                 int padding = 5;
                 int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
@@ -194,7 +194,7 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
 
             }
         }
-        
+
 
         private void DGVPhanQuyen_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -218,9 +218,13 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         }
         private void txSearch_TextChanged(object sender, EventArgs e)
         {
-            string textSearch= txSearch.Text;
-            listNQ= nqBUS.searchNhomQuyen(textSearch);
-            refreshDataGridView(listNQ);
+            if (txSearch.Text != "Nhập mã hoặc tên nhóm quyền để tìm")
+            {
+                string textSearch = txSearch.Text;
+                listNQ = nqBUS.searchNhomQuyen(textSearch);
+                refreshDataGridView(listNQ);
+            }
+
         }
         #endregion
         private void refreshDataGridView(BindingList<NhomQuyenDTO> listRefresh) // Tải lại DataGridView

@@ -25,7 +25,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         public UpdateTaiKhoanForm(TaiKhoanDTO _tk)
         {
             InitializeComponent();
-            tk=_tk;
+            tk = _tk;
         }
 
         private void UpdateTaiKhoanForm_Load(object sender, EventArgs e)
@@ -112,6 +112,10 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
 
         private Boolean IsUsernameExist(string username)
         {
+            if (tk.Tendangnhap == username)
+            {
+                return false;
+            }
             listTK = tkBUS.getListTK();
             foreach (TaiKhoanDTO tk in listTK)
             {
