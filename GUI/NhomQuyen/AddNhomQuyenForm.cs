@@ -15,8 +15,8 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
     public partial class AddNhomQuyenForm : Form
     {
         private List<ChiTietQuyenDTO> ListCTQuyen;
-        private DanhMucChucNangBUS dmcnBUS= new DanhMucChucNangBUS();
-        private NhomQuyenBUS nqBUS= new NhomQuyenBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private BindingList<NhomQuyenDTO> ListQuyen;
         public AddNhomQuyenForm()
         {
@@ -43,7 +43,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
 
 
             // Thêm 5 cột
-            DataGridViewCheckBoxColumn chkThem =new DataGridViewCheckBoxColumn();
+            DataGridViewCheckBoxColumn chkThem = new DataGridViewCheckBoxColumn();
             chkThem.HeaderText = "Thêm";
             chkThem.Name = "Create";
             DGVAddNhomQuyen.Columns.Add(chkThem);
@@ -72,11 +72,11 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             DGVAddNhomQuyen.Columns.Add(chkThemNhanh);
             DGVAddNhomQuyen.Columns["Fast"].Width = 120;
 
-            DGVAddNhomQuyen.RowHeadersWidth = 120; 
+            DGVAddNhomQuyen.RowHeadersWidth = 120;
             DGVAddNhomQuyen.RowTemplate.Height = 30;
 
         }
- 
+
 
         private void DetailNhomQuyenForm_Load(object sender, EventArgs e)
         {
@@ -156,7 +156,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                     if (isChecked) // Nếu đc check thì thêm vào
                     {
                         string CRUD = DGVAddNhomQuyen.Columns[j].HeaderText.ToString();
-                        
+
                         ChiTietQuyenDTO ctqNew = new ChiTietQuyenDTO
                         {
                             Manhomquyen = manhomquyen,
@@ -173,7 +173,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+
             if (txtName.Text.Length > 0)
             {
                 ListQuyen = nqBUS.getListNQ();
@@ -191,6 +191,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                     }
                 }
                 int maQuyenTiepTheo = nqBUS.getAutoMaNQ();
+                MessageBox.Show(maQuyenTiepTheo.ToString());
                 string TenQuyen = txtName.Text.ToString();
                 ListCTQuyen = getListChiTietQuyen(maQuyenTiepTheo);
                 // Test chuyển list sang bindinglist

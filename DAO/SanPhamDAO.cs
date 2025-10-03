@@ -124,7 +124,7 @@ namespace QuanLyKho_CSharp.DAO
         public int GetAutoIncrement()
         {
             string sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES " +
-                         "WHERE TABLE_SCHEMA='quanlikhoquanao' AND TABLE_NAME='sanpham'";
+                         "WHERE TABLE_SCHEMA='quanlikhoquanaom' AND TABLE_NAME='sanpham'";
             DataTable dt = ConnectionHelper.getDataTable(sql);
             return (dt.Rows.Count > 0) ? Convert.ToInt32(dt.Rows[0]["AUTO_INCREMENT"]) : 0;
         }

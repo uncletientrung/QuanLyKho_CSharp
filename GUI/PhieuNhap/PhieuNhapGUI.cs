@@ -17,6 +17,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
     {
         private PhieuNhapBUS pnBUS = new PhieuNhapBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
+        private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
         private BindingList<PhieuNhapDTO> listPN;
 
         public PhieuNhapGUI()
@@ -60,7 +61,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
             dataGridView1.Columns.Add("MaPhieu", "Mã phiếu");
             dataGridView1.Columns.Add("TenNV", "Tên nhân viên");
-            dataGridView1.Columns.Add("MaNCC", "Mã NCC");
+            dataGridView1.Columns.Add("TenNCC", "Nhà cung cấp");
             dataGridView1.Columns.Add("ThoiGian", "Thời gian tạo");
             dataGridView1.Columns.Add("TongTien", "Tổng tiền");
             dataGridView1.Columns.Add("TrangThai", "Trạng thái");
@@ -72,10 +73,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
             dataGridView1.Columns["MaPhieu"].FillWeight = 10;      // 10%
             dataGridView1.Columns["TenNV"].FillWeight = 20;        // 20%
-            dataGridView1.Columns["MaNCC"].FillWeight = 10;        // 10%
-            dataGridView1.Columns["ThoiGian"].FillWeight = 20;     // 20%
-            dataGridView1.Columns["TongTien"].FillWeight = 20;     // 20%
-            dataGridView1.Columns["TrangThai"].FillWeight = 20;    // 20%
+            dataGridView1.Columns["TenNCC"].FillWeight = 25;        // 10%
+            dataGridView1.Columns["ThoiGian"].FillWeight = 15;     // 20%
+            dataGridView1.Columns["TongTien"].FillWeight = 15;     // 20%
+            dataGridView1.Columns["TrangThai"].FillWeight = 15;    // 20%
 
             dataGridView1.RowTemplate.Height = 40;
 
@@ -100,11 +101,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     if (pn.Trangthai == 1)
                     {
                         string tenNV = nvBUS.getNamebyID(pn.Manv);
+                        string tenNCC = nccBUS.getNamebyID(pn.Mancc);
                         string trangThai = pn.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
                         dataGridView1.Rows.Add(
                             pn.Maphieu,
                             tenNV,
-                            pn.Mancc,
+                            tenNCC,
                             pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
                             pn.Tongtien,
                             trangThai
@@ -181,8 +183,9 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 if (xRel < padding + buttonWidth) // nút Xem
                 {
                     string tenNV = nvBUS.getNamebyID(phieuDuocChon.Manv);
+                    string tenNCC = nccBUS.getNamebyID(phieuDuocChon.Mancc);
                     MessageBox.Show($"Chi tiết phiếu nhập:\nMã phiếu: {maPhieu}\nNhân viên: {tenNV}\n" +
-                        $"Mã NCC: {phieuDuocChon.Mancc}\nThời gian: {phieuDuocChon.Thoigiantao:dd/MM/yyyy HH:mm}\n" +
+                        $"Nhà cung cấp: {tenNCC}\nThời gian: {phieuDuocChon.Thoigiantao:dd/MM/yyyy HH:mm}\n" +
                         $"Tổng tiền: {phieuDuocChon.Tongtien:N0}",
                         "Chi tiết phiếu nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -249,12 +252,15 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 });
             }
 
-            // Lọc theo mã nhà cung cấp
+            // Lọc theo tên nhà cung cấp
             if (!string.IsNullOrWhiteSpace(txtSearchNCC.Text))
             {
                 string searchText = txtSearchNCC.Text.Trim().ToLower();
                 filteredList = filteredList.Where(pn =>
-                    pn.Mancc.ToString().ToLower().Contains(searchText));
+                {
+                    string tenNCC = nccBUS.getNamebyID(pn.Mancc)?.ToLower() ?? "";
+                    return tenNCC.Contains(searchText);
+                });
             }
 
             // Lọc theo khoảng thời gian
@@ -289,11 +295,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 foreach (PhieuNhapDTO pn in filteredData)
                 {
                     string tenNV = nvBUS.getNamebyID(pn.Manv);
+                    string tenNCC = nccBUS.getNamebyID(pn.Mancc);
                     string trangThai = pn.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
                     dataGridView1.Rows.Add(
                         pn.Maphieu,
                         tenNV,
-                        pn.Mancc,
+                        tenNCC,
                         pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
                         pn.Tongtien,
                         trangThai
