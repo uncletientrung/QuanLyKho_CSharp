@@ -45,6 +45,9 @@
             this.buttonXoaSP = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.linkNewKH = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.boxMaPhieu = new System.Windows.Forms.TextBox();
@@ -55,9 +58,6 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTongTien = new System.Windows.Forms.Label();
             this.labelPrice = new System.Windows.Forms.Label();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.linkNewKH = new System.Windows.Forms.LinkLabel();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,9 +69,9 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -194,6 +194,7 @@
             this.dgvSPduocThem.RowTemplate.Height = 24;
             this.dgvSPduocThem.Size = new System.Drawing.Size(635, 179);
             this.dgvSPduocThem.TabIndex = 1;
+            this.dgvSPduocThem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPduocThem_CellContentClick);
             // 
             // tableLayoutPanel4
             // 
@@ -310,6 +311,47 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.31732F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(269, 182);
             this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.5F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.5F));
+            this.tableLayoutPanel9.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.linkNewKH, 1, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 123);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(263, 23);
+            this.tableLayoutPanel9.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(3, 5);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(176, 8);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Nhà cung cấp";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // linkNewKH
+            // 
+            this.linkNewKH.AutoSize = true;
+            this.linkNewKH.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.linkNewKH.Location = new System.Drawing.Point(185, 5);
+            this.linkNewKH.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.linkNewKH.Name = "linkNewKH";
+            this.linkNewKH.Size = new System.Drawing.Size(75, 8);
+            this.linkNewKH.TabIndex = 8;
+            this.linkNewKH.TabStop = true;
+            this.linkNewKH.Text = "Thêm mới";
             // 
             // label1
             // 
@@ -448,47 +490,6 @@
             this.labelPrice.Text = "0đ";
             this.labelPrice.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.5F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.5F));
-            this.tableLayoutPanel9.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.linkNewKH, 1, 0);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 123);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(263, 23);
-            this.tableLayoutPanel9.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(3, 5);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(176, 8);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Nhà cung cấp";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // linkNewKH
-            // 
-            this.linkNewKH.AutoSize = true;
-            this.linkNewKH.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linkNewKH.Location = new System.Drawing.Point(185, 5);
-            this.linkNewKH.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            this.linkNewKH.Name = "linkNewKH";
-            this.linkNewKH.Size = new System.Drawing.Size(75, 8);
-            this.linkNewKH.TabIndex = 8;
-            this.linkNewKH.TabStop = true;
-            this.linkNewKH.Text = "Thêm mới";
-            // 
             // AddPhieuNhapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -511,11 +512,11 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
