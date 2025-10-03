@@ -67,4 +67,11 @@ public class RoundedButton : Button
 
         return path;
     }
+
+    private void InitializeComponent()
+    {
+            this.SuspendLayout();
+            this.ResumeLayout(false);
+
+    }
 }

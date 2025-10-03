@@ -43,6 +43,8 @@ namespace QuanLyKho_CSharp.GUI
 
             listNV = nvBUS.getListNV();
 
+            // Test button
+
         }
 
         private void label1_Click(object sender, EventArgs e)
