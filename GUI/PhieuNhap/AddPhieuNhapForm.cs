@@ -28,6 +28,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             SetupDataGridViews();
             LoadData();
             UpdateButtonStates();
+            LoadSPDuocThem();
         }
 
         private void SetupDataGridViews()

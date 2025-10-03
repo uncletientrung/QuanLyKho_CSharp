@@ -98,6 +98,7 @@
             this.buttonXuatHang.TabIndex = 0;
             this.buttonXuatHang.Text = "Xuất hàng";
             this.buttonXuatHang.UseVisualStyleBackColor = true;
+            this.buttonXuatHang.Click += new System.EventHandler(this.buttonXuatHang_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -155,6 +156,7 @@
             this.buttonThemSP.TabIndex = 0;
             this.buttonThemSP.Text = "Thêm sản phẩm";
             this.buttonThemSP.UseVisualStyleBackColor = true;
+            this.buttonThemSP.Click += new System.EventHandler(this.buttonThemSP_Click);
             // 
             // buttonNhapExcel
             // 
@@ -167,6 +169,7 @@
             this.buttonNhapExcel.TabIndex = 1;
             this.buttonNhapExcel.Text = "Nhập Excel";
             this.buttonNhapExcel.UseVisualStyleBackColor = true;
+            this.buttonNhapExcel.Click += new System.EventHandler(this.buttonNhapExcel_Click);
             // 
             // buttonSuaSP
             // 
@@ -179,6 +182,7 @@
             this.buttonSuaSP.TabIndex = 2;
             this.buttonSuaSP.Text = "Sửa sản phẩm";
             this.buttonSuaSP.UseVisualStyleBackColor = true;
+            this.buttonSuaSP.Click += new System.EventHandler(this.buttonSuaSP_Click);
             // 
             // buttonXoaSP
             // 
@@ -191,6 +195,7 @@
             this.buttonXoaSP.TabIndex = 3;
             this.buttonXoaSP.Text = "Xoá sản phẩm";
             this.buttonXoaSP.UseVisualStyleBackColor = true;
+            this.buttonXoaSP.Click += new System.EventHandler(this.buttonXoaSP_Click);
             // 
             // dgvSPtrongKho
             // 
@@ -202,6 +207,7 @@
             this.dgvSPtrongKho.RowTemplate.Height = 24;
             this.dgvSPtrongKho.Size = new System.Drawing.Size(1027, 495);
             this.dgvSPtrongKho.TabIndex = 0;
+            this.dgvSPtrongKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPtrongKho_CellContentClick);
             // 
             // dgvSPduocThem
             // 
@@ -213,6 +219,7 @@
             this.dgvSPduocThem.RowTemplate.Height = 24;
             this.dgvSPduocThem.Size = new System.Drawing.Size(1027, 395);
             this.dgvSPduocThem.TabIndex = 1;
+            this.dgvSPduocThem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPduocThem_CellContentClick);
             // 
             // tableLayoutPanel4
             // 
@@ -315,6 +322,7 @@
             this.txSearch.Name = "txSearch";
             this.txSearch.Size = new System.Drawing.Size(925, 34);
             this.txSearch.TabIndex = 6;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -438,6 +446,7 @@
             this.linkNewKH.TabIndex = 8;
             this.linkNewKH.TabStop = true;
             this.linkNewKH.Text = "Thêm mới";
+            this.linkNewKH.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkNewKH_LinkClicked);
             // 
             // label2
             // 
@@ -488,6 +497,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "AddPhieuXuatForm";
             this.Text = "AddPhieuXuatForm";
+            this.Load += new System.EventHandler(this.AddPhieuXuatForm_Load);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);

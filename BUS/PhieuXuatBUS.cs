@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿using Google.Protobuf.Collections;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,17 @@ namespace QuanLyKho_CSharp.BUS
 
         public int getAutoMaPhieuXuat()
         {
-            return pxDAO.GetAutoIncrement();
+            // Lấy mã lớn nhất hiện có và +1
+            if (listPX != null && listPX.Count > 0)
+            {
+                int maxMaPhieu = listPX.Max(pn => pn.Maphieu);
+                return maxMaPhieu + 1;
+            }
+            else
+            {
+                // Nếu không có phiếu nào, trả về 1
+                return 1;
+            }
         }
 
         public PhieuXuatDTO getPhieuXuatById(int maPhieu)
