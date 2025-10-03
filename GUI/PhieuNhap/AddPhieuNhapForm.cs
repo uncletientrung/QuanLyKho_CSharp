@@ -17,6 +17,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
     {
         private SanPhamBUS spBUS = new SanPhamBUS();
         private PhieuNhapBUS pnBUS = new PhieuNhapBUS();
+        private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
+        private BindingList<NhaCungCapDTO> listNCC;
         private BindingList<SanPhamDTO> listSP;
         private BindingList<SanPhamDTO> listSPDuocThem;
 
@@ -109,9 +111,31 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private void LoadData()
         {
             listSP = spBUS.getListSP();
+            listNCC = nccBUS.getListNCC();
             boxMaPhieu.Text = pnBUS.getAutoMaPhieuNhap().ToString();
             boxNVnhap.Text = "admin"; // để tạm thui nha
+            LoadNhaCungCap();
             LoadSPTrongKho();
+        }
+        private void LoadNhaCungCap()
+        {
+            comboBoxNCC.Items.Clear();
+
+            if (listNCC != null && listNCC.Count > 0)
+            {
+                foreach (NhaCungCapDTO ncc in listNCC)
+                {
+                    if (ncc.Trangthai == 1)
+                    {
+                        comboBoxNCC.Items.Add(ncc.Tenncc); // Chỉ thêm tên NCC
+                    }
+                }
+            }
+
+            if (comboBoxNCC.Items.Count > 0)
+            {
+                comboBoxNCC.SelectedIndex = 0;
+            }
         }
 
         private void LoadSPTrongKho()
@@ -396,9 +420,30 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
             // Xử lý mã nhà cung cấp - để tạm 0 nếu không có
             int maNCC = 0;
-            if (!string.IsNullOrEmpty(comboBoxNCC.Text) && int.TryParse(comboBoxNCC.Text, out int tempNCC))
+            if (!string.IsNullOrEmpty(comboBoxNCC.Text))
             {
-                maNCC = tempNCC;
+                string tenNCCChon = comboBoxNCC.Text.Trim();
+
+                // Tìm NCC trong danh sách dựa trên tên
+                NhaCungCapDTO nccDuocChon = listNCC.FirstOrDefault(ncc =>
+                    ncc.Tenncc.Equals(tenNCCChon));
+
+                if (nccDuocChon != null)
+                {
+                    maNCC = nccDuocChon.Mancc;
+                }
+                else
+                {
+                    MessageBox.Show("Nhà cung cấp không hợp lệ!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn nhà cung cấp!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             PhieuNhapDTO newPhieuNhap = new PhieuNhapDTO
