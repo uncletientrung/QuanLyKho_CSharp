@@ -206,10 +206,10 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             listCL = clBUS.getChatLieuList();
             foreach(ChatLieuDTO cl in listCL)
             {
-                cboTenChatLieu.Items.Add(cl.Machatlieu + ". " + cl.Tenchatlieu);
+                cboMaChatLieu.Items.Add(cl.Machatlieu + ". " + cl.Tenchatlieu);
                 if(cl.Machatlieu== sp.Machatlieu)
                 {
-                    cboTenChatLieu.SelectedItem= cl.Machatlieu+"" + cl.Tenchatlieu;
+                    cboMaChatLieu.SelectedItem= cl.Machatlieu+". " + cl.Tenchatlieu;
                 }
             }
 
@@ -219,7 +219,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 cboMaLoai.Items.Add(loai.Maloai + ". " + loai.Tenloai);
                 if (loai.Maloai == sp.Maloai)
                 {
-                    cboMaLoai.SelectedItem = loai.Maloai + "" + loai.Tenloai;
+                    cboMaLoai.SelectedItem = loai.Maloai + ". " + loai.Tenloai;
                 }
 
             }
@@ -230,7 +230,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 cboMaSize.Items.Add(size.Masize + ". " + size.Tensize);
                 if (size.Masize == sp.Masize)
                 {
-                    cboMaSize.SelectedItem = size.Masize + "" + size.Tensize;
+                    cboMaSize.SelectedItem = size.Masize + ". " + size.Tensize;
                 }
             }
 
@@ -270,7 +270,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                         } else {
                             string duongDanLuuDB = duongDanAnhMoi ?? sp.Hinhanh;
                             int maKhuVucMoi = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
-                            int maChatLieuMoi = int.Parse(cboTenChatLieu.Text.ToString().Split('.')[0]);
+                            int maChatLieuMoi = int.Parse(cboMaChatLieu.Text.ToString().Split('.')[0]);
                             int maLoaiMoi = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
                             int maSizeMoi = int.Parse(cboMaSize.Text.ToString().Split('.')[0]);
 
