@@ -459,6 +459,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         {
 
         }
+
+        private void dgvSPduocThem_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
     // Form phụ để nhập số lượng
