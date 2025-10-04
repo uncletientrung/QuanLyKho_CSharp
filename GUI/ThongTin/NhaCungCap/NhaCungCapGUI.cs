@@ -200,5 +200,17 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
             
         }
 
+        private void roundedButton1_Click(object sender, EventArgs e)
+        {
+            AddNhaCungCapForm addNCC = new AddNhaCungCapForm();
+            addNCC.ShowDialog();
+
+            if (addNCC.DialogResult == DialogResult.OK)
+            {
+                refreshDataGridView(nccBUS.getListNCC()); // load lại danh sách NCC
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
+            }
+        }
     }
 }

@@ -15,7 +15,11 @@ namespace QuanLyKho_CSharp
         private string email;
         private int trangthai;
 
-        public NhaCungCapDTO() { }
+
+        public NhaCungCapDTO()
+        {
+
+        }
 
         public NhaCungCapDTO(int _mancc, string _tenncc, string _diachincc, string _sdt, string _email, int _trangthai)
         {
