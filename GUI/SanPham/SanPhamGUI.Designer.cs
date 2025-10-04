@@ -38,10 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboChatLieu = new System.Windows.Forms.ComboBox();
+            this.cboLoai = new System.Windows.Forms.ComboBox();
+            this.cboKhuVuc = new System.Windows.Forms.ComboBox();
+            this.cboSize = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.lblNhanVien = new System.Windows.Forms.Label();
@@ -85,7 +85,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(58, 113);
+            this.label5.Location = new System.Drawing.Point(37, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 18);
             this.label5.TabIndex = 2;
@@ -94,12 +94,13 @@
             // btnLamMoi
             // 
             this.btnLamMoi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.Location = new System.Drawing.Point(582, 93);
+            this.btnLamMoi.Location = new System.Drawing.Point(572, 99);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(103, 37);
             this.btnLamMoi.TabIndex = 1;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // txtTimKiem
             // 
@@ -109,7 +110,6 @@
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(331, 31);
             this.txtTimKiem.TabIndex = 0;
-            this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // tableLayoutPanel1
@@ -123,10 +123,10 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox2, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox3, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox4, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cboChatLieu, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cboLoai, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cboKhuVuc, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cboSize, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 27);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -183,45 +183,45 @@
             this.label4.Text = "Size:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // cboChatLieu
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(143, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(193, 28);
-            this.comboBox1.TabIndex = 4;
+            this.cboChatLieu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboChatLieu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboChatLieu.FormattingEnabled = true;
+            this.cboChatLieu.Location = new System.Drawing.Point(143, 3);
+            this.cboChatLieu.Name = "cboChatLieu";
+            this.cboChatLieu.Size = new System.Drawing.Size(193, 28);
+            this.cboChatLieu.TabIndex = 4;
             // 
-            // comboBox2
+            // cboLoai
             // 
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(482, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(194, 28);
-            this.comboBox2.TabIndex = 5;
+            this.cboLoai.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboLoai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLoai.FormattingEnabled = true;
+            this.cboLoai.Location = new System.Drawing.Point(482, 3);
+            this.cboLoai.Name = "cboLoai";
+            this.cboLoai.Size = new System.Drawing.Size(194, 28);
+            this.cboLoai.TabIndex = 5;
             // 
-            // comboBox3
+            // cboKhuVuc
             // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(143, 33);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(193, 28);
-            this.comboBox3.TabIndex = 6;
+            this.cboKhuVuc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboKhuVuc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboKhuVuc.FormattingEnabled = true;
+            this.cboKhuVuc.Location = new System.Drawing.Point(143, 33);
+            this.cboKhuVuc.Name = "cboKhuVuc";
+            this.cboKhuVuc.Size = new System.Drawing.Size(193, 28);
+            this.cboKhuVuc.TabIndex = 6;
             // 
-            // comboBox4
+            // cboSize
             // 
-            this.comboBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(482, 33);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(194, 28);
-            this.comboBox4.TabIndex = 7;
+            this.cboSize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboSize.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboSize.FormattingEnabled = true;
+            this.cboSize.Location = new System.Drawing.Point(482, 33);
+            this.cboSize.Name = "cboSize";
+            this.cboSize.Size = new System.Drawing.Size(194, 28);
+            this.cboSize.TabIndex = 7;
             // 
             // button2
             // 
@@ -312,9 +312,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboChatLieu;
+        private System.Windows.Forms.ComboBox cboLoai;
+        private System.Windows.Forms.ComboBox cboKhuVuc;
+        private System.Windows.Forms.ComboBox cboSize;
     }
 }

@@ -36,5 +36,20 @@ namespace QuanLyKho_CSharp.BUS
             sizeDTO = sizeList.FirstOrDefault(s => s.Masize == sp.Masize);
             return sizeDTO.Tensize.ToString();
         }
+
+        public int LayMaSize(String tenMA)
+        {
+            if (string.IsNullOrEmpty(tenMA) || tenMA == "Tất cả")
+            {
+                return 0;
+            }
+            SizeDTO sizeDTO;
+            sizeDTO = sizeList.FirstOrDefault(s => s.Tensize ==tenMA);
+            if (sizeDTO == null)
+            {
+                return 0;
+            }
+            return sizeDTO.Masize;
+        }
     }
 }

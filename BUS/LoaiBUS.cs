@@ -34,6 +34,22 @@ namespace QuanLyKho_CSharp.BUS
             return loai.Tenloai.ToString();
         }
 
+        public int LayMaLoai(string tenLoai)
+        {
+            if (string.IsNullOrEmpty(tenLoai) || tenLoai == "Tất cả")
+            {
+                return 0; 
+            }
 
-    } 
+            LoaiDTO loai = loaiList.FirstOrDefault(l => l.Tenloai == tenLoai);
+            if (loai == null)
+            {
+                return 0; 
+            }
+
+            return loai.Maloai;
+        }
+
+
+    }
 }

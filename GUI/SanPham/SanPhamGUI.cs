@@ -43,10 +43,14 @@ namespace QuanLyKho_CSharp.GUI
             ConfigureDataGridView();
 
             listSP = spBUS.getListSP();
-            
+            listKV = khuVucKhoBUS.getKhuVucKhoList();
+            listLoai = loaiBUS.getLoaiList();
+            listCL = chatLieuBUS.getChatLieuList();
+            listSize = sizeBUS.getSizeList();
 
             // Gọi setup ngay trong constructor thay vì đợi Load event
             SetupColumnsAndLoadData();
+            setUpBoxTimKiem();
         }
 
         private void ConfigureDataGridView()
@@ -131,6 +135,45 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
+        public void setUpBoxTimKiem()
+        {    
+            cboLoai.Items.Clear();
+            cboLoai.Items.Add("Tất cả");
+            foreach (LoaiDTO loai in listLoai)
+                cboLoai.Items.Add(loai.Tenloai);
+            cboLoai.SelectedIndex = 0;
+
+            cboChatLieu.Items.Clear();
+            cboChatLieu.Items.Add("Tất cả");
+            foreach (ChatLieuDTO cl in listCL)
+                cboChatLieu.Items.Add(cl.Tenchatlieu);
+            cboChatLieu.SelectedIndex = 0;
+
+
+            cboKhuVuc.Items.Clear();
+            cboKhuVuc.Items.Add("Tất cả");
+            foreach (KhuVucKhoDTO kv in listKV)
+                cboKhuVuc.Items.Add(kv.Tenkhuvuc);
+            cboKhuVuc.SelectedIndex = 0;
+
+
+            cboSize.Items.Clear();
+            cboSize.Items.Add("Tất cả");
+            foreach (SizeDTO s in listSize)
+                cboSize.Items.Add(s.Tensize);
+            cboSize.SelectedIndex = 0;
+
+            //gan sk de khi thay doi no tim luon
+            txtTimKiem.TextChanged += (s, ev) => Filter();
+            cboChatLieu.SelectedIndexChanged += (s, ev) => Filter();
+            cboLoai.SelectedIndexChanged += (s, ev) => Filter();
+            cboKhuVuc.SelectedIndexChanged += (s, ev) => Filter();
+            cboSize.SelectedIndexChanged += (s, ev) => Filter();
+
+            // Gọi Filter() để hiển thị dữ liệu ban đầu
+            Filter();
+        }
+
         private void SanPhamGUI_Load(object sender, EventArgs e)
         {
             
@@ -140,6 +183,9 @@ namespace QuanLyKho_CSharp.GUI
             {
                 SetupColumnsAndLoadData();
             }
+
+            
+
         }
 
         
@@ -184,6 +230,7 @@ namespace QuanLyKho_CSharp.GUI
                 }
 
                 dgvSanPham.ClearSelection();
+
             }
             catch (Exception ex)
             {
@@ -392,9 +439,9 @@ namespace QuanLyKho_CSharp.GUI
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            string searchString = txtTimKiem.Text.Trim();
-            BindingList<SanPhamDTO> listSP = spBUS.TimkiemSanPham(searchString);
-            LoadDataToGridFind(listSP);
+            //string searchString = txtTimKiem.Text.Trim();
+            //BindingList<SanPhamDTO> listSP = spBUS.TimkiemSanPham(searchString);
+            //LoadDataToGridFind(listSP);
         }
 
         private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -418,6 +465,42 @@ namespace QuanLyKho_CSharp.GUI
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void Filter()
+        {
+            string keyword = txtTimKiem.Text.Trim().ToLower();
+            string chatLieu = cboChatLieu.SelectedItem?.ToString();
+            string loai = cboLoai.SelectedItem?.ToString();
+            string khuVuc = cboKhuVuc.SelectedItem?.ToString();
+            string size = cboSize.SelectedItem?.ToString();
+
+            int maLoai = loaiBUS.LayMaLoai(loai);
+            int makv = khuVucKhoBUS.LayMaKhuVuc(khuVuc);
+            int maCl = chatLieuBUS.LayMaChatLieu(chatLieu);
+            int maSize = sizeBUS.LayMaSize(size);
+
+            var filtered = spBUS.getListSP().Where(sp =>
+                (string.IsNullOrEmpty(keyword) || sp.Tensp.ToLower().Contains(keyword)) &&
+                (chatLieu == "Tất cả" || maCl == 0 || sp.Machatlieu == maCl) &&
+                (loai == "Tất cả" || maLoai == 0 || sp.Maloai == maLoai) &&
+                (khuVuc == "Tất cả" || makv == 0 || sp.Makhuvuc == makv) &&
+                (size == "Tất cả" || maSize == 0 || sp.Masize == maSize)
+            ).ToList();
+
+            BindingList<SanPhamDTO> filteredList = new BindingList<SanPhamDTO>(filtered);
+            LoadDataToGridFind(filteredList);
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            cboChatLieu.SelectedIndex = 0;
+            cboKhuVuc.SelectedIndex = 0;
+            cboLoai.SelectedIndex = 0;
+            cboSize.SelectedIndex = 0;
+            txtTimKiem.Text= string.Empty;
+           
         }
     }
 }

@@ -29,7 +29,22 @@ namespace QuanLyKho_CSharp.BUS
         {
             ChatLieuDTO chatLieu;
             chatLieu = chatLieuList.FirstOrDefault(cl => cl.Machatlieu == sp.Machatlieu);
-            return chatLieu.Tenchatlieu;
+            return chatLieu.Tenchatlieu.ToString();
+        }
+
+        public int LayMaChatLieu(String tenCl)
+        {
+            if (string.IsNullOrEmpty(tenCl) || tenCl == "Tất cả")
+            {
+                return 0;
+            }
+            ChatLieuDTO chatLieu;
+            chatLieu = chatLieuList.FirstOrDefault(cl => cl.Tenchatlieu == tenCl);
+            if(chatLieu == null)
+            {
+                return 0;
+            }    
+            return chatLieu.Machatlieu;
         }
 
 

@@ -34,8 +34,22 @@ namespace QuanLyKho_CSharp.BUS
             khuVucDTO = listKVK.FirstOrDefault(kv => kv.Makhuvuc == sp.Makhuvuc);//tra ve doi tượng đầu tiên đúng ddieuf kiện
             return khuVucDTO.Tenkhuvuc.ToString();
 
-           
+        }
 
+        public int LayMaKhuVuc(String tenkv)
+        {
+
+            if (string.IsNullOrEmpty(tenkv) || tenkv == "Tất cả")
+            {
+                return 0;
+            }
+            KhuVucKhoDTO khuVucDTO;
+            khuVucDTO = listKVK.FirstOrDefault(kv => kv.Tenkhuvuc == tenkv);//tra ve doi tượng đầu tiên đúng ddieuf kiện
+            if(khuVucDTO == null)
+            {
+                return 0;
+            }    
+            return khuVucDTO.Makhuvuc;
 
         }
 
