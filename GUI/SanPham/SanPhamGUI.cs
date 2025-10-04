@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyKho_CSharp.GUI
 {
@@ -501,6 +502,61 @@ namespace QuanLyKho_CSharp.GUI
             cboSize.SelectedIndex = 0;
             txtTimKiem.Text= string.Empty;
            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelApp = new Excel.Application();
+            excelApp.Application.Workbooks.Add(Type.Missing);
+
+            Excel._Worksheet worksheet = (Excel._Worksheet)excelApp.ActiveSheet;
+            worksheet.Name = "SanPham";//tạo 1 workshet 
+
+            int colIndex = 1;
+    
+            worksheet.Cells[1, 1] = "DANH SÁCH SẢN PHẨM";
+            Excel.Range titleRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[1, dgvSanPham.Columns.Count - 2]];
+            titleRange.Merge(); 
+            titleRange.Font.Size = 16;
+            titleRange.Font.Bold = true;
+            titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+            
+            for (int i = 0; i < dgvSanPham.Columns.Count; i++)
+            {
+                if (i == 2 || i == 9) continue; 
+
+                worksheet.Cells[2, colIndex] = dgvSanPham.Columns[i].HeaderText;
+                colIndex++;
+            }
+
+            // định dạng tiêu đề cột
+            Excel.Range tieuDeCot = worksheet.Range[worksheet.Cells[2, 1], worksheet.Cells[2, colIndex - 1]];
+            tieuDeCot.Font.Bold = true;
+            tieuDeCot.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
+            tieuDeCot.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+            // ghi du lieu vô 
+            int rowIndex = 3;
+            foreach (DataGridViewRow row in dgvSanPham.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    colIndex = 1;
+                    for (int i = 0; i < dgvSanPham.Columns.Count; i++)
+                    {
+                        if (i == 2 || i == 9) continue; 
+                        worksheet.Cells[rowIndex, colIndex] = row.Cells[i].Value?.ToString();
+                        colIndex++;
+                    }
+                    rowIndex++;
+                }
+            }
+
+            
+            worksheet.Columns.AutoFit();// dùng để chỉnh cột cho vừa vặn với nooij dung
+
+            excelApp.Visible = true;
         }
     }
 }

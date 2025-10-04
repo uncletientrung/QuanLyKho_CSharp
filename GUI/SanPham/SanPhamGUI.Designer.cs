@@ -42,7 +42,7 @@
             this.cboLoai = new System.Windows.Forms.ComboBox();
             this.cboKhuVuc = new System.Windows.Forms.ComboBox();
             this.cboSize = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnXuatExcel = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.lblNhanVien = new System.Windows.Forms.Label();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
@@ -55,7 +55,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnXuatExcel);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.lblNhanVien);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -223,17 +223,18 @@
             this.cboSize.Size = new System.Drawing.Size(194, 28);
             this.cboSize.TabIndex = 7;
             // 
-            // button2
+            // btnXuatExcel
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Lime;
-            this.button2.Location = new System.Drawing.Point(157, 76);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 54);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Xuất Excel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatExcel.ForeColor = System.Drawing.Color.Lime;
+            this.btnXuatExcel.Location = new System.Drawing.Point(157, 76);
+            this.btnXuatExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(163, 54);
+            this.btnXuatExcel.TabIndex = 2;
+            this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.UseVisualStyleBackColor = true;
+            this.btnXuatExcel.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnThem
             // 
@@ -300,7 +301,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtTimKiem;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnXuatExcel;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label lblNhanVien;
         private System.Windows.Forms.DataGridView dgvSanPham;
