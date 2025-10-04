@@ -414,5 +414,10 @@ namespace QuanLyKho_CSharp.GUI
                 tb.Show();
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
