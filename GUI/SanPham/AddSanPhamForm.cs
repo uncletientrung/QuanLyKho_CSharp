@@ -143,7 +143,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                     imgSanpham = LoadImageSafe(duongDanAnhMoi);
                     picHinhanh.Image = imgSanpham;
                     picHinhanh.SizeMode = PictureBoxSizeMode.StretchImage;
-                    MessageBox.Show("Đã chọn ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Đã chọn ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -180,7 +180,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 return;
             }
 
-            
+
             SanPhamDTO spTonTai = spBUS.getListSP().FirstOrDefault(sp => sp.Masp == maSp);
 
             if (spTonTai != null)
@@ -219,11 +219,17 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 MessageBox.Show("Đơn giá phải là số!");
                 return;
             }
+
+            if (picHinhanh.Image == null)
+            {
+                MessageBox.Show("Vui lòng chọn ảnh cho sản phẩm!");
+                return;
+            }
             int maKhuVuc = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
             int maChatLieu = int.Parse(cboMaChatLieu.Text.ToString().Split('.')[0]);
             int maLoai = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
             int maSize = int.Parse(cboMaSize.Text.ToString().Split('.')[0]);
-            SanPhamDTO sanPham = new SanPhamDTO(maSp,duongDanAnhMoi,txtTenSanPham.Text,soLuong,donGia,maKhuVuc,maChatLieu,maLoai,maSize);
+            SanPhamDTO sanPham = new SanPhamDTO(maSp, txtTenSanPham.Text,duongDanAnhMoi,soLuong,donGia,maChatLieu,maLoai, maKhuVuc, maSize);
             spBUS.insertSanPham(sanPham);
             this.DialogResult = DialogResult.OK;
 
@@ -236,6 +242,9 @@ namespace QuanLyKho_CSharp.GUI.SanPham
 
         private void AddSanPhamForm_Load(object sender, EventArgs e)
         {
+
+            txtMaSanPham.Text =  spBUS.getAutoMaSP().ToString();
+            txtMaSanPham.Enabled= false;
             listKV = kvBUS.getKhuVucKhoList();
             foreach (KhuVucKhoDTO kv in listKV)
             {
@@ -264,6 +273,20 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 cboMaSize.Items.Add(size.Masize + ". " + size.Tensize);
                 
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            
+            txtTenSanPham.Text = string.Empty;
+            txtSoLuong.Text = string.Empty;
+            txtDonGia.Text = string.Empty;
+            cboMaChatLieu.SelectedIndex = -1;   
+            cboMaKhuVuc.SelectedIndex = -1;
+            cboMaLoai.SelectedIndex = -1;
+            cboMaSize.SelectedIndex = -1;
+            picHinhanh.Image = null; 
+            txtTenSanPham.Focus();
         }
     }
 }

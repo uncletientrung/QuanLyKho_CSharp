@@ -28,7 +28,7 @@ namespace QuanLyKho_CSharp.DAO
         {
 
 
-            string sql = $"INSERT into sanpham(tensp,hinhanh,soluong,dongia,machatlieu,maloai,makhuvuc,masize"
+            string sql = $"INSERT into sanpham(tensp,hinhanh,soluong,dongia,machatlieu,maloai,makhuvuc,masize)"
                 + $"VALUES ('{sp.Tensp}','{sp.Hinhanh}','{sp.Soluong}','{sp.Dongia}','{sp.Machatlieu}','{sp.Maloai}','{sp.Makhuvuc}','{sp.Masize}')";
             return ConnectionHelper.getExecuteNonQuery(sql);// tra ve so luong dong anh huong
         }
