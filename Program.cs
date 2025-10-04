@@ -26,6 +26,7 @@ namespace QuanLyKho_CSharp
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
                     frmMain mainForm = new frmMain(loginForm.getTkLogin());
+  
                     if (mainForm.ShowDialog() == DialogResult.Abort)
                     {
                         continue;

@@ -185,13 +185,13 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                                 "Tên nhóm quyền đã tồn tại",
                                 "Lỗi dữ liệu",
                                 MessageBoxButtons.OK,
-                                MessageBoxIcon.Error
+                                MessageBoxIcon.Error    
                             );
                         return;
                     }
                 }
                 int maQuyenTiepTheo = nqBUS.getAutoMaNQ();
-                MessageBox.Show(maQuyenTiepTheo.ToString());
+                
                 string TenQuyen = txtName.Text.ToString();
                 ListCTQuyen = getListChiTietQuyen(maQuyenTiepTheo);
                 // Test chuyển list sang bindinglist

@@ -99,8 +99,20 @@ namespace QuanLyKho_CSharp.BUS
             return new BindingList<NhomQuyenDTO>(result);
 
         }
+        public BindingList<Button> GetAllButtons(Control parent)
+        {
+            List<Button> result= parent.Controls
+                         .Cast<Control>() // Ép về IEnumerable<Control>
+                         .SelectMany(ctrl => ctrl.HasChildren
+                                              ? GetAllButtons(ctrl)
+                                              : Enumerable.Empty<Button>())
+                         .Concat(parent.Controls.OfType<Button>())
+                         .ToList();
 
-        
+            return new BindingList<Button>(result);
+        }
+
+
 
     }
 }

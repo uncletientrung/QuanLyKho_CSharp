@@ -27,9 +27,11 @@ namespace QuanLyKho_CSharp
 
         private Button currentButton; //biến giữ button hiện tại
         private TaiKhoanDTO tkLogin;
-        private NhomQuyenBUS nvBUS = new NhomQuyenBUS();
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private DanhMucChucNangBUS dmncBUS = new DanhMucChucNangBUS();
         private BindingList<Button> listButton;
+        private Dictionary<string, (Button child, Button parent)> buttonMap;
+
 
 
         public frmMain(TaiKhoanDTO _tkLogin)
@@ -40,34 +42,26 @@ namespace QuanLyKho_CSharp
 
             // Kiểm tra xem nhóm quyền tài khoản
             tkLogin = _tkLogin;
-            BindingList<ChiTietQuyenDTO> listctq = nvBUS.getListCTNQByIdNQ(tkLogin.Manhomquyen);
+            InitButtonMap();
+            BindingList<ChiTietQuyenDTO> listctq = nqBUS.getListCTNQByIdNQ(tkLogin.Manhomquyen);
             foreach (ChiTietQuyenDTO ctq in listctq)
             {
-                if (!listButton.Any(btn => btn.Tag == "tonkho") && !listButton.Any(btn => btn.Tag == "phieuxuat") &&
-                    !listButton.Any(btn => btn.Tag == "phieunhap") && !listButton.Any(btn => btn.Tag == "kiemke"))
+                string name = dmncBUS.getNameById(ctq.Machucnang);
+                if (buttonMap.ContainsKey(name))
                 {
-                    btnquanlykho.Visible = true; // Hiển thị nút quản lý kho
-                }
-                if (!listButton.Any(btn => btn.Tag == "thongtin") &&
-                    !listButton.Any(btn => btn.Tag == "khachhang") &&
-                    !listButton.Any(btn => btn.Tag == "baocao"))
-                {
-                    btnDanhMuc.Visible = true; // Hiển thị nút danh mục
-                }
-                if (!listButton.Any(btn => btn.Tag == "nhanvien") &&
-                    !listButton.Any(btn => btn.Tag == "taikhoan") &&
-                    !listButton.Any(btn => btn.Tag == "phanquyen"))
-                {
-                    btnQuanLyHeThong.Visible = true; // Hiển thị nút quản lý hệ thống
+                    var (child, parent) = buttonMap[name];
+                    child.Visible = true;
+                    parent.Visible = true;
                 }
             }
-
-
 
         }
 
         public void setTagForButton()
         {
+            btnLogout.Tag = "dangxuat";
+            btnTrangChu.Tag = "trangchu";
+
             btnquanlykho.Tag = "quanlykho";
             btnTonKho.Tag = "tonkho";
             btnPhieuXuat.Tag = "phieuxuat";
@@ -88,6 +82,29 @@ namespace QuanLyKho_CSharp
             btnNhanVien.Tag = "nhanvien";
             btnTaiKhoan.Tag = "taikhoan";
             btnPhanQuyen.Tag = "phanquyen";
+        }
+        private void InitButtonMap()
+        {
+            buttonMap = new Dictionary<string, (Button, Button)>()
+            {
+                { "tonkho",   (btnTonKho,   btnquanlykho) },
+                { "phieuxuat",(btnPhieuXuat,btnquanlykho) },
+                { "phieunhap",(btnPhieuNhap,btnquanlykho) },
+                { "kiemke",   (btnKiemKe,   btnquanlykho) },
+
+                { "khachhang",(btnKhachHang,btnDanhMuc) },
+                { "baocao",   (btnBaoCao,   btnDanhMuc) },
+                { "thongtin", (btnThongTin, btnDanhMuc) },
+                { "nhacungcap",(btnNhaCungCap, btnDanhMuc) },
+                { "chatlieu", (btnChatLieu, btnDanhMuc) },
+                { "loai",     (btnLoai,     btnDanhMuc) },
+                { "size",     (btnSize,     btnDanhMuc) },
+                { "khuvuc",   (btnKhuVuc,   btnDanhMuc) },
+
+                { "nhanvien", (btnNhanVien, btnQuanLyHeThong) },
+                { "taikhoan", (btnTaiKhoan, btnQuanLyHeThong) },
+                { "phanquyen",(btnPhanQuyen,btnQuanLyHeThong) },
+            };
         }
 
         private void OpenChildForm(Form childForm, Button btn)
@@ -131,6 +148,12 @@ namespace QuanLyKho_CSharp
         #region Xử lý ẩn hiện nút Menu phụ
         private void CustomizeDesign() // Trạng thái tắt button ban đầu
         {
+            //listButton = nqBUS.GetAllButtons(this); // Lấy các nút bên nqBUS
+            ////listButton.Where(btn => btn.Tag != "dangxuat" && btn.Tag != "trangchu")
+            ////    .ToList().ForEach(btn => btn.Visible = false);
+            //listButton.All(btn => { btn.Visible = false; return true; });
+
+
             panelQuanLyKho.Visible = false;
             panelDanhMuc.Visible = false;
             panelQuanLyHeThong.Visible = false;
