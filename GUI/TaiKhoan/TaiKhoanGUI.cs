@@ -58,13 +58,10 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             DGVTaiKhoan.Columns["TrangThai"].Width = 153;
             DGVTaiKhoan.RowTemplate.Height = 40;
 
-            foreach (TaiKhoanDTO tk in listTK)
+            foreach (TaiKhoanDTO tk in listTK.Where(item => item.Trangthai==1))
             {
-                if (tk.Trangthai == 1)
-                {
-                    DGVTaiKhoan.Rows.Add(tk.Manv, tk.Tendangnhap, tk.Matkhau,
-                        tk.Manhomquyen, "Hoạt động");
-                }
+                DGVTaiKhoan.Rows.Add(tk.Manv, tk.Tendangnhap, tk.Matkhau,
+                    tk.Manhomquyen, "Hoạt động");
             }
             // Tạo 3 cái nút ở table
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -211,13 +208,11 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             DGVTaiKhoan.Rows.Clear();
 
 
-            foreach (TaiKhoanDTO tk in listRefresh)
+            foreach (TaiKhoanDTO tk in listRefresh.Where(tk => tk.Trangthai == 1))
             {
-                if (tk.Trangthai == 1)
-                {
-                    DGVTaiKhoan.Rows.Add(tk.Manv, tk.Tendangnhap, tk.Matkhau,
-                        tk.Manhomquyen, "Hoạt động");
-                }
+
+                DGVTaiKhoan.Rows.Add(tk.Manv, tk.Tendangnhap, tk.Matkhau,
+                    tk.Manhomquyen, "Hoạt động");
             }
             DGVTaiKhoan.ClearSelection();
         }

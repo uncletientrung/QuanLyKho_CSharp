@@ -15,7 +15,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
 {
     public partial class UpdateTaiKhoanForm : Form
     {
-        private TaiKhoanDTO tk;
+        private TaiKhoanDTO tkDuocChon;
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
@@ -25,7 +25,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         public UpdateTaiKhoanForm(TaiKhoanDTO _tk)
         {
             InitializeComponent();
-            tk = _tk;
+            tkDuocChon = _tk;
         }
 
         private void UpdateTaiKhoanForm_Load(object sender, EventArgs e)
@@ -34,38 +34,35 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
 
 
             listNQ = nqBUS.getListNQ();
-            foreach (NhomQuyenDTO nq in listNQ)
+            foreach (NhomQuyenDTO nq in listNQ.Where(item => item.Trangthai==1))
             {
-                if (nq.Trangthai == 1)
+                cbbNhomQuyen.Items.Add(nq.Manhomquyen + ". " + nq.Tennhomquyen);
+                if (nq.Manhomquyen == tkDuocChon.Manhomquyen)
                 {
-                    cbbNhomQuyen.Items.Add(nq.Manhomquyen + ". " + nq.Tennhomquyen);
-                    if (nq.Manhomquyen == tk.Manhomquyen)
-                    {
-                        cbbNhomQuyen.SelectedItem = nq.Manhomquyen + ". " + nq.Tennhomquyen;
-                    }
+                    cbbNhomQuyen.SelectedItem = nq.Manhomquyen + ". " + nq.Tennhomquyen;
                 }
             }
 
             // Nhân viên
             listNV = nvBUS.getListNV();
-            foreach (NhanVienDTO nv in listNV)
+            foreach (NhanVienDTO nv in listNV.Where(item => item.Trangthai==1))
             {
-                if (nv.Trangthai == 1)
+                cbbNhanVien.Items.Add(nv.Manv + ". " + nv.Tennv);
+                if (nv.Manv == tkDuocChon.Manv)
                 {
-                    cbbNhanVien.Items.Add(nv.Manv + ". " + nv.Tennv);
-                    if (nv.Manv == tk.Manv)
-                    {
-                        cbbNhanVien.SelectedItem = nv.Manv + ". " + nv.Tennv;
-                    }
+                    cbbNhanVien.SelectedItem = nv.Manv + ". " + nv.Tennv;
                 }
             }
-            txtUser.Text = tk.Tendangnhap;
-            txtPassword.Text = tk.Matkhau;
+            txtUser.Text = tkDuocChon.Tendangnhap;
+            txtPassword.Text = tkDuocChon.Matkhau;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (IsUsernameExist(txtUser.Text))
+            listTK = tkBUS.getListTK();
+            if (listTK.Any(tk => tk.Tendangnhap == txtUser.Text &&
+                                 tk.Manv != tkDuocChon.Manv &&
+                                 tk.Trangthai == 1))
             {
                 MessageBox.Show(
                             "Tên đăng nhập đã tồn tại",
@@ -76,7 +73,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
                 return;
             }
             int manv = int.Parse(cbbNhanVien.Text.ToString().Split('.')[0]);
-            tk = tkBUS.getTKById(manv);
+            tkDuocChon = tkBUS.getTKById(manv);
             int manhomquyen = int.Parse(cbbNhomQuyen.Text.ToString().Split('.')[0]);
 
             if (txtUser.Text != "")
@@ -110,22 +107,6 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             }
         }
 
-        private Boolean IsUsernameExist(string username)
-        {
-            if (tk.Tendangnhap == username)
-            {
-                return false;
-            }
-            listTK = tkBUS.getListTK();
-            foreach (TaiKhoanDTO tk in listTK)
-            {
-                if (tk.Tendangnhap == username)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
