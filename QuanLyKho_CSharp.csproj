@@ -334,6 +334,7 @@
     <Compile Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.Designer.cs">
       <DependentUpon>NhaCungCapGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\UpdateNhaCungCapForm.cs" />
     <Compile Include="Helper\component\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
