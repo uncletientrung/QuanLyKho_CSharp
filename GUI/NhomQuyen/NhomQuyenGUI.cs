@@ -1,4 +1,4 @@
-﻿using QuanLyKho_CSharp.BUS;
+﻿    using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.GUI.NhomQuyen;
 using QuanLyKho_CSharp.Helper;
@@ -230,15 +230,11 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         private void refreshDataGridView(BindingList<NhomQuyenDTO> listRefresh) // Tải lại DataGridView
         {
             DGVPhanQuyen.Rows.Clear();
-
-
-            foreach (NhomQuyenDTO nq in listRefresh)
+            foreach (NhomQuyenDTO nq in listRefresh.Where( item => item.Trangthai == 1))
             {
-                if (nq.Trangthai == 1)
-                {
-                    DGVPhanQuyen.Rows.Add(nq.Manhomquyen, nq.Tennhomquyen, "Hoạt động");
-                }
+                DGVPhanQuyen.Rows.Add(nq.Manhomquyen, nq.Tennhomquyen, "Hoạt động");
             }
+            
             DGVPhanQuyen.ClearSelection();
         }
     }

@@ -122,7 +122,6 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //MessageBox.Show(DGVAddNhomQuyen.Columns[1].HeaderText.ToString());
             if (e.ColumnIndex == DGVAddNhomQuyen.Columns["Fast"].Index && e.RowIndex >= 0)
             {
                 DGVAddNhomQuyen.CommitEdit(DataGridViewDataErrorContexts.Commit);
@@ -177,18 +176,15 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             if (txtName.Text.Length > 0)
             {
                 ListQuyen = nqBUS.getListNQ();
-                foreach (NhomQuyenDTO q in ListQuyen)
+                if(ListQuyen.Any(q => q.Tennhomquyen == txtName.Text))
                 {
-                    if (q.Tennhomquyen == txtName.Text)
-                    {
-                        MessageBox.Show(
+                    MessageBox.Show(
                                 "Tên nhóm quyền đã tồn tại",
                                 "Lỗi dữ liệu",
                                 MessageBoxButtons.OK,
-                                MessageBoxIcon.Error    
+                                MessageBoxIcon.Error
                             );
-                        return;
-                    }
+                    return;
                 }
                 int maQuyenTiepTheo = nqBUS.getAutoMaNQ();
                 
