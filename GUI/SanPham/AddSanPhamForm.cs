@@ -225,6 +225,30 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 MessageBox.Show("Vui lòng chọn ảnh cho sản phẩm!");
                 return;
             }
+
+            if (cboMaChatLieu.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn chất liệu!");
+                return;
+            }
+
+            if (cboMaKhuVuc.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn khu vực!");
+                return;
+            }
+
+            if (cboMaLoai.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn loại sản phẩm!");
+                return;
+            }
+
+            if (cboMaSize.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn size cho sản phẩm!");
+                return;
+            }
             int maKhuVuc = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
             int maChatLieu = int.Parse(cboMaChatLieu.Text.ToString().Split('.')[0]);
             int maLoai = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
