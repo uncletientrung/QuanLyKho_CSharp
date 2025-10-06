@@ -328,11 +328,29 @@
     <Compile Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.Designer.cs">
       <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\DeleteNhaCungCapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\DeleteNhaCungCapForm.Designer.cs">
+      <DependentUpon>DeleteNhaCungCapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\DetailNhaCungCapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\DetailNhaCungCapForm.Designer.cs">
+      <DependentUpon>DetailNhaCungCapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.Designer.cs">
       <DependentUpon>NhaCungCapGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\UpdateNhaCungCapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\NhaCungCap\UpdateNhaCungCapForm.Designer.cs">
+      <DependentUpon>UpdateNhaCungCapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\component\RoundedButton.cs">
       <SubType>Component</SubType>
@@ -464,8 +482,17 @@
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.resx">
       <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\DeleteNhaCungCapForm.resx">
+      <DependentUpon>DeleteNhaCungCapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\DetailNhaCungCapForm.resx">
+      <DependentUpon>DetailNhaCungCapForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\NhaCungCapGUI.resx">
       <DependentUpon>NhaCungCapGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\UpdateNhaCungCapForm.resx">
+      <DependentUpon>UpdateNhaCungCapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Helper\component\RoundedButton.resx">
       <DependentUpon>RoundedButton.cs</DependentUpon>

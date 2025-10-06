@@ -4,6 +4,7 @@ using Org.BouncyCastle.Utilities.Encoders;
 using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.NhanVien;
 using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
 using QuanLyKho_CSharp.Helper;
 using System;
@@ -197,10 +198,52 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
 
         private void DGVNhaCungCap_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+            //e.ColumnIndex, e.RowIndex → xác định cell được click
+            //e.Location → vị trí con trỏ chuột trong cell(tọa độ X, Y)
+            //e.Button → nút chuột được nhấn
+            if (e.ColumnIndex == DGVNhaCungCap.Columns["Actions"].Index && e.RowIndex >= 0)
+            {
+                int buttonWidth = 50;
+                int padding = 5;
+                int xRelative = e.Location.X; // Tọa độ X của con trỏ chuột trong cell
+                // Cells["mancc"] là ô dựa trên dataSource,
+                // Column["mancc"] là cột dữ liệu của DGV
+                int maNCC = int.Parse(DGVNhaCungCap.Rows[e.RowIndex].Cells["MaNCC"].Value.ToString());
+                NhaCungCapDTO NhaCungCapDuocChon = nccBUS.getNCCById(maNCC);
+                if (xRelative < padding + buttonWidth)
+                {
+                    UpdateNhaCungCapForm updateNCC = new UpdateNhaCungCapForm(NhaCungCapDuocChon);
+                    updateNCC.ShowDialog();
+                    if (updateNCC.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView(nccBUS.getListNCC()); // load lại danh sách NCC
+                        AddSuccessNotification tb = new AddSuccessNotification();
+                        tb.Show();
+                    }
+                }
+                else if (xRelative < padding * 2 + buttonWidth * 2)
+                {
+                    DeleteNhaCungCapForm deleteNCC = new DeleteNhaCungCapForm(NhaCungCapDuocChon);
+                    deleteNCC.ShowDialog();
+                    if (deleteNCC.DialogResult == DialogResult.OK)
+                    {
+                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                        tb.Show();
+                        refreshDataGridView(nccBUS.getListNCC()); // load lại danh sách NCC
+                    }
+                }
+                else
+                {
+                    DetailNhaCungCapForm detailNCC = new DetailNhaCungCapForm(NhaCungCapDuocChon);
+                    detailNCC.ShowDialog();
+                }
+            }
+            {
+
+            }
         }
 
-        private void roundedButton1_Click(object sender, EventArgs e)
+        private void roundedButton2_Click(object sender, EventArgs e)
         {
             AddNhaCungCapForm addNCC = new AddNhaCungCapForm();
             addNCC.ShowDialog();
