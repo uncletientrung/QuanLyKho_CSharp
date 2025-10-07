@@ -548,7 +548,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="GUI\ThongTin\ChatLieu\" />
+    <Folder Include="GUI\ThongTin\KhuVuc\" />
+    <Folder Include="GUI\ThongTin\Loai\" />
+    <Folder Include="GUI\ThongTin\Size\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="images\icon\account.png" />
     <Content Include="images\icon\catalog.png" />
