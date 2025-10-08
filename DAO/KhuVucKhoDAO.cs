@@ -20,7 +20,6 @@ namespace QuanLyKho_CSharp.DAO
     internal class KhuVucKhoDAO:DAOInterface<KhuVucKhoDTO>
 
     {
-//lồn tùng  buôn mê thuột làm lẹ mấy cái trong thông tin chung lẹ cho bố
 
         public static KhuVucKhoDAO getInstance()
         {
@@ -28,17 +27,29 @@ namespace QuanLyKho_CSharp.DAO
         }
         public int Insert(KhuVucKhoDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"INSERT into khuvuckho(tenkhuvuc, diachi, sdt, email) " +
+                    $"values ('{t.Tenkhuvuc}', '{t.Diachi}','{t.Sdt}'," +
+                    $"'{t.Email}')";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public int Update(KhuVucKhoDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"UPDATE khuvuckho Set tenkhuvuc= '{t.Tenkhuvuc}', diachi= '{t.Diachi}'," +
+                   $" sdt='{t.Sdt}', email ='{t.Email}' WHERE makhuvuc={t.Makhuvuc}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public int Delete(int t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"DELETE FROM khuvuckho WHERE makhuvuc={t}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public BindingList<KhuVucKhoDTO> SelectAll()
@@ -72,12 +83,56 @@ namespace QuanLyKho_CSharp.DAO
 
         public KhuVucKhoDTO SelectById(int t)
         {
-            throw new NotImplementedException();
+            KhuVucKhoDTO result = new KhuVucKhoDTO();
+            try
+            {
+                string sql = $"SELECT * FROM khuvuckho WHERE makhuvuc={t}";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result.Makhuvuc = reader.GetInt32("makhuvuc");
+                        result.Tenkhuvuc = reader.GetString("tenkhuvuc");
+                        result.Diachi = reader.GetString("diachi");
+                        result.Sdt = reader.GetString("sdt");
+                        result.Email = reader.GetString("email");
+                    }
+                }   
+            }
+            catch (Exception ex)
+            {
+              MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+
         }
 
         public int GetAutoIncrement()
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                string sql = "SELECT AUTO_INCREMENT " +
+                             "FROM information_schema.TABLES " +
+                             "WHERE TABLE_SCHEMA = 'quanlikhoquanaom' " +
+                             "AND TABLE_NAME = 'khuvuckho';";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result = reader.GetInt32("AUTO_INCREMENT");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+            }
+            return result;
         }
     }
 }
