@@ -156,6 +156,7 @@
             this.roundedButton2.TabIndex = 10;
             this.roundedButton2.Text = "+ Thêm";
             this.roundedButton2.UseVisualStyleBackColor = false;
+            this.roundedButton2.Click += new System.EventHandler(this.roundedButton2_Click);
             // 
             // ChatLieuGUI
             // 

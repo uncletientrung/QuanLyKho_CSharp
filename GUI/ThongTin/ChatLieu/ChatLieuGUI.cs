@@ -94,5 +94,10 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
                 txSearch.Text = "Nhập mã hoặc tên chất liệu để tìm kiếm";
             }
         }
+
+        private void roundedButton2_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
