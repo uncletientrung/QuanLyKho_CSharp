@@ -24,22 +24,31 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "Excel Files|*.xlsx";
-                saveFileDialog.Title = "Chọn nơi lưu file Excel";
-                saveFileDialog.FileName = "SanPhamHoanHang.xlsx";
+                saveFileDialog.Title = "Lưu Excel danh sách hoàn hàng";
+                saveFileDialog.FileName = "DanhSachHoanHang.xlsx";
                 // Chỉ hiện alert sau khi đã lưu file thành công
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = saveFileDialog.FileName;
 
-                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Xuất thành công danh sách hoàn hàng !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
 
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btn_addPhieuKiemKe(object sender, EventArgs e)
         {
+            frmMain mainForm = this.ParentForm as frmMain;
+            if (mainForm != null)
+            {
+                var method = mainForm.GetType().GetMethod("OpenChildForm",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
+                if (method != null)
+                {
+                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(), null });
+                }
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -73,10 +82,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         }
 
-        private void btn_addPhieuKiemKe(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void SetupDataGridView()
         {
@@ -99,7 +105,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             DGVKiemKe.Columns.Add("ThoiGianTao", "Thời gian tạo");
             DGVKiemKe.Columns.Add("NhanVienTao", "Nhân viên tạo");
             DGVKiemKe.Columns.Add("MaNhanVienTao", "Mã nhân viên tạo");
-            DGVKiemKe.Columns.Add("MaKhuVuc", "Mã khu vực");
+            DGVKiemKe.Columns.Add("KhuVuc", "Khu vực");
             DGVKiemKe.Columns.Add("TrangThai", "Trạng thái");
             DGVKiemKe.Columns.Add("GhiChu", "Ghi chú");
 
@@ -112,7 +118,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             DGVKiemKe.Columns["ThoiGianTao"].FillWeight = 16;     // 16%
             DGVKiemKe.Columns["NhanVienTao"].FillWeight = 18;     // 18%
             DGVKiemKe.Columns["MaNhanVienTao"].FillWeight = 12;   // 12%
-            DGVKiemKe.Columns["MaKhuVuc"].FillWeight = 10;        // 10%
+            DGVKiemKe.Columns["KhuVuc"].FillWeight = 10;        // 10%
             DGVKiemKe.Columns["TrangThai"].FillWeight = 14;       // 14%
             DGVKiemKe.Columns["GhiChu"].FillWeight = 18;          // 18%
 

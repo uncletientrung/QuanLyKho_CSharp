@@ -198,17 +198,17 @@
     <Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KiemKe\AddPhieuKiemKeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemKe\AddPhieuKiemKeForm.Designer.cs">
+      <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KiemKe\KiemKeGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\KiemKe\KiemKeGUI.Designer.cs">
       <DependentUpon>KiemKeGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\KiemKe\Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\KiemKe\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\NhomQuyen\DeleteNhomQuyenForm.cs">
       <SubType>Form</SubType>
@@ -420,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KiemKe\AddPhieuKiemKeForm.resx">
+      <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\KiemKeGUI.resx">
       <DependentUpon>KiemKeGUI.cs</DependentUpon>

@@ -530,6 +530,16 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
 
         }
+
+        private void boxMaPhieu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxKH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // Form phụ để nhập số lượng
