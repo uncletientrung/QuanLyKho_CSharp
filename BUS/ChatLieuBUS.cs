@@ -47,6 +47,7 @@ namespace QuanLyKho_CSharp.BUS
             return chatLieu.Machatlieu;
         }
 
+        
 
         public BindingList<ChatLieuDTO> searchChatLieu(string keyword)
         {
@@ -55,28 +56,54 @@ namespace QuanLyKho_CSharp.BUS
             return new BindingList<ChatLieuDTO>(result);
         }
 
-        public Boolean insertChatLieu(ChatLieuDTO cl)
+        // Thêm chất liệu mới
+        public Boolean insertChatLieu(ChatLieuDTO chatLieu)
         {
-            Boolean result = clieuDAO.Insert(cl) != 0;
+            Boolean result = clieuDAO.Insert(chatLieu) != 0;
             if (result)
             {
-                chatLieuList.Add(cl);
+                chatLieuList.Add(chatLieu);
             }
             return result;
         }
 
-        // Tìm kiếm chất liệu
-        public BindingList<ChatLieuDTO> SearchChatLieu(string searchText)
+        // Cập nhật chất liệu
+        public Boolean updateChatLieu(ChatLieuDTO chatLieuSua)
         {
-            if (string.IsNullOrEmpty(searchText))
+            Boolean result = clieuDAO.Update(chatLieuSua) != 0;
+            if (result)
             {
-                return chatLieuList;
+                var chatLieu = chatLieuList.FirstOrDefault(cl => cl.Machatlieu == chatLieuSua.Machatlieu);
+                if (chatLieu != null)
+                {
+                    chatLieu.Tenchatlieu = chatLieuSua.Tenchatlieu;
+                }
             }
-            
-            var result = chatLieuList.Where(cl => 
-                cl.Tenchatlieu.ToLower().Contains(searchText.ToLower()) ||
-                cl.Machatlieu.ToString().Contains(searchText)).ToList();
-            return new BindingList<ChatLieuDTO>(result);
+            return result;
+        }
+
+        // Xóa chất liệu
+        public Boolean removeChatLieu(int maChatLieu)
+        {
+            ChatLieuDTO chatLieuXoa = getChatLieuById(maChatLieu);
+            Boolean result = clieuDAO.Delete(maChatLieu) != 0;
+            if (result && chatLieuXoa != null)
+            {
+                chatLieuList.Remove(chatLieuXoa);
+            }
+            return result;
+        }
+
+        // Lấy chất liệu theo ID
+        public ChatLieuDTO getChatLieuById(int maChatLieu)
+        {
+            return clieuDAO.SelectById(maChatLieu);
+        }
+
+        // Lấy mã tự động tăng
+        public int getAutoMaChatLieu()
+        {
+            return clieuDAO.GetAutoIncrement();
         }
     }
 }
