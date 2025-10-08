@@ -109,7 +109,9 @@ namespace QuanLyKho_CSharp.DAO
                         }
                     }
                 }
-                catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;

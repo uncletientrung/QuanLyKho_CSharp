@@ -81,7 +81,9 @@ namespace QuanLyKho_CSharp.DAO
                         }
                     }
                 }
-                catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
             }
             return result;
@@ -94,11 +96,6 @@ namespace QuanLyKho_CSharp.DAO
                     $"values ('{t.Tenchatlieu}')";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
-        }
-
-        public System.ComponentModel.BindingList<ChatLieuDTO> SelectAll()
-        {
-            throw new NotImplementedException();
         }
 
         public ChatLieuDTO SelectById(int t)
