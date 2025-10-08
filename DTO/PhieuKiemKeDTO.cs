@@ -4,38 +4,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace QuanLyKho_CSharp.DTO
 {
     public class PhieuKiemKeDTO
     {
         private int maphieukiemke;
+        private DateTime thoigiantao;
+        private string nhanvientao;
+        private int manhanvientao;
+        private int makhuvuc;
         private string trangthai;
         private string ghichu;
-        private DateTime thoigiantao;
-        private DateTime thoigiancanbang;
-        private int makhuvuc;
-        private int manhanvientao;
-        private int manhanvien;
 
         public PhieuKiemKeDTO() { }
 
-        public PhieuKiemKeDTO(int _maphieukiemke, string _trangthai, string _ghichu, DateTime _thoigiantao,
-                              DateTime _thoigiancanbang, int _makhuvuc, int _manhanvientao, int _manhanvien)
+        public PhieuKiemKeDTO(int _maphieukiemke, DateTime _thoigiantao, string _nhanvientao, int _manhanvientao, int _makhuvuc, string _trangthai, string _ghichu)
         {
             maphieukiemke = _maphieukiemke;
+            thoigiantao = _thoigiantao;
+            nhanvientao = _nhanvientao;
+            manhanvientao = _manhanvientao;
+            makhuvuc = _makhuvuc;
             trangthai = _trangthai;
             ghichu = _ghichu;
-            thoigiantao = _thoigiantao;
-            thoigiancanbang = _thoigiancanbang;
-            makhuvuc = _makhuvuc;
-            manhanvientao = _manhanvientao;
-            manhanvien = _manhanvien;
         }
 
         public int Maphieukiemke
         {
             get { return maphieukiemke; }
             set { maphieukiemke = value; }
+        }
+
+        public DateTime Thoigiantao
+        {
+            get { return thoigiantao; }
+            set { thoigiantao = value; }
+        }
+
+        public string Nhanvientao
+        {
+            get { return nhanvientao; }
+            set { nhanvientao = value; }
+        }
+
+        public int Manhanvientao
+        {
+            get { return manhanvientao; }
+            set { manhanvientao = value; }
+        }
+
+        public int Makhuvuc
+        {
+            get { return makhuvuc; }
+            set { makhuvuc = value; }
         }
 
         public string Trangthai
@@ -48,36 +70,6 @@ namespace QuanLyKho_CSharp.DTO
         {
             get { return ghichu; }
             set { ghichu = value; }
-        }
-
-        public DateTime Thoigiantao
-        {
-            get { return thoigiantao; }
-            set { thoigiantao = value; }
-        }
-
-        public DateTime Thoigiancanbang
-        {
-            get { return thoigiancanbang; }
-            set { thoigiancanbang = value; }
-        }
-
-        public int Makhuvuc
-        {
-            get { return makhuvuc; }
-            set { makhuvuc = value; }
-        }
-
-        public int Manhanvientao
-        {
-            get { return manhanvientao; }
-            set { manhanvientao = value; }
-        }
-
-        public int Manhanvien
-        {
-            get { return manhanvien; }
-            set { manhanvien = value; }
         }
     }
 }

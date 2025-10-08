@@ -1,5 +1,6 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.HoanHang;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             InitializeComponent();
             SetupDataGridView();
             LoadData();
+            dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
         }
 
         private void SetupDataGridView()

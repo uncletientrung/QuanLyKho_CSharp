@@ -274,7 +274,7 @@ namespace QuanLyKho_CSharp
 
         private void btnKiemKe_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DanhSachKiemKeGUI(), btnKiemKe);
+            OpenChildForm(new KiemKeGUI(), btnKiemKe);
         }
 
 
