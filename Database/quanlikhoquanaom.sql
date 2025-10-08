@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2025 at 08:31 AM
+-- Generation Time: Oct 08, 2025 at 04:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -124,6 +124,22 @@ CREATE TABLE `ctquyen` (
   `hanhdong` varchar(255) NOT NULL,
   `trangthai` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ctquyen`
+--
+
+INSERT INTO `ctquyen` (`manhomquyen`, `machucnang`, `hanhdong`, `trangthai`) VALUES
+(1, 1, 'xem', 1),
+(1, 2, 'xem', 1),
+(1, 3, 'xem', 1),
+(1, 4, 'xem', 1),
+(1, 5, 'xem', 1),
+(1, 6, 'xem', 1),
+(1, 7, 'xem', 1),
+(1, 8, 'xem', 1),
+(1, 9, 'xem', 1),
+(1, 10, 'xem', 1);
 
 -- --------------------------------------------------------
 
