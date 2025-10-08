@@ -6,6 +6,7 @@ using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.GUI.NhanVien;
 using QuanLyKho_CSharp.GUI.ThongTin.ChatLieu;
+using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
@@ -62,13 +63,13 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
             
             DGVChatLieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            DGVChatLieu.Columns.Add("Mã chất liệu", "Mã chất liệu");
-            DGVChatLieu.Columns["Mã chất liệu"].FillWeight = 30; // Giảm tỷ lệ cột mã
-            DGVChatLieu.Columns["Mã chất liệu"].MinimumWidth = 100;
+            DGVChatLieu.Columns.Add("maCL", "Mã chất liệu");
+            DGVChatLieu.Columns["maCL"].FillWeight = 30; // Giảm tỷ lệ cột mã
+            DGVChatLieu.Columns["maCL"].MinimumWidth = 100;
 
-            DGVChatLieu.Columns.Add("Tên chất liệu", "Tên chất liệu");
-            DGVChatLieu.Columns["Tên chất liệu"].FillWeight = 50; // Tăng tỷ lệ cột tên
-            DGVChatLieu.Columns["Tên chất liệu"].MinimumWidth = 200;
+            DGVChatLieu.Columns.Add("tenCL", "Tên chất liệu");
+            DGVChatLieu.Columns["tenCL"].FillWeight = 50; // Tăng tỷ lệ cột tên
+            DGVChatLieu.Columns["tenCL"].MinimumWidth = 200;
 
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn(); 
             btn.HeaderText = "Thao tác";
@@ -207,6 +208,59 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
 
         private void DGVChatLieu_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.ColumnIndex == DGVChatLieu.Columns["Actions"].Index && e.RowIndex >= 0)
+            {
+                // Lấy mã chất liệu
+                int maCL = int.Parse(DGVChatLieu.Rows[e.RowIndex].Cells["maCL"].Value.ToString());
+                ChatLieuDTO chatLieuDuocChon = clBUS.getChatLieuById(maCL);
+                if (chatLieuDuocChon == null)
+                {
+                    MessageBox.Show("Không tìm thấy chất liệu này!");
+                    return;
+                }
+
+                // Tính vùng nút y như trong CellPainting
+                int padding = 5;
+                int totalButtons = 3;
+                int buttonWidth = (DGVChatLieu.Columns["Actions"].Width - padding * (totalButtons + 1)) / totalButtons;
+
+                int xRelative = e.Location.X;
+
+                // Tính vùng click
+                int startSua = padding;
+                int startXoa = startSua + buttonWidth + padding;
+                int startXem = startXoa + buttonWidth + padding;
+
+                // --- Xác định nút được click ---
+                if (xRelative >= startSua && xRelative < startSua + buttonWidth)
+                {
+                    // Nút Sửa
+                    UpdateChatLieuForm updateCL = new UpdateChatLieuForm(chatLieuDuocChon);
+                    updateCL.ShowDialog();
+                    if (updateCL.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView(clBUS.getChatLieuList());
+                        new AddSuccessNotification().Show();
+                    }
+                }
+                else if (xRelative >= startXoa && xRelative < startXoa + buttonWidth)
+                {
+                    // Nút Xoá
+                    DeleteChatLieuForm deleteCL = new DeleteChatLieuForm(chatLieuDuocChon);
+                    deleteCL.ShowDialog();
+                    if (deleteCL.DialogResult == DialogResult.OK)
+                    {
+                        new DeleteSuccessNotification().Show();
+                        refreshDataGridView(clBUS.getChatLieuList());
+                    }
+                }
+                else if (xRelative >= startXem && xRelative < startXem + buttonWidth)
+                {
+                    // Nút Xem chi tiết
+                    DetailChatLieuForm detailCL = new DetailChatLieuForm(chatLieuDuocChon);
+                    detailCL.ShowDialog();
+                }
+            }
 
         }
     }

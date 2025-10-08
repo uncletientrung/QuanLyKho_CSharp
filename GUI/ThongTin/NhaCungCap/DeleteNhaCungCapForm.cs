@@ -23,12 +23,6 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         }
 
 
-
-        public DeleteNhaCungCapForm()
-        {
-            InitializeComponent();
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             nccBUS.removeNhaCungCap(ncc.Mancc);

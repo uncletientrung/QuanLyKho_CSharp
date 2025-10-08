@@ -38,11 +38,6 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
             txtSoDienThoai.SelectionLength = 0;
         }
 
-        public UpdateNhaCungCapForm()
-        {
-            InitializeComponent();
-        }
-
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
             if (txtTenNhaCungCap.Text.Length > 0)

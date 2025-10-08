@@ -187,6 +187,8 @@
             this.Controls.Add(this.lblTenNhaCungCap);
             this.Name = "UpdateNhaCungCapForm";
             this.Text = "UpdateNhaCungCapForm";
+            this.Load += new System.EventHandler(this.UpdateNhaCungCapForm_Load);
+            this.Shown += new System.EventHandler(this.UpdateNhanVienForm_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
