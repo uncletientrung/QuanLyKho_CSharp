@@ -17,8 +17,26 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
             InitializeComponent();
             SetupDataGridView();
+            this.Load += new System.EventHandler(this.KiemKeGUI_Load);
         }
 
+        // header button
+        // add phiếu kiểm kê
+        private void btn_addPhieuKiemKe(object sender, EventArgs e)
+        {
+            frmMain mainForm = this.ParentForm as frmMain;
+            if (mainForm != null)
+            {
+                var method = mainForm.GetType().GetMethod("OpenChildForm",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (method != null)
+                {
+                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(), null });
+                }
+            }
+        }
+        // export excel
         private void btnExcel_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -36,35 +54,69 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
         }
 
-        private void btn_addPhieuKiemKe(object sender, EventArgs e)
-        {
-            frmMain mainForm = this.ParentForm as frmMain;
-            if (mainForm != null)
-            {
-                var method = mainForm.GetType().GetMethod("OpenChildForm",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-                if (method != null)
-                {
-                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(), null });
-                }
+
+
+
+        // searchplaceholder
+        private void btn_search(object sender, EventArgs e)
+        {
+            
+        }
+        private void KiemKeGUI_Load(object sender, EventArgs e)
+        {
+            txSearch.ForeColor = Color.Gray;
+            txSearch.Font = placeholderFont;
+            txSearch.Text = SearchPlaceholder;
+            txSearch.GotFocus += txSearch_Enter;
+            txSearch.LostFocus += txSearch_Leave;
+        }
+        private void txSearch_Enter(object sender, EventArgs e)
+        {
+            if (txSearch.Text == SearchPlaceholder)
+            {
+                txSearch.Text = "";
+                txSearch.ForeColor = Color.Black;
+                txSearch.Font = normalFont;
             }
         }
+        private void txSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txSearch.Text))
+            {
+                txSearch.Text = SearchPlaceholder;
+                txSearch.ForeColor = Color.LightGray;
+                txSearch.Font = placeholderFont;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
+        
 
-        }
-
-        private void btn_search(object sender, EventArgs e)
-        {
-            if (txSearch.Text != "Nhập mã phiếu, tên hàng hoá để tìm kiếm"){}
-        }
+        
 
         private void DanhSachKiemKeGUI_Load(object sender, EventArgs e)
         {
@@ -72,11 +124,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             LoadDataIntoGridView();
         }
 
-        // Add this method to your KiemKeGUI class (in KiemKeGUI.cs, not the Designer file)
-        private void lbFormName_Click(object sender, EventArgs e)
-        {
-            // You can leave this empty or add your desired logic here
-        }
+        
         private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -238,5 +286,23 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 }
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // readonly font for placeholder
+        private void label1_Click(object sender, EventArgs e) {}
+        private void panel2_Paint(object sender, PaintEventArgs e) {}
+
+        private void pictureBox1_Click(object sender, EventArgs e) {}
     }
 }

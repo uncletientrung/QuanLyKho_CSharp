@@ -1,4 +1,6 @@
-﻿namespace QuanLyKho_CSharp.GUI.KiemKe
+﻿using System.Drawing;
+
+namespace QuanLyKho_CSharp.GUI.KiemKe
 {
     partial class KiemKeGUI
     {
@@ -152,6 +154,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // dateTimePicker1
             // 
@@ -174,6 +177,7 @@
             this.label1.Size = new System.Drawing.Size(80, 12);
             this.label1.TabIndex = 10;
             this.label1.Text = "Từ ngày - đến ngày";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dateTimePicker2
             // 
@@ -236,6 +240,11 @@
         }
 
         #endregion
+        // searchplaceholder
+        private const string SearchPlaceholder = "Nhập mã phiếu, tên hàng hoá để tìm kiếm";
+        private readonly Font placeholderFont = new Font("Segoe UI", 9F, FontStyle.Italic);
+        private readonly Font normalFont = new Font("Segoe UI", 12F, FontStyle.Regular);
+
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.DataGridView DGVKiemKe;
         private System.Windows.Forms.Panel panel1;

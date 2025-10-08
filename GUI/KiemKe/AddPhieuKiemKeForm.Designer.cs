@@ -1,4 +1,6 @@
-﻿namespace QuanLyKho_CSharp.GUI.KiemKe
+﻿using System.Drawing;
+
+namespace QuanLyKho_CSharp.GUI.KiemKe
 {
     partial class AddPhieuKiemKeForm
     {
@@ -44,15 +46,16 @@
             this.DGVKiemKe = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button_pullPhieuKiemKeExcel = new System.Windows.Forms.Button();
+            this.button_pullPhieuKiemKe = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonXuatHang = new System.Windows.Forms.Button();
+            this.buttonKiemKe = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTongTien = new System.Windows.Forms.Label();
             this.labelPrice = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -77,7 +80,7 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Nhân viên kiểm\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.label_nhanVienKiem);
             // 
             // boxNVxuat
             // 
@@ -92,6 +95,7 @@
             this.boxNVxuat.TabIndex = 4;
             this.boxNVxuat.TabStop = false;
             this.boxNVxuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.boxNVxuat.TextChanged += new System.EventHandler(this.boxNVkiem_TextChanged);
             // 
             // comboBoxTT
             // 
@@ -117,7 +121,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã phiếu kiểm";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.label_maPhieuKiem);
             // 
             // tableLayoutPanel6
             // 
@@ -142,6 +146,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.31732F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(294, 195);
             this.tableLayoutPanel6.TabIndex = 0;
+            this.tableLayoutPanel6.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel6_Paint);
             // 
             // label3
             // 
@@ -170,6 +175,7 @@
             this.boxMaPhieu.TabIndex = 3;
             this.boxMaPhieu.TabStop = false;
             this.boxMaPhieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.boxMaPhieu.TextChanged += new System.EventHandler(this.boxMaPhieu_TextChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -253,9 +259,13 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.40171F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.59829F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel1.Controls.Add(this.button_pullPhieuKiemKeExcel, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button_pullPhieuKiemKe, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txSearch, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -264,20 +274,49 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(691, 36);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(691, 37);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // button_pullPhieuKiemKeExcel
+            // 
+            this.button_pullPhieuKiemKeExcel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_pullPhieuKiemKeExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
+            this.button_pullPhieuKiemKeExcel.Location = new System.Drawing.Point(521, 2);
+            this.button_pullPhieuKiemKeExcel.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
+            this.button_pullPhieuKiemKeExcel.Name = "button_pullPhieuKiemKeExcel";
+            this.button_pullPhieuKiemKeExcel.Size = new System.Drawing.Size(162, 33);
+            this.button_pullPhieuKiemKeExcel.TabIndex = 10;
+            this.button_pullPhieuKiemKeExcel.Text = "Nhập Excel";
+            this.button_pullPhieuKiemKeExcel.UseVisualStyleBackColor = true;
+            this.button_pullPhieuKiemKeExcel.Click += new System.EventHandler(this.pull_PhieunhapExcel);
+            // 
+            // button_pullPhieuKiemKe
+            // 
+            this.button_pullPhieuKiemKe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_pullPhieuKiemKe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
+            this.button_pullPhieuKiemKe.Location = new System.Drawing.Point(328, 2);
+            this.button_pullPhieuKiemKe.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
+            this.button_pullPhieuKiemKe.Name = "button_pullPhieuKiemKe";
+            this.button_pullPhieuKiemKe.Size = new System.Drawing.Size(177, 33);
+            this.button_pullPhieuKiemKe.TabIndex = 9;
+            this.button_pullPhieuKiemKe.Text = "Tải phiếu nhập";
+            this.button_pullPhieuKiemKe.UseVisualStyleBackColor = true;
+            this.button_pullPhieuKiemKe.Click += new System.EventHandler(this.pull_Phieunhap);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(34, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 36);
+            this.pictureBox1.Size = new System.Drawing.Size(30, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // txSearch
             // 
@@ -285,10 +324,10 @@
             this.txSearch.BackColor = System.Drawing.Color.White;
             this.txSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txSearch.ForeColor = System.Drawing.Color.Black;
-            this.txSearch.Location = new System.Drawing.Point(64, 3);
+            this.txSearch.Location = new System.Drawing.Point(30, 4);
             this.txSearch.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(619, 29);
+            this.txSearch.Size = new System.Drawing.Size(282, 29);
             this.txSearch.TabIndex = 6;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
@@ -300,7 +339,6 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(703, 2);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
@@ -312,12 +350,13 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(298, 558);
             this.tableLayoutPanel5.TabIndex = 12;
+            this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel5_Paint);
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.buttonXuatHang, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.buttonKiemKe, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 442);
@@ -330,18 +369,18 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(294, 114);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
-            // buttonXuatHang
+            // buttonKiemKe
             // 
-            this.buttonXuatHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonXuatHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.buttonXuatHang.Location = new System.Drawing.Point(8, 59);
-            this.buttonXuatHang.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
-            this.buttonXuatHang.Name = "buttonXuatHang";
-            this.buttonXuatHang.Size = new System.Drawing.Size(278, 53);
-            this.buttonXuatHang.TabIndex = 0;
-            this.buttonXuatHang.Text = "Đã kiểm kê\r\n";
-            this.buttonXuatHang.UseVisualStyleBackColor = true;
-            this.buttonXuatHang.Click += new System.EventHandler(this.buttonXuatPhieuKiemKe_Click);
+            this.buttonKiemKe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonKiemKe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
+            this.buttonKiemKe.Location = new System.Drawing.Point(8, 59);
+            this.buttonKiemKe.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
+            this.buttonKiemKe.Name = "buttonKiemKe";
+            this.buttonKiemKe.Size = new System.Drawing.Size(278, 53);
+            this.buttonKiemKe.TabIndex = 0;
+            this.buttonKiemKe.Text = "Đã kiểm kê\r\n";
+            this.buttonKiemKe.UseVisualStyleBackColor = true;
+            this.buttonKiemKe.Click += new System.EventHandler(this.buttonXuatPhieuKiemKe_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -371,8 +410,8 @@
             this.labelTongTien.Name = "labelTongTien";
             this.labelTongTien.Size = new System.Drawing.Size(180, 41);
             this.labelTongTien.TabIndex = 0;
-            this.labelTongTien.Text = "TỔNG TIỀN:";
-            this.labelTongTien.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.labelTongTien.Text = "Tổng phiếu lệch";
+            this.labelTongTien.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelTongTien.Click += new System.EventHandler(this.labelTongTien_Click);
             // 
             // labelPrice
@@ -385,21 +424,8 @@
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(102, 41);
             this.labelPrice.TabIndex = 1;
-            this.labelPrice.Text = "0đ";
-            this.labelPrice.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(10, 385);
-            this.button1.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(278, 53);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Nhập Excel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.labelPrice.Text = "0";
+            this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AddPhieuKiemKeForm
             // 
@@ -428,6 +454,13 @@
         }
 
         #endregion
+        // searchplaceholder
+        private const string SearchPlaceholder = "tìm kiếm theo mã phiếu nhập, tên nhân viên nhập, ... để tìm kiếm";
+        private readonly Font placeholderFont = new Font("Segoe UI", 9F, FontStyle.Italic);
+        private readonly Font normalFont = new Font("Segoe UI", 12F, FontStyle.Regular);
+        
+        //
+        
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox boxNVxuat;
@@ -443,12 +476,13 @@
         private System.Windows.Forms.TextBox txSearch;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button buttonXuatHang;
+        private System.Windows.Forms.Button buttonKiemKe;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label labelTongTien;
         private System.Windows.Forms.Label labelPrice;
-        private System.Windows.Forms.DataGridView DGVKiemKe;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_pullPhieuKiemKeExcel;
+        private System.Windows.Forms.Button button_pullPhieuKiemKe;
+        private System.Windows.Forms.DataGridView DGVKiemKe;
     }
 }
