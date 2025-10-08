@@ -17,11 +17,11 @@ namespace QuanLyKho_CSharp.BUS
 
         public ChatLieuBUS()
         {
-            chatLieuList = clieuDAO.selectAll();
+            chatLieuList = clieuDAO.SelectAll();
         }
         public BindingList<ChatLieuDTO> getChatLieuList()
         {
-            chatLieuList = clieuDAO.selectAll();
+            chatLieuList = clieuDAO.SelectAll();
             return chatLieuList;
         }
 

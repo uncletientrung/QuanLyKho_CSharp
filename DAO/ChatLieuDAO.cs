@@ -27,7 +27,7 @@ namespace QuanLyKho_CSharp.DAO
         }
 
 
-        public BindingList<ChatLieuDTO> selectAll()
+        public BindingList<ChatLieuDTO> SelectAll()
         {
             BindingList<ChatLieuDTO> result = new BindingList<ChatLieuDTO>();
             try

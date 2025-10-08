@@ -97,7 +97,7 @@ namespace QuanLyKho_CSharp.DAO
 
         public SizeDTO SelectById(int t)
         {
-            SizeDTO result = new SuzeDTO();
+            SizeDTO result = new SizeDTO();
             try
             {
                 string sql = $"SELECT * FROM size WHERE masize = {t}";
