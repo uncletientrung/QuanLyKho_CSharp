@@ -65,6 +65,9 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
             btn.Text = "Hit me";
             btn.UseColumnTextForButtonValue = true; // Hiện text trên button
             DGVChatLieu.Columns.Add(btn);
+            
+            // Load dữ liệu ban đầu
+            refreshDataGridView(listCL);
         }
 
         private void txSearch_TextChanged(object sender, EventArgs e)
@@ -72,7 +75,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
             if (txSearch.Text != "Nhập mã hoặc tên chất liệu để tìm kiếm")
             {
                string keyword = txSearch.Text.Trim().ToLower();
-                BindingList<ChatLieuDTO> listSearch = clBUS.searchChatLieu(keyword);
+                BindingList<ChatLieuDTO> listSearch = clBUS.SearchChatLieu(keyword);
                 refreshDataGridView(listSearch); 
             }
         }
@@ -95,9 +98,26 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
             }
         }
 
+        private void refreshDataGridView(BindingList<ChatLieuDTO> list)
+        {
+            DGVChatLieu.Rows.Clear();
+            foreach (ChatLieuDTO cl in list)
+            {
+                DGVChatLieu.Rows.Add(cl.Machatlieu, cl.Tenchatlieu);
+            }
+        }
+
         private void roundedButton2_Click(object sender, EventArgs e)
         {
-            
+            AddChatLieuForm addCL = new AddChatLieuForm();
+            addCL.ShowDialog();
+
+            if (addCL.DialogResult == DialogResult.OK)
+            {
+                refreshDataGridView(clBUS.getChatLieuList()); // load lại danh sách chất liệu
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
+            }
         }
     }
 }

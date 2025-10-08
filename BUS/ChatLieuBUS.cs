@@ -48,6 +48,35 @@ namespace QuanLyKho_CSharp.BUS
         }
 
 
+        public BindingList<ChatLieuDTO> searchChatLieu(string keyword)
+        {
+            List<ChatLieuDTO> result = chatLieuList.Where(cl => cl.Tenchatlieu.ToLower().Contains(keyword.ToLower()) ||
+            cl.Machatlieu.ToString().Contains(keyword)).ToList();
+            return new BindingList<ChatLieuDTO>(result);
+        }
 
+        public Boolean insertChatLieu(ChatLieuDTO cl)
+        {
+            Boolean result = clieuDAO.Insert(cl) != 0;
+            if (result)
+            {
+                chatLieuList.Add(cl);
+            }
+            return result;
+        }
+
+        // Tìm kiếm chất liệu
+        public BindingList<ChatLieuDTO> SearchChatLieu(string searchText)
+        {
+            if (string.IsNullOrEmpty(searchText))
+            {
+                return chatLieuList;
+            }
+            
+            var result = chatLieuList.Where(cl => 
+                cl.Tenchatlieu.ToLower().Contains(searchText.ToLower()) ||
+                cl.Machatlieu.ToString().Contains(searchText)).ToList();
+            return new BindingList<ChatLieuDTO>(result);
+        }
     }
 }
