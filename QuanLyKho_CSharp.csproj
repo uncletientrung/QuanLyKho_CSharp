@@ -348,6 +348,12 @@
     <Compile Include="GUI\ThongTin\ChatLieu\DetailChatLieuForm.Designer.cs">
       <DependentUpon>DetailChatLieuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\ChatLieu\UpdateChatLieuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\ChatLieu\UpdateChatLieuForm.Designer.cs">
+      <DependentUpon>UpdateChatLieuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -513,6 +519,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\ChatLieu\ChatLieuGUI.resx">
       <DependentUpon>ChatLieuGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\ChatLieu\DeleteChatLieuForm.resx">
+      <DependentUpon>DeleteChatLieuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\ChatLieu\DetailChatLieuForm.resx">
+      <DependentUpon>DetailChatLieuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\ChatLieu\UpdateChatLieuForm.resx">
+      <DependentUpon>UpdateChatLieuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.resx">
       <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>

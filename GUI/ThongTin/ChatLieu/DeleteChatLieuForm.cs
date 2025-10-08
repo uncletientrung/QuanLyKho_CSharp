@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,23 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
 {
     public partial class DeleteChatLieuForm : Form
     {
-        public DeleteChatLieuForm()
+        private ChatLieuBUS clBUS = new ChatLieuBUS();
+        private ChatLieuDTO cl;
+
+        public DeleteChatLieuForm(ChatLieuDTO _cl)
         {
+            this.cl = _cl;
             InitializeComponent();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
