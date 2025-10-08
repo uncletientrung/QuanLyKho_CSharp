@@ -54,8 +54,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonKiemKe = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTongTien = new System.Windows.Forms.Label();
-            this.labelPrice = new System.Windows.Forms.Label();
+            this.labelTongLech = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -66,6 +66,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -107,7 +108,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.comboBoxTT.Name = "comboBoxTT";
             this.comboBoxTT.Size = new System.Drawing.Size(272, 28);
             this.comboBoxTT.TabIndex = 6;
-            this.comboBoxTT.SelectedIndexChanged += new System.EventHandler(this.comboBoxTT_SelectedIndexChanged);
+            this.comboBoxTT.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTT_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -263,7 +264,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.40171F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.59829F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
             this.tableLayoutPanel1.Controls.Add(this.button_pullPhieuKiemKeExcel, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button_pullPhieuKiemKe, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
@@ -283,10 +284,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // 
             this.button_pullPhieuKiemKeExcel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_pullPhieuKiemKeExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.button_pullPhieuKiemKeExcel.Location = new System.Drawing.Point(521, 2);
+            this.button_pullPhieuKiemKeExcel.Location = new System.Drawing.Point(514, 2);
             this.button_pullPhieuKiemKeExcel.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
             this.button_pullPhieuKiemKeExcel.Name = "button_pullPhieuKiemKeExcel";
-            this.button_pullPhieuKiemKeExcel.Size = new System.Drawing.Size(162, 33);
+            this.button_pullPhieuKiemKeExcel.Size = new System.Drawing.Size(169, 33);
             this.button_pullPhieuKiemKeExcel.TabIndex = 10;
             this.button_pullPhieuKiemKeExcel.Text = "Nhập Excel";
             this.button_pullPhieuKiemKeExcel.UseVisualStyleBackColor = true;
@@ -296,7 +297,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // 
             this.button_pullPhieuKiemKe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_pullPhieuKiemKe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.button_pullPhieuKiemKe.Location = new System.Drawing.Point(328, 2);
+            this.button_pullPhieuKiemKe.Location = new System.Drawing.Point(321, 2);
             this.button_pullPhieuKiemKe.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
             this.button_pullPhieuKiemKe.Name = "button_pullPhieuKiemKe";
             this.button_pullPhieuKiemKe.Size = new System.Drawing.Size(177, 33);
@@ -312,7 +313,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(29, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -324,10 +325,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.txSearch.BackColor = System.Drawing.Color.White;
             this.txSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txSearch.ForeColor = System.Drawing.Color.Black;
-            this.txSearch.Location = new System.Drawing.Point(30, 4);
+            this.txSearch.Location = new System.Drawing.Point(29, 4);
             this.txSearch.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(282, 29);
+            this.txSearch.Size = new System.Drawing.Size(276, 29);
             this.txSearch.TabIndex = 6;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
@@ -385,10 +386,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.66667F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.33333F));
-            this.tableLayoutPanel8.Controls.Add(this.labelTongTien, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.labelPrice, 1, 0);
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.55173F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.44828F));
+            this.tableLayoutPanel8.Controls.Add(this.labelTongLech, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.numericUpDown1, 1, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(2);
@@ -398,34 +399,30 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.tableLayoutPanel8.Size = new System.Drawing.Size(290, 53);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
-            // labelTongTien
+            // labelTongLech
             // 
-            this.labelTongTien.AutoSize = true;
-            this.labelTongTien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.labelTongTien.ForeColor = System.Drawing.Color.Red;
-            this.labelTongTien.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelTongTien.Location = new System.Drawing.Point(2, 6);
-            this.labelTongTien.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
-            this.labelTongTien.Name = "labelTongTien";
-            this.labelTongTien.Size = new System.Drawing.Size(180, 41);
-            this.labelTongTien.TabIndex = 0;
-            this.labelTongTien.Text = "Tổng phiếu lệch";
-            this.labelTongTien.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelTongTien.Click += new System.EventHandler(this.labelTongTien_Click);
+            this.labelTongLech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTongLech.AutoSize = true;
+            this.labelTongLech.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
+            this.labelTongLech.ForeColor = System.Drawing.Color.Red;
+            this.labelTongLech.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelTongLech.Location = new System.Drawing.Point(2, 15);
+            this.labelTongLech.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
+            this.labelTongLech.Name = "labelTongLech";
+            this.labelTongLech.Size = new System.Drawing.Size(188, 22);
+            this.labelTongLech.TabIndex = 0;
+            this.labelTongLech.Text = "Tổng số lượng lệch";
+            this.labelTongLech.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTongLech.Click += new System.EventHandler(this.labelTongTien_Click);
             // 
-            // labelPrice
+            // numericUpDown1
             // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.labelPrice.Location = new System.Drawing.Point(186, 6);
-            this.labelPrice.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(102, 41);
-            this.labelPrice.TabIndex = 1;
-            this.labelPrice.Text = "0";
-            this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(195, 13);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(92, 26);
+            this.numericUpDown1.TabIndex = 1;
             // 
             // AddPhieuKiemKeForm
             // 
@@ -449,6 +446,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,9 +456,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private const string SearchPlaceholder = "tìm kiếm theo mã phiếu nhập, tên nhân viên nhập, ... để tìm kiếm";
         private readonly Font placeholderFont = new Font("Segoe UI", 9F, FontStyle.Italic);
         private readonly Font normalFont = new Font("Segoe UI", 12F, FontStyle.Regular);
-        
-        //
-        
+
+        // trạng thái phiếu
+        private readonly string TrangThaiPlaceholder = "tuỳ chọn trạng thái hàng";
+        private readonly Color PlaceholderColor = Color.Gray;
+        private readonly Color NormalColor = Color.Black;
+
+        // nút "đã kiểm kê"
+        private KiemKeGUI parentForm;
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox boxNVxuat;
@@ -478,11 +481,11 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Button buttonKiemKe;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Label labelTongTien;
-        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.Label labelTongLech;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button_pullPhieuKiemKeExcel;
         private System.Windows.Forms.Button button_pullPhieuKiemKe;
         private System.Windows.Forms.DataGridView DGVKiemKe;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

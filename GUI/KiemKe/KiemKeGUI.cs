@@ -16,6 +16,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         public KiemKeGUI()
         {
             InitializeComponent();
+            InitializeDataGridViewColumns(); 
             SetupDataGridView();
             this.Load += new System.EventHandler(this.KiemKeGUI_Load);
         }
@@ -32,7 +33,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
                 if (method != null)
                 {
-                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(), null });
+                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(this), null });
                 }
             }
         }
@@ -94,8 +95,15 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
 
 
+        // Cho phép Add dòng từ AddPhieuKiemKeForm
+        public void AddKiemKeRow(
+        string maPhieu, string thoiGian, string tenNV, string maNV, string khuVuc, string trangThai, string ghiChu)
+        {
+            if (DGVKiemKe.Columns.Count == 0)
+                InitializeDataGridViewColumns();
 
-
+            DGVKiemKe.Rows.Add(maPhieu, thoiGian, tenNV, maNV, khuVuc, trangThai, ghiChu);
+        }
 
 
 

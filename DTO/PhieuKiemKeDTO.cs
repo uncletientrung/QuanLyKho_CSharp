@@ -71,5 +71,8 @@ namespace QuanLyKho_CSharp.DTO
             get { return ghichu; }
             set { ghichu = value; }
         }
+
     }
+
+
 }

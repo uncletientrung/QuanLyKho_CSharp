@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyKho_CSharp.GUI.KiemKe;
 
 namespace QuanLyKho_CSharp.GUI.KiemKe
 {
     public partial class AddPhieuKiemKeForm : Form
     {
-        public AddPhieuKiemKeForm()
+        // nhận KiemKeGUI là parent
+        public AddPhieuKiemKeForm(KiemKeGUI parent = null)
         {
             InitializeComponent();
+            parentForm = parent;
         }
 
         // sidebar thong tin nhan vien va ma phieu kiem ke
@@ -34,13 +37,32 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         // trạng thái
         private void label_trangthaikiemke(object sender, EventArgs e) {}
-        private void comboBoxTT_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        // Placeholder logic
+        private void ComboBoxTT_GotFocus(object sender, EventArgs e)
+        {
+            if (comboBoxTT.Text == TrangThaiPlaceholder)
+            {
+                comboBoxTT.Text = "";
+                comboBoxTT.ForeColor = NormalColor;
+                comboBoxTT.DroppedDown = true;
+            }
+        }
+        private void ComboBoxTT_LostFocus(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(comboBoxTT.Text))
+            {
+                comboBoxTT.Text = TrangThaiPlaceholder;
+                comboBoxTT.ForeColor = PlaceholderColor;
+            }
+        }
+        private void ComboBoxTT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxTT.ForeColor = NormalColor;
         }
 
 
-      
+
 
 
 
@@ -52,18 +74,46 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // button xuat phieu kiem ke
         private void buttonXuatPhieuKiemKe_Click(object sender, EventArgs e)
         {
+            if (DGVKiemKe.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một phiếu để kiểm kê!");
+                return;
+            }
+
+            var row = DGVKiemKe.SelectedRows[0];
+            string maPhieu = row.Cells["MaPhieu"].Value.ToString();
+            string thoiGian = row.Cells["ThoiGian"].Value.ToString();
+            string tenNV = boxNVxuat.Text;
+            string maNV = ""; // Lấy mã NV nếu có
+            string khuVuc = ""; // Lấy khu vực nếu có
+            string trangThai = comboBoxTT.Text;
+            int soLuongLech = (int)numericUpDown1.Value;
+
+            // Ghi chú
+            string ghiChu = "";
+            if (trangThai == "Đủ hàng")
+                ghiChu = "đủ hàng";
+            else if (trangThai == "Thiếu hàng")
+                ghiChu = $"thiếu - {soLuongLech}";
+            else if (trangThai == "Dư hàng")
+                ghiChu = $"dư - {soLuongLech}";
+
+            // Thêm vào KiemKeGUI
+            parentForm?.AddKiemKeRow(maPhieu, thoiGian, tenNV, maNV, khuVuc, trangThai, ghiChu);
+
+            // Xóa dòng khỏi bảng
+            DGVKiemKe.Rows.Remove(row);
 
         }
+
+
 
         private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void buttonXuatHang_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
 
 
@@ -83,6 +133,16 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             txSearch.Text = SearchPlaceholder;
             txSearch.GotFocus += txSearch_Enter;
             txSearch.LostFocus += txSearch_Leave;
+
+            // Setup trạng thái kiểm kê 
+            comboBoxTT.Items.Clear();
+            comboBoxTT.Items.AddRange(new object[] { "Đủ hàng", "Thiếu hàng", "Dư hàng" });
+            comboBoxTT.Text = TrangThaiPlaceholder;
+            comboBoxTT.ForeColor = PlaceholderColor;
+
+            comboBoxTT.GotFocus += ComboBoxTT_GotFocus;
+            comboBoxTT.LostFocus += ComboBoxTT_LostFocus;
+            comboBoxTT.SelectedIndexChanged += ComboBoxTT_SelectedIndexChanged;
         }
 
         private void txSearch_Enter(object sender, EventArgs e)
@@ -105,16 +165,44 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
         }
 
+        // thanh tìm kiếm
         private void txSearch_TextChanged(object sender, EventArgs e)
         {
+            if (txSearch.Text == SearchPlaceholder || string.IsNullOrWhiteSpace(txSearch.Text))
+            {
+                pull_Phieunhap(sender, e); 
+                return;
+            }
 
+            string search = txSearch.Text.Trim().ToLower();
+            var pnBUS = new QuanLyKho_CSharp.BUS.PhieuNhapBUS();
+            var nccBUS = new QuanLyKho_CSharp.BUS.NhaCungCapBUS();
+            var list = pnBUS.getListPN();
+
+            DGVKiemKe.Rows.Clear();
+
+            foreach (var pn in list)
+            {
+                string tenNCC = nccBUS.getNamebyID(pn.Mancc);
+                // không phân biệt hoa thường
+                if (pn.Maphieu.ToString().Contains(search) || tenNCC.ToLower().Contains(search))
+                {
+                    DGVKiemKe.Rows.Add(
+                        pn.Maphieu,
+                        tenNCC,
+                        pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                        pn.Tongtien,
+                        pn.Trangthai == 1 ? "Hoạt động" : "Đã hủy"
+                    );
+                }
+            }
+            DGVKiemKe.ClearSelection();
         }
 
         // pull phiếu nhập
         private void pull_Phieunhap(object sender, EventArgs e)
         {
             DGVKiemKe.Columns.Clear();
-
             DGVKiemKe.Columns.Add("MaPhieu", "Mã phiếu");
             DGVKiemKe.Columns.Add("TenNCC", "Tên nhà cung cấp");
             DGVKiemKe.Columns.Add("ThoiGian", "Thời gian tạo");
@@ -182,9 +270,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {}
         private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e) {}
         private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e) {}
-        
-        
 
-
+        private void labelPrice_Click(object sender, EventArgs e) {}
     }
 }
