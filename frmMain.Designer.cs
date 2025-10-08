@@ -279,6 +279,7 @@ namespace QuanLyKho_CSharp
             this.btnChatLieu.TabIndex = 8;
             this.btnChatLieu.Text = "Chất liệu";
             this.btnChatLieu.UseVisualStyleBackColor = true;
+            this.btnChatLieu.Click += new System.EventHandler(this.btnChatLieu_Click_1);
             // 
             // btnNhaCungCap
             // 

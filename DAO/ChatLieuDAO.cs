@@ -27,7 +27,7 @@ namespace QuanLyKho_CSharp.DAO
         }
 
 
-        public BindingList<ChatLieuDTO> selectAll()
+        public BindingList<ChatLieuDTO> SelectAll()
         {
             BindingList<ChatLieuDTO> result = new BindingList<ChatLieuDTO>();
             try
@@ -55,12 +55,38 @@ namespace QuanLyKho_CSharp.DAO
         }
         public int Delete(int t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"DELETE FROM chatlieu WHERE machatlieu={t}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
         }
 
         public int GetAutoIncrement()
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                string sql = "SELECT AUTO_INCREMENT " +
+                             "FROM information_schema.TABLES " +
+                             "WHERE TABLE_SCHEMA = 'quanlikhoquanaom' " +
+                             "AND TABLE_NAME = 'chatlieu';";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            result = reader.GetInt32("AUTO_INCREMENT");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+            }
+            return result;
         }
 
         public int Insert(ChatLieuDTO t)
@@ -68,24 +94,41 @@ namespace QuanLyKho_CSharp.DAO
             int result = 0;
             string sql = $"INSERT into chatlieu(tenchatlieu) " +
                     $"values ('{t.Tenchatlieu}')";
-
-
+            result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
-        }
-
-        public System.ComponentModel.BindingList<ChatLieuDTO> SelectAll()
-        {
-            throw new NotImplementedException();
         }
 
         public ChatLieuDTO SelectById(int t)
         {
-            throw new NotImplementedException();
+            ChatLieuDTO result = new ChatLieuDTO();
+            try
+            {
+                string sql = $"SELECT * FROM chatlieu WHERE machatlieu={t}";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result.Machatlieu = reader.GetInt32("machatlieu");
+                        result.Tenchatlieu = reader.GetString("tenchatlieu");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
         }
 
         public int Update(ChatLieuDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"UPDATE chatlieu Set tenchatlieu= '{t.Tenchatlieu}' WHERE machatlieu={t.Machatlieu}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result;
+            
         }
     }
 }

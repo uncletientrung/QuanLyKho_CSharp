@@ -8,6 +8,7 @@ using QuanLyKho_CSharp.GUI.PhieuNhap;
 using QuanLyKho_CSharp.GUI.PhieuXuat;
 using QuanLyKho_CSharp.GUI.TaiKhoan;
 using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
+using QuanLyKho_CSharp.GUI.ThongTin.ChatLieu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -246,6 +247,11 @@ namespace QuanLyKho_CSharp
             OpenChildForm(new NhaCungCapGUI(), btnNhaCungCap);
         }
 
+        private void btnChatLieu_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new ChatLieuGUI(), btnChatLieu);
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Abort;
@@ -279,11 +285,11 @@ namespace QuanLyKho_CSharp
 
 
 
+
         private void pnlLeftMenu_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
 
     }
 }

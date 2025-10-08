@@ -20,17 +20,47 @@ namespace QuanLyKho_CSharp.DAO
         }
         public int Delete(int t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"DELETE FROM loai WHERE maloai={t}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+
+            return result;
         }
 
         public int GetAutoIncrement()
         {
-            throw new NotImplementedException();
+            int result = 0;
+            try
+            {
+                string sql = "SELECT AUTO_INCREMENT " +
+                             "FROM information_schema.TABLES " +
+                             "WHERE TABLE_SCHEMA = 'quanlikhoquanaom' " +
+                             "AND TABLE_NAME = 'loai';";
+                ConnectionHelper.getConnection();
+                MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    result = reader.GetInt32("AUTO_INCREMENT");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy AUTO_INCREMENT: " + ex.Message);
+            }
+
+            return result;
         }
 
         public int Insert(LoaiDTO t)
         {
-            throw new NotImplementedException();
+
+            int result = 0;
+            string sql = $"INSERT into loai(tenloai) " +
+                    $"values ('{t.Tenloai}')";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+
+            return result;
         }
 
         public BindingList<LoaiDTO> SelectAll()
@@ -63,12 +93,37 @@ namespace QuanLyKho_CSharp.DAO
 
         public LoaiDTO SelectById(int t)
         {
-            throw new NotImplementedException();
+            LoaiDTO result = new LoaiDTO();
+            try
+            {
+                string sql = $"SELECT * FROM loai WHERE maloai={t}";
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            result.Maloai = reader.GetInt32("maloai");
+                            result.Tenloai = reader.GetString("tenloai");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
         }
 
         public int Update(LoaiDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"UPDATE loai Set tenloai= '{t.Tenloai}' WHERE maloai={t.Maloai}";
+            result = ConnectionHelper.getExecuteNonQuery(sql);
+
+            return result;
         }
     }
 }
