@@ -51,11 +51,9 @@ namespace QuanLyKho_CSharp.DAO
             BindingList<NhaCungCapDTO> result = new BindingList<NhaCungCapDTO>();
             try
             {
-                string sql = "SELECT * FROM nhacungcap";
-                // Mở kết nối
                 ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn)) // conn phải public hoặc tạo getter
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM nhacungcap", ConnectionHelper.conn)) // conn phải public hoặc tạo getter
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -72,7 +70,7 @@ namespace QuanLyKho_CSharp.DAO
                     }
                 }
             }
-            catch (Exception ex)
+                        catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -87,22 +85,23 @@ namespace QuanLyKho_CSharp.DAO
                 string sql = $"SELECT * FROM nhacungcap WHERE mancc={t}";
                 // Mở kết nối
                 ConnectionHelper.getConnection();
-                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn)) // conn phải public hoặc tạo getter
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                
+                if (reader.Read())
                 {
-                    if (reader.Read())
+                    ncc = new NhaCungCapDTO
                     {
-                        ncc = new NhaCungCapDTO
-                        {
-                            Mancc = reader.GetInt32("mancc"),
-                            Tenncc = reader.GetString("tenncc"),
-                            Diachincc = reader.GetString("diachincc"),
-                            Sdt = reader.GetString("sdt"),
-                            Email = reader.GetString("email"),
-                            Trangthai = reader.GetInt32("trangthai")
-                        };
-                    }
+                        Mancc = reader.GetInt32("mancc"),
+                        Tenncc = reader.GetString("tenncc"),
+                        Diachincc = reader.GetString("diachincc"),
+                        Sdt = reader.GetString("sdt"),
+                        Email = reader.GetString("email"),
+                        Trangthai = reader.GetInt32("trangthai")
+                    };
                 }
+                
+                ConnectionHelper.closeConnection();
             }
             catch (Exception ex)
             {
@@ -139,3 +138,4 @@ namespace QuanLyKho_CSharp.DAO
 
     }
 }
+
