@@ -67,7 +67,7 @@
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(465, 49);
             this.lbInfo.TabIndex = 16;
-            this.lbInfo.Text = "Bạn có chắc chắn muốn xóa x không?";
+            this.lbInfo.Text = "Bạn có chắc chắn muốn xóa không?";
             this.lbInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
