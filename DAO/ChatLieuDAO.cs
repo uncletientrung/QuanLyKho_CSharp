@@ -65,7 +65,12 @@ namespace QuanLyKho_CSharp.DAO
 
         public int Insert(ChatLieuDTO t)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            string sql = $"INSERT into chatlieu(tenchatlieu) " +
+                    $"values ('{t.Tenchatlieu}')";
+
+
+            return result;
         }
 
         public System.ComponentModel.BindingList<ChatLieuDTO> SelectAll()
