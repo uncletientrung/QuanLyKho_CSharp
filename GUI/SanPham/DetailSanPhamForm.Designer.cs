@@ -63,7 +63,7 @@
             this.lblChiTietSanPham.ForeColor = System.Drawing.Color.AliceBlue;
             this.lblChiTietSanPham.Location = new System.Drawing.Point(0, 2);
             this.lblChiTietSanPham.Name = "lblChiTietSanPham";
-            this.lblChiTietSanPham.Size = new System.Drawing.Size(565, 61);
+            this.lblChiTietSanPham.Size = new System.Drawing.Size(589, 61);
             this.lblChiTietSanPham.TabIndex = 1;
             this.lblChiTietSanPham.Text = "Chi Tiết Hàng";
             this.lblChiTietSanPham.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,7 +75,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 30);
+            this.label1.Size = new System.Drawing.Size(128, 30);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tên sản phẩm:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -90,7 +90,7 @@
             this.lblmasp.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmasp.Location = new System.Drawing.Point(3, 0);
             this.lblmasp.Name = "lblmasp";
-            this.lblmasp.Size = new System.Drawing.Size(129, 30);
+            this.lblmasp.Size = new System.Drawing.Size(128, 30);
             this.lblmasp.TabIndex = 3;
             this.lblmasp.Text = "Mã sản phẩm:";
             this.lblmasp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,7 +102,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 30);
+            this.label3.Size = new System.Drawing.Size(128, 30);
             this.label3.TabIndex = 4;
             this.label3.Text = "Số lượng:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,7 +114,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 30);
+            this.label4.Size = new System.Drawing.Size(128, 30);
             this.label4.TabIndex = 5;
             this.label4.Text = "Mã chất liệu:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,7 +126,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 150);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 30);
+            this.label5.Size = new System.Drawing.Size(128, 30);
             this.label5.TabIndex = 6;
             this.label5.Text = "Mã loại:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,7 +138,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 180);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 30);
+            this.label6.Size = new System.Drawing.Size(128, 30);
             this.label6.TabIndex = 7;
             this.label6.Text = "Mã khu vực:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -147,57 +147,57 @@
             // txtMasp
             // 
             this.txtMasp.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMasp.Location = new System.Drawing.Point(138, 3);
+            this.txtMasp.Location = new System.Drawing.Point(137, 3);
             this.txtMasp.Name = "txtMasp";
-            this.txtMasp.Size = new System.Drawing.Size(152, 31);
+            this.txtMasp.Size = new System.Drawing.Size(151, 31);
             this.txtMasp.TabIndex = 9;
             // 
             // txtTensp
             // 
             this.txtTensp.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTensp.Location = new System.Drawing.Point(138, 33);
+            this.txtTensp.Location = new System.Drawing.Point(137, 33);
             this.txtTensp.Name = "txtTensp";
-            this.txtTensp.Size = new System.Drawing.Size(152, 31);
+            this.txtTensp.Size = new System.Drawing.Size(151, 31);
             this.txtTensp.TabIndex = 10;
             // 
             // txtSoluong
             // 
             this.txtSoluong.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoluong.Location = new System.Drawing.Point(138, 63);
+            this.txtSoluong.Location = new System.Drawing.Point(137, 63);
             this.txtSoluong.Name = "txtSoluong";
-            this.txtSoluong.Size = new System.Drawing.Size(152, 31);
+            this.txtSoluong.Size = new System.Drawing.Size(151, 31);
             this.txtSoluong.TabIndex = 11;
             // 
             // txtDongia
             // 
             this.txtDongia.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDongia.Location = new System.Drawing.Point(138, 93);
+            this.txtDongia.Location = new System.Drawing.Point(137, 93);
             this.txtDongia.Name = "txtDongia";
-            this.txtDongia.Size = new System.Drawing.Size(152, 31);
+            this.txtDongia.Size = new System.Drawing.Size(151, 31);
             this.txtDongia.TabIndex = 12;
             // 
             // txtMachatlieu
             // 
             this.txtMachatlieu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMachatlieu.Location = new System.Drawing.Point(138, 123);
+            this.txtMachatlieu.Location = new System.Drawing.Point(137, 123);
             this.txtMachatlieu.Name = "txtMachatlieu";
-            this.txtMachatlieu.Size = new System.Drawing.Size(152, 31);
+            this.txtMachatlieu.Size = new System.Drawing.Size(151, 31);
             this.txtMachatlieu.TabIndex = 13;
             // 
             // txtMaloai
             // 
             this.txtMaloai.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaloai.Location = new System.Drawing.Point(138, 153);
+            this.txtMaloai.Location = new System.Drawing.Point(137, 153);
             this.txtMaloai.Name = "txtMaloai";
-            this.txtMaloai.Size = new System.Drawing.Size(152, 31);
+            this.txtMaloai.Size = new System.Drawing.Size(151, 31);
             this.txtMaloai.TabIndex = 14;
             // 
             // txtMakhuvuc
             // 
             this.txtMakhuvuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMakhuvuc.Location = new System.Drawing.Point(138, 183);
+            this.txtMakhuvuc.Location = new System.Drawing.Point(137, 183);
             this.txtMakhuvuc.Name = "txtMakhuvuc";
-            this.txtMakhuvuc.Size = new System.Drawing.Size(152, 31);
+            this.txtMakhuvuc.Size = new System.Drawing.Size(151, 31);
             this.txtMakhuvuc.TabIndex = 15;
             // 
             // label8
@@ -207,7 +207,7 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 210);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(129, 35);
+            this.label8.Size = new System.Drawing.Size(128, 35);
             this.label8.TabIndex = 18;
             this.label8.Text = "Mã size:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -215,9 +215,9 @@
             // txtMasize
             // 
             this.txtMasize.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMasize.Location = new System.Drawing.Point(138, 213);
+            this.txtMasize.Location = new System.Drawing.Point(137, 213);
             this.txtMasize.Name = "txtMasize";
-            this.txtMasize.Size = new System.Drawing.Size(152, 31);
+            this.txtMasize.Size = new System.Drawing.Size(151, 31);
             this.txtMasize.TabIndex = 17;
             // 
             // label2
@@ -227,7 +227,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 30);
+            this.label2.Size = new System.Drawing.Size(128, 30);
             this.label2.TabIndex = 16;
             this.label2.Text = "Đơn giá:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -239,15 +239,15 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(568, 63);
+            this.panel2.Size = new System.Drawing.Size(589, 63);
             this.panel2.TabIndex = 17;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnDong);
-            this.panel3.Location = new System.Drawing.Point(1, 317);
+            this.panel3.Location = new System.Drawing.Point(9, 327);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(564, 54);
+            this.panel3.Size = new System.Drawing.Size(573, 54);
             this.panel3.TabIndex = 18;
             // 
             // btnDong
@@ -266,7 +266,7 @@
             // picHinhanh
             // 
             this.picHinhanh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHinhanh.Location = new System.Drawing.Point(0, 66);
+            this.picHinhanh.Location = new System.Drawing.Point(9, 69);
             this.picHinhanh.Name = "picHinhanh";
             this.picHinhanh.Size = new System.Drawing.Size(271, 245);
             this.picHinhanh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -294,7 +294,7 @@
             this.tableLayoutPanel1.Controls.Add(this.txtSoluong, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtMasp, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtTensp, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(272, 66);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(286, 66);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -305,14 +305,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(293, 245);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(291, 245);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // DetailSanPhamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 374);
+            this.ClientSize = new System.Drawing.Size(589, 393);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.picHinhanh);
             this.Controls.Add(this.panel3);

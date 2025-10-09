@@ -68,7 +68,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(798, 61);
+            this.panel1.Size = new System.Drawing.Size(848, 61);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -78,7 +78,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(798, 61);
+            this.label1.Size = new System.Drawing.Size(848, 61);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sửa Sản Phẩm";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,7 +88,7 @@
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.btnChonanh);
             this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Location = new System.Drawing.Point(1, 61);
+            this.panel3.Location = new System.Drawing.Point(23, 83);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(296, 343);
             this.panel3.TabIndex = 2;
@@ -140,9 +140,9 @@
             this.panel4.Controls.Add(this.btnDong);
             this.panel4.Controls.Add(this.btnSua);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 425);
+            this.panel4.Location = new System.Drawing.Point(0, 459);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(799, 78);
+            this.panel4.Size = new System.Drawing.Size(849, 87);
             this.panel4.TabIndex = 3;
             // 
             // btnDong
@@ -150,7 +150,7 @@
             this.btnDong.AutoSize = true;
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
             this.btnDong.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDong.Location = new System.Drawing.Point(414, 12);
+            this.btnDong.Location = new System.Drawing.Point(425, 12);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(143, 52);
             this.btnDong.TabIndex = 1;
@@ -163,7 +163,7 @@
             this.btnSua.AutoSize = true;
             this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.btnSua.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(220, 12);
+            this.btnSua.Location = new System.Drawing.Point(230, 12);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(143, 52);
             this.btnSua.TabIndex = 0;
@@ -192,7 +192,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cboMaKhuVuc, 1, 6);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(315, 61);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(342, 80);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -373,7 +373,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 503);
+            this.ClientSize = new System.Drawing.Size(849, 546);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
