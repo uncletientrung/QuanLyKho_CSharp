@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2025 at 08:45 AM
+-- Generation Time: Oct 09, 2025 at 10:33 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -130,16 +130,57 @@ CREATE TABLE `ctquyen` (
 --
 
 INSERT INTO `ctquyen` (`manhomquyen`, `machucnang`, `hanhdong`, `trangthai`) VALUES
-(1, 1, 'xem', 1),
-(1, 2, 'xem', 1),
-(1, 3, 'xem', 1),
-(1, 4, 'xem', 1),
-(1, 5, 'xem', 1),
-(1, 6, 'xem', 1),
-(1, 7, 'xem', 1),
-(1, 8, 'xem', 1),
-(1, 9, 'xem', 1),
-(1, 10, 'xem', 1);
+(1, 1, 'Sửa', 1),
+(1, 1, 'Thêm', 1),
+(1, 1, 'Xem chi tiết', 1),
+(1, 1, 'Xóa', 1),
+(1, 2, 'Sửa', 1),
+(1, 2, 'Thêm', 1),
+(1, 2, 'Xem chi tiết', 1),
+(1, 2, 'Xóa', 1),
+(1, 3, 'Sửa', 1),
+(1, 3, 'Thêm', 1),
+(1, 3, 'Xem chi tiết', 1),
+(1, 3, 'Xóa', 1),
+(1, 4, 'Sửa', 1),
+(1, 4, 'Thêm', 1),
+(1, 4, 'Xem chi tiết', 1),
+(1, 4, 'Xóa', 1),
+(1, 5, 'Sửa', 1),
+(1, 5, 'Thêm', 1),
+(1, 5, 'Xem chi tiết', 1),
+(1, 5, 'Xóa', 1),
+(1, 6, 'Sửa', 1),
+(1, 6, 'Thêm', 1),
+(1, 6, 'Xem chi tiết', 1),
+(1, 6, 'Xóa', 1),
+(1, 7, 'Sửa', 1),
+(1, 7, 'Thêm', 1),
+(1, 7, 'Xem chi tiết', 1),
+(1, 7, 'Xóa', 1),
+(1, 8, 'Xem chi tiết', 1),
+(1, 9, 'Sửa', 1),
+(1, 9, 'Thêm', 1),
+(1, 9, 'Xem chi tiết', 1),
+(1, 9, 'Xóa', 1),
+(1, 10, 'Sửa', 1),
+(1, 10, 'Thêm', 1),
+(1, 10, 'Xem chi tiết', 1),
+(1, 10, 'Xóa', 1),
+(2, 3, 'Xem chi tiết', 1),
+(2, 4, 'Sửa', 1),
+(2, 4, 'Thêm', 1),
+(2, 4, 'Xem chi tiết', 1),
+(2, 4, 'Xóa', 1),
+(2, 5, 'Sửa', 1),
+(2, 5, 'Thêm', 1),
+(2, 5, 'Xem chi tiết', 1),
+(2, 5, 'Xóa', 1),
+(2, 6, 'Sửa', 1),
+(2, 6, 'Thêm', 1),
+(2, 6, 'Xem chi tiết', 1),
+(2, 6, 'Xóa', 1),
+(31, 8, 'Xem chi tiết', 1);
 
 -- --------------------------------------------------------
 
@@ -312,9 +353,7 @@ INSERT INTO `nhanvien` (`manv`, `tennv`, `gioitinh`, `sdt`, `ngaysinh`, `trangth
 (1, 'Nguyễn Tiến Trung', 1, '0352447642', '2000-03-15', 1),
 (2, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
 (3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 1),
-(4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
-(5, 'Nguyễn Đăng Khoa', 1, '0938283948', '2006-09-14', 1),
-(6, 'Hoàng Liên Thông', 1, '0324821949', '2005-10-19', 1);
+(4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1);
 
 -- --------------------------------------------------------
 
@@ -324,9 +363,9 @@ INSERT INTO `nhanvien` (`manv`, `tennv`, `gioitinh`, `sdt`, `ngaysinh`, `trangth
 
 CREATE TABLE `nhomquyen` (
   `manhomquyen` int(11) NOT NULL,
-  `tennhomquyen` varchar(255) NOT NULL,
-  `trangthai` tinyint(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `tennhomquyen` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `trangthai` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `nhomquyen`
@@ -334,10 +373,7 @@ CREATE TABLE `nhomquyen` (
 
 INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 (1, 'Quản lý', 1),
-(2, 'Nhân viên', 1),
-(3, 'Quản lý kho', 1),
-(21, 'test1', 0),
-(22, 'test2', 0);
+(2, 'Nhân viên', 1);
 
 -- --------------------------------------------------------
 
@@ -475,9 +511,8 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`manv`, `tendangnhap`, `matkhau`, `manhomquyen`, `trangthai`) VALUES
-(1, 'trung123', '12345', 3, 1),
-(3, 'thuan123', '123', 3, 0),
-(6, 'admin', '1', 1, 1);
+(1, 'trung123', '12345', 2, 1),
+(6, 'admin', '12345', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -650,13 +685,13 @@ ALTER TABLE `nhacungcap`
 -- AUTO_INCREMENT for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nhomquyen`
 --
 ALTER TABLE `nhomquyen`
-  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `phieukiemke`
