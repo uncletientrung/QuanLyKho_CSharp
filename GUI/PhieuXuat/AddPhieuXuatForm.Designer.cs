@@ -82,7 +82,7 @@
             this.labelPrice.Location = new System.Drawing.Point(224, 7);
             this.labelPrice.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(121, 46);
+            this.labelPrice.Size = new System.Drawing.Size(121, 59);
             this.labelPrice.TabIndex = 1;
             this.labelPrice.Text = "0đ";
             this.labelPrice.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -91,10 +91,10 @@
             // 
             this.buttonXuatHang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonXuatHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.buttonXuatHang.Location = new System.Drawing.Point(11, 66);
+            this.buttonXuatHang.Location = new System.Drawing.Point(11, 79);
             this.buttonXuatHang.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
             this.buttonXuatHang.Name = "buttonXuatHang";
-            this.buttonXuatHang.Size = new System.Drawing.Size(332, 61);
+            this.buttonXuatHang.Size = new System.Drawing.Size(332, 48);
             this.buttonXuatHang.TabIndex = 0;
             this.buttonXuatHang.Text = "Xuất hàng";
             this.buttonXuatHang.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(348, 60);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(348, 73);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
             // labelTongTien
@@ -126,7 +126,7 @@
             this.labelTongTien.Location = new System.Drawing.Point(3, 7);
             this.labelTongTien.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.labelTongTien.Name = "labelTongTien";
-            this.labelTongTien.Size = new System.Drawing.Size(215, 46);
+            this.labelTongTien.Size = new System.Drawing.Size(215, 59);
             this.labelTongTien.TabIndex = 0;
             this.labelTongTien.Text = "TỔNG TIỀN:";
             this.labelTongTien.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -134,7 +134,7 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.buttonXuatHang, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -142,8 +142,8 @@
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(354, 129);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
@@ -154,7 +154,7 @@
             this.buttonThemSP.Location = new System.Drawing.Point(30, 2);
             this.buttonThemSP.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.buttonThemSP.Name = "buttonThemSP";
-            this.buttonThemSP.Size = new System.Drawing.Size(159, 50);
+            this.buttonThemSP.Size = new System.Drawing.Size(159, 38);
             this.buttonThemSP.TabIndex = 0;
             this.buttonThemSP.Text = "Thêm sản phẩm";
             this.buttonThemSP.UseVisualStyleBackColor = true;
@@ -167,7 +167,7 @@
             this.buttonNhapExcel.Location = new System.Drawing.Point(199, 2);
             this.buttonNhapExcel.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.buttonNhapExcel.Name = "buttonNhapExcel";
-            this.buttonNhapExcel.Size = new System.Drawing.Size(159, 50);
+            this.buttonNhapExcel.Size = new System.Drawing.Size(159, 38);
             this.buttonNhapExcel.TabIndex = 1;
             this.buttonNhapExcel.Text = "Nhập Excel";
             this.buttonNhapExcel.UseVisualStyleBackColor = true;
@@ -180,7 +180,7 @@
             this.buttonSuaSP.Location = new System.Drawing.Point(470, 2);
             this.buttonSuaSP.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.buttonSuaSP.Name = "buttonSuaSP";
-            this.buttonSuaSP.Size = new System.Drawing.Size(159, 50);
+            this.buttonSuaSP.Size = new System.Drawing.Size(159, 38);
             this.buttonSuaSP.TabIndex = 2;
             this.buttonSuaSP.Text = "Sửa sản phẩm";
             this.buttonSuaSP.UseVisualStyleBackColor = true;
@@ -193,7 +193,7 @@
             this.buttonXoaSP.Location = new System.Drawing.Point(639, 2);
             this.buttonXoaSP.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.buttonXoaSP.Name = "buttonXoaSP";
-            this.buttonXoaSP.Size = new System.Drawing.Size(159, 50);
+            this.buttonXoaSP.Size = new System.Drawing.Size(159, 38);
             this.buttonXoaSP.TabIndex = 3;
             this.buttonXoaSP.Text = "Xoá sản phẩm";
             this.buttonXoaSP.UseVisualStyleBackColor = true;
@@ -216,12 +216,12 @@
             // 
             this.dgvSPduocThem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSPduocThem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSPduocThem.Location = new System.Drawing.Point(3, 351);
+            this.dgvSPduocThem.Location = new System.Drawing.Point(3, 339);
             this.dgvSPduocThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSPduocThem.Name = "dgvSPduocThem";
             this.dgvSPduocThem.RowHeadersWidth = 51;
             this.dgvSPduocThem.RowTemplate.Height = 24;
-            this.dgvSPduocThem.Size = new System.Drawing.Size(833, 229);
+            this.dgvSPduocThem.Size = new System.Drawing.Size(833, 241);
             this.dgvSPduocThem.TabIndex = 1;
             this.dgvSPduocThem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPduocThem_CellContentClick);
             // 
@@ -245,7 +245,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(833, 54);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(833, 42);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -261,8 +261,8 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(839, 582);
             this.tableLayoutPanel3.TabIndex = 11;
             // 
