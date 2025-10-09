@@ -1,5 +1,6 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -128,13 +129,19 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 {
                     if (ncc.Trangthai == 1)
                     {
-                        comboBoxNCC.Items.Add(ncc.Tenncc); // Chỉ thêm tên NCC
+                        comboBoxNCC.Items.Add(ncc.Tenncc);
                     }
                 }
-            }
 
-            if (comboBoxNCC.Items.Count > 0)
+                // Thêm item trống đầu tiên
+                if (comboBoxNCC.Items.Count > 0)
+                {
+                    comboBoxNCC.SelectedIndex = 0;
+                }
+            }
+            else
             {
+                comboBoxNCC.Items.Add("Không có nhà cung cấp");
                 comboBoxNCC.SelectedIndex = 0;
             }
         }
@@ -174,7 +181,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             {
                 foreach (SanPhamDTO sp in listSP)
                 {
-                Image productImage = LoadImageSafe(sp.Hinhanh); // truyền đối tượng ko phải string
+                    Image productImage = LoadImageSafe(sp.Hinhanh); // truyền đối tượng ko phải string
                     dgvSPtrongKho.Rows.Add(
                         sp.Masp,
                         sp.Tensp,
@@ -419,13 +426,13 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 return;
             }
 
-            // Xử lý mã nhà cung cấp - để tạm 0 nếu không có
+            // Xử lý mã nhà cung cấp
             int maNCC = 0;
-            if (!string.IsNullOrEmpty(comboBoxNCC.Text))
+            if (!string.IsNullOrEmpty(comboBoxNCC.Text) && comboBoxNCC.Text != "Không có nhà cung cấp")
             {
                 string tenNCCChon = comboBoxNCC.Text.Trim();
 
-                // Tìm NCC trong danh sách dựa trên tên
+                // Tìm NCC trong danh sách HIỆN TẠI dựa trên tên
                 NhaCungCapDTO nccDuocChon = listNCC.FirstOrDefault(ncc =>
                     ncc.Tenncc.Equals(tenNCCChon));
 
@@ -510,81 +517,138 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         {
 
         }
-    }
 
-    // Form phụ để nhập số lượng
-    // Từ từ chỉnh sau ^^
-    public class InputQuantityForm : Form
-    {
-        private NumericUpDown numericUpDown;
-        private Button btnOK;
-        private Button btnCancel;
-
-        public int Quantity { get; set; }
-
-        public InputQuantityForm()
+        private void linkNewNCC_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            InitializeComponent();
+            AddNhaCungCapForm addNCCForm = new AddNhaCungCapForm();
+            DialogResult result = addNCCForm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                ReloadNhaCungCap();
+                AutoSelectNewNhaCungCap();
+            }
         }
 
-        private void InitializeComponent()
+
+        private void ReloadNhaCungCap()
         {
-            this.Text = "Chỉnh sửa số lượng";
-            this.Size = new Size(350, 180); 
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            listNCC = nccBUS.getListNCC();
+            string currentSelection = comboBoxNCC.Text;
 
-            // Tạo controls với kích thước lớn hơn
-            var label = new Label()
+            // Clear và load lại combobox
+            comboBoxNCC.Items.Clear();
+
+            if (listNCC != null && listNCC.Count > 0)
             {
-                Text = "Nhập số lượng mới:",
-                Location = new Point(20, 20),
-                Size = new Size(300, 25),
-                Font = new Font("Microsoft Sans Serif", 12F), 
-                TextAlign = ContentAlignment.MiddleLeft
-            };
+                foreach (NhaCungCapDTO ncc in listNCC)
+                {
+                    if (ncc.Trangthai == 1)
+                    {
+                        comboBoxNCC.Items.Add(ncc.Tenncc);
+                    }
+                }
+            }
 
-            numericUpDown = new NumericUpDown()
+            // Khôi phục selection cũ (nếu vẫn tồn tại)
+            if (!string.IsNullOrEmpty(currentSelection) && comboBoxNCC.Items.Contains(currentSelection))
             {
-                Location = new Point(20, 50),
-                Size = new Size(300, 35),
-                Minimum = 1,
-                Maximum = 100000,
-                Value = 1,
-                Font = new Font("Microsoft Sans Serif", 12F),
-                TextAlign = HorizontalAlignment.Center
-            };
+                comboBoxNCC.Text = currentSelection;
+            }
+        }
 
-            btnOK = new Button()
+        private void AutoSelectNewNhaCungCap()
+        {
+            if (listNCC != null && listNCC.Count > 0)
             {
-                Text = "OK",
-                Location = new Point(20, 100),
-                Size = new Size(140, 35),
-                DialogResult = DialogResult.OK,
-                Font = new Font("Microsoft Sans Serif", 11F)
-            };
+                // Lấy NCC mới nhất
+                var newestNCC = listNCC.OrderByDescending(ncc => ncc.Mancc).FirstOrDefault();
 
-            btnCancel = new Button()
+                if (newestNCC != null && newestNCC.Trangthai == 1)
+                {
+                    // Chọn NCC mới nhất trong combobox
+                    comboBoxNCC.Text = newestNCC.Tenncc;
+                }
+            }
+        }
+
+
+
+        // Form phụ để nhập số lượng
+        // Từ từ chỉnh sau ^^
+        public class InputQuantityForm : Form
+        {
+            private NumericUpDown numericUpDown;
+            private Button btnOK;
+            private Button btnCancel;
+
+            public int Quantity { get; set; }
+
+            public InputQuantityForm()
             {
-                Text = "Cancel",
-                Location = new Point(180, 100),
-                Size = new Size(140, 35),
-                DialogResult = DialogResult.Cancel,
-                Font = new Font("Microsoft Sans Serif", 11F)
-            };
+                InitializeComponent();
+            }
 
-            this.Controls.AddRange(new Control[] { label, numericUpDown, btnOK, btnCancel });
+            private void InitializeComponent()
+            {
+                this.Text = "Chỉnh sửa số lượng";
+                this.Size = new Size(350, 180);
+                this.StartPosition = FormStartPosition.CenterParent;
+                this.FormBorderStyle = FormBorderStyle.FixedDialog;
+                this.MaximizeBox = false;
+                this.MinimizeBox = false;
 
-            btnOK.Click += (s, e) => { Quantity = (int)numericUpDown.Value; };
-            this.AcceptButton = btnOK;
-            this.CancelButton = btnCancel;
+                // Tạo controls với kích thước lớn hơn
+                var label = new Label()
+                {
+                    Text = "Nhập số lượng mới:",
+                    Location = new Point(20, 20),
+                    Size = new Size(300, 25),
+                    Font = new Font("Microsoft Sans Serif", 12F),
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
 
-            this.Shown += (s, e) => {
-                numericUpDown.Select();
-                numericUpDown.Select(0, numericUpDown.Text.Length);
-            };
+                numericUpDown = new NumericUpDown()
+                {
+                    Location = new Point(20, 50),
+                    Size = new Size(300, 35),
+                    Minimum = 1,
+                    Maximum = 100000,
+                    Value = 1,
+                    Font = new Font("Microsoft Sans Serif", 12F),
+                    TextAlign = HorizontalAlignment.Center
+                };
+
+                btnOK = new Button()
+                {
+                    Text = "OK",
+                    Location = new Point(20, 100),
+                    Size = new Size(140, 35),
+                    DialogResult = DialogResult.OK,
+                    Font = new Font("Microsoft Sans Serif", 11F)
+                };
+
+                btnCancel = new Button()
+                {
+                    Text = "Cancel",
+                    Location = new Point(180, 100),
+                    Size = new Size(140, 35),
+                    DialogResult = DialogResult.Cancel,
+                    Font = new Font("Microsoft Sans Serif", 11F)
+                };
+
+                this.Controls.AddRange(new Control[] { label, numericUpDown, btnOK, btnCancel });
+
+                btnOK.Click += (s, e) => { Quantity = (int)numericUpDown.Value; };
+                this.AcceptButton = btnOK;
+                this.CancelButton = btnCancel;
+
+                this.Shown += (s, e) =>
+                {
+                    numericUpDown.Select();
+                    numericUpDown.Select(0, numericUpDown.Text.Length);
+                };
+            }
         }
     }
 }

@@ -120,5 +120,10 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
             this.DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void AddNhaCungCapForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
