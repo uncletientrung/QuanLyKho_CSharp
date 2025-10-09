@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2025 at 10:33 AM
+-- Generation Time: Oct 09, 2025 at 07:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -384,13 +384,21 @@ INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 CREATE TABLE `phieukiemke` (
   `maphieukiemke` int(11) NOT NULL,
   `thoigiantao` datetime NOT NULL DEFAULT current_timestamp(),
-  `thoigiancanbang` datetime NOT NULL DEFAULT current_timestamp(),
   `trangthai` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `ghichu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `makhuvuc` int(11) DEFAULT NULL,
   `manhanvientao` int(11) DEFAULT NULL,
   `manhanvienkiem` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `phieukiemke`
+--
+
+INSERT INTO `phieukiemke` (`maphieukiemke`, `thoigiantao`, `trangthai`, `ghichu`, `makhuvuc`, `manhanvientao`, `manhanvienkiem`) VALUES
+(35, '2025-10-09 23:52:11', 'đủ hàng', 'đủ hàng', 1, 1, 2),
+(36, '2025-10-09 23:53:04', 'thiếu hàng', 'thiếu - 5 ', 2, 1, 4),
+(37, '2025-10-09 23:53:58', 'dư hàng', 'dư - 2', 3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -697,7 +705,7 @@ ALTER TABLE `nhomquyen`
 -- AUTO_INCREMENT for table `phieukiemke`
 --
 ALTER TABLE `phieukiemke`
-  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `phieunhap`
