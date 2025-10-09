@@ -29,6 +29,7 @@ namespace QuanLyKho_CSharp
 
         private Button currentButton; //biến giữ button hiện tại
         private TaiKhoanDTO tkLogin;
+        public static TaiKhoanDTO CurrentUser { get; private set; }
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private DanhMucChucNangBUS dmncBUS = new DanhMucChucNangBUS();
         private BindingList<Button> listButton;
@@ -44,6 +45,7 @@ namespace QuanLyKho_CSharp
 
             // Kiểm tra xem nhóm quyền tài khoản
             tkLogin = _tkLogin;
+            CurrentUser = _tkLogin;
             InitButtonMap();
             BindingList<ChiTietQuyenDTO> listctq = nqBUS.getListCTNQByIdNQ(tkLogin.Manhomquyen);
             foreach (ChiTietQuyenDTO ctq in listctq)

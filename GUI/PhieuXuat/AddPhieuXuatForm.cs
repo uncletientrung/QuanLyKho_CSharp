@@ -18,6 +18,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private SanPhamBUS spBUS = new SanPhamBUS();
         private PhieuXuatBUS pxBUS = new PhieuXuatBUS();
         private KhachHangBUS khBUS = new KhachHangBUS();
+        private NhanVienBUS nvBUS = new NhanVienBUS();
         private BindingList<KhachHangDTO> listKH;
         private BindingList<SanPhamDTO> listSP;
         private BindingList<SanPhamDTO> listSPDuocThem;
@@ -115,10 +116,29 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             listSP = spBUS.getListSP();
             listKH = khBUS.getListKH();
             boxMaPhieu.Text = pxBUS.getAutoMaPhieuXuat().ToString();
-            boxNVxuat.Text = "admin"; // để tạm thời
+            // Lấy tên nhân viên từ frmMain.CurrentUser
+            try
+            {
+                TaiKhoanDTO currentUser = frmMain.CurrentUser;
+
+                if (currentUser != null)
+                {
+                    int maNV = currentUser.Manv;
+                    string tenNV = nvBUS.getNamebyID(maNV);
+                    boxNVxuat.Text = !string.IsNullOrEmpty(tenNV) ? tenNV : "Không tìm thấy nhân viên";
+                }
+                else
+                {
+                    boxNVxuat.Text = "Chưa đăng nhập";
+                }
+            }
+            catch (Exception ex)
+            {
+                boxNVxuat.Text = "Lỗi: " + ex.Message;
+            }
             LoadKhachHang();
             LoadSPTrongKho();
-            LoadSPDuocThem(); // THÊM DÒNG NÀY
+            LoadSPDuocThem();
         }
 
         private void LoadKhachHang()
@@ -464,10 +484,25 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 return;
             }
 
+            // Lấy mã nhân viên từ frmMain.CurrentUser
+            int maNV = 1; // Mặc định
+            try
+            {
+                TaiKhoanDTO currentUser = frmMain.CurrentUser;
+                if (currentUser != null)
+                {
+                    maNV = currentUser.Manv;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể lấy thông tin nhân viên: " + ex.Message, "Cảnh báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             PhieuXuatDTO newPhieuXuat = new PhieuXuatDTO
             {
                 Maphieu = int.Parse(boxMaPhieu.Text),
-                Manv = 1, // Mặc định admin
+                Manv = maNV,
                 Makh = maKH, 
                 Thoigiantao = DateTime.Now,
                 Tongtien = (int)CalculateTongTien(),
