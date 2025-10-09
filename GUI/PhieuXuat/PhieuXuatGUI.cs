@@ -26,7 +26,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             InitializeComponent();
             SetupDataGridView();
             LoadData();
-            dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
         }
 
         private void SetupDataGridView()
@@ -205,12 +204,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
                 if (xRel < padding + buttonWidth) // nút Xem
                 {
-                    string tenNV = nvBUS.getNamebyID(phieuDuocChon.Manv);
-                    string tenKH = khBUS.getNamebyID(phieuDuocChon.Makh);
-                    MessageBox.Show($"Chi tiết phiếu xuất:\nMã phiếu: {maPhieu}\nNhân viên: {tenNV}\n" +
-                        $"Khách hàng: {tenKH}\nThời gian: {phieuDuocChon.Thoigiantao:dd/MM/yyyy HH:mm}\n" +
-                        $"Tổng tiền: {phieuDuocChon.Tongtien:N0}",
-                        "Chi tiết phiếu xuất", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowDetailPhieuXuatForm(phieuDuocChon);
                 }
                 else // nút Xóa
                 {
@@ -330,6 +324,20 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dataGridView1.ClearSelection();
         }
 
+        private void ShowDetailPhieuXuatForm(PhieuXuatDTO phieuXuat)
+        {
+            try
+            {
+                DetailPhieuXuatForm detailForm = new DetailPhieuXuatForm(phieuXuat);
+                detailForm.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi mở form chi tiết: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void txtSearchNV_TextChanged(object sender, EventArgs e)
         {
             FilterData();

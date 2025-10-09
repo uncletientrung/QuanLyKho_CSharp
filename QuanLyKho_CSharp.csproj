@@ -246,6 +246,12 @@
     <Compile Include="GUI\PhieuNhap\AddPhieuNhapForm.Designer.cs">
       <DependentUpon>AddPhieuNhapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PhieuNhap\DetailPhieuNhapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhieuNhap\DetailPhieuNhapForm.Designer.cs">
+      <DependentUpon>DetailPhieuNhapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PhieuNhap\PhieuNhapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +263,12 @@
     </Compile>
     <Compile Include="GUI\PhieuXuat\AddPhieuXuatForm.Designer.cs">
       <DependentUpon>AddPhieuXuatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PhieuXuat\DetailPhieuXuatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhieuXuat\DetailPhieuXuatForm.Designer.cs">
+      <DependentUpon>DetailPhieuXuatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\PhieuXuat\PhieuXuatGUI.cs">
       <SubType>Form</SubType>
@@ -475,11 +487,17 @@
     <EmbeddedResource Include="GUI\PhieuNhap\AddPhieuNhapForm.resx">
       <DependentUpon>AddPhieuNhapForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhieuNhap\DetailPhieuNhapForm.resx">
+      <DependentUpon>DetailPhieuNhapForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuNhap\PhieuNhapGUI.resx">
       <DependentUpon>PhieuNhapGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuXuat\AddPhieuXuatForm.resx">
       <DependentUpon>AddPhieuXuatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhieuXuat\DetailPhieuXuatForm.resx">
+      <DependentUpon>DetailPhieuXuatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuXuat\PhieuXuatGUI.resx">
       <DependentUpon>PhieuXuatGUI.cs</DependentUpon>

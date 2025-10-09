@@ -1,5 +1,6 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.PhieuXuat;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -182,12 +183,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                 if (xRel < padding + buttonWidth) // nút Xem
                 {
-                    string tenNV = nvBUS.getNamebyID(phieuDuocChon.Manv);
-                    string tenNCC = nccBUS.getNamebyID(phieuDuocChon.Mancc);
-                    MessageBox.Show($"Chi tiết phiếu nhập:\nMã phiếu: {maPhieu}\nNhân viên: {tenNV}\n" +
-                        $"Nhà cung cấp: {tenNCC}\nThời gian: {phieuDuocChon.Thoigiantao:dd/MM/yyyy HH:mm}\n" +
-                        $"Tổng tiền: {phieuDuocChon.Tongtien:N0}",
-                        "Chi tiết phiếu nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowDetailPhieuNhapForm(phieuDuocChon);
                 }
                 else // nút Xóa
                 {
@@ -340,6 +336,19 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         {
             FilterData();
          }
+        private void ShowDetailPhieuNhapForm(PhieuNhapDTO phieuNhap)
+        {
+            try
+            {
+                DetailPhieuNhapForm detailForm = new DetailPhieuNhapForm(phieuNhap);
+                detailForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi mở form chi tiết: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void panel2_Paint(object sender, PaintEventArgs e) { }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
