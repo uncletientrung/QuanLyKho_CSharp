@@ -366,6 +366,36 @@
     <Compile Include="GUI\ThongTin\ChatLieu\UpdateChatLieuForm.Designer.cs">
       <DependentUpon>UpdateChatLieuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\Loai\AddLoaiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\AddLoaiForm.Designer.cs">
+      <DependentUpon>AddLoaiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\DeleteLoaiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\DeleteLoaiForm.Designer.cs">
+      <DependentUpon>DeleteLoaiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\DetailLoaiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\DetailLoaiForm.Designer.cs">
+      <DependentUpon>DetailLoaiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\LoaiGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\LoaiGUI.Designer.cs">
+      <DependentUpon>LoaiGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\UpdateLoaiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Loai\UpdateLoaiForm.Designer.cs">
+      <DependentUpon>UpdateLoaiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -547,6 +577,12 @@
     <EmbeddedResource Include="GUI\ThongTin\ChatLieu\UpdateChatLieuForm.resx">
       <DependentUpon>UpdateChatLieuForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\AddLoaiForm.resx">
+      <DependentUpon>AddLoaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\LoaiGUI.resx">
+      <DependentUpon>LoaiGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.resx">
       <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -618,7 +654,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI\ThongTin\KhuVuc\" />
-    <Folder Include="GUI\ThongTin\Loai\" />
     <Folder Include="GUI\ThongTin\Size\" />
   </ItemGroup>
   <ItemGroup>

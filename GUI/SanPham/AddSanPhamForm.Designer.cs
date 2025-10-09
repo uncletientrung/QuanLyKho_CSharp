@@ -70,7 +70,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(821, 58);
+            this.panel1.Size = new System.Drawing.Size(839, 58);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -80,7 +80,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(821, 58);
+            this.label1.Size = new System.Drawing.Size(839, 58);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thêm sản phẩm";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,7 +111,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnChonAnh);
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Location = new System.Drawing.Point(12, 65);
+            this.panel2.Location = new System.Drawing.Point(23, 79);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(307, 346);
             this.panel2.TabIndex = 3;
@@ -140,9 +140,9 @@
             this.panel3.Controls.Add(this.btnReset);
             this.panel3.Controls.Add(this.btnHuy);
             this.panel3.Controls.Add(this.btnThem);
-            this.panel3.Location = new System.Drawing.Point(1, 452);
+            this.panel3.Location = new System.Drawing.Point(1, 460);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(821, 85);
+            this.panel3.Size = new System.Drawing.Size(839, 98);
             this.panel3.TabIndex = 4;
             // 
             // btnReset
@@ -205,7 +205,7 @@
             this.tableLayoutPanel1.Controls.Add(this.cboMaLoai, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.cboMaKhuVuc, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.cboMaSize, 1, 7);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(341, 62);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(346, 79);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -387,7 +387,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 537);
+            this.ClientSize = new System.Drawing.Size(840, 559);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
