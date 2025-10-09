@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿using Org.BouncyCastle.Asn1.X509;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,18 @@ namespace QuanLyKho_CSharp.BUS
 
             return loai.Maloai;
         }
+
+        public Boolean insertLoai(LoaiDTO Loai)
+        {
+            Boolean result = loaiDAO.Insert(Loai) != 0;
+            if (result)
+            {
+                loaiList.Add(Loai);
+            }
+            return true;
+        }
+        
+
 
 
     }

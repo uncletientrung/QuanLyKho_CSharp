@@ -38,7 +38,7 @@
             this.lblDanhSachLoai = new System.Windows.Forms.Label();
             this.btnExcel = new System.Windows.Forms.Button();
             this.roundedButton2 = new RoundedButton();
-            this.lblChatLieu = new System.Windows.Forms.Label();
+            this.lblLoaiGUI = new System.Windows.Forms.Label();
             this.DGVLoai = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -88,6 +88,9 @@
             this.txSearch.Name = "txSearch";
             this.txSearch.Size = new System.Drawing.Size(307, 22);
             this.txSearch.TabIndex = 11;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
+            this.txSearch.Enter += new System.EventHandler(this.txSearch_Enter);
+            this.txSearch.Leave += new System.EventHandler(this.txSearch_Leave);
             // 
             // pictureBox1
             // 
@@ -107,7 +110,7 @@
             this.panel2.Controls.Add(this.btnExcel);
             this.panel2.Controls.Add(this.roundedButton2);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.lblChatLieu);
+            this.panel2.Controls.Add(this.lblLoaiGUI);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -158,16 +161,16 @@
             this.roundedButton2.UseVisualStyleBackColor = false;
             this.roundedButton2.Click += new System.EventHandler(this.roundedButton2_Click);
             // 
-            // lblChatLieu
+            // lblLoaiGUI
             // 
-            this.lblChatLieu.AutoSize = true;
-            this.lblChatLieu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChatLieu.ForeColor = System.Drawing.Color.Black;
-            this.lblChatLieu.Location = new System.Drawing.Point(12, 28);
-            this.lblChatLieu.Name = "lblChatLieu";
-            this.lblChatLieu.Size = new System.Drawing.Size(89, 25);
-            this.lblChatLieu.TabIndex = 1;
-            this.lblChatLieu.Text = "Chất liệu";
+            this.lblLoaiGUI.AutoSize = true;
+            this.lblLoaiGUI.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoaiGUI.ForeColor = System.Drawing.Color.Black;
+            this.lblLoaiGUI.Location = new System.Drawing.Point(12, 28);
+            this.lblLoaiGUI.Name = "lblLoaiGUI";
+            this.lblLoaiGUI.Size = new System.Drawing.Size(49, 25);
+            this.lblLoaiGUI.TabIndex = 1;
+            this.lblLoaiGUI.Text = "Loại";
             // 
             // DGVLoai
             // 
@@ -191,6 +194,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "LoaiGUI";
             this.Text = "LoaiGUI";
+            this.Load += new System.EventHandler(this.LoaiGUI_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -214,7 +218,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblChatLieu;
+        private System.Windows.Forms.Label lblLoaiGUI;
         private System.Windows.Forms.DataGridView DGVLoai;
     }
 }
