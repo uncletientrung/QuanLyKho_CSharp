@@ -251,6 +251,7 @@ namespace QuanLyKho_CSharp
             this.btnLoai.TabIndex = 10;
             this.btnLoai.Text = "Loại";
             this.btnLoai.UseVisualStyleBackColor = true;
+            this.btnLoai.Click += new System.EventHandler(this.btnLoai_Click_1);
             // 
             // btnSize
             // 

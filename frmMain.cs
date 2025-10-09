@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using QuanLyKho_CSharp.GUI.ThongTin.Loai;
 
 namespace QuanLyKho_CSharp
 {
@@ -252,6 +253,11 @@ namespace QuanLyKho_CSharp
             OpenChildForm(new ChatLieuGUI(), btnChatLieu);
         }
 
+        private void btnLoai_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new LoaiGUI(), btnLoai);
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Abort;
@@ -291,5 +297,6 @@ namespace QuanLyKho_CSharp
 
         }
 
+        
     }
 }
