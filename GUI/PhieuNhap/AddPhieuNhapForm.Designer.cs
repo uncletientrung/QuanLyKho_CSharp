@@ -227,6 +227,7 @@
             // 
             // buttonThemSP
             // 
+            this.buttonThemSP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonThemSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonThemSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonThemSP.Location = new System.Drawing.Point(24, 2);
@@ -240,6 +241,7 @@
             // 
             // buttonNhapExcel
             // 
+            this.buttonNhapExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonNhapExcel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNhapExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonNhapExcel.Location = new System.Drawing.Point(153, 2);
@@ -253,6 +255,7 @@
             // 
             // buttonSuaSP
             // 
+            this.buttonSuaSP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSuaSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSuaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonSuaSP.Location = new System.Drawing.Point(359, 2);
@@ -266,6 +269,7 @@
             // 
             // buttonXoaSP
             // 
+            this.buttonXoaSP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonXoaSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonXoaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonXoaSP.Location = new System.Drawing.Point(488, 2);
@@ -422,6 +426,7 @@
             // 
             this.comboBoxNCC.BackColor = System.Drawing.SystemColors.Control;
             this.comboBoxNCC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxNCC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNCC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
             this.comboBoxNCC.FormattingEnabled = true;
             this.comboBoxNCC.Location = new System.Drawing.Point(15, 153);
@@ -448,6 +453,7 @@
             // 
             // buttonNhapHang
             // 
+            this.buttonNhapHang.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonNhapHang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNhapHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
             this.buttonNhapHang.Location = new System.Drawing.Point(11, 63);

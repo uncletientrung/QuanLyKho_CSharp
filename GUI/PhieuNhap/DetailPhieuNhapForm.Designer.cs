@@ -273,6 +273,7 @@
             // 
             // buttonXuatFile
             // 
+            this.buttonXuatFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonXuatFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonXuatFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
@@ -288,6 +289,7 @@
             // 
             // buttonHuyBo
             // 
+            this.buttonHuyBo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonHuyBo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonHuyBo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonHuyBo.Location = new System.Drawing.Point(406, 3);

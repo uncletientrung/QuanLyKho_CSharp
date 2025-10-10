@@ -119,6 +119,7 @@
             // labelTongTien
             // 
             this.labelTongTien.AutoSize = true;
+            this.labelTongTien.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelTongTien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
             this.labelTongTien.ForeColor = System.Drawing.Color.Red;
@@ -149,6 +150,7 @@
             // 
             // buttonThemSP
             // 
+            this.buttonThemSP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonThemSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonThemSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonThemSP.Location = new System.Drawing.Point(30, 2);
@@ -162,6 +164,7 @@
             // 
             // buttonNhapExcel
             // 
+            this.buttonNhapExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonNhapExcel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonNhapExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonNhapExcel.Location = new System.Drawing.Point(199, 2);
@@ -175,6 +178,7 @@
             // 
             // buttonSuaSP
             // 
+            this.buttonSuaSP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSuaSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSuaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonSuaSP.Location = new System.Drawing.Point(470, 2);
@@ -188,6 +192,7 @@
             // 
             // buttonXoaSP
             // 
+            this.buttonXoaSP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonXoaSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonXoaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.buttonXoaSP.Location = new System.Drawing.Point(639, 2);
@@ -396,6 +401,7 @@
             // 
             this.comboBoxKH.BackColor = System.Drawing.SystemColors.Control;
             this.comboBoxKH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxKH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
             this.comboBoxKH.FormattingEnabled = true;
             this.comboBoxKH.Location = new System.Drawing.Point(15, 183);
