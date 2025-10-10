@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonXuatFile = new System.Windows.Forms.Button();
@@ -49,6 +48,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.dgvXemChiTiet = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -58,16 +58,17 @@
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvXemChiTiet)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvXemChiTiet, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -79,17 +80,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(941, 556);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(5, 182);
-            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 10);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(931, 301);
-            this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // panel4
             // 
@@ -144,6 +134,7 @@
             this.buttonHuyBo.TabIndex = 1;
             this.buttonHuyBo.Text = "Huỷ bỏ";
             this.buttonHuyBo.UseVisualStyleBackColor = true;
+            this.buttonHuyBo.Click += new System.EventHandler(this.buttonHuyBo_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -355,6 +346,18 @@
             this.label2.Text = "Mã phiếu xuất";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // dgvXemChiTiet
+            // 
+            this.dgvXemChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvXemChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvXemChiTiet.Location = new System.Drawing.Point(5, 182);
+            this.dgvXemChiTiet.Margin = new System.Windows.Forms.Padding(5, 5, 5, 10);
+            this.dgvXemChiTiet.Name = "dgvXemChiTiet";
+            this.dgvXemChiTiet.RowHeadersWidth = 51;
+            this.dgvXemChiTiet.RowTemplate.Height = 24;
+            this.dgvXemChiTiet.Size = new System.Drawing.Size(931, 301);
+            this.dgvXemChiTiet.TabIndex = 6;
+            // 
             // DetailPhieuXuatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -381,6 +384,7 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvXemChiTiet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -388,7 +392,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -408,5 +411,6 @@
         private System.Windows.Forms.Button buttonXuatFile;
         private System.Windows.Forms.Button buttonHuyBo;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridView dgvXemChiTiet;
     }
 }
