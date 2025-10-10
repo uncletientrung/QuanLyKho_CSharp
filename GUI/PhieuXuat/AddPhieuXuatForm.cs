@@ -19,6 +19,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private PhieuXuatBUS pxBUS = new PhieuXuatBUS();
         private KhachHangBUS khBUS = new KhachHangBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
+        private ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
         private BindingList<KhachHangDTO> listKH;
         private BindingList<SanPhamDTO> listSP;
         private BindingList<SanPhamDTO> listSPDuocThem;
@@ -456,6 +457,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 return;
             }
 
+            // Kiểm tra số lượng tồn kho trước khi xuất
+            if (!KiemTraSoLuongTonKho())
+            {
+                return;
+            }
+
             // Xử lý mã khách hàng - để tạm 0 nếu không có
             int maKH = 0;
             if (!string.IsNullOrEmpty(comboBoxKH.Text))
@@ -499,6 +506,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 MessageBox.Show("Không thể lấy thông tin nhân viên: " + ex.Message, "Cảnh báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            // Tạo phiếu xuất mới
             PhieuXuatDTO newPhieuXuat = new PhieuXuatDTO
             {
                 Maphieu = int.Parse(boxMaPhieu.Text),
@@ -512,14 +521,43 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             // Lưu phiếu xuất
             if (pxBUS.insertPhieuXuat(newPhieuXuat))
             {
-                MessageBox.Show("Xuất hàng thành công!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                // Tạo danh sách chi tiết phiếu xuất
+                BindingList<ChiTietPhieuXuatDTO> listCTPX = new BindingList<ChiTietPhieuXuatDTO>();
+
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    ChiTietPhieuXuatDTO ctpx = new ChiTietPhieuXuatDTO
+                    {
+                        Maphieuxuat = newPhieuXuat.Maphieu,
+                        Masp = sp.Masp,
+                        Soluong = sp.Soluong,
+                        Dongia = sp.Dongia
+                    };
+                    listCTPX.Add(ctpx);
+                }
+
+                // Lưu chi tiết phiếu xuất
+                if (ctpxBUS.insertChiTietPhieuXuat(listCTPX))
+                {
+                    // Cập nhật số lượng sản phẩm trong kho (giảm số lượng)
+                    UpdateSoLuongSanPhamAfterXuat();
+
+                    MessageBox.Show("Xuất hàng thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    // Nếu có lỗi khi lưu chi tiết, xóa phiếu xuất đã tạo
+                    pxBUS.removePhieuXuat(newPhieuXuat.Maphieu);
+                    MessageBox.Show("Có lỗi xảy ra khi lưu chi tiết phiếu xuất!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Có lỗi xảy ra khi xuất hàng!", "Lỗi",
+                MessageBox.Show("Có lỗi xảy ra khi tạo phiếu xuất!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -533,7 +571,60 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
             return tongTien;
         }
+        private bool KiemTraSoLuongTonKho()
+        {
+            foreach (SanPhamDTO sp in listSPDuocThem)
+            {
+                SanPhamDTO spTrongKho = listSP.FirstOrDefault(s => s.Masp == sp.Masp);
+                if (spTrongKho == null)
+                {
+                    MessageBox.Show($"Sản phẩm mã {sp.Masp} không tồn tại trong kho!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
 
+                if (sp.Soluong > spTrongKho.Soluong)
+                {
+                    MessageBox.Show($"Số lượng sản phẩm {sp.Tensp} vượt quá tồn kho! " +
+                                  $"Tồn kho: {spTrongKho.Soluong}, Yêu cầu: {sp.Soluong}", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void UpdateSoLuongSanPhamAfterXuat()
+        {
+            try
+            {
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    // Tìm sản phẩm trong danh sách hiện tại
+                    SanPhamDTO spInList = listSP.FirstOrDefault(s => s.Masp == sp.Masp);
+                    if (spInList != null)
+                    {
+                        // Cập nhật số lượng (giảm số lượng sản phẩm trong kho)
+                        spInList.Soluong -= sp.Soluong;
+
+                        // Cập nhật trong database
+                        spBUS.updateSanPham(spInList);
+                    }
+                }
+
+                // Reload lại danh sách sản phẩm để cập nhật số lượng mới nhất
+                listSP = spBUS.getListSP();
+                LoadSPTrongKho();
+
+                MessageBox.Show("Đã cập nhật số lượng sản phẩm trong kho!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi khi cập nhật số lượng sản phẩm: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void buttonXuatExcel_Click(object sender, EventArgs e)
         {
             // Tạm thời để trống, có thể triển khai sau

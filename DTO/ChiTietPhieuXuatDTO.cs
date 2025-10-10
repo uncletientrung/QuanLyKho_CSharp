@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace QuanLyKho_CSharp.DTO
 {
-    public class ChiTietPhieuXuat
+    public class ChiTietPhieuXuatDTO
     {
         private int maphieuxuat;
         private int masp;
         private int soluong;
         private int dongia;
 
-        public ChiTietPhieuXuat() { }
+        public ChiTietPhieuXuatDTO() { }
 
-        public ChiTietPhieuXuat(int _maphieuxuat, int _masp, int _soluong, int _dongia)
+        public ChiTietPhieuXuatDTO(int _maphieuxuat, int _masp, int _soluong, int _dongia)
         {
             maphieuxuat = _maphieuxuat;
             masp = _masp;
