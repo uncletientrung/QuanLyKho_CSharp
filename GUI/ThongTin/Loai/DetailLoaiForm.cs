@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho_CSharp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,32 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
 {
     public partial class DetailLoaiForm : Form
     {
-        public DetailLoaiForm()
+        LoaiDTO loai;
+        public DetailLoaiForm(LoaiDTO _loai)
         {
+            this.loai = _loai;
             InitializeComponent();
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void txtTenLoai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DetailLoaiForm_Load(object sender, EventArgs e)
+        {
+            txtTenLoai.Text = loai.Tenloai.ToString();
+            txtTenLoai.Enabled = false;
+        }
+
+        private void DetailLoaiForm_Shown(object sender, EventArgs e)
+        {
+            txtTenLoai.SelectionLength = 0;
         }
     }
 }

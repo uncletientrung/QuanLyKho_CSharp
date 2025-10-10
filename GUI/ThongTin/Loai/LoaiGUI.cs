@@ -64,7 +64,62 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
 
         private void DGVLoai_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
 
+            // Chỉ xử lý khi click vào cột Actions
+            if (DGVLoai.Columns[e.ColumnIndex].Name != "Actions")
+                return;
+
+            // Lấy thông tin Loại được chọn (sử dụng đúng tên cột: MaLoai)
+            int maLoai = Convert.ToInt32(DGVLoai.Rows[e.RowIndex].Cells["MaLoai"].Value);
+            LoaiDTO loaiDuocChon = loaiBUS.getLoaiById(maLoai);
+            if (loaiDuocChon == null)
+            {
+                MessageBox.Show("Không tìm thấy loại này!");
+                return;
+            }
+
+            // Tính toán vị trí click trong ô để xác định nút
+            Rectangle cellBounds = DGVLoai.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            int padding = 5;
+            int totalButtons = 3;
+            int buttonWidth = (cellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
+            // e.X đã là toạ độ tương đối trong cell, không trừ cellBounds.Left
+            int clickX = e.X;
+
+            int startSua = padding;
+            int startXoa = startSua + buttonWidth + padding;
+            int startXem = startXoa + buttonWidth + padding;
+
+            if (clickX >= startSua && clickX < startSua + buttonWidth)
+            {
+                // Sửa
+                UpdateLoaiForm updateLoai = new UpdateLoaiForm(loaiDuocChon);
+                updateLoai.ShowDialog();
+                if (updateLoai.DialogResult == DialogResult.OK)
+                {
+                    refreshDataGridView(loaiBUS.getLoaiList());
+                    new AddSuccessNotification().Show();
+                }
+            }
+            else if (clickX >= startXoa && clickX < startXoa + buttonWidth)
+            {
+                // Xóa
+                DeleteLoaiForm deleteLoai = new DeleteLoaiForm(loaiDuocChon);
+                deleteLoai.ShowDialog();
+                if (deleteLoai.DialogResult == DialogResult.OK)
+                {
+                    new DeleteSuccessNotification().Show();
+                    refreshDataGridView(loaiBUS.getLoaiList());
+                }
+            }
+            else if (clickX >= startXem && clickX < startXem + buttonWidth)
+            {
+                // Xem chi tiết
+                DetailLoaiForm detailLoai = new DetailLoaiForm(loaiDuocChon);
+                detailLoai.ShowDialog();
+            }
         }
 
         private void DGVLoai_Painting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -174,7 +229,13 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
 
         private void txSearch_TextChanged(object sender, EventArgs e)
         {
-            
+            if (txSearch.Text != "Nhập mã hoặc tên loại để tìm kiếm")
+            {
+                string keyword = txSearch.Text.Trim().ToLower();
+                BindingList<LoaiDTO> listSearch = loaiBUS.SearchLoai(keyword);
+                refreshDataGridView(listSearch);
+            }
+
         }
 
         private void txSearch_Leave(object sender, EventArgs e)

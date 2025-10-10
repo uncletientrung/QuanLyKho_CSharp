@@ -56,6 +56,7 @@
             this.txtTenChatLieu.Name = "txtTenChatLieu";
             this.txtTenChatLieu.Size = new System.Drawing.Size(350, 25);
             this.txtTenChatLieu.TabIndex = 22;
+            this.txtTenChatLieu.TextChanged += new System.EventHandler(this.txtTenChatLieu_TextChanged);
             // 
             // lblTenChatLieu
             // 

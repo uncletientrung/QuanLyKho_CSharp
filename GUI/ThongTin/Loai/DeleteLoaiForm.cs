@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,35 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
 {
     public partial class DeleteLoaiForm : Form
     {
-        public DeleteLoaiForm()
+        private LoaiBUS loaiBUS = new LoaiBUS();
+        private LoaiDTO loai;
+
+        public DeleteLoaiForm(LoaiDTO _loai)
         {
+            this.loai = _loai;
             InitializeComponent();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            loaiBUS.removeLoai(loai.Maloai);
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

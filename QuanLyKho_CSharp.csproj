@@ -593,8 +593,17 @@
     <EmbeddedResource Include="GUI\ThongTin\Loai\AddLoaiForm.resx">
       <DependentUpon>AddLoaiForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\DeleteLoaiForm.resx">
+      <DependentUpon>DeleteLoaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\DetailLoaiForm.resx">
+      <DependentUpon>DetailLoaiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\Loai\LoaiGUI.resx">
       <DependentUpon>LoaiGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\UpdateLoaiForm.resx">
+      <DependentUpon>UpdateLoaiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.resx">
       <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>
