@@ -16,5 +16,10 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
         {
             InitializeComponent();
         }
+
+        private void ThongKeGUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

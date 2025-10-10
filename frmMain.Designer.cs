@@ -482,7 +482,7 @@ namespace QuanLyKho_CSharp
             this.pnlTop.Location = new System.Drawing.Point(236, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1129, 94);
+            this.pnlTop.Size = new System.Drawing.Size(1129, 45);
             this.pnlTop.TabIndex = 1;
             // 
             // btnLogout
@@ -494,7 +494,7 @@ namespace QuanLyKho_CSharp
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.ForeColor = System.Drawing.Color.Red;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLogout.Location = new System.Drawing.Point(1019, 21);
+            this.btnLogout.Location = new System.Drawing.Point(1028, 5);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(101, 37);
@@ -507,7 +507,7 @@ namespace QuanLyKho_CSharp
             // 
             this.avatar_Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.avatar_Logout.Image = ((System.Drawing.Image)(resources.GetObject("avatar_Logout.Image")));
-            this.avatar_Logout.Location = new System.Drawing.Point(1000, 21);
+            this.avatar_Logout.Location = new System.Drawing.Point(983, 5);
             this.avatar_Logout.Name = "avatar_Logout";
             this.avatar_Logout.Size = new System.Drawing.Size(42, 37);
             this.avatar_Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -518,9 +518,9 @@ namespace QuanLyKho_CSharp
             // pnlBody
             // 
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(236, 94);
+            this.pnlBody.Location = new System.Drawing.Point(236, 45);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(1129, 635);
+            this.pnlBody.Size = new System.Drawing.Size(1129, 684);
             this.pnlBody.TabIndex = 2;
             this.pnlBody.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBody_Paint);
             // 
