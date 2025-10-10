@@ -43,39 +43,32 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         {
             try
             {
+                // Nếu chuỗi rỗng thì báo lỗi và dùng ảnh mặc định
                 if (string.IsNullOrEmpty(relativePath))
                 {
-                    MessageBox.Show(
-                             "Khong load duoc hinh, su dung hinh anh mac dinh!",
-                             "Lỗi dữ liệu",
-                             MessageBoxButtons.OK,
-                             MessageBoxIcon.Error
-                         );
-                    return Properties.Resources.no_image;
+                    
+                    return LoadDefaultImage();
                 }
 
+                // Ghép đường dẫn ảnh theo vị trí chạy thực tế
                 string path = Path.Combine(Application.StartupPath, relativePath.Replace("/", "\\"));
 
+                // Nếu không tồn tại thì thử tìm ở cấp cao hơn (khi chạy từ bin/Debug)
                 if (!File.Exists(path))
                 {
                     string alt = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\", relativePath.Replace("/", "\\"));
                     alt = Path.GetFullPath(alt);
+
                     if (File.Exists(alt))
-                    {
                         path = alt;
-                    }
                     else
                     {
-                        MessageBox.Show(
-                             $"file khong ton tai! {path}",
-                             "Lỗi dữ liệu",
-                             MessageBoxButtons.OK,
-                             MessageBoxIcon.Error
-                         );
-                        return Properties.Resources.no_image;
+                        
+                        return LoadDefaultImage();
                     }
                 }
 
+                // Đọc file an toàn, tránh giữ file bị lock
                 byte[] bytes = File.ReadAllBytes(path);
                 using (var ms = new MemoryStream(bytes))
                 {
@@ -85,83 +78,44 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(
-                             $"loi khi tai anh! {relativePath}: {ex.Message}",
-                             "Lỗi dữ liệu",
-                             MessageBoxButtons.OK,
-                             MessageBoxIcon.Error
-                         );
-                return Properties.Resources.no_image;
+               
+                return LoadDefaultImage();
             }
         }
 
-        //private void chonAnh_Click(object sender, EventArgs e)
-        //{
-        //    OpenFileDialog open = new OpenFileDialog();
-        //    open.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-        //    if (open.ShowDialog() == DialogResult.OK)
-        //    {
-        //        // Hiển thị ảnh mới lên Pic bõ
-        //        picHinhanh.Image = Image.FromFile(open.FileName);
+        private Image LoadDefaultImage()
+        {
+            try
+            {
+                string defaultPath = Path.Combine(Application.StartupPath, "images", "stocks", "no_image.png");
 
-        //        // Đường dẫn ảnh người dùng chọn
-        //        string fileNguon = open.FileName;
+                // Nếu không có thì thử tìm ở thư mục gốc dự án (trong trường hợp chạy từ bin)
+                if (!File.Exists(defaultPath))
+                {
+                    string alt = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\images\\stocks\\no_image.png");
+                    alt = Path.GetFullPath(alt);
+                    if (File.Exists(alt))
+                        defaultPath = alt;
+                    else
+                        throw new FileNotFoundException("Không tìm thấy ảnh mặc định no_image.png!");
+                }
 
-        //        // Tạo đường dẫn đích trong thư mục dự án
-        //        string thuMucDich = Path.Combine(Application.StartupPath, "images", "stocks");
-        //        if (!Directory.Exists(thuMucDich))
-        //            Directory.CreateDirectory(thuMucDich);
+                return Image.FromFile(defaultPath);
+            }
+            catch
+            {
+                // Nếu ảnh mặc định cũng không có, trả về ảnh trống
+                Bitmap bmp = new Bitmap(100, 100);
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    g.Clear(Color.LightGray);
+                    g.DrawString("No Image", new Font("Segoe UI", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 40));
+                }
+                return bmp;
+            }
+        }
 
-        //        // Lấy tên file của ảnh cũ từ sp.Hinhanh (e.g., "images/stocks/ao1.png")
-        //        string tenFileCu = Path.GetFileName(sp.Hinhanh); // Lấy tên file từ đường dẫn hiện tại
-        //        string fileDich;
-
-        //        // Nếu sản phẩm đã có ảnh, sử dụng tên file cũ; nếu không, tạo tên file mới
-        //        if (!string.IsNullOrEmpty(tenFileCu) && File.Exists(Path.Combine(thuMucDich, tenFileCu)))
-        //        {
-        //            fileDich = Path.Combine(thuMucDich, tenFileCu); // Sử dụng tên file cũ
-        //        }
-        //        else
-        //        {
-        //            // Nếu không có ảnh cũ, sử dụng tên file mới
-        //            tenFileCu = Path.GetFileName(fileNguon);
-        //            fileDich = Path.Combine(thuMucDich, tenFileCu);
-        //        }
-
-        //        // Xóa file cũ nếu tồn tại
-        //        if (File.Exists(fileDich))
-        //        {
-        //            try
-        //            {
-        //                // Giải phóng tài nguyên ảnh trong pix box trước khi xóa
-        //                if (picHinhanh.Image != null)
-        //                {
-        //                    picHinhanh.Image.Dispose();
-        //                    picHinhanh.Image = null;
-        //                }
-        //                File.Delete(fileDich);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show($"Không thể xóa ảnh cũ: {ex.Message}");
-        //                return;
-        //            }
-        //        }
-
-        //        // Copy ảnh mới vào thư mục đích với tên file cũ
-        //        try
-        //        {
-        //            File.Copy(fileNguon, fileDich, true);
-        //            duongDanAnhMoi = $"images/stocks/{tenFileCu}"; // Lưu đường dẫn tương đối
-        //            picHinhanh.Image = Image.FromFile(fileDich); // Tải lại ảnh vào pix box
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Lỗi khi sao chép ảnh: {ex.Message}");
-        //        }
-        //    }
-        //}
+       
         private void chonAnh_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
