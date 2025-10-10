@@ -21,6 +21,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using QuanLyKho_CSharp.GUI.ThongTin.Loai;
 using QuanLyKho_CSharp.GUI.ThongKe;
+using QuanLyKho_CSharp.GUI.ThongTin.Size;
 
 namespace QuanLyKho_CSharp
 {
@@ -259,6 +260,11 @@ namespace QuanLyKho_CSharp
         private void btnLoai_Click_1(object sender, EventArgs e)
         {
             OpenChildForm(new LoaiGUI(), btnLoai);
+        }
+
+        private void btnSize_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SizeGUI(), btnSize);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
