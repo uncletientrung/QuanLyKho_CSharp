@@ -30,28 +30,41 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
             {
                 string tenLoaiMoi = txtTenLoai.Text.Trim();
 
+                // Kiểm tra nếu không có thay đổi gì
                 if (tenLoaiMoi.Equals(loai.Tenloai, StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("Tên loại không thay đổi. Vui lòng nhập tên khác để cập nhật.",
-                                    "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(
+                        "Tên loại không thay đổi. Vui lòng nhập tên khác để cập nhật.",
+                        "Cảnh báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
                     return;
                 }
 
-                LoaiDTO loaiCapNhat = new DTO.LoaiDTO
+                // Tạo đối tượng mới để cập nhật
+                LoaiDTO loaiCapNhat = new LoaiDTO
                 {
                     Maloai = loai.Maloai,
-                    Tenloai = tenLoaiMoi 
+                    Tenloai = tenLoaiMoi
                 };
 
+                // Gọi BUS cập nhật
                 if (loaiBUS.updateLoai(loaiCapNhat))
                 {
+                    MessageBox.Show(
+                        "Cập nhật loại thành công!",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
                     this.DialogResult = DialogResult.OK;
                     Close();
                 }
                 else
                 {
                     MessageBox.Show(
-                        "Cập nhật loại thất bại! Vui lòng kiểm tra lại dữ liệu",
+                        "Cập nhật loại thất bại! Vui lòng kiểm tra lại dữ liệu.",
                         "Lỗi cập nhật loại",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
@@ -60,9 +73,15 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
             }
             else
             {
-                MessageBox.Show("Tên loại không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Tên loại không được để trống.",
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
             }
         }
+        
 
         private void btnDong_Click(object sender, EventArgs e)
         {

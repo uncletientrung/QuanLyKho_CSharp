@@ -83,20 +83,21 @@ namespace QuanLyKho_CSharp.BUS
         //    return true;
         //}
 
-        //public Boolean updateSize(SizeDTO sizeSua)
-        //{
-        //    Boolean result = sizeDAO.Update(sizeSua);
-        //    if (result)
-        //    {
-        //        SizeDTO size = sizeList.FirstOrDefault(x => x.Masize == sizeSua.Masize); 
-        //        if(size != null)
-        //        {
-        //            size.Tensize = sizeSua.Tensize;
-        //            return result;
-        //        }
-        //    }
-        //    return true;
-        //}
+        public Boolean updateSize(SizeDTO sizeSua)
+        {
+            Boolean result = sizeDAO.Update(sizeSua) != 0;
+            if (result)
+            {
+                SizeDTO size = sizeList.FirstOrDefault(x => x.Masize == sizeSua.Masize);
+                if (size != null)
+                {
+                    size.Tensize = sizeSua.Tensize;
+                    size.Ghichu = sizeSua.Ghichu;
+                    return result;
+                }
+            }
+            return result;
+        }
 
         public BindingList<SizeDTO> SearchSize(string search)
         {

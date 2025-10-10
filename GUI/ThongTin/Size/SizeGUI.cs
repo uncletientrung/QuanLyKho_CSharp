@@ -249,8 +249,38 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
             int startSua = padding;
             int startXoa = startSua + buttonWidth + padding;
             int startXem = startXoa + buttonWidth + padding;
-            
 
+            int xRelative = e.Location.X;
+
+            // --- Xác định nút được click ---
+            if (xRelative >= startSua && xRelative < startSua + buttonWidth)
+            {
+                // Nút Sửa
+                UpdateSizeForm updateSize = new UpdateSizeForm(SizeDuocChon);
+                updateSize.ShowDialog();
+                if (updateSize.DialogResult == DialogResult.OK)
+                {
+                    refreshDataGridView(sizeBUS.getSizeList());
+                    new AddSuccessNotification().Show();
+                }
+            }
+            //else if (xRelative >= startXoa && xRelative < startXoa + buttonWidth)
+            //{
+            //    // Nút Xoá
+            //    DeleteChatLieuForm deleteCL = new DeleteChatLieuForm(chatLieuDuocChon);
+            //    deleteCL.ShowDialog();
+            //    if (deleteCL.DialogResult == DialogResult.OK)
+            //    {
+            //        new DeleteSuccessNotification().Show();
+            //        refreshDataGridView(clBUS.getChatLieuList());
+            //    }
+            //}
+            //else if (xRelative >= startXem && xRelative < startXem + buttonWidth)
+            //{
+            //    // Nút Xem chi tiết
+            //    DetailChatLieuForm detailCL = new DetailChatLieuForm(chatLieuDuocChon);
+            //    detailCL.ShowDialog();
+            //}
 
         }
 
