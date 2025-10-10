@@ -25,12 +25,23 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            clBUS.removeChatLieu(cl.Machatlieu);
+            this.DialogResult = DialogResult.OK;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbInfo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

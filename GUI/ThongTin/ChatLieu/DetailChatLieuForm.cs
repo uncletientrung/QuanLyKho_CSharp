@@ -39,5 +39,10 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
         {
             txtTenChatLieu.SelectionLength = 0;
         }
+
+        private void txtTenChatLieu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

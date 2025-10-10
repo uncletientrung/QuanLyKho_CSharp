@@ -27,7 +27,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         public NhaCungCapGUI()
         {
             InitializeComponent();
-            txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
+            txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhà cung cấp để tìm";
             txSearch.ForeColor = Color.Gray;
             DGVNhaCungCap.ClearSelection();
             DGVNhaCungCap.RowHeadersVisible = false; // Tắt cột header

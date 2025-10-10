@@ -347,6 +347,12 @@
     <Compile Include="GUI\TaiKhoan\UpdateTaiKhoanForm.Designer.cs">
       <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongKe\ThongKeGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\ThongKeGUI.Designer.cs">
+      <DependentUpon>ThongKeGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\ChatLieu\AddChatLieuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -437,7 +443,40 @@
     <Compile Include="GUI\ThongTin\NhaCungCap\UpdateNhaCungCapForm.Designer.cs">
       <DependentUpon>UpdateNhaCungCapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\Size\AddSizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\AddSizeForm.Designer.cs">
+      <DependentUpon>AddSizeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\DeleteSizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\DeleteSizeForm.Designer.cs">
+      <DependentUpon>DeleteSizeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\DetailSizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\DetailSizeForm.Designer.cs">
+      <DependentUpon>DetailSizeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\SizeGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\SizeGUI.Designer.cs">
+      <DependentUpon>SizeGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\UpdateSizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\Size\UpdateSizeForm.Designer.cs">
+      <DependentUpon>UpdateSizeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\component\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helper\component\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helper\ScreenSize.cs" />
@@ -576,6 +615,9 @@
     <EmbeddedResource Include="GUI\SanPham\SanPhamGUI.resx">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\ThongKeGUI.resx">
+      <DependentUpon>ThongKeGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\ChatLieu\AddChatLieuForm.resx">
       <DependentUpon>AddChatLieuForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -594,8 +636,17 @@
     <EmbeddedResource Include="GUI\ThongTin\Loai\AddLoaiForm.resx">
       <DependentUpon>AddLoaiForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\DeleteLoaiForm.resx">
+      <DependentUpon>DeleteLoaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\DetailLoaiForm.resx">
+      <DependentUpon>DetailLoaiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\Loai\LoaiGUI.resx">
       <DependentUpon>LoaiGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Loai\UpdateLoaiForm.resx">
+      <DependentUpon>UpdateLoaiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\AddNhaCungCapForm.resx">
       <DependentUpon>AddNhaCungCapForm.cs</DependentUpon>
@@ -611,6 +662,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\NhaCungCap\UpdateNhaCungCapForm.resx">
       <DependentUpon>UpdateNhaCungCapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Size\AddSizeForm.resx">
+      <DependentUpon>AddSizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Size\DeleteSizeForm.resx">
+      <DependentUpon>DeleteSizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Size\DetailSizeForm.resx">
+      <DependentUpon>DetailSizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Size\SizeGUI.resx">
+      <DependentUpon>SizeGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\Size\UpdateSizeForm.resx">
+      <DependentUpon>UpdateSizeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Helper\component\RoundedButton.resx">
       <DependentUpon>RoundedButton.cs</DependentUpon>
@@ -647,6 +713,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Test_Connection.resx">
       <DependentUpon>Test_Connection.cs</DependentUpon>
@@ -668,7 +735,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI\ThongTin\KhuVuc\" />
-    <Folder Include="GUI\ThongTin\Size\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\icon\account.png" />
@@ -713,6 +779,7 @@
     <Content Include="images\stocks\ao3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\stocks\no_image.png" />
     <Content Include="images\ui.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

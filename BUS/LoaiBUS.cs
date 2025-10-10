@@ -51,6 +51,16 @@ namespace QuanLyKho_CSharp.BUS
             return loai.Maloai;
         }
 
+        public LoaiDTO getLoaiById(int maLoai)
+        {
+            return loaiDAO.SelectById(maLoai);
+        }
+
+        public int getAutoMaLoai()
+        {
+            return loaiDAO.GetAutoIncrement();
+        }
+
         public Boolean insertLoai(LoaiDTO Loai)
         {
             Boolean result = loaiDAO.Insert(Loai) != 0;
@@ -60,7 +70,41 @@ namespace QuanLyKho_CSharp.BUS
             }
             return true;
         }
+
+        public Boolean removeLoai(int maLoai)
+        {
+            LoaiDTO loaiXoa = loaiDAO.SelectById(maLoai);
+            Boolean result = loaiDAO.Delete(maLoai) != 0;
+            if (result)
+            {
+                loaiList.Remove(loaiXoa);
+            }
+            return result;
+        }
+
+        public Boolean updateLoai(LoaiDTO loaiSua)
+        {
+            Boolean result = loaiDAO.Update(loaiSua) != 0;
+            if (result)
+            {
+                LoaiDTO loai = loaiList.FirstOrDefault(x => x.Maloai == loaiSua.Maloai);
+                if(loai != null)
+                {
+                    loai.Tenloai = loaiSua.Tenloai;
+                    return result;
+                }
+            }
+            return result;
+        }
         
+        public BindingList<LoaiDTO> SearchLoai(string search)
+        {
+            List<LoaiDTO> result = loaiList.Where(loai =>
+                                        loai.Tenloai.ToLower().Contains(search.ToLower()) || // Tìm theo Tên Loại (không phân biệt chữ hoa/thường)
+                                        loai.Maloai.ToString().Contains(search)).ToList();    // Tìm theo Mã Loại
+
+            return new BindingList<LoaiDTO>(result);
+        }
 
 
 

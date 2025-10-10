@@ -51,5 +51,62 @@ namespace QuanLyKho_CSharp.BUS
             }
             return sizeDTO.Masize;
         }
+
+        public SizeDTO getSizeById(int maSize)
+        {
+            return sizeDAO.SelectById(maSize);
+        }
+
+        //public SizeDTO getSizeById(int maSize)
+        //{
+        //    return sizeDTO.SelectById(maSize);
+        //}
+
+        public Boolean insertSize(SizeDTO size)
+        {
+            Boolean result = sizeDAO.Insert(size) != 0;
+            if (result)
+            {
+                sizeList.Add(size);
+            }
+            return true;
+        }
+
+        //public Boolean removeSize(int maSize)
+        //{
+        //    SizeDTO sizeXoa = sizeDAO.SelectById(maSize);
+        //    Boolean result = sizeDAO.Delete(maSize);
+        //    if (result) 
+        //    {
+        //        sizeList.Remove(sizeXoa);
+        //    }
+        //    return true;
+        //}
+
+        public Boolean updateSize(SizeDTO sizeSua)
+        {
+            Boolean result = sizeDAO.Update(sizeSua) != 0;
+            if (result)
+            {
+                SizeDTO size = sizeList.FirstOrDefault(x => x.Masize == sizeSua.Masize);
+                if (size != null)
+                {
+                    size.Tensize = sizeSua.Tensize;
+                    size.Ghichu = sizeSua.Ghichu;
+                    return result;
+                }
+            }
+            return result;
+        }
+
+        public BindingList<SizeDTO> SearchSize(string search)
+        {
+            List<SizeDTO> result = sizeList.Where(size =>
+                                        size.Tensize.ToLower().Contains(search.ToLower()) || // Tìm theo Tên Loại (không phân biệt chữ hoa/thường)
+                                        size.Masize.ToString().Contains(search)).ToList();    // Tìm theo Mã Loại
+
+            return new BindingList<SizeDTO>(result);
+        }
+
     }
 }

@@ -44,6 +44,8 @@ namespace QuanLyKho_CSharp.DAO
                 {
                     result = reader.GetInt32("AUTO_INCREMENT");
                 }
+                reader.Close(); 
+                ConnectionHelper.closeConnection();
             }
             catch (Exception ex)
             {
