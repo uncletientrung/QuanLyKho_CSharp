@@ -60,6 +60,17 @@ namespace QuanLyKho_CSharp.BUS
             SanPhamDTO sp = spDAO.SelectById(masp);
             return sp;
         }
+
+        public string getNamebyID(int maSP)
+        {
+            SanPhamDTO sp = listSP.FirstOrDefault(x => x.Masp == maSP);
+            if (sp != null)
+            {
+                return sp.Tensp;
+            }
+            return "Không tìm thấy";
+        }
+
         public Boolean updateSanPham(SanPhamDTO sp)
         {
             Boolean result = spDAO.Update(sp) != 0;

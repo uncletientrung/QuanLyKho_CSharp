@@ -481,6 +481,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             // 
             // btnThem
             // 
+            this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThem.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnThem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnThem.Location = new System.Drawing.Point(13, 54);
@@ -495,6 +496,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             // 
             // btnXuat
             // 
+            this.btnXuat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXuat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnXuat.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnXuat.Location = new System.Drawing.Point(83, 54);

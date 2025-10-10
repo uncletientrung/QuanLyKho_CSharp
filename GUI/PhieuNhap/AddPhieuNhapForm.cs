@@ -20,6 +20,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private PhieuNhapBUS pnBUS = new PhieuNhapBUS();
         private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
+        private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
         private BindingList<NhaCungCapDTO> listNCC;
         private BindingList<SanPhamDTO> listSP;
         private BindingList<SanPhamDTO> listSPDuocThem;
@@ -488,6 +489,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 MessageBox.Show("Không thể lấy thông tin nhân viên: " + ex.Message, "Cảnh báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            // Tạo phiếu nhập mới
             PhieuNhapDTO newPhieuNhap = new PhieuNhapDTO
             {
                 Maphieu = int.Parse(boxMaPhieu.Text),
@@ -501,14 +504,44 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             // Lưu phiếu nhập
             if (pnBUS.insertPhieuNhap(newPhieuNhap))
             {
-                MessageBox.Show("Nhập hàng thành công!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                // Tạo danh sách chi tiết phiếu nhập
+                BindingList<ChiTietPhieuNhapDTO> listCTPN = new BindingList<ChiTietPhieuNhapDTO>();
+
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    ChiTietPhieuNhapDTO ctpn = new ChiTietPhieuNhapDTO
+                    {
+                        Maphieunhap = newPhieuNhap.Maphieu,
+                        Masp = sp.Masp,
+                        Soluong = sp.Soluong,
+                        Dongia = sp.Dongia
+                    };
+                    listCTPN.Add(ctpn);
+                }
+
+                // Lưu chi tiết phiếu nhập (sử dụng phương thức mới từ interface)
+                if (ctpnBUS.insertChiTietPhieuNhap(listCTPN))
+                {
+                    MessageBox.Show("Nhập hàng thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Cập nhật số lượng sản phẩm trong kho
+                    UpdateSoLuongSanPham();
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    // Nếu có lỗi khi lưu chi tiết, xóa phiếu nhập đã tạo
+                    pnBUS.removePhieuNhap(newPhieuNhap.Maphieu);
+                    MessageBox.Show("Có lỗi xảy ra khi lưu chi tiết phiếu nhập!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Có lỗi xảy ra khi nhập hàng!", "Lỗi",
+                MessageBox.Show("Có lỗi xảy ra khi tạo phiếu nhập!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -522,7 +555,42 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
             return tongTien;
         }
+        private void UpdateSoLuongSanPham()
+        {
+            try
+            {
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    // Tìm sản phẩm trong danh sách hiện tại
+                    SanPhamDTO spInList = listSP.FirstOrDefault(s => s.Masp == sp.Masp);
+                    if (spInList != null)
+                    {
+                        // Cập nhật số lượng (tăng số lượng sản phẩm trong kho)
+                        spInList.Soluong += sp.Soluong;
 
+                        // Cập nhật trong database
+                        spBUS.updateSanPham(spInList);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Không tìm thấy sản phẩm mã {sp.Masp} trong kho!", "Cảnh báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+                // Reload lại danh sách sản phẩm để cập nhật số lượng mới nhất
+                listSP = spBUS.getListSP();
+                LoadSPTrongKho();
+
+                MessageBox.Show("Đã cập nhật số lượng sản phẩm trong kho!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi khi cập nhật số lượng sản phẩm: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void buttonNhapExcel_Click(object sender, EventArgs e)
         {
             // Tạm thời để trống, có thể triển khai sau

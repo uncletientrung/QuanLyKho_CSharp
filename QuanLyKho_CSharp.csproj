@@ -115,6 +115,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\ChatLieuBUS.cs" />
+    <Compile Include="BUS\ChiTietPhieuNhapBUS.cs" />
+    <Compile Include="BUS\ChiTietPhieuXuatBUS.cs" />
     <Compile Include="BUS\DanhMucChucNangBUS.cs" />
     <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\KhuVucKhoBUS.cs" />
@@ -131,6 +133,8 @@
     <Compile Include="DAO\ChatLieuDAO.cs" />
     <Compile Include="DAO\ChiTietHoanHangDAO.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
+    <Compile Include="DAO\ChiTietPhieuNhapDAO.cs" />
+    <Compile Include="DAO\ChiTietPhieuXuatDAO.cs" />
     <Compile Include="DAO\ChiTietQuyenDAO.cs" />
     <Compile Include="DAO\DanhMucChucNangDAO.cs" />
     <Compile Include="DAO\DAOInterface.cs" />
@@ -151,7 +155,7 @@
     <Compile Include="DTO\ChiTietHoanHangDTO.cs" />
     <Compile Include="DTO\ChiTietKiemKe.cs" />
     <Compile Include="DTO\ChiTietPhieuNhapDTO.cs" />
-    <Compile Include="DTO\ChiTietPhieuXuat.cs" />
+    <Compile Include="DTO\ChiTietPhieuXuatDTO.cs" />
     <Compile Include="DTO\ChiTietQuyenDTO.cs" />
     <Compile Include="DTO\DanhMucChucNangDTO.cs" />
     <Compile Include="DTO\KhachHangDTO.cs" />
