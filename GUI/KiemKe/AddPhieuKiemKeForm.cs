@@ -82,14 +82,9 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
             var row = DGVKiemKe.SelectedRows[0];
             string maPhieu = row.Cells["MaPhieu"].Value.ToString();
-            string thoiGian = row.Cells["ThoiGian"].Value.ToString();
-            string tenNV = boxNVxuat.Text;
-            string maNV = ""; // Lấy mã NV nếu có
-            string khuVuc = ""; // Lấy khu vực nếu có
+            string thoiGianTao = row.Cells["ThoiGian"].Value.ToString();
             string trangThai = comboBoxTT.Text;
             int soLuongLech = (int)numericUpDown1.Value;
-
-            // Ghi chú
             string ghiChu = "";
             if (trangThai == "Đủ hàng")
                 ghiChu = "đủ hàng";
@@ -98,12 +93,23 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             else if (trangThai == "Dư hàng")
                 ghiChu = $"dư - {soLuongLech}";
 
+            string maKhuVuc = ""; // Lấy từ control nếu có, ví dụ: boxKhuVuc.Text
+            string maNhanVienTao = ""; // Lấy từ control nếu có, ví dụ: boxNVxuat.Text
+            string maNhanVienKiem = ""; // Lấy từ textbox nhân viên kiểm
+
             // Thêm vào KiemKeGUI
-            parentForm?.AddKiemKeRow(maPhieu, thoiGian, tenNV, maNV, khuVuc, trangThai, ghiChu);
+            parentForm?.AddKiemKeRow(
+                maPhieu,
+                thoiGianTao,
+                trangThai,
+                ghiChu,
+                maKhuVuc,
+                maNhanVienTao,
+                maNhanVienKiem
+            );
 
             // Xóa dòng khỏi bảng
             DGVKiemKe.Rows.Remove(row);
-
         }
 
 

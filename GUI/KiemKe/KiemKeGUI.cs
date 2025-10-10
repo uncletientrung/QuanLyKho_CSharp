@@ -19,6 +19,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             InitializeDataGridViewColumns(); 
             SetupDataGridView();
             this.Load += new System.EventHandler(this.KiemKeGUI_Load);
+            DGVKiemKe.CellPainting += DGVKiemKe_CellPainting;
+            DGVKiemKe.CellMouseClick += DGVKiemKe_CellMouseClick;
         }
 
         // header button
@@ -97,12 +99,26 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         // Cho phép Add dòng từ AddPhieuKiemKeForm
         public void AddKiemKeRow(
-        string maPhieu, string thoiGian, string tenNV, string maNV, string khuVuc, string trangThai, string ghiChu)
-        {
-            if (DGVKiemKe.Columns.Count == 0)
-                InitializeDataGridViewColumns();
+        string maPhieu,
+        string thoiGianTao,
+        string trangThai,
+        string ghiChu,
+        string maKhuVuc,
+        string maNhanVienTao,
+        string maNhanVienKiem)
+            {
+                if (DGVKiemKe.Columns.Count == 0)
+                    InitializeDataGridViewColumns();
 
-            DGVKiemKe.Rows.Add(maPhieu, thoiGian, tenNV, maNV, khuVuc, trangThai, ghiChu);
+                DGVKiemKe.Rows.Add(
+                    maPhieu,
+                    thoiGianTao,
+                    trangThai,
+                    ghiChu,
+                    maKhuVuc,
+                    maNhanVienTao,
+                    maNhanVienKiem
+                );
         }
 
 
@@ -133,10 +149,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         }
 
         
-        private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         
 
@@ -158,25 +171,25 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             DGVKiemKe.Columns.Clear();
 
             DGVKiemKe.Columns.Add("MaPhieuKiemKe", "Mã phiếu");
-            DGVKiemKe.Columns.Add("ThoiGianTao", "Thời gian tạo");
-            DGVKiemKe.Columns.Add("NhanVienTao", "Nhân viên tạo");
-            DGVKiemKe.Columns.Add("MaNhanVienTao", "Mã nhân viên tạo");
-            DGVKiemKe.Columns.Add("KhuVuc", "Khu vực");
+            DGVKiemKe.Columns.Add("ThoiGianTao", "Thời gian tạo phiếu");
             DGVKiemKe.Columns.Add("TrangThai", "Trạng thái");
             DGVKiemKe.Columns.Add("GhiChu", "Ghi chú");
+            DGVKiemKe.Columns.Add("MaKhuVuc", "Mã khu vực");
+            DGVKiemKe.Columns.Add("MaNhanVienTao", "Mã nhân viên tạo");
+            DGVKiemKe.Columns.Add("MaNhanVienKiem", "Mã nhân viên kiểm");
 
             foreach (DataGridViewColumn column in DGVKiemKe.Columns)
             {
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
-            DGVKiemKe.Columns["MaPhieuKiemKe"].FillWeight = 12;   // 12%
-            DGVKiemKe.Columns["ThoiGianTao"].FillWeight = 16;     // 16%
-            DGVKiemKe.Columns["NhanVienTao"].FillWeight = 18;     // 18%
-            DGVKiemKe.Columns["MaNhanVienTao"].FillWeight = 12;   // 12%
-            DGVKiemKe.Columns["KhuVuc"].FillWeight = 10;        // 10%
+            DGVKiemKe.Columns["MaPhieuKiemKe"].FillWeight = 10;   // 10%
+            DGVKiemKe.Columns["ThoiGianTao"].FillWeight = 18;     // 18%
             DGVKiemKe.Columns["TrangThai"].FillWeight = 14;       // 14%
-            DGVKiemKe.Columns["GhiChu"].FillWeight = 18;          // 18%
+            DGVKiemKe.Columns["GhiChu"].FillWeight = 16;          // 18%
+            DGVKiemKe.Columns["MaKhuVuc"].FillWeight = 14;          // 12%
+            DGVKiemKe.Columns["MaNhanVienTao"].FillWeight = 14;     // 14%
+            DGVKiemKe.Columns["MaNhanVienKiem"].FillWeight = 14;   // 14%
 
             DGVKiemKe.RowTemplate.Height = 40;
 
@@ -202,11 +215,11 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     DGVKiemKe.Rows.Add(
                         kk.Maphieukiemke,
                         kk.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
-                        kk.Nhanvientao,
-                        kk.Manhanvientao,
-                        kk.Makhuvuc,
                         kk.Trangthai,
-                        kk.Ghichu
+                        kk.Ghichu,
+                        kk.Makhuvuc,
+                        kk.Manhanvientao,
+                        kk.Manhanvienkiem
                     );
                 }
             }
@@ -236,27 +249,24 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 try
                 {
                     // Vẽ icon dấu 3 chấm (xem chi tiết)
-                    Image imgXem = Image.FromFile("images\\icon\\detail.png");
-                    // Vẽ icon thùng rác (xoá)
-                    Image imgXoa = Image.FromFile("images\\icon\\remove.png");
+                    using (Image imgXem = Image.FromFile("images\\icon\\detail.png"))
+                    using (Image imgXoa = Image.FromFile("images\\icon\\remove.png"))
+                    {
+                        int targetWidth = 24;
+                        int targetHeight = 24;
 
-                    int targetWidth = 24;
-                    int targetHeight = 24;
+                        e.Graphics.DrawImage(imgXem, new Rectangle(
+                            btnXem.Left + (btnXem.Width - targetWidth) / 2,
+                            btnXem.Top + (btnXem.Height - targetHeight) / 2,
+                            targetWidth,
+                            targetHeight));
 
-                    e.Graphics.DrawImage(imgXem, new Rectangle(
-                        btnXem.Left + (btnXem.Width - targetWidth) / 2,
-                        btnXem.Top + (btnXem.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-
-                    e.Graphics.DrawImage(imgXoa, new Rectangle(
-                        btnXoa.Left + (btnXoa.Width - targetWidth) / 2,
-                        btnXoa.Top + (btnXoa.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-
-                    imgXem.Dispose();
-                    imgXoa.Dispose();
+                        e.Graphics.DrawImage(imgXoa, new Rectangle(
+                            btnXoa.Left + (btnXoa.Width - targetWidth) / 2,
+                            btnXoa.Top + (btnXoa.Height - targetHeight) / 2,
+                            targetWidth,
+                            targetHeight));
+                    }
                 }
                 catch (Exception)
                 {
@@ -270,26 +280,39 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
             if (e.ColumnIndex == DGVKiemKe.Columns["Actions"].Index && e.RowIndex >= 0)
             {
-                int buttonWidth = 50;
                 int padding = 5;
+                int totalButtons = 2;
+                int buttonWidth = (DGVKiemKe.Columns["Actions"].Width - padding * (totalButtons + 1)) / totalButtons;
                 int xRel = e.Location.X;
 
-                int maPhieu = int.Parse(DGVKiemKe.Rows[e.RowIndex].Cells["MaPhieuKiemKe"].Value.ToString());
-                // Lấy đối tượng kiểm kê theo mã nếu cần
+                var maPhieu = DGVKiemKe.Rows[e.RowIndex].Cells["MaPhieuKiemKe"].Value.ToString();
 
-                if (xRel < padding + buttonWidth) // nút Xem chi tiết
+                if (xRel < padding + buttonWidth) // Nút Xem
                 {
-                    // TODO: Hiển thị chi tiết phiếu kiểm kê
-                    MessageBox.Show($"Xem chi tiết phiếu kiểm kê: {maPhieu}", "Chi tiết", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Hiển thị dialog chi tiết
+                    using (var detailForm = new DetailKiemKeForm())
+                    {
+                        detailForm.ShowDialog(this);
+                    }
                 }
-                else // nút Xoá
+                else // Nút Xóa
                 {
                     if (MessageBox.Show($"Bạn có chắc muốn xóa phiếu kiểm kê {maPhieu}?", "Xác nhận xóa",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        // TODO: Xoá phiếu kiểm kê qua BUS/DAO
-                        MessageBox.Show("Xóa phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadDataIntoGridView();
+                        // Xóa khỏi database
+                        int id = int.Parse(maPhieu);
+                        var result = QuanLyKho_CSharp.BUS.PhieuKiemKeBUS.Instance.Delete(id);
+                        if (result > 0)
+                        {
+                            // Xóa khỏi DataGridView (hoặc load lại)
+                            DGVKiemKe.Rows.RemoveAt(e.RowIndex);
+                            MessageBox.Show("Xóa phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa phiếu kiểm kê thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -310,7 +333,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // readonly font for placeholder
         private void label1_Click(object sender, EventArgs e) {}
         private void panel2_Paint(object sender, PaintEventArgs e) {}
-
+        private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
         private void pictureBox1_Click(object sender, EventArgs e) {}
     }
 }

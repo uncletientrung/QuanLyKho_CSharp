@@ -264,7 +264,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.40171F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.59829F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
             this.tableLayoutPanel1.Controls.Add(this.button_pullPhieuKiemKeExcel, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button_pullPhieuKiemKe, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
@@ -284,10 +284,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // 
             this.button_pullPhieuKiemKeExcel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_pullPhieuKiemKeExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.button_pullPhieuKiemKeExcel.Location = new System.Drawing.Point(514, 2);
+            this.button_pullPhieuKiemKeExcel.Location = new System.Drawing.Point(510, 2);
             this.button_pullPhieuKiemKeExcel.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
             this.button_pullPhieuKiemKeExcel.Name = "button_pullPhieuKiemKeExcel";
-            this.button_pullPhieuKiemKeExcel.Size = new System.Drawing.Size(169, 33);
+            this.button_pullPhieuKiemKeExcel.Size = new System.Drawing.Size(173, 33);
             this.button_pullPhieuKiemKeExcel.TabIndex = 10;
             this.button_pullPhieuKiemKeExcel.Text = "Nhập Excel";
             this.button_pullPhieuKiemKeExcel.UseVisualStyleBackColor = true;
@@ -297,7 +297,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // 
             this.button_pullPhieuKiemKe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_pullPhieuKiemKe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.button_pullPhieuKiemKe.Location = new System.Drawing.Point(321, 2);
+            this.button_pullPhieuKiemKe.Location = new System.Drawing.Point(317, 2);
             this.button_pullPhieuKiemKe.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
             this.button_pullPhieuKiemKe.Name = "button_pullPhieuKiemKe";
             this.button_pullPhieuKiemKe.Size = new System.Drawing.Size(177, 33);
@@ -328,7 +328,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.txSearch.Location = new System.Drawing.Point(29, 4);
             this.txSearch.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(276, 29);
+            this.txSearch.Size = new System.Drawing.Size(272, 29);
             this.txSearch.TabIndex = 6;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 

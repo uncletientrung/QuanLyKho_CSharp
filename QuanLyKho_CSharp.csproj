@@ -204,6 +204,12 @@
     <Compile Include="GUI\KiemKe\AddPhieuKiemKeForm.Designer.cs">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KiemKe\DetailKiemKeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemKe\DetailKiemKeForm.Designer.cs">
+      <DependentUpon>DetailKiemKeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KiemKe\KiemKeGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,6 +501,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\AddPhieuKiemKeForm.resx">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KiemKe\DetailKiemKeForm.resx">
+      <DependentUpon>DetailKiemKeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\KiemKeGUI.resx">
       <DependentUpon>KiemKeGUI.cs</DependentUpon>

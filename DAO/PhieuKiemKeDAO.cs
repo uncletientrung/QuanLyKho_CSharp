@@ -19,8 +19,8 @@ namespace QuanLyKho_CSharp.DAO
         public int Insert(PhieuKiemKeDTO t)
         {
             int result = 0;
-            string sql = $"INSERT INTO phieukiemke(maphieukiemke, thoigiantao, nhanvientao, manhanvientao, makhuvuc, trangthai, ghichu) " +
-                         $"VALUES ({t.Maphieukiemke}, '{t.Thoigiantao:yyyy-MM-dd HH:mm:ss}', '{t.Nhanvientao}', {t.Manhanvientao}, {t.Makhuvuc}, '{t.Trangthai}', '{t.Ghichu}')";
+            string sql = $"INSERT INTO phieukiemke(maphieukiemke, thoigiantao, trangthai, ghichu, makhuvuc, manhanvientao, manhanvienkiem) " +
+                         $"VALUES ({t.Maphieukiemke}, '{t.Thoigiantao:yyyy-MM-dd HH:mm:ss}', '{t.Trangthai}', '{t.Ghichu}', {t.Makhuvuc}, {t.Manhanvientao}, {t.Manhanvienkiem})";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
@@ -30,11 +30,11 @@ namespace QuanLyKho_CSharp.DAO
             int result = 0;
             string sql = $"UPDATE phieukiemke SET " +
                          $"thoigiantao = '{t.Thoigiantao:yyyy-MM-dd HH:mm:ss}', " +
-                         $"nhanvientao = '{t.Nhanvientao}', " +
-                         $"manhanvientao = {t.Manhanvientao}, " +
-                         $"makhuvuc = {t.Makhuvuc}, " +
                          $"trangthai = '{t.Trangthai}', " +
-                         $"ghichu = '{t.Ghichu}' " +
+                         $"ghichu = '{t.Ghichu}', " +
+                         $"makhuvuc = {t.Makhuvuc}, " +
+                         $"manhanvientao = {t.Manhanvientao}, " +
+                         $"manhanvienkiem = {t.Manhanvienkiem} " +
                          $"WHERE maphieukiemke = {t.Maphieukiemke}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
@@ -62,11 +62,11 @@ namespace QuanLyKho_CSharp.DAO
                     {
                         Maphieukiemke = Convert.ToInt32(row["maphieukiemke"]),
                         Thoigiantao = Convert.ToDateTime(row["thoigiantao"]),
-                        Nhanvientao = row["nhanvientao"].ToString(),
-                        Manhanvientao = Convert.ToInt32(row["manhanvientao"]),
-                        Makhuvuc = Convert.ToInt32(row["makhuvuc"]),
                         Trangthai = row["trangthai"].ToString(),
-                        Ghichu = row["ghichu"].ToString()
+                        Ghichu = row["ghichu"].ToString(),
+                        Makhuvuc = Convert.ToInt32(row["makhuvuc"]),
+                        Manhanvientao = Convert.ToInt32(row["manhanvientao"]),
+                        Manhanvienkiem = Convert.ToInt32(row["manhanvienkiem"])
                     };
                     result.Add(item);
                 }
@@ -94,11 +94,11 @@ namespace QuanLyKho_CSharp.DAO
                         {
                             Maphieukiemke = reader.GetInt32("maphieukiemke"),
                             Thoigiantao = reader.GetDateTime("thoigiantao"),
-                            Nhanvientao = reader["nhanvientao"].ToString(),
-                            Manhanvientao = reader.GetInt32("manhanvientao"),
-                            Makhuvuc = reader.GetInt32("makhuvuc"),
                             Trangthai = reader.GetString("trangthai"),
-                            Ghichu = reader.GetString("ghichu")
+                            Ghichu = reader.GetString("ghichu"),
+                            Makhuvuc = reader.GetInt32("makhuvuc"),
+                            Manhanvientao = reader.GetInt32("manhanvientao"),
+                            Manhanvienkiem = reader.GetInt32("manhanvienkiem")
                         };
                     }
                 }
@@ -122,11 +122,11 @@ namespace QuanLyKho_CSharp.DAO
                 string sql = "SELECT " +
                             "maphieukiemke AS 'Mã phiếu kiểm kê', " +
                             "thoigiantao AS 'Thời gian tạo', " +
-                            "nhanvientao AS 'Nhân viên tạo', " +
-                            "manhanvientao AS 'Mã nhân viên tạo', " +
-                            "makhuvuc AS 'Mã khu vực', " +
                             "trangthai AS 'Trạng thái', " +
-                            "ghichu AS 'Ghi chú' " +
+                            "ghichu AS 'Ghi chú', " +
+                            "makhuvuc AS 'Mã khu vực', " +
+                            "manhanvientao AS 'Mã nhân viên tạo', " +
+                            "manhanvienkiem AS 'Mã nhân viên kiểm' " +
                             "FROM phieukiemke " +
                             "ORDER BY maphieukiemke DESC";
 

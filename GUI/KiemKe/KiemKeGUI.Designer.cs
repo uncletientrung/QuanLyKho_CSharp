@@ -245,6 +245,9 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private readonly Font placeholderFont = new Font("Segoe UI", 9F, FontStyle.Italic);
         private readonly Font normalFont = new Font("Segoe UI", 12F, FontStyle.Regular);
 
+        // Thao tác Row:
+
+
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.DataGridView DGVKiemKe;
         private System.Windows.Forms.Panel panel1;
