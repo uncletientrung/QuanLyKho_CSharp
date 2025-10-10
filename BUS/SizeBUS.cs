@@ -62,15 +62,15 @@ namespace QuanLyKho_CSharp.BUS
         //    return sizeDTO.SelectById(maSize);
         //}
 
-        //public Boolean insertSize(SizeDTO size)
-        //{
-        //    Boolean result = sizeDao.Insert(size) != 0;
-        //    if (result)
-        //    {
-        //        sizeList.Add(size);
-        //    }
-        //    return true;
-        //}
+        public Boolean insertSize(SizeDTO size)
+        {
+            Boolean result = sizeDAO.Insert(size) != 0;
+            if (result)
+            {
+                sizeList.Add(size);
+            }
+            return true;
+        }
 
         //public Boolean removeSize(int maSize)
         //{

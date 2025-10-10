@@ -124,7 +124,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
 
         }
 
-        private void roundedButton2_Click(object sender, EventArgs e)
+        private void roundedButton2_Click_1(object sender, EventArgs e)
         {
             AddSizeForm addSize = new AddSizeForm();
             addSize.ShowDialog();
@@ -135,7 +135,6 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
                 AddSuccessNotification tb = new AddSuccessNotification();
                 tb.Show();
             }
-
         }
 
         private void refreshDataGridView(BindingList<SizeDTO> list)
@@ -156,7 +155,6 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
                 BindingList<SizeDTO> listSearch = sizeBUS.SearchSize(keyword);
                 refreshDataGridView(listSearch);
             }
-
         }
 
         private void txSearch_Leave(object sender, EventArgs e)
@@ -255,5 +253,8 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
 
 
         }
+
+
+
     }
 }

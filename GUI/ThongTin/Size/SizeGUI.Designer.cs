@@ -105,6 +105,9 @@
             this.txSearch.Name = "txSearch";
             this.txSearch.Size = new System.Drawing.Size(307, 22);
             this.txSearch.TabIndex = 11;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
+            this.txSearch.Enter += new System.EventHandler(this.txSearch_Enter);
+            this.txSearch.Leave += new System.EventHandler(this.txSearch_Leave);
             // 
             // pictureBox1
             // 
@@ -155,6 +158,7 @@
             this.roundedButton2.TabIndex = 10;
             this.roundedButton2.Text = "+ Thêm";
             this.roundedButton2.UseVisualStyleBackColor = false;
+            this.roundedButton2.Click += new System.EventHandler(this.roundedButton2_Click_1);
             // 
             // SizeGUI
             // 
