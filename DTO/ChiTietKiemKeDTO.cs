@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyKho_CSharp.DTO
 {
-    public class ChiTietKiemKe
+    public class ChiTietKiemKeDTO
     {
         private int maphieukiemke;
         private int masp;
@@ -14,9 +14,9 @@ namespace QuanLyKho_CSharp.DTO
         private int tonthucte;
         private string ghichu;
 
-        public ChiTietKiemKe() { }
+        public ChiTietKiemKeDTO() { }
 
-        public ChiTietKiemKe(int _maphieukiemke, int _masp, int _tonchinhanh, int _tonthucte, string _ghichu)
+        public ChiTietKiemKeDTO(int _maphieukiemke, int _masp, int _tonchinhanh, int _tonthucte, string _ghichu)
         {
             maphieukiemke = _maphieukiemke;
             masp = _masp;

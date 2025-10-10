@@ -155,5 +155,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private void DetailPhieuNhapForm_Load(object sender, EventArgs e)
         {
         }
+
+        private void dgvXemChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

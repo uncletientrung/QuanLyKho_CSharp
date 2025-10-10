@@ -82,6 +82,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -153,7 +154,7 @@
     <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DTO\ChatLieuDTO.cs" />
     <Compile Include="DTO\ChiTietHoanHangDTO.cs" />
-    <Compile Include="DTO\ChiTietKiemKe.cs" />
+    <Compile Include="DTO\ChiTietKiemKeDTO.cs" />
     <Compile Include="DTO\ChiTietPhieuNhapDTO.cs" />
     <Compile Include="DTO\ChiTietPhieuXuatDTO.cs" />
     <Compile Include="DTO\ChiTietQuyenDTO.cs" />
@@ -208,11 +209,11 @@
     <Compile Include="GUI\KiemKe\AddPhieuKiemKeForm.Designer.cs">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KiemKe\DetailKiemKeForm.cs">
+    <Compile Include="GUI\KiemKe\DetailPhieuKiemKeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KiemKe\DetailKiemKeForm.Designer.cs">
-      <DependentUpon>DetailKiemKeForm.cs</DependentUpon>
+    <Compile Include="GUI\KiemKe\DetailPhieuKiemKeForm.Designer.cs">
+      <DependentUpon>DetailPhieuKiemKeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KiemKe\KiemKeGUI.cs">
       <SubType>Form</SubType>
@@ -506,8 +507,8 @@
     <EmbeddedResource Include="GUI\KiemKe\AddPhieuKiemKeForm.resx">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KiemKe\DetailKiemKeForm.resx">
-      <DependentUpon>DetailKiemKeForm.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\KiemKe\DetailPhieuKiemKeForm.resx">
+      <DependentUpon>DetailPhieuKiemKeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\KiemKeGUI.resx">
       <DependentUpon>KiemKeGUI.cs</DependentUpon>

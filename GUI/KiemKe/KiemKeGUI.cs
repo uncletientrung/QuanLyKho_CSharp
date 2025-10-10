@@ -27,16 +27,13 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // add phiếu kiểm kê
         private void btn_addPhieuKiemKe(object sender, EventArgs e)
         {
-            frmMain mainForm = this.ParentForm as frmMain;
-            if (mainForm != null)
+            using (var addForm = new AddPhieuKiemKeForm())
             {
-                var method = mainForm.GetType().GetMethod("OpenChildForm",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                if (method != null)
-                {
-                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(this), null });
-                }
+                addForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                addForm.StartPosition = FormStartPosition.CenterParent;
+                addForm.MaximizeBox = false;
+                addForm.MinimizeBox = false;
+                addForm.ShowDialog(this);
             }
         }
         // export excel
@@ -99,7 +96,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         // Cho phép Add dòng từ AddPhieuKiemKeForm
         public void AddKiemKeRow(
-        string maPhieu,
+        int maPhieu,
         string thoiGianTao,
         string trangThai,
         string ghiChu,
@@ -285,14 +282,22 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 int buttonWidth = (DGVKiemKe.Columns["Actions"].Width - padding * (totalButtons + 1)) / totalButtons;
                 int xRel = e.Location.X;
 
-                var maPhieu = DGVKiemKe.Rows[e.RowIndex].Cells["MaPhieuKiemKe"].Value.ToString();
+                int maPhieu = Convert.ToInt32(DGVKiemKe.Rows[e.RowIndex].Cells["MaPhieuKiemKe"].Value);
 
                 if (xRel < padding + buttonWidth) // Nút Xem
                 {
-                    // Hiển thị dialog chi tiết
-                    using (var detailForm = new DetailKiemKeForm())
+                    // Lấy đối tượng PhieuKiemKeDTO từ BUS theo mã phiếu
+                    var phieuKiem = QuanLyKho_CSharp.BUS.PhieuKiemKeBUS.Instance.GetById(maPhieu);
+                    if (phieuKiem != null)
                     {
-                        detailForm.ShowDialog(this);
+                        using (var detailForm = new DetailPhieuKiemKeForm(phieuKiem))
+                        {
+                            detailForm.ShowDialog(this);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy phiếu kiểm kê!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else // Nút Xóa
@@ -300,12 +305,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     if (MessageBox.Show($"Bạn có chắc muốn xóa phiếu kiểm kê {maPhieu}?", "Xác nhận xóa",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        // Xóa khỏi database
-                        int id = int.Parse(maPhieu);
+                        int id = maPhieu;
                         var result = QuanLyKho_CSharp.BUS.PhieuKiemKeBUS.Instance.Delete(id);
                         if (result > 0)
                         {
-                            // Xóa khỏi DataGridView (hoặc load lại)
                             DGVKiemKe.Rows.RemoveAt(e.RowIndex);
                             MessageBox.Show("Xóa phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
