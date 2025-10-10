@@ -52,6 +52,11 @@ namespace QuanLyKho_CSharp.BUS
             return sizeDTO.Masize;
         }
 
+        public SizeDTO getSizeById(int maSize)
+        {
+            return sizeDAO.SelectById(maSize);
+        }
+
         //public SizeDTO getSizeById(int maSize)
         //{
         //    return sizeDTO.SelectById(maSize);

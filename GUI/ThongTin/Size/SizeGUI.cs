@@ -59,16 +59,6 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
             listSize = sizeBUS.getSizeList();
         }
 
-        private void DGVSize_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void DGVSize_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
         private void DGVSize_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex == DGVSize.Columns["Actions"].Index && e.RowIndex >= 0)
@@ -227,8 +217,42 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
 
         }
 
-        private void DGVLoai_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DGVSize_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void DGVSize_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            // Chỉ xử lý khi click vào cột Actions
+            if (DGVSize.Columns[e.ColumnIndex].Name != "Actions")
+                return;
+
+            // Lấy thông tin Loại được chọn (sử dụng đúng tên cột: MaLoai)
+            int maSize = Convert.ToInt32(DGVSize.Rows[e.RowIndex].Cells["MaSize"].Value);
+            SizeDTO SizeDuocChon = sizeBUS.getSizeById(maSize);
+            if (SizeDuocChon == null)
+            {
+                MessageBox.Show("Không tìm thấy size này!");
+                return;
+            }
+
+            // Tính toán vị trí click trong ô để xác định nút
+            Rectangle cellBounds = DGVSize.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            int padding = 5;
+            int totalButtons = 3;
+            int buttonWidth = (cellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
+            // e.X đã là toạ độ tương đối trong cell, không trừ cellBounds.Left
+            int clickX = e.X;
+
+            int startSua = padding;
+            int startXoa = startSua + buttonWidth + padding;
+            int startXem = startXoa + buttonWidth + padding;
+            
+
 
         }
     }
