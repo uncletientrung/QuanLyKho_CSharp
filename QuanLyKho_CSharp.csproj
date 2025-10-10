@@ -346,6 +346,12 @@
     <Compile Include="GUI\TaiKhoan\UpdateTaiKhoanForm.Designer.cs">
       <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongKe\ThongKeGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\ThongKeGUI.Designer.cs">
+      <DependentUpon>ThongKeGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\ChatLieu\AddChatLieuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +473,9 @@
       <DependentUpon>UpdateSizeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\component\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helper\component\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helper\ScreenSize.cs" />
@@ -605,6 +614,9 @@
     <EmbeddedResource Include="GUI\SanPham\SanPhamGUI.resx">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\ThongKeGUI.resx">
+      <DependentUpon>ThongKeGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\ChatLieu\AddChatLieuForm.resx">
       <DependentUpon>AddChatLieuForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -700,6 +712,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Test_Connection.resx">
       <DependentUpon>Test_Connection.cs</DependentUpon>
@@ -765,6 +778,7 @@
     <Content Include="images\stocks\ao3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\stocks\no_image.png" />
     <Content Include="images\ui.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

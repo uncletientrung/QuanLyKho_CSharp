@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using QuanLyKho_CSharp.GUI.ThongTin.Loai;
+using QuanLyKho_CSharp.GUI.ThongKe;
 using QuanLyKho_CSharp.GUI.ThongTin.Size;
 
 namespace QuanLyKho_CSharp
@@ -305,6 +306,9 @@ namespace QuanLyKho_CSharp
 
         }
 
-        
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ThongKeGUI(), btnBaoCao);
+        }
     }
 }
