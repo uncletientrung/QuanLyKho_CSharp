@@ -219,6 +219,12 @@
     <Compile Include="GUI\KhachHang\AddKhachHangForm.Designer.cs">
       <DependentUpon>AddKhachHangForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KhachHang\DetailKhachHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\DetailKhachHangForm.Designer.cs">
+      <DependentUpon>DetailKhachHangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KhachHang\KhachHangGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -645,6 +651,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\DeleteKhachHangForm.resx">
       <DependentUpon>DeleteKhachHangForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\DetailKhachHangForm.resx">
+      <DependentUpon>DetailKhachHangForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>

@@ -143,13 +143,11 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
                         refreshDataGridView(khBUS.getListKH());
                     }
                 }
-                //else
-                //{
-                //    DetailNhanVienForm detailNV = new DetailNhanVienForm(NhanVienDuocChon);
-                //    detailNV.ShowDialog();
-
-
-                //}
+                else
+                {
+                    DetailKhachHangForm detailKH = new DetailKhachHangForm(KhachHangDuocChon);
+                    detailKH.ShowDialog();
+                }
 
             }
 
