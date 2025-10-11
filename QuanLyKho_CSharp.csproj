@@ -213,6 +213,12 @@
     <Compile Include="GUI\HoanHang\XacNhanHoanHang.Designer.cs">
       <DependentUpon>XacNhanHoanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KhachHang\AddKhachHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\AddKhachHangForm.Designer.cs">
+      <DependentUpon>AddKhachHangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KhachHang\KhachHangGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -441,11 +447,29 @@
     <Compile Include="GUI\ThongTin\KhuVuc\AddKhuVucForm.Designer.cs">
       <DependentUpon>AddKhuVucForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\DeleteKhuVucForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\DeleteKhuVucForm.Designer.cs">
+      <DependentUpon>DeleteKhuVucForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\DetailKhuVucForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\DetailKhuVucForm.Designer.cs">
+      <DependentUpon>DetailKhuVucForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\KhuVuc\KhuVucGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\ThongTin\KhuVuc\KhuVucGUI.Designer.cs">
       <DependentUpon>KhuVucGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\UpdateKhuVucForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\UpdateKhuVucForm.Designer.cs">
+      <DependentUpon>UpdateKhuVucForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThongTin\Loai\AddLoaiForm.cs">
       <SubType>Form</SubType>
@@ -604,6 +628,9 @@
     <EmbeddedResource Include="GUI\HoanHang\LuaChonSPHoanHangGUI.resx">
       <DependentUpon>LuaChonSPHoanHangGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\AddKhachHangForm.resx">
+      <DependentUpon>AddKhachHangForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -718,8 +745,17 @@
     <EmbeddedResource Include="GUI\ThongTin\KhuVuc\AddKhuVucForm.resx">
       <DependentUpon>AddKhuVucForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\KhuVuc\DeleteKhuVucForm.resx">
+      <DependentUpon>DeleteKhuVucForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\KhuVuc\DetailKhuVucForm.resx">
+      <DependentUpon>DetailKhuVucForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\KhuVuc\KhuVucGUI.resx">
       <DependentUpon>KhuVucGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\KhuVuc\UpdateKhuVucForm.resx">
+      <DependentUpon>UpdateKhuVucForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\Loai\AddLoaiForm.resx">
       <DependentUpon>AddLoaiForm.cs</DependentUpon>

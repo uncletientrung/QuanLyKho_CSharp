@@ -78,7 +78,40 @@ namespace QuanLyKho_CSharp.BUS
             {
                 listKVK.Add(kvk);
             }
-            return result; // Sửa: return result thay vì luôn return true
+            return result;
+        }
+
+        public Boolean removeKhuVuc(int maKho)
+        {
+            KhuVucKhoDTO kvkXoa = khuVucKhoDAO.SelectById(maKho);
+            Boolean result = khuVucKhoDAO.Delete(maKho) != 0;
+            if (result)
+            {
+                listKVK.Remove(kvkXoa);
+            }
+            return result;
+        }
+
+        public Boolean updateKhuVuc(KhuVucKhoDTO kvk)
+        {
+            Boolean result = khuVucKhoDAO.Update(kvk) != 0;
+            if (result)
+            {
+                KhuVucKhoDTO kvkCapNhat = listKVK.FirstOrDefault(k => k.Makhuvuc == kvk.Makhuvuc);
+                if (kvkCapNhat != null)
+                {
+                    kvkCapNhat.Tenkhuvuc = kvk.Tenkhuvuc;
+                    kvkCapNhat.Diachi = kvk.Diachi;
+                    kvkCapNhat.Sdt = kvk.Sdt;
+                    kvkCapNhat.Email = kvk.Email;
+                }
+            }
+            return result;
+        }
+
+        public KhuVucKhoDTO getKVKById(int maKho)
+        {
+            return khuVucKhoDAO.SelectById(maKho);
         }
 
 
