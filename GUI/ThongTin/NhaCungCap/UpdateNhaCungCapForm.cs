@@ -52,41 +52,48 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                              MessageBoxButtons.OK,
                              MessageBoxIcon.Error
                          );
+                    return; 
+                }
+
+                string email = txtEmail.Text.Trim();
+                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                if (!Regex.IsMatch(email, emailPattern) && email.Length > 0)
+                {
+                    MessageBox.Show(
+                             "Email không hợp lệ!",
+                             "Lỗi dữ liệu",
+                             MessageBoxButtons.OK,
+                             MessageBoxIcon.Error
+                         );
+                    return;
+                }
+
+                // Cập nhật thông tin
+                ncc.Tenncc = txtTenNhaCungCap.Text.Trim();
+                ncc.Sdt = txtSoDienThoai.Text.Trim();
+                ncc.Diachincc = txtDiaChi.Text.Trim();
+                ncc.Email = txtEmail.Text.Trim();
+                
+                Boolean result = nccBUS.updateNhaCungCap(ncc);
+                if (result)
+                {
+                    MessageBox.Show(
+                        "Cập nhật thông tin nhà cung cấp thành công!",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                    this.DialogResult = DialogResult.OK; 
+                    this.Close();
                 }
                 else
                 {
-                    string email = txtEmail.Text.Trim();
-                    string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-                    if (!Regex.IsMatch(email, emailPattern) && email.Length > 0)
-                    {
-                        MessageBox.Show(
-                                 "Email không hợp lệ!",
-                                 "Lỗi dữ liệu",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Error
-                             );
-                    }
-                    else
-                    {
-                        ncc.Tenncc = txtTenNhaCungCap.Text;
-                        ncc.Sdt = txtSoDienThoai.Text;
-                        ncc.Diachincc = txtDiaChi.Text;
-                        ncc.Email = txtEmail.Text;
-                        Boolean result = nccBUS.updateNhaCungCap(ncc);
-                        if (result)
-                        {
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show(
-                                "Cập nhật thông tin nhà cung cấp thất bại!",
-                                "Lỗi",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error
-                            );
-                        }
-                    }
+                    MessageBox.Show(
+                        "Cập nhật thông tin nhà cung cấp thất bại!",
+                        "Lỗi",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
                 }
             }
             else
@@ -104,6 +111,56 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         {
             this.DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblUpdateNCC_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenNhaCungCap_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoDienThoai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSoDienThoai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDiaChi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDiaChi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTenNhaCungCap_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

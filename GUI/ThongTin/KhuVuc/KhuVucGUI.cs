@@ -1,6 +1,7 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.GUI.ThongTin.Loai;
+using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,44 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
 
         private void DGVKhuVuc_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.ColumnIndex == DGVKhuVuc.Columns["Actions"].Index && e.RowIndex >= 0)
+            {
+                int buttonWidth = 50;
+                int padding = 5;
+                int totalButtons = 3;
+                int xRelative = e.Location.X;
 
+                // Vị trí các nút
+                int startSua = padding;
+                int startXoa = startSua + buttonWidth + padding;
+                int startXem = startXoa + buttonWidth + padding;
+
+                // Lấy thông tin khu vực kho được chọn
+                      int maKVK = int.Parse(DGVKhuVuc.Rows[e.RowIndex].Cells["MaKVK"].Value.ToString());
+                KhuVucKhoDTO KhuVucKhoDuocChon = kvkBUS.getKVKById(maKVK);
+
+                if (KhuVucKhoDuocChon == null)
+                {
+                    MessageBox.Show("Không tìm thấy khu vực kho này!");
+                    return;
+                }
+
+                if (xRelative >= startSua && xRelative < startSua + buttonWidth)
+                {
+                    UpdateKhuVucForm updateKVK = new UpdateKhuVucForm(KhuVucKhoDuocChon);
+                    updateKVK.ShowDialog();
+                    if (updateKVK.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView(kvkBUS.getKhuVucKhoList()); 
+                        AddSuccessNotification tb = new AddSuccessNotification();
+                        tb.Show();
+                    }
+                }
+
+
+
+
+            }
         }
 
         private void DGVKhuVuc_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
