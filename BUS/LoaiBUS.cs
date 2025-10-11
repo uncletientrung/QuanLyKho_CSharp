@@ -32,6 +32,10 @@ namespace QuanLyKho_CSharp.BUS
         {
             LoaiDTO loai;
             loai = loaiList.FirstOrDefault(l=> l.Maloai== sp.Maloai);
+            if (loai == null) 
+            {
+                return "Không xác định";
+            }
             return loai.Tenloai.ToString();
         }
 
@@ -68,7 +72,7 @@ namespace QuanLyKho_CSharp.BUS
             {
                 loaiList.Add(Loai);
             }
-            return true;
+            return result; 
         }
 
         public Boolean removeLoai(int maLoai)
