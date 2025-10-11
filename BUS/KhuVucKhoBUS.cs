@@ -81,37 +81,39 @@ namespace QuanLyKho_CSharp.BUS
             return result;
         }
 
-        public KhuVucKhoDTO getKVKById(int maKVK)
+        public Boolean removeKhuVuc(int maKho)
         {
-            return khuVucKhoDAO.SelectById(maKVK);
-        }
-
-        public Boolean updateKhuVuc(KhuVucKhoDTO kvkSua)
-        {
-            Boolean result = khuVucKhoDAO.Update(kvkSua) != 0;
-            if (result)
-            {
-                KhuVucKhoDTO kvk = listKVK.FirstOrDefault(x => x.Makhuvuc == kvkSua.Makhuvuc);
-                if (kvk != null)
-                {
-                    kvk.Tenkhuvuc = kvkSua.Tenkhuvuc;
-                    kvk.Diachi = kvkSua.Diachi;
-                    kvk.Sdt = kvkSua.Sdt;
-                    kvk.Email = kvkSua.Email;
-                }
-            }
-            return result;
-        }
-
-        public Boolean removeKhuVuc(int maKVK)
-        {
-            KhuVucKhoDTO kvkXoa = khuVucKhoDAO.SelectById(maKVK);
-            Boolean result = khuVucKhoDAO.Delete(maKVK) != 0;
+            KhuVucKhoDTO kvkXoa = khuVucKhoDAO.SelectById(maKho);
+            Boolean result = khuVucKhoDAO.Delete(maKho) != 0;
             if (result)
             {
                 listKVK.Remove(kvkXoa);
             }
             return result;
         }
+
+        public Boolean updateKhuVuc(KhuVucKhoDTO kvk)
+        {
+            Boolean result = khuVucKhoDAO.Update(kvk) != 0;
+            if (result)
+            {
+                KhuVucKhoDTO kvkCapNhat = listKVK.FirstOrDefault(k => k.Makhuvuc == kvk.Makhuvuc);
+                if (kvkCapNhat != null)
+                {
+                    kvkCapNhat.Tenkhuvuc = kvk.Tenkhuvuc;
+                    kvkCapNhat.Diachi = kvk.Diachi;
+                    kvkCapNhat.Sdt = kvk.Sdt;
+                    kvkCapNhat.Email = kvk.Email;
+                }
+            }
+            return result;
+        }
+
+        public KhuVucKhoDTO getKVKById(int maKho)
+        {
+            return khuVucKhoDAO.SelectById(maKho);
+        }
+
+
     }
 }

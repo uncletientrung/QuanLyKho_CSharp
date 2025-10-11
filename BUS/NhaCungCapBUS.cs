@@ -50,7 +50,7 @@ namespace QuanLyKho_CSharp.BUS
             {
                 listNCC.Add(NCC);
             }
-            return result; // Sửa: return result thay vì luôn return true
+            return true;
         }
         public int getAutoMaNCC()
         {

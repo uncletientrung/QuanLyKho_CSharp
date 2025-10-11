@@ -32,63 +32,8 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (txtTenKhuVucKho.Text.Length > 0)
-            {
-                string sdt = txtSoDienThoai.Text.Trim();
-                string pattern = @"^(0|\+84)(3[2-9]|5[2-9]|7[0|6-9]|8[1-9]|9[0-9])[0-9]{7}$";
-                if (!Regex.IsMatch(sdt, pattern))
-                {
-                    MessageBox.Show(
-                             "Số điện thoại không hợp lệ!",
-                             "Lỗi dữ liệu",
-                             MessageBoxButtons.OK,
-                             MessageBoxIcon.Error
-                         );
-                    return; // Thêm return để dừng execution
-                }
-
-                string email = txtEmail.Text.Trim();
-                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-                if (!Regex.IsMatch(email, emailPattern) && email.Length > 0)
-                {
-                    MessageBox.Show(
-                             "Email không hợp lệ!",
-                             "Lỗi dữ liệu",
-                             MessageBoxButtons.OK,
-                             MessageBoxIcon.Error
-                         );
-                    return; // Thêm return để dừng execution
-                }
-
-                // Cập nhật thông tin
-                kvk.Tenkhuvuc = txtTenKhuVucKho.Text.Trim();
-                kvk.Sdt = txtSoDienThoai.Text.Trim();
-                kvk.Diachi = txtDiaChi.Text.Trim();
-                kvk.Email = txtEmail.Text.Trim();
-                
-                Boolean result = kvkBUS.updateKhuVuc(kvk);
-                if (result)
-                {
-                    MessageBox.Show(
-                        "Cập nhật thông tin khu vực kho thành công!",
-                        "Thông báo",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-                    this.DialogResult = DialogResult.OK; // Thêm DialogResult.OK
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "Cập nhật thông tin khu vực kho thất bại!",
-                        "Lỗi",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
-            }
-            else
+            // Kiểm tra tên khu vực kho không được để trống
+            if (string.IsNullOrWhiteSpace(txtTenKhuVucKho.Text))
             {
                 MessageBox.Show(
                          "Vui lòng nhập tên khu vực kho!",
@@ -96,6 +41,75 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                          MessageBoxButtons.OK,
                          MessageBoxIcon.Error
                      );
+                return;
+            }
+
+            // Validate số điện thoại
+            string sdt = txtSoDienThoai.Text.Trim();
+            if (string.IsNullOrWhiteSpace(sdt))
+            {
+                MessageBox.Show(
+                         "Số điện thoại không được để trống!",
+                         "Lỗi dữ liệu",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error
+                     );
+                return;
+            }
+
+            // Sử dụng pattern linh hoạt hơn cho số điện thoại Việt Nam
+            string pattern = @"^(0|\+84)[0-9]{9,10}$";
+            if (!Regex.IsMatch(sdt, pattern))
+            {
+                MessageBox.Show(
+                         "Số điện thoại không hợp lệ! Vui lòng nhập số điện thoại 10-11 số bắt đầu bằng 0 hoặc +84.",
+                         "Lỗi dữ liệu",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error
+                     );
+                return;
+            }
+
+            // Validate email (chỉ khi có nhập email)
+            string email = txtEmail.Text.Trim();
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, emailPattern))
+            {
+                MessageBox.Show(
+                         "Email không hợp lệ!",
+                         "Lỗi dữ liệu",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error
+                     );
+                return;
+            }
+
+            // Cập nhật thông tin
+            kvk.Tenkhuvuc = txtTenKhuVucKho.Text.Trim();
+            kvk.Sdt = sdt;
+            kvk.Diachi = txtDiaChi.Text.Trim();
+            kvk.Email = email;
+            
+            Boolean result = kvkBUS.updateKhuVuc(kvk);
+            if (result)
+            {
+                MessageBox.Show(
+                    "Cập nhật thông tin khu vực kho thành công!",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Cập nhật thông tin khu vực kho thất bại!",
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 
