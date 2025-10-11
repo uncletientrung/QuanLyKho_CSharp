@@ -69,19 +69,19 @@ namespace QuanLyKho_CSharp.BUS
             {
                 sizeList.Add(size);
             }
-            return true;
+            return result; 
         }
 
-        //public Boolean removeSize(int maSize)
-        //{
-        //    SizeDTO sizeXoa = sizeDAO.SelectById(maSize);
-        //    Boolean result = sizeDAO.Delete(maSize);
-        //    if (result) 
-        //    {
-        //        sizeList.Remove(sizeXoa);
-        //    }
-        //    return true;
-        //}
+        public Boolean removeSize(int maSize)
+        {
+            SizeDTO sizeXoa = sizeDAO.SelectById(maSize);
+            Boolean result = sizeDAO.Delete(maSize) != 0;
+            if (result)
+            {
+                sizeList.Remove(sizeXoa);
+            }
+            return result; 
+        }
 
         public Boolean updateSize(SizeDTO sizeSua)
         {

@@ -53,6 +53,34 @@ namespace QuanLyKho_CSharp.BUS
 
         }
 
+        public int getAutoMaKVK()
+        {
+            return khuVucKhoDAO.GetAutoIncrement();
+        }
+
+        public BindingList<KhuVucKhoDTO> SearchKho(string search)
+        {
+            List<KhuVucKhoDTO> result = listKVK.Where(kvk =>
+                kvk.Makhuvuc.ToString().ToLower().Contains(search) ||
+                kvk.Tenkhuvuc.ToLower().Contains(search) ||
+                kvk.Diachi.ToLower().Contains(search) ||
+                kvk.Sdt.ToLower().Contains(search) ||
+                kvk.Email.ToLower().Contains(search)
+            ).ToList();
+
+            return new BindingList<KhuVucKhoDTO>(result);
+        }
+
+        public Boolean insertKhuVuc(KhuVucKhoDTO kvk)
+        {
+            Boolean result = khuVucKhoDAO.Insert(kvk) != 0;
+            if (result)
+            {
+                listKVK.Add(kvk);
+            }
+            return result; // Sửa: return result thay vì luôn return true
+        }
+
 
     }
 }

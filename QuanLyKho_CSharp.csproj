@@ -421,6 +421,18 @@
     <Compile Include="GUI\ThongTin\ChatLieu\UpdateChatLieuForm.Designer.cs">
       <DependentUpon>UpdateChatLieuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\AddKhuVucForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\AddKhuVucForm.Designer.cs">
+      <DependentUpon>AddKhuVucForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\KhuVucGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongTin\KhuVuc\KhuVucGUI.Designer.cs">
+      <DependentUpon>KhuVucGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongTin\Loai\AddLoaiForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -689,6 +701,12 @@
     <EmbeddedResource Include="GUI\ThongTin\ChatLieu\UpdateChatLieuForm.resx">
       <DependentUpon>UpdateChatLieuForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\KhuVuc\AddKhuVucForm.resx">
+      <DependentUpon>AddKhuVucForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongTin\KhuVuc\KhuVucGUI.resx">
+      <DependentUpon>KhuVucGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongTin\Loai\AddLoaiForm.resx">
       <DependentUpon>AddLoaiForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -789,9 +807,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GUI\ThongTin\KhuVuc\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="images\icon\account.png" />
     <Content Include="images\icon\catalog.png" />
