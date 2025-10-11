@@ -27,13 +27,20 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // add phiếu kiểm kê
         private void btn_addPhieuKiemKe(object sender, EventArgs e)
         {
-            using (var addForm = new AddPhieuKiemKeForm())
+            string currentUserName = QuanLyKho_CSharp.frmMain.CurrentUser?.Tendangnhap ?? "unknown";
+            var addForm = new AddPhieuKiemKeForm(currentUserName);
+
+            addForm.TopLevel = false;
+            addForm.FormBorderStyle = FormBorderStyle.None;
+            addForm.Dock = DockStyle.Fill;
+
+            var mainForm = this.ParentForm as frmMain;
+            if (mainForm != null)
             {
-                addForm.FormBorderStyle = FormBorderStyle.FixedDialog;
-                addForm.StartPosition = FormStartPosition.CenterParent;
-                addForm.MaximizeBox = false;
-                addForm.MinimizeBox = false;
-                addForm.ShowDialog(this);
+                mainForm.Controls["pnlBody"].Controls.Clear();
+                mainForm.Controls["pnlBody"].Controls.Add(addForm);
+                addForm.BringToFront();
+                addForm.Show();
             }
         }
         // export excel
