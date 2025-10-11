@@ -136,64 +136,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
 
         private void DGVNhaCungCap_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex == DGVNhaCungCap.Columns["Actions"].Index && e.RowIndex >= 0)
-            // Nếu cell thuộc cột actions và không phải row header (-1 là header) thì bắt đầu vẽ
-            {
-                e.PaintBackground(e.CellBounds, true);
-                int padding = 5;
-                int totalButtons = 3;
-                int buttonWidth = (e.CellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
-                Rectangle btnSua = new Rectangle(e.CellBounds.Left + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
-                Rectangle btnXoa = new Rectangle(btnSua.Right + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
-                Rectangle btnXem = new Rectangle(btnXoa.Right + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
-                // Vẽ nút lên cell
-                // ButtonRenderer.DrawButton(Đối tượng vẽ lên, vị trí và kích thước vẽ, "Text hiển thị",
-                //                          Font chữ, false/true không phải nút đang hover, Trạng thái nút bình thường);
-
-                // Giữ lại giao diện nút nhưng không vẽ văn bản
-                ButtonRenderer.DrawButton(e.Graphics, btnXem, "", this.Font, false, PushButtonState.Normal);
-                ButtonRenderer.DrawButton(e.Graphics, btnSua, "", this.Font, false, PushButtonState.Normal);
-                ButtonRenderer.DrawButton(e.Graphics, btnXoa, "", this.Font, false, PushButtonState.Normal);
-
-                // Chèn hình vào nút
-                try
-                {
-                    // Tải hình ảnh từ thư mục image
-                    Image imgSua = Image.FromFile("images\\icon\\edit.png");
-                    Image imgXoa = Image.FromFile("images\\icon\\remove.png");
-                    Image imgXem = Image.FromFile("images\\icon\\detail.png");
-
-                    int targetWidth = 24;
-                    int targetHeight = 24;
-
-                    // Vẽ hình ảnh với kích thước 32x32, căn giữa nút
-                    e.Graphics.DrawImage(imgSua, new Rectangle(
-                        btnSua.Left + (btnSua.Width - targetWidth) / 2 + 3,
-                        btnSua.Top + (btnSua.Height - targetHeight) / 2 + 3,
-                        targetWidth - 5,
-                        targetHeight - 5));
-                    e.Graphics.DrawImage(imgXem, new Rectangle(
-                        btnXem.Left + (btnXem.Width - targetWidth) / 2,
-                        btnXem.Top + (btnXem.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-                    e.Graphics.DrawImage(imgXoa, new Rectangle(
-                        btnXoa.Left + (btnXoa.Width - targetWidth) / 2,
-                        btnXoa.Top + (btnXoa.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-
-                    imgXem.Dispose();
-                    imgSua.Dispose();
-                    imgXoa.Dispose();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi tải hình ảnh: {ex.Message}");
-                }
-                e.Handled = true; // Ngăn DataGridView không vẽ thêm trì đè lên nữa
-            }
+            
         }
 
         private void DGVNhaCungCap_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -254,6 +197,16 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                 AddSuccessNotification tb = new AddSuccessNotification();
                 tb.Show();
             }
+        }
+
+        private void DGVNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DGVNhaCUngCap_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+
         }
     }
 }
