@@ -35,10 +35,17 @@ namespace QuanLyKho_CSharp.BUS
 
             return "Không tìm thấy";
         }
+
+        public KhachHangDTO getKHById(int maKH)
+        {
+            KhachHangDTO kh = khDAO.SelectById(maKH);
+            return kh;
+        }
+
         public Boolean removeKhachHang(int maKH) 
         {
             KhachHangDTO khXoa=khDAO.SelectById(maKH);
-            Boolean result = khDAO.Delete(maKH) !=0;
+            Boolean result = khDAO.Delete(maKH) != 0;
             if (result)
             {
                 listKH.Remove(khXoa);
@@ -63,7 +70,7 @@ namespace QuanLyKho_CSharp.BUS
 
         public Boolean updateKhachHang(KhachHangDTO khSua)
         {
-            Boolean result = khDAO.Update(khSua) !=0;
+            Boolean result = khDAO.Update(khSua) != 0;
             if (result)
             {
                 foreach(KhachHangDTO kh in listKH)
@@ -78,7 +85,7 @@ namespace QuanLyKho_CSharp.BUS
                     }
                 }
             }
-            return true;
+            return result;
         }
 
         public BindingList<KhachHangDTO> SearchKhachHang(string search)

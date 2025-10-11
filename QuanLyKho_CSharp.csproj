@@ -211,6 +211,18 @@
     <Compile Include="GUI\KhachHang\KhachHangGUI.Designer.cs">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KhachHang\DeleteKhachHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\DeleteKhachHangForm.Designer.cs">
+      <DependentUpon>DeleteKhachHangForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\KhachHang\UpdateKhachHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\UpdateKhachHangForm.Designer.cs">
+      <DependentUpon>UpdateKhachHangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KiemKe\AddPhieuKiemKeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -617,8 +629,14 @@
     <EmbeddedResource Include="GUI\KhachHang\AddKhachHangForm.resx">
       <DependentUpon>AddKhachHangForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\DeleteKhachHangForm.resx">
+      <DependentUpon>DeleteKhachHangForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\UpdateKhachHangForm.resx">
+      <DependentUpon>UpdateKhachHangForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\AddPhieuKiemKeForm.resx">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>

@@ -85,8 +85,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
             int padding = 5;
             int totalButtons = 3;
             int buttonWidth = (cellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
-            // e.X đã là toạ độ tương đối trong cell, không trừ cellBounds.Left
-            int clickX = e.X;
+            int clickX = e.X - cellBounds.Left;
 
             int startSua = padding;
             int startXoa = startSua + buttonWidth + padding;
