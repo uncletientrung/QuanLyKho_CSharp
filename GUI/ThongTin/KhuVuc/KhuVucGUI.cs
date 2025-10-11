@@ -81,11 +81,22 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             btn.UseColumnTextForButtonValue = true; // true để mỗi row đều hiện
             DGVKhuVuc.Columns.Add(btn);
             DGVKhuVuc.Columns["Actions"].FillWeight = 100;
+
+            refreshDataGridView(listKhuVuc);
         }
 
         private void KhuVucGUI_Shown(object sender, EventArgs e)
         {
 
+        }
+
+        private void refreshDataGridView(BindingList<KhuVucKhoDTO> list)
+        {
+            DGVKhuVuc.Rows.Clear();
+            foreach (KhuVucKhoDTO kvk in list)
+            {
+                DGVKhuVuc.Rows.Add(kvk.Makhuvuc, kvk.Tenkhuvuc, kvk.Diachi, kvk.Sdt, kvk.Email);
+            }
         }
     }
 }
