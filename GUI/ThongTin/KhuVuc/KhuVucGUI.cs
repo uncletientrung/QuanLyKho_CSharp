@@ -1,5 +1,6 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.ThongTin.Loai;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -96,6 +97,34 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             foreach (KhuVucKhoDTO kvk in list)
             {
                 DGVKhuVuc.Rows.Add(kvk.Makhuvuc, kvk.Tenkhuvuc, kvk.Diachi, kvk.Sdt, kvk.Email);
+            }
+        }
+
+        private void txSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txSearch.Text != "Nhập mã, tên hoặc số điện thoại của khu vực kho để tìm")
+            {
+                string keyword = txSearch.Text.Trim().ToLower();
+                BindingList<KhuVucKhoDTO> listSearch = kvkBUS.SearchKho(keyword); // Sửa: dùng KhuVucKhoDTO thay vì LoaiDTO
+                refreshDataGridView(listSearch);
+            }
+        }
+
+        private void txSearch_Enter(object sender, EventArgs e)
+        {
+            if(txSearch.Text == "Nhập mã, tên hoặc số điện thoại của khu vực kho để tìm")
+            {
+                txSearch.Text = "";
+                txSearch.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txSearch.Text))
+            {
+                txSearch.Text = "Nhập mã, tên hoặc số điện thoại Khu vực kho để tìm";
+                txSearch.ForeColor = Color.Gray;
             }
         }
     }

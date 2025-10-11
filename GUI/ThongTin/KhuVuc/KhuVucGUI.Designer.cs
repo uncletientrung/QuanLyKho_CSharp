@@ -120,6 +120,9 @@
             this.txSearch.Name = "txSearch";
             this.txSearch.Size = new System.Drawing.Size(307, 22);
             this.txSearch.TabIndex = 11;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
+            this.txSearch.Enter += new System.EventHandler(this.txSearch_Enter);
+            this.txSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // pictureBox1
             // 
