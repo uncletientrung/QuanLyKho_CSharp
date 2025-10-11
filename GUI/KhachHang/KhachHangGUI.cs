@@ -111,6 +111,45 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
 
         private void DGVKhachHang_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.ColumnIndex == DGVKhachHang.Columns["Actions"].Index && e.RowIndex >= 0)
+            {
+                int buttonWidth = 50;
+                int padding = 5;
+                int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
+                
+                int maKH = int.Parse(DGVKhachHang.Rows[e.RowIndex].Cells["MaKH"].Value.ToString());
+                KhachHangDTO KhachHangDuocChon = khBUS.getKHById(maKH);
+                if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
+                {
+                    UpdateKhachHangForm updateKH = new UpdateKhachHangForm(KhachHangDuocChon);
+                    updateKH.ShowDialog();
+                    if (updateKH.DialogResult == DialogResult.OK)
+                    {
+                        refreshDataGridView(khBUS.getListKH());
+                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                        tb.Show();
+                    }
+
+                }
+                else if (xRel < padding * 2 + buttonWidth * 2)
+                {
+                    DeleteKhachHangForm deleteKH = new DeleteKhachHangForm(KhachHangDuocChon);
+                    deleteKH.ShowDialog();
+                    if (deleteKH.DialogResult == DialogResult.OK)
+                    {
+
+                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                        tb.Show();
+                        refreshDataGridView(khBUS.getListKH());
+                    }
+                }
+                else
+                {
+                    DetailKhachHangForm detailKH = new DetailKhachHangForm(KhachHangDuocChon);
+                    detailKH.ShowDialog();
+                }
+
+            }
 
         }
 
@@ -170,11 +209,10 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
 
             foreach (KhachHangDTO kh in listRefresh.Where(kh => kh.Trangthai == 1))
             {
-                DGVKhachHang.Rows.Add(kh.Makh, kh.Tenkhachhang, kh.Sdt, kh.Sdt
+                DGVKhachHang.Rows.Add(kh.Makh, kh.Tenkhachhang, kh.Email, kh.Sdt
                 , kh.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
             }
             DGVKhachHang.ClearSelection();
-
         }
 
         private void roundedButton2_Click(object sender, EventArgs e)

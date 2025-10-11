@@ -39,5 +39,15 @@ namespace QuanLyKho_CSharp.GUI.NhanVien
             string name = nv.Tennv.ToString();
             lbInfo.Text = $"Bạn có chắc chắn muốn xóa {name} không?";
         }
+
+        private void lbInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

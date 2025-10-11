@@ -105,5 +105,70 @@ namespace QuanLyKho_CSharp.GUI.NhanVien
             this.DialogResult= DialogResult.Cancel;
             Close();
         }
+
+        private void lbDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtnGay_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtnFemale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtnMale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbPhone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbSex_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbSex_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbAddNhanVien_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

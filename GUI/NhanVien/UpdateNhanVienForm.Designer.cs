@@ -81,6 +81,7 @@
             this.lbDate.Size = new System.Drawing.Size(79, 20);
             this.lbDate.TabIndex = 25;
             this.lbDate.Text = "Ngày sinh";
+            this.lbDate.Click += new System.EventHandler(this.lbDate_Click);
             // 
             // rbtnGay
             // 
@@ -91,6 +92,7 @@
             this.rbtnGay.TabIndex = 24;
             this.rbtnGay.Text = "Khác";
             this.rbtnGay.UseVisualStyleBackColor = true;
+            this.rbtnGay.CheckedChanged += new System.EventHandler(this.rbtnGay_CheckedChanged);
             // 
             // rbtnFemale
             // 
@@ -101,6 +103,7 @@
             this.rbtnFemale.TabIndex = 23;
             this.rbtnFemale.Text = "Nữ";
             this.rbtnFemale.UseVisualStyleBackColor = true;
+            this.rbtnFemale.CheckedChanged += new System.EventHandler(this.rbtnFemale_CheckedChanged);
             // 
             // rbtnMale
             // 
@@ -113,6 +116,7 @@
             this.rbtnMale.TabStop = true;
             this.rbtnMale.Text = "Nam";
             this.rbtnMale.UseVisualStyleBackColor = true;
+            this.rbtnMale.CheckedChanged += new System.EventHandler(this.rbtnMale_CheckedChanged);
             // 
             // dtpDate
             // 
@@ -122,6 +126,7 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(128, 20);
             this.dtpDate.TabIndex = 21;
+            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // lbPhone
             // 
@@ -132,6 +137,7 @@
             this.lbPhone.Size = new System.Drawing.Size(100, 20);
             this.lbPhone.TabIndex = 20;
             this.lbPhone.Text = "Số điện thoại";
+            this.lbPhone.Click += new System.EventHandler(this.lbPhone_Click);
             // 
             // grbSex
             // 
@@ -140,6 +146,7 @@
             this.grbSex.Size = new System.Drawing.Size(239, 47);
             this.grbSex.TabIndex = 28;
             this.grbSex.TabStop = false;
+            this.grbSex.Enter += new System.EventHandler(this.grbSex_Enter);
             // 
             // txbPhone
             // 
@@ -148,6 +155,7 @@
             this.txbPhone.Name = "txbPhone";
             this.txbPhone.Size = new System.Drawing.Size(262, 29);
             this.txbPhone.TabIndex = 19;
+            this.txbPhone.TextChanged += new System.EventHandler(this.txbPhone_TextChanged);
             // 
             // lbSex
             // 
@@ -158,6 +166,7 @@
             this.lbSex.Size = new System.Drawing.Size(69, 20);
             this.lbSex.TabIndex = 18;
             this.lbSex.Text = "Giới tính";
+            this.lbSex.Click += new System.EventHandler(this.lbSex_Click);
             // 
             // lbName
             // 
@@ -169,6 +178,7 @@
             this.lbName.Size = new System.Drawing.Size(78, 20);
             this.lbName.TabIndex = 17;
             this.lbName.Text = "Họ và Tên";
+            this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // txbName
             // 
@@ -179,6 +189,7 @@
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(262, 31);
             this.txbName.TabIndex = 16;
+            this.txbName.TextChanged += new System.EventHandler(this.txbName_TextChanged);
             // 
             // panelTop
             // 
@@ -190,6 +201,7 @@
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(448, 72);
             this.panelTop.TabIndex = 15;
+            this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop_Paint);
             // 
             // lbAddNhanVien
             // 
@@ -202,6 +214,7 @@
             this.lbAddNhanVien.TabIndex = 0;
             this.lbAddNhanVien.Text = "Sửa Nhân Viên";
             this.lbAddNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbAddNhanVien.Click += new System.EventHandler(this.lbAddNhanVien_Click);
             // 
             // UpdateNhanVienForm
             // 
