@@ -1,4 +1,6 @@
-﻿namespace QuanLyKho_CSharp.GUI.ThongKe
+﻿using System.Windows.Forms;
+
+namespace QuanLyKho_CSharp.GUI.ThongKe
 {
     partial class ThongKeGUI
     {
@@ -39,6 +41,8 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            
+
             // 
             // panel1
             // 
