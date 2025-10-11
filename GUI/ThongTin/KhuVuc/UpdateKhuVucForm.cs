@@ -45,22 +45,22 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             }
 
             // Validate số điện thoại
-            string sdt = txtSoDienThoai.Text.Trim();
+                string sdt = txtSoDienThoai.Text.Trim();
             if (string.IsNullOrWhiteSpace(sdt))
-            {
-                MessageBox.Show(
+                {
+                    MessageBox.Show(
                          "Số điện thoại không được để trống!",
-                         "Lỗi dữ liệu",
-                         MessageBoxButtons.OK,
-                         MessageBoxIcon.Error
-                     );
+                             "Lỗi dữ liệu",
+                             MessageBoxButtons.OK,
+                             MessageBoxIcon.Error
+                         );
                 return;
-            }
+                }
 
             // Sử dụng pattern linh hoạt hơn cho số điện thoại Việt Nam
             string pattern = @"^(0|\+84)[0-9]{9,10}$";
             if (!Regex.IsMatch(sdt, pattern))
-            {
+                {
                 MessageBox.Show(
                          "Số điện thoại không hợp lệ! Vui lòng nhập số điện thoại 10-11 số bắt đầu bằng 0 hoặc +84.",
                          "Lỗi dữ liệu",
@@ -71,18 +71,18 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             }
 
             // Validate email (chỉ khi có nhập email)
-            string email = txtEmail.Text.Trim();
-            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                    string email = txtEmail.Text.Trim();
+                    string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, emailPattern))
-            {
-                MessageBox.Show(
-                         "Email không hợp lệ!",
-                         "Lỗi dữ liệu",
-                         MessageBoxButtons.OK,
-                         MessageBoxIcon.Error
-                     );
+                    {
+                        MessageBox.Show(
+                                 "Email không hợp lệ!",
+                                 "Lỗi dữ liệu",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Error
+                             );
                 return;
-            }
+                    }
 
             // Cập nhật thông tin
             kvk.Tenkhuvuc = txtTenKhuVucKho.Text.Trim();
@@ -90,15 +90,15 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             kvk.Diachi = txtDiaChi.Text.Trim();
             kvk.Email = email;
             
-            Boolean result = kvkBUS.updateKhuVuc(kvk);
-            if (result)
-            {
-                MessageBox.Show(
+                        Boolean result = kvkBUS.updateKhuVuc(kvk);
+                        if (result)
+                        {
+                            MessageBox.Show(
                     "Cập nhật thông tin khu vực kho thành công!",
                     "Thông báo",
-                    MessageBoxButtons.OK,
+                                MessageBoxButtons.OK,
                     MessageBoxIcon.Information
-                );
+                            );
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -107,9 +107,9 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                 MessageBox.Show(
                     "Cập nhật thông tin khu vực kho thất bại!",
                     "Lỗi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error
+                     );
             }
         }
 

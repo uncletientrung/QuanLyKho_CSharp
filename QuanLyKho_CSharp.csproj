@@ -199,6 +199,12 @@
     <Compile Include="GUI\HoanHang\XacNhanHoanHang.Designer.cs">
       <DependentUpon>XacNhanHoanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KhachHang\AddKhachHangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KhachHang\AddKhachHangForm.Designer.cs">
+      <DependentUpon>AddKhachHangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KhachHang\KhachHangGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -607,6 +613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\HoanHang\LuaChonSPHoanHangGUI.resx">
       <DependentUpon>LuaChonSPHoanHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KhachHang\AddKhachHangForm.resx">
+      <DependentUpon>AddKhachHangForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\KhachHangGUI.resx">
       <DependentUpon>KhachHangGUI.cs</DependentUpon>
