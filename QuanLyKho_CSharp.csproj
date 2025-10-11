@@ -101,6 +101,7 @@
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -131,6 +132,7 @@
     <Compile Include="BUS\SizeBUS.cs" />
     <Compile Include="BUS\TaiKhoanBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
+    <Compile Include="BUS\ThongKeBUS.cs" />
     <Compile Include="DAO\ChatLieuDAO.cs" />
     <Compile Include="DAO\ChiTietHoanHangDAO.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
@@ -346,6 +348,42 @@
     </Compile>
     <Compile Include="GUI\TaiKhoan\UpdateTaiKhoanForm.Designer.cs">
       <DependentUpon>UpdateTaiKhoanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\GUITongQuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\GUITongQuan.Designer.cs">
+      <DependentUpon>GUITongQuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCDoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCDoanhThu.Designer.cs">
+      <DependentUpon>UCDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCKhachHang.Designer.cs">
+      <DependentUpon>UCKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCNhaCungCap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCNhaCungCap.Designer.cs">
+      <DependentUpon>UCNhaCungCap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCTongQuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCTongQuan.Designer.cs">
+      <DependentUpon>UCTongQuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCTonKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\UCTonKho.Designer.cs">
+      <DependentUpon>UCTonKho.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThongKe\ThongKeGUI.cs">
       <SubType>Form</SubType>
@@ -635,6 +673,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\SanPhamGUI.resx">
       <DependentUpon>SanPhamGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\GUITongQuan.resx">
+      <DependentUpon>GUITongQuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\UCDoanhThu.resx">
+      <DependentUpon>UCDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\UCKhachHang.resx">
+      <DependentUpon>UCKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\UCNhaCungCap.resx">
+      <DependentUpon>UCNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\UCTongQuan.resx">
+      <DependentUpon>UCTongQuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\UCTonKho.resx">
+      <DependentUpon>UCTonKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongKe\ThongKeGUI.resx">
       <DependentUpon>ThongKeGUI.cs</DependentUpon>
