@@ -229,7 +229,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
             if (DGVSize.Columns[e.ColumnIndex].Name != "Actions")
                 return;
 
-            // Lấy thông tin Loại được chọn (sử dụng đúng tên cột: MaLoai)
+            // Lấy thông tin Size được chọn
             int maSize = Convert.ToInt32(DGVSize.Rows[e.RowIndex].Cells["MaSize"].Value);
             SizeDTO SizeDuocChon = sizeBUS.getSizeById(maSize);
             if (SizeDuocChon == null)
@@ -243,16 +243,15 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
             int padding = 5;
             int totalButtons = 3;
             int buttonWidth = (cellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
-            // e.X đã là toạ độ tương đối trong cell, không trừ cellBounds.Left
             int clickX = e.X;
 
             int startSua = padding;
             int startXoa = startSua + buttonWidth + padding;
             int startXem = startXoa + buttonWidth + padding;
 
-            int xRelative = e.Location.X;
+            // Tính toán vị trí tương đối so với cell
+            int xRelative = clickX;
 
-            // --- Xác định nút được click ---
             if (xRelative >= startSua && xRelative < startSua + buttonWidth)
             {
                 // Nút Sửa
@@ -264,24 +263,23 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
                     new AddSuccessNotification().Show();
                 }
             }
-            //else if (xRelative >= startXoa && xRelative < startXoa + buttonWidth)
-            //{
-            //    // Nút Xoá
-            //    DeleteChatLieuForm deleteCL = new DeleteChatLieuForm(chatLieuDuocChon);
-            //    deleteCL.ShowDialog();
-            //    if (deleteCL.DialogResult == DialogResult.OK)
-            //    {
-            //        new DeleteSuccessNotification().Show();
-            //        refreshDataGridView(clBUS.getChatLieuList());
-            //    }
-            //}
-            //else if (xRelative >= startXem && xRelative < startXem + buttonWidth)
-            //{
-            //    // Nút Xem chi tiết
-            //    DetailChatLieuForm detailCL = new DetailChatLieuForm(chatLieuDuocChon);
-            //    detailCL.ShowDialog();
-            //}
-
+            else if (xRelative >= startXoa && xRelative < startXoa + buttonWidth)
+            {
+                // Nút Xoá
+                DeleteSizeForm deleteSize = new DeleteSizeForm(SizeDuocChon);
+                deleteSize.ShowDialog();
+                if (deleteSize.DialogResult == DialogResult.OK)
+                {
+                    new DeleteSuccessNotification().Show();
+                    refreshDataGridView(sizeBUS.getSizeList());
+                }
+            }
+            else if (xRelative >= startXem && xRelative < startXem + buttonWidth)
+            {
+                // Nút Xem chi tiết
+                DetailSizeForm detailSize = new DetailSizeForm(SizeDuocChon);
+                detailSize.ShowDialog();
+            }
         }
 
 
