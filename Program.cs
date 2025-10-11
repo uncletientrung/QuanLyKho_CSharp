@@ -19,6 +19,11 @@ namespace QuanLyKho_CSharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            
+
             //Application.Run(new frmMain()); // Lười đăng nhập thì xài cái này
             while (true)
             {
