@@ -32,12 +32,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblDanhSachKhuVuc = new System.Windows.Forms.Label();
             this.btnExcel = new System.Windows.Forms.Button();
-            this.roundedButton2 = new RoundedButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txSearch = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblKhuVucGUI = new System.Windows.Forms.Label();
             this.DGVKhuVuc = new System.Windows.Forms.DataGridView();
+            this.roundedButton2 = new RoundedButton();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,21 +84,6 @@
             this.btnExcel.TabIndex = 15;
             this.btnExcel.Text = "Xuất Excel";
             this.btnExcel.UseVisualStyleBackColor = false;
-            // 
-            // roundedButton2
-            // 
-            this.roundedButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(209)))));
-            this.roundedButton2.FlatAppearance.BorderSize = 0;
-            this.roundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.roundedButton2.ForeColor = System.Drawing.Color.Black;
-            this.roundedButton2.Location = new System.Drawing.Point(378, 67);
-            this.roundedButton2.Name = "roundedButton2";
-            this.roundedButton2.Radius = 5;
-            this.roundedButton2.Size = new System.Drawing.Size(131, 24);
-            this.roundedButton2.TabIndex = 10;
-            this.roundedButton2.Text = "+ Thêm";
-            this.roundedButton2.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -158,6 +143,22 @@
             this.DGVKhuVuc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVKhuVuc_CellContentClick);
             this.DGVKhuVuc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGVKhuVuc_CellMouseClick);
             this.DGVKhuVuc.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DGVKhuVuc_CellPainting);
+            // 
+            // roundedButton2
+            // 
+            this.roundedButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(209)))));
+            this.roundedButton2.FlatAppearance.BorderSize = 0;
+            this.roundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundedButton2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.roundedButton2.ForeColor = System.Drawing.Color.Black;
+            this.roundedButton2.Location = new System.Drawing.Point(378, 67);
+            this.roundedButton2.Name = "roundedButton2";
+            this.roundedButton2.Radius = 5;
+            this.roundedButton2.Size = new System.Drawing.Size(131, 24);
+            this.roundedButton2.TabIndex = 10;
+            this.roundedButton2.Text = "+ Thêm";
+            this.roundedButton2.UseVisualStyleBackColor = false;
+            this.roundedButton2.Click += new System.EventHandler(this.roundedButton2_Click);
             // 
             // KhuVucGUI
             // 

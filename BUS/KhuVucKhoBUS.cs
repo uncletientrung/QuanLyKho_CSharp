@@ -53,6 +53,11 @@ namespace QuanLyKho_CSharp.BUS
 
         }
 
+        public int getAutoMaKVK()
+        {
+            return khuVucKhoDAO.GetAutoIncrement();
+        }
+
         public BindingList<KhuVucKhoDTO> SearchKho(string search)
         {
             List<KhuVucKhoDTO> result = listKVK.Where(kvk =>
@@ -64,6 +69,16 @@ namespace QuanLyKho_CSharp.BUS
             ).ToList();
 
             return new BindingList<KhuVucKhoDTO>(result);
+        }
+
+        public Boolean insertKhuVuc(KhuVucKhoDTO kvk)
+        {
+            Boolean result = khuVucKhoDAO.Insert(kvk) != 0;
+            if (result)
+            {
+                listKVK.Add(kvk);
+            }
+            return result; // Sửa: return result thay vì luôn return true
         }
 
 
