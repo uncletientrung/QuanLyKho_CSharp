@@ -100,9 +100,9 @@
             // picHinhanh
             // 
             this.picHinhanh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHinhanh.Location = new System.Drawing.Point(7, 23);
+            this.picHinhanh.Location = new System.Drawing.Point(7, 24);
             this.picHinhanh.Name = "picHinhanh";
-            this.picHinhanh.Size = new System.Drawing.Size(290, 264);
+            this.picHinhanh.Size = new System.Drawing.Size(290, 263);
             this.picHinhanh.TabIndex = 0;
             this.picHinhanh.TabStop = false;
             // 

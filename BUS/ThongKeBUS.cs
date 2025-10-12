@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DTO.ThongKeDTO;
+﻿using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.DTO.ThongKeDTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,8 @@ namespace QuanLyKho_CSharp.BUS
     {
         private PhieuNhapBUS phieuNhapBUS = new PhieuNhapBUS();
         private PhieuXuatBUS phieuXuatBUS = new PhieuXuatBUS();
+        private ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
+        private SanPhamBUS spBUS = new SanPhamBUS();
 
         public BindingList<ThongKeTungNgayTrongThangDTO> thongKe7NgayGanDay()
         {
@@ -35,6 +38,55 @@ namespace QuanLyKho_CSharp.BUS
             }
             return result;
         }
+
+        public List<(string TenSP, int TongSoLuong)> GetTop3SanPhamXuatNhieuNhatTrongThang()
+        {
+            // Lấy tháng hiện tại
+            DateTime now = DateTime.Now;
+            int thang = now.Month;
+            int nam = now.Year;
+
+            // Lấy danh sách phiếu xuất trong tháng hiện tại
+            var listPhieuXuat = phieuXuatBUS.getListPX()
+                .Where(px => px.Thoigiantao.Month == thang && px.Thoigiantao.Year == nam)
+                .ToList();
+
+            // Lấy danh sách chi tiết phiếu xuất
+            var listCTPX = ctpxBUS.getListCTPX();
+
+            // Join CTPX với PX theo MaPX để chỉ lấy chi tiết của các phiếu trong tháng này
+            var chiTietTrongThang = from ct in listCTPX
+                                    join px in listPhieuXuat
+                                    on ct.Maphieuxuat equals px.Maphieu
+                                    select ct;
+
+            // Gom nhóm theo mã sản phẩm và tính tổng số lượng xuất
+            var top3 = chiTietTrongThang
+                .GroupBy(ct => ct.Masp)
+                .Select(g => new
+                {
+                    MaSP = g.Key,
+                    TongSoLuong = g.Sum(x => x.Soluong)
+                })
+                .OrderByDescending(x => x.TongSoLuong)
+                .Take(3)
+                .ToList();
+
+            // Lấy tên sản phẩm từ BUS
+            var listSP = spBUS.getListSP();
+
+            // Ánh xạ sang dạng (TenSP, TongSoLuong)
+            var result = top3
+                .Select(t => (
+                    TenSP: listSP.FirstOrDefault(sp => sp.Masp == t.MaSP)?.Tensp ?? "Không xác định",
+                    TongSoLuong: t.TongSoLuong
+                ))
+                .ToList();
+
+            return result;
+        }
+
+
 
     }
 }
