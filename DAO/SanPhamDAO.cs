@@ -40,6 +40,15 @@ namespace QuanLyKho_CSharp.DAO
                          $"WHERE masp='{sp.Masp}'";
             return ConnectionHelper.getExecuteNonQuery(sql);
         }
+        // thêm hàm cập nhật số lượng tồn cho HoanHangBUS
+        public bool updateSoLuongTon(int maSP, int soLuongThem)
+        {
+            string sql = $"UPDATE sanpham SET soluong = soluong + {soLuongThem} WHERE masp = {maSP}";
+            int result = ConnectionHelper.getExecuteNonQuery(sql);
+            return result > 0;
+        }
+
+
         public int Delete(int masp)
         {
             string sql = $"DELETE from sanpham Where masp={masp}";

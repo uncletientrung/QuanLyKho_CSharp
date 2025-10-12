@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho_CSharp.GUI.PhieuNhap;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,26 +22,23 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.Load += new System.EventHandler(this.KiemKeGUI_Load);
             DGVKiemKe.CellPainting += DGVKiemKe_CellPainting;
             DGVKiemKe.CellMouseClick += DGVKiemKe_CellMouseClick;
+            LoadDataIntoGridView();
         }
 
         // header button
         // add phiếu kiểm kê
         private void btn_addPhieuKiemKe(object sender, EventArgs e)
         {
-            string currentUserName = QuanLyKho_CSharp.frmMain.CurrentUser?.Tendangnhap ?? "unknown";
-            var addForm = new AddPhieuKiemKeForm(currentUserName);
-
-            addForm.TopLevel = false;
-            addForm.FormBorderStyle = FormBorderStyle.None;
-            addForm.Dock = DockStyle.Fill;
-
-            var mainForm = this.ParentForm as frmMain;
+            frmMain mainForm = this.ParentForm as frmMain;
             if (mainForm != null)
             {
-                mainForm.Controls["pnlBody"].Controls.Clear();
-                mainForm.Controls["pnlBody"].Controls.Add(addForm);
-                addForm.BringToFront();
-                addForm.Show();
+                var method = mainForm.GetType().GetMethod("OpenChildForm",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (method != null)
+                {
+                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(), null });
+                }
             }
         }
         // export excel
@@ -77,6 +75,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             txSearch.Text = SearchPlaceholder;
             txSearch.GotFocus += txSearch_Enter;
             txSearch.LostFocus += txSearch_Leave;
+            LoadDataIntoGridView();
         }
         private void txSearch_Enter(object sender, EventArgs e)
         {
@@ -207,7 +206,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             DGVKiemKe.Columns["Actions"].Width = 100;
         }
 
-        private void LoadDataIntoGridView()
+        public void LoadDataIntoGridView()
         {
             DGVKiemKe.Rows.Clear();
             var list = QuanLyKho_CSharp.BUS.PhieuKiemKeBUS.Instance.GetAll();
@@ -347,3 +346,5 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private void pictureBox1_Click(object sender, EventArgs e) {}
     }
 }
+
+

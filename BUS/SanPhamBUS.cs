@@ -75,6 +75,17 @@ namespace QuanLyKho_CSharp.BUS
             return "Không tìm thấy";
         }
 
+        // thêm hàm này để sử lý logic riêng trong HoanHangGUI
+        public int getIDbyName(string tenSP)
+        {
+            SanPhamDTO sp = listSP.FirstOrDefault(x => x.Tensp.Equals(tenSP, StringComparison.OrdinalIgnoreCase));
+            if (sp != null)
+            {
+                return sp.Masp;
+            }
+            return -1;
+        }
+
         public Boolean updateSanPham(SanPhamDTO sp)
         {
             Boolean result = spDAO.Update(sp) != 0;
@@ -131,6 +142,15 @@ namespace QuanLyKho_CSharp.BUS
         //Sum: tính tổng số lượng trong từng nhóm
 
         //ToDictionary: tạo dictionary với key = tên loại, value = tổng số lượng
+
+
+
+
+        // thm hàm cập nhật số lượng tồn cho HoanHangBUS
+        public bool updateSoLuongTon(int maSP, int soLuongThem)
+        {
+            return spDAO.updateSoLuongTon(maSP, soLuongThem);
+        }
 
 
     }

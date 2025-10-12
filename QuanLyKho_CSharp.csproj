@@ -172,9 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\ChatLieuBUS.cs" />
+    <Compile Include="BUS\ChiTietHoanHangBUS.cs" />
     <Compile Include="BUS\ChiTietPhieuNhapBUS.cs" />
     <Compile Include="BUS\ChiTietPhieuXuatBUS.cs" />
     <Compile Include="BUS\DanhMucChucNangBUS.cs" />
+    <Compile Include="BUS\HoanHangBUS.cs" />
     <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\KhuVucKhoBUS.cs" />
     <Compile Include="BUS\LoaiBUS.cs" />
@@ -242,17 +244,11 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\NhaCungCapDTO.cs" />
-    <Compile Include="GUI\HoanHang\LuaChonSPHoanHangGUI.cs">
+    <Compile Include="GUI\HoanHang\HoanHangGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\HoanHang\LuaChonSPHoanHangGUI.Designer.cs">
-      <DependentUpon>LuaChonSPHoanHangGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\HoanHang\XacNhanHoanHang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\HoanHang\XacNhanHoanHang.Designer.cs">
-      <DependentUpon>XacNhanHoanHang.cs</DependentUpon>
+    <Compile Include="GUI\HoanHang\HoanHangGUI.Designer.cs">
+      <DependentUpon>HoanHangGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KhachHang\AddKhachHangForm.cs">
       <SubType>Form</SubType>
@@ -708,8 +704,8 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\HoanHang\LuaChonSPHoanHangGUI.resx">
-      <DependentUpon>LuaChonSPHoanHangGUI.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\HoanHang\HoanHangGUI.resx">
+      <DependentUpon>HoanHangGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KhachHang\AddKhachHangForm.resx">
       <DependentUpon>AddKhachHangForm.cs</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.GUI.HoanHang;
 using System;
@@ -125,6 +126,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                     }
                 }
             }
+
 
             dataGridView1.ClearSelection();
             FilterData();
@@ -368,13 +370,40 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             FilterData();
         }
 
+        private void dialogHoanHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["HoanHang"].Index)
+            {
+                int maPhieu = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["MaPhieu"].Value);
+
+                PhieuXuatDTO phieu = pxBUS.getPhieuXuatById(maPhieu);
+                string tenKH = khBUS.getNamebyID(phieu.Makh);
+                decimal tongTien = phieu.Tongtien;
+
+                ChiTietPhieuXuatBUS ctpnBUS = new ChiTietPhieuXuatBUS();
+                DataTable chiTiet = ctpnBUS.getChiTietByMaPhieu(maPhieu);
+
+                var dialog = new QuanLyKho_CSharp.GUI.HoanHang.HoanHang(maPhieu, tenKH, (int)phieu.Manv, tongTien, chiTiet);
+                dialog.ShowDialog();
+
+                // 🔄 Sau khi dialog đóng, reload lại danh sách phiếu xuất
+                LoadData();
+                LoadDataIntoGridView();
+            }
+        }
+
+
+
+
+
+
+
         // Các sự kiện khác
         private void panel2_Paint(object sender, PaintEventArgs e) { }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void panel4_Paint(object sender, PaintEventArgs e) { }
         private void txtSearchNV_Enter(object sender, EventArgs e) { }
         private void txtSearchNV_Leave(object sender, EventArgs e) { }

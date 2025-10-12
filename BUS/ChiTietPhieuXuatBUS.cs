@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+
 
 namespace QuanLyKho_CSharp.BUS
 {
@@ -66,5 +68,31 @@ namespace QuanLyKho_CSharp.BUS
         {
             return ctpxDAO.DeleteByMaPhieuXuatAndMaSP(maPhieuXuat, maSP) != 0;
         }
+
+
+
+        // thêm hàm để xử lý logic riêng trong HoanHangGUI
+        public DataTable getChiTietByMaPhieu(int maPhieuXuat)
+        {
+            var list = ctpxDAO.SelectAll(maPhieuXuat);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("MaSP", typeof(int));
+            dt.Columns.Add("TenSP", typeof(string));
+            dt.Columns.Add("SoLuong", typeof(int));
+            dt.Columns.Add("DonGia", typeof(decimal)); 
+
+            SanPhamBUS spBUS = new SanPhamBUS();
+
+            foreach (var ct in list)
+            {
+                string tenSP = spBUS.getNamebyID(ct.Masp);
+                dt.Rows.Add(ct.Masp, tenSP, ct.Soluong, ct.Dongia); 
+            }
+
+            return dt;
+        }
+
+
+
     }
 }

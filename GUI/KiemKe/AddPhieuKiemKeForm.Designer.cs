@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPhieuKiemKeForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonLoadHangtonkho = new System.Windows.Forms.Button();
+            this.txSearch = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,8 +60,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.DGVKiemKe = new System.Windows.Forms.DataGridView();
-            this.txSearch = new System.Windows.Forms.TextBox();
-            this.buttonLoadHangtonkho = new System.Windows.Forms.Button();
             this.button.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -82,7 +82,7 @@
             this.button.Name = "button";
             this.button.RowCount = 1;
             this.button.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.button.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.button.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.button.Size = new System.Drawing.Size(440, 33);
             this.button.TabIndex = 14;
             // 
@@ -119,6 +119,32 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(664, 33);
             this.tableLayoutPanel2.TabIndex = 14;
+            // 
+            // buttonLoadHangtonkho
+            // 
+            this.buttonLoadHangtonkho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLoadHangtonkho.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.buttonLoadHangtonkho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonLoadHangtonkho.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonLoadHangtonkho.Location = new System.Drawing.Point(485, 2);
+            this.buttonLoadHangtonkho.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
+            this.buttonLoadHangtonkho.Name = "buttonLoadHangtonkho";
+            this.buttonLoadHangtonkho.Size = new System.Drawing.Size(171, 29);
+            this.buttonLoadHangtonkho.TabIndex = 13;
+            this.buttonLoadHangtonkho.Text = "Tải dữ liệu hàng";
+            this.buttonLoadHangtonkho.UseVisualStyleBackColor = false;
+            this.buttonLoadHangtonkho.Click += new System.EventHandler(this.buttonLoadHangtonkho_Click);
+            // 
+            // txSearch
+            // 
+            this.txSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSearch.Location = new System.Drawing.Point(49, 3);
+            this.txSearch.Name = "txSearch";
+            this.txSearch.Size = new System.Drawing.Size(425, 29);
+            this.txSearch.TabIndex = 11;
             // 
             // pictureBox1
             // 
@@ -361,6 +387,7 @@
             this.buttonCheck.TabIndex = 12;
             this.buttonCheck.Text = "Kiểm tra";
             this.buttonCheck.UseVisualStyleBackColor = false;
+            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click_1);
             // 
             // textBoxTonchinhanh
             // 
@@ -384,7 +411,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(434, 36);
             this.tableLayoutPanel5.TabIndex = 26;
             // 
@@ -402,7 +429,7 @@
             this.buttonXuatFile.TabIndex = 3;
             this.buttonXuatFile.Text = "Thêm phiếu";
             this.buttonXuatFile.UseVisualStyleBackColor = true;
-            this.buttonXuatFile.Click += new System.EventHandler(this.buttonXuatFile_Click);
+            this.buttonXuatFile.Click += new System.EventHandler(this.button_AddPhieuKiemKeClick);
             // 
             // buttonHuyBo
             // 
@@ -428,6 +455,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(434, 29);
             this.textBox1.TabIndex = 27;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -449,67 +477,41 @@
             // 
             // DGVKiemKe
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVKiemKe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVKiemKe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVKiemKe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVKiemKe.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVKiemKe.DefaultCellStyle = dataGridViewCellStyle2;
             this.DGVKiemKe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVKiemKe.Location = new System.Drawing.Point(446, 39);
             this.DGVKiemKe.Margin = new System.Windows.Forms.Padding(0);
             this.DGVKiemKe.MultiSelect = false;
             this.DGVKiemKe.Name = "DGVKiemKe";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVKiemKe.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVKiemKe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DGVKiemKe.RowHeadersWidth = 51;
             this.DGVKiemKe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVKiemKe.Size = new System.Drawing.Size(670, 604);
             this.DGVKiemKe.TabIndex = 15;
             this.DGVKiemKe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVKiemKe_CellContentClick);
-            // 
-            // txSearch
-            // 
-            this.txSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txSearch.Location = new System.Drawing.Point(49, 3);
-            this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(425, 29);
-            this.txSearch.TabIndex = 11;
-            // 
-            // buttonLoadHangtonkho
-            // 
-            this.buttonLoadHangtonkho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLoadHangtonkho.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonLoadHangtonkho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonLoadHangtonkho.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonLoadHangtonkho.Location = new System.Drawing.Point(485, 2);
-            this.buttonLoadHangtonkho.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
-            this.buttonLoadHangtonkho.Name = "buttonLoadHangtonkho";
-            this.buttonLoadHangtonkho.Size = new System.Drawing.Size(171, 29);
-            this.buttonLoadHangtonkho.TabIndex = 13;
-            this.buttonLoadHangtonkho.Text = "Tải dữ liệu hàng";
-            this.buttonLoadHangtonkho.UseVisualStyleBackColor = false;
-            this.buttonLoadHangtonkho.Click += new System.EventHandler(this.buttonLoadHangtonkho_Click);
             // 
             // AddPhieuKiemKeForm
             // 
