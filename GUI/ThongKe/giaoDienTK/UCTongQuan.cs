@@ -4,6 +4,7 @@ using LiveCharts.Wpf;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DTO.ThongKeDTO;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
         KhachHangBUS khBUS = new KhachHangBUS();
         PhieuNhapBUS pnBUS = new PhieuNhapBUS();
         PhieuXuatBUS pxBUS = new PhieuXuatBUS();
+        
         public UCTongQuan()
         {
             InitializeComponent();
@@ -40,9 +42,10 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
 
    
             LoadChartLiveCharts();
-            //LoadTable();
+            setUpColumnAndData();
             LoadTongSo();
             LoadBieuDoLoaiSP();
+            LoadTop3SanPhamXuat();
            
         }
 
@@ -112,7 +115,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 Title = "Đơn vị: Triệu đồng",
                 LabelFormatter = value => value.ToString("N0"),
-                MaxValue = 20 // tương ứng 20 triệu
+                MaxValue = 20 // max 20 cu
             });
 
             bieuDoDoanhThuTheoNgay.LegendLocation = LegendLocation.Right;
@@ -159,31 +162,26 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
 
         private void LoadBieuDoLoaiSP()
         {
-            // ====== Giả lập dữ liệu ======
-            var data = new List<(string TenLoai, int SoLuong)>
-        {
-            ("Sách giáo khoa", 120),
-            ("Truyện tranh", 80),
-            ("Tiểu thuyết", 50),
-            ("Khác", 30)
-        };
+            
+            var data = spBUS.TinhSoLuongTungLoai();
+       
 
-            // Xóa dữ liệu cũ
+           
             chartLoaiSP.Series.Clear();
             chartLoaiSP.ChartAreas.Clear();
             chartLoaiSP.Legends.Clear();
 
-            // ====== Tạo chart area ======
+            
             ChartArea area = new ChartArea("MainArea");
             chartLoaiSP.ChartAreas.Add(area);
 
-            // ====== Tạo legend ======
+           
             Legend legend = new Legend("Legend");
             legend.Docking = Docking.Right;
             legend.Font = new Font("Segoe UI", 10, FontStyle.Regular);
             chartLoaiSP.Legends.Add(legend);
 
-            // ====== Tạo series dạng Pie ======
+          
             Series series = new Series("Loại sản phẩm");
             series.ChartType = SeriesChartType.Pie;
             series.Font = new Font("Segoe UI", 10, FontStyle.Bold);
@@ -193,18 +191,133 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             // Gán dữ liệu
             foreach (var item in data)
             {
-                series.Points.AddXY(item.TenLoai, item.SoLuong);
+                series.Points.AddXY(item.Key, item.Value);//key la ten loai, value la so luong
             }
+        
 
-            // Hiển thị dạng phần trăm
-            series.Label = "#PERCENT{P1}%";  // hoặc "#VALX: #PERCENT{P1}%"
+            //hien thi theo kieu %
+            series.Label = "#PERCENT{P1}%"; 
             series.LegendText = "#VALX";
 
-            // Thêm series vào chart
+            
             chartLoaiSP.Series.Add(series);
 
         }
 
+        public void setUpColumnAndData()
+        {
+            try
+            {
+                dgvDoanhThu7ngay.AutoGenerateColumns = false;
+
+                dgvDoanhThu7ngay.Columns.Clear();
+                dgvDoanhThu7ngay.Columns.Add("Date", "Ngày");
+                dgvDoanhThu7ngay.Columns.Add("Chiphi", "Vốn");
+                dgvDoanhThu7ngay.Columns.Add("Doanhthu", "Doanh thu");
+                dgvDoanhThu7ngay.Columns.Add("Loinhuan", "Lợi nhuận");
+                dgvDoanhThu7ngay.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+                foreach (DataGridViewColumn col in dgvDoanhThu7ngay.Columns)
+                {
+                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                dgvDoanhThu7ngay.Columns["Date"].FillWeight = 25;
+                dgvDoanhThu7ngay.Columns["Chiphi"].FillWeight = 25;
+                dgvDoanhThu7ngay.Columns["Doanhthu"].FillWeight = 25;
+                dgvDoanhThu7ngay.Columns["Loinhuan"].FillWeight = 25;
+                dgvDoanhThu7ngay.RowTemplate.Height = 40;
+                LoadDataToGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi trong SetupColumnsAndData: {ex.Message}", "Debug Error");
+            }
+        }
+
+        public void LoadDataToGrid()
+        {
+            try
+            {
+                BindingList<ThongKeTungNgayTrongThangDTO> listThongKe7ngay = tkBUS.thongKe7NgayGanDay();
+                dgvDoanhThu7ngay.Rows.Clear();
+                foreach(ThongKeTungNgayTrongThangDTO tk in listThongKe7ngay)
+                {
+                    
+
+                    dgvDoanhThu7ngay.Rows.Add(
+                        tk.Ngay,
+                        tk.Chiphi,
+                        tk.Doanhthu,
+                        tk.Loinhuan
+                    );
+                }
+                dgvDoanhThu7ngay.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi trong LoadDataToGrid: {ex.Message}\n{ex.StackTrace}", "Debug Error");
+            }
+        }
+
+
+        private void LoadTop3SanPhamXuat()
+        {
+            var top3 = tkBUS.GetTop3SanPhamXuatNhieuNhatTrongThang();
+
+            
+            tableTop3SP.Controls.Clear();
+            tableTop3SP.RowCount = 0;
+
+            
+            Label tieuDe1 = new Label()
+            {
+                Text = "Tên sản phẩm",
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                BackColor = Color.LightGray
+            };
+            Label tieuDe2 = new Label()
+            {
+                Text = "Số lượng",
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                BackColor= Color.LightGray
+            };
+
+            tableTop3SP.Controls.Add(tieuDe1, 0, 0);
+            tableTop3SP.Controls.Add(tieuDe2, 1, 0);
+            tableTop3SP.RowCount++;
+
+
+
+            foreach (var sp in top3)
+            {
+                Label lblTenSP = new Label()
+                {
+                    Text = sp.TenSP,
+                    Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                    Dock = DockStyle.Fill,
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+                Label lblSoLuong = new Label()
+                {
+                    Text = sp.TongSoLuong.ToString(),
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                    Dock = DockStyle.Fill,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    ForeColor = Color.SeaGreen
+                };
+
+                tableTop3SP.Controls.Add(lblTenSP, 0, tableTop3SP.RowCount);
+                tableTop3SP.Controls.Add(lblSoLuong, 1, tableTop3SP.RowCount);
+                tableTop3SP.RowCount++;
+            }
+        }
 
 
         private void btnTinhHangTon_Click(object sender, EventArgs e)

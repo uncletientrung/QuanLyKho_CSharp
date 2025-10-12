@@ -31,7 +31,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
 
         private void btnTongQuan_Click(object sender, EventArgs e)
         {
+            
             ShowGiaoDien(new UCTongQuan());
+
         }
 
         private void btnTonKho_Click(object sender, EventArgs e)

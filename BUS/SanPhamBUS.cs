@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Mysqlx.Datatypes.Scalar.Types;
+using static OpenTK.Graphics.OpenGL.GL;
 
 namespace QuanLyKho_CSharp.BUS
 {
@@ -14,6 +16,8 @@ namespace QuanLyKho_CSharp.BUS
     {
         public readonly SanPhamDAO spDAO = SanPhamDAO.getInstance();
         private BindingList<SanPhamDTO> listSP;
+        private BindingList<LoaiDTO> listLoai;
+        private LoaiBUS loaiBUS= new LoaiBUS();
        
 
         public BindingList<SanPhamDTO> getListSP()
@@ -111,7 +115,24 @@ namespace QuanLyKho_CSharp.BUS
         }
 
 
-        
+        public Dictionary<string, int> TinhSoLuongTungLoai()
+        {
+            listLoai = loaiBUS.getLoaiList();
+            return listSP
+                .GroupBy(sp => sp.Maloai)
+                .ToDictionary(
+                    g => listLoai.FirstOrDefault(l => l.Maloai == g.Key)?.Tenloai ?? "Không xác định",
+                    g => g.Sum(sp => sp.Soluong)
+                );
+        }
+
+        //GroupBy: gom các sản phẩm theo mã loại
+
+        //Sum: tính tổng số lượng trong từng nhóm
+
+        //ToDictionary: tạo dictionary với key = tên loại, value = tổng số lượng
+
+
     }
 
 }
