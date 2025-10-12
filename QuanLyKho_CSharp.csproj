@@ -434,6 +434,30 @@
     <Compile Include="GUI\ThongKe\giaoDienTK\GUITongQuan.Designer.cs">
       <DependentUpon>GUITongQuan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoNam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoNam.Designer.cs">
+      <DependentUpon>ThongKeTheoNam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoQuy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoQuy.Designer.cs">
+      <DependentUpon>ThongKeTheoQuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoThang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoThang.Designer.cs">
+      <DependentUpon>ThongKeTheoThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTungNgayTrongThang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTungNgayTrongThang.Designer.cs">
+      <DependentUpon>ThongKeTungNgayTrongThang.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThongKe\giaoDienTK\UCDoanhThu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -776,6 +800,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\GUITongQuan.resx">
       <DependentUpon>GUITongQuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoNam.resx">
+      <DependentUpon>ThongKeTheoNam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoQuy.resx">
+      <DependentUpon>ThongKeTheoQuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoThang.resx">
+      <DependentUpon>ThongKeTheoThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTungNgayTrongThang.resx">
+      <DependentUpon>ThongKeTungNgayTrongThang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\UCDoanhThu.resx">
       <DependentUpon>UCDoanhThu.cs</DependentUpon>

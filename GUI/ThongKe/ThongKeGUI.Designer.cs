@@ -31,7 +31,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.menuTable = new System.Windows.Forms.TableLayoutPanel();
             this.btnTongQuan = new System.Windows.Forms.Button();
             this.btnTonKho = new System.Windows.Forms.Button();
             this.btnDoanhThu = new System.Windows.Forms.Button();
@@ -39,46 +39,44 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             this.btnKhachHang = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.menuTable.SuspendLayout();
             this.SuspendLayout();
-            
-
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.panel1.Controls.Add(this.menuTable);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1043, 34);
+            this.panel1.Size = new System.Drawing.Size(1043, 43);
             this.panel1.TabIndex = 2;
             // 
-            // tableLayoutPanel1
+            // menuTable
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.btnTongQuan, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnTonKho, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnDoanhThu, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnNhaCungCap, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnKhachHang, 4, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(557, 32);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.menuTable.ColumnCount = 5;
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16F));
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.menuTable.Controls.Add(this.btnTongQuan, 0, 0);
+            this.menuTable.Controls.Add(this.btnTonKho, 1, 0);
+            this.menuTable.Controls.Add(this.btnDoanhThu, 2, 0);
+            this.menuTable.Controls.Add(this.btnNhaCungCap, 3, 0);
+            this.menuTable.Controls.Add(this.btnKhachHang, 4, 0);
+            this.menuTable.Location = new System.Drawing.Point(3, 2);
+            this.menuTable.Name = "menuTable";
+            this.menuTable.RowCount = 1;
+            this.menuTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.menuTable.Size = new System.Drawing.Size(1010, 41);
+            this.menuTable.TabIndex = 0;
             // 
             // btnTongQuan
             // 
             this.btnTongQuan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTongQuan.Location = new System.Drawing.Point(3, 3);
             this.btnTongQuan.Name = "btnTongQuan";
-            this.btnTongQuan.Size = new System.Drawing.Size(105, 26);
+            this.btnTongQuan.Size = new System.Drawing.Size(196, 35);
             this.btnTongQuan.TabIndex = 0;
             this.btnTongQuan.Text = "Tổng quan";
             this.btnTongQuan.UseVisualStyleBackColor = true;
@@ -87,9 +85,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // btnTonKho
             // 
             this.btnTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTonKho.Location = new System.Drawing.Point(114, 3);
+            this.btnTonKho.Location = new System.Drawing.Point(205, 3);
             this.btnTonKho.Name = "btnTonKho";
-            this.btnTonKho.Size = new System.Drawing.Size(105, 26);
+            this.btnTonKho.Size = new System.Drawing.Size(155, 35);
             this.btnTonKho.TabIndex = 1;
             this.btnTonKho.Text = "Tồn kho";
             this.btnTonKho.UseVisualStyleBackColor = true;
@@ -97,21 +95,23 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // 
             // btnDoanhThu
             // 
+            this.btnDoanhThu.BackColor = System.Drawing.Color.White;
             this.btnDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDoanhThu.Location = new System.Drawing.Point(225, 3);
+            this.btnDoanhThu.Location = new System.Drawing.Point(366, 3);
             this.btnDoanhThu.Name = "btnDoanhThu";
-            this.btnDoanhThu.Size = new System.Drawing.Size(105, 26);
+            this.btnDoanhThu.Size = new System.Drawing.Size(196, 35);
             this.btnDoanhThu.TabIndex = 2;
             this.btnDoanhThu.Text = "Doanh thu";
-            this.btnDoanhThu.UseVisualStyleBackColor = true;
+            this.btnDoanhThu.UseVisualStyleBackColor = false;
             this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
             // btnNhaCungCap
             // 
+            this.btnNhaCungCap.AutoSize = true;
             this.btnNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNhaCungCap.Location = new System.Drawing.Point(336, 3);
+            this.btnNhaCungCap.Location = new System.Drawing.Point(568, 3);
             this.btnNhaCungCap.Name = "btnNhaCungCap";
-            this.btnNhaCungCap.Size = new System.Drawing.Size(105, 26);
+            this.btnNhaCungCap.Size = new System.Drawing.Size(236, 35);
             this.btnNhaCungCap.TabIndex = 3;
             this.btnNhaCungCap.Text = "Nhà cung cấp";
             this.btnNhaCungCap.UseVisualStyleBackColor = true;
@@ -120,9 +120,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // btnKhachHang
             // 
             this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnKhachHang.Location = new System.Drawing.Point(447, 3);
+            this.btnKhachHang.Location = new System.Drawing.Point(810, 3);
             this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(107, 26);
+            this.btnKhachHang.Size = new System.Drawing.Size(197, 35);
             this.btnKhachHang.TabIndex = 4;
             this.btnKhachHang.Text = "Khách hàng";
             this.btnKhachHang.UseVisualStyleBackColor = true;
@@ -131,9 +131,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // pnlContainer
             // 
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContainer.Location = new System.Drawing.Point(0, 34);
+            this.pnlContainer.Location = new System.Drawing.Point(0, 43);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1043, 570);
+            this.pnlContainer.Size = new System.Drawing.Size(1043, 561);
             this.pnlContainer.TabIndex = 3;
             // 
             // ThongKeGUI
@@ -147,7 +147,8 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             this.Text = "ThongKeGUI";
             this.Load += new System.EventHandler(this.ThongKeGUI_Load);
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.menuTable.ResumeLayout(false);
+            this.menuTable.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -155,7 +156,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel menuTable;
         private System.Windows.Forms.Button btnTongQuan;
         private System.Windows.Forms.Button btnTonKho;
         private System.Windows.Forms.Button btnDoanhThu;
