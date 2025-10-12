@@ -144,6 +144,15 @@ namespace QuanLyKho_CSharp.BUS
         //ToDictionary: tạo dictionary với key = tên loại, value = tổng số lượng
 
 
+
+
+        // thm hàm cập nhật số lượng tồn cho HoanHangBUS
+        public bool updateSoLuongTon(int maSP, int soLuongThem)
+        {
+            return spDAO.updateSoLuongTon(maSP, soLuongThem);
+        }
+
+
     }
 
 }

@@ -76,19 +76,22 @@ namespace QuanLyKho_CSharp.BUS
         {
             var list = ctpxDAO.SelectAll(maPhieuXuat);
             DataTable dt = new DataTable();
-            dt.Columns.Add("TenSP");
-            dt.Columns.Add("SoLuong");
+            dt.Columns.Add("MaSP", typeof(int));
+            dt.Columns.Add("TenSP", typeof(string));
+            dt.Columns.Add("SoLuong", typeof(int));
+            dt.Columns.Add("DonGia", typeof(decimal)); 
 
             SanPhamBUS spBUS = new SanPhamBUS();
 
             foreach (var ct in list)
             {
                 string tenSP = spBUS.getNamebyID(ct.Masp);
-                dt.Rows.Add(tenSP, ct.Soluong);
+                dt.Rows.Add(ct.Masp, tenSP, ct.Soluong, ct.Dongia); 
             }
 
             return dt;
         }
+
 
 
     }

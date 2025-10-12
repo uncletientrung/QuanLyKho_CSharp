@@ -32,6 +32,8 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             SetupDataGridView();
         }
 
+
+        // 4 thông số chính của phiếu xuất
         public HoanHang(int maPhieu, string tenKH, int someValue, decimal tongTien, DataTable dt)
         {
             InitializeComponent();
@@ -52,8 +54,31 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             if (dt != null && dt.Rows.Count > 0)
             {
                 dgvXemChiTiet.DataSource = dt;
+
+                textBoxSoLuongMatHang.Text = dt.Rows.Count.ToString();
+
+                decimal tongGiaTri = 0;
+                if (dt.Columns.Contains("DonGia"))
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (decimal.TryParse(row["DonGia"]?.ToString(), out decimal donGia) &&
+                            int.TryParse(row["SoLuong"]?.ToString(), out int soLuong))
+                        {
+                            tongGiaTri += donGia * soLuong;
+                        }
+                    }
+                }
+
+                textBoxDonGia.Text = tongGiaTri.ToString("N0"); // format tiền tệ
+            }
+            else
+            {
+                textBoxSoLuongMatHang.Text = "0";
+                textBoxDonGia.Text = "0";
             }
         }
+
 
 
         public HoanHang(string maPhieu, string tenKH, string maSP, string donGia)
