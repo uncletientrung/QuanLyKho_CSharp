@@ -19,11 +19,15 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private readonly string TonChiNhanhPlaceholder = "1234";
         private string _userName;
 
+        // Thêm event
+        public event EventHandler HuyBoClicked;
+
         public AddPhieuKiemKeForm()
         {
             InitializeComponent();
             this.Load += new System.EventHandler(this.AddPhieuKiemKeForm_Load);
             this.buttonHuyBo.Click += new System.EventHandler(this.buttonHuyBo_Click);
+            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click_1);
         }
 
         public AddPhieuKiemKeForm(string userName)
@@ -32,6 +36,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this._userName = userName;
             this.Load += new System.EventHandler(this.AddPhieuKiemKeForm_Load);
             this.buttonHuyBo.Click += new System.EventHandler(this.buttonHuyBo_Click);
+            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click_1);
         }
 
 
@@ -72,6 +77,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             comboBox2.Items.Add("Đủ hàng");
             comboBox2.Items.Add("Thiếu hàng");
             comboBox2.Items.Add("Dư hàng");
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.Enabled = false;
 
             // Lấy dữ liệu kho có trước 
             comboBoxKhuvuckho.Items.Clear();
@@ -104,7 +111,39 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // Hàm hiển thị danh sách sản phẩm lên DGVKiemKe
         private void ShowSanPhamListOnGrid(IEnumerable<SanPhamDTO> listSP, KhuVucKhoBUS khuVucKhoBUS, ChatLieuBUS chatLieuBUS, LoaiBUS loaiBUS, SizeBUS sizeBUS)
         {
-            DGVKiemKe.Rows.Clear();
+            // Đảm bảo DataGridView đã có cột, nếu chưa thì khởi tạo lại cột
+            if (DGVKiemKe.Columns.Count == 0)
+            {
+                DGVKiemKe.Columns.Add("MaSP", "Mã");
+                DGVKiemKe.Columns.Add("TenSP", "Tên sản phẩm");
+                var imgCol = new DataGridViewImageColumn
+                {
+                    Name = "HinhAnh",
+                    HeaderText = "Hình ảnh",
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                DGVKiemKe.Columns.Add(imgCol);
+                DGVKiemKe.Columns.Add("SoLuong", "Số lượng");
+                DGVKiemKe.Columns.Add("Gia", "Đơn giá");
+                DGVKiemKe.Columns.Add("Machatlieu", "Chất liệu");
+                DGVKiemKe.Columns.Add("Loai", "Loại");
+                DGVKiemKe.Columns.Add("Khuvuc", "Khu vực");
+                DGVKiemKe.Columns.Add("Size", "Size");
+
+                foreach (DataGridViewColumn col in DGVKiemKe.Columns)
+                {
+                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                DGVKiemKe.RowTemplate.Height = 50;
+                DGVKiemKe.RowHeadersVisible = false;
+                DGVKiemKe.AllowUserToAddRows = false;
+            }
+            else
+            {
+                DGVKiemKe.Rows.Clear();
+            }
+
             foreach (var sp in listSP)
             {
                 Image img = LoadImageSafe(sp.Hinhanh);
@@ -126,6 +165,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 );
             }
             DGVKiemKe.ClearSelection();
+            DGVKiemKe.CurrentCell = null;
         }
 
 
@@ -185,45 +225,45 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             ShowSanPhamListOnGrid(filtered, khuVucKhoBUS, chatLieuBUS, loaiBUS, sizeBUS);
         }
 
-
-
-
-
-
-
         // nút load hàng tồn kho
         private void buttonLoadHangtonkho_Click(object sender, EventArgs e)
         {
-            DGVKiemKe.Columns.Clear();
-            DGVKiemKe.Rows.Clear();
-            DGVKiemKe.RowHeadersVisible = false; // bỏ cột đầu tiên của gridview nigga
-            DGVKiemKe.AllowUserToAddRows = false; // bỏ luôn dòng cuối gigigaga
-
-            DGVKiemKe.Columns.Add("MaSP", "Mã");
-            DGVKiemKe.Columns.Add("TenSP", "Tên sản phẩm");
-            var imgCol = new DataGridViewImageColumn
+            // Chỉ xóa cột và dòng khi thực sự cần load lại cấu trúc lưới
+            if (DGVKiemKe.Columns.Count > 0)
             {
-                Name = "HinhAnh",
-                HeaderText = "Hình ảnh",
-                ImageLayout = DataGridViewImageCellLayout.Zoom
-            };
-            DGVKiemKe.Columns.Add(imgCol);
-            DGVKiemKe.Columns.Add("SoLuong", "Số lượng");
-            DGVKiemKe.Columns.Add("Gia", "Đơn giá");
-            DGVKiemKe.Columns.Add("Machatlieu", "Chất liệu");
-            DGVKiemKe.Columns.Add("Loai", "Loại");
-            DGVKiemKe.Columns.Add("Khuvuc", "Khu vực");
-            DGVKiemKe.Columns.Add("Size", "Size");
-
-            foreach (DataGridViewColumn col in DGVKiemKe.Columns)
+                DGVKiemKe.Rows.Clear();
+            }
+            else
             {
-                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                DGVKiemKe.Columns.Clear();
+                DGVKiemKe.Columns.Add("MaSP", "Mã");
+                DGVKiemKe.Columns.Add("TenSP", "Tên sản phẩm");
+                var imgCol = new DataGridViewImageColumn
+                {
+                    Name = "HinhAnh",
+                    HeaderText = "Hình ảnh",
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                DGVKiemKe.Columns.Add(imgCol);
+                DGVKiemKe.Columns.Add("SoLuong", "Số lượng");
+                DGVKiemKe.Columns.Add("Gia", "Đơn giá");
+                DGVKiemKe.Columns.Add("Machatlieu", "Chất liệu");
+                DGVKiemKe.Columns.Add("Loai", "Loại");
+                DGVKiemKe.Columns.Add("Khuvuc", "Khu vực");
+                DGVKiemKe.Columns.Add("Size", "Size");
+
+                foreach (DataGridViewColumn col in DGVKiemKe.Columns)
+                {
+                    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                DGVKiemKe.RowTemplate.Height = 50;
             }
 
-            DGVKiemKe.RowTemplate.Height = 50;
+            DGVKiemKe.RowHeadersVisible = false;
+            DGVKiemKe.AllowUserToAddRows = false;
 
-            // 2. Lấy dữ liệu sản phẩm
+            // Lấy dữ liệu sản phẩm
             var spBUS = new SanPhamBUS();
             var khuVucKhoBUS = new KhuVucKhoBUS();
             var chatLieuBUS = new ChatLieuBUS();
@@ -252,8 +292,38 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 );
             }
             DGVKiemKe.ClearSelection();
+            DGVKiemKe.CurrentCell = null;
         }
 
+        // Hàm load ảnh an toàn 
+        private Image LoadImageSafe(string relativePath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(relativePath))
+                    return new Bitmap(100, 100);
+
+                string path = System.IO.Path.Combine(Application.StartupPath, relativePath.Replace("/", "\\"));
+                if (!System.IO.File.Exists(path))
+                {
+                    string alt = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\", relativePath.Replace("/", "\\"));
+                    alt = System.IO.Path.GetFullPath(alt);
+                    if (System.IO.File.Exists(alt))
+                        path = alt;
+                    else
+                        return new Bitmap(100, 100);
+                }
+                byte[] bytes = System.IO.File.ReadAllBytes(path);
+                using (var ms = new System.IO.MemoryStream(bytes))
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+            catch
+            {
+                return new Bitmap(100, 100);
+            }
+        }
 
 
 
@@ -312,7 +382,58 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
 
 
+        // tính toán giá trị hàng chênh lệch
+        private void buttonCheck_Click_1(object sender, EventArgs e)
+        {
+            // Kiểm tra xem có dòng nào được chọn không
+            if (DGVKiemKe.SelectedRows.Count == 0 && DGVKiemKe.CurrentCell == null)
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm để kiểm tra.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Xác định dòng được chọn
+            DataGridViewRow selectedRow;
+            if (DGVKiemKe.SelectedRows.Count > 0)
+            {
+                selectedRow = DGVKiemKe.SelectedRows[0];
+            }
+            else
+            {
+                selectedRow = DGVKiemKe.Rows[DGVKiemKe.CurrentCell.RowIndex];
+            }
+
+            // Kiểm tra xem dòng có hợp lệ không
+            if (selectedRow == null || selectedRow.IsNewRow)
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm để kiểm tra.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy số lượng thực tế từ textbox
+            if (!int.TryParse(textBoxTonchinhanh.Text, out int soLuongThucTe))
+            {
+                MessageBox.Show("Số lượng thực tế không hợp lệ.");
+                return;
+            }
+
+            // Lấy số lượng tồn kho từ cột "SoLuong"
+            int soLuongTonKho = Convert.ToInt32(selectedRow.Cells["SoLuong"].Value);
+
+            // Tính toán trạng thái phiếu kiểm
+            int soLuongLech = soLuongThucTe - soLuongTonKho;
+            textBoxSoluonglech.Text = Math.Abs(soLuongLech).ToString();
+
+            string trangThai;
+            if (soLuongLech < 0)
+                trangThai = "Dư hàng";
+            else if (soLuongLech > 0)
+                trangThai = "Thiếu hàng";
+            else
+                trangThai = "Đủ hàng";
+
+            comboBox2.Text = trangThai;
+        }
 
 
 
@@ -328,39 +449,98 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         }
 
-        
-
-        
-
-        
-
-        private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // button event footer
         // xuat file
-        private void buttonXuatFile_Click(object sender, EventArgs e){
-            
+        private void button_AddPhieuKiemKeClick(object sender, EventArgs e)
+        {
+            // Kiểm tra các trường bắt buộc
+            if (comboBoxKhuvuckho.SelectedIndex == -1 || string.IsNullOrWhiteSpace(comboBoxKhuvuckho.Text))
+            {
+                MessageBox.Show("Vui lòng chọn khu vực kho kiểm.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                comboBoxKhuvuckho.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxTonchinhanh.Text) || textBoxTonchinhanh.Text == TonChiNhanhPlaceholder)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng tồn kho chi nhánh.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxTonchinhanh.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên nhân viên kiểm hàng.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox1.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxSoluonglech.Text) || string.IsNullOrWhiteSpace(comboBox2.Text))
+            {
+                MessageBox.Show("Hãy kiểm tra số lượng hàng trước.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy dữ liệu để thêm phiếu kiểm kê
+            int maPhieu = int.Parse(boxMaPhieu.Text);
+            DateTime thoiGianTao = DateTime.Now;
+            string trangThai = comboBox2.Text;
+            string ghiChu = textBox1.Text;
+
+            // Lấy mã khu vực từ combobox (giả sử định dạng "1 - Khu vực A")
+            int maKhuVuc = 0;
+            if (!string.IsNullOrWhiteSpace(comboBoxKhuvuckho.Text))
+            {
+                var parts = comboBoxKhuvuckho.Text.Split('-');
+                int.TryParse(parts[0].Trim(), out maKhuVuc);
+            }
+
+            // Lấy mã nhân viên tạo (nếu boxNVkiem.Text là mã số, nếu là tên thì cần tra cứu)
+            int maNhanVienTao = 0;
+            int.TryParse(boxNVkiem.Text.Trim(), out maNhanVienTao);
+
+            // Lấy mã nhân viên kiểm (nếu textBox1.Text là mã số, nếu là tên thì cần tra cứu)
+            int maNhanVienKiem = 0;
+            int.TryParse(textBox1.Text.Trim(), out maNhanVienKiem);
+
+            // Tạo đối tượng phiếu kiểm kê
+            var phieuKiemKe = new PhieuKiemKeDTO
+            {
+                Maphieukiemke = maPhieu,
+                Thoigiantao = thoiGianTao,
+                Trangthai = trangThai,
+                Ghichu = ghiChu,
+                Makhuvuc = maKhuVuc,
+                Manhanvientao = maNhanVienTao,
+                Manhanvienkiem = maNhanVienKiem
+            };
+
+            // Lưu vào database
+            int result = PhieuKiemKeBUS.Instance.Insert(phieuKiemKe);
+            if (result > 0)
+            {
+                MessageBox.Show("Thêm phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Gọi reload trên KiemKeGUI nếu có
+                var kiemKeGui = this.Parent?.Controls
+                    .OfType<QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI>()
+                    .FirstOrDefault();
+
+                if (kiemKeGui != null)
+                {
+                    kiemKeGui.LoadDataIntoGridView();
+                }
+
+                // Đóng form
+                this.Parent?.Controls.Remove(this);
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi thêm phiếu kiểm kê!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         // huy bo
-        private void buttonHuyBo_Click(object sender, EventArgs e) {
+        private void buttonHuyBo_Click(object sender, EventArgs e)
+        {
             txSearch.Text = SearchPlaceholder;
             txSearch.ForeColor = Color.LightGray;
 
@@ -372,10 +552,20 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             if (comboBoxKhuvuckho != null) comboBoxKhuvuckho.SelectedIndex = -1;
             if (comboBox2 != null) comboBox2.SelectedIndex = -1;
 
-            // Đóng form
-            this.Close();
-        }
+            // Bỏ chọn và bỏ focus tất cả các dòng trong DataGridView
+            if (DGVKiemKe != null)
+            {
+                DGVKiemKe.ClearSelection();
+                DGVKiemKe.CurrentCell = null;
+            }
 
+            // Gọi event trước khi đóng
+            HuyBoClicked?.Invoke(this, EventArgs.Empty);
+
+            // Đóng form (remove khỏi pnlBody)
+            this.Parent?.Controls.Remove(this);
+            this.Dispose();
+        }
 
         // readonly
         private void label1_Click(object sender, EventArgs e) {}
@@ -387,34 +577,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private void label7_Click(object sender, EventArgs e) {}
         private void label6_Click(object sender, EventArgs e) {}
 
-        // Hàm load ảnh an toàn (bạn có thể copy từ SanPhamGUI)
-        private Image LoadImageSafe(string relativePath)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(relativePath))
-                    return new Bitmap(100, 100);
+        private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
 
-                string path = System.IO.Path.Combine(Application.StartupPath, relativePath.Replace("/", "\\"));
-                if (!System.IO.File.Exists(path))
-                {
-                    string alt = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\", relativePath.Replace("/", "\\"));
-                    alt = System.IO.Path.GetFullPath(alt);
-                    if (System.IO.File.Exists(alt))
-                        path = alt;
-                    else
-                        return new Bitmap(100, 100);
-                }
-                byte[] bytes = System.IO.File.ReadAllBytes(path);
-                using (var ms = new System.IO.MemoryStream(bytes))
-                {
-                    return Image.FromStream(ms);
-                }
-            }
-            catch
-            {
-                return new Bitmap(100, 100);
-            }
-        }
+        private void textBox1_TextChanged(object sender, EventArgs e) {}
     }
 }
