@@ -46,7 +46,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxKhuvuckho = new System.Windows.Forms.ComboBox();
-            this.boxNVkiem = new System.Windows.Forms.TextBox();
+            this.boxMaNVkiem = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.boxMaPhieu = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -171,7 +171,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.comboBoxKhuvuckho, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.boxNVkiem, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.boxMaNVkiem, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.boxMaPhieu, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -291,19 +291,19 @@
             this.comboBoxKhuvuckho.Size = new System.Drawing.Size(418, 32);
             this.comboBoxKhuvuckho.TabIndex = 11;
             // 
-            // boxNVkiem
+            // boxMaNVkiem
             // 
-            this.boxNVkiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boxNVkiem.Enabled = false;
-            this.boxNVkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.boxNVkiem.Location = new System.Drawing.Point(11, 108);
-            this.boxNVkiem.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
-            this.boxNVkiem.Name = "boxNVkiem";
-            this.boxNVkiem.ReadOnly = true;
-            this.boxNVkiem.Size = new System.Drawing.Size(418, 29);
-            this.boxNVkiem.TabIndex = 10;
-            this.boxNVkiem.TabStop = false;
-            this.boxNVkiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.boxMaNVkiem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boxMaNVkiem.Enabled = false;
+            this.boxMaNVkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.boxMaNVkiem.Location = new System.Drawing.Point(11, 108);
+            this.boxMaNVkiem.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
+            this.boxMaNVkiem.Name = "boxMaNVkiem";
+            this.boxMaNVkiem.ReadOnly = true;
+            this.boxMaNVkiem.Size = new System.Drawing.Size(418, 29);
+            this.boxMaNVkiem.TabIndex = 10;
+            this.boxMaNVkiem.TabStop = false;
+            this.boxMaNVkiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -313,9 +313,9 @@
             this.label2.Location = new System.Drawing.Point(2, 81);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 17);
+            this.label2.Size = new System.Drawing.Size(178, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Nhân viên tạo phiếu";
+            this.label2.Text = "Mã nhân viên tạo phiếu";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -544,7 +544,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ComboBox comboBoxKhuvuckho;
-        private System.Windows.Forms.TextBox boxNVkiem;
+        private System.Windows.Forms.TextBox boxMaNVkiem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox boxMaPhieu;
         private System.Windows.Forms.Label label1;

@@ -34,9 +34,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // load form
         private void AddPhieuKiemKeForm_Load(object sender, EventArgs e)
         {
-            boxNVkiem.Text = _userName; // Hiển thị tên nhân viên
-                                        // Hoặc nếu bạn muốn hiển thị cả mã và tên:
-                                        // boxNVkiem.Text = $"{_userID} - {_userName}";
+
+            // Get current user ID and set to boxMaNVkiem
+            int currentUserId = GetCurrentUserID();
+            boxMaNVkiem.Text = currentUserId.ToString();
 
             txSearch.ForeColor = Color.LightGray;
             txSearch.Text = SearchPlaceholder;
@@ -519,15 +520,25 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
 
             // Tạo phiếu kiểm kê
+            string ghiChu;
+            if (comboBox2.Text == "Đủ hàng")
+            {
+                ghiChu = $"{comboBox2.Text}";
+            }
+            else
+            {
+                ghiChu = $"{comboBox2.Text} - {textBoxSoluonglech.Text}";
+            }
+
             PhieuKiemKeDTO phieuKiemKe = new PhieuKiemKeDTO
             {
                 Maphieukiemke = maPhieu,
                 Thoigiantao = DateTime.Now,
                 Trangthai = comboBox2.Text,
-                Ghichu = "",
+                Ghichu = ghiChu, // <-- Sử dụng biến ghiChu vừa khai báo
                 Makhuvuc = maKhuVuc,
-                Manhanvientao = maNvTao, // Sử dụng mã nhân viên từ hệ thống
-                Manhanvienkiem = maNvKiem // Sử dụng mã nhân viên kiểm từ textbox
+                Manhanvientao = maNvTao,
+                Manhanvienkiem = maNvKiem
             };
 
             // Thêm phiếu kiểm kê
@@ -541,7 +552,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     Masp = maSP,
                     Tonchinhanh = tonChiNhanh,
                     Tonthucte = tonThucTe,
-                    Ghichu = "" // Có thể thêm ghi chú nếu cần
+                    Ghichu = ghiChu,
                 };
 
                 // Thêm chi tiết kiểm kê (cần có ChiTietKiemKeBUS)
@@ -558,14 +569,16 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
                     if (kiemKeGui != null)
                     {
+                        ghiChu = $"{comboBox2.Text} - {textBoxSoluonglech.Text}";
+
                         kiemKeGui.AddKiemKeRow(
                             phieuKiemKe.Maphieukiemke,
                             phieuKiemKe.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
                             phieuKiemKe.Trangthai,
-                            phieuKiemKe.Ghichu,
+                            ghiChu,
                             phieuKiemKe.Makhuvuc.ToString(),
-                            maNvTao.ToString(), // Truyền mã nhân viên tạo
-                            maNvKiem.ToString() // Truyền mã nhân viên kiểm
+                            maNvTao.ToString(),
+                            maNvKiem.ToString()
                         );
                     }
 
@@ -585,14 +598,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // Hàm lấy mã nhân viên hiện tại từ hệ thống
         private int GetCurrentUserID()
         {
-            // THAY THẾ bằng cách lấy mã nhân viên thực tế từ hệ thống của bạn
-            // Ví dụ:
-            // return UserSession.CurrentUser.ID;
-            // hoặc
-            // return Properties.Settings.Default.CurrentUserID;
-
-            // Tạm thời trả về giá trị mặc định
-            return 1; // Thay bằng mã nhân viên thực tế
+            return 1; 
         }
 
         // Hàm thêm chi tiết kiểm kê
@@ -600,10 +606,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
             try
             {
-                // Giả sử bạn có ChiTietKiemKeBUS
-                // return ChiTietKiemKeBUS.Instance.Insert(chiTiet) > 0;
-
-                // Tạm thời trả về true để test
                 return true;
             }
             catch
@@ -656,19 +658,13 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // readonly
         private void label1_Click(object sender, EventArgs e) {}
         private void label2_Click(object sender, EventArgs e) {}
-
         private void label3_Click(object sender, EventArgs e) {}
         private void label4_Click_1(object sender, EventArgs e) {}
-
-        private void label7_Click(object sender, EventArgs e) {}
         private void label6_Click(object sender, EventArgs e) {}
-
-        private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {}
-
-        private void boxMaPhieu_TextChanged(object sender, EventArgs e) {}
-
+        private void label7_Click(object sender, EventArgs e) {}
         private void label8_Click(object sender, EventArgs e) {}
+        private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
+        private void textBox1_TextChanged(object sender, EventArgs e) {}
+        private void boxMaPhieu_TextChanged(object sender, EventArgs e) {}
     }
 }
