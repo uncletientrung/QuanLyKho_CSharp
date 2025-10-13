@@ -56,7 +56,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 }
             }
         }
-
         // export excel
         private void btnExcel_Click(object sender, EventArgs e)
         {

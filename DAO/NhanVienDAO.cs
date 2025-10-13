@@ -128,5 +128,42 @@ namespace QuanLyKho_CSharp.DAO
             }
             return result;
         }
+
+
+        // thêm hàm lấy ra mã nhân viên theo tên đăng nhập
+        public int GetMaNhanVienByUserName(string userName)
+        {
+            int manv = 0;
+            try
+            {
+                string sql = @"
+                    SELECT manv 
+                    FROM taikhoan 
+                    WHERE tendangnhap = @username AND trangthai = 1
+                    LIMIT 1;
+                ";
+
+                ConnectionHelper.getConnection();
+                using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", userName);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        manv = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy mã nhân viên từ tài khoản: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return manv;
+        }
+
+
+
     }
 }

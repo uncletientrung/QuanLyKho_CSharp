@@ -36,8 +36,16 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
 
             // Get current user ID and set to boxMaNVkiem
-            int currentUserId = GetCurrentUserID();
-            boxMaNVkiem.Text = currentUserId.ToString();
+            int maNhanVien = NhanVienDAO.getInstance().GetMaNhanVienByUserName(_userName);
+            if (maNhanVien > 0)
+            {
+                textBoxMaNhanVienKiem.Text = maNhanVien.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Không thể xác định mã nhân viên cho tài khoản hiện tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+;
 
             txSearch.ForeColor = Color.LightGray;
             txSearch.Text = SearchPlaceholder;
@@ -464,8 +472,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 MessageBox.Show("Hãy kiểm tra số lượng hàng trước.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // KIỂM TRA VÀ LẤY DÒNG ĐƯỢC CHỌN - SỬA LỖI PHẠM VI BIẾN
             DataGridViewRow selectedRow = null;
 
             if (DGVKiemKe.SelectedRows.Count > 0)
@@ -498,7 +504,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
 
             // QUAN TRỌNG: Lấy mã nhân viên từ hệ thống thay vì từ textbox
-            int maNvTao = GetCurrentUserID(); // Hàm này bạn cần implement
+            int maNvTao = GetCurrentUserID(); 
             int maNvKiem;
 
             if (!int.TryParse(textBoxMaNhanVienKiem.Text.Trim(), out maNvKiem))
@@ -562,28 +568,29 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 {
                     MessageBox.Show("Thêm phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Cập nhật giao diện chính
-                    var kiemKeGui = Application.OpenForms
-                        .OfType<QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI>()
-                        .FirstOrDefault();
-
-                    if (kiemKeGui != null)
+                    // Mở lại KiemKeGUI sau khi thêm
+                    try
                     {
-                        ghiChu = $"{comboBox2.Text} - {textBoxSoluonglech.Text}";
+                        frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                        if (mainForm != null)
+                        {
+                            var method = mainForm.GetType().GetMethod("OpenChildForm",
+                                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-                        kiemKeGui.AddKiemKeRow(
-                            phieuKiemKe.Maphieukiemke,
-                            phieuKiemKe.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
-                            phieuKiemKe.Trangthai,
-                            ghiChu,
-                            phieuKiemKe.Makhuvuc.ToString(),
-                            maNvTao.ToString(),
-                            maNvKiem.ToString()
-                        );
+                            if (method != null)
+                            {
+                                method.Invoke(mainForm, new object[] { new QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI(_userName), null });
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Đã xảy ra lỗi khi mở lại giao diện Kiểm kê:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    this.Dispose();
+                    this.Close();
                 }
+
                 else
                 {
                     MessageBox.Show("Thêm chi tiết kiểm kê thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -632,8 +639,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                         method.Invoke(mainForm, new object[] { new QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI(), null });
                     }
                 }
-
-                this.Close();
             }
             catch (Exception ex)
             {
@@ -646,6 +651,25 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
 
 
+
+
+
+        // đóng form sau khi thêm thành công
+        private void AddPhieuKiemKeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Tìm frmMain trong danh sách form đang mở
+            var mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+            if (mainForm != null)
+            {
+                var method = mainForm.GetType().GetMethod("OpenChildForm",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (method != null)
+                {
+                    method.Invoke(mainForm, new object[] { new QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI(), null });
+                }
+            }
+        }
 
 
 
