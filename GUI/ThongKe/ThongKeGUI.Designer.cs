@@ -74,6 +74,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // btnTongQuan
             // 
             this.btnTongQuan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTongQuan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTongQuan.Location = new System.Drawing.Point(3, 3);
             this.btnTongQuan.Name = "btnTongQuan";
             this.btnTongQuan.Size = new System.Drawing.Size(196, 35);
@@ -85,6 +86,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // btnTonKho
             // 
             this.btnTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTonKho.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTonKho.Location = new System.Drawing.Point(205, 3);
             this.btnTonKho.Name = "btnTonKho";
             this.btnTonKho.Size = new System.Drawing.Size(155, 35);
@@ -97,6 +99,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // 
             this.btnDoanhThu.BackColor = System.Drawing.Color.White;
             this.btnDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDoanhThu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoanhThu.Location = new System.Drawing.Point(366, 3);
             this.btnDoanhThu.Name = "btnDoanhThu";
             this.btnDoanhThu.Size = new System.Drawing.Size(196, 35);
@@ -109,6 +112,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // 
             this.btnNhaCungCap.AutoSize = true;
             this.btnNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNhaCungCap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhaCungCap.Location = new System.Drawing.Point(568, 3);
             this.btnNhaCungCap.Name = "btnNhaCungCap";
             this.btnNhaCungCap.Size = new System.Drawing.Size(236, 35);
@@ -120,6 +124,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
             // btnKhachHang
             // 
             this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKhachHang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhachHang.Location = new System.Drawing.Point(810, 3);
             this.btnKhachHang.Name = "btnKhachHang";
             this.btnKhachHang.Size = new System.Drawing.Size(197, 35);

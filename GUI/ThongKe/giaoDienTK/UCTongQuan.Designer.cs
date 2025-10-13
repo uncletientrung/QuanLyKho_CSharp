@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCTongQuan));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnTinhHangTon = new System.Windows.Forms.Button();
@@ -49,8 +49,8 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvDoanhThu7ngay = new System.Windows.Forms.DataGridView();
             this.tableTop3SP = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvDoanhThu7ngay = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -235,18 +235,18 @@
             // 
             // chartLoaiSP
             // 
-            chartArea12.Name = "ChartArea1";
-            this.chartLoaiSP.ChartAreas.Add(chartArea12);
+            chartArea1.Name = "ChartArea1";
+            this.chartLoaiSP.ChartAreas.Add(chartArea1);
             this.chartLoaiSP.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend12.Name = "Legend1";
-            this.chartLoaiSP.Legends.Add(legend12);
+            legend1.Name = "Legend1";
+            this.chartLoaiSP.Legends.Add(legend1);
             this.chartLoaiSP.Location = new System.Drawing.Point(680, 3);
             this.chartLoaiSP.Name = "chartLoaiSP";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            this.chartLoaiSP.Series.Add(series12);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartLoaiSP.Series.Add(series1);
             this.chartLoaiSP.Size = new System.Drawing.Size(360, 164);
             this.chartLoaiSP.TabIndex = 0;
             this.chartLoaiSP.Text = "chart1";
@@ -303,19 +303,6 @@
             this.label1.Text = "TOP 3 XUẤT KHO NHIỀU NHẤT";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dgvDoanhThu7ngay
-            // 
-            this.dgvDoanhThu7ngay.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvDoanhThu7ngay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoanhThu7ngay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDoanhThu7ngay.GridColor = System.Drawing.Color.LightSlateGray;
-            this.dgvDoanhThu7ngay.Location = new System.Drawing.Point(3, 3);
-            this.dgvDoanhThu7ngay.Name = "dgvDoanhThu7ngay";
-            this.dgvDoanhThu7ngay.RowHeadersWidth = 51;
-            this.dgvDoanhThu7ngay.RowTemplate.Height = 24;
-            this.dgvDoanhThu7ngay.Size = new System.Drawing.Size(671, 288);
-            this.dgvDoanhThu7ngay.TabIndex = 2;
-            // 
             // tableTop3SP
             // 
             this.tableTop3SP.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -332,6 +319,19 @@
             this.tableTop3SP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.tableTop3SP.Size = new System.Drawing.Size(354, 232);
             this.tableTop3SP.TabIndex = 2;
+            // 
+            // dgvDoanhThu7ngay
+            // 
+            this.dgvDoanhThu7ngay.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvDoanhThu7ngay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDoanhThu7ngay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDoanhThu7ngay.GridColor = System.Drawing.Color.LightSlateGray;
+            this.dgvDoanhThu7ngay.Location = new System.Drawing.Point(3, 3);
+            this.dgvDoanhThu7ngay.Name = "dgvDoanhThu7ngay";
+            this.dgvDoanhThu7ngay.RowHeadersWidth = 51;
+            this.dgvDoanhThu7ngay.RowTemplate.Height = 24;
+            this.dgvDoanhThu7ngay.Size = new System.Drawing.Size(671, 288);
+            this.dgvDoanhThu7ngay.TabIndex = 2;
             // 
             // UCTongQuan
             // 

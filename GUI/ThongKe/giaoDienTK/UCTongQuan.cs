@@ -40,7 +40,8 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
         private void UCTongQuan_Load(object sender, EventArgs e)
         {
 
-   
+            
+            bieuDoDoanhThuTheoNgay.ContextMenuStrip = null;
             LoadChartLiveCharts();
             setUpColumnAndData();
             LoadTongSo();
@@ -115,7 +116,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 Title = "Đơn vị: Triệu đồng",
                 LabelFormatter = value => value.ToString("N0"),
-                MaxValue = 20 // max 20 cu
+                MaxValue = 100 // max 20 cu
             });
 
             bieuDoDoanhThuTheoNgay.LegendLocation = LegendLocation.Right;
