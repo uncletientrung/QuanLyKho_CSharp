@@ -15,45 +15,29 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 {
     public partial class AddPhieuKiemKeForm : Form
     {
-        private readonly string SearchPlaceholder = " Tìm kiếm theo mã sản phẩm, tên sản phẩm, mã khu vực, ...";
+        private readonly string _userName;
+        private readonly string SearchPlaceholder = " Tìm kiếm theo mã sản phẩm, tên sản phẩm, tên kho ...";
         private readonly string TonChiNhanhPlaceholder = "1234";
-        private string _userName;
-
-        // Thêm event
         public event EventHandler HuyBoClicked;
 
-        public AddPhieuKiemKeForm()
-        {
-            InitializeComponent();
-            this.Load += new System.EventHandler(this.AddPhieuKiemKeForm_Load);
-            this.buttonHuyBo.Click += new System.EventHandler(this.buttonHuyBo_Click);
-            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click_1);
-        }
 
         public AddPhieuKiemKeForm(string userName)
         {
             InitializeComponent();
-            this._userName = userName;
+            _userName = userName; // Lưu thông tin người dùng
+
             this.Load += new System.EventHandler(this.AddPhieuKiemKeForm_Load);
             this.buttonHuyBo.Click += new System.EventHandler(this.buttonHuyBo_Click);
             this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click_1);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
         // load form
         private void AddPhieuKiemKeForm_Load(object sender, EventArgs e)
         {
+            boxNVkiem.Text = _userName; // Hiển thị tên nhân viên
+                                        // Hoặc nếu bạn muốn hiển thị cả mã và tên:
+                                        // boxNVkiem.Text = $"{_userID} - {_userName}";
+
             txSearch.ForeColor = Color.LightGray;
             txSearch.Text = SearchPlaceholder;
             txSearch.GotFocus += txSearch_Enter;
@@ -91,10 +75,13 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // Tự động điền mã phiếu kiểm kê
             int nextMaPhieu = PhieuKiemKeDAO.getInstance().GetAutoIncrement();
             boxMaPhieu.Text = nextMaPhieu.ToString();
-
-            // Gán nhân viên tạo phiếu là tài khoản đăng nhập
-            boxNVkiem.Text = _userName;
         }
+
+
+
+
+
+
 
         // Hàm load toàn bộ sản phẩm
         private void LoadAllSanPhamToGrid()
@@ -392,7 +379,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 return;
             }
 
-            // Xác định dòng được chọn
+            // Xác định sản phẩm đang được chọn
             DataGridViewRow selectedRow;
             if (DGVKiemKe.SelectedRows.Count > 0)
             {
@@ -410,7 +397,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 return;
             }
 
-            // Lấy số lượng thực tế từ textbox
+            // kiểm tra số lượng thực tế từ textbox
             if (!int.TryParse(textBoxTonchinhanh.Text, out int soLuongThucTe))
             {
                 MessageBox.Show("Số lượng thực tế không hợp lệ.");
@@ -420,7 +407,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // Lấy số lượng tồn kho từ cột "SoLuong"
             int soLuongTonKho = Convert.ToInt32(selectedRow.Cells["SoLuong"].Value);
 
-            // Tính toán trạng thái phiếu kiểm
+            // Tính toán trạng thái phiếu thiếu - đủ của hàng
             int soLuongLech = soLuongThucTe - soLuongTonKho;
             textBoxSoluonglech.Text = Math.Abs(soLuongLech).ToString();
 
@@ -439,15 +426,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
 
 
-        private void label4_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
+
+
+
+
+
 
         // button event footer
         // xuat file
@@ -466,10 +452,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 textBoxTonchinhanh.Focus();
                 return;
             }
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            if (string.IsNullOrWhiteSpace(textBoxMaNhanVienKiem.Text))
             {
-                MessageBox.Show("Vui lòng nhập tên nhân viên kiểm hàng.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox1.Focus();
+                MessageBox.Show("Vui lòng nhập mã nhân viên kiểm hàng.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxMaNhanVienKiem.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(textBoxSoluonglech.Text) || string.IsNullOrWhiteSpace(comboBox2.Text))
@@ -478,13 +464,31 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 return;
             }
 
-            // Lấy dữ liệu để thêm phiếu kiểm kê
-            int maPhieu = int.Parse(boxMaPhieu.Text);
-            DateTime thoiGianTao = DateTime.Now;
-            string trangThai = comboBox2.Text;
-            string ghiChu = textBox1.Text;
+            // KIỂM TRA VÀ LẤY DÒNG ĐƯỢC CHỌN - SỬA LỖI PHẠM VI BIẾN
+            DataGridViewRow selectedRow = null;
 
-            // Lấy mã khu vực từ combobox (giả sử định dạng "1 - Khu vực A")
+            if (DGVKiemKe.SelectedRows.Count > 0)
+            {
+                selectedRow = DGVKiemKe.SelectedRows[0];
+            }
+            else if (DGVKiemKe.CurrentCell != null)
+            {
+                selectedRow = DGVKiemKe.Rows[DGVKiemKe.CurrentCell.RowIndex];
+            }
+
+            if (selectedRow == null || selectedRow.IsNewRow)
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm để kiểm tra.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int maPhieu;
+            if (!int.TryParse(boxMaPhieu.Text.Trim(), out maPhieu))
+            {
+                MessageBox.Show("Mã phiếu kiểm kê không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int maKhuVuc = 0;
             if (!string.IsNullOrWhiteSpace(comboBoxKhuvuckho.Text))
             {
@@ -492,80 +496,162 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 int.TryParse(parts[0].Trim(), out maKhuVuc);
             }
 
-            // Lấy mã nhân viên tạo (nếu boxNVkiem.Text là mã số, nếu là tên thì cần tra cứu)
-            int maNhanVienTao = 0;
-            int.TryParse(boxNVkiem.Text.Trim(), out maNhanVienTao);
+            // QUAN TRỌNG: Lấy mã nhân viên từ hệ thống thay vì từ textbox
+            int maNvTao = GetCurrentUserID(); // Hàm này bạn cần implement
+            int maNvKiem;
 
-            // Lấy mã nhân viên kiểm (nếu textBox1.Text là mã số, nếu là tên thì cần tra cứu)
-            int maNhanVienKiem = 0;
-            int.TryParse(textBox1.Text.Trim(), out maNhanVienKiem);
+            if (!int.TryParse(textBoxMaNhanVienKiem.Text.Trim(), out maNvKiem))
+            {
+                MessageBox.Show("Mã nhân viên kiểm không hợp lệ. Vui lòng nhập số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxMaNhanVienKiem.Focus();
+                return;
+            }
 
-            // Tạo đối tượng phiếu kiểm kê
-            var phieuKiemKe = new PhieuKiemKeDTO
+            // LẤY THÔNG TIN SẢN PHẨM - ĐẢM BẢO BIẾN selectedRow ĐÃ ĐƯỢC KHAI BÁO
+            int maSP = Convert.ToInt32(selectedRow.Cells["MaSP"].Value);
+            int tonThucTe = Convert.ToInt32(selectedRow.Cells["SoLuong"].Value); // Số lượng tồn kho hiện tại
+            int tonChiNhanh;
+
+            if (!int.TryParse(textBoxTonchinhanh.Text, out tonChiNhanh))
+            {
+                MessageBox.Show("Số lượng tồn chi nhánh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Tạo phiếu kiểm kê
+            PhieuKiemKeDTO phieuKiemKe = new PhieuKiemKeDTO
             {
                 Maphieukiemke = maPhieu,
-                Thoigiantao = thoiGianTao,
-                Trangthai = trangThai,
-                Ghichu = ghiChu,
+                Thoigiantao = DateTime.Now,
+                Trangthai = comboBox2.Text,
+                Ghichu = "",
                 Makhuvuc = maKhuVuc,
-                Manhanvientao = maNhanVienTao,
-                Manhanvienkiem = maNhanVienKiem
+                Manhanvientao = maNvTao, // Sử dụng mã nhân viên từ hệ thống
+                Manhanvienkiem = maNvKiem // Sử dụng mã nhân viên kiểm từ textbox
             };
 
-            // Lưu vào database
+            // Thêm phiếu kiểm kê
             int result = PhieuKiemKeBUS.Instance.Insert(phieuKiemKe);
             if (result > 0)
             {
-                MessageBox.Show("Thêm phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Gọi reload trên KiemKeGUI nếu có
-                var kiemKeGui = this.Parent?.Controls
-                    .OfType<QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI>()
-                    .FirstOrDefault();
-
-                if (kiemKeGui != null)
+                // Tạo chi tiết kiểm kê
+                ChiTietKiemKeDTO chiTiet = new ChiTietKiemKeDTO
                 {
-                    kiemKeGui.LoadDataIntoGridView();
-                }
+                    Maphieukiemke = maPhieu,
+                    Masp = maSP,
+                    Tonchinhanh = tonChiNhanh,
+                    Tonthucte = tonThucTe,
+                    Ghichu = "" // Có thể thêm ghi chú nếu cần
+                };
 
-                // Đóng form
-                this.Parent?.Controls.Remove(this);
-                this.Dispose();
+                // Thêm chi tiết kiểm kê (cần có ChiTietKiemKeBUS)
+                bool chiTietResult = AddChiTietKiemKe(chiTiet);
+
+                if (chiTietResult)
+                {
+                    MessageBox.Show("Thêm phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Cập nhật giao diện chính
+                    var kiemKeGui = Application.OpenForms
+                        .OfType<QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI>()
+                        .FirstOrDefault();
+
+                    if (kiemKeGui != null)
+                    {
+                        kiemKeGui.AddKiemKeRow(
+                            phieuKiemKe.Maphieukiemke,
+                            phieuKiemKe.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                            phieuKiemKe.Trangthai,
+                            phieuKiemKe.Ghichu,
+                            phieuKiemKe.Makhuvuc.ToString(),
+                            maNvTao.ToString(), // Truyền mã nhân viên tạo
+                            maNvKiem.ToString() // Truyền mã nhân viên kiểm
+                        );
+                    }
+
+                    this.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm chi tiết kiểm kê thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Có lỗi khi thêm phiếu kiểm kê!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể thêm phiếu kiểm kê!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // Hàm lấy mã nhân viên hiện tại từ hệ thống
+        private int GetCurrentUserID()
+        {
+            // THAY THẾ bằng cách lấy mã nhân viên thực tế từ hệ thống của bạn
+            // Ví dụ:
+            // return UserSession.CurrentUser.ID;
+            // hoặc
+            // return Properties.Settings.Default.CurrentUserID;
+
+            // Tạm thời trả về giá trị mặc định
+            return 1; // Thay bằng mã nhân viên thực tế
+        }
+
+        // Hàm thêm chi tiết kiểm kê
+        private bool AddChiTietKiemKe(ChiTietKiemKeDTO chiTiet)
+        {
+            try
+            {
+                // Giả sử bạn có ChiTietKiemKeBUS
+                // return ChiTietKiemKeBUS.Instance.Insert(chiTiet) > 0;
+
+                // Tạm thời trả về true để test
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         // huy bo
         private void buttonHuyBo_Click(object sender, EventArgs e)
         {
-            txSearch.Text = SearchPlaceholder;
-            txSearch.ForeColor = Color.LightGray;
-
-            if (boxMaPhieu != null) boxMaPhieu.Text = "";
-            if (boxNVkiem != null) boxNVkiem.Text = "";
-            if (textBoxTonchinhanh != null) textBoxTonchinhanh.Text = "";
-            if (textBoxSoluonglech != null) textBoxSoluonglech.Text = "";
-            if (textBox1 != null) textBox1.Text = "";
-            if (comboBoxKhuvuckho != null) comboBoxKhuvuckho.SelectedIndex = -1;
-            if (comboBox2 != null) comboBox2.SelectedIndex = -1;
-
-            // Bỏ chọn và bỏ focus tất cả các dòng trong DataGridView
-            if (DGVKiemKe != null)
+            try
             {
-                DGVKiemKe.ClearSelection();
-                DGVKiemKe.CurrentCell = null;
+                // Tìm frmMain trong danh sách form đang mở
+                frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                if (mainForm != null)
+                {
+                    var method = mainForm.GetType().GetMethod("OpenChildForm",
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                    if (method != null)
+                    {
+                        method.Invoke(mainForm, new object[] { new QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI(), null });
+                    }
+                }
+
+                this.Close();
             }
-
-            // Gọi event trước khi đóng
-            HuyBoClicked?.Invoke(this, EventArgs.Empty);
-
-            // Đóng form (remove khỏi pnlBody)
-            this.Parent?.Controls.Remove(this);
-            this.Dispose();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi quay lại giao diện Kiểm kê:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // readonly
         private void label1_Click(object sender, EventArgs e) {}
@@ -580,5 +666,9 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
 
         private void textBox1_TextChanged(object sender, EventArgs e) {}
+
+        private void boxMaPhieu_TextChanged(object sender, EventArgs e) {}
+
+        private void label8_Click(object sender, EventArgs e) {}
     }
 }

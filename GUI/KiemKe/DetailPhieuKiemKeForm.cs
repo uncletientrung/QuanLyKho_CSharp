@@ -32,10 +32,9 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
             if (_phieuKiem != null)
             {
-                // Hiển thị thông tin cơ bản của phiếu kiểm kê
-                textBox1.Text = _phieuKiem.Maphieukiemke.ToString(); // Mã phiếu kiểm
-                textBox2.Text = _phieuKiem.Trangthai;                // Trạng thái
-                textBox3.Text = _phieuKiem.Ghichu;                   // Ghi chú
+                textBox1.Text = _phieuKiem.Maphieukiemke.ToString();                    // Mã phiếu kiểm
+                textBox2.Text = _phieuKiem.Trangthai;                                   // Trạng thái
+                textBox3.Text = _phieuKiem.Ghichu;                                      // Ghi chú
                 textBox4.Text = _phieuKiem.Thoigiantao.ToString("dd/MM/yyyy HH:mm:ss"); // Thời gian tạo phiếu
             }
         }
@@ -51,10 +50,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 {
                     chiTietPhieuKiemKe.Add(phieu);
                 }
-
                 // Cấu hình DataGridView
                 SetupDataGridView();
-
                 // Hiển thị dữ liệu
                 DisplayChiTietPhieuKiemKe(chiTietPhieuKiemKe);
             }
@@ -109,6 +106,26 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+
+
+
+
+
+        // buttton footer
+        // excel
+        private void buttonXuatFile_Click(object sender, EventArgs e)
+        {
+
+        }
+        // cancel - OK
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
 
         // readonly
         private void dgvXemChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e) {}

@@ -55,9 +55,9 @@
             this.buttonCheck = new System.Windows.Forms.Button();
             this.textBoxTonchinhanh = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonXuatFile = new System.Windows.Forms.Button();
+            this.buttonThemPhieuKiem = new System.Windows.Forms.Button();
             this.buttonHuyBo = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxMaNhanVienKiem = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.DGVKiemKe = new System.Windows.Forms.DataGridView();
             this.button.SuspendLayout();
@@ -178,7 +178,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 15);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxMaNhanVienKiem, 0, 13);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 42);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -210,10 +210,11 @@
             this.label8.Location = new System.Drawing.Point(2, 454);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 8);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 17);
+            this.label8.Size = new System.Drawing.Size(165, 17);
             this.label8.TabIndex = 24;
-            this.label8.Text = "Nhân viên kiểm";
+            this.label8.Text = "Mã nhân viên kiểm kê";
             this.label8.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBoxSoluonglech
             // 
@@ -331,6 +332,7 @@
             this.boxMaPhieu.TabIndex = 4;
             this.boxMaPhieu.TabStop = false;
             this.boxMaPhieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.boxMaPhieu.TextChanged += new System.EventHandler(this.boxMaPhieu_TextChanged);
             // 
             // label1
             // 
@@ -404,7 +406,7 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.buttonXuatFile, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonThemPhieuKiem, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.buttonHuyBo, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 559);
@@ -415,21 +417,21 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(434, 36);
             this.tableLayoutPanel5.TabIndex = 26;
             // 
-            // buttonXuatFile
+            // buttonThemPhieuKiem
             // 
-            this.buttonXuatFile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonXuatFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonXuatFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonXuatFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonXuatFile.ForeColor = System.Drawing.Color.ForestGreen;
-            this.buttonXuatFile.Location = new System.Drawing.Point(225, 2);
-            this.buttonXuatFile.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
-            this.buttonXuatFile.Name = "buttonXuatFile";
-            this.buttonXuatFile.Size = new System.Drawing.Size(201, 32);
-            this.buttonXuatFile.TabIndex = 3;
-            this.buttonXuatFile.Text = "Thêm phiếu";
-            this.buttonXuatFile.UseVisualStyleBackColor = true;
-            this.buttonXuatFile.Click += new System.EventHandler(this.button_AddPhieuKiemKeClick);
+            this.buttonThemPhieuKiem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonThemPhieuKiem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonThemPhieuKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonThemPhieuKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonThemPhieuKiem.ForeColor = System.Drawing.Color.ForestGreen;
+            this.buttonThemPhieuKiem.Location = new System.Drawing.Point(225, 2);
+            this.buttonThemPhieuKiem.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
+            this.buttonThemPhieuKiem.Name = "buttonThemPhieuKiem";
+            this.buttonThemPhieuKiem.Size = new System.Drawing.Size(201, 32);
+            this.buttonThemPhieuKiem.TabIndex = 3;
+            this.buttonThemPhieuKiem.Text = "Thêm phiếu";
+            this.buttonThemPhieuKiem.UseVisualStyleBackColor = true;
+            this.buttonThemPhieuKiem.Click += new System.EventHandler(this.button_AddPhieuKiemKeClick);
             // 
             // buttonHuyBo
             // 
@@ -446,16 +448,15 @@
             this.buttonHuyBo.UseVisualStyleBackColor = true;
             this.buttonHuyBo.Click += new System.EventHandler(this.buttonHuyBo_Click);
             // 
-            // textBox1
+            // textBoxMaNhanVienKiem
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(3, 482);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(434, 29);
-            this.textBox1.TabIndex = 27;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxMaNhanVienKiem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxMaNhanVienKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMaNhanVienKiem.Location = new System.Drawing.Point(3, 482);
+            this.textBoxMaNhanVienKiem.Name = "textBoxMaNhanVienKiem";
+            this.textBoxMaNhanVienKiem.Size = new System.Drawing.Size(434, 29);
+            this.textBoxMaNhanVienKiem.TabIndex = 27;
+            this.textBoxMaNhanVienKiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -561,10 +562,10 @@
         private System.Windows.Forms.TextBox textBoxSoluonglech;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button buttonHuyBo;
-        private System.Windows.Forms.Button buttonXuatFile;
+        private System.Windows.Forms.Button buttonThemPhieuKiem;
         private System.Windows.Forms.TextBox textBoxTonchinhanh;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxMaNhanVienKiem;
         private System.Windows.Forms.TextBox txSearch;
         private System.Windows.Forms.Button buttonLoadHangtonkho;
     }

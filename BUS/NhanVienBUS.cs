@@ -34,6 +34,36 @@ namespace QuanLyKho_CSharp.BUS
 
             return "Không tìm thấy";
         }
+
+
+        // thêm hàm lấy mã nhân viên từ tên nhân viên để sử lý logic riêng trong HoanHangGUI
+        public int GetMaNVByTenNV(string tenNV)
+        {
+            if (string.IsNullOrWhiteSpace(tenNV))
+                return -1;
+
+            // Đảm bảo listNV đã được load
+            if (listNV == null || listNV.Count == 0)
+            {
+                try
+                {
+                    listNV = nvDAO.SelectAll();
+                }
+                catch
+                {
+                    return -1;
+                }
+            }
+            var nv = listNV.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.Tennv) && x.Tennv.Trim().Equals(tenNV.Trim(), StringComparison.OrdinalIgnoreCase));
+
+            if (nv != null)
+                return nv.Manv;  
+
+            return -1;
+        }
+
+
+
         public Boolean removeNhanVien(int maNV) // Xóa trong database trước rồi xóa list
         {
             NhanVienDTO nvXoa=nvDAO.SelectById(maNV);

@@ -14,16 +14,30 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 {
     public partial class KiemKeGUI : Form
     {
-        public KiemKeGUI()
+        private string _currentUserName; // Thêm field để lưu tên người dùng
+
+        public KiemKeGUI(string userName = null)
         {
             InitializeComponent();
-            InitializeDataGridViewColumns(); 
+            _currentUserName = userName; // Lưu thông tin người dùng
+
+            InitializeDataGridViewColumns();
             SetupDataGridView();
             this.Load += new System.EventHandler(this.KiemKeGUI_Load);
             DGVKiemKe.CellPainting += DGVKiemKe_CellPainting;
             DGVKiemKe.CellMouseClick += DGVKiemKe_CellMouseClick;
             LoadDataIntoGridView();
         }
+
+
+
+
+
+
+
+
+
+
 
         // header button
         // add phiếu kiểm kê
@@ -37,10 +51,12 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
                 if (method != null)
                 {
-                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(), null });
+                    // Truyền thông tin người dùng sang AddPhieuKiemKeForm
+                    method.Invoke(mainForm, new object[] { new AddPhieuKiemKeForm(_currentUserName), null });
                 }
             }
         }
+
         // export excel
         private void btnExcel_Click(object sender, EventArgs e)
         {
@@ -63,11 +79,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
 
 
+
+
+
+
+
+
         // searchplaceholder
-        private void btn_search(object sender, EventArgs e)
-        {
-            
-        }
+        
         private void KiemKeGUI_Load(object sender, EventArgs e)
         {
             txSearch.ForeColor = Color.Gray;
@@ -123,27 +142,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     maNhanVienKiem
                 );
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        
-
-        
 
         private void DanhSachKiemKeGUI_Load(object sender, EventArgs e)
         {
@@ -228,6 +226,18 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
             DGVKiemKe.ClearSelection();
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
         // 2 nút ation xem-xoá
         // Thêm các hàm xử lý vẽ và click nút thao tác
@@ -339,11 +349,13 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
 
 
-        // readonly font for placeholder
+        // readonly 
+        private void btn_search(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) {}
         private void panel2_Paint(object sender, PaintEventArgs e) {}
         private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
         private void pictureBox1_Click(object sender, EventArgs e) {}
+        private void panel1_Paint(object sender, PaintEventArgs e) {}
     }
 }
 
