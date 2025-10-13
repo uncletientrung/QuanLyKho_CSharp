@@ -209,7 +209,6 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
         {
             try
             {
-                dgvDoanhThu7ngay.AutoGenerateColumns = false;
 
                 dgvDoanhThu7ngay.Columns.Clear();
                 dgvDoanhThu7ngay.Columns.Add("Date", "Ngày");
@@ -230,6 +229,8 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                 dgvDoanhThu7ngay.Columns["Doanhthu"].FillWeight = 25;
                 dgvDoanhThu7ngay.Columns["Loinhuan"].FillWeight = 25;
                 dgvDoanhThu7ngay.RowTemplate.Height = 40;
+                dgvDoanhThu7ngay.RowHeadersVisible = false;//tat cot du voi hang du
+                dgvDoanhThu7ngay.AllowUserToAddRows = false;
                 LoadDataToGrid();
             }
             catch (Exception ex)

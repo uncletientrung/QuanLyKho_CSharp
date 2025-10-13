@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DTO;
+﻿using QuanLyKho_CSharp.DAO;
+using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.DTO.ThongKeDTO;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace QuanLyKho_CSharp.BUS
         private PhieuNhapBUS phieuNhapBUS = new PhieuNhapBUS();
         private PhieuXuatBUS phieuXuatBUS = new PhieuXuatBUS();
         private ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
+        private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
         private SanPhamBUS spBUS = new SanPhamBUS();
 
         public BindingList<ThongKeTungNgayTrongThangDTO> thongKe7NgayGanDay()
@@ -85,6 +87,80 @@ namespace QuanLyKho_CSharp.BUS
 
             return result;
         }
+
+        public BindingList<ThongKeTonKhoDTO> ThongKeTonKho(int thang, int nam)
+        {
+            BindingList<ThongKeTonKhoDTO> result = new BindingList<ThongKeTonKhoDTO>();
+
+            var listSP = spBUS.getListSP();
+            var listPN = phieuNhapBUS.getListPN();
+            var listPX = phieuXuatBUS.getListPX();
+            var listCTPN = ctpnBUS.getListCTPN();
+            var listCTPX = ctpxBUS.getListCTPX();
+
+            int stt = 1;
+
+            foreach (var sp in listSP)
+            {
+                ThongKeTonKhoDTO tk = new ThongKeTonKhoDTO();
+                tk.Stt = stt++;
+                tk.Masp = sp.Masp;
+                tk.Tensp = sp.Tensp;
+
+                
+                int nhapTruoc = (
+                    from pn in listPN
+                    join ctpn in listCTPN on pn.Maphieu equals ctpn.Maphieunhap
+                    where pn.Thoigiantao.Year == nam && pn.Thoigiantao.Month < thang && ctpn.Masp == sp.Masp
+                    select ctpn.Soluong
+                ).Sum();
+
+                int xuatTruoc = (
+                    from px in listPX
+                    join ctpx in listCTPX on px.Maphieu equals ctpx.Maphieuxuat
+                    where px.Thoigiantao.Year == nam && px.Thoigiantao.Month < thang && ctpx.Masp == sp.Masp
+                    select ctpx.Soluong
+                ).Sum();
+
+                tk.TonDauKy = nhapTruoc - xuatTruoc;
+
+                
+                tk.NhapTrongKy = (
+                    from pn in listPN
+                    join ctpn in listCTPN on pn.Maphieu equals ctpn.Maphieunhap
+                    where pn.Thoigiantao.Year == nam && pn.Thoigiantao.Month == thang && ctpn.Masp == sp.Masp
+                    select ctpn.Soluong
+                ).Sum();
+
+                
+                tk.XuatTrongKy = (
+                    from px in listPX
+                    join ctpx in listCTPX on px.Maphieu equals ctpx.Maphieuxuat
+                    where px.Thoigiantao.Year == nam && px.Thoigiantao.Month == thang && ctpx.Masp == sp.Masp
+                    select ctpx.Soluong
+                ).Sum();
+
+                
+                tk.TonCuoiKy = tk.TonDauKy + tk.NhapTrongKy - tk.XuatTrongKy;
+
+                result.Add(tk);
+            }
+
+            return result;
+        }
+
+        public BindingList<ThongKeTonKhoDTO> timKiemThongKeTonKho(String findText, BindingList<ThongKeTonKhoDTO> list)
+        {
+            
+            findText= findText.Trim().ToLower();
+            var ketqualoc= list.Where(tk =>
+            (string.IsNullOrEmpty(findText) ||
+             tk.Tensp.ToLower().Contains(findText))
+        ).ToList();
+
+            return new BindingList<ThongKeTonKhoDTO>(ketqualoc);
+        }
+
 
 
 
