@@ -187,11 +187,19 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
                 dgvXemChiTiet.Rows.RemoveAt(e.RowIndex);
             }
 
-            // Nếu sau khi xóa không còn sản phẩm nào thì xóa luôn phiếu xuất
+            // Xoá luôn phiếu xuất nếu hết sp
             var listCT = _chiTietPhieuXuatBUS.getChiTietByMaPhieuXuat(_maPhieuXuat);
             if (listCT == null || listCT.Count == 0)
             {
                 new PhieuXuatBUS().removePhieuXuat(_maPhieuXuat);
+            }
+            // Cập nhật cột tổng tiền - PhieuXuatGUI
+            else
+            {
+                int newTotal = listCT.Sum(ct => ct.Soluong * ct.Dongia);
+                var phieu = new PhieuXuatBUS().getPhieuXuatById(_maPhieuXuat);
+                phieu.Tongtien = newTotal;
+                new PhieuXuatBUS().updatePhieuXuat(phieu);
             }
         }
 
@@ -258,19 +266,12 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
 
         // readonly
         private void textBox1_TextChanged(object sender, EventArgs e) {}
-
         private void textBox1_TextChanged_1(object sender, EventArgs e) {}
-
         private void label1_Click(object sender, EventArgs e) {}
-
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e) {}
-
         private void label2_Click(object sender, EventArgs e) {}
-
         private void label3_Click(object sender, EventArgs e) {}
-
         private void label4_Click(object sender, EventArgs e) {}
-
-        
+        private void dgvXemChiTiet_CellContentClick_1(object sender, DataGridViewCellEventArgs e) {}
     }
 }

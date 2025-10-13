@@ -92,7 +92,7 @@
             this.panel4.Size = new System.Drawing.Size(643, 40);
             this.panel4.TabIndex = 3;
             // 
-            // tableLayoutPanel4 - nút hoàn all
+            // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel4.ColumnCount = 4;
@@ -109,8 +109,8 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(643, 40);
-            this.tableLayoutPanel4.Click += new System.EventHandler(this.buttonHoanAll_Click);
             this.tableLayoutPanel4.TabIndex = 0;
+            this.tableLayoutPanel4.Click += new System.EventHandler(this.buttonHoanAll_Click);
             // 
             // buttonHoanAll
             // 
@@ -378,6 +378,7 @@
             this.dgvXemChiTiet.RowTemplate.Height = 24;
             this.dgvXemChiTiet.Size = new System.Drawing.Size(639, 205);
             this.dgvXemChiTiet.TabIndex = 6;
+            this.dgvXemChiTiet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvXemChiTiet_CellContentClick_1);
             // 
             // HoanHang
             // 
