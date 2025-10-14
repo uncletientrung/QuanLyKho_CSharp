@@ -520,7 +520,7 @@ namespace QuanLyKho_CSharp.GUI
             int maLoai = loaiBUS.LayMaLoai(loai);
             int makv = khuVucKhoBUS.LayMaKhuVuc(khuVuc);
             int maCl = chatLieuBUS.LayMaChatLieu(chatLieu);
-            int maSize = sizeBUS.LayMaSize(size);
+            int maSize = sizeBUS.LayMaSize(size); 
 
             var filtered = spBUS.getListSP().Where(sp =>
                 (string.IsNullOrEmpty(keyword) || sp.Tensp.ToLower().Contains(keyword)) &&

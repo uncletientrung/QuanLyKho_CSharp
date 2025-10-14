@@ -12,11 +12,13 @@ namespace QuanLyKho_CSharp.DTO.ThongKeDTO
         private string tenncc;
         private int soluong;
         private int tongtien;
+        private int stt;
 
         public ThongKeNhaCungCapDTO() { }
 
-        public ThongKeNhaCungCapDTO(int _mancc, string _tenncc, int _soluong, int _tongtien)
+        public ThongKeNhaCungCapDTO(int _stt,int _mancc, string _tenncc, int _soluong, int _tongtien)
         {
+            stt = _stt;
             mancc = _mancc;
             tenncc = _tenncc;
             soluong = _soluong;
@@ -45,6 +47,12 @@ namespace QuanLyKho_CSharp.DTO.ThongKeDTO
         {
             get { return tongtien; }
             set { tongtien = value; }
+        }
+
+        public int Stt
+        {
+            get { return stt; }
+            set { stt = value; }
         }
     }
 }

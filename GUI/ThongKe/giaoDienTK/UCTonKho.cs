@@ -5,15 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics; // Dùng để mở file
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
-using System.IO;
-using System.Diagnostics; // Dùng để mở file
 
 
 namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
@@ -21,15 +21,17 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
     public partial class UCTonKho : UserControl
     {
         private ThongKeBUS tkBUS = new ThongKeBUS();
+        
         public UCTonKho()
         {
             InitializeComponent();
+           
         }
 
         public void Load_Form(object sender, EventArgs e)
         {
             setUpCollumnAndData();
-
+            setUpTimKiem();
 
 
 
@@ -102,17 +104,6 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
 
 
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            DateTime hienTai = DateTime.Now;
-            int thangHienTai = hienTai.Month;
-            int namHienTai = hienTai.Year;
-            BindingList<ThongKeTonKhoDTO> listThongKeTonKho = tkBUS.ThongKeTonKho(thangHienTai, namHienTai);
-            BindingList<ThongKeTonKhoDTO> listTimKiem = tkBUS.timKiemThongKeTonKho(txtTimKiem.Text, listThongKeTonKho);
-            LoadDataToGridTimKiem(listTimKiem);
-
-        }
-
         public void LoadDataToGridTimKiem(BindingList<ThongKeTonKhoDTO> listThongKeTonKhoTimKiem)
         {
 
@@ -138,6 +129,27 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
         {
             LoadDataToGrid();
             txtTimKiem.Text = String.Empty;
+        }
+
+        public void Filter()
+        {
+            DateTime hienTai = DateTime.Now;
+            int thangHienTai = hienTai.Month;
+            int namHienTai = hienTai.Year;
+            String keyWord = txtTimKiem.Text.Trim().ToLower();
+            var ketqualoc = tkBUS.ThongKeTonKho(thangHienTai,namHienTai).Where(tk =>
+            (string.IsNullOrEmpty(keyWord) ||
+             tk.Tensp.ToLower().Contains(keyWord))
+        ).ToList();
+            BindingList<ThongKeTonKhoDTO> thongketonkho = new BindingList<ThongKeTonKhoDTO>(ketqualoc);
+            LoadDataToGridTimKiem(thongketonkho);
+        }
+
+
+        public void setUpTimKiem()
+        {
+            txtTimKiem.TextChanged += (s, ev) => Filter();
+            Filter();
         }
 
         private void btnXuatExcel_Click(object sender, EventArgs e)

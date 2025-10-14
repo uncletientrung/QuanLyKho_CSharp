@@ -17,7 +17,7 @@ namespace QuanLyKho_CSharp.DTO.ThongKeDTO
 
         public ThongKeKhachHangDTO() { }
 
-        public ThongKeKhachHangDTO(int _makh, string _tenkh, int _soluongphieu, int _tongtien, int _tongsanpham, int _stt)
+        public ThongKeKhachHangDTO(int _stt,int _makh, string _tenkh, int _soluongphieu, int _tongsanpham, int _tongtien )
         {
             makh = _makh;
             tenkh = _tenkh;

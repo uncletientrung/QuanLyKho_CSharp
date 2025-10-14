@@ -17,6 +17,9 @@ namespace QuanLyKho_CSharp.BUS
         private ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
         private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
         private SanPhamBUS spBUS = new SanPhamBUS();
+        private KhachHangBUS khBUS = new KhachHangBUS();
+        private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
+
 
         public BindingList<ThongKeTungNgayTrongThangDTO> thongKe7NgayGanDay()
         {
@@ -149,16 +152,62 @@ namespace QuanLyKho_CSharp.BUS
             return result;
         }
 
-        public BindingList<ThongKeTonKhoDTO> timKiemThongKeTonKho(String findText, BindingList<ThongKeTonKhoDTO> list)
+        public BindingList<ThongKeKhachHangDTO> thongKeKhachHangList()
         {
-            
-            findText= findText.Trim().ToLower();
-            var ketqualoc= list.Where(tk =>
-            (string.IsNullOrEmpty(findText) ||
-             tk.Tensp.ToLower().Contains(findText))
-        ).ToList();
+            BindingList<ThongKeKhachHangDTO> result = new BindingList<ThongKeKhachHangDTO>();
 
-            return new BindingList<ThongKeTonKhoDTO>(ketqualoc);
+            var listPX = phieuXuatBUS.getListPX();
+            var listKH = khBUS.getListKH();
+            int stt = 1;
+
+            foreach (var kh in listKH)
+            {
+                
+                var phieuCuaKhachNay = listPX.Where(px => px.Makh == kh.Makh).ToList();
+
+                
+                if (phieuCuaKhachNay.Count == 0)
+                    continue;
+
+                ThongKeKhachHangDTO khach = new ThongKeKhachHangDTO();
+                khach.Stt = stt++;
+                khach.Makh = kh.Makh;
+                khach.Tenkh = kh.Tenkhachhang;
+                khach.Soluongphieu = phieuCuaKhachNay.Count;
+                khach.Tongtien = phieuCuaKhachNay.Sum(px => px.Tongtien);
+
+                result.Add(khach);
+            }
+
+            return result;
+
+
+        }
+
+        public BindingList<ThongKeNhaCungCapDTO> thongKeNhaCungCapList()
+        {
+            BindingList<ThongKeNhaCungCapDTO> result = new BindingList<ThongKeNhaCungCapDTO> ();
+            var listPN= phieuNhapBUS.getListPN();
+            var listNCC=nccBUS.getListNCC();
+            int stt = 1;
+
+            foreach(var ncc in listNCC)
+            {
+                var phieuCuaNccNay = listPN.Where(pn=>pn.Mancc==ncc.Mancc).ToList();//danhsach tat ca phieu nhap cua nha cc nay
+                if(phieuCuaNccNay.Count==0)
+                    continue;
+
+                ThongKeNhaCungCapDTO nhacc = new ThongKeNhaCungCapDTO();
+                nhacc.Stt = stt++;
+                nhacc.Mancc=ncc.Mancc;
+                nhacc.Tenncc = ncc.Tenncc;
+                nhacc.Soluong = phieuCuaNccNay.Count;
+                nhacc.Tongtien=phieuCuaNccNay.Sum(pn=>pn.Tongtien);
+                result.Add(nhacc);
+
+
+            }
+            return result;
         }
 
 
