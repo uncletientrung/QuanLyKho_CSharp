@@ -544,7 +544,20 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
                     MessageBox.Show("Xuất hàng thành công!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
+
+                    // Đóng form hiện tại và mở PhieuXuatGUI
+                    frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                    if (mainForm != null)
+                    {
+                        var method = mainForm.GetType().GetMethod("OpenChildForm",
+                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                        if (method != null)
+                        {
+                            method.Invoke(mainForm, new object[] { new PhieuXuatGUI(), mainForm.Controls.Find("btnPhieuXuat", true).FirstOrDefault() });
+                        }
+                    }
+
                     this.Close();
                 }
                 else

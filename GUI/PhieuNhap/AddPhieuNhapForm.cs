@@ -525,10 +525,19 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     MessageBox.Show("Nhập hàng thành công!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Cập nhật số lượng sản phẩm trong kho
-                    UpdateSoLuongSanPham();
+                    // Đóng form hiện tại và mở PhieuNhapGUI
+                    frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                    if (mainForm != null)
+                    {
+                        var method = mainForm.GetType().GetMethod("OpenChildForm",
+                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-                    this.DialogResult = DialogResult.OK;
+                        if (method != null)
+                        {
+                            method.Invoke(mainForm, new object[] { new PhieuNhapGUI(), mainForm.Controls.Find("btnPhieuNhap", true).FirstOrDefault() });
+                        }
+                    }
+
                     this.Close();
                 }
                 else
