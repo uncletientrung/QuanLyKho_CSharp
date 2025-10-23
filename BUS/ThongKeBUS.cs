@@ -1,4 +1,5 @@
-﻿using QuanLyKho_CSharp.DAO;
+﻿using Microsoft.Office.Interop.Excel;
+using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.DTO.ThongKeDTO;
 using System;
@@ -210,7 +211,27 @@ namespace QuanLyKho_CSharp.BUS
             return result;
         }
 
+        public BindingList<ThongKeDoanhThuDTO> thongKeDoanhThuTheoNam(int namBatDau, int namKethuc)
+        {
+            BindingList<ThongKeDoanhThuDTO> result = new BindingList<ThongKeDoanhThuDTO>();
+            var danhSachPN = phieuNhapBUS.getListPN();
+            var danhSachPX = phieuXuatBUS.getListPX();
+            //lay ra tat ca nam co trong pn va phieu xuat
+            var cacNam = danhSachPN.Select(pn => pn.Thoigiantao.Year)
+                .Union(danhSachPX.Select(px => px.Thoigiantao.Year))//union dung de ket hop 2 danh sach, loai bo nhung nam bi trung
+                .Where(nam => nam >= namBatDau && nam <= namKethuc)
+                .OrderBy(nam => nam);///sap xep danh sach nam lay ra tang dan
 
+            foreach(var nam in cacNam)
+            {
+                int tongVon = danhSachPN.Where(pn => pn.Thoigiantao.Year == nam).Sum(pn => pn.Tongtien);
+                int tongLoiNhuan = danhSachPX.Where(px => px.Thoigiantao.Year == nam).Sum(px => px.Tongtien);
+                int tongDoanhThuCuaNam = tongLoiNhuan - tongVon;
+                result.Add(new ThongKeDoanhThuDTO(nam, tongVon, tongLoiNhuan,tongDoanhThuCuaNam));
+            }
+
+            return result;
+        }
 
 
     }

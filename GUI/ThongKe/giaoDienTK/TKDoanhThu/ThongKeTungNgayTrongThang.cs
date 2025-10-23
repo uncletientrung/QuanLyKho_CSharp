@@ -16,5 +16,13 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
         {
             InitializeComponent();
         }
+
+        public void load_UC(object sender, EventArgs e)
+        {
+            chonThang.Format = DateTimePickerFormat.Custom;
+            chonThang.CustomFormat = "MM";
+            chonThang.ShowUpDown = true;
+
+        }
     }
 }
