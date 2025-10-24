@@ -1,5 +1,6 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
+using QuanLyKho_CSharp.GUI.KhachHang;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,11 +8,11 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
 
 namespace QuanLyKho_CSharp.GUI.PhieuXuat
 {
@@ -656,9 +657,52 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void linkNewKH_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Có thể thêm form thêm khách hàng mới ở đây
-            MessageBox.Show("Chức năng thêm khách hàng mới sẽ được triển khai sau!", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            AddKhachHangForm addKHForm = new AddKhachHangForm();
+            DialogResult result = addKHForm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                ReloadKhachHang();
+                AutoSelectNewKhachHang();
+            }
+        }
+
+        private void ReloadKhachHang()
+        {
+            listKH = khBUS.getListKH();
+            string currentSelection = comboBoxKH.Text;
+
+            // Clear và load lại combobox
+            comboBoxKH.Items.Clear();
+
+            if (listKH != null && listKH.Count > 0)
+            {
+                foreach (KhachHangDTO kh in listKH)
+                {
+                    comboBoxKH.Items.Add(kh.Tenkhachhang);
+                }
+            }
+
+            // Khôi phục selection cũ (nếu vẫn tồn tại)
+            if (!string.IsNullOrEmpty(currentSelection) && comboBoxKH.Items.Contains(currentSelection))
+            {
+                comboBoxKH.Text = currentSelection;
+            }
+        }
+
+        private void AutoSelectNewKhachHang()
+        {
+            if (listKH != null && listKH.Count > 0)
+            {
+                // Lấy khách hàng mới nhất (có mã khách hàng lớn nhất)
+                var newestKH = listKH.OrderByDescending(kh => kh.Makh).FirstOrDefault();
+
+                if (newestKH != null)
+                {
+                    // Chọn khách hàng mới nhất trong combobox
+                    comboBoxKH.Text = newestKH.Tenkhachhang;
+                }
+            }
         }
 
         private void buttonNhapExcel_Click(object sender, EventArgs e)
