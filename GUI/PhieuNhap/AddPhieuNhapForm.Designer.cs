@@ -199,7 +199,7 @@
             this.dgvSPduocThem.RowHeadersWidth = 51;
             this.dgvSPduocThem.RowTemplate.Height = 24;
             this.dgvSPduocThem.Size = new System.Drawing.Size(634, 191);
-            this.dgvSPduocThem.TabIndex = 1;
+            this.dgvSPduocThem.TabIndex = 0;
             this.dgvSPduocThem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPduocThem_CellContentClick);
             // 
             // tableLayoutPanel4
@@ -223,7 +223,7 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(634, 33);
-            this.tableLayoutPanel4.TabIndex = 2;
+            this.tableLayoutPanel4.TabIndex = 1;
             // 
             // buttonThemSP
             // 
@@ -404,7 +404,7 @@
             this.boxMaPhieu.Name = "boxMaPhieu";
             this.boxMaPhieu.ReadOnly = true;
             this.boxMaPhieu.Size = new System.Drawing.Size(239, 32);
-            this.boxMaPhieu.TabIndex = 3;
+            this.boxMaPhieu.TabIndex = 2;
             this.boxMaPhieu.TabStop = false;
             this.boxMaPhieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -433,7 +433,7 @@
             this.comboBoxNCC.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.comboBoxNCC.Name = "comboBoxNCC";
             this.comboBoxNCC.Size = new System.Drawing.Size(239, 33);
-            this.comboBoxNCC.TabIndex = 5;
+            this.comboBoxNCC.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 

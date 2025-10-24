@@ -408,7 +408,7 @@
             this.comboBoxKH.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.comboBoxKH.Name = "comboBoxKH";
             this.comboBoxKH.Size = new System.Drawing.Size(324, 33);
-            this.comboBoxKH.TabIndex = 6;
+            this.comboBoxKH.TabIndex = 0;
             this.comboBoxKH.SelectedIndexChanged += new System.EventHandler(this.comboBoxKH_SelectedIndexChanged);
             // 
             // label1

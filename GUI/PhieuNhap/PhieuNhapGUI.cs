@@ -1,6 +1,5 @@
 ﻿using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
-using QuanLyKho_CSharp.GUI.PhieuXuat;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
