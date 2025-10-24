@@ -1,14 +1,22 @@
-﻿using QuanLyKho_CSharp.BUS;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using System.Diagnostics;
 
 namespace QuanLyKho_CSharp.GUI.PhieuNhap
 {
@@ -144,8 +152,145 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void buttonXuatFile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng xuất file sẽ được triển khai sau!", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                // Tạo SaveFileDialog để người dùng chọn nơi lưu file
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF Files|*.pdf";
+                saveFileDialog.Title = "Lưu phiếu nhập";
+                saveFileDialog.FileName = $"PhieuNhap_{_phieuNhap.Maphieu}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Tạo document PDF
+                    iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4, 25, 25, 30, 30);
+                    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(saveFileDialog.FileName, FileMode.Create));
+                    document.Open();
+
+                    // Tạo font Unicode (hỗ trợ tiếng Việt)
+                    string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
+                    BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    iTextSharp.text.Font titleFont = new iTextSharp.text.Font(bf, 18, iTextSharp.text.Font.BOLD);
+                    iTextSharp.text.Font headerFont = new iTextSharp.text.Font(bf, 12, iTextSharp.text.Font.BOLD);
+                    iTextSharp.text.Font normalFont = new iTextSharp.text.Font(bf, 11, iTextSharp.text.Font.NORMAL);
+                    iTextSharp.text.Font tableHeaderFont = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.BOLD);
+                    iTextSharp.text.Font tableContentFont = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
+
+                    // Tiêu đề
+                    Paragraph title = new Paragraph("PHIẾU NHẬP KHO", titleFont);
+                    title.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
+                    title.SpacingAfter = 20;
+                    document.Add(title);
+
+                    // Thông tin phiếu nhập
+                    PdfPTable infoTable = new PdfPTable(2);
+                    infoTable.WidthPercentage = 100;
+                    infoTable.SetWidths(new float[] { 1f, 2f });
+                    infoTable.SpacingAfter = 20;
+
+                    infoTable.AddCell(CreateInfoCell("Mã phiếu:", headerFont));
+                    infoTable.AddCell(CreateInfoCell(_phieuNhap.Maphieu.ToString(), normalFont));
+
+                    infoTable.AddCell(CreateInfoCell("Nhân viên:", headerFont));
+                    infoTable.AddCell(CreateInfoCell(_nhanVienBUS.getNamebyID(_phieuNhap.Manv), normalFont));
+
+                    infoTable.AddCell(CreateInfoCell("Nhà cung cấp:", headerFont));
+                    infoTable.AddCell(CreateInfoCell(_nhaCungCapBUS.getNamebyID(_phieuNhap.Mancc), normalFont));
+
+                    infoTable.AddCell(CreateInfoCell("Thời gian tạo:", headerFont));
+                    infoTable.AddCell(CreateInfoCell(_phieuNhap.Thoigiantao.ToString("dd/MM/yyyy HH:mm:ss"), normalFont));
+
+                    document.Add(infoTable);
+
+                    // Tiêu đề chi tiết
+                    Paragraph detailTitle = new Paragraph("CHI TIẾT PHIẾU NHẬP", headerFont);
+                    detailTitle.SpacingAfter = 10;
+                    document.Add(detailTitle);
+
+                    // Bảng chi tiết
+                    PdfPTable detailTable = new PdfPTable(6);
+                    detailTable.WidthPercentage = 100;
+                    detailTable.SetWidths(new float[] { 0.5f, 1f, 3f, 1f, 1.5f, 1.5f });
+
+                    // Header
+                    detailTable.AddCell(CreateTableHeaderCell("STT", tableHeaderFont));
+                    detailTable.AddCell(CreateTableHeaderCell("Mã SP", tableHeaderFont));
+                    detailTable.AddCell(CreateTableHeaderCell("Tên sản phẩm", tableHeaderFont));
+                    detailTable.AddCell(CreateTableHeaderCell("Số lượng", tableHeaderFont));
+                    detailTable.AddCell(CreateTableHeaderCell("Đơn giá", tableHeaderFont));
+                    detailTable.AddCell(CreateTableHeaderCell("Thành tiền", tableHeaderFont));
+
+                    // Lấy dữ liệu từ DataGridView
+                    decimal tongTien = 0;
+                    for (int i = 0; i < dgvXemChiTiet.Rows.Count; i++)
+                    {
+                        var row = dgvXemChiTiet.Rows[i];
+
+                        detailTable.AddCell(CreateTableCell(row.Cells["STT"].Value?.ToString() ?? "", tableContentFont, iTextSharp.text.Element.ALIGN_CENTER));
+                        detailTable.AddCell(CreateTableCell(row.Cells["MaSP"].Value?.ToString() ?? "", tableContentFont, iTextSharp.text.Element.ALIGN_CENTER));
+                        detailTable.AddCell(CreateTableCell(row.Cells["TenSP"].Value?.ToString() ?? "", tableContentFont, iTextSharp.text.Element.ALIGN_LEFT));
+                        detailTable.AddCell(CreateTableCell(row.Cells["SoLuong"].Value?.ToString() ?? "", tableContentFont, iTextSharp.text.Element.ALIGN_CENTER));
+
+                        decimal donGia = Convert.ToDecimal(row.Cells["DonGia"].Value ?? 0);
+                        detailTable.AddCell(CreateTableCell(donGia.ToString("N0"), tableContentFont, iTextSharp.text.Element.ALIGN_RIGHT));
+
+                        decimal thanhTien = Convert.ToDecimal(row.Cells["ThanhTien"].Value ?? 0);
+                        detailTable.AddCell(CreateTableCell(thanhTien.ToString("N0"), tableContentFont, iTextSharp.text.Element.ALIGN_RIGHT));
+
+                        tongTien += thanhTien;
+                    }
+
+                    document.Add(detailTable);
+
+                    // Tổng tiền
+                    Paragraph tongTienPara = new Paragraph($"Tổng tiền: {tongTien.ToString("N0")} VNĐ", headerFont);
+                    tongTienPara.Alignment = iTextSharp.text.Element.ALIGN_RIGHT;
+                    tongTienPara.SpacingBefore = 15;
+                    document.Add(tongTienPara);
+
+                    document.Close();
+                    writer.Close();
+
+                    MessageBox.Show("Xuất file PDF thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Mở file PDF vừa tạo
+                        System.Diagnostics.Process.Start(saveFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xuất file PDF: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Helper methods
+        private PdfPCell CreateInfoCell(string text, iTextSharp.text.Font font)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(text, font));
+            cell.Border = iTextSharp.text.Rectangle.NO_BORDER;
+            cell.PaddingBottom = 5;
+            return cell;
+        }
+
+        private PdfPCell CreateTableHeaderCell(string text, iTextSharp.text.Font font)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(text, font));
+            cell.BackgroundColor = new BaseColor(200, 200, 200);
+            cell.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
+            cell.VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE;
+            cell.Padding = 5;
+            return cell;
+        }
+
+        private PdfPCell CreateTableCell(string text, iTextSharp.text.Font font, int alignment)
+        {
+            PdfPCell cell = new PdfPCell(new Phrase(text, font));
+            cell.HorizontalAlignment = alignment;
+            cell.VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE;
+            cell.Padding = 5;
+            return cell;
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
