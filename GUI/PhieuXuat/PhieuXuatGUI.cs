@@ -12,6 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyKho_CSharp.GUI.PhieuXuat
 {
@@ -247,8 +251,166 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void btnXuat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng xuất Excel", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel Workbook|*.xlsx";
+            saveFileDialog.Title = "Chọn nơi lưu file Excel";
+            saveFileDialog.FileName = "DanhSachPhieuXuat.xlsx";
+
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            Excel.Application app = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
+            {
+                app = new Excel.Application();
+                workbook = app.Workbooks.Add(Type.Missing);
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Danh sách phiếu xuất";
+
+                DateTime now = DateTime.Now;
+
+                worksheet.Cells[1, 1] = $"DANH SÁCH PHIẾU XUẤT";
+                Excel.Range titleRange = worksheet.Range["A1", "F1"];
+                titleRange.Merge();
+                titleRange.Font.Bold = true;
+                titleRange.Font.Size = 16;
+                titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                worksheet.Cells[2, 1] = $"Ngày xuất: {now.ToString("dd/MM/yyyy HH:mm")}";
+                worksheet.Cells[2, 1].Font.Italic = true;
+
+                // tiêu đề cột, bỏ qua 2 cột action và hoàn hàng
+                int colIndex = 1;
+                for (int i = 0; i < dataGridView1.Columns.Count - 2; i++) // -2 để bỏ qua 2 cột button
+                {
+                    worksheet.Cells[4, colIndex] = dataGridView1.Columns[i].HeaderText;
+                    colIndex++;
+                }
+
+                // dữ liệu
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    colIndex = 1;
+                    for (int j = 0; j < dataGridView1.Columns.Count - 2; j++) // -2 để bỏ qua 2 cột button
+                    {
+                        object value = dataGridView1.Rows[i].Cells[j].Value;
+                        worksheet.Cells[i + 5, colIndex] = value != null ? value.ToString() : "";
+                        colIndex++;
+                    }
+                }
+
+                // Định dạng header
+                int columnCount = dataGridView1.Columns.Count - 2;
+                Excel.Range headerRange = worksheet.Range[
+                    worksheet.Cells[4, 1],
+                    worksheet.Cells[4, columnCount]
+                ];
+                headerRange.Font.Bold = true;
+                headerRange.Interior.Color = Color.LightGray;
+                headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                headerRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+
+                // Định dạng dữ liệu
+                Excel.Range dataRange = worksheet.Range[
+                    worksheet.Cells[4, 1],
+                    worksheet.Cells[dataGridView1.Rows.Count + 4, columnCount]
+                ];
+                dataRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                dataRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                // Căn giữa tất cả các cột trừ cột tên
+                for (int col = 1; col <= columnCount; col++)
+                {
+                    Excel.Range columnRange = worksheet.Range[
+                        worksheet.Cells[5, col],
+                        worksheet.Cells[dataGridView1.Rows.Count + 4, col]
+                    ];
+
+                    if (col == 2 || col == 3) // Cột Tên NV và Tên KH (căn trái)
+                    {
+                        columnRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    }
+                    else // Các cột còn lại căn giữa
+                    {
+                        columnRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    }
+                }
+
+                // Auto-fit columns
+                dataRange.Columns.AutoFit();
+
+                // Tổng kết - Sử dụng merge cell để hiển thị đẹp hơn
+                int lastRow = dataGridView1.Rows.Count + 5;
+
+                // Tổng số phiếu - Merge từ cột A đến B
+                Excel.Range totalPhieuRange = worksheet.Range[worksheet.Cells[lastRow + 1, 1], worksheet.Cells[lastRow + 1, 2]];
+                totalPhieuRange.Merge();
+                totalPhieuRange.Value = "TỔNG SỐ PHIẾU:";
+                totalPhieuRange.Font.Bold = true;
+                totalPhieuRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                worksheet.Cells[lastRow + 1, 3] = dataGridView1.Rows.Count;
+                worksheet.Cells[lastRow + 1, 3].Font.Bold = true;
+                worksheet.Cells[lastRow + 1, 3].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                // Tính tổng tiền
+                decimal tongTien = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells["TongTien"].Value != null)
+                    {
+                        tongTien += Convert.ToDecimal(dataGridView1.Rows[i].Cells["TongTien"].Value);
+                    }
+                }
+
+                // Tổng doanh thu - Merge từ cột A đến B
+                Excel.Range totalDoanhThuLabelRange = worksheet.Range[worksheet.Cells[lastRow + 2, 1], worksheet.Cells[lastRow + 2, 2]];
+                totalDoanhThuLabelRange.Merge();
+                totalDoanhThuLabelRange.Value = "TỔNG DOANH THU:";
+                totalDoanhThuLabelRange.Font.Bold = true;
+                totalDoanhThuLabelRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                // Merge từ cột C đến D cho giá trị tổng doanh thu
+                Excel.Range totalDoanhThuValueRange = worksheet.Range[worksheet.Cells[lastRow + 2, 3], worksheet.Cells[lastRow + 2, 4]];
+                totalDoanhThuValueRange.Merge();
+                totalDoanhThuValueRange.Value = tongTien.ToString("N0") + " VNĐ";
+                totalDoanhThuValueRange.Font.Bold = true;
+                totalDoanhThuValueRange.Font.Color = Color.Red;
+                totalDoanhThuValueRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                // ---- LƯU FILE ----
+                workbook.SaveAs(saveFileDialog.FileName);
+                workbook.Close();
+                app.Quit();
+
+                MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // ---- MỞ FILE SAU KHI LƯU ----
+                if (File.Exists(saveFileDialog.FileName))
+                {
+                    Process.Start(new ProcessStartInfo(saveFileDialog.FileName) { UseShellExecute = true });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi xảy ra khi xuất Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                if (workbook != null) Marshal.ReleaseComObject(workbook);
+                if (app != null) Marshal.ReleaseComObject(app);
+            }
         }
 
         private void FilterData()
