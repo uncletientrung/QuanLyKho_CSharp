@@ -320,5 +320,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
 
         }
+
+        private void buttonXuatFile_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

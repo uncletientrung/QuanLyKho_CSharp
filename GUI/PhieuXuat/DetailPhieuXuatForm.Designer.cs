@@ -126,6 +126,7 @@
             this.buttonXuatFile.TabIndex = 0;
             this.buttonXuatFile.Text = "Xuất file";
             this.buttonXuatFile.UseVisualStyleBackColor = true;
+            this.buttonXuatFile.Click += new System.EventHandler(this.buttonXuatFile_Click);
             // 
             // buttonHuyBo
             // 
