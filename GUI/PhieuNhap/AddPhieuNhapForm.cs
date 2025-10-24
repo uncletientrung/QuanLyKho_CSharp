@@ -8,9 +8,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace QuanLyKho_CSharp.GUI.PhieuNhap
 {
@@ -525,10 +528,19 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     MessageBox.Show("Nhập hàng thành công!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Cập nhật số lượng sản phẩm trong kho
-                    UpdateSoLuongSanPham();
+                    // Đóng form hiện tại và mở PhieuNhapGUI
+                    frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                    if (mainForm != null)
+                    {
+                        var method = mainForm.GetType().GetMethod("OpenChildForm",
+                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-                    this.DialogResult = DialogResult.OK;
+                        if (method != null)
+                        {
+                            method.Invoke(mainForm, new object[] { new PhieuNhapGUI(), mainForm.Controls.Find("btnPhieuNhap", true).FirstOrDefault() });
+                        }
+                    }
+
                     this.Close();
                 }
                 else
@@ -593,9 +605,155 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         }
         private void buttonNhapExcel_Click(object sender, EventArgs e)
         {
-            // Tạm thời để trống, có thể triển khai sau
-            MessageBox.Show("Chức năng nhập Excel sẽ được triển khai sau!", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Excel Files|*.xlsx;*.xls";
+            openFileDialog.Title = "Chọn file Excel để nhập";
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            Excel.Application excelApp = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
+            {
+                excelApp = new Excel.Application();
+                workbook = excelApp.Workbooks.Open(openFileDialog.FileName);
+                worksheet = workbook.Sheets[1];
+
+                // Đọc dữ liệu từ Excel
+                Excel.Range usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+
+                if (rowCount < 2)
+                {
+                    MessageBox.Show("File Excel không có dữ liệu!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int successCount = 0;
+                int errorCount = 0;
+                StringBuilder errorMessages = new StringBuilder();
+
+                // Bắt đầu từ row 2 (bỏ qua header)
+                for (int row = 2; row <= rowCount; row++)
+                {
+                    try
+                    {
+                        // Đọc Mã SP từ cột A
+                        var maSPCell = worksheet.Cells[row, 1].Value;
+                        if (maSPCell == null)
+                            continue;
+
+                        int maSP = Convert.ToInt32(maSPCell);
+
+                        // Đọc Số lượng từ cột D
+                        var soLuongCell = worksheet.Cells[row, 4].Value;
+                        if (soLuongCell == null)
+                        {
+                            errorMessages.AppendLine($"Dòng {row}: Thiếu số lượng cho mã SP {maSP}");
+                            errorCount++;
+                            continue;
+                        }
+
+                        int soLuong = Convert.ToInt32(soLuongCell);
+
+                        if (soLuong <= 0)
+                        {
+                            errorMessages.AppendLine($"Dòng {row}: Số lượng phải lớn hơn 0 (Mã SP: {maSP})");
+                            errorCount++;
+                            continue;
+                        }
+
+                        // Tìm sản phẩm trong kho
+                        SanPhamDTO spTrongKho = listSP.FirstOrDefault(sp => sp.Masp == maSP);
+
+                        if (spTrongKho == null)
+                        {
+                            errorMessages.AppendLine($"Dòng {row}: Không tìm thấy sản phẩm mã {maSP} trong kho");
+                            errorCount++;
+                            continue;
+                        }
+
+                        // Kiểm tra xem sản phẩm đã có trong danh sách chưa
+                        SanPhamDTO existingSP = listSPDuocThem.FirstOrDefault(sp => sp.Masp == maSP);
+
+                        if (existingSP != null)
+                        {
+                            // Nếu đã có, cộng thêm số lượng
+                            existingSP.Soluong += soLuong;
+                        }
+                        else
+                        {
+                            // Nếu chưa có, thêm mới
+                            SanPhamDTO newSP = new SanPhamDTO
+                            {
+                                Masp = spTrongKho.Masp,
+                                Tensp = spTrongKho.Tensp,
+                                Dongia = spTrongKho.Dongia,
+                                Soluong = soLuong
+                            };
+                            listSPDuocThem.Add(newSP);
+                        }
+
+                        successCount++;
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessages.AppendLine($"Dòng {row}: Lỗi - {ex.Message}");
+                        errorCount++;
+                    }
+                }
+
+                // Cập nhật lại DataGridView
+                LoadSPDuocThem();
+
+                // Hiển thị kết quả
+                StringBuilder resultMessage = new StringBuilder();
+                resultMessage.AppendLine($"Kết quả nhập Excel:");
+                resultMessage.AppendLine($"✓ Thành công: {successCount} sản phẩm");
+
+                if (errorCount > 0)
+                {
+                    resultMessage.AppendLine($"✗ Lỗi: {errorCount} dòng");
+                    resultMessage.AppendLine();
+                    resultMessage.AppendLine("Chi tiết lỗi:");
+                    resultMessage.Append(errorMessages.ToString());
+
+                    MessageBox.Show(resultMessage.ToString(), "Kết quả nhập Excel",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show(resultMessage.ToString(), "Thành công",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi xảy ra khi đọc file Excel: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Giải phóng tài nguyên
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                if (workbook != null)
+                {
+                    workbook.Close(false);
+                    Marshal.ReleaseComObject(workbook);
+                }
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    Marshal.ReleaseComObject(excelApp);
+                }
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)

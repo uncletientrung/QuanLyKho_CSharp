@@ -49,9 +49,9 @@
             this.lbAddKhachHang.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAddKhachHang.ForeColor = System.Drawing.Color.White;
             this.lbAddKhachHang.Location = new System.Drawing.Point(0, 0);
-            this.lbAddKhachHang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbAddKhachHang.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbAddKhachHang.Name = "lbAddKhachHang";
-            this.lbAddKhachHang.Size = new System.Drawing.Size(448, 67);
+            this.lbAddKhachHang.Size = new System.Drawing.Size(597, 82);
             this.lbAddKhachHang.TabIndex = 0;
             this.lbAddKhachHang.Text = "Thêm Khách Hàng";
             this.lbAddKhachHang.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,9 +60,10 @@
             // 
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(232, 324);
+            this.btnClose.Location = new System.Drawing.Point(309, 399);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(115, 41);
+            this.btnClose.Size = new System.Drawing.Size(153, 50);
             this.btnClose.TabIndex = 27;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -74,9 +75,10 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSave.Location = new System.Drawing.Point(98, 324);
+            this.btnSave.Location = new System.Drawing.Point(131, 399);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(114, 41);
+            this.btnSave.Size = new System.Drawing.Size(152, 50);
             this.btnSave.TabIndex = 26;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -86,9 +88,10 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(30, 161);
+            this.lblDate.Location = new System.Drawing.Point(40, 198);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(79, 20);
+            this.lblDate.Size = new System.Drawing.Size(100, 25);
             this.lblDate.TabIndex = 25;
             this.lblDate.Text = "Ngày sinh";
             // 
@@ -96,47 +99,50 @@
             // 
             this.dtpDate.CustomFormat = "dd/MM/yyyy";
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(140, 161);
+            this.dtpDate.Location = new System.Drawing.Point(187, 198);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(128, 20);
+            this.dtpDate.Size = new System.Drawing.Size(169, 22);
             this.dtpDate.TabIndex = 21;
             // 
             // lblSDT
             // 
             this.lblSDT.AutoSize = true;
             this.lblSDT.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSDT.Location = new System.Drawing.Point(30, 207);
+            this.lblSDT.Location = new System.Drawing.Point(40, 255);
+            this.lblSDT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSDT.Name = "lblSDT";
-            this.lblSDT.Size = new System.Drawing.Size(100, 20);
+            this.lblSDT.Size = new System.Drawing.Size(129, 25);
             this.lblSDT.TabIndex = 20;
             this.lblSDT.Text = "Số điện thoại";
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(140, 204);
+            this.txtSDT.Location = new System.Drawing.Point(187, 251);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(262, 20);
+            this.txtSDT.Size = new System.Drawing.Size(348, 22);
             this.txtSDT.TabIndex = 19;
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(30, 111);
+            this.lbName.Location = new System.Drawing.Point(40, 137);
             this.lbName.Margin = new System.Windows.Forms.Padding(0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(78, 20);
+            this.lbName.Size = new System.Drawing.Size(100, 25);
             this.lbName.TabIndex = 17;
             this.lbName.Text = "Họ và Tên";
             // 
             // txbName
             // 
             this.txbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbName.Location = new System.Drawing.Point(140, 107);
-            this.txbName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbName.Location = new System.Drawing.Point(187, 132);
+            this.txbName.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txbName.Multiline = true;
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(262, 31);
+            this.txbName.Size = new System.Drawing.Size(348, 37);
             this.txbName.TabIndex = 16;
             // 
             // panelTop
@@ -145,33 +151,35 @@
             this.panelTop.Controls.Add(this.lbAddKhachHang);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(448, 72);
+            this.panelTop.Size = new System.Drawing.Size(597, 89);
             this.panelTop.TabIndex = 15;
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(30, 260);
+            this.lblEmail.Location = new System.Drawing.Point(40, 320);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(47, 20);
+            this.lblEmail.Size = new System.Drawing.Size(59, 25);
             this.lblEmail.TabIndex = 28;
             this.lblEmail.Text = "Email";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(140, 262);
+            this.txtEmail.Location = new System.Drawing.Point(187, 322);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(262, 20);
+            this.txtEmail.Size = new System.Drawing.Size(348, 22);
             this.txtEmail.TabIndex = 29;
             // 
             // AddKhachHangForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 381);
+            this.ClientSize = new System.Drawing.Size(597, 469);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.btnClose);
@@ -183,7 +191,9 @@
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.txbName);
             this.Controls.Add(this.panelTop);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddKhachHangForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddKhachHangForm";
             this.panelTop.ResumeLayout(false);
             this.ResumeLayout(false);
