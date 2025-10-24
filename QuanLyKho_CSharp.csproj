@@ -236,6 +236,7 @@
     <Compile Include="DTO\ThongKeDTO\ThongKeNhaCungCapDTO.cs" />
     <Compile Include="DTO\ThongKeDTO\ThongKeTheoThangDTO.cs" />
     <Compile Include="DTO\ThongKeDTO\ThongKeTonKhoDTO.cs" />
+    <Compile Include="DTO\ThongKeDTO\ThongKeTungNgayTrongThangDTO2.cs" />
     <Compile Include="DTO\ThongKeDTO\ThongKeTungNgayTrongThangDTO.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>

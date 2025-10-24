@@ -233,6 +233,88 @@ namespace QuanLyKho_CSharp.BUS
             return result;
         }
 
+        public BindingList<ThongKeTheoThangDTO> thongKeDoanhThuTheoThang(int nam)
+        {
+            BindingList<ThongKeTheoThangDTO> result = new BindingList<ThongKeTheoThangDTO>();
+
+           
+            BindingList<PhieuNhapDTO> danhSachPN = phieuNhapBUS.getListPN();
+            BindingList<PhieuXuatDTO> danhSachPX = phieuXuatBUS.getListPX();
+
+           
+            for (int thang = 1; thang <= 12; thang++)
+            {
+               
+                int tongVon = danhSachPN
+                    .Where(pn => pn.Thoigiantao.Year == nam && pn.Thoigiantao.Month == thang)
+                    .Sum(pn => (int)pn.Tongtien);
+
+              
+                int tongDoanhThu = danhSachPX
+                    .Where(px => px.Thoigiantao.Year == nam && px.Thoigiantao.Month == thang)
+                    .Sum(px => (int)px.Tongtien);
+
+               
+                int loiNhuan = tongDoanhThu - tongVon;
+
+              
+                result.Add(new ThongKeTheoThangDTO
+                {
+                    Thang = thang,
+                    Chiphi = tongVon,
+                    Doanhthu = tongDoanhThu,
+                    Loinhuan = loiNhuan
+                });
+            }
+
+            return result;
+        }
+
+        public BindingList<ThongKeTungNgayTrongThangDTO2> thongKeDoanhThuTheoNgay(int nam, int thang)
+        {
+            BindingList<ThongKeTungNgayTrongThangDTO2> result = new BindingList<ThongKeTungNgayTrongThangDTO2>();
+
+           
+            BindingList<PhieuNhapDTO> danhSachPN = phieuNhapBUS.getListPN();
+            BindingList<PhieuXuatDTO> danhSachPX = phieuXuatBUS.getListPX();
+
+          
+            int soNgay = DateTime.DaysInMonth(nam, thang);
+
+          
+            for (int ngay = 1; ngay <= soNgay; ngay++)
+            {
+                
+                int tongVon = danhSachPN
+                    .Where(pn => pn.Thoigiantao.Year == nam
+                              && pn.Thoigiantao.Month == thang
+                              && pn.Thoigiantao.Day == ngay)
+                    .Sum(pn => (int)pn.Tongtien);
+
+               
+                int tongDoanhThu = danhSachPX
+                    .Where(px => px.Thoigiantao.Year == nam
+                              && px.Thoigiantao.Month == thang
+                              && px.Thoigiantao.Day == ngay)
+                    .Sum(px => (int)px.Tongtien);
+
+              
+                int loiNhuan = tongDoanhThu - tongVon;
+
+               
+                result.Add(new ThongKeTungNgayTrongThangDTO2
+                {
+                    Ngay = ngay,
+                    Chiphi = tongVon,
+                    Doanhthu = tongDoanhThu,
+                    Loinhuan = loiNhuan
+                });
+            }
+
+            return result;
+        }
+
+
 
     }
 }
