@@ -40,6 +40,10 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
             namEnd.CustomFormat = "yyyy";
             namEnd.ShowUpDown = true; // Dạng spinbox (không hiển thị lịch)
             loadDataChart();
+            setUpColumnAndData();
+
+
+
         }
 
         private void loadDataChart()
@@ -110,13 +114,13 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
                 loiNhuan.Add(item.Loinhuan / 1_000_000.0);
             }
 
-            // Xóa series cũ (giữ lại trục)
+            // xoa du lieu cu
             bieuDoDoanhThuTheoNam.Series.Clear();
 
-            // Cập nhật nhãn trục X
+            // ve truc x trong rong
             bieuDoDoanhThuTheoNam.AxisX[0].Labels = labels;
 
-            // Thêm các cột dữ liệu
+            // them cac cot du lieu
             bieuDoDoanhThuTheoNam.Series = new SeriesCollection
             {
                 new ColumnSeries
@@ -139,10 +143,10 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
                 }
             };
 
-            setUpColumnAndData(namBatDau, namKetThuc);
+            LoadDataToGrid(namBatDau,namKetThuc);
         }
 
-        public void setUpColumnAndData(int nambatdau, int namketthuc)
+        public void setUpColumnAndData()
         {
             try
             {
@@ -168,7 +172,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
                 dgvThongKeDoanhThuTheoNam.RowTemplate.Height = 40;
                 dgvThongKeDoanhThuTheoNam.RowHeadersVisible = false;//tat cot du voi hang du
                 dgvThongKeDoanhThuTheoNam.AllowUserToAddRows = false;
-                LoadDataToGrid(nambatdau,namketthuc);
+                
             }
             catch (Exception ex)
             {
@@ -211,8 +215,8 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
                 namEnd.Value = DateTime.Now;    
                 bieuDoDoanhThuTheoNam.Series.Clear(); 
                 loadDataChart();
-                dgvThongKeDoanhThuTheoNam.Rows.Clear();
-                dgvThongKeDoanhThuTheoNam.Columns.Clear();
+                setUpColumnAndData();
+               
             }
             catch (Exception ex)
             {

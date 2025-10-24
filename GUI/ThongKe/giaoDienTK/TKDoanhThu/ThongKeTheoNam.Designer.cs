@@ -167,6 +167,7 @@
             // 
             // bieuDoDoanhThuTheoNam
             // 
+            this.bieuDoDoanhThuTheoNam.BackColor = System.Drawing.Color.White;
             this.bieuDoDoanhThuTheoNam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bieuDoDoanhThuTheoNam.Location = new System.Drawing.Point(0, 0);
             this.bieuDoDoanhThuTheoNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -187,6 +188,7 @@
             // 
             // dgvThongKeDoanhThuTheoNam
             // 
+            this.dgvThongKeDoanhThuTheoNam.BackgroundColor = System.Drawing.Color.White;
             this.dgvThongKeDoanhThuTheoNam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvThongKeDoanhThuTheoNam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvThongKeDoanhThuTheoNam.Location = new System.Drawing.Point(0, 0);
