@@ -338,25 +338,54 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     // Kiểm tra xem sản phẩm đã có trong danh sách chưa
                     SanPhamDTO existingSP = listSPDuocThem.FirstOrDefault(sp => sp.Masp == maSP);
 
-                    if (existingSP != null)
+                    // Hiển thị form nhập số lượng
+                    using (var inputForm = new InputQuantityForm())
                     {
-                        // Nếu đã có, tăng số lượng lên 1
-                        existingSP.Soluong += 1;
-                    }
-                    else
-                    {
-                        // Nếu chưa có, thêm sản phẩm mới với số lượng = 1
-                        SanPhamDTO newSP = new SanPhamDTO
+                        // Nếu sản phẩm đã có trong danh sách, hiển thị số lượng hiện tại
+                        if (existingSP != null)
                         {
-                            Masp = spToAdd.Masp,
-                            Tensp = spToAdd.Tensp,
-                            Dongia = spToAdd.Dongia,
-                            Soluong = 1 // Mặc định thêm 1 sản phẩm
-                        };
-                        listSPDuocThem.Add(newSP);
-                    }
+                            inputForm.Quantity = existingSP.Soluong;
+                            inputForm.Text = "Chỉnh sửa số lượng";
+                        }
+                        else
+                        {
+                            inputForm.Quantity = 1; // Mặc định là 1
+                            inputForm.Text = "Nhập số lượng";
+                        }
 
-                    LoadSPDuocThem();
+                        // Hiển thị form và chờ người dùng nhập
+                        if (inputForm.ShowDialog() == DialogResult.OK)
+                        {
+                            int newQuantity = inputForm.Quantity;
+
+                            if (newQuantity <= 0)
+                            {
+                                MessageBox.Show("Số lượng phải lớn hơn 0!", "Lỗi",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            if (existingSP != null)
+                            {
+                                // Nếu đã có, cập nhật số lượng
+                                existingSP.Soluong = newQuantity;
+                            }
+                            else
+                            {
+                                // Nếu chưa có, thêm sản phẩm mới với số lượng người dùng nhập
+                                SanPhamDTO newSP = new SanPhamDTO
+                                {
+                                    Masp = spToAdd.Masp,
+                                    Tensp = spToAdd.Tensp,
+                                    Dongia = spToAdd.Dongia,
+                                    Soluong = newQuantity
+                                };
+                                listSPDuocThem.Add(newSP);
+                            }
+
+                            LoadSPDuocThem();
+                        }
+                    }
                 }
             }
             else
@@ -477,6 +506,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             // Lấy mã nhân viên từ frmMain.CurrentUser
             int maNV = 1; // Mặc định
             try
@@ -522,9 +552,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     listCTPN.Add(ctpn);
                 }
 
-                // Lưu chi tiết phiếu nhập (sử dụng phương thức mới từ interface)
+                // Lưu chi tiết phiếu nhập
                 if (ctpnBUS.insertChiTietPhieuNhap(listCTPN))
                 {
+                    // Cập nhật số lượng sản phẩm trong kho
+                    UpdateSoLuongSanPham();
+
                     MessageBox.Show("Nhập hàng thành công!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -861,7 +894,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 // Tạo controls với kích thước lớn hơn
                 var label = new Label()
                 {
-                    Text = "Nhập số lượng mới:",
+                    Text = "Nhập số lượng:",
                     Location = new Point(20, 20),
                     Size = new Size(300, 25),
                     Font = new Font("Microsoft Sans Serif", 12F),
