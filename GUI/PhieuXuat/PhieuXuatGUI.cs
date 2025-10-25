@@ -126,44 +126,24 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
             if (listPX != null && listPX.Count > 0)
             {
-                // Tách phiếu xuất thành 2 nhóm
-                var pxChuaHoanToanBo = listPX.Where(px => px.Trangthai != 3 && px.Trangthai != 0).ToList();
-                var pxDaHoanToanBo = listPX.Where(px => px.Trangthai == 3).ToList();
-
-                // Add phiếu chưa hoàn toàn bộ trước
-                foreach (PhieuXuatDTO px in pxChuaHoanToanBo)
+                foreach (PhieuXuatDTO px in listPX)
                 {
-                    string tenNV = nvBUS.getNamebyID(px.Manv);
-                    string tenKH = khBUS.getNamebyID(px.Makh);
-                    string trangThai = GetTrangThaiDisplay(px);
+                    if (px.Trangthai != 0)
+                    {
+                        string tenNV = nvBUS.getNamebyID(px.Manv);
+                        string tenKH = khBUS.getNamebyID(px.Makh);
+                        string trangThai = GetTrangThaiDisplay(px);
 
-                    int rowIndex = dataGridView1.Rows.Add(
-                        px.Maphieu,
-                        tenNV,
-                        tenKH,
-                        px.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
-                        px.Tongtien,
-                        trangThai
-                    );
-                    SetRowColor(rowIndex, px);
-                }
-
-                // Add phiếu đã hoàn toàn bộ xuống dưới cùng
-                foreach (PhieuXuatDTO px in pxDaHoanToanBo)
-                {
-                    string tenNV = nvBUS.getNamebyID(px.Manv);
-                    string tenKH = khBUS.getNamebyID(px.Makh);
-                    string trangThai = GetTrangThaiDisplay(px);
-
-                    int rowIndex = dataGridView1.Rows.Add(
-                        px.Maphieu,
-                        tenNV,
-                        tenKH,
-                        px.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
-                        px.Tongtien,
-                        trangThai
-                    );
-                    SetRowColor(rowIndex, px);
+                        int rowIndex = dataGridView1.Rows.Add(
+                            px.Maphieu,
+                            tenNV,
+                            tenKH,
+                            px.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                            px.Tongtien,
+                            trangThai
+                        );
+                        SetRowColor(rowIndex, px);
+                    }
                 }
             }
 
@@ -510,7 +490,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
             if (listPX == null) return;
 
-            var filteredList = listPX.Where(px => px.Trangthai == 1).AsEnumerable();
+            // HIỂN THỊ TẤT CẢ phiếu có trạng thái khác 0
+            var filteredList = listPX.Where(px => px.Trangthai != 0).AsEnumerable();
 
             // Lọc theo tên nhân viên
             if (!string.IsNullOrWhiteSpace(txtSearchNV.Text))
@@ -566,8 +547,39 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 {
                     string tenNV = nvBUS.getNamebyID(px.Manv);
                     string tenKH = khBUS.getNamebyID(px.Makh);
-                    string trangThai = px.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
-                    dataGridView1.Rows.Add(
+
+                    string trangThai = "";
+                    Color backColor = Color.White;
+                    Color foreColor = Color.Black;
+
+                    switch (px.Trangthai)
+                    {
+                        case 0:
+                            trangThai = "Đã hủy";
+                            backColor = Color.LightGray;
+                            foreColor = Color.DarkRed;
+                            break;
+                        case 1:
+                            trangThai = "Hoạt động";
+                            backColor = Color.White;
+                            foreColor = Color.Black;
+                            break;
+                        case 2:
+                            trangThai = "Hoàn một phần";
+                            backColor = Color.LightGoldenrodYellow;
+                            foreColor = Color.Black;
+                            break;
+                        case 3:
+                            trangThai = "Hoàn toàn bộ";
+                            backColor = Color.OrangeRed;
+                            foreColor = Color.Black;
+                            break;
+                        default:
+                            trangThai = "Không xác định";
+                            break;
+                    }
+
+                    int rowIndex = dataGridView1.Rows.Add(
                         px.Maphieu,
                         tenNV,
                         tenKH,
@@ -575,6 +587,13 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         px.Tongtien,
                         trangThai
                     );
+
+                    // Chỉ đặt màu nếu KHÔNG phải là trạng thái "Hoạt động"
+                    if (rowIndex >= 0 && px.Trangthai != 1)
+                    {
+                        dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor = backColor;
+                        dataGridView1.Rows[rowIndex].DefaultCellStyle.ForeColor = foreColor;
+                    }
                 }
             }
 
