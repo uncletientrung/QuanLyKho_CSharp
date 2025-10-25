@@ -106,35 +106,128 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dataGridView1.Columns["Actions"].Width = 100;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void LoadDataIntoGridView()
         {
             dataGridView1.Rows.Clear();
 
             if (listPX != null && listPX.Count > 0)
             {
-                foreach (PhieuXuatDTO px in listPX)
+                // Tách phiếu xuất thành 2 nhóm
+                var pxChuaHoanToanBo = listPX.Where(px => px.Trangthai != 3 && px.Trangthai != 0).ToList();
+                var pxDaHoanToanBo = listPX.Where(px => px.Trangthai == 3).ToList();
+
+                // Add phiếu chưa hoàn toàn bộ trước
+                foreach (PhieuXuatDTO px in pxChuaHoanToanBo)
                 {
-                    if (px.Trangthai == 1)
-                    {
-                        string tenNV = nvBUS.getNamebyID(px.Manv);
-                        string tenKH = khBUS.getNamebyID(px.Makh);
-                        string trangThai = px.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
-                        dataGridView1.Rows.Add(
-                            px.Maphieu,
-                            tenNV,
-                            tenKH,
-                            px.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
-                            px.Tongtien,
-                            trangThai
-                        );
-                    }
+                    string tenNV = nvBUS.getNamebyID(px.Manv);
+                    string tenKH = khBUS.getNamebyID(px.Makh);
+                    string trangThai = GetTrangThaiDisplay(px);
+
+                    int rowIndex = dataGridView1.Rows.Add(
+                        px.Maphieu,
+                        tenNV,
+                        tenKH,
+                        px.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                        px.Tongtien,
+                        trangThai
+                    );
+                    SetRowColor(rowIndex, px);
+                }
+
+                // Add phiếu đã hoàn toàn bộ xuống dưới cùng
+                foreach (PhieuXuatDTO px in pxDaHoanToanBo)
+                {
+                    string tenNV = nvBUS.getNamebyID(px.Manv);
+                    string tenKH = khBUS.getNamebyID(px.Makh);
+                    string trangThai = GetTrangThaiDisplay(px);
+
+                    int rowIndex = dataGridView1.Rows.Add(
+                        px.Maphieu,
+                        tenNV,
+                        tenKH,
+                        px.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                        px.Tongtien,
+                        trangThai
+                    );
+                    SetRowColor(rowIndex, px);
                 }
             }
-
 
             dataGridView1.ClearSelection();
             FilterData();
         }
+
+        private string GetTrangThaiDisplay(PhieuXuatDTO px)
+        {
+            switch (px.Trangthai)
+            {
+                case 1: return "Hoạt động";
+                case 2: return "Đã hoàn một phần";
+                case 3: return "Đã hoàn toàn bộ";
+                case 0: return "Đã hủy";
+                default: return "Không xác định";
+            }
+        }
+
+        private void SetRowColor(int rowIndex, PhieuXuatDTO px)
+        {
+            if (dataGridView1.Rows.Count > rowIndex)
+            {
+                switch (px.Trangthai)
+                {
+                    case 2:
+                        dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightYellow;
+                        break;
+                    case 3:
+                        dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
+                        break;
+                    case 1: 
+                        dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                    default:
+                        dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                }
+
+                dataGridView1.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -532,6 +625,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             FilterData();
         }
 
+
+        // hiển thị dialog hoàn hàng
         private void dialogHoanHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["HoanHang"].Index)
@@ -542,23 +637,37 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 string tenKH = khBUS.getNamebyID(phieu.Makh);
                 decimal tongTien = phieu.Tongtien;
 
-                ChiTietPhieuXuatBUS ctpnBUS = new ChiTietPhieuXuatBUS();
-                DataTable chiTiet = ctpnBUS.getChiTietByMaPhieu(maPhieu);
+                ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
+                DataTable chiTiet = ctpxBUS.getChiTietByMaPhieu(maPhieu);
 
                 var dialog = new QuanLyKho_CSharp.GUI.HoanHang.HoanHang(maPhieu, tenKH, (int)phieu.Manv, tongTien, chiTiet);
-                dialog.ShowDialog();
 
-                // 🔄 Sau khi dialog đóng, reload lại danh sách phiếu xuất
-                LoadData();
-                LoadDataIntoGridView();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Đơn giản chỉ cần reload dữ liệu
+                        // Không cần gọi CapNhatTrangThaiPhieuXuat vì đã được xử lý trong HoanHangGUI
+                        LoadData();
+                        LoadDataIntoGridView();
+
+                        MessageBox.Show("Cập nhật hoàn hàng thành công!", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // Reload để đảm bảo đồng bộ
+                    LoadData();
+                    LoadDataIntoGridView();
+                }
             }
         }
-
-
-
-
-
-
 
         // Các sự kiện khác
         private void panel2_Paint(object sender, PaintEventArgs e) { }
