@@ -1,16 +1,16 @@
-﻿using System;
+﻿using QuanLyKho_CSharp.BUS;
+using QuanLyKho_CSharp.DAO;
+using QuanLyKho_CSharp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using QuanLyKho_CSharp.DTO;
-using QuanLyKho_CSharp.DAO;
-using QuanLyKho_CSharp.BUS;
 
 namespace QuanLyKho_CSharp.GUI.HoanHang
 {
@@ -18,6 +18,7 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
     {
         private readonly ChiTietPhieuXuatBUS _chiTietPhieuXuatBUS = new ChiTietPhieuXuatBUS();
         private readonly SanPhamBUS _sanPhamBUS = new SanPhamBUS();
+        private readonly PhieuXuatBUS _phieuXuatBUS = new PhieuXuatBUS(); // THÊM DÒNG NÀY
         private int _maPhieuXuat;
 
         public HoanHang(ChiTietHoanHangDTO phieuHoan)
@@ -33,7 +34,6 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             _maPhieuXuat = maPhieuXuat;
             SetupDataGridView();
         }
-
 
         // 4 thông số chính của phiếu xuất
         public HoanHang(int maPhieu, string tenKH, int someValue, decimal tongTien, DataTable dt)
@@ -81,8 +81,6 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             }
         }
 
-
-
         public HoanHang(string maPhieu, string tenKH, string maSP, string donGia)
         {
             InitializeComponent();
@@ -107,8 +105,6 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             textBoxSoLuongMatHang.Text = maSP;
             textBoxDonGia.Text = donGia.ToString("N0");
         }
-
-
 
         private void SetupDataGridView()
         {
@@ -149,8 +145,15 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
 
 
 
+
+
+
+
+
+
         // sử lý logic click hoàn từng sản phẩm
-        private bool _isHandlingClick = false; // thêm biến này ở đầu class
+        private bool _isHandlingClick = false;
+
         private void dgvXemChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex != dgvXemChiTiet.Columns["btnHoanTra"].Index)
@@ -162,18 +165,10 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             // Tìm mã sản phẩm để cập nhật DB
             int maSP = _sanPhamBUS.getIDbyName(tenSP);
 
-            // Xóa trong DB
-            bool ok = _chiTietPhieuXuatBUS.deleteByMaPhieuXuatAndMaSP(_maPhieuXuat, maSP);
-            if (!ok)
-            {
-                MessageBox.Show("Không thể hoàn trả mặt hàng này!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             MessageBox.Show($"Hoàn trả mặt hàng: {tenSP} (Số lượng: {soLuong}) thành công!",
                             "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Xóa dòng khỏi DataGridView (và DB đã cập nhật)
+            // Xóa dòng khỏi DataGridView (chỉ trên UI, không xóa trong database)
             if (dgvXemChiTiet.DataSource is DataTable dt)
             {
                 DataRow[] found = dt.Select($"TenSP = '{tenSP.Replace("'", "''")}'");
@@ -189,60 +184,52 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
                 dgvXemChiTiet.Rows.RemoveAt(e.RowIndex);
             }
 
-            // Xoá luôn phiếu xuất nếu hết sp
-            var listCT = _chiTietPhieuXuatBUS.getChiTietByMaPhieuXuat(_maPhieuXuat);
-            if (listCT == null || listCT.Count == 0)
-            {
-                new PhieuXuatBUS().removePhieuXuat(_maPhieuXuat);
-                this.DialogResult = DialogResult.OK; // Thêm dòng này
-                this.Close(); // Thêm dòng này
-            }
-            // Cập nhật cột tổng tiền - PhieuXuatGUI
-            else
-            {
-                int newTotal = listCT.Sum(ct => ct.Soluong * ct.Dongia);
-                var phieu = new PhieuXuatBUS().getPhieuXuatById(_maPhieuXuat);
-                phieu.Tongtien = newTotal;
-                new PhieuXuatBUS().updatePhieuXuat(phieu);
+            // Cập nhật trạng thái hoàn một phần - SỬA THÀNH int
+            CapNhatTrangThaiHoanMotPhan(_maPhieuXuat);
 
-                // THÊM PHẦN NÀY: Cập nhật trạng thái hoàn một phần
-                CapNhatTrangThaiHoanMotPhan(_maPhieuXuat);
+            // Kiểm tra nếu đã hoàn hết tất cả sản phẩm
+            if (dgvXemChiTiet.Rows.Count == 0)
+            {
+                // Cập nhật trạng thái hoàn toàn bộ
+                var phieu = _phieuXuatBUS.getPhieuXuatById(_maPhieuXuat);
+                if (phieu != null)
+                {
+                    phieu.Trangthai = 3; // 3 = Đã hoàn toàn bộ
+                    _phieuXuatBUS.updatePhieuXuat(phieu);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
-        // THÊM PHƯƠNG THỨC MỚI: Cập nhật trạng thái hoàn một phần
+
         private void CapNhatTrangThaiHoanMotPhan(int maPhieuXuat)
         {
             try
             {
-                var phieuBUS = new PhieuXuatBUS();
-                var phieu = phieuBUS.getPhieuXuatById(maPhieuXuat);
-                if (phieu != null && phieu.Trangthai != 3) // Chỉ cập nhật nếu chưa hoàn toàn bộ
+                // Sử dụng PhieuXuatBUS để cập nhật trạng thái
+                var phieu = _phieuXuatBUS.getPhieuXuatById(maPhieuXuat);
+                if (phieu != null)
                 {
+                    // Giả sử có trường TrangThaiHoan trong DTO
+                    // Nếu không có, bạn có thể thêm hoặc dùng trường khác
                     phieu.Trangthai = 2; // 2 = Đã hoàn một phần
-                    phieuBUS.updatePhieuXuat(phieu);
+                    _phieuXuatBUS.updatePhieuXuat(phieu);
+
+                    MessageBox.Show("Đã cập nhật trạng thái hoàn một phần thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu xuất!");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Lỗi khi cập nhật trạng thái hoàn một phần: {ex.Message}");
+                MessageBox.Show("Lỗi khi cập nhật trạng thái: " + ex.Message);
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-        // buttton footer
-        // button hoàn tất cả
-        // buttton footer
-        // button hoàn tất cả
         private void buttonHoanAll_Click(object sender, EventArgs e)
         {
             if (dgvXemChiTiet.Rows.Count == 0)
@@ -258,19 +245,14 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
 
             try
             {
-                // Cập nhật trạng thái phiếu xuất sang "Đã hoàn toàn bộ" (Trangthai = 3)
-                var phieuBUS = new PhieuXuatBUS();
-                var phieu = phieuBUS.getPhieuXuatById(_maPhieuXuat);
+                var phieu = _phieuXuatBUS.getPhieuXuatById(_maPhieuXuat);
                 if (phieu != null)
                 {
                     phieu.Trangthai = 3; // 3 = Đã hoàn toàn bộ
-                    phieuBUS.updatePhieuXuat(phieu);
+                    _phieuXuatBUS.updatePhieuXuat(phieu);
                 }
 
-                // Xóa tất cả chi tiết phiếu xuất (nếu muốn xóa dữ liệu)
-                // _chiTietPhieuXuatBUS.deleteChiTietPhieuXuat(_maPhieuXuat);
-
-                // Làm trống bảng hiển thị
+                // Làm trống bảng hiển thị (chỉ trên UI, không xóa trong database)
                 if (dgvXemChiTiet.DataSource is DataTable dt)
                 {
                     dt.Clear();
@@ -303,14 +285,6 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             this.Close();
         }
 
-
-
-
-
-
-
-
-
         // Thêm phương thức để xử lý khi form đóng
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -326,6 +300,7 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
                 }
             }
         }
+
         // Phương thức hỗ trợ để lấy tổng số dòng ban đầu (nếu cần)
         private int GetTongSoDongBanDau()
         {
@@ -335,6 +310,11 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
             }
             return dgvXemChiTiet.Rows.Count;
         }
+       
+
+
+
+
 
 
 
@@ -345,14 +325,13 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
 
 
         // readonly
-        private void textBox1_TextChanged(object sender, EventArgs e) {}
-        private void textBox1_TextChanged_1(object sender, EventArgs e) {}
-        private void label1_Click(object sender, EventArgs e) {}
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e) {}
-        private void label2_Click(object sender, EventArgs e) {}
-        private void label3_Click(object sender, EventArgs e) {}
-        private void label4_Click(object sender, EventArgs e) {}
-        private void dgvXemChiTiet_CellContentClick_1(object sender, DataGridViewCellEventArgs e) {}
-
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void textBox1_TextChanged_1(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
+        private void dgvXemChiTiet_CellContentClick_1(object sender, DataGridViewCellEventArgs e) { }
     }
 }
