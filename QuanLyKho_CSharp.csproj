@@ -209,7 +209,7 @@
     <Compile Include="BUS\ChiTietPhieuNhapBUS.cs" />
     <Compile Include="BUS\ChiTietPhieuXuatBUS.cs" />
     <Compile Include="BUS\DanhMucChucNangBUS.cs" />
-    <Compile Include="BUS\HoanHangBUS.cs" />
+    <Compile Include="BUS\PhieuHoanHangBUS.cs" />
     <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\KhuVucKhoBUS.cs" />
     <Compile Include="BUS\LoaiBUS.cs" />

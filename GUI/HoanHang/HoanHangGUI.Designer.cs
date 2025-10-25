@@ -142,6 +142,7 @@
             this.buttonHuyBo.TabIndex = 1;
             this.buttonHuyBo.Text = "Huỷ bỏ";
             this.buttonHuyBo.UseVisualStyleBackColor = true;
+            this.buttonHuyBo.Click += new System.EventHandler(this.buttonHuyBo_Click_1);
             // 
             // tableLayoutPanel2
             // 
