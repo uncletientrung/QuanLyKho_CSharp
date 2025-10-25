@@ -22,16 +22,16 @@ namespace QuanLyKho_CSharp
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
 
-            //Application.Run(new frmMain()); // Lười đăng nhập thì xài cái này
+
+            //Application.Run(new testKryptonForm()); // Lười đăng nhập thì xài cái này
             while (true)
             {
                 Login loginForm = new Login();
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
                     frmMain mainForm = new frmMain(loginForm.getTkLogin());
-  
+
                     if (mainForm.ShowDialog() == DialogResult.Abort)
                     {
                         continue;

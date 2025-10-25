@@ -9,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace QuanLyKho_CSharp.GUI
 {
-    public partial class Login : Form
+    public partial class Login : KryptonForm
     {
         private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
         private BindingList<TaiKhoanDTO> listTK;
@@ -24,7 +25,7 @@ namespace QuanLyKho_CSharp.GUI
         public Login()
         {
             InitializeComponent();
-            this.AcceptButton = btnLogin;
+            //this.AcceptButton = btnLogin;
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
@@ -69,6 +70,37 @@ namespace QuanLyKho_CSharp.GUI
         private void Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void kryptonPalette1_PalettePaint(object sender, PaletteLayoutEventArgs e)
+        {
+
+        }
+
+        private void kryptonPalette1_PalettePaint_1(object sender, PaletteLayoutEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            txtUsername.Text = "";
+            txtPassword.Text = "";
         }
     }
 }
