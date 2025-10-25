@@ -36,10 +36,10 @@ namespace QuanLyKho_CSharp.GUI
         private void button1_Click(object sender, EventArgs e)
         {
             listTK = tkBUS.getListTK();
-            //string user = txtUsername.Text;
-            //string pass = txtPassword.Text;
-            string user = "admin";
-            string pass = "12345";
+            string user = txtUsername.Text;
+            string pass = txtPassword.Text;
+            //string user = "admin";
+            //string pass = "12345";
             foreach (TaiKhoanDTO tk in listTK)
             {
                 if (user.Equals(tk.Tendangnhap) && pass.Equals(tk.Matkhau))

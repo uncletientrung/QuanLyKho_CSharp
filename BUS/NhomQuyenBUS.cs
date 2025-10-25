@@ -1,4 +1,5 @@
-﻿using MySqlX.XDevAPI.Common;
+﻿using ComponentFactory.Krypton.Toolkit;
+using MySqlX.XDevAPI.Common;
 using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using System;
@@ -99,17 +100,17 @@ namespace QuanLyKho_CSharp.BUS
             return new BindingList<NhomQuyenDTO>(result);
 
         }
-        public BindingList<Button> GetAllButtons(Control parent)
+        public BindingList<KryptonButton> GetAllButtons(Control parent)
         {
-            List<Button> result= parent.Controls
+            List<KryptonButton> result= parent.Controls
                          .Cast<Control>() // Ép về IEnumerable<Control>
                          .SelectMany(ctrl => ctrl.HasChildren
                                               ? GetAllButtons(ctrl)
-                                              : Enumerable.Empty<Button>())
-                         .Concat(parent.Controls.OfType<Button>())
+                                              : Enumerable.Empty<KryptonButton>())
+                         .Concat(parent.Controls.OfType<KryptonButton>())
                          .ToList();
 
-            return new BindingList<Button>(result);
+            return new BindingList<KryptonButton>(result);
         }
 
 
