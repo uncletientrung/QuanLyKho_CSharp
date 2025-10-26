@@ -31,26 +31,32 @@ namespace QuanLyKho_CSharp
     {
         private Form currentFormChild;// Biến giữ form con hiện tại
 
-        private Button currentButton; //biến giữ button hiện tại
+        private KryptonButton currentButton; //biến giữ button hiện tại
         private TaiKhoanDTO tkLogin;
         public static TaiKhoanDTO CurrentUser { get; private set; }
+        private NhanVienBUS nvBUS= new NhanVienBUS();
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private DanhMucChucNangBUS dmncBUS = new DanhMucChucNangBUS();
         private BindingList<KryptonButton> listButton;
 
         private bool expand = false;
+        private bool expandThuocTinh = false;
 
 
 
         public frmMain(TaiKhoanDTO _tkLogin)
         {
             InitializeComponent();
-            CustomizeDesign();
-            setTagForButton();
-
-            // Kiểm tra xem nhóm quyền tài khoản
             tkLogin = _tkLogin;
             CurrentUser = _tkLogin;
+            CustomizeDesign();
+            setTagForButton();
+            lbUser.Text = LayTenNguoiDung(nvBUS.getNamebyID(_tkLogin.Manv)); // set Tên
+            //set Role
+            setRole();
+            
+
+            // Kiểm tra xem nhóm quyền tài khoản
             BindingList<ChiTietQuyenDTO> listctq = nqBUS.getListCTNQByIdNQ(tkLogin.Manhomquyen);
             foreach (ChiTietQuyenDTO ctq in listctq)
             {
@@ -62,18 +68,19 @@ namespace QuanLyKho_CSharp
                         pnlSubmenu.Visible = true;
                         btnQuanLyNhanVien.Visible = true;
                     }
+                    if (btnToShow.Tag == "thongtin")
+                    {
+                        pnlSubmenuThuocTinh.Visible = true;
+                        btnQuanLyThuocTinh.Visible = true;
+                        btnNhaCungCap.Visible = true;
+                        btnKhuVuc.Visible = true;
+                        btnLoai.Visible = true;
+                        btnSize.Visible = true;
+                        btnChatLieu.Visible = true;
+                        continue;
+                    }
                     btnToShow.Visible = true;
                 }
-            }
-            //Nếu muốn hiển thị tất cả nút con của một nhóm, ví dụ 'thongtin'
-            if (listctq.Any(q => dmncBUS.getNameById(q.Machucnang) == "thongtin"))
-            {
-                btnChatLieu.Visible = true;
-                btnKhuVuc.Visible = true;
-                btnSize.Visible = true;
-                btnLoai.Visible = true;
-                btnNhaCungCap.Visible = true;
-                btnThuocTinh.Visible = true;
             }
         }
 
@@ -90,11 +97,12 @@ namespace QuanLyKho_CSharp
             btnKhachHang.Tag = "khachhang";
             btnBaoCao.Tag = "baocao";
 
-            btnNhaCungCap.Tag = "nhacungcap";
-            btnChatLieu.Tag = "chatlieu";
-            btnLoai.Tag = "loai";
-            btnSize.Tag = "size";
-            btnKhuVuc.Tag = "khuvuc";
+            btnQuanLyThuocTinh.Tag = "quanlythuoctinh";
+            btnNhaCungCap.Tag = "thongtin";
+            btnChatLieu.Tag = "thongtin";
+            btnLoai.Tag = "thongtin";
+            btnSize.Tag = "thongtin";
+            btnKhuVuc.Tag = "thongtin";
 
             btnQuanLyNhanVien.Tag = "quanlynhanvien";
             btnNhanVien.Tag = "nhanvien";
@@ -103,7 +111,7 @@ namespace QuanLyKho_CSharp
         }
 
 
-        private void OpenChildForm(Form childForm, Button btn)
+        private void OpenChildForm(Form childForm, KryptonButton btn)
         {
             //  Nếu form hiện tại cùng loại và cùng button -> Không làm gì
             if (currentFormChild != null
@@ -141,7 +149,7 @@ namespace QuanLyKho_CSharp
             this.PerformLayout();
         }
 
-        #region Xử lý ẩn hiện nút Menu phụ
+        //#region Xử lý ẩn hiện nút Menu phụ
         private void CustomizeDesign() // Trạng thái tắt button ban đầu
         {
             listButton = nqBUS.GetAllButtons(this); // Lấy các nút 
@@ -154,52 +162,9 @@ namespace QuanLyKho_CSharp
             btnClose.Visible=true;
 
             pnlSubmenu.Visible = false;
+            pnlSubmenuThuocTinh.Visible = false;
         }
-        //private void hideSideMenu() // Ẩn các nút còn lại khi ấn
-        //{
-        //    if (panelQuanLyKho.Visible) panelQuanLyKho.Visible = false;
-        //    if (panelDanhMuc.Visible) panelDanhMuc.Visible = false;
-        //    if (panelQuanLyHeThong.Visible) panelQuanLyHeThong.Visible = false;
-        //    if (panelThongTin.Visible) panelThongTin.Visible = false;
-        //}
-        //private void ShowSideMenu(Panel sidemenu)
-        //{
 
-        //    if (sidemenu.Visible == false)
-        //    {
-        //        if (sidemenu != panelThongTin) hideSideMenu();
-
-        //        sidemenu.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        sidemenu.Visible = false;
-        //    }
-
-        //}
-        #endregion
-
-        //#region 4 nút Menu phụ
-        //private void btnQuanLyKho_Click(object sender, EventArgs e)
-        //{
-        //    ShowSideMenu(panelQuanLyKho);
-        //}
-        //private void btnDanhMuc_Click(object sender, EventArgs e)
-        //{
-        //    ShowSideMenu(panelDanhMuc);
-        //}
-        //private void btnQuanLyHeThong_Click(object sender, EventArgs e)
-        //{
-        //    ShowSideMenu(panelQuanLyHeThong);
-        //}
-        //private void btnThongTin_Click(object sender, EventArgs e)
-        //{
-        //    ShowSideMenu(panelThongTin);
-        //}
-        //#endregion
-        //private void label1_Click(object sender, EventArgs e)
-        //{
-        //}
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -215,14 +180,66 @@ namespace QuanLyKho_CSharp
             Close();
         }
 
-        private void btnTrangChu_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public string LayTenNguoiDung(string hoTen)
+        {
+            if (hoTen == "Không tìm thấy") return "Admin";
+            if (string.IsNullOrWhiteSpace(hoTen))
+                return string.Empty;
+            string[] parts = hoTen.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (parts.Length == 1)
+            {
+                return parts[0];
+            }
+            else if (parts.Length == 2)
+            {
+                return $"{parts[0]} {parts[1]}";
+            }
+            else
+            {
+                return $"{parts[parts.Length - 2]} {parts[parts.Length - 1]}";
+            }
+        }
+        public void setRole()
+        {
+            string nameRole = nqBUS.getNQById(tkLogin.Manhomquyen).Tennhomquyen;
+            if(nameRole.Equals("Quản lý"))
+            {
+                lbRole.StateCommon.ShortText.Color1 = Color.FromArgb(240, 43, 43);
+                lbRole.StateCommon.ShortText.Color2 = Color.FromArgb(240, 43, 43);
+            }
+            else
+            {
+                lbRole.StateCommon.ShortText.Color1 = Color.FromArgb(255, 255, 255);
+                lbRole.StateCommon.ShortText.Color2 = Color.FromArgb(255, 255, 255);
+            }
+            lbRole.Values.Text = nameRole;
+        }
+
+        private void CloseSubmenuNhanVien()
+            {
+                if (expand) // Nếu đang mở
+                {
+                    timer1.Stop();
+                    pnlSubmenu.Height = pnlSubmenu.MinimumSize.Height;
+                    expand = false;
+                }
+            }
+
+        private void CloseSubmenuThuocTinh()
+        {
+            if (expandThuocTinh) // Nếu đang mở
+            {
+                timer2.Stop();
+                pnlSubmenuThuocTinh.Height = pnlSubmenuThuocTinh.MinimumSize.Height;
+                expandThuocTinh = false;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -249,109 +266,129 @@ namespace QuanLyKho_CSharp
 
         private void btnQuanLyNhanVien_Click(object sender, EventArgs e)
         {
+            CloseSubmenuThuocTinh();
             timer1.Start();
+            
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (expandThuocTinh == false)
+            {
+                pnlSubmenuThuocTinh.Height += 15;
+                if (pnlSubmenuThuocTinh.Height >= pnlSubmenuThuocTinh.MaximumSize.Height)
+                {
+                    timer2.Stop();
+                    expandThuocTinh = true;
+                }
+            }
+            else
+            {
+                pnlSubmenuThuocTinh.Height -= 15;
+                if (pnlSubmenuThuocTinh.Height <= pnlSubmenuThuocTinh.MinimumSize.Height)
+                {
+                    timer2.Stop();
+                    expandThuocTinh = false;
+                }
+            }
+        }
+        private void btnQuanLyThuocTinh_Click(object sender, EventArgs e)
+        {
+            CloseSubmenuNhanVien();
+            timer2.Start();
         }
 
 
-        //private void btnTonKho_Click(object sender, EventArgs e)
-        //{
-
-        //    OpenChildForm(new SanPhamGUI(), btnTonKho);
-        //}
-
-        //private void btnTrangChu_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new Test_Connection(), btnTrangChu);
-        //}
-
-        //private void btnPhieuNhap_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new PhieuNhapGUI(), btnPhieuNhap);
-        //}
-        //private void btnPhieuXuat_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new PhieuXuatGUI(), btnPhieuXuat);
-        //}
-
-        //private void btnKhachHang_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new KhachHangGUI(), btnKhachHang);
-        //}
-
-        //private void btnNhanVien_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new NhanVienGUI(), btnNhanVien);
-        //}
-
-        //private void btnNhaCungCap_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new NhaCungCapGUI(), btnNhaCungCap);
-        //}
-
-        //private void btnChatLieu_Click_1(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new ChatLieuGUI(), btnChatLieu);
-        //}
-
-        //private void btnLoai_Click_1(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new LoaiGUI(), btnLoai);
-        //}
-
-        //private void btnSize_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new SizeGUI(), btnSize);
-        //}
-
-        //private void btnKhuVuc_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new KhuVucGUI(), btnKhuVuc);
-        //}
-
-        //private void btnLogout_Click(object sender, EventArgs e)
-        //{
-        //    this.DialogResult = DialogResult.Abort;
-        //    this.Close();
-        //}
-
-        //private void avatar_Logout_Click(object sender, EventArgs e)
-        //{
-        //}
-
-        //private void btnTaiKhoan_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new TaiKhoanGUI(), btnTaiKhoan);
-        //}
-
-        //private void btnPhanQuyen_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new NhomQuyenGUI(), btnPhanQuyen);
-        //}
-
-
-        //private void pnlBody_Paint(object sender, PaintEventArgs e)
-        //{
-
-        //}
-
-        //private void btnKiemKe_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new KiemKeGUI(), btnKiemKe);
-        //}
 
 
 
 
-        //private void pnlLeftMenu_Paint(object sender, PaintEventArgs e)
-        //{
 
-        //}
+        private void btnTonKho_Click(object sender, EventArgs e)
+        {
 
-        //private void btnBaoCao_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new ThongKeGUI(), btnBaoCao);
-        //}
-        //bool expend = false;
+            OpenChildForm(new SanPhamGUI(), btnTonKho);
+        }
+
+        private void btnTrangChu_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Test_Connection(), btnTrangChu);
+        }
+
+        private void btnPhieuNhap_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new PhieuNhapGUI(), btnPhieuNhap);
+        }
+        private void btnPhieuXuat_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new PhieuXuatGUI(), btnPhieuXuat);
+        }
+
+        private void btnKhachHang_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new KhachHangGUI(), btnKhachHang);
+        }
+
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new NhanVienGUI(), btnNhanVien);
+        }
+
+        private void btnNhaCungCap_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new NhaCungCapGUI(), btnNhaCungCap);
+        }
+
+        private void btnChatLieu_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new ChatLieuGUI(), btnChatLieu);
+        }
+
+        private void btnLoai_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new LoaiGUI(), btnLoai);
+        }
+
+        private void btnSize_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new SizeGUI(), btnSize);
+        }
+
+        private void btnKhuVuc_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new KhuVucGUI(), btnKhuVuc);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Abort;
+            this.Close();
+        }
+
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new TaiKhoanGUI(), btnTaiKhoan);
+        }
+
+        private void btnPhanQuyen_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new NhomQuyenGUI(), btnPhanQuyen);
+        }
+
+
+        private void pnlBody_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnKiemKe_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new KiemKeGUI(), btnKiemKe);
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ThongKeGUI(), btnBaoCao);
+        }
 
     }
 }
