@@ -102,5 +102,16 @@ namespace QuanLyKho_CSharp.GUI
             txtUsername.Text = "";
             txtPassword.Text = "";
         }
+
+        private void Login_Paint(object sender, PaintEventArgs e)
+        {
+            int borderWidth = 5;             // Độ dày viền
+            Color borderColor = Color.FromArgb(0, 117, 214);  // Màu viền
+
+            using (Pen pen = new Pen(borderColor, borderWidth))
+            {
+                e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, this.Width - 1, this.Height - 1));
+            }
+        }
     }
 }

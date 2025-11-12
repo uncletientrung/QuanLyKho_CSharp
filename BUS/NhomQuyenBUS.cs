@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using Guna.UI2.WinForms;
 using MySqlX.XDevAPI.Common;
 using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
@@ -100,17 +101,17 @@ namespace QuanLyKho_CSharp.BUS
             return new BindingList<NhomQuyenDTO>(result);
 
         }
-        public BindingList<KryptonButton> GetAllButtons(Control parent)
+        public BindingList<Guna2Button> GetAllButtons(Control parent)
         {
-            List<KryptonButton> result= parent.Controls
+            List<Guna2Button> result= parent.Controls
                          .Cast<Control>() // Ép về IEnumerable<Control>
                          .SelectMany(ctrl => ctrl.HasChildren
                                               ? GetAllButtons(ctrl)
-                                              : Enumerable.Empty<KryptonButton>())
-                         .Concat(parent.Controls.OfType<KryptonButton>())
+                                              : Enumerable.Empty<Guna2Button>())
+                         .Concat(parent.Controls.OfType<Guna2Button>())
                          .ToList();
 
-            return new BindingList<KryptonButton>(result);
+            return new BindingList<Guna2Button>(result);
         }
 
 

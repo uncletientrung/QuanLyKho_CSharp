@@ -1,4 +1,6 @@
-﻿using QuanLyKho_CSharp.BUS;
+﻿using ComponentFactory.Krypton.Toolkit;
+using Guna.UI2.WinForms;
+using QuanLyKho_CSharp.BUS;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.GUI;
 using QuanLyKho_CSharp.GUI.KhachHang;
@@ -7,9 +9,12 @@ using QuanLyKho_CSharp.GUI.PhanQuyen;
 using QuanLyKho_CSharp.GUI.PhieuNhap;
 using QuanLyKho_CSharp.GUI.PhieuXuat;
 using QuanLyKho_CSharp.GUI.TaiKhoan;
-using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
+using QuanLyKho_CSharp.GUI.ThongKe;
 using QuanLyKho_CSharp.GUI.ThongTin.ChatLieu;
 using QuanLyKho_CSharp.GUI.ThongTin.KhuVuc;
+using QuanLyKho_CSharp.GUI.ThongTin.Loai;
+using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
+using QuanLyKho_CSharp.GUI.ThongTin.Size;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,29 +25,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using QuanLyKho_CSharp.GUI.ThongTin.Loai;
-using QuanLyKho_CSharp.GUI.ThongKe;
-using QuanLyKho_CSharp.GUI.ThongTin.Size;
-using ComponentFactory.Krypton.Toolkit;
 
 namespace QuanLyKho_CSharp
 {
-    public partial class frmMain : KryptonForm
+    public partial class frmMain : Form
     {
         private Form currentFormChild;// Biến giữ form con hiện tại
 
-        private KryptonButton currentButton; //biến giữ button hiện tại
+        private Guna2Button currentButton; //biến giữ button hiện tại
         private TaiKhoanDTO tkLogin;
         public static TaiKhoanDTO CurrentUser { get; private set; }
         private NhanVienBUS nvBUS= new NhanVienBUS();
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private DanhMucChucNangBUS dmncBUS = new DanhMucChucNangBUS();
-        private BindingList<KryptonButton> listButton;
-
-        private bool expand = false;
-        private bool expandThuocTinh = false;
-
-
+        private BindingList<Guna2Button> listButton;
 
         public frmMain(TaiKhoanDTO _tkLogin)
         {
@@ -51,10 +47,10 @@ namespace QuanLyKho_CSharp
             CurrentUser = _tkLogin;
             CustomizeDesign();
             setTagForButton();
-            lbUser.Text = LayTenNguoiDung(nvBUS.getNamebyID(_tkLogin.Manv)); // set Tên
+            lbName.Text = LayTenNguoiDung(nvBUS.getNamebyID(_tkLogin.Manv)); // set Tên
             //set Role
             setRole();
-            
+
 
             // Kiểm tra xem nhóm quyền tài khoản
             BindingList<ChiTietQuyenDTO> listctq = nqBUS.getListCTNQByIdNQ(tkLogin.Manhomquyen);
@@ -64,14 +60,9 @@ namespace QuanLyKho_CSharp
                 var btnToShow = listButton.FirstOrDefault(b => b.Tag != null && b.Tag.ToString() == name);
                 if (btnToShow != null)
                 {
-                    if (btnToShow.Tag == "nhanvien" || btnToShow.Tag == "taikhoan" || btnToShow.Tag == "phanquyen") {
-                        pnlSubmenu.Visible = true;
-                        btnQuanLyNhanVien.Visible = true;
-                    }
+                    //MessageBox.Show(btnToShow.Text);
                     if (btnToShow.Tag == "thongtin")
                     {
-                        pnlSubmenuThuocTinh.Visible = true;
-                        btnQuanLyThuocTinh.Visible = true;
                         btnNhaCungCap.Visible = true;
                         btnKhuVuc.Visible = true;
                         btnLoai.Visible = true;
@@ -82,6 +73,8 @@ namespace QuanLyKho_CSharp
                     btnToShow.Visible = true;
                 }
             }
+
+            OpenChildForm(new Test_Connection(), btnTrangChu); // Chạy trang chủ đầu tiên 
         }
 
         public void setTagForButton()
@@ -97,21 +90,19 @@ namespace QuanLyKho_CSharp
             btnKhachHang.Tag = "khachhang";
             btnBaoCao.Tag = "baocao";
 
-            btnQuanLyThuocTinh.Tag = "quanlythuoctinh";
             btnNhaCungCap.Tag = "thongtin";
             btnChatLieu.Tag = "thongtin";
             btnLoai.Tag = "thongtin";
             btnSize.Tag = "thongtin";
             btnKhuVuc.Tag = "thongtin";
 
-            btnQuanLyNhanVien.Tag = "quanlynhanvien";
             btnNhanVien.Tag = "nhanvien";
             btnTaiKhoan.Tag = "taikhoan";
             btnPhanQuyen.Tag = "phanquyen";
         }
 
 
-        private void OpenChildForm(Form childForm, KryptonButton btn)
+        private void OpenChildForm(Form childForm, Guna2Button btn)
         {
             //  Nếu form hiện tại cùng loại và cùng button -> Không làm gì
             if (currentFormChild != null
@@ -143,6 +134,7 @@ namespace QuanLyKho_CSharp
 
             childForm.BringToFront();
             childForm.Show();
+            lbPage.Text= btn.Text;
 
 
             pnlBody.PerformLayout();
@@ -159,10 +151,6 @@ namespace QuanLyKho_CSharp
             }
             btnTrangChu.Visible = true;
             btnLogout.Visible = true;
-            btnClose.Visible=true;
-
-            pnlSubmenu.Visible = false;
-            pnlSubmenuThuocTinh.Visible = false;
         }
 
 
@@ -180,11 +168,6 @@ namespace QuanLyKho_CSharp
             Close();
         }
 
-
-        private void kryptonButton1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         public string LayTenNguoiDung(string hoTen)
         {
@@ -209,103 +192,19 @@ namespace QuanLyKho_CSharp
         public void setRole()
         {
             string nameRole = nqBUS.getNQById(tkLogin.Manhomquyen).Tennhomquyen;
-            if(nameRole.Equals("Quản lý"))
+            if (nameRole.Equals("Quản lý"))
             {
-                lbRole.StateCommon.ShortText.Color1 = Color.FromArgb(240, 43, 43);
-                lbRole.StateCommon.ShortText.Color2 = Color.FromArgb(240, 43, 43);
+                lbRole.ForeColor = Color.FromArgb(240, 43, 43);
+                
             }
-            else
-            {
-                lbRole.StateCommon.ShortText.Color1 = Color.FromArgb(255, 255, 255);
-                lbRole.StateCommon.ShortText.Color2 = Color.FromArgb(255, 255, 255);
-            }
-            lbRole.Values.Text = nameRole;
+            lbRole.Text = nameRole;
         }
-
-        private void CloseSubmenuNhanVien()
-            {
-                if (expand) // Nếu đang mở
-                {
-                    timer1.Stop();
-                    pnlSubmenu.Height = pnlSubmenu.MinimumSize.Height;
-                    expand = false;
-                }
-            }
-
-        private void CloseSubmenuThuocTinh()
-        {
-            if (expandThuocTinh) // Nếu đang mở
-            {
-                timer2.Stop();
-                pnlSubmenuThuocTinh.Height = pnlSubmenuThuocTinh.MinimumSize.Height;
-                expandThuocTinh = false;
-            }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (expand == false)
-            {
-                pnlSubmenu.Height += 15;
-                if (pnlSubmenu.Height >= pnlSubmenu.MaximumSize.Height)
-                {
-                    timer1.Stop();
-                    expand = true;
-                }
-            }
-            else
-            {
-                pnlSubmenu.Height -= 15;
-                if (pnlSubmenu.Height <= pnlSubmenu.MinimumSize.Height)
-                {
-                    timer1.Stop();
-                    expand = false;
-                }
-            }
-        }
-
-        private void btnQuanLyNhanVien_Click(object sender, EventArgs e)
-        {
-            CloseSubmenuThuocTinh();
-            timer1.Start();
-            
-        }
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (expandThuocTinh == false)
-            {
-                pnlSubmenuThuocTinh.Height += 15;
-                if (pnlSubmenuThuocTinh.Height >= pnlSubmenuThuocTinh.MaximumSize.Height)
-                {
-                    timer2.Stop();
-                    expandThuocTinh = true;
-                }
-            }
-            else
-            {
-                pnlSubmenuThuocTinh.Height -= 15;
-                if (pnlSubmenuThuocTinh.Height <= pnlSubmenuThuocTinh.MinimumSize.Height)
-                {
-                    timer2.Stop();
-                    expandThuocTinh = false;
-                }
-            }
-        }
-        private void btnQuanLyThuocTinh_Click(object sender, EventArgs e)
-        {
-            CloseSubmenuNhanVien();
-            timer2.Start();
-        }
-
-
-
 
 
 
 
         private void btnTonKho_Click(object sender, EventArgs e)
         {
-
             OpenChildForm(new SanPhamGUI(), btnTonKho);
         }
 
@@ -383,12 +282,33 @@ namespace QuanLyKho_CSharp
         private void btnKiemKe_Click(object sender, EventArgs e)
         {
             OpenChildForm(new KiemKeGUI(), btnKiemKe);
+
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
             OpenChildForm(new ThongKeGUI(), btnBaoCao);
+
         }
 
+
+        private void pnlMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+
+
+
+        private void imgSlide_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void imgSlide_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

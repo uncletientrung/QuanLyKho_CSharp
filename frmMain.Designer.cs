@@ -32,951 +32,630 @@ namespace QuanLyKho_CSharp
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panelTop = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lbUser = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.lbRole = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.paneMenu = new System.Windows.Forms.Panel();
-            this.btnBaoCao = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.pnlSubmenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnQuanLyNhanVien = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnNhanVien = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnTaiKhoan = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnPhanQuyen = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.pnlSubmenuThuocTinh = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnQuanLyThuocTinh = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnNhaCungCap = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnKhuVuc = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnChatLieu = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnLoai = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnSize = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnKhachHang = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnKiemKe = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnPhieuNhap = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnPhieuXuat = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnTonKho = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnTrangChu = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panelLeft = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnLogout = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.pnlBody = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.pnlMenu = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnBaoCao = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPhanQuyen = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSize = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTaiKhoan = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLoai = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNhanVien = new Guna.UI2.WinForms.Guna2Button();
+            this.btnKhachHang = new Guna.UI2.WinForms.Guna2Button();
+            this.btnChatLieu = new Guna.UI2.WinForms.Guna2Button();
+            this.btnKiemKe = new Guna.UI2.WinForms.Guna2Button();
+            this.btnKhuVuc = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPhieuNhap = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNhaCungCap = new Guna.UI2.WinForms.Guna2Button();
+            this.btnPhieuXuat = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTonKho = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
+            this.pnlName = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.lbRole = new System.Windows.Forms.Label();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lbName = new System.Windows.Forms.Label();
+            this.guna2Shapes1 = new Guna.UI2.WinForms.Guna2Shapes();
+            this.pnlRight = new System.Windows.Forms.Panel();
+            this.pnlLeft = new System.Windows.Forms.Panel();
+            this.pnlLogout = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbTitle = new System.Windows.Forms.Label();
+            this.lbPage = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.paneMenu.SuspendLayout();
-            this.pnlSubmenu.SuspendLayout();
-            this.pnlSubmenuThuocTinh.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panelLeft.SuspendLayout();
+            this.pnlMenu.SuspendLayout();
+            this.pnlName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            this.pnlRight.SuspendLayout();
+            this.pnlLeft.SuspendLayout();
+            this.pnlLogout.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
             // 
-            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.panelTop.Controls.Add(this.btnClose);
+            this.panelTop.BackColor = System.Drawing.Color.White;
+            this.panelTop.Controls.Add(this.lbTitle);
+            this.panelTop.Controls.Add(this.guna2ControlBox3);
+            this.panelTop.Controls.Add(this.guna2ControlBox2);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(221, 0);
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1144, 41);
+            this.panelTop.Size = new System.Drawing.Size(1098, 41);
             this.panelTop.TabIndex = 1;
             // 
-            // btnClose
+            // guna2ControlBox3
             // 
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(1104, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(40, 41);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.button1_Click);
+            this.guna2ControlBox3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.guna2ControlBox3.CustomIconSize = 20F;
+            this.guna2ControlBox3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guna2ControlBox3.FillColor = System.Drawing.Color.White;
+            this.guna2ControlBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ControlBox3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1006, 0);
+            this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ControlBox3.Name = "guna2ControlBox3";
+            this.guna2ControlBox3.Size = new System.Drawing.Size(46, 41);
+            this.guna2ControlBox3.TabIndex = 8;
             // 
-            // panel2
+            // guna2ControlBox2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(3, 106);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(244, 1);
-            this.panel2.TabIndex = 7;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(12, 21);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(76, 61);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
-            // lbUser
-            // 
-            this.lbUser.AutoSize = false;
-            this.lbUser.Location = new System.Drawing.Point(94, 33);
-            this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(124, 25);
-            this.lbUser.StateCommon.ShortText.Color1 = System.Drawing.Color.White;
-            this.lbUser.StateCommon.ShortText.Color2 = System.Drawing.Color.White;
-            this.lbUser.StateCommon.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lbUser.TabIndex = 8;
-            this.lbUser.Values.Text = "Tiến Trung";
-            // 
-            // lbRole
-            // 
-            this.lbRole.AutoSize = false;
-            this.lbRole.Location = new System.Drawing.Point(94, 63);
-            this.lbRole.Name = "lbRole";
-            this.lbRole.Size = new System.Drawing.Size(147, 19);
-            this.lbRole.StateCommon.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.lbRole.StateCommon.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.lbRole.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRole.TabIndex = 9;
-            this.lbRole.Values.Text = "Adminâ";
-            // 
-            // paneMenu
-            // 
-            this.paneMenu.Controls.Add(this.btnBaoCao);
-            this.paneMenu.Controls.Add(this.pnlSubmenu);
-            this.paneMenu.Controls.Add(this.pnlSubmenuThuocTinh);
-            this.paneMenu.Controls.Add(this.btnKhachHang);
-            this.paneMenu.Controls.Add(this.btnKiemKe);
-            this.paneMenu.Controls.Add(this.btnPhieuNhap);
-            this.paneMenu.Controls.Add(this.btnPhieuXuat);
-            this.paneMenu.Controls.Add(this.btnTonKho);
-            this.paneMenu.Controls.Add(this.btnTrangChu);
-            this.paneMenu.Location = new System.Drawing.Point(0, 116);
-            this.paneMenu.Margin = new System.Windows.Forms.Padding(0);
-            this.paneMenu.Name = "paneMenu";
-            this.paneMenu.Size = new System.Drawing.Size(221, 571);
-            this.paneMenu.TabIndex = 10;
-            // 
-            // btnBaoCao
-            // 
-            this.btnBaoCao.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBaoCao.Location = new System.Drawing.Point(0, 328);
-            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(0);
-            this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnBaoCao.Size = new System.Drawing.Size(221, 41);
-            this.btnBaoCao.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.StateCommon.Back.ColorAngle = 45F;
-            this.btnBaoCao.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.StateCommon.Border.ColorAngle = 45F;
-            this.btnBaoCao.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnBaoCao.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnBaoCao.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnBaoCao.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnBaoCao.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnBaoCao.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnBaoCao.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnBaoCao.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaoCao.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnBaoCao.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnBaoCao.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnBaoCao.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnBaoCao.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnBaoCao.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnBaoCao.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnBaoCao.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnBaoCao.TabIndex = 13;
-            this.btnBaoCao.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCao.Values.Image")));
-            this.btnBaoCao.Values.Text = "Báo cáo thống kê";
-            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
-            // 
-            // pnlSubmenu
-            // 
-            this.pnlSubmenu.Controls.Add(this.btnQuanLyNhanVien);
-            this.pnlSubmenu.Controls.Add(this.btnNhanVien);
-            this.pnlSubmenu.Controls.Add(this.btnTaiKhoan);
-            this.pnlSubmenu.Controls.Add(this.btnPhanQuyen);
-            this.pnlSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSubmenu.Location = new System.Drawing.Point(0, 287);
-            this.pnlSubmenu.MaximumSize = new System.Drawing.Size(221, 165);
-            this.pnlSubmenu.MinimumSize = new System.Drawing.Size(221, 41);
-            this.pnlSubmenu.Name = "pnlSubmenu";
-            this.pnlSubmenu.Size = new System.Drawing.Size(221, 41);
-            this.pnlSubmenu.TabIndex = 12;
-            // 
-            // btnQuanLyNhanVien
-            // 
-            this.btnQuanLyNhanVien.Location = new System.Drawing.Point(0, 0);
-            this.btnQuanLyNhanVien.Margin = new System.Windows.Forms.Padding(0);
-            this.btnQuanLyNhanVien.Name = "btnQuanLyNhanVien";
-            this.btnQuanLyNhanVien.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnQuanLyNhanVien.Size = new System.Drawing.Size(221, 41);
-            this.btnQuanLyNhanVien.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.StateCommon.Back.ColorAngle = 45F;
-            this.btnQuanLyNhanVien.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.StateCommon.Border.ColorAngle = 45F;
-            this.btnQuanLyNhanVien.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnQuanLyNhanVien.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnQuanLyNhanVien.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far;
-            this.btnQuanLyNhanVien.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnQuanLyNhanVien.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnQuanLyNhanVien.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnQuanLyNhanVien.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnQuanLyNhanVien.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuanLyNhanVien.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnQuanLyNhanVien.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnQuanLyNhanVien.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnQuanLyNhanVien.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnQuanLyNhanVien.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnQuanLyNhanVien.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnQuanLyNhanVien.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnQuanLyNhanVien.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyNhanVien.TabIndex = 11;
-            this.btnQuanLyNhanVien.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyNhanVien.Values.Image")));
-            this.btnQuanLyNhanVien.Values.Text = "Quản lý nhân viên";
-            this.btnQuanLyNhanVien.Click += new System.EventHandler(this.btnQuanLyNhanVien_Click);
-            // 
-            // btnNhanVien
-            // 
-            this.btnNhanVien.Location = new System.Drawing.Point(0, 41);
-            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnNhanVien.Size = new System.Drawing.Size(221, 41);
-            this.btnNhanVien.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.StateCommon.Back.ColorAngle = 45F;
-            this.btnNhanVien.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.StateCommon.Border.ColorAngle = 45F;
-            this.btnNhanVien.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnNhanVien.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnNhanVien.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnNhanVien.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnNhanVien.StateCommon.Content.Padding = new System.Windows.Forms.Padding(50, 5, -1, -1);
-            this.btnNhanVien.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNhanVien.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnNhanVien.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnNhanVien.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnNhanVien.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnNhanVien.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnNhanVien.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnNhanVien.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnNhanVien.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnNhanVien.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhanVien.TabIndex = 16;
-            this.btnNhanVien.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhanVien.Values.Image")));
-            this.btnNhanVien.Values.Text = "Nhân viên";
-            this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
-            // 
-            // btnTaiKhoan
-            // 
-            this.btnTaiKhoan.Location = new System.Drawing.Point(0, 82);
-            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnTaiKhoan.Size = new System.Drawing.Size(221, 41);
-            this.btnTaiKhoan.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.StateCommon.Back.ColorAngle = 45F;
-            this.btnTaiKhoan.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.StateCommon.Border.ColorAngle = 45F;
-            this.btnTaiKhoan.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTaiKhoan.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnTaiKhoan.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnTaiKhoan.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTaiKhoan.StateCommon.Content.Padding = new System.Windows.Forms.Padding(50, 5, -1, -1);
-            this.btnTaiKhoan.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnTaiKhoan.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnTaiKhoan.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaiKhoan.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTaiKhoan.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTaiKhoan.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnTaiKhoan.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnTaiKhoan.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnTaiKhoan.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnTaiKhoan.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTaiKhoan.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTaiKhoan.TabIndex = 17;
-            this.btnTaiKhoan.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnTaiKhoan.Values.Image")));
-            this.btnTaiKhoan.Values.Text = "Tài khoản";
-            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
-            // 
-            // btnPhanQuyen
-            // 
-            this.btnPhanQuyen.Location = new System.Drawing.Point(0, 123);
-            this.btnPhanQuyen.Margin = new System.Windows.Forms.Padding(0);
-            this.btnPhanQuyen.Name = "btnPhanQuyen";
-            this.btnPhanQuyen.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnPhanQuyen.Size = new System.Drawing.Size(221, 41);
-            this.btnPhanQuyen.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.StateCommon.Back.ColorAngle = 45F;
-            this.btnPhanQuyen.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.StateCommon.Border.ColorAngle = 45F;
-            this.btnPhanQuyen.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnPhanQuyen.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnPhanQuyen.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnPhanQuyen.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhanQuyen.StateCommon.Content.Padding = new System.Windows.Forms.Padding(50, 5, -1, -1);
-            this.btnPhanQuyen.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnPhanQuyen.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnPhanQuyen.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhanQuyen.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhanQuyen.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhanQuyen.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnPhanQuyen.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnPhanQuyen.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnPhanQuyen.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnPhanQuyen.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnPhanQuyen.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhanQuyen.TabIndex = 18;
-            this.btnPhanQuyen.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnPhanQuyen.Values.Image")));
-            this.btnPhanQuyen.Values.Text = "Phân quyền";
-            this.btnPhanQuyen.Click += new System.EventHandler(this.btnPhanQuyen_Click);
-            // 
-            // pnlSubmenuThuocTinh
-            // 
-            this.pnlSubmenuThuocTinh.Controls.Add(this.btnQuanLyThuocTinh);
-            this.pnlSubmenuThuocTinh.Controls.Add(this.btnNhaCungCap);
-            this.pnlSubmenuThuocTinh.Controls.Add(this.btnKhuVuc);
-            this.pnlSubmenuThuocTinh.Controls.Add(this.btnChatLieu);
-            this.pnlSubmenuThuocTinh.Controls.Add(this.btnLoai);
-            this.pnlSubmenuThuocTinh.Controls.Add(this.btnSize);
-            this.pnlSubmenuThuocTinh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSubmenuThuocTinh.Location = new System.Drawing.Point(0, 246);
-            this.pnlSubmenuThuocTinh.MaximumSize = new System.Drawing.Size(221, 246);
-            this.pnlSubmenuThuocTinh.MinimumSize = new System.Drawing.Size(221, 41);
-            this.pnlSubmenuThuocTinh.Name = "pnlSubmenuThuocTinh";
-            this.pnlSubmenuThuocTinh.Size = new System.Drawing.Size(221, 41);
-            this.pnlSubmenuThuocTinh.TabIndex = 13;
-            // 
-            // btnQuanLyThuocTinh
-            // 
-            this.btnQuanLyThuocTinh.Location = new System.Drawing.Point(0, 0);
-            this.btnQuanLyThuocTinh.Margin = new System.Windows.Forms.Padding(0);
-            this.btnQuanLyThuocTinh.Name = "btnQuanLyThuocTinh";
-            this.btnQuanLyThuocTinh.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnQuanLyThuocTinh.Size = new System.Drawing.Size(221, 41);
-            this.btnQuanLyThuocTinh.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.StateCommon.Back.ColorAngle = 45F;
-            this.btnQuanLyThuocTinh.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.StateCommon.Border.ColorAngle = 45F;
-            this.btnQuanLyThuocTinh.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnQuanLyThuocTinh.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnQuanLyThuocTinh.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Far;
-            this.btnQuanLyThuocTinh.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnQuanLyThuocTinh.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnQuanLyThuocTinh.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnQuanLyThuocTinh.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnQuanLyThuocTinh.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuanLyThuocTinh.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnQuanLyThuocTinh.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnQuanLyThuocTinh.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnQuanLyThuocTinh.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnQuanLyThuocTinh.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnQuanLyThuocTinh.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnQuanLyThuocTinh.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnQuanLyThuocTinh.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnQuanLyThuocTinh.TabIndex = 11;
-            this.btnQuanLyThuocTinh.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyThuocTinh.Values.Image")));
-            this.btnQuanLyThuocTinh.Values.Text = "Quản lý thuộc tính";
-            this.btnQuanLyThuocTinh.Click += new System.EventHandler(this.btnQuanLyThuocTinh_Click);
-            // 
-            // btnNhaCungCap
-            // 
-            this.btnNhaCungCap.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNhaCungCap.Location = new System.Drawing.Point(0, 41);
-            this.btnNhaCungCap.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNhaCungCap.Name = "btnNhaCungCap";
-            this.btnNhaCungCap.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnNhaCungCap.Size = new System.Drawing.Size(221, 41);
-            this.btnNhaCungCap.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.StateCommon.Back.ColorAngle = 45F;
-            this.btnNhaCungCap.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.StateCommon.Border.ColorAngle = 45F;
-            this.btnNhaCungCap.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnNhaCungCap.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnNhaCungCap.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnNhaCungCap.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnNhaCungCap.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnNhaCungCap.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNhaCungCap.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnNhaCungCap.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhaCungCap.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnNhaCungCap.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnNhaCungCap.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnNhaCungCap.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnNhaCungCap.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnNhaCungCap.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnNhaCungCap.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnNhaCungCap.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnNhaCungCap.TabIndex = 20;
-            this.btnNhaCungCap.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhaCungCap.Values.Image")));
-            this.btnNhaCungCap.Values.Text = "Nhà cung cấp";
-            this.btnNhaCungCap.Click += new System.EventHandler(this.btnNhaCungCap_Click);
-            // 
-            // btnKhuVuc
-            // 
-            this.btnKhuVuc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnKhuVuc.Location = new System.Drawing.Point(0, 82);
-            this.btnKhuVuc.Margin = new System.Windows.Forms.Padding(0);
-            this.btnKhuVuc.Name = "btnKhuVuc";
-            this.btnKhuVuc.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnKhuVuc.Size = new System.Drawing.Size(221, 41);
-            this.btnKhuVuc.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.StateCommon.Back.ColorAngle = 45F;
-            this.btnKhuVuc.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.StateCommon.Border.ColorAngle = 45F;
-            this.btnKhuVuc.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnKhuVuc.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnKhuVuc.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnKhuVuc.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKhuVuc.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnKhuVuc.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnKhuVuc.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnKhuVuc.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhuVuc.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKhuVuc.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKhuVuc.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnKhuVuc.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnKhuVuc.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnKhuVuc.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnKhuVuc.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnKhuVuc.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhuVuc.TabIndex = 21;
-            this.btnKhuVuc.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnKhuVuc.Values.Image")));
-            this.btnKhuVuc.Values.Text = "Khu vực";
-            this.btnKhuVuc.Click += new System.EventHandler(this.btnKhuVuc_Click);
-            // 
-            // btnChatLieu
-            // 
-            this.btnChatLieu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChatLieu.Location = new System.Drawing.Point(0, 123);
-            this.btnChatLieu.Margin = new System.Windows.Forms.Padding(0);
-            this.btnChatLieu.Name = "btnChatLieu";
-            this.btnChatLieu.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnChatLieu.Size = new System.Drawing.Size(221, 41);
-            this.btnChatLieu.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.StateCommon.Back.ColorAngle = 45F;
-            this.btnChatLieu.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.StateCommon.Border.ColorAngle = 45F;
-            this.btnChatLieu.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnChatLieu.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnChatLieu.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnChatLieu.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnChatLieu.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnChatLieu.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnChatLieu.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnChatLieu.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChatLieu.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnChatLieu.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnChatLieu.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnChatLieu.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnChatLieu.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnChatLieu.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnChatLieu.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnChatLieu.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnChatLieu.TabIndex = 22;
-            this.btnChatLieu.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnChatLieu.Values.Image")));
-            this.btnChatLieu.Values.Text = "Chất liệu";
-            this.btnChatLieu.Click += new System.EventHandler(this.btnChatLieu_Click_1);
-            // 
-            // btnLoai
-            // 
-            this.btnLoai.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLoai.Location = new System.Drawing.Point(0, 164);
-            this.btnLoai.Margin = new System.Windows.Forms.Padding(0);
-            this.btnLoai.Name = "btnLoai";
-            this.btnLoai.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnLoai.Size = new System.Drawing.Size(221, 41);
-            this.btnLoai.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.StateCommon.Back.ColorAngle = 45F;
-            this.btnLoai.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.StateCommon.Border.ColorAngle = 45F;
-            this.btnLoai.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLoai.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnLoai.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnLoai.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnLoai.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnLoai.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnLoai.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnLoai.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoai.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnLoai.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnLoai.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnLoai.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnLoai.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnLoai.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnLoai.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLoai.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLoai.TabIndex = 23;
-            this.btnLoai.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnLoai.Values.Image")));
-            this.btnLoai.Values.Text = "Loại";
-            this.btnLoai.Click += new System.EventHandler(this.btnLoai_Click_1);
-            // 
-            // btnSize
-            // 
-            this.btnSize.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSize.Location = new System.Drawing.Point(0, 205);
-            this.btnSize.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSize.Name = "btnSize";
-            this.btnSize.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnSize.Size = new System.Drawing.Size(221, 41);
-            this.btnSize.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.StateCommon.Back.ColorAngle = 45F;
-            this.btnSize.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.StateCommon.Border.ColorAngle = 45F;
-            this.btnSize.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnSize.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnSize.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnSize.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnSize.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnSize.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnSize.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnSize.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSize.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnSize.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnSize.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnSize.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnSize.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnSize.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnSize.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnSize.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnSize.TabIndex = 24;
-            this.btnSize.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnSize.Values.Image")));
-            this.btnSize.Values.Text = "Size";
-            this.btnSize.Click += new System.EventHandler(this.btnSize_Click);
-            // 
-            // btnKhachHang
-            // 
-            this.btnKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnKhachHang.Location = new System.Drawing.Point(0, 205);
-            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(0);
-            this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnKhachHang.Size = new System.Drawing.Size(221, 41);
-            this.btnKhachHang.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.StateCommon.Back.ColorAngle = 45F;
-            this.btnKhachHang.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.StateCommon.Border.ColorAngle = 45F;
-            this.btnKhachHang.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnKhachHang.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnKhachHang.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnKhachHang.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKhachHang.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnKhachHang.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnKhachHang.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnKhachHang.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKhachHang.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKhachHang.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKhachHang.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnKhachHang.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnKhachHang.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnKhachHang.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnKhachHang.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnKhachHang.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKhachHang.TabIndex = 9;
-            this.btnKhachHang.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnKhachHang.Values.Image")));
-            this.btnKhachHang.Values.Text = "Khách hàng";
-            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
-            // 
-            // btnKiemKe
-            // 
-            this.btnKiemKe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnKiemKe.Location = new System.Drawing.Point(0, 164);
-            this.btnKiemKe.Margin = new System.Windows.Forms.Padding(0);
-            this.btnKiemKe.Name = "btnKiemKe";
-            this.btnKiemKe.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnKiemKe.Size = new System.Drawing.Size(221, 41);
-            this.btnKiemKe.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.StateCommon.Back.ColorAngle = 45F;
-            this.btnKiemKe.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.StateCommon.Border.ColorAngle = 45F;
-            this.btnKiemKe.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnKiemKe.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnKiemKe.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnKiemKe.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKiemKe.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnKiemKe.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnKiemKe.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnKiemKe.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKiemKe.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKiemKe.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnKiemKe.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnKiemKe.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnKiemKe.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnKiemKe.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnKiemKe.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnKiemKe.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnKiemKe.TabIndex = 8;
-            this.btnKiemKe.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnKiemKe.Values.Image")));
-            this.btnKiemKe.Values.Text = "Kiểm kê";
-            this.btnKiemKe.Click += new System.EventHandler(this.btnKiemKe_Click);
-            // 
-            // btnPhieuNhap
-            // 
-            this.btnPhieuNhap.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPhieuNhap.Location = new System.Drawing.Point(0, 123);
-            this.btnPhieuNhap.Margin = new System.Windows.Forms.Padding(0);
-            this.btnPhieuNhap.Name = "btnPhieuNhap";
-            this.btnPhieuNhap.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnPhieuNhap.Size = new System.Drawing.Size(221, 41);
-            this.btnPhieuNhap.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.StateCommon.Back.ColorAngle = 45F;
-            this.btnPhieuNhap.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.StateCommon.Border.ColorAngle = 45F;
-            this.btnPhieuNhap.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnPhieuNhap.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnPhieuNhap.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnPhieuNhap.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhieuNhap.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnPhieuNhap.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnPhieuNhap.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnPhieuNhap.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhieuNhap.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhieuNhap.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhieuNhap.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnPhieuNhap.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnPhieuNhap.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnPhieuNhap.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnPhieuNhap.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnPhieuNhap.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuNhap.TabIndex = 7;
-            this.btnPhieuNhap.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnPhieuNhap.Values.Image")));
-            this.btnPhieuNhap.Values.Text = "Nhập hàng";
-            this.btnPhieuNhap.Click += new System.EventHandler(this.btnPhieuNhap_Click);
-            // 
-            // btnPhieuXuat
-            // 
-            this.btnPhieuXuat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPhieuXuat.Location = new System.Drawing.Point(0, 82);
-            this.btnPhieuXuat.Margin = new System.Windows.Forms.Padding(0);
-            this.btnPhieuXuat.Name = "btnPhieuXuat";
-            this.btnPhieuXuat.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnPhieuXuat.Size = new System.Drawing.Size(221, 41);
-            this.btnPhieuXuat.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.StateCommon.Back.ColorAngle = 45F;
-            this.btnPhieuXuat.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.StateCommon.Border.ColorAngle = 45F;
-            this.btnPhieuXuat.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnPhieuXuat.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnPhieuXuat.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnPhieuXuat.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhieuXuat.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnPhieuXuat.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnPhieuXuat.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnPhieuXuat.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhieuXuat.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhieuXuat.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnPhieuXuat.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnPhieuXuat.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnPhieuXuat.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnPhieuXuat.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnPhieuXuat.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnPhieuXuat.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnPhieuXuat.TabIndex = 6;
-            this.btnPhieuXuat.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnPhieuXuat.Values.Image")));
-            this.btnPhieuXuat.Values.Text = "Xuất hàng";
-            this.btnPhieuXuat.Click += new System.EventHandler(this.btnPhieuXuat_Click);
-            // 
-            // btnTonKho
-            // 
-            this.btnTonKho.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTonKho.Location = new System.Drawing.Point(0, 41);
-            this.btnTonKho.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTonKho.Name = "btnTonKho";
-            this.btnTonKho.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnTonKho.Size = new System.Drawing.Size(221, 41);
-            this.btnTonKho.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.StateCommon.Back.ColorAngle = 45F;
-            this.btnTonKho.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.StateCommon.Border.ColorAngle = 45F;
-            this.btnTonKho.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTonKho.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnTonKho.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnTonKho.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTonKho.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnTonKho.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnTonKho.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnTonKho.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTonKho.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTonKho.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTonKho.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnTonKho.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnTonKho.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnTonKho.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnTonKho.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTonKho.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTonKho.TabIndex = 5;
-            this.btnTonKho.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnTonKho.Values.Image")));
-            this.btnTonKho.Values.Text = "Tồn kho";
-            this.btnTonKho.Click += new System.EventHandler(this.btnTonKho_Click);
-            // 
-            // btnTrangChu
-            // 
-            this.btnTrangChu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTrangChu.Location = new System.Drawing.Point(0, 0);
-            this.btnTrangChu.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTrangChu.Name = "btnTrangChu";
-            this.btnTrangChu.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnTrangChu.Size = new System.Drawing.Size(221, 41);
-            this.btnTrangChu.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.StateCommon.Back.ColorAngle = 45F;
-            this.btnTrangChu.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.StateCommon.Border.ColorAngle = 45F;
-            this.btnTrangChu.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTrangChu.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnTrangChu.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnTrangChu.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTrangChu.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnTrangChu.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnTrangChu.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnTrangChu.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrangChu.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTrangChu.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnTrangChu.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnTrangChu.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnTrangChu.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnTrangChu.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnTrangChu.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTrangChu.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnTrangChu.TabIndex = 4;
-            this.btnTrangChu.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnTrangChu.Values.Image")));
-            this.btnTrangChu.Values.Text = "Trang chủ";
-            this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.lbRole);
-            this.panel3.Controls.Add(this.panel2);
-            this.panel3.Controls.Add(this.lbUser);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(244, 110);
-            this.panel3.TabIndex = 11;
-            // 
-            // panelLeft
-            // 
-            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.panelLeft.Controls.Add(this.panel3);
-            this.panelLeft.Controls.Add(this.paneMenu);
-            this.panelLeft.Controls.Add(this.btnLogout);
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(221, 729);
-            this.panelLeft.TabIndex = 2;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(0, 687);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnLogout.Size = new System.Drawing.Size(221, 41);
-            this.btnLogout.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.StateCommon.Back.ColorAngle = 45F;
-            this.btnLogout.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.StateCommon.Border.ColorAngle = 45F;
-            this.btnLogout.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLogout.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnLogout.StateCommon.Content.Image.ImageH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.btnLogout.StateCommon.Content.Image.ImageV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnLogout.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnLogout.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnLogout.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnLogout.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.StateCommon.Content.ShortText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnLogout.StateCommon.Content.ShortText.TextV = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.btnLogout.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnLogout.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.btnLogout.StatePressed.Border.Color1 = System.Drawing.Color.White;
-            this.btnLogout.StatePressed.Border.Color2 = System.Drawing.Color.White;
-            this.btnLogout.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLogout.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(190)))));
-            this.btnLogout.TabIndex = 14;
-            this.btnLogout.Values.Text = "Đăng xuất";
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.guna2ControlBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox2.CustomIconSize = 20F;
+            this.guna2ControlBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guna2ControlBox2.FillColor = System.Drawing.Color.White;
+            this.guna2ControlBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ControlBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1052, 0);
+            this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ControlBox2.Name = "guna2ControlBox2";
+            this.guna2ControlBox2.Size = new System.Drawing.Size(46, 41);
+            this.guna2ControlBox2.TabIndex = 7;
             // 
             // pnlBody
             // 
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(221, 41);
+            this.pnlBody.Location = new System.Drawing.Point(0, 41);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(1144, 688);
+            this.pnlBody.Size = new System.Drawing.Size(1098, 688);
             this.pnlBody.TabIndex = 3;
+            this.pnlBody.Click += new System.EventHandler(this.btnTrangChu_Click);
             // 
-            // timer1
+            // pnlMenu
             // 
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMenu.BorderRadius = 30;
+            this.pnlMenu.Controls.Add(this.flowLayoutPanel1);
+            this.pnlMenu.Controls.Add(this.pnlName);
+            this.pnlMenu.Controls.Add(this.guna2Shapes1);
+            this.pnlMenu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.pnlMenu.Location = new System.Drawing.Point(-26, 41);
+            this.pnlMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlMenu.Name = "pnlMenu";
+            this.pnlMenu.Size = new System.Drawing.Size(288, 831);
+            this.pnlMenu.TabIndex = 2;
+            this.pnlMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMenu_Paint);
             // 
-            // timer2
+            // btnBaoCao
             // 
-            this.timer2.Interval = 1;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.btnBaoCao.BackColor = System.Drawing.Color.Transparent;
+            this.btnBaoCao.BorderRadius = 10;
+            this.btnBaoCao.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnBaoCao.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnBaoCao.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnBaoCao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaoCao.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnBaoCao.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBaoCao.ForeColor = System.Drawing.Color.White;
+            this.btnBaoCao.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBaoCao.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnBaoCao.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnBaoCao.Location = new System.Drawing.Point(2, 476);
+            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Size = new System.Drawing.Size(211, 30);
+            this.btnBaoCao.TabIndex = 49;
+            this.btnBaoCao.Text = "Báo cáo thống kê";
+            this.btnBaoCao.UseTransparentBackground = true;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            // 
+            // btnPhanQuyen
+            // 
+            this.btnPhanQuyen.BackColor = System.Drawing.Color.Transparent;
+            this.btnPhanQuyen.BorderRadius = 10;
+            this.btnPhanQuyen.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnPhanQuyen.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnPhanQuyen.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnPhanQuyen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPhanQuyen.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnPhanQuyen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhanQuyen.ForeColor = System.Drawing.Color.White;
+            this.btnPhanQuyen.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPhanQuyen.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnPhanQuyen.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnPhanQuyen.Location = new System.Drawing.Point(2, 444);
+            this.btnPhanQuyen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
+            this.btnPhanQuyen.Name = "btnPhanQuyen";
+            this.btnPhanQuyen.Size = new System.Drawing.Size(211, 30);
+            this.btnPhanQuyen.TabIndex = 45;
+            this.btnPhanQuyen.Text = "Phân quyền";
+            this.btnPhanQuyen.UseTransparentBackground = true;
+            this.btnPhanQuyen.Click += new System.EventHandler(this.btnPhanQuyen_Click);
+            // 
+            // btnSize
+            // 
+            this.btnSize.BackColor = System.Drawing.Color.Transparent;
+            this.btnSize.BorderRadius = 10;
+            this.btnSize.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnSize.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnSize.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnSize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnSize.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSize.ForeColor = System.Drawing.Color.White;
+            this.btnSize.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSize.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnSize.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnSize.Location = new System.Drawing.Point(2, 342);
+            this.btnSize.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSize.Name = "btnSize";
+            this.btnSize.Size = new System.Drawing.Size(211, 30);
+            this.btnSize.TabIndex = 47;
+            this.btnSize.Text = "Size";
+            this.btnSize.UseTransparentBackground = true;
+            this.btnSize.Click += new System.EventHandler(this.btnSize_Click);
+            // 
+            // btnTaiKhoan
+            // 
+            this.btnTaiKhoan.BackColor = System.Drawing.Color.Transparent;
+            this.btnTaiKhoan.BorderRadius = 10;
+            this.btnTaiKhoan.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnTaiKhoan.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnTaiKhoan.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnTaiKhoan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTaiKhoan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnTaiKhoan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.ForeColor = System.Drawing.Color.White;
+            this.btnTaiKhoan.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTaiKhoan.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(2, 410);
+            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTaiKhoan.Name = "btnTaiKhoan";
+            this.btnTaiKhoan.Size = new System.Drawing.Size(211, 30);
+            this.btnTaiKhoan.TabIndex = 44;
+            this.btnTaiKhoan.Text = "Tài khoản";
+            this.btnTaiKhoan.UseTransparentBackground = true;
+            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
+            // 
+            // btnLoai
+            // 
+            this.btnLoai.BackColor = System.Drawing.Color.Transparent;
+            this.btnLoai.BorderRadius = 10;
+            this.btnLoai.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnLoai.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnLoai.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnLoai.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoai.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnLoai.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoai.ForeColor = System.Drawing.Color.White;
+            this.btnLoai.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLoai.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnLoai.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnLoai.Location = new System.Drawing.Point(2, 308);
+            this.btnLoai.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLoai.Name = "btnLoai";
+            this.btnLoai.Size = new System.Drawing.Size(211, 30);
+            this.btnLoai.TabIndex = 46;
+            this.btnLoai.Text = "Loại";
+            this.btnLoai.UseTransparentBackground = true;
+            this.btnLoai.Click += new System.EventHandler(this.btnLoai_Click_1);
+            // 
+            // btnNhanVien
+            // 
+            this.btnNhanVien.BackColor = System.Drawing.Color.Transparent;
+            this.btnNhanVien.BorderRadius = 10;
+            this.btnNhanVien.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnNhanVien.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnNhanVien.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnNhanVien.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNhanVien.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnNhanVien.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhanVien.ForeColor = System.Drawing.Color.White;
+            this.btnNhanVien.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnNhanVien.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnNhanVien.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnNhanVien.Location = new System.Drawing.Point(2, 376);
+            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNhanVien.Name = "btnNhanVien";
+            this.btnNhanVien.Size = new System.Drawing.Size(211, 30);
+            this.btnNhanVien.TabIndex = 43;
+            this.btnNhanVien.Text = "Nhân viên";
+            this.btnNhanVien.UseTransparentBackground = true;
+            this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
+            // 
+            // btnKhachHang
+            // 
+            this.btnKhachHang.BackColor = System.Drawing.Color.Transparent;
+            this.btnKhachHang.BorderRadius = 10;
+            this.btnKhachHang.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnKhachHang.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnKhachHang.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnKhachHang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKhachHang.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnKhachHang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.ForeColor = System.Drawing.Color.White;
+            this.btnKhachHang.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnKhachHang.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnKhachHang.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnKhachHang.Location = new System.Drawing.Point(2, 172);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(211, 30);
+            this.btnKhachHang.TabIndex = 41;
+            this.btnKhachHang.Text = "Khách hàng";
+            this.btnKhachHang.UseTransparentBackground = true;
+            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+            // 
+            // btnChatLieu
+            // 
+            this.btnChatLieu.BackColor = System.Drawing.Color.Transparent;
+            this.btnChatLieu.BorderRadius = 10;
+            this.btnChatLieu.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnChatLieu.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnChatLieu.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnChatLieu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChatLieu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnChatLieu.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChatLieu.ForeColor = System.Drawing.Color.White;
+            this.btnChatLieu.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnChatLieu.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnChatLieu.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnChatLieu.Location = new System.Drawing.Point(2, 274);
+            this.btnChatLieu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChatLieu.Name = "btnChatLieu";
+            this.btnChatLieu.Size = new System.Drawing.Size(211, 30);
+            this.btnChatLieu.TabIndex = 45;
+            this.btnChatLieu.Text = "Chất liệu";
+            this.btnChatLieu.UseTransparentBackground = true;
+            this.btnChatLieu.Click += new System.EventHandler(this.btnChatLieu_Click_1);
+            // 
+            // btnKiemKe
+            // 
+            this.btnKiemKe.BackColor = System.Drawing.Color.Transparent;
+            this.btnKiemKe.BorderRadius = 10;
+            this.btnKiemKe.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnKiemKe.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnKiemKe.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnKiemKe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKiemKe.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnKiemKe.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKiemKe.ForeColor = System.Drawing.Color.White;
+            this.btnKiemKe.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnKiemKe.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnKiemKe.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnKiemKe.Location = new System.Drawing.Point(2, 138);
+            this.btnKiemKe.Margin = new System.Windows.Forms.Padding(2);
+            this.btnKiemKe.Name = "btnKiemKe";
+            this.btnKiemKe.Size = new System.Drawing.Size(211, 30);
+            this.btnKiemKe.TabIndex = 40;
+            this.btnKiemKe.Text = "Kiểm kê";
+            this.btnKiemKe.UseTransparentBackground = true;
+            this.btnKiemKe.Click += new System.EventHandler(this.btnKiemKe_Click);
+            // 
+            // btnKhuVuc
+            // 
+            this.btnKhuVuc.BackColor = System.Drawing.Color.Transparent;
+            this.btnKhuVuc.BorderRadius = 10;
+            this.btnKhuVuc.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnKhuVuc.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnKhuVuc.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnKhuVuc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKhuVuc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnKhuVuc.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhuVuc.ForeColor = System.Drawing.Color.White;
+            this.btnKhuVuc.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnKhuVuc.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnKhuVuc.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnKhuVuc.Location = new System.Drawing.Point(2, 240);
+            this.btnKhuVuc.Margin = new System.Windows.Forms.Padding(2);
+            this.btnKhuVuc.Name = "btnKhuVuc";
+            this.btnKhuVuc.Size = new System.Drawing.Size(211, 30);
+            this.btnKhuVuc.TabIndex = 44;
+            this.btnKhuVuc.Text = "Khu vực";
+            this.btnKhuVuc.UseTransparentBackground = true;
+            this.btnKhuVuc.Click += new System.EventHandler(this.btnKhuVuc_Click);
+            // 
+            // btnPhieuNhap
+            // 
+            this.btnPhieuNhap.BackColor = System.Drawing.Color.Transparent;
+            this.btnPhieuNhap.BorderRadius = 10;
+            this.btnPhieuNhap.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnPhieuNhap.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnPhieuNhap.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnPhieuNhap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPhieuNhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnPhieuNhap.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhieuNhap.ForeColor = System.Drawing.Color.White;
+            this.btnPhieuNhap.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPhieuNhap.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnPhieuNhap.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnPhieuNhap.Location = new System.Drawing.Point(2, 104);
+            this.btnPhieuNhap.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPhieuNhap.Name = "btnPhieuNhap";
+            this.btnPhieuNhap.Size = new System.Drawing.Size(211, 30);
+            this.btnPhieuNhap.TabIndex = 39;
+            this.btnPhieuNhap.Text = "Nhập hàng";
+            this.btnPhieuNhap.UseTransparentBackground = true;
+            this.btnPhieuNhap.Click += new System.EventHandler(this.btnPhieuNhap_Click);
+            // 
+            // btnNhaCungCap
+            // 
+            this.btnNhaCungCap.BackColor = System.Drawing.Color.Transparent;
+            this.btnNhaCungCap.BorderRadius = 10;
+            this.btnNhaCungCap.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnNhaCungCap.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnNhaCungCap.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnNhaCungCap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNhaCungCap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnNhaCungCap.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhaCungCap.ForeColor = System.Drawing.Color.White;
+            this.btnNhaCungCap.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnNhaCungCap.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnNhaCungCap.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnNhaCungCap.Location = new System.Drawing.Point(2, 206);
+            this.btnNhaCungCap.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNhaCungCap.Name = "btnNhaCungCap";
+            this.btnNhaCungCap.Size = new System.Drawing.Size(211, 30);
+            this.btnNhaCungCap.TabIndex = 43;
+            this.btnNhaCungCap.Text = "Nhà cung cấp";
+            this.btnNhaCungCap.UseTransparentBackground = true;
+            this.btnNhaCungCap.Click += new System.EventHandler(this.btnNhaCungCap_Click);
+            // 
+            // btnPhieuXuat
+            // 
+            this.btnPhieuXuat.BackColor = System.Drawing.Color.Transparent;
+            this.btnPhieuXuat.BorderRadius = 10;
+            this.btnPhieuXuat.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnPhieuXuat.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnPhieuXuat.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnPhieuXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPhieuXuat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnPhieuXuat.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhieuXuat.ForeColor = System.Drawing.Color.White;
+            this.btnPhieuXuat.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnPhieuXuat.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnPhieuXuat.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnPhieuXuat.Location = new System.Drawing.Point(2, 70);
+            this.btnPhieuXuat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPhieuXuat.Name = "btnPhieuXuat";
+            this.btnPhieuXuat.Size = new System.Drawing.Size(211, 30);
+            this.btnPhieuXuat.TabIndex = 38;
+            this.btnPhieuXuat.Text = "Xuất hàng";
+            this.btnPhieuXuat.UseTransparentBackground = true;
+            this.btnPhieuXuat.Click += new System.EventHandler(this.btnPhieuXuat_Click);
+            // 
+            // btnTonKho
+            // 
+            this.btnTonKho.BackColor = System.Drawing.Color.Transparent;
+            this.btnTonKho.BorderRadius = 10;
+            this.btnTonKho.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnTonKho.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnTonKho.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnTonKho.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTonKho.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnTonKho.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTonKho.ForeColor = System.Drawing.Color.White;
+            this.btnTonKho.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTonKho.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnTonKho.Location = new System.Drawing.Point(2, 36);
+            this.btnTonKho.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTonKho.Name = "btnTonKho";
+            this.btnTonKho.Size = new System.Drawing.Size(211, 30);
+            this.btnTonKho.TabIndex = 37;
+            this.btnTonKho.Text = "Tồn kho";
+            this.btnTonKho.UseTransparentBackground = true;
+            this.btnTonKho.Click += new System.EventHandler(this.btnTonKho_Click);
+            // 
+            // btnTrangChu
+            // 
+            this.btnTrangChu.BackColor = System.Drawing.Color.Transparent;
+            this.btnTrangChu.BorderRadius = 10;
+            this.btnTrangChu.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnTrangChu.Checked = true;
+            this.btnTrangChu.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnTrangChu.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnTrangChu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTrangChu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnTrangChu.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrangChu.ForeColor = System.Drawing.Color.White;
+            this.btnTrangChu.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTrangChu.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnTrangChu.Location = new System.Drawing.Point(2, 2);
+            this.btnTrangChu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTrangChu.Name = "btnTrangChu";
+            this.btnTrangChu.Size = new System.Drawing.Size(211, 30);
+            this.btnTrangChu.TabIndex = 3;
+            this.btnTrangChu.Text = "Trang chủ";
+            this.btnTrangChu.UseTransparentBackground = true;
+            this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
+            // 
+            // pnlName
+            // 
+            this.pnlName.BackColor = System.Drawing.Color.Transparent;
+            this.pnlName.BorderRadius = 25;
+            this.pnlName.Controls.Add(this.lbRole);
+            this.pnlName.Controls.Add(this.guna2CirclePictureBox1);
+            this.pnlName.Controls.Add(this.lbName);
+            this.pnlName.Location = new System.Drawing.Point(35, 20);
+            this.pnlName.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlName.Name = "pnlName";
+            this.pnlName.Size = new System.Drawing.Size(212, 50);
+            this.pnlName.TabIndex = 34;
+            // 
+            // lbRole
+            // 
+            this.lbRole.AutoSize = true;
+            this.lbRole.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.lbRole.Location = new System.Drawing.Point(52, 25);
+            this.lbRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbRole.Name = "lbRole";
+            this.lbRole.Size = new System.Drawing.Size(45, 18);
+            this.lbRole.TabIndex = 28;
+            this.lbRole.Text = "Name";
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(8, 6);
+            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(39, 37);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2CirclePictureBox1.TabIndex = 27;
+            this.guna2CirclePictureBox1.TabStop = false;
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.lbName.Location = new System.Drawing.Point(51, 6);
+            this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(57, 23);
+            this.lbName.TabIndex = 0;
+            this.lbName.Text = "Name";
+            // 
+            // guna2Shapes1
+            // 
+            this.guna2Shapes1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Shapes1.BorderColor = System.Drawing.Color.White;
+            this.guna2Shapes1.FillColor = System.Drawing.Color.White;
+            this.guna2Shapes1.LineEndCap = System.Drawing.Drawing2D.LineCap.NoAnchor;
+            this.guna2Shapes1.LineStartCap = System.Drawing.Drawing2D.LineCap.Round;
+            this.guna2Shapes1.LineThickness = 1;
+            this.guna2Shapes1.Location = new System.Drawing.Point(57, 74);
+            this.guna2Shapes1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Shapes1.Name = "guna2Shapes1";
+            this.guna2Shapes1.PolygonSkip = 1;
+            this.guna2Shapes1.Rotate = 0F;
+            this.guna2Shapes1.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line;
+            this.guna2Shapes1.Size = new System.Drawing.Size(174, 18);
+            this.guna2Shapes1.TabIndex = 32;
+            this.guna2Shapes1.Text = "guna2Shapes1";
+            this.guna2Shapes1.UseTransparentBackground = true;
+            this.guna2Shapes1.Zoom = 100;
+            // 
+            // pnlRight
+            // 
+            this.pnlRight.Controls.Add(this.pnlBody);
+            this.pnlRight.Controls.Add(this.panelTop);
+            this.pnlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlRight.Location = new System.Drawing.Point(267, 0);
+            this.pnlRight.Name = "pnlRight";
+            this.pnlRight.Size = new System.Drawing.Size(1098, 729);
+            this.pnlRight.TabIndex = 0;
+            // 
+            // pnlLeft
+            // 
+            this.pnlLeft.Controls.Add(this.lbPage);
+            this.pnlLeft.Controls.Add(this.pnlLogout);
+            this.pnlLeft.Controls.Add(this.pnlMenu);
+            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Size = new System.Drawing.Size(261, 729);
+            this.pnlLeft.TabIndex = 0;
+            // 
+            // pnlLogout
+            // 
+            this.pnlLogout.Controls.Add(this.btnLogout);
+            this.pnlLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.pnlLogout.Location = new System.Drawing.Point(0, 694);
+            this.pnlLogout.Name = "pnlLogout";
+            this.pnlLogout.Size = new System.Drawing.Size(261, 35);
+            this.pnlLogout.TabIndex = 0;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.BorderRadius = 17;
+            this.btnLogout.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnLogout.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnLogout.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.btnLogout.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnLogout.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnLogout.Location = new System.Drawing.Point(0, 0);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(261, 35);
+            this.btnLogout.TabIndex = 50;
+            this.btnLogout.Text = "Đăng xuất";
+            this.btnLogout.UseTransparentBackground = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.flowLayoutPanel1.Controls.Add(this.btnTrangChu);
+            this.flowLayoutPanel1.Controls.Add(this.btnTonKho);
+            this.flowLayoutPanel1.Controls.Add(this.btnPhieuXuat);
+            this.flowLayoutPanel1.Controls.Add(this.btnPhieuNhap);
+            this.flowLayoutPanel1.Controls.Add(this.btnKiemKe);
+            this.flowLayoutPanel1.Controls.Add(this.btnKhachHang);
+            this.flowLayoutPanel1.Controls.Add(this.btnNhaCungCap);
+            this.flowLayoutPanel1.Controls.Add(this.btnKhuVuc);
+            this.flowLayoutPanel1.Controls.Add(this.btnChatLieu);
+            this.flowLayoutPanel1.Controls.Add(this.btnLoai);
+            this.flowLayoutPanel1.Controls.Add(this.btnSize);
+            this.flowLayoutPanel1.Controls.Add(this.btnNhanVien);
+            this.flowLayoutPanel1.Controls.Add(this.btnTaiKhoan);
+            this.flowLayoutPanel1.Controls.Add(this.btnPhanQuyen);
+            this.flowLayoutPanel1.Controls.Add(this.btnBaoCao);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(54, 97);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(213, 514);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.lbTitle.Location = new System.Drawing.Point(381, 5);
+            this.lbTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(349, 33);
+            this.lbTitle.TabIndex = 9;
+            this.lbTitle.Text = "HỆ THỐNG QUẢN LÝ TỒN KHO";
+            // 
+            // lbPage
+            // 
+            this.lbPage.AutoSize = true;
+            this.lbPage.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
+            this.lbPage.Location = new System.Drawing.Point(77, 9);
+            this.lbPage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPage.Name = "lbPage";
+            this.lbPage.Size = new System.Drawing.Size(54, 26);
+            this.lbPage.TabIndex = 29;
+            this.lbPage.Text = "Page";
             // 
             // frmMain
             // 
@@ -984,9 +663,8 @@ namespace QuanLyKho_CSharp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1365, 729);
-            this.Controls.Add(this.pnlBody);
-            this.Controls.Add(this.panelTop);
-            this.Controls.Add(this.panelLeft);
+            this.Controls.Add(this.pnlLeft);
+            this.Controls.Add(this.pnlRight);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -995,48 +673,52 @@ namespace QuanLyKho_CSharp
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panelTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.paneMenu.ResumeLayout(false);
-            this.pnlSubmenu.ResumeLayout(false);
-            this.pnlSubmenuThuocTinh.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panelLeft.ResumeLayout(false);
+            this.panelTop.PerformLayout();
+            this.pnlMenu.ResumeLayout(false);
+            this.pnlName.ResumeLayout(false);
+            this.pnlName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            this.pnlRight.ResumeLayout(false);
+            this.pnlLeft.ResumeLayout(false);
+            this.pnlLeft.PerformLayout();
+            this.pnlLogout.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Panel panelTop;
-        private Panel panel2;
-        private PictureBox pictureBox2;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lbUser;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lbRole;
-        private Button btnClose;
-        private Panel paneMenu;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnTrangChu;
-        private Panel panel3;
-        private FlowLayoutPanel panelLeft;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnPhieuXuat;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnTonKho;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnKhachHang;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnKiemKe;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnPhieuNhap;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnQuanLyNhanVien;
-        private FlowLayoutPanel pnlSubmenu;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNhanVien;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnTaiKhoan;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnPhanQuyen;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnLogout;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnBaoCao;
         private Panel pnlBody;
-        private Timer timer1;
-        private FlowLayoutPanel pnlSubmenuThuocTinh;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnQuanLyThuocTinh;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNhaCungCap;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnKhuVuc;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnChatLieu;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnLoai;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSize;
-        private Timer timer2;
+        private Guna.UI2.WinForms.Guna2Panel pnlMenu;
+        private Guna.UI2.WinForms.Guna2Button btnKhachHang;
+        private Guna.UI2.WinForms.Guna2Button btnKiemKe;
+        private Guna.UI2.WinForms.Guna2Button btnPhieuNhap;
+        private Guna.UI2.WinForms.Guna2Button btnPhieuXuat;
+        private Guna.UI2.WinForms.Guna2Button btnTonKho;
+        private Guna.UI2.WinForms.Guna2Button btnTrangChu;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel pnlName;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Label lbName;
+        private Guna.UI2.WinForms.Guna2Shapes guna2Shapes1;
+        private Panel pnlRight;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
+        private Panel pnlLeft;
+        private Guna.UI2.WinForms.Guna2Button btnNhaCungCap;
+        private Guna.UI2.WinForms.Guna2Button btnKhuVuc;
+        private Guna.UI2.WinForms.Guna2Button btnChatLieu;
+        private Guna.UI2.WinForms.Guna2Button btnLoai;
+        private Guna.UI2.WinForms.Guna2Button btnSize;
+        private Guna.UI2.WinForms.Guna2Button btnNhanVien;
+        private Guna.UI2.WinForms.Guna2Button btnTaiKhoan;
+        private Guna.UI2.WinForms.Guna2Button btnPhanQuyen;
+        private Guna.UI2.WinForms.Guna2Button btnBaoCao;
+        private Guna.UI2.WinForms.Guna2Panel pnlLogout;
+        private Guna.UI2.WinForms.Guna2Button btnLogout;
+        private Label lbRole;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Label lbTitle;
+        private Label lbPage;
     }
 }
