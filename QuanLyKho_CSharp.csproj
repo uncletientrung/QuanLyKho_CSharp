@@ -679,6 +679,9 @@
     <Compile Include="GUI\ThongTin\Size\UpdateSizeForm.Designer.cs">
       <DependentUpon>UpdateSizeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\component\ArtanPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Helper\component\CustomPanel.cs">
       <SubType>Component</SubType>
     </Compile>

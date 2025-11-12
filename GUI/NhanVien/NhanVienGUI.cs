@@ -40,11 +40,21 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.MultiSelect = false; // Nếu muốn chỉ chọn 1 row tại 1 thời điểm
             DGVNhanVien.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
             DGVNhanVien.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giũa
+            // Thiết lập lại style cho header và row
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.ForeColor = Color.White;
+            headerStyle.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
+            headerStyle.SelectionBackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.SelectionForeColor = Color.White;
+
+            DGVNhanVien.ColumnHeadersDefaultCellStyle = headerStyle;
+            DGVNhanVien.ColumnHeadersHeight = 30;
+            DGVNhanVien.RowHeadersDefaultCellStyle = headerStyle;
+            DGVNhanVien.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
             listNV = nvBUS.getListNV();
-
-            // Test button
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -54,157 +64,13 @@ namespace QuanLyKho_CSharp.GUI
 
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
-            DGVNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Tự động lấp đầy
 
-            DGVNhanVien.Columns.Add("MaNV", "Mã nhân viên");
-            DGVNhanVien.Columns["MaNV"].FillWeight = 10; // phần trăm tương đối
-
-            DGVNhanVien.Columns.Add("TenNV", "Họ và Tên");
-            DGVNhanVien.Columns["TenNV"].FillWeight = 25;
-
-            DGVNhanVien.Columns.Add("GioiTinh", "Giới tính");
-            DGVNhanVien.Columns["GioiTinh"].FillWeight = 10;
-
-            DGVNhanVien.Columns.Add("SDT", "Số điện thoại");
-            DGVNhanVien.Columns["SDT"].FillWeight = 20;
-
-            DGVNhanVien.Columns.Add("NgaySinh", "Ngày sinh");
-            DGVNhanVien.Columns["NgaySinh"].FillWeight = 10;
-
-            DGVNhanVien.Columns.Add("TrangThai", "Trạng thái");
-            DGVNhanVien.Columns["TrangThai"].FillWeight = 10;
-
-            DGVNhanVien.RowTemplate.Height = 40;
             foreach (NhanVienDTO nv in listNV.Where(nv => nv.Trangthai ==1))
             {
                 string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
                 DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
                 , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
                 
-            }
-
-            // Tạo 3 cái nút ở table
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.HeaderText = "Nút"; // Tên cột
-            btn.Name = "Actions"; // setName để truy xuất dataGridView1.Columns["button"]
-            btn.Text = "Hit me"; // Text của button
-            btn.UseColumnTextForButtonValue = true; // true để mỗi row đều hiện
-            DGVNhanVien.Columns.Add(btn);
-            DGVNhanVien.Columns["Actions"].FillWeight = 15;
-        }
-        private void DGVNhanVien_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.ColumnIndex == DGVNhanVien.Columns["Actions"].Index && e.RowIndex >= 0)
-            // Nếu cell thuộc cột actions và không phải row header (-1 là header) thì bắt đầu vẽ
-            {
-                e.PaintBackground(e.CellBounds, true); // Vẽ nền cell mặc định || True nghĩa là highlight nếu đc chọn
-                                                       // Định nghĩa các nút
-                int padding = 5;
-                int totalButtons = 3;
-                int buttonWidth = (e.CellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
-                Rectangle btnSua = new Rectangle(e.CellBounds.Left + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
-                Rectangle btnXoa = new Rectangle(btnSua.Right + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
-                Rectangle btnXem = new Rectangle(btnXoa.Right + padding, e.CellBounds.Top + padding, buttonWidth, e.CellBounds.Height - 2 * padding);
-
-                // Vẽ nút lên cell
-                // ButtonRenderer.DrawButton(Đối tượng vẽ lên, vị trí và kích thước vẽ, "Text hiển thị",
-                //                          Font chữ, false/true không phải nút đang hover, Trạng thái nút bình thường);
-                // Giữ lại giao diện nút nhưng không vẽ văn bản
-                ButtonRenderer.DrawButton(e.Graphics, btnXem, "", this.Font, false, PushButtonState.Normal);
-                ButtonRenderer.DrawButton(e.Graphics, btnSua, "", this.Font, false, PushButtonState.Normal);
-                ButtonRenderer.DrawButton(e.Graphics, btnXoa, "", this.Font, false, PushButtonState.Normal);
-
-                // Chèn hình vào nút
-                try
-                {
-                    // Tải hình ảnh từ thư mục image
-                    Image imgSua = Image.FromFile("images\\icon\\edit.png");
-                    Image imgXoa = Image.FromFile("images\\icon\\remove.png");
-                    Image imgXem = Image.FromFile("images\\icon\\detail.png");
-
-                    int targetWidth = 24;
-                    int targetHeight = 24;
-
-                    // Vẽ hình ảnh với kích thước 32x32, căn giữa nút
-                    e.Graphics.DrawImage(imgSua, new Rectangle(
-                        btnSua.Left + (btnSua.Width - targetWidth) / 2 + 3,
-                        btnSua.Top + (btnSua.Height - targetHeight) / 2 +3,
-                        targetWidth -5,
-                        targetHeight -5 ));
-                    e.Graphics.DrawImage(imgXem, new Rectangle(
-                        btnXem.Left + (btnXem.Width - targetWidth) / 2,
-                        btnXem.Top + (btnXem.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-                    e.Graphics.DrawImage(imgXoa, new Rectangle(
-                        btnXoa.Left + (btnXoa.Width - targetWidth) / 2,
-                        btnXoa.Top + (btnXoa.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-
-                    imgXem.Dispose(); 
-                    imgSua.Dispose();
-                    imgXoa.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi tải hình ảnh: {ex.Message}");
-                }
-
-
-                e.Handled = true; // Ngăn DataGridView không vẽ thêm trì đè lên nữa
-            }
-        }
-
-        private void DGVNhanVien_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-        private void DGVNhanVien_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //e.ColumnIndex, e.RowIndex → xác định cell được click
-            //e.Location → vị trí con trỏ chuột trong cell(tọa độ X, Y)
-            //e.Button → nút chuột được nhấn
-            if (e.ColumnIndex == DGVNhanVien.Columns["Actions"].Index && e.RowIndex >= 0)
-            {
-                int buttonWidth = 50;
-                int padding = 5;
-                int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
-                // Cells["manv"] là ô dựa trên dataSource,
-                // Column["manv"] là cột dữ liệu của DGV
-                int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
-                NhanVienDTO NhanVienDuocChon = nvBUS.getNVById(manv);
-                if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
-                {
-                    UpdateNhanVienForm updateNV = new UpdateNhanVienForm(NhanVienDuocChon);
-                    updateNV.ShowDialog();
-                    if (updateNV.DialogResult == DialogResult.OK)
-                    {
-                        refreshDataGridView(nvBUS.getListNV());
-                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
-                        tb.Show();
-                    }
-
-                }
-                else if (xRel < padding * 2 + buttonWidth * 2)
-                {
-                    DeleteNhanVienForm deleteNV = new DeleteNhanVienForm(NhanVienDuocChon);
-                    deleteNV.ShowDialog();
-                    if (deleteNV.DialogResult == DialogResult.OK)
-                    {
-                        
-                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
-                        tb.Show();
-                        refreshDataGridView(nvBUS.getListNV());
-                    }
-                }
-                else {
-                    DetailNhanVienForm detailNV = new DetailNhanVienForm(NhanVienDuocChon);
-                    detailNV.ShowDialog();
-                    
-
-                }
-               
             }
         }
 
@@ -276,6 +142,46 @@ namespace QuanLyKho_CSharp.GUI
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void DGVNhanVien_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
+            NhanVienDTO NhanVienDuocChon = nvBUS.getNVById(manv);
+            if (DGVNhanVien.Columns[e.ColumnIndex].Name == "detail")
+            {
+                DetailNhanVienForm detailNV = new DetailNhanVienForm(NhanVienDuocChon);
+                detailNV.ShowDialog();
+            }
+            if (DGVNhanVien.Columns[e.ColumnIndex].Name == "edit")
+            {
+                UpdateNhanVienForm updateNV = new UpdateNhanVienForm(NhanVienDuocChon);
+                updateNV.ShowDialog();
+                if (updateNV.DialogResult == DialogResult.OK)
+                {
+                    refreshDataGridView(nvBUS.getListNV());
+                    UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                    tb.Show();
+                }
+            }
+            if (DGVNhanVien.Columns[e.ColumnIndex].Name == "remove")
+            {
+                DeleteNhanVienForm deleteNV = new DeleteNhanVienForm(NhanVienDuocChon);
+                deleteNV.ShowDialog();
+                if (deleteNV.DialogResult == DialogResult.OK)
+                {
+
+                    DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                    tb.Show();
+                    refreshDataGridView(nvBUS.getListNV());
+                }
+            }
+        }
+
+        private void DGVNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
