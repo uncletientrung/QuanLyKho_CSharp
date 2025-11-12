@@ -426,7 +426,7 @@ namespace QuanLyKho_CSharp
             this.btnPhieuXuat.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
             this.btnPhieuXuat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPhieuXuat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
-            this.btnPhieuXuat.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhieuXuat.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnPhieuXuat.ForeColor = System.Drawing.Color.White;
             this.btnPhieuXuat.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPhieuXuat.ImageOffset = new System.Drawing.Point(10, 0);

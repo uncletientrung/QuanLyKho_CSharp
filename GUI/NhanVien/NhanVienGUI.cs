@@ -28,8 +28,6 @@ namespace QuanLyKho_CSharp.GUI
         public NhanVienGUI()
         {
             InitializeComponent();
-            txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
-            txSearch.ForeColor = Color.Gray;
             DGVNhanVien.ClearSelection();
             DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
             DGVNhanVien.AllowUserToResizeRows = false; // Chặn kéo dài row
@@ -55,6 +53,8 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
             listNV = nvBUS.getListNV();
+
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -65,13 +65,14 @@ namespace QuanLyKho_CSharp.GUI
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
 
-            foreach (NhanVienDTO nv in listNV.Where(nv => nv.Trangthai ==1))
-            {
-                string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
-                DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
-                , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
-                
-            }
+            //foreach (NhanVienDTO nv in listNV.Where(nv => nv.Trangthai ==1))
+            //{
+            //    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
+            //    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
+            //    , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+
+            //}
+            refreshDataGridView(nvBUS.getListNV());
         }
 
         private void DGVNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -105,28 +106,17 @@ namespace QuanLyKho_CSharp.GUI
                 txSearch.ForeColor = Color.Black;
         }
 
-        private void txSearch_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txSearch.Text)) // Kiểm tra rỗng, null và khoảng trắng
-            {
-                txSearch.ForeColor = Color.Gray;
-                txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhân viên để tìm";
-            }
-        }
 
         private void txSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txSearch.Text != "Nhập mã, tên hoặc số điện thoại nhân viên để tìm")
-            {
-                string search_Text = txSearch.Text.Trim();
-                BindingList<NhanVienDTO> listSearch = nvBUS.SearchNhanVien(search_Text);
-                refreshDataGridView(listSearch);
-            }
-
-
+            string search_Text = txSearch.Text.Trim();
+            BindingList<NhanVienDTO> listSearch = nvBUS.SearchNhanVien(search_Text);
+            refreshDataGridView(listSearch);
         }
         private void refreshDataGridView(BindingList<NhanVienDTO> listRefresh) // Tải lại DataGridView
         {
+            //Hiển thị thống kê nhân viên
+            int soLuongNV = 0;
             DGVNhanVien.Rows.Clear();
 
             foreach (NhanVienDTO nv in listRefresh.Where(nv => nv.Trangthai == 1))
@@ -134,8 +124,10 @@ namespace QuanLyKho_CSharp.GUI
                 string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
                 DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
                 , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+                soLuongNV++;
             }
             DGVNhanVien.ClearSelection();
+            lbTotalNV.Text= "Tổng số nhân viên: "+ soLuongNV.ToString();
 
         }
 
@@ -182,6 +174,26 @@ namespace QuanLyKho_CSharp.GUI
         private void DGVNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void artanButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbTotalNV_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
