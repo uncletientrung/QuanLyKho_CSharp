@@ -30,7 +30,7 @@ namespace QuanLyKho_CSharp.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanVienGUI));
             this.label1 = new System.Windows.Forms.Label();
             this.pnlDGV = new System.Windows.Forms.Panel();
@@ -46,20 +46,20 @@ namespace QuanLyKho_CSharp.GUI
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
-            this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
-            this.txSearch = new System.Windows.Forms.TextBox();
-            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnNhapExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.lbTotalStatus = new System.Windows.Forms.Panel();
             this.lbTotalNV = new System.Windows.Forms.Label();
+            this.btnNhapExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.txSearch = new System.Windows.Forms.TextBox();
+            this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pnlDGV.SuspendLayout();
             this.artanPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).BeginInit();
             this.pnlTop.SuspendLayout();
-            this.pnlSearch.SuspendLayout();
             this.lbTotalStatus.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -108,14 +108,14 @@ namespace QuanLyKho_CSharp.GUI
             this.DGVNhanVien.BackgroundColor = System.Drawing.Color.White;
             this.DGVNhanVien.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVNhanVien.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVNhanVien.ColumnHeadersHeight = 30;
             this.DGVNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.manv,
@@ -239,115 +239,27 @@ namespace QuanLyKho_CSharp.GUI
             this.pnlTop.TabIndex = 10;
             this.pnlTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTop_Paint);
             // 
-            // btnThem
+            // lbTotalStatus
             // 
-            this.btnThem.Location = new System.Drawing.Point(1039, 88);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnThem.Size = new System.Drawing.Size(40, 40);
-            this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Back.ColorAngle = 45F;
-            this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Border.ColorAngle = 45F;
-            this.btnThem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnThem.StateCommon.Border.Rounding = 10;
-            this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
-            this.btnThem.TabIndex = 10;
-            this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton1.Values.Image2")));
-            this.btnThem.Values.Text = "";
-            this.btnThem.Click += new System.EventHandler(this.btnAdd_Click);
+            this.lbTotalStatus.Controls.Add(this.lbTotalNV);
+            this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotalStatus.Location = new System.Drawing.Point(0, 0);
+            this.lbTotalStatus.Name = "lbTotalStatus";
+            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 30);
+            this.lbTotalStatus.TabIndex = 14;
             // 
-            // pnlSearch
+            // lbTotalNV
             // 
-            this.pnlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.pnlSearch.BorderRadius = 30;
-            this.pnlSearch.Controls.Add(this.txSearch);
-            this.pnlSearch.Controls.Add(this.artanButton1);
-            this.pnlSearch.ForeColor = System.Drawing.Color.Black;
-            this.pnlSearch.GradientAngle = 90F;
-            this.pnlSearch.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.pnlSearch.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.pnlSearch.Location = new System.Drawing.Point(229, 89);
-            this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(315, 37);
-            this.pnlSearch.TabIndex = 11;
-            // 
-            // artanButton1
-            // 
-            this.artanButton1.BackColor = System.Drawing.Color.White;
-            this.artanButton1.BackgroundColor = System.Drawing.Color.White;
-            this.artanButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.artanButton1.BorderRadius = 30;
-            this.artanButton1.BorderSize = 0;
-            this.artanButton1.FlatAppearance.BorderSize = 0;
-            this.artanButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.artanButton1.ForeColor = System.Drawing.Color.White;
-            this.artanButton1.Image = ((System.Drawing.Image)(resources.GetObject("artanButton1.Image")));
-            this.artanButton1.Location = new System.Drawing.Point(3, 3);
-            this.artanButton1.Name = "artanButton1";
-            this.artanButton1.Size = new System.Drawing.Size(30, 30);
-            this.artanButton1.TabIndex = 12;
-            this.artanButton1.TextColor = System.Drawing.Color.White;
-            this.artanButton1.UseVisualStyleBackColor = false;
-            this.artanButton1.Click += new System.EventHandler(this.artanButton1_Click);
-            // 
-            // txSearch
-            // 
-            this.txSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.txSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txSearch.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txSearch.ForeColor = System.Drawing.Color.White;
-            this.txSearch.Location = new System.Drawing.Point(39, 6);
-            this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(258, 23);
-            this.txSearch.TabIndex = 13;
-            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
-            // 
-            // btnXuatExcel
-            // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(888, 88);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnXuatExcel.Size = new System.Drawing.Size(145, 40);
-            this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
-            this.btnXuatExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Border.ColorAngle = 45F;
-            this.btnXuatExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnXuatExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnXuatExcel.StateCommon.Border.Rounding = 10;
-            this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
-            this.btnXuatExcel.TabIndex = 12;
-            this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton1.Values.Image1")));
-            this.btnXuatExcel.Values.Text = "Xuất Excel";
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.lbTotalNV.AutoSize = true;
+            this.lbTotalNV.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotalNV.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
+            this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
+            this.lbTotalNV.Name = "lbTotalNV";
+            this.lbTotalNV.Size = new System.Drawing.Size(141, 18);
+            this.lbTotalNV.TabIndex = 15;
+            this.lbTotalNV.Text = "Tổng số nhân viên: x";
+            this.lbTotalNV.Click += new System.EventHandler(this.lbTotalNV_Click);
             // 
             // btnNhapExcel
             // 
@@ -376,30 +288,118 @@ namespace QuanLyKho_CSharp.GUI
             this.btnNhapExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnNhapExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
             this.btnNhapExcel.TabIndex = 13;
-            this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton1.Values.Image")));
+            this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapExcel.Values.Image")));
             this.btnNhapExcel.Values.Text = "Nhập Excel";
             // 
-            // lbTotalStatus
+            // btnXuatExcel
             // 
-            this.lbTotalStatus.Controls.Add(this.lbTotalNV);
-            this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbTotalStatus.Location = new System.Drawing.Point(0, 0);
-            this.lbTotalStatus.Name = "lbTotalStatus";
-            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 30);
-            this.lbTotalStatus.TabIndex = 14;
+            this.btnXuatExcel.Location = new System.Drawing.Point(888, 88);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnXuatExcel.Size = new System.Drawing.Size(145, 40);
+            this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnXuatExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnXuatExcel.StateCommon.Border.Rounding = 10;
+            this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnXuatExcel.TabIndex = 12;
+            this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
+            this.btnXuatExcel.Values.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // lbTotalNV
+            // pnlSearch
             // 
-            this.lbTotalNV.AutoSize = true;
-            this.lbTotalNV.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbTotalNV.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
-            this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
-            this.lbTotalNV.Name = "lbTotalNV";
-            this.lbTotalNV.Size = new System.Drawing.Size(141, 18);
-            this.lbTotalNV.TabIndex = 15;
-            this.lbTotalNV.Text = "Tổng số nhân viên: x";
-            this.lbTotalNV.Click += new System.EventHandler(this.lbTotalNV_Click);
+            this.pnlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.BorderRadius = 30;
+            this.pnlSearch.Controls.Add(this.txSearch);
+            this.pnlSearch.Controls.Add(this.artanButton1);
+            this.pnlSearch.ForeColor = System.Drawing.Color.Black;
+            this.pnlSearch.GradientAngle = 90F;
+            this.pnlSearch.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.Location = new System.Drawing.Point(229, 89);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(315, 37);
+            this.pnlSearch.TabIndex = 11;
+            // 
+            // txSearch
+            // 
+            this.txSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.txSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txSearch.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSearch.ForeColor = System.Drawing.Color.White;
+            this.txSearch.Location = new System.Drawing.Point(39, 6);
+            this.txSearch.Name = "txSearch";
+            this.txSearch.Size = new System.Drawing.Size(258, 23);
+            this.txSearch.TabIndex = 13;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
+            // 
+            // artanButton1
+            // 
+            this.artanButton1.BackColor = System.Drawing.Color.White;
+            this.artanButton1.BackgroundColor = System.Drawing.Color.White;
+            this.artanButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton1.BorderRadius = 30;
+            this.artanButton1.BorderSize = 0;
+            this.artanButton1.FlatAppearance.BorderSize = 0;
+            this.artanButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton1.ForeColor = System.Drawing.Color.White;
+            this.artanButton1.Image = ((System.Drawing.Image)(resources.GetObject("artanButton1.Image")));
+            this.artanButton1.Location = new System.Drawing.Point(3, 3);
+            this.artanButton1.Name = "artanButton1";
+            this.artanButton1.Size = new System.Drawing.Size(30, 30);
+            this.artanButton1.TabIndex = 12;
+            this.artanButton1.TextColor = System.Drawing.Color.White;
+            this.artanButton1.UseVisualStyleBackColor = false;
+            this.artanButton1.Click += new System.EventHandler(this.artanButton1_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(1039, 88);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnThem.Size = new System.Drawing.Size(40, 40);
+            this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnThem.StateCommon.Border.Rounding = 10;
+            this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnThem.TabIndex = 10;
+            this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
+            this.btnThem.Values.Text = "";
+            this.btnThem.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // NhanVienGUI
             // 
@@ -420,10 +420,10 @@ namespace QuanLyKho_CSharp.GUI
             ((System.ComponentModel.ISupportInitialize)(this.DGVNhanVien)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            this.pnlSearch.ResumeLayout(false);
-            this.pnlSearch.PerformLayout();
             this.lbTotalStatus.ResumeLayout(false);
             this.lbTotalStatus.PerformLayout();
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }

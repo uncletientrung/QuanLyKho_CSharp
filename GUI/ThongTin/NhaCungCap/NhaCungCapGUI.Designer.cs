@@ -51,9 +51,8 @@
             this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 25);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 19;
             this.label1.Text = "Quản lý nhà cung cấp";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txSearch
             // 
@@ -65,9 +64,6 @@
             this.txSearch.Name = "txSearch";
             this.txSearch.Size = new System.Drawing.Size(307, 22);
             this.txSearch.TabIndex = 10;
-            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
-            this.txSearch.Enter += new System.EventHandler(this.txSearch_Enter);
-            this.txSearch.Leave += new System.EventHandler(this.txSearch_Leave);
             // 
             // pictureBox1
             // 
@@ -80,7 +76,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel1
             // 
@@ -91,7 +86,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(355, 24);
             this.panel1.TabIndex = 12;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnExcel
             // 
@@ -106,7 +100,7 @@
             this.btnExcel.Margin = new System.Windows.Forms.Padding(1);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(131, 24);
-            this.btnExcel.TabIndex = 14;
+            this.btnExcel.TabIndex = 21;
             this.btnExcel.Text = "Xuất Excel";
             this.btnExcel.UseVisualStyleBackColor = false;
             // 
@@ -121,10 +115,9 @@
             this.roundedButton2.Name = "roundedButton2";
             this.roundedButton2.Radius = 5;
             this.roundedButton2.Size = new System.Drawing.Size(131, 24);
-            this.roundedButton2.TabIndex = 9;
+            this.roundedButton2.TabIndex = 20;
             this.roundedButton2.Text = "+ Thêm";
             this.roundedButton2.UseVisualStyleBackColor = false;
-            this.roundedButton2.Click += new System.EventHandler(this.roundedButton2_Click);
             // 
             // panel3
             // 
@@ -135,7 +128,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1113, 146);
-            this.panel3.TabIndex = 17;
+            this.panel3.TabIndex = 22;
             // 
             // lblDanhSachNhaCungCap
             // 
@@ -152,13 +145,10 @@
             // 
             this.DGVNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVNhaCungCap.Location = new System.Drawing.Point(0, 146);
+            this.DGVNhaCungCap.Location = new System.Drawing.Point(0, 0);
             this.DGVNhaCungCap.Name = "DGVNhaCungCap";
-            this.DGVNhaCungCap.Size = new System.Drawing.Size(1113, 450);
-            this.DGVNhaCungCap.TabIndex = 18;
-            this.DGVNhaCungCap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVNhaCungCap_CellContentClick);
-            this.DGVNhaCungCap.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGVNhaCungCap_CellMouseClick);
-            this.DGVNhaCungCap.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DGVNhaCUngCap_CellPainting);
+            this.DGVNhaCungCap.Size = new System.Drawing.Size(1113, 596);
+            this.DGVNhaCungCap.TabIndex = 23;
             // 
             // NhaCungCapGUI
             // 
@@ -166,11 +156,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 596);
-            this.Controls.Add(this.DGVNhaCungCap);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.roundedButton2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.DGVNhaCungCap);
             this.Name = "NhaCungCapGUI";
             this.Text = "NhaCungCapGUI";
             this.Load += new System.EventHandler(this.NhaCungCapGUI_Load);
@@ -186,12 +176,11 @@
         }
 
         #endregion
-
+        private RoundedButton roundedButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private RoundedButton roundedButton1;
         private System.Windows.Forms.Button btnExcel;
         private RoundedButton roundedButton2;
         private System.Windows.Forms.Panel panel3;

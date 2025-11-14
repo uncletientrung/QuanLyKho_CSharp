@@ -64,14 +64,6 @@ namespace QuanLyKho_CSharp.GUI
 
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
-
-            //foreach (NhanVienDTO nv in listNV.Where(nv => nv.Trangthai ==1))
-            //{
-            //    string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
-            //    DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
-            //    , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
-
-            //}
             refreshDataGridView(nvBUS.getListNV());
         }
 
@@ -96,14 +88,6 @@ namespace QuanLyKho_CSharp.GUI
             AddSuccessNotification toast = new AddSuccessNotification();
             toast.Show();
             refreshDataGridView(nvBUS.getListNV());
-        }
-        
-
-        private void txSearch_Enter(object sender, EventArgs e)
-        {
-            if (txSearch.Text == "Nhập mã, tên hoặc số điện thoại nhân viên để tìm")
-                txSearch.Text = "";
-                txSearch.ForeColor = Color.Black;
         }
 
 

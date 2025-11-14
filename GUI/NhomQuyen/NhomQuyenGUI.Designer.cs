@@ -28,250 +28,391 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhomQuyenGUI));
-            this.DGVPhanQuyen = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.lbFormName = new System.Windows.Forms.Label();
-            this.txSearch = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnNhapExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.lbTotalNV = new System.Windows.Forms.Label();
+            this.lbTotalStatus = new System.Windows.Forms.Panel();
+            this.pnlDGV = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.DGVPhanQuyen = new System.Windows.Forms.DataGridView();
+            this.manq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewImageColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.txSearch = new System.Windows.Forms.TextBox();
+            this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.lbTotalStatus.SuspendLayout();
+            this.pnlDGV.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            this.artanPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhanQuyen)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.pnlSearch.SuspendLayout();
             this.SuspendLayout();
             // 
-            // DGVPhanQuyen
+            // btnThem
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVPhanQuyen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.DGVPhanQuyen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVPhanQuyen.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DGVPhanQuyen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVPhanQuyen.Location = new System.Drawing.Point(0, 0);
-            this.DGVPhanQuyen.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DGVPhanQuyen.MultiSelect = false;
-            this.DGVPhanQuyen.Name = "DGVPhanQuyen";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVPhanQuyen.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.DGVPhanQuyen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVPhanQuyen.Size = new System.Drawing.Size(1156, 499);
-            this.DGVPhanQuyen.TabIndex = 5;
-            this.DGVPhanQuyen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVPhanQuyen_CellContentClick);
-            this.DGVPhanQuyen.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGVPhanQuyen_CellMouseClick);
-            this.DGVPhanQuyen.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DGVPhanQuyen_CellPainting);
+            this.btnThem.Location = new System.Drawing.Point(1039, 88);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnThem.Size = new System.Drawing.Size(40, 40);
+            this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnThem.StateCommon.Border.Rounding = 10;
+            this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnThem.TabIndex = 10;
+            this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
+            this.btnThem.Values.Text = "";
+            this.btnThem.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnAdd
+            // btnNhapExcel
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.White;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnAdd.Location = new System.Drawing.Point(856, 8);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(85, 40);
-            this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "+ Thêm";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnNhapExcel.Location = new System.Drawing.Point(737, 88);
+            this.btnNhapExcel.Name = "btnNhapExcel";
+            this.btnNhapExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnNhapExcel.Size = new System.Drawing.Size(145, 40);
+            this.btnNhapExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Back.ColorAngle = 45F;
+            this.btnNhapExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Border.ColorAngle = 45F;
+            this.btnNhapExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnNhapExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnNhapExcel.StateCommon.Border.Rounding = 10;
+            this.btnNhapExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnNhapExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnNhapExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnNhapExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnNhapExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnNhapExcel.TabIndex = 13;
+            this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapExcel.Values.Image")));
+            this.btnNhapExcel.Values.Text = "Nhập Excel";
             // 
-            // btnExcel
+            // btnXuatExcel
             // 
-            this.btnExcel.BackColor = System.Drawing.Color.White;
-            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(51)))));
-            this.btnExcel.Location = new System.Drawing.Point(1060, 73);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(1);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(98, 43);
-            this.btnExcel.TabIndex = 16;
-            this.btnExcel.Text = "Xuất Excel";
-            this.btnExcel.UseVisualStyleBackColor = false;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.btnXuatExcel.Location = new System.Drawing.Point(888, 88);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnXuatExcel.Size = new System.Drawing.Size(145, 40);
+            this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnXuatExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnXuatExcel.StateCommon.Border.Rounding = 10;
+            this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnXuatExcel.TabIndex = 12;
+            this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
+            this.btnXuatExcel.Values.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // lbFormName
+            // lbTotalNV
             // 
-            this.lbFormName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFormName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lbFormName.Location = new System.Drawing.Point(26, 82);
-            this.lbFormName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbFormName.Name = "lbFormName";
-            this.lbFormName.Size = new System.Drawing.Size(173, 35);
-            this.lbFormName.TabIndex = 15;
-            this.lbFormName.Text = "Phân quyền";
-            this.lbFormName.Click += new System.EventHandler(this.lbFormName_Click);
+            this.lbTotalNV.AutoSize = true;
+            this.lbTotalNV.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotalNV.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
+            this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
+            this.lbTotalNV.Name = "lbTotalNV";
+            this.lbTotalNV.Size = new System.Drawing.Size(157, 18);
+            this.lbTotalNV.TabIndex = 15;
+            this.lbTotalNV.Text = "Tổng số nhóm quyền: x";
             // 
-            // txSearch
+            // lbTotalStatus
             // 
-            this.txSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txSearch.ForeColor = System.Drawing.Color.Black;
-            this.txSearch.Location = new System.Drawing.Point(70, 15);
-            this.txSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(462, 29);
-            this.txSearch.TabIndex = 6;
-            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
-            this.txSearch.Enter += new System.EventHandler(this.txSearch_Enter);
-            this.txSearch.Leave += new System.EventHandler(this.txSearch_Leave);
+            this.lbTotalStatus.Controls.Add(this.lbTotalNV);
+            this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotalStatus.Location = new System.Drawing.Point(0, 0);
+            this.lbTotalStatus.Name = "lbTotalStatus";
+            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 30);
+            this.lbTotalStatus.TabIndex = 14;
             // 
-            // panel1
+            // pnlDGV
             // 
-            this.panel1.Controls.Add(this.DGVPhanQuyen);
-            this.panel1.Location = new System.Drawing.Point(7, 120);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1156, 499);
-            this.panel1.TabIndex = 18;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(30, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.dateTimePicker1);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.txSearch);
-            this.panel2.Location = new System.Drawing.Point(78, 3);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(771, 61);
-            this.panel2.TabIndex = 19;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(643, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 15);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "-";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "dd-MM-yyyy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(659, 17);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(90, 23);
-            this.dateTimePicker2.TabIndex = 11;
+            this.pnlDGV.Controls.Add(this.artanPanel1);
+            this.pnlDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDGV.Location = new System.Drawing.Point(5, 137);
+            this.pnlDGV.Name = "pnlDGV";
+            this.pnlDGV.Size = new System.Drawing.Size(1103, 414);
+            this.pnlDGV.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(562, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.label1.Location = new System.Drawing.Point(3, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 12);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Từ ngày - đến ngày";
+            this.label1.Size = new System.Drawing.Size(260, 29);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Danh sách nhóm quyền";
             // 
-            // dateTimePicker1
+            // pnlTop
             // 
-            this.dateTimePicker1.CustomFormat = "dd-MM-yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(548, 18);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(90, 23);
-            this.dateTimePicker1.TabIndex = 9;
+            this.pnlTop.BackColor = System.Drawing.Color.White;
+            this.pnlTop.Controls.Add(this.lbTotalStatus);
+            this.pnlTop.Controls.Add(this.btnNhapExcel);
+            this.pnlTop.Controls.Add(this.btnXuatExcel);
+            this.pnlTop.Controls.Add(this.pnlSearch);
+            this.pnlTop.Controls.Add(this.btnThem);
+            this.pnlTop.Controls.Add(this.label1);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(5, 5);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1103, 132);
+            this.pnlTop.TabIndex = 12;
             // 
-            // fileSystemWatcher1
+            // artanPanel1
             // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
-            this.fileSystemWatcher1.Changed += new System.IO.FileSystemEventHandler(this.fileSystemWatcher1_Changed);
+            this.artanPanel1.BackColor = System.Drawing.Color.White;
+            this.artanPanel1.BorderRadius = 20;
+            this.artanPanel1.Controls.Add(this.DGVPhanQuyen);
+            this.artanPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artanPanel1.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel1.GradientAngle = 90F;
+            this.artanPanel1.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel1.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel1.Location = new System.Drawing.Point(0, 0);
+            this.artanPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.artanPanel1.Name = "artanPanel1";
+            this.artanPanel1.Padding = new System.Windows.Forms.Padding(4, 0, 4, 15);
+            this.artanPanel1.Size = new System.Drawing.Size(1103, 414);
+            this.artanPanel1.TabIndex = 0;
+            // 
+            // DGVPhanQuyen
+            // 
+            this.DGVPhanQuyen.AllowUserToAddRows = false;
+            this.DGVPhanQuyen.AllowUserToDeleteRows = false;
+            this.DGVPhanQuyen.AllowUserToResizeColumns = false;
+            this.DGVPhanQuyen.AllowUserToResizeRows = false;
+            this.DGVPhanQuyen.BackgroundColor = System.Drawing.Color.White;
+            this.DGVPhanQuyen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DGVPhanQuyen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVPhanQuyen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVPhanQuyen.ColumnHeadersHeight = 30;
+            this.DGVPhanQuyen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.manq,
+            this.hoten,
+            this.trangthai,
+            this.detail,
+            this.edit,
+            this.remove});
+            this.DGVPhanQuyen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVPhanQuyen.EnableHeadersVisualStyles = false;
+            this.DGVPhanQuyen.GridColor = System.Drawing.Color.LightGray;
+            this.DGVPhanQuyen.Location = new System.Drawing.Point(4, 0);
+            this.DGVPhanQuyen.MultiSelect = false;
+            this.DGVPhanQuyen.Name = "DGVPhanQuyen";
+            this.DGVPhanQuyen.ReadOnly = true;
+            this.DGVPhanQuyen.RowHeadersVisible = false;
+            this.DGVPhanQuyen.RowHeadersWidth = 25;
+            this.DGVPhanQuyen.RowTemplate.Height = 30;
+            this.DGVPhanQuyen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVPhanQuyen.Size = new System.Drawing.Size(1095, 399);
+            this.DGVPhanQuyen.TabIndex = 0;
+            this.DGVPhanQuyen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVPhanQuyen_CellContentClick);
+            // 
+            // manq
+            // 
+            this.manq.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.manq.FillWeight = 10F;
+            this.manq.HeaderText = "Mã";
+            this.manq.Name = "manq";
+            this.manq.ReadOnly = true;
+            this.manq.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // hoten
+            // 
+            this.hoten.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.hoten.FillWeight = 25F;
+            this.hoten.HeaderText = "Tên nhóm quyền";
+            this.hoten.Name = "hoten";
+            this.hoten.ReadOnly = true;
+            // 
+            // trangthai
+            // 
+            this.trangthai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.trangthai.FillWeight = 10F;
+            this.trangthai.HeaderText = "Trạng thái";
+            this.trangthai.Name = "trangthai";
+            this.trangthai.ReadOnly = true;
+            // 
+            // detail
+            // 
+            this.detail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.detail.HeaderText = "";
+            this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
+            this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.detail.Name = "detail";
+            this.detail.ReadOnly = true;
+            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.detail.Width = 5;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.edit.HeaderText = "";
+            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
+            this.edit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 5;
+            // 
+            // remove
+            // 
+            this.remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.remove.HeaderText = "";
+            this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
+            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.Name = "remove";
+            this.remove.ReadOnly = true;
+            this.remove.Width = 5;
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.BorderRadius = 30;
+            this.pnlSearch.Controls.Add(this.txSearch);
+            this.pnlSearch.Controls.Add(this.artanButton1);
+            this.pnlSearch.ForeColor = System.Drawing.Color.Black;
+            this.pnlSearch.GradientAngle = 90F;
+            this.pnlSearch.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.Location = new System.Drawing.Point(258, 89);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(315, 37);
+            this.pnlSearch.TabIndex = 11;
+            // 
+            // txSearch
+            // 
+            this.txSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.txSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txSearch.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSearch.ForeColor = System.Drawing.Color.White;
+            this.txSearch.Location = new System.Drawing.Point(39, 6);
+            this.txSearch.Name = "txSearch";
+            this.txSearch.Size = new System.Drawing.Size(258, 23);
+            this.txSearch.TabIndex = 13;
+            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
+            // 
+            // artanButton1
+            // 
+            this.artanButton1.BackColor = System.Drawing.Color.White;
+            this.artanButton1.BackgroundColor = System.Drawing.Color.White;
+            this.artanButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton1.BorderRadius = 30;
+            this.artanButton1.BorderSize = 0;
+            this.artanButton1.FlatAppearance.BorderSize = 0;
+            this.artanButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton1.ForeColor = System.Drawing.Color.White;
+            this.artanButton1.Image = ((System.Drawing.Image)(resources.GetObject("artanButton1.Image")));
+            this.artanButton1.Location = new System.Drawing.Point(3, 3);
+            this.artanButton1.Name = "artanButton1";
+            this.artanButton1.Size = new System.Drawing.Size(30, 30);
+            this.artanButton1.TabIndex = 12;
+            this.artanButton1.TextColor = System.Drawing.Color.White;
+            this.artanButton1.UseVisualStyleBackColor = false;
             // 
             // NhomQuyenGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1170, 622);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnExcel);
-            this.Controls.Add(this.lbFormName);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1113, 556);
+            this.Controls.Add(this.pnlDGV);
+            this.Controls.Add(this.pnlTop);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NhomQuyenGUI";
+            this.Padding = new System.Windows.Forms.Padding(5);
             this.Load += new System.EventHandler(this.PhanQuyenGUI_Load);
+            this.lbTotalStatus.ResumeLayout(false);
+            this.lbTotalStatus.PerformLayout();
+            this.pnlDGV.ResumeLayout(false);
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
+            this.artanPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhanQuyen)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView DGVPhanQuyen;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnExcel;
-        private System.Windows.Forms.Label lbFormName;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnThem;
         private System.Windows.Forms.TextBox txSearch;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNhapExcel;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnXuatExcel;
+        private Helper.component.ArtanPanel pnlSearch;
+        private Helper.component.ArtanButton artanButton1;
+        private System.Windows.Forms.Label lbTotalNV;
+        private System.Windows.Forms.Panel lbTotalStatus;
+        private System.Windows.Forms.DataGridView DGVPhanQuyen;
+        private Helper.component.ArtanPanel artanPanel1;
+        private System.Windows.Forms.Panel pnlDGV;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hoten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn trangthai;
+        private System.Windows.Forms.DataGridViewImageColumn detail;
+        private System.Windows.Forms.DataGridViewImageColumn edit;
+        private System.Windows.Forms.DataGridViewImageColumn remove;
     }
 }
