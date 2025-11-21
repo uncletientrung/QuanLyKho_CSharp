@@ -116,6 +116,7 @@
             this.Controls.Add(this.txtTenLoai);
             this.Controls.Add(this.lblTenLoai);
             this.Name = "AddLoaiForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddLoaiForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

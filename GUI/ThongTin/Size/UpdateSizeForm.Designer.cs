@@ -140,6 +140,7 @@
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.lblTenSize);
             this.Name = "UpdateSizeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateSizeForm";
             this.Load += new System.EventHandler(this.UpdateSizeForm_Load);
             this.Shown += new System.EventHandler(this.UpdateSizeForm_Shown);

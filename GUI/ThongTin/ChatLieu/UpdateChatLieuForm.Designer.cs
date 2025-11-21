@@ -117,6 +117,7 @@
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.lblTenChatLieu);
             this.Name = "UpdateChatLieuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateChatLieuForm";
             this.Load += new System.EventHandler(this.UpdateChatLieuForm_Load);
             this.Shown += new System.EventHandler(this.UpdateChatLieuForm_Shown);

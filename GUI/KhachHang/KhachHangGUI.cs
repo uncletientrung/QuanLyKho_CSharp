@@ -6,6 +6,7 @@ using QuanLyKho_CSharp.DAO;
 using QuanLyKho_CSharp.DTO;
 using QuanLyKho_CSharp.GUI.KhachHang;
 using QuanLyKho_CSharp.GUI.NhanVien;
+using QuanLyKho_CSharp.GUI.NhomQuyen;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,56 +46,6 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
         }
 
 
-
-        private void DGVKhachHang_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.ColumnIndex == DGVKhachHang.Columns["Actions"].Index && e.RowIndex >= 0)
-            {
-                int buttonWidth = 50;
-                int padding = 5;
-                int xRel = e.Location.X; //Lấy tọa độ X của chuột trong cell
-                
-                int maKH = int.Parse(DGVKhachHang.Rows[e.RowIndex].Cells["MaKH"].Value.ToString());
-                KhachHangDTO KhachHangDuocChon = khBUS.getKHById(maKH);
-                if (xRel < padding + buttonWidth) // kiểm tra trên tọa độ x
-                {
-                    UpdateKhachHangForm updateKH = new UpdateKhachHangForm(KhachHangDuocChon);
-                    updateKH.ShowDialog();
-                    if (updateKH.DialogResult == DialogResult.OK)
-                    {
-                        refreshDataGridView(khBUS.getListKH());
-                        UpdateSuccessNotification tb = new UpdateSuccessNotification();
-                        tb.Show();
-                    }
-
-                }
-                else if (xRel < padding * 2 + buttonWidth * 2)
-                {
-                    DeleteKhachHangForm deleteKH = new DeleteKhachHangForm(KhachHangDuocChon);
-                    deleteKH.ShowDialog();
-                    if (deleteKH.DialogResult == DialogResult.OK)
-                    {
-
-                        DeleteSuccessNotification tb = new DeleteSuccessNotification();
-                        tb.Show();
-                        refreshDataGridView(khBUS.getListKH());
-                    }
-                }
-                else
-                {
-                    DetailKhachHangForm detailKH = new DetailKhachHangForm(KhachHangDuocChon);
-                    detailKH.ShowDialog();
-                }
-
-            }
-
-        }
-
-        private void DGVKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void KhachHangGUI_Load(object sender, EventArgs e)
         {
             refreshDataGridView(khBUS.getListKH());
@@ -103,13 +55,15 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
         private void refreshDataGridView(BindingList<KhachHangDTO> listRefresh) // Tải lại DataGridView
         {
             DGVKhachHang.Rows.Clear();
-
+            int soluong = 0;
             foreach (KhachHangDTO kh in listRefresh.Where(kh => kh.Trangthai == 1))
             {
                 DGVKhachHang.Rows.Add(kh.Makh, kh.Tenkhachhang, kh.Email, kh.Sdt
                 , kh.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
+                soluong++;
             }
             DGVKhachHang.ClearSelection();
+            lbTotalNV.Text = "Tổng số khách hàng: " + soluong.ToString();
         }
 
         private void roundedButton2_Click(object sender, EventArgs e)
@@ -122,6 +76,57 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
                 AddSuccessNotification tb = new AddSuccessNotification();
                 tb.Show();
             }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            AddKhachHangForm addKH = new AddKhachHangForm();
+            addKH.ShowDialog();
+            if (addKH.DialogResult == DialogResult.OK)
+            {
+                refreshDataGridView(khBUS.getListKH());
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
+            }
+        }
+
+        private void DGVKhachHang_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            int maKH = int.Parse(DGVKhachHang.Rows[e.RowIndex].Cells["makh"].Value.ToString());
+            KhachHangDTO KhachHangDuocChon = khBUS.getKHById(maKH);
+            if (DGVKhachHang.Columns[e.ColumnIndex].Name == "edit")
+            {
+                UpdateKhachHangForm updateKH = new UpdateKhachHangForm(KhachHangDuocChon);
+                updateKH.ShowDialog();
+                if (updateKH.DialogResult == DialogResult.OK)
+                {
+                    refreshDataGridView(khBUS.getListKH());
+                    UpdateSuccessNotification tb = new UpdateSuccessNotification();
+                    tb.Show();
+                }
+            }else if(DGVKhachHang.Columns[e.ColumnIndex].Name == "remove"){
+                DeleteKhachHangForm deleteKH = new DeleteKhachHangForm(KhachHangDuocChon);
+                deleteKH.ShowDialog();
+                if (deleteKH.DialogResult == DialogResult.OK)
+                {
+
+                    DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                    tb.Show();
+                    refreshDataGridView(khBUS.getListKH());
+                }
+            }else if(DGVKhachHang.Columns[e.ColumnIndex].Name == "detail")
+            {
+                DetailKhachHangForm detailKH = new DetailKhachHangForm(KhachHangDuocChon);
+                detailKH.ShowDialog();
+            }
+        }
+
+        private void txSearch_TextChanged(object sender, EventArgs e)
+        {
+            string textSearch = txSearch.Text;
+            listKH = khBUS.SearchKhachHang(textSearch);
+            refreshDataGridView(listKH);
         }
     }
 }

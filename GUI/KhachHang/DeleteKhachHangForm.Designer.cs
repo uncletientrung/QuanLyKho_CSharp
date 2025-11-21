@@ -93,6 +93,7 @@
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.label1);
             this.Name = "DeleteKhachHangForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteKhachHangForm";
             this.ResumeLayout(false);
 

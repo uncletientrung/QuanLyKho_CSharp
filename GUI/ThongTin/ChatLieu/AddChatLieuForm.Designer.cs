@@ -116,6 +116,7 @@
             this.Controls.Add(this.lblTenChatLieu);
             this.Controls.Add(this.panel1);
             this.Name = "AddChatLieuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddChatLieuForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

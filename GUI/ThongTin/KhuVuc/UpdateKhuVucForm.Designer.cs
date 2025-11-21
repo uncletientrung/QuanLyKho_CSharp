@@ -186,6 +186,7 @@
             this.Controls.Add(this.lblDiaChi);
             this.Controls.Add(this.lblTenKhuVucKho);
             this.Name = "UpdateKhuVucForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateKhuVucForm";
             this.Load += new System.EventHandler(this.UpdateKhuVucForm_Load);
             this.Shown += new System.EventHandler(this.UpdateKhuVucKhoForm_Shown);

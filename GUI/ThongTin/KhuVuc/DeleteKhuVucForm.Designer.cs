@@ -92,6 +92,7 @@
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.label1);
             this.Name = "DeleteKhuVucForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteKhuVucForm";
             this.ResumeLayout(false);
 

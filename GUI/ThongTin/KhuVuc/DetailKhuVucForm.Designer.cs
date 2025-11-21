@@ -159,6 +159,7 @@
             this.Controls.Add(this.lblTenKhuVucKho);
             this.Controls.Add(this.lbDetailKhuVucKho);
             this.Name = "DetailKhuVucForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailKhuVucForm";
             this.Load += new System.EventHandler(this.DetailKhuVucForm_Load);
             this.Shown += new System.EventHandler(this.DetailKhuVucKho_Shown);

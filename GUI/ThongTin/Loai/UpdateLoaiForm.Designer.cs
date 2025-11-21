@@ -117,6 +117,7 @@
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.lblTenLoai);
             this.Name = "UpdateLoaiForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateLoaiForm";
             this.Load += new System.EventHandler(this.UpdateLoaiForm_Load);
             this.Shown += new System.EventHandler(this.UpdateLoaiForm_Shown);

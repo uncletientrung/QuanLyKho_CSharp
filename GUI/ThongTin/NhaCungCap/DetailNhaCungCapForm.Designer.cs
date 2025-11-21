@@ -52,7 +52,6 @@
             this.lbDetailNhaCungCap.TabIndex = 1;
             this.lbDetailNhaCungCap.Text = "Xem Chi Tiết Nhà Cung Cấp";
             this.lbDetailNhaCungCap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
             // 
             // btnDong
             // 
@@ -160,6 +159,7 @@
             this.Controls.Add(this.lblTenNhaCungCap);
             this.Controls.Add(this.lbDetailNhaCungCap);
             this.Name = "DetailNhaCungCapForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailNhaCungCapForm";
             this.Load += new System.EventHandler(this.DetailNhaCungCapForm_Load);
             this.Shown += new System.EventHandler(this.DetailNhaCungCapForm_Shown);

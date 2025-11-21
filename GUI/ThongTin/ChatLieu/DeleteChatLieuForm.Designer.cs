@@ -94,6 +94,7 @@
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.label1);
             this.Name = "DeleteChatLieuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteChatLieuForm";
             this.ResumeLayout(false);
 

@@ -95,6 +95,7 @@
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.label1);
             this.Name = "DeleteLoaiForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteLoaiForm";
             this.ResumeLayout(false);
 

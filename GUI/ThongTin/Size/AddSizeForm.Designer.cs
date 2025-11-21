@@ -139,6 +139,7 @@
             this.Controls.Add(this.txtTenSize);
             this.Controls.Add(this.lblTenSize);
             this.Name = "AddSizeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddSizeForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

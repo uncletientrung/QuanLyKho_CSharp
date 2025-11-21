@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,8 +28,6 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         public NhaCungCapGUI()
         {
             InitializeComponent();
-            txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhà cung cấp để tìm";
-            txSearch.ForeColor = Color.Gray;
             DGVNhaCungCap.ClearSelection();
             DGVNhaCungCap.RowHeadersVisible = false; // Tắt cột header
             DGVNhaCungCap.AllowUserToResizeRows = false; // Chặn kéo dài row
@@ -45,41 +44,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
 
         private void NhaCungCapGUI_Load(object sender, EventArgs e)
         {
-            DGVNhaCungCap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            DGVNhaCungCap.Columns.Add("MaNCC", "Mã");
-            DGVNhaCungCap.Columns["MaNCC"].FillWeight = 30;
-
-            DGVNhaCungCap.Columns.Add("TenNCC", "Tên nhà cung cấp");
-            DGVNhaCungCap.Columns["TenNCC"].FillWeight = 150;
-
-            DGVNhaCungCap.Columns.Add("DiaChiNCC", "Địa chỉ");
-            DGVNhaCungCap.Columns["DiaChiNCC"].FillWeight = 200;
-
-            DGVNhaCungCap.Columns.Add("SDT", "Số điện thoại");
-            DGVNhaCungCap.Columns["SDT"].FillWeight = 100;
-
-            DGVNhaCungCap.Columns.Add("Email", "Email");
-            DGVNhaCungCap.Columns["Email"].FillWeight = 150;
-
-            DGVNhaCungCap.Columns.Add("TrangThai", "Trạng thái");
-            DGVNhaCungCap.Columns["TrangThai"].FillWeight = 80;
-
-            DGVNhaCungCap.RowTemplate.Height = 40;
-            foreach (NhaCungCapDTO ncc in listNCC.Where(ncc => ncc.Trangthai ==1))
-            {
-                string trangThai = ncc.Trangthai == 1 ? "Hoạt động" : "Ngừng hoạt động";
-                DGVNhaCungCap.Rows.Add(ncc.Mancc, ncc.Tenncc, ncc.Diachincc, ncc.Sdt, ncc.Email, trangThai);
-            }
-
-            // Tạo 3 cái nút ở table
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.HeaderText = "Nút"; // Tên cột
-            btn.Name = "Actions"; // setName để truy xuất dataGridView1.Columns["button"]
-            btn.Text = "Hit me"; // Text của button
-            btn.UseColumnTextForButtonValue = true; // true để mỗi row đều hiện
-            DGVNhaCungCap.Columns.Add(btn);
-            DGVNhaCungCap.Columns["Actions"].FillWeight = 100;
+            refreshDataGridView(listNCC);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -96,42 +61,18 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         {
 
         }
-
-        private void txSearch_Enter(object sender, EventArgs e)
-        {
-            if (txSearch.Text == "Nhập mã, tên hoặc số điện thoại nhà cung cấp để tìm")
-            {
-                txSearch.Text = "";
-                txSearch.ForeColor = Color.Black;
-            }
-        }
-
-        private void txSearch_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txSearch.Text)) // Kiểm tra rỗng, null và khoảng trắng
-            {
-                txSearch.ForeColor = Color.Gray;
-                txSearch.Text = "Nhập mã, tên hoặc số điện thoại nhà cung cấp để tìm";
-            }
-        }
-
-        private void txSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (txSearch.Text != "Nhập mã, tên hoặc số điện thoại nhà cung cấp để tìm")
-            {
-                string search_Text = txSearch.Text.Trim();
-                BindingList<NhaCungCapDTO> listSearch = nccBUS.searchNhaCungCap(search_Text);
-                refreshDataGridView(listSearch);
-            }
-        }
         private void refreshDataGridView(BindingList<NhaCungCapDTO> list)
         {
             DGVNhaCungCap.Rows.Clear();
+            int soluong = 0;
             foreach (NhaCungCapDTO ncc in list)
             {
                 string trangThai = ncc.Trangthai == 1 ? "Hoạt động" : "Ngừng hoạt động";
                 DGVNhaCungCap.Rows.Add(ncc.Mancc, ncc.Tenncc, ncc.Diachincc, ncc.Sdt, ncc.Email, trangThai);
+                soluong++;
             }
+            DGVNhaCungCap.ClearSelection();
+            lbTotalNV.Text = "Tổng số nhà cung cấp: " + soluong.ToString();
         }
 
         private void DGVNhaCungCap_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -199,14 +140,44 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
             }
         }
 
-        private void DGVNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void txSearch_TextChanged(object sender, EventArgs e)
         {
-
+            string text = txSearch.Text;
+            listNCC = nccBUS.searchNhaCungCap(text);
+            refreshDataGridView(listNCC);
         }
 
-        private void DGVNhaCUngCap_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void DGVNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex < 0) return;
+            int maNCC = int.Parse(DGVNhaCungCap.Rows[e.RowIndex].Cells["mancc"].Value.ToString());
+            NhaCungCapDTO NhaCungCapDuocChon = nccBUS.getNCCById(maNCC);
+            if (DGVNhaCungCap.Columns[e.ColumnIndex].Name == "detail")
+            {
+                DetailNhaCungCapForm detailNCC = new DetailNhaCungCapForm(NhaCungCapDuocChon);
+                detailNCC.ShowDialog();
+            }
+            else if (DGVNhaCungCap.Columns[e.ColumnIndex].Name == "edit")
+            {
+                UpdateNhaCungCapForm updateNCC = new UpdateNhaCungCapForm(NhaCungCapDuocChon);
+                updateNCC.ShowDialog();
+                if (updateNCC.DialogResult == DialogResult.OK)
+                {
+                    refreshDataGridView(nccBUS.getListNCC()); // load lại danh sách NCC
+                    AddSuccessNotification tb = new AddSuccessNotification();
+                    tb.Show();
+                }
+            }else if (DGVNhaCungCap.Columns[e.ColumnIndex].Name == "remove")
+            {
+                DeleteNhaCungCapForm deleteNCC = new DeleteNhaCungCapForm(NhaCungCapDuocChon);
+                deleteNCC.ShowDialog();
+                if (deleteNCC.DialogResult == DialogResult.OK)
+                {
+                    DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                    tb.Show();
+                    refreshDataGridView(nccBUS.getListNCC()); // load lại danh sách NCC
+                }
+            }
         }
     }
 }

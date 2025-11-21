@@ -92,6 +92,7 @@
             this.Controls.Add(this.lblTenChatLieu);
             this.Controls.Add(this.lbDetailChatLieu);
             this.Name = "DetailChatLieuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailChatLieuForm";
             this.Load += new System.EventHandler(this.DetailChatLieuForm_Load);
             this.Shown += new System.EventHandler(this.DetailChatLieuForm_Shown);

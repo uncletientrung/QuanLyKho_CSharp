@@ -196,6 +196,7 @@
             this.Controls.Add(this.lblDiaChi);
             this.Controls.Add(this.lblTenNhaCungCap);
             this.Name = "UpdateNhaCungCapForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateNhaCungCapForm";
             this.Load += new System.EventHandler(this.UpdateNhaCungCapForm_Load);
             this.Shown += new System.EventHandler(this.UpdateNhanVienForm_Shown);

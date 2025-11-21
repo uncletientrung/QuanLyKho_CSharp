@@ -92,6 +92,7 @@
             this.Controls.Add(this.lblTenLoai);
             this.Controls.Add(this.lbDetailLoai);
             this.Name = "DetailLoaiForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailLoaiForm";
             this.Load += new System.EventHandler(this.DetailLoaiForm_Load);
             this.Shown += new System.EventHandler(this.DetailLoaiForm_Shown);

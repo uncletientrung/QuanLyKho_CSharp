@@ -186,6 +186,7 @@
             this.Controls.Add(this.txtTenKhuVucKho);
             this.Controls.Add(this.lblTenKhuVucKho);
             this.Name = "AddKhuVucForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddKhuVucForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

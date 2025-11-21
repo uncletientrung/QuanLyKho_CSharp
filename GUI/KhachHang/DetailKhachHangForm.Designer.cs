@@ -169,6 +169,7 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.panelTop);
             this.Name = "DetailKhachHangForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailKhachHangForm";
             this.Load += new System.EventHandler(this.DetailKhachHangForm_Load);
             this.Shown += new System.EventHandler(this.DetailKhachHangForm_Shown);

@@ -186,6 +186,7 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.panelTop);
             this.Name = "UpdateKhachHangForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateKhachHangForm";
             this.Load += new System.EventHandler(this.UpdateKhachHangForm_Load);
             this.Shown += new System.EventHandler(this.UpdateKhachHang_Shown);

@@ -94,6 +94,7 @@
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.label1);
             this.Name = "DeleteSizeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteSizeForm";
             this.Load += new System.EventHandler(this.DeleteSizeForm_Load);
             this.ResumeLayout(false);

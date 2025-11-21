@@ -36,8 +36,6 @@
             this.lbTotalNV = new System.Windows.Forms.Label();
             this.lbTotalStatus = new System.Windows.Forms.Panel();
             this.pnlDGV = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pnlTop = new System.Windows.Forms.Panel();
             this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.DGVPhanQuyen = new System.Windows.Forms.DataGridView();
             this.manq = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,14 +44,16 @@
             this.detail = new System.Windows.Forms.DataGridViewImageColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.txSearch = new System.Windows.Forms.TextBox();
             this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.lbTotalStatus.SuspendLayout();
             this.pnlDGV.SuspendLayout();
-            this.pnlTop.SuspendLayout();
             this.artanPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhanQuyen)).BeginInit();
+            this.pnlTop.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -179,32 +179,6 @@
             this.pnlDGV.Size = new System.Drawing.Size(1103, 414);
             this.pnlDGV.TabIndex = 11;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.label1.Location = new System.Drawing.Point(3, 98);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 29);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Danh sách nhóm quyền";
-            // 
-            // pnlTop
-            // 
-            this.pnlTop.BackColor = System.Drawing.Color.White;
-            this.pnlTop.Controls.Add(this.lbTotalStatus);
-            this.pnlTop.Controls.Add(this.btnNhapExcel);
-            this.pnlTop.Controls.Add(this.btnXuatExcel);
-            this.pnlTop.Controls.Add(this.pnlSearch);
-            this.pnlTop.Controls.Add(this.btnThem);
-            this.pnlTop.Controls.Add(this.label1);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(5, 5);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1103, 132);
-            this.pnlTop.TabIndex = 12;
-            // 
             // artanPanel1
             // 
             this.artanPanel1.BackColor = System.Drawing.Color.White;
@@ -318,6 +292,32 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 5;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.label1.Location = new System.Drawing.Point(3, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(260, 29);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Danh sách nhóm quyền";
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.White;
+            this.pnlTop.Controls.Add(this.lbTotalStatus);
+            this.pnlTop.Controls.Add(this.btnNhapExcel);
+            this.pnlTop.Controls.Add(this.btnXuatExcel);
+            this.pnlTop.Controls.Add(this.pnlSearch);
+            this.pnlTop.Controls.Add(this.btnThem);
+            this.pnlTop.Controls.Add(this.label1);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(5, 5);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1103, 132);
+            this.pnlTop.TabIndex = 12;
+            // 
             // pnlSearch
             // 
             this.pnlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
@@ -383,10 +383,10 @@
             this.lbTotalStatus.ResumeLayout(false);
             this.lbTotalStatus.PerformLayout();
             this.pnlDGV.ResumeLayout(false);
-            this.pnlTop.ResumeLayout(false);
-            this.pnlTop.PerformLayout();
             this.artanPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhanQuyen)).EndInit();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
             this.pnlSearch.ResumeLayout(false);
             this.pnlSearch.PerformLayout();
             this.ResumeLayout(false);

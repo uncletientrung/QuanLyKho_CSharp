@@ -114,6 +114,7 @@
             this.Controls.Add(this.lblTenSize);
             this.Controls.Add(this.lbDetailSize);
             this.Name = "DetailSizeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailSizeForm";
             this.Load += new System.EventHandler(this.DetailSizeForm_Load);
             this.Shown += new System.EventHandler(this.DetailSizeForm_Shown);
