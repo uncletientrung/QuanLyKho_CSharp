@@ -1,0 +1,32 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build folders
+bin/
+obj/
+Debug/
+Release/
+
+# Rider IDE
+.idea/
+
+# NuGet
+*.nupkg
+packages/
+*.snupkg
+
+# OS Files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+
+# Other
+*.dbmdl
+*.bak
