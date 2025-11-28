@@ -20,7 +20,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private readonly string SearchPlaceholder = " Tìm kiếm theo mã sản phẩm, tên sản phẩm, tên kho ...";
         private readonly string TonChiNhanhPlaceholder = "1234";
         public event EventHandler HuyBoClicked;
-
+        private List<string> _allKhuVucItems;
 
         public AddPhieuKiemKeForm(string userName)
         {
@@ -35,17 +35,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // load form
         private void AddPhieuKiemKeForm_Load(object sender, EventArgs e)
         {
-
-            // Get current user ID and set to boxMaNVkiem
-            int maNhanVien = NhanVienDAO.getInstance().GetMaNhanVienByUserName(_userName);
-            if (maNhanVien > 0)
-            {
-                textBoxMaNhanVienKiem.Text = maNhanVien.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Không thể xác định mã nhân viên cho tài khoản hiện tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
 ;
 
             txSearch.ForeColor = Color.LightGray;
@@ -77,18 +66,39 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // Lấy dữ liệu kho có trước 
             comboBoxKhuvuckho.Items.Clear();
             var khuVucList = KhuVucKhoDAO.getInstance().SelectAll();
-            foreach (var kv in khuVucList)
+            _allKhuVucItems = khuVucList.Select(kv => $"{kv.Makhuvuc} - {kv.Tenkhuvuc}").ToList();
+            foreach (var item in _allKhuVucItems)
             {
-                comboBoxKhuvuckho.Items.Add($"{kv.Makhuvuc} - {kv.Tenkhuvuc}");
+                comboBoxKhuvuckho.Items.Add(item);
             }
+
+            comboBoxKhuvuckho.DropDownStyle = ComboBoxStyle.DropDown;
+            comboBoxKhuvuckho.TextChanged += comboBoxKhuvuckho_TextChanged;
 
             // Tự động điền mã phiếu kiểm kê
             int nextMaPhieu = PhieuKiemKeDAO.getInstance().GetAutoIncrement();
             boxMaPhieu.Text = nextMaPhieu.ToString();
+
+            LoadAllSanPhamToGrid(); // tải lên danh sách hàng
         }
 
 
+        // lấy danh sách khu vực kho có sẵn để hiển thị combobox
+        private void comboBoxKhuvuckho_TextChanged(object sender, EventArgs e)
+        {
+            string text = comboBoxKhuvuckho.Text.ToLower();
+            comboBoxKhuvuckho.Items.Clear();
 
+            foreach (var item in _allKhuVucItems)
+            {
+                if (item.ToLower().Contains(text))
+                    comboBoxKhuvuckho.Items.Add(item);
+            }
+
+            comboBoxKhuvuckho.DroppedDown = true;
+            comboBoxKhuvuckho.SelectionStart = comboBoxKhuvuckho.Text.Length;
+            comboBoxKhuvuckho.SelectionLength = 0;
+        }
 
 
 
@@ -164,18 +174,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             DGVKiemKe.ClearSelection();
             DGVKiemKe.CurrentCell = null;
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
         // thanh search
         private void txSearch_Enter(object sender, EventArgs e)
@@ -322,21 +320,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // Tồn chi nhánh text box
         private void textBoxTonchinhanh_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -369,15 +352,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 textBoxTonchinhanh.Font = new Font(textBoxTonchinhanh.Font.FontFamily, 14F, FontStyle.Italic);
             }
         }
-
-
-
-
-
-
-
-
-
 
         // tính toán giá trị hàng chênh lệch
         private void buttonCheck_Click_1(object sender, EventArgs e)
@@ -431,19 +405,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
             comboBox2.Text = trangThai;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // button event footer
         // xuat file
@@ -691,5 +652,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private void DGVKiemKe_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
         private void textBox1_TextChanged(object sender, EventArgs e) {}
         private void boxMaPhieu_TextChanged(object sender, EventArgs e) {}
+
+        private void boxMaNVkiem_TextChanged(object sender, EventArgs e) {}
     }
 }
