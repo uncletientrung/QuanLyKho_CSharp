@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhieuXuatGUI));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnThem = new System.Windows.Forms.Button();
@@ -111,7 +112,7 @@
             this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThem.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnThem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnThem.Location = new System.Drawing.Point(15, 34);
+            this.btnThem.Location = new System.Drawing.Point(15, 41);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 18, 2);
             this.btnThem.MinimumSize = new System.Drawing.Size(79, 47);
             this.btnThem.Name = "btnThem";
@@ -126,7 +127,7 @@
             this.btnXuat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXuat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnXuat.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnXuat.Location = new System.Drawing.Point(125, 34);
+            this.btnXuat.Location = new System.Drawing.Point(125, 41);
             this.btnXuat.Margin = new System.Windows.Forms.Padding(18, 2, 2, 2);
             this.btnXuat.MinimumSize = new System.Drawing.Size(79, 47);
             this.btnXuat.Name = "btnXuat";
@@ -152,8 +153,8 @@
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(215, 97);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(215, 104);
             this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
             // 
@@ -165,7 +166,7 @@
             this.txtNhanVienPN.Location = new System.Drawing.Point(102, 0);
             this.txtNhanVienPN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtNhanVienPN.Name = "txtNhanVienPN";
-            this.txtNhanVienPN.Size = new System.Drawing.Size(80, 29);
+            this.txtNhanVienPN.Size = new System.Drawing.Size(80, 33);
             this.txtNhanVienPN.TabIndex = 1;
             this.txtNhanVienPN.Text = "Nhân viên";
             this.txtNhanVienPN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -194,7 +195,7 @@
             this.panel2.Location = new System.Drawing.Point(186, 7);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(181, 15);
+            this.panel2.Size = new System.Drawing.Size(181, 19);
             this.panel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -211,8 +212,8 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(369, 29);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(369, 33);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // txtGiaBegin
@@ -223,7 +224,7 @@
             this.txtGiaBegin.Location = new System.Drawing.Point(69, 0);
             this.txtGiaBegin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtGiaBegin.Name = "txtGiaBegin";
-            this.txtGiaBegin.Size = new System.Drawing.Size(52, 30);
+            this.txtGiaBegin.Size = new System.Drawing.Size(52, 33);
             this.txtGiaBegin.TabIndex = 2;
             this.txtGiaBegin.Text = "Giá từ";
             this.txtGiaBegin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -258,13 +259,13 @@
             this.tableLayoutPanel5.Controls.Add(this.txtGiaBegin, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.numericUpDown1, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(383, 42);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(383, 46);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(247, 30);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(247, 33);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
             // txtSearchKH
@@ -292,7 +293,7 @@
             this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Padding = new System.Windows.Forms.Padding(12, 12, 0, 12);
-            this.panelHeader.Size = new System.Drawing.Size(1103, 125);
+            this.panelHeader.Size = new System.Drawing.Size(1103, 132);
             this.panelHeader.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -308,8 +309,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1091, 101);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1091, 108);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // grBoxTimKiem
@@ -321,7 +322,7 @@
             this.grBoxTimKiem.Margin = new System.Windows.Forms.Padding(0, 0, 22, 0);
             this.grBoxTimKiem.Name = "grBoxTimKiem";
             this.grBoxTimKiem.Padding = new System.Windows.Forms.Padding(0);
-            this.grBoxTimKiem.Size = new System.Drawing.Size(850, 101);
+            this.grBoxTimKiem.Size = new System.Drawing.Size(850, 108);
             this.grBoxTimKiem.TabIndex = 1;
             this.grBoxTimKiem.TabStop = false;
             this.grBoxTimKiem.Text = "Tìm kiếm";
@@ -348,7 +349,7 @@
             this.tlPheaderLeft.RowCount = 2;
             this.tlPheaderLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlPheaderLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlPheaderLeft.Size = new System.Drawing.Size(850, 81);
+            this.tlPheaderLeft.Size = new System.Drawing.Size(850, 88);
             this.tlPheaderLeft.TabIndex = 0;
             this.tlPheaderLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -366,8 +367,8 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(206, 29);
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(206, 33);
             this.tableLayoutPanel8.TabIndex = 3;
             // 
             // dateTimeEnd
@@ -392,7 +393,7 @@
             this.txtTimeEnd.Location = new System.Drawing.Point(66, 0);
             this.txtTimeEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtTimeEnd.Name = "txtTimeEnd";
-            this.txtTimeEnd.Size = new System.Drawing.Size(35, 29);
+            this.txtTimeEnd.Size = new System.Drawing.Size(35, 33);
             this.txtTimeEnd.TabIndex = 3;
             this.txtTimeEnd.Text = "đến";
             this.txtTimeEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -411,8 +412,8 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(247, 29);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(247, 33);
             this.tableLayoutPanel7.TabIndex = 2;
             // 
             // dateTimeBegin
@@ -438,7 +439,7 @@
             this.txtTimeBegin.Location = new System.Drawing.Point(55, 0);
             this.txtTimeBegin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtTimeBegin.Name = "txtTimeBegin";
-            this.txtTimeBegin.Size = new System.Drawing.Size(66, 29);
+            this.txtTimeBegin.Size = new System.Drawing.Size(66, 33);
             this.txtTimeBegin.TabIndex = 2;
             this.txtTimeBegin.Text = "Từ ngày";
             this.txtTimeBegin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -452,13 +453,13 @@
             this.tableLayoutPanel6.Controls.Add(this.txtGiaEnd, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.numericUpDown2, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(634, 42);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(634, 46);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 30);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 33);
             this.tableLayoutPanel6.TabIndex = 5;
             // 
             // txtGiaEnd
@@ -469,7 +470,7 @@
             this.txtGiaEnd.Location = new System.Drawing.Point(66, 0);
             this.txtGiaEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtGiaEnd.Name = "txtGiaEnd";
-            this.txtGiaEnd.Size = new System.Drawing.Size(35, 30);
+            this.txtGiaEnd.Size = new System.Drawing.Size(35, 33);
             this.txtGiaEnd.TabIndex = 2;
             this.txtGiaEnd.Text = "đến";
             this.txtGiaEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -504,13 +505,13 @@
             this.tableLayoutPanel4.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 42);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 46);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(369, 30);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(369, 33);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // panel5
@@ -521,7 +522,7 @@
             this.panel5.Location = new System.Drawing.Point(186, 7);
             this.panel5.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(181, 16);
+            this.panel5.Size = new System.Drawing.Size(181, 19);
             this.panel5.TabIndex = 1;
             // 
             // label1
@@ -532,7 +533,7 @@
             this.label1.Location = new System.Drawing.Point(91, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 30);
+            this.label1.Size = new System.Drawing.Size(91, 33);
             this.label1.TabIndex = 2;
             this.label1.Text = "Khách hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -542,10 +543,10 @@
             // 
             this.pnlDGV.Controls.Add(this.artanPanel1);
             this.pnlDGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDGV.Location = new System.Drawing.Point(5, 130);
+            this.pnlDGV.Location = new System.Drawing.Point(5, 137);
             this.pnlDGV.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlDGV.Name = "pnlDGV";
-            this.pnlDGV.Size = new System.Drawing.Size(1103, 421);
+            this.pnlDGV.Size = new System.Drawing.Size(1103, 414);
             this.pnlDGV.TabIndex = 13;
             // 
             // artanPanel1
@@ -562,7 +563,7 @@
             this.artanPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.artanPanel1.Name = "artanPanel1";
             this.artanPanel1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 17);
-            this.artanPanel1.Size = new System.Drawing.Size(1103, 421);
+            this.artanPanel1.Size = new System.Drawing.Size(1103, 414);
             this.artanPanel1.TabIndex = 0;
             // 
             // DGVPhieuXuat
@@ -594,6 +595,14 @@
             this.detail,
             this.edit,
             this.remove});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVPhieuXuat.DefaultCellStyle = dataGridViewCellStyle2;
             this.DGVPhieuXuat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVPhieuXuat.EnableHeadersVisualStyles = false;
             this.DGVPhieuXuat.GridColor = System.Drawing.Color.LightGray;
@@ -606,7 +615,7 @@
             this.DGVPhieuXuat.RowHeadersWidth = 25;
             this.DGVPhieuXuat.RowTemplate.Height = 30;
             this.DGVPhieuXuat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVPhieuXuat.Size = new System.Drawing.Size(1093, 404);
+            this.DGVPhieuXuat.Size = new System.Drawing.Size(1093, 397);
             this.DGVPhieuXuat.TabIndex = 0;
             // 
             // mapx
@@ -621,7 +630,7 @@
             // nv
             // 
             this.nv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nv.FillWeight = 25F;
+            this.nv.FillWeight = 20F;
             this.nv.HeaderText = "Nhân viên tạo";
             this.nv.Name = "nv";
             this.nv.ReadOnly = true;
@@ -629,7 +638,7 @@
             // kh
             // 
             this.kh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.kh.FillWeight = 10F;
+            this.kh.FillWeight = 20F;
             this.kh.HeaderText = "Khách hàng";
             this.kh.Name = "kh";
             this.kh.ReadOnly = true;
@@ -645,7 +654,7 @@
             // tongtien
             // 
             this.tongtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tongtien.FillWeight = 10F;
+            this.tongtien.FillWeight = 15F;
             this.tongtien.HeaderText = "Tổng tiền";
             this.tongtien.Name = "tongtien";
             this.tongtien.ReadOnly = true;
@@ -661,6 +670,7 @@
             this.hoanhang.HeaderText = "Hoàn hàng";
             this.hoanhang.Name = "hoanhang";
             this.hoanhang.ReadOnly = true;
+            this.hoanhang.Text = "Hoàn hàng";
             // 
             // detail
             // 

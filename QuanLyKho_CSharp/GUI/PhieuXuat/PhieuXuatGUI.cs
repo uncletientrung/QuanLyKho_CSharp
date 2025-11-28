@@ -673,7 +673,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
             int soLuongNV = 0;
             DGVPhieuXuat.Rows.Clear();
-            foreach (PhieuXuatDTO px in listPX)
+            foreach (PhieuXuatDTO px in listRefresh)
             {
                 if (px.Trangthai != 0)
                 {

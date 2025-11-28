@@ -29,6 +29,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             InitializeComponent();
             SetupDataGridView();
             LoadData();
+            
         }
 
         private void SetupDataGridView()
@@ -42,11 +43,26 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             dataGridView1.MultiSelect = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.ForeColor = Color.White;
+            headerStyle.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
+            headerStyle.SelectionBackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.SelectionForeColor = Color.White;
+
+            DGVPhieuNhap.ColumnHeadersDefaultCellStyle = headerStyle;
+            DGVPhieuNhap.ColumnHeadersHeight = 30;
+            DGVPhieuNhap.RowHeadersDefaultCellStyle = headerStyle;
+            DGVPhieuNhap.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
         }
 
         private void LoadData()
         {
             listPN = pnBUS.getListPN();
+            
         }
 
         private void PhieuNhap_Load(object sender, EventArgs e)
@@ -57,6 +73,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             numericUpDown1.Value = 0;
             numericUpDown2.Value = 0;
             LoadDataIntoGridView();
+            refreshDataGridView(listPN);
         }
 
         private void InitializeDataGridViewColumns()
@@ -510,6 +527,29 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
         }
 
+        private void refreshDataGridView(BindingList<PhieuNhapDTO> listRefresh) // Tải lại DataGridView
+        {
+            int soLuongNV = 0;
+            foreach (PhieuNhapDTO pn in listRefresh)
+            {
+                if (pn.Trangthai == 1)
+                {
+                    string tenNV = nvBUS.getNamebyID(pn.Manv);
+                    string tenNCC = nccBUS.getNamebyID(pn.Mancc);
+                    string trangThai = pn.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
+                    DGVPhieuNhap.Rows.Add(
+                        pn.Maphieu,
+                        tenNV,
+                        tenNCC,
+                        pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                        pn.Tongtien,
+                        trangThai
+                    );
+                }
+            }
+
+            DGVPhieuNhap.ClearSelection();
+        }
         private void panel2_Paint(object sender, PaintEventArgs e) { }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
         private void groupBox1_Enter(object sender, EventArgs e) { }
