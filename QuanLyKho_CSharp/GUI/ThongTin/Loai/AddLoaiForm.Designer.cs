@@ -39,7 +39,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.lblAddLoai);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -50,11 +50,11 @@
             // lblAddLoai
             // 
             this.lblAddLoai.AutoSize = true;
-            this.lblAddLoai.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddLoai.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblAddLoai.ForeColor = System.Drawing.Color.White;
-            this.lblAddLoai.Location = new System.Drawing.Point(152, 19);
+            this.lblAddLoai.Location = new System.Drawing.Point(129, 9);
             this.lblAddLoai.Name = "lblAddLoai";
-            this.lblAddLoai.Size = new System.Drawing.Size(103, 25);
+            this.lblAddLoai.Size = new System.Drawing.Size(150, 37);
             this.lblAddLoai.TabIndex = 1;
             this.lblAddLoai.Text = "Thêm Loại";
             // 
@@ -62,7 +62,7 @@
             // 
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.White;
             this.btnLuu.Location = new System.Drawing.Point(221, 180);
             this.btnLuu.Name = "btnLuu";
@@ -76,7 +76,7 @@
             // 
             this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnDong.Location = new System.Drawing.Point(34, 180);
             this.btnDong.Name = "btnDong";
@@ -89,19 +89,19 @@
             // txtTenLoai
             // 
             this.txtTenLoai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTenLoai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenLoai.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtTenLoai.Location = new System.Drawing.Point(34, 123);
             this.txtTenLoai.Name = "txtTenLoai";
-            this.txtTenLoai.Size = new System.Drawing.Size(350, 25);
+            this.txtTenLoai.Size = new System.Drawing.Size(350, 27);
             this.txtTenLoai.TabIndex = 14;
             // 
             // lblTenLoai
             // 
             this.lblTenLoai.AutoSize = true;
-            this.lblTenLoai.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenLoai.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblTenLoai.Location = new System.Drawing.Point(30, 98);
             this.lblTenLoai.Name = "lblTenLoai";
-            this.lblTenLoai.Size = new System.Drawing.Size(62, 21);
+            this.lblTenLoai.Size = new System.Drawing.Size(63, 20);
             this.lblTenLoai.TabIndex = 13;
             this.lblTenLoai.Text = "Tên loại";
             // 
@@ -109,6 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(424, 228);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLuu);

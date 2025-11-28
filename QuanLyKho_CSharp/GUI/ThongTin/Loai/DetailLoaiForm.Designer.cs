@@ -38,9 +38,9 @@
             // 
             this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnDong.Location = new System.Drawing.Point(53, 198);
+            this.btnDong.Location = new System.Drawing.Point(53, 183);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(350, 35);
             this.btnDong.TabIndex = 33;
@@ -51,20 +51,20 @@
             // txtTenLoai
             // 
             this.txtTenLoai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTenLoai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenLoai.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtTenLoai.Location = new System.Drawing.Point(53, 125);
             this.txtTenLoai.Name = "txtTenLoai";
-            this.txtTenLoai.Size = new System.Drawing.Size(350, 25);
+            this.txtTenLoai.Size = new System.Drawing.Size(350, 27);
             this.txtTenLoai.TabIndex = 32;
             this.txtTenLoai.TextChanged += new System.EventHandler(this.txtTenLoai_TextChanged);
             // 
             // lblTenLoai
             // 
             this.lblTenLoai.AutoSize = true;
-            this.lblTenLoai.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenLoai.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblTenLoai.Location = new System.Drawing.Point(49, 100);
             this.lblTenLoai.Name = "lblTenLoai";
-            this.lblTenLoai.Size = new System.Drawing.Size(62, 21);
+            this.lblTenLoai.Size = new System.Drawing.Size(63, 20);
             this.lblTenLoai.TabIndex = 31;
             this.lblTenLoai.Text = "Tên loại";
             // 
@@ -86,7 +86,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 282);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(448, 254);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.txtTenLoai);
             this.Controls.Add(this.lblTenLoai);

@@ -73,7 +73,7 @@
             // 
             // txbName
             // 
-            this.txbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbName.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txbName.Location = new System.Drawing.Point(140, 91);
             this.txbName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbName.Multiline = true;

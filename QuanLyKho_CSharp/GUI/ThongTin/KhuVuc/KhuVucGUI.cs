@@ -34,7 +34,21 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             DGVKhuVuc.MultiSelect = false; // Nếu muốn chỉ chọn 1 row tại 1 thời điểm
             DGVKhuVuc.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
             DGVKhuVuc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giũa
-            
+
+            // Thiết lập lại style cho header và row
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.ForeColor = Color.White;
+            headerStyle.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
+            headerStyle.SelectionBackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.SelectionForeColor = Color.White;
+
+            DGVKhuVuc.ColumnHeadersDefaultCellStyle = headerStyle;
+            DGVKhuVuc.ColumnHeadersHeight = 30;
+            DGVKhuVuc.RowHeadersDefaultCellStyle = headerStyle;
+            DGVKhuVuc.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
+
             listKhuVuc = kvkBUS.getKhuVucKhoList();
         }
 

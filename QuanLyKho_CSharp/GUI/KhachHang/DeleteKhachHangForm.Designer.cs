@@ -63,6 +63,7 @@
             // lbInfo
             // 
             this.lbInfo.AutoEllipsis = true;
+            this.lbInfo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lbInfo.Location = new System.Drawing.Point(-2, 52);
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(465, 49);

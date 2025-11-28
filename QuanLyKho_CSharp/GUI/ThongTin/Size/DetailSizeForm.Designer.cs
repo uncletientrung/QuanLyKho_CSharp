@@ -40,7 +40,7 @@
             // 
             this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnDong.Location = new System.Drawing.Point(53, 254);
             this.btnDong.Name = "btnDong";
@@ -53,19 +53,19 @@
             // txtTenSize
             // 
             this.txtTenSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTenSize.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenSize.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtTenSize.Location = new System.Drawing.Point(53, 114);
             this.txtTenSize.Name = "txtTenSize";
-            this.txtTenSize.Size = new System.Drawing.Size(350, 25);
+            this.txtTenSize.Size = new System.Drawing.Size(350, 27);
             this.txtTenSize.TabIndex = 32;
             // 
             // lblTenSize
             // 
             this.lblTenSize.AutoSize = true;
-            this.lblTenSize.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenSize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblTenSize.Location = new System.Drawing.Point(49, 90);
             this.lblTenSize.Name = "lblTenSize";
-            this.lblTenSize.Size = new System.Drawing.Size(95, 21);
+            this.lblTenSize.Size = new System.Drawing.Size(97, 20);
             this.lblTenSize.TabIndex = 31;
             this.lblTenSize.Text = "Tên chất liệu";
             // 
@@ -86,27 +86,28 @@
             // lblGhiChu
             // 
             this.lblGhiChu.AutoSize = true;
-            this.lblGhiChu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGhiChu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblGhiChu.Location = new System.Drawing.Point(49, 170);
             this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(63, 21);
+            this.lblGhiChu.Size = new System.Drawing.Size(62, 20);
             this.lblGhiChu.TabIndex = 34;
             this.lblGhiChu.Text = "Ghi chú";
             // 
             // txtGhiChu
             // 
             this.txtGhiChu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtGhiChu.Location = new System.Drawing.Point(53, 194);
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(350, 25);
+            this.txtGhiChu.Size = new System.Drawing.Size(350, 27);
             this.txtGhiChu.TabIndex = 35;
             // 
             // DetailSizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 332);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(472, 324);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.lblGhiChu);
             this.Controls.Add(this.btnDong);
