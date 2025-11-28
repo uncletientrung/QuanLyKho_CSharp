@@ -100,10 +100,10 @@
             // 
             // txtSDT
             // 
-            this.txtSDT.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtSDT.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtSDT.Location = new System.Drawing.Point(140, 205);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(262, 29);
+            this.txtSDT.Size = new System.Drawing.Size(262, 27);
             this.txtSDT.TabIndex = 33;
             // 
             // lblEmail
@@ -129,7 +129,7 @@
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtName.Location = new System.Drawing.Point(140, 108);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Multiline = true;
@@ -162,10 +162,10 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtEmail.Location = new System.Drawing.Point(140, 253);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(262, 29);
+            this.txtEmail.Size = new System.Drawing.Size(262, 27);
             this.txtEmail.TabIndex = 42;
             // 
             // UpdateKhachHangForm

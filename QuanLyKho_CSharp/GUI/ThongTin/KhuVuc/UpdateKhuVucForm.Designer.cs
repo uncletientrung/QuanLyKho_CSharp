@@ -46,15 +46,15 @@
             // txtTenKhuVucKho
             // 
             this.txtTenKhuVucKho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTenKhuVucKho.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenKhuVucKho.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtTenKhuVucKho.Location = new System.Drawing.Point(33, 111);
             this.txtTenKhuVucKho.Name = "txtTenKhuVucKho";
-            this.txtTenKhuVucKho.Size = new System.Drawing.Size(350, 25);
+            this.txtTenKhuVucKho.Size = new System.Drawing.Size(350, 27);
             this.txtTenKhuVucKho.TabIndex = 24;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.lblUpdateKVK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -66,11 +66,11 @@
             // 
             this.lblUpdateKVK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblUpdateKVK.AutoSize = true;
-            this.lblUpdateKVK.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpdateKVK.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblUpdateKVK.ForeColor = System.Drawing.Color.White;
-            this.lblUpdateKVK.Location = new System.Drawing.Point(124, 22);
+            this.lblUpdateKVK.Location = new System.Drawing.Point(91, 9);
             this.lblUpdateKVK.Name = "lblUpdateKVK";
-            this.lblUpdateKVK.Size = new System.Drawing.Size(166, 25);
+            this.lblUpdateKVK.Size = new System.Drawing.Size(236, 37);
             this.lblUpdateKVK.TabIndex = 1;
             this.lblUpdateKVK.Text = "Sửa Khu Vực Kho";
             // 
@@ -78,7 +78,7 @@
             // 
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.White;
             this.btnLuu.Location = new System.Drawing.Point(220, 356);
             this.btnLuu.Name = "btnLuu";
@@ -92,7 +92,7 @@
             // 
             this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnDong.Location = new System.Drawing.Point(33, 356);
             this.btnDong.Name = "btnDong";
@@ -105,67 +105,67 @@
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.txtEmail.Location = new System.Drawing.Point(33, 305);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(350, 25);
+            this.txtEmail.Size = new System.Drawing.Size(350, 24);
             this.txtEmail.TabIndex = 30;
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblEmail.Location = new System.Drawing.Point(29, 281);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(48, 21);
+            this.lblEmail.Size = new System.Drawing.Size(47, 20);
             this.lblEmail.TabIndex = 29;
             this.lblEmail.Text = "Email";
             // 
             // txtSoDienThoai
             // 
             this.txtSoDienThoai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSoDienThoai.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.txtSoDienThoai.Location = new System.Drawing.Point(33, 241);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
-            this.txtSoDienThoai.Size = new System.Drawing.Size(350, 25);
+            this.txtSoDienThoai.Size = new System.Drawing.Size(350, 24);
             this.txtSoDienThoai.TabIndex = 28;
             // 
             // lblSoDienThoai
             // 
             this.lblSoDienThoai.AutoSize = true;
-            this.lblSoDienThoai.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoDienThoai.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblSoDienThoai.Location = new System.Drawing.Point(29, 217);
             this.lblSoDienThoai.Name = "lblSoDienThoai";
-            this.lblSoDienThoai.Size = new System.Drawing.Size(101, 21);
+            this.lblSoDienThoai.Size = new System.Drawing.Size(100, 20);
             this.lblSoDienThoai.TabIndex = 27;
             this.lblSoDienThoai.Text = "Số điện thoại";
             // 
             // txtDiaChi
             // 
             this.txtDiaChi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.txtDiaChi.Location = new System.Drawing.Point(33, 175);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(350, 25);
+            this.txtDiaChi.Size = new System.Drawing.Size(350, 24);
             this.txtDiaChi.TabIndex = 26;
             // 
             // lblDiaChi
             // 
             this.lblDiaChi.AutoSize = true;
-            this.lblDiaChi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiaChi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblDiaChi.Location = new System.Drawing.Point(29, 151);
             this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(57, 21);
+            this.lblDiaChi.Size = new System.Drawing.Size(56, 20);
             this.lblDiaChi.TabIndex = 25;
             this.lblDiaChi.Text = "Địa chỉ";
             // 
             // lblTenKhuVucKho
             // 
             this.lblTenKhuVucKho.AutoSize = true;
-            this.lblTenKhuVucKho.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenKhuVucKho.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblTenKhuVucKho.Location = new System.Drawing.Point(29, 86);
             this.lblTenKhuVucKho.Name = "lblTenKhuVucKho";
-            this.lblTenKhuVucKho.Size = new System.Drawing.Size(121, 21);
+            this.lblTenKhuVucKho.Size = new System.Drawing.Size(123, 20);
             this.lblTenKhuVucKho.TabIndex = 23;
             this.lblTenKhuVucKho.Text = "Tên khu vực kho";
             // 
@@ -173,6 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(424, 431);
             this.Controls.Add(this.txtTenKhuVucKho);
             this.Controls.Add(this.panel1);

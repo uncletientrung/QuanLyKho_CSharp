@@ -44,6 +44,20 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
             DGVLoai.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
             DGVLoai.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giữa
 
+            // Thiết lập lại style cho header và row
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.ForeColor = Color.White;
+            headerStyle.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
+            headerStyle.SelectionBackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.SelectionForeColor = Color.White;
+
+            DGVLoai.ColumnHeadersDefaultCellStyle = headerStyle;
+            DGVLoai.ColumnHeadersHeight = 30;
+            DGVLoai.RowHeadersDefaultCellStyle = headerStyle;
+            DGVLoai.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
+
             listLoai = loaiBUS.getLoaiList();
         }
 

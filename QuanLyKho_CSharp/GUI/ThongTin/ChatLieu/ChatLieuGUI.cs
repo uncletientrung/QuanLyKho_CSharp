@@ -41,6 +41,20 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
             DGVChatLieu.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
             DGVChatLieu.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giữa
 
+            // Thiết lập lại style cho header và row
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.ForeColor = Color.White;
+            headerStyle.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
+            headerStyle.SelectionBackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.SelectionForeColor = Color.White;
+
+            DGVChatLieu.ColumnHeadersDefaultCellStyle = headerStyle;
+            DGVChatLieu.ColumnHeadersHeight = 30;
+            DGVChatLieu.RowHeadersDefaultCellStyle = headerStyle;
+            DGVChatLieu.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
+
             listCL = clBUS.getChatLieuList();
         }
 

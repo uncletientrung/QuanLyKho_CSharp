@@ -39,6 +39,20 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
             DGVNhaCungCap.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
             DGVNhaCungCap.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giũa
 
+            // Thiết lập lại style cho header và row
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.ForeColor = Color.White;
+            headerStyle.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
+            headerStyle.SelectionBackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.SelectionForeColor = Color.White;
+
+            DGVNhaCungCap.ColumnHeadersDefaultCellStyle = headerStyle;
+            DGVNhaCungCap.ColumnHeadersHeight = 30;
+            DGVNhaCungCap.RowHeadersDefaultCellStyle = headerStyle;
+            DGVNhaCungCap.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
+
             listNCC = nccBUS.getListNCC();
         }
 

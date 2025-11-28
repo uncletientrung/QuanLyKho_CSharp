@@ -38,9 +38,9 @@
             // 
             this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnDong.Location = new System.Drawing.Point(53, 198);
+            this.btnDong.Location = new System.Drawing.Point(53, 186);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(350, 35);
             this.btnDong.TabIndex = 29;
@@ -51,20 +51,20 @@
             // txtTenChatLieu
             // 
             this.txtTenChatLieu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTenChatLieu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenChatLieu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.txtTenChatLieu.Location = new System.Drawing.Point(53, 125);
             this.txtTenChatLieu.Name = "txtTenChatLieu";
-            this.txtTenChatLieu.Size = new System.Drawing.Size(350, 25);
+            this.txtTenChatLieu.Size = new System.Drawing.Size(350, 27);
             this.txtTenChatLieu.TabIndex = 22;
             this.txtTenChatLieu.TextChanged += new System.EventHandler(this.txtTenChatLieu_TextChanged);
             // 
             // lblTenChatLieu
             // 
             this.lblTenChatLieu.AutoSize = true;
-            this.lblTenChatLieu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenChatLieu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblTenChatLieu.Location = new System.Drawing.Point(49, 100);
             this.lblTenChatLieu.Name = "lblTenChatLieu";
-            this.lblTenChatLieu.Size = new System.Drawing.Size(95, 21);
+            this.lblTenChatLieu.Size = new System.Drawing.Size(97, 20);
             this.lblTenChatLieu.TabIndex = 21;
             this.lblTenChatLieu.Text = "Tên chất liệu";
             // 
@@ -86,7 +86,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 282);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(448, 270);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.txtTenChatLieu);
             this.Controls.Add(this.lblTenChatLieu);

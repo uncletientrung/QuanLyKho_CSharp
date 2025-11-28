@@ -63,6 +63,7 @@
             // lbInfo
             // 
             this.lbInfo.AutoEllipsis = true;
+            this.lbInfo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lbInfo.Location = new System.Drawing.Point(-2, 52);
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(465, 49);
@@ -88,6 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(459, 142);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);

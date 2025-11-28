@@ -42,15 +42,15 @@
             // txtTenSize
             // 
             this.txtTenSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTenSize.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenSize.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtTenSize.Location = new System.Drawing.Point(33, 120);
             this.txtTenSize.Name = "txtTenSize";
-            this.txtTenSize.Size = new System.Drawing.Size(350, 25);
+            this.txtTenSize.Size = new System.Drawing.Size(350, 27);
             this.txtTenSize.TabIndex = 35;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.lblUpdateSize);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -62,11 +62,11 @@
             // 
             this.lblUpdateSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblUpdateSize.AutoSize = true;
-            this.lblUpdateSize.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpdateSize.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblUpdateSize.ForeColor = System.Drawing.Color.White;
-            this.lblUpdateSize.Location = new System.Drawing.Point(162, 22);
+            this.lblUpdateSize.Location = new System.Drawing.Point(140, 9);
             this.lblUpdateSize.Name = "lblUpdateSize";
-            this.lblUpdateSize.Size = new System.Drawing.Size(86, 25);
+            this.lblUpdateSize.Size = new System.Drawing.Size(123, 37);
             this.lblUpdateSize.TabIndex = 1;
             this.lblUpdateSize.Text = "Sửa Size";
             // 
@@ -74,7 +74,7 @@
             // 
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.White;
             this.btnLuu.Location = new System.Drawing.Point(220, 255);
             this.btnLuu.Name = "btnLuu";
@@ -88,7 +88,7 @@
             // 
             this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnDong.Location = new System.Drawing.Point(33, 255);
             this.btnDong.Name = "btnDong";
@@ -101,37 +101,38 @@
             // lblTenSize
             // 
             this.lblTenSize.AutoSize = true;
-            this.lblTenSize.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenSize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblTenSize.Location = new System.Drawing.Point(29, 96);
             this.lblTenSize.Name = "lblTenSize";
-            this.lblTenSize.Size = new System.Drawing.Size(63, 21);
+            this.lblTenSize.Size = new System.Drawing.Size(64, 20);
             this.lblTenSize.TabIndex = 34;
             this.lblTenSize.Text = "Tên size";
             // 
             // lblGhiChu
             // 
             this.lblGhiChu.AutoSize = true;
-            this.lblGhiChu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGhiChu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblGhiChu.Location = new System.Drawing.Point(29, 167);
             this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(63, 21);
+            this.lblGhiChu.Size = new System.Drawing.Size(62, 20);
             this.lblGhiChu.TabIndex = 38;
             this.lblGhiChu.Text = "Ghi chú";
             // 
             // txtGhiChu
             // 
             this.txtGhiChu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtGhiChu.Location = new System.Drawing.Point(33, 191);
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(350, 25);
+            this.txtGhiChu.Size = new System.Drawing.Size(350, 27);
             this.txtGhiChu.TabIndex = 39;
             // 
             // UpdateSizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 328);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(424, 321);
             this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.lblGhiChu);
             this.Controls.Add(this.txtTenSize);
