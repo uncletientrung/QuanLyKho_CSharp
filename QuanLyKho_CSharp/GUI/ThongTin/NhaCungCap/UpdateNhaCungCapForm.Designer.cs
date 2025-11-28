@@ -79,11 +79,11 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
+            this.btnLuu.BackColor = System.Drawing.Color.White;
             this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(220, 355);
+            this.btnLuu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnLuu.Location = new System.Drawing.Point(33, 355);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(163, 35);
             this.btnLuu.TabIndex = 21;
@@ -93,11 +93,11 @@
             // 
             // btnDong
             // 
-            this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
+            this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnDong.Location = new System.Drawing.Point(33, 355);
+            this.btnDong.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDong.Location = new System.Drawing.Point(220, 355);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(163, 35);
             this.btnDong.TabIndex = 20;

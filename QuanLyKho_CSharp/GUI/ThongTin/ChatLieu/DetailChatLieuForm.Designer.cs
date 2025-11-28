@@ -36,11 +36,11 @@
             // 
             // btnDong
             // 
-            this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(144)))), ((int)(((byte)(226)))));
+            this.btnDong.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnDong.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnDong.Location = new System.Drawing.Point(53, 186);
+            this.btnDong.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDong.Location = new System.Drawing.Point(53, 179);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(350, 35);
             this.btnDong.TabIndex = 29;
@@ -87,7 +87,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(448, 270);
+            this.ClientSize = new System.Drawing.Size(448, 251);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.txtTenChatLieu);
             this.Controls.Add(this.lblTenChatLieu);
