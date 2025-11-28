@@ -31,35 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhieuXuatGUI));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnXuat = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtNhanVienPN = new System.Windows.Forms.Label();
-            this.txtSearchNV = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtGiaBegin = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtSearchKH = new System.Windows.Forms.TextBox();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.grBoxTimKiem = new System.Windows.Forms.GroupBox();
-            this.tlPheaderLeft = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.dateTimeEnd = new System.Windows.Forms.DateTimePicker();
-            this.txtTimeEnd = new System.Windows.Forms.Label();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.dateTimeBegin = new System.Windows.Forms.DateTimePicker();
-            this.txtTimeBegin = new System.Windows.Forms.Label();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtGiaEnd = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlDGV = new System.Windows.Forms.Panel();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbTotalStatus = new System.Windows.Forms.Panel();
+            this.lbTotal = new System.Windows.Forms.Label();
             this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.DGVPhieuXuat = new System.Windows.Forms.DataGridView();
             this.mapx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,472 +52,31 @@
             this.detail = new System.Windows.Forms.DataGridViewImageColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.panelHeader.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.grBoxTimKiem.SuspendLayout();
-            this.tlPheaderLeft.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.artanPanel4 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.artanButton4 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.rjDatePicker2 = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
+            this.rjDatePicker1 = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
+            this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.txSearch = new System.Windows.Forms.TextBox();
+            this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.lbHide = new System.Windows.Forms.Label();
+            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.artanPanel2 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.artanButton2 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.pnlDGV.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.lbTotalStatus.SuspendLayout();
             this.artanPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhieuXuat)).BeginInit();
+            this.artanPanel4.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            this.artanPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(789, 108);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dialogHoanHang_CellContentClick);
-            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnThem.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnThem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnThem.Location = new System.Drawing.Point(15, 41);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 18, 2);
-            this.btnThem.MinimumSize = new System.Drawing.Size(79, 47);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(79, 47);
-            this.btnThem.TabIndex = 0;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // btnXuat
-            // 
-            this.btnXuat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnXuat.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnXuat.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnXuat.Location = new System.Drawing.Point(125, 41);
-            this.btnXuat.Margin = new System.Windows.Forms.Padding(18, 2, 2, 2);
-            this.btnXuat.MinimumSize = new System.Drawing.Size(79, 47);
-            this.btnXuat.Name = "btnXuat";
-            this.btnXuat.Size = new System.Drawing.Size(79, 47);
-            this.btnXuat.TabIndex = 1;
-            this.btnXuat.Text = "Xuất";
-            this.btnXuat.UseVisualStyleBackColor = true;
-            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnThem, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnXuat, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(874, 2);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(215, 104);
-            this.tableLayoutPanel1.TabIndex = 1;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
-            // 
-            // txtNhanVienPN
-            // 
-            this.txtNhanVienPN.AutoSize = true;
-            this.txtNhanVienPN.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtNhanVienPN.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.txtNhanVienPN.Location = new System.Drawing.Point(102, 0);
-            this.txtNhanVienPN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtNhanVienPN.Name = "txtNhanVienPN";
-            this.txtNhanVienPN.Size = new System.Drawing.Size(80, 33);
-            this.txtNhanVienPN.TabIndex = 1;
-            this.txtNhanVienPN.Text = "Nhân viên";
-            this.txtNhanVienPN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtSearchNV
-            // 
-            this.txtSearchNV.BackColor = System.Drawing.Color.White;
-            this.txtSearchNV.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearchNV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearchNV.Font = new System.Drawing.Font("Segoe UI", 12.7F);
-            this.txtSearchNV.Location = new System.Drawing.Point(0, 0);
-            this.txtSearchNV.Margin = new System.Windows.Forms.Padding(0);
-            this.txtSearchNV.Name = "txtSearchNV";
-            this.txtSearchNV.Size = new System.Drawing.Size(181, 23);
-            this.txtSearchNV.TabIndex = 0;
-            this.txtSearchNV.WordWrap = false;
-            this.txtSearchNV.TextChanged += new System.EventHandler(this.txtSearchNV_TextChanged);
-            this.txtSearchNV.Enter += new System.EventHandler(this.txtSearchNV_Enter);
-            this.txtSearchNV.Leave += new System.EventHandler(this.txtSearchNV_Leave);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.txtSearchNV);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(186, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(181, 19);
-            this.panel2.TabIndex = 0;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txtNhanVienPN, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(10, 9);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(369, 33);
-            this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // txtGiaBegin
-            // 
-            this.txtGiaBegin.AutoSize = true;
-            this.txtGiaBegin.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtGiaBegin.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.txtGiaBegin.Location = new System.Drawing.Point(69, 0);
-            this.txtGiaBegin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtGiaBegin.Name = "txtGiaBegin";
-            this.txtGiaBegin.Size = new System.Drawing.Size(52, 33);
-            this.txtGiaBegin.TabIndex = 2;
-            this.txtGiaBegin.Text = "Giá từ";
-            this.txtGiaBegin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Location = new System.Drawing.Point(125, 7);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 7, 2, 2);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 27);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.txtGiaBegin, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.numericUpDown1, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(383, 46);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(247, 33);
-            this.tableLayoutPanel5.TabIndex = 4;
-            // 
-            // txtSearchKH
-            // 
-            this.txtSearchKH.BackColor = System.Drawing.Color.White;
-            this.txtSearchKH.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearchKH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearchKH.Font = new System.Drawing.Font("Segoe UI", 12.7F);
-            this.txtSearchKH.Location = new System.Drawing.Point(0, 0);
-            this.txtSearchKH.Margin = new System.Windows.Forms.Padding(0);
-            this.txtSearchKH.Name = "txtSearchKH";
-            this.txtSearchKH.Size = new System.Drawing.Size(181, 23);
-            this.txtSearchKH.TabIndex = 0;
-            this.txtSearchKH.TextChanged += new System.EventHandler(this.txtSearchKH_TextChanged);
-            this.txtSearchKH.Enter += new System.EventHandler(this.txtSearchKH_Enter);
-            this.txtSearchKH.Leave += new System.EventHandler(this.txtSearchKH_Leave);
-            // 
-            // panelHeader
-            // 
-            this.panelHeader.BackColor = System.Drawing.Color.White;
-            this.panelHeader.Controls.Add(this.dataGridView1);
-            this.panelHeader.Controls.Add(this.tableLayoutPanel2);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(5, 5);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Padding = new System.Windows.Forms.Padding(12, 12, 0, 12);
-            this.panelHeader.Size = new System.Drawing.Size(1103, 132);
-            this.panelHeader.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.grBoxTimKiem, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1091, 108);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // grBoxTimKiem
-            // 
-            this.grBoxTimKiem.Controls.Add(this.tlPheaderLeft);
-            this.grBoxTimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grBoxTimKiem.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.grBoxTimKiem.Location = new System.Drawing.Point(0, 0);
-            this.grBoxTimKiem.Margin = new System.Windows.Forms.Padding(0, 0, 22, 0);
-            this.grBoxTimKiem.Name = "grBoxTimKiem";
-            this.grBoxTimKiem.Padding = new System.Windows.Forms.Padding(0);
-            this.grBoxTimKiem.Size = new System.Drawing.Size(850, 108);
-            this.grBoxTimKiem.TabIndex = 1;
-            this.grBoxTimKiem.TabStop = false;
-            this.grBoxTimKiem.Text = "Tìm kiếm";
-            this.grBoxTimKiem.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // tlPheaderLeft
-            // 
-            this.tlPheaderLeft.BackColor = System.Drawing.Color.Transparent;
-            this.tlPheaderLeft.ColumnCount = 3;
-            this.tlPheaderLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.78114F));
-            this.tlPheaderLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.13468F));
-            this.tlPheaderLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlPheaderLeft.Controls.Add(this.tableLayoutPanel8, 2, 0);
-            this.tlPheaderLeft.Controls.Add(this.tableLayoutPanel7, 1, 0);
-            this.tlPheaderLeft.Controls.Add(this.tableLayoutPanel6, 2, 1);
-            this.tlPheaderLeft.Controls.Add(this.tableLayoutPanel4, 0, 1);
-            this.tlPheaderLeft.Controls.Add(this.tableLayoutPanel5, 1, 1);
-            this.tlPheaderLeft.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tlPheaderLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlPheaderLeft.Location = new System.Drawing.Point(0, 20);
-            this.tlPheaderLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.tlPheaderLeft.Name = "tlPheaderLeft";
-            this.tlPheaderLeft.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.tlPheaderLeft.RowCount = 2;
-            this.tlPheaderLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlPheaderLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlPheaderLeft.Size = new System.Drawing.Size(850, 88);
-            this.tlPheaderLeft.TabIndex = 0;
-            this.tlPheaderLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.dateTimeEnd, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.txtTimeEnd, 0, 0);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(634, 9);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(206, 33);
-            this.tableLayoutPanel8.TabIndex = 3;
-            // 
-            // dateTimeEnd
-            // 
-            this.dateTimeEnd.CalendarFont = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.dateTimeEnd.CustomFormat = "dd/MM/yyyy";
-            this.dateTimeEnd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimeEnd.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.dateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeEnd.Location = new System.Drawing.Point(105, 7);
-            this.dateTimeEnd.Margin = new System.Windows.Forms.Padding(2, 7, 2, 2);
-            this.dateTimeEnd.Name = "dateTimeEnd";
-            this.dateTimeEnd.Size = new System.Drawing.Size(99, 27);
-            this.dateTimeEnd.TabIndex = 3;
-            this.dateTimeEnd.ValueChanged += new System.EventHandler(this.dateTimeEnd_ValueChanged);
-            // 
-            // txtTimeEnd
-            // 
-            this.txtTimeEnd.AutoSize = true;
-            this.txtTimeEnd.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtTimeEnd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.txtTimeEnd.Location = new System.Drawing.Point(66, 0);
-            this.txtTimeEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtTimeEnd.Name = "txtTimeEnd";
-            this.txtTimeEnd.Size = new System.Drawing.Size(35, 33);
-            this.txtTimeEnd.TabIndex = 3;
-            this.txtTimeEnd.Text = "đến";
-            this.txtTimeEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.dateTimeBegin, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.txtTimeBegin, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(383, 9);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(247, 33);
-            this.tableLayoutPanel7.TabIndex = 2;
-            // 
-            // dateTimeBegin
-            // 
-            this.dateTimeBegin.CalendarFont = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.dateTimeBegin.CustomFormat = "dd/MM/yyyy";
-            this.dateTimeBegin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimeBegin.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.dateTimeBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeBegin.Location = new System.Drawing.Point(125, 7);
-            this.dateTimeBegin.Margin = new System.Windows.Forms.Padding(2, 7, 2, 2);
-            this.dateTimeBegin.Name = "dateTimeBegin";
-            this.dateTimeBegin.Size = new System.Drawing.Size(120, 27);
-            this.dateTimeBegin.TabIndex = 2;
-            this.dateTimeBegin.Value = new System.DateTime(2025, 9, 18, 0, 0, 0, 0);
-            this.dateTimeBegin.ValueChanged += new System.EventHandler(this.dateTimeBegin_ValueChanged);
-            // 
-            // txtTimeBegin
-            // 
-            this.txtTimeBegin.AutoSize = true;
-            this.txtTimeBegin.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtTimeBegin.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.txtTimeBegin.Location = new System.Drawing.Point(55, 0);
-            this.txtTimeBegin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtTimeBegin.Name = "txtTimeBegin";
-            this.txtTimeBegin.Size = new System.Drawing.Size(66, 33);
-            this.txtTimeBegin.TabIndex = 2;
-            this.txtTimeBegin.Text = "Từ ngày";
-            this.txtTimeBegin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.txtGiaEnd, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.numericUpDown2, 1, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(634, 46);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 33);
-            this.tableLayoutPanel6.TabIndex = 5;
-            // 
-            // txtGiaEnd
-            // 
-            this.txtGiaEnd.AutoSize = true;
-            this.txtGiaEnd.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtGiaEnd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.txtGiaEnd.Location = new System.Drawing.Point(66, 0);
-            this.txtGiaEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtGiaEnd.Name = "txtGiaEnd";
-            this.txtGiaEnd.Size = new System.Drawing.Size(35, 33);
-            this.txtGiaEnd.TabIndex = 2;
-            this.txtGiaEnd.Text = "đến";
-            this.txtGiaEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Location = new System.Drawing.Point(105, 7);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2, 7, 2, 2);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(99, 27);
-            this.numericUpDown2.TabIndex = 4;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.panel5, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 46);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(369, 33);
-            this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.txtSearchKH);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(186, 7);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 7, 2, 7);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(181, 19);
-            this.panel5.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(91, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 33);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Khách hàng";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnlDGV
             // 
@@ -548,6 +87,137 @@
             this.pnlDGV.Name = "pnlDGV";
             this.pnlDGV.Size = new System.Drawing.Size(1103, 414);
             this.pnlDGV.TabIndex = 13;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.White;
+            this.pnlTop.Controls.Add(this.artanPanel2);
+            this.pnlTop.Controls.Add(this.btnXuatExcel);
+            this.pnlTop.Controls.Add(this.artanPanel4);
+            this.pnlTop.Controls.Add(this.rjDatePicker2);
+            this.pnlTop.Controls.Add(this.rjDatePicker1);
+            this.pnlTop.Controls.Add(this.flowLayoutPanel2);
+            this.pnlTop.Controls.Add(this.flowLayoutPanel1);
+            this.pnlTop.Controls.Add(this.lbTotalStatus);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(5, 5);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1103, 132);
+            this.pnlTop.TabIndex = 14;
+            this.pnlTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTop_Paint);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.btnThem);
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1031, 84);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(49, 43);
+            this.flowLayoutPanel2.TabIndex = 17;
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(6, 3);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnThem.Size = new System.Drawing.Size(40, 40);
+            this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnThem.StateCommon.Border.Rounding = 10;
+            this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnThem.TabIndex = 10;
+            this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
+            this.btnThem.Values.Text = "";
+            // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Location = new System.Drawing.Point(964, 36);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnXuatExcel.Size = new System.Drawing.Size(116, 40);
+            this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnXuatExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnXuatExcel.StateCommon.Border.Rounding = 10;
+            this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold);
+            this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnXuatExcel.TabIndex = 12;
+            this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
+            this.btnXuatExcel.Values.Text = "Xuất Excel";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.lbHide);
+            this.flowLayoutPanel1.Controls.Add(this.kryptonComboBox1);
+            this.flowLayoutPanel1.Controls.Add(this.pnlSearch);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 59);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(421, 70);
+            this.flowLayoutPanel1.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(240, 29);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Danh sách phiếu xuất";
+            // 
+            // lbTotalStatus
+            // 
+            this.lbTotalStatus.Controls.Add(this.lbTotal);
+            this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotalStatus.Location = new System.Drawing.Point(0, 0);
+            this.lbTotalStatus.Name = "lbTotalStatus";
+            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 30);
+            this.lbTotalStatus.TabIndex = 14;
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotal.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotal.ForeColor = System.Drawing.Color.Black;
+            this.lbTotal.Location = new System.Drawing.Point(0, 0);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(146, 18);
+            this.lbTotal.TabIndex = 15;
+            this.lbTotal.Text = "Tổng số phiếu xuất: x";
             // 
             // artanPanel1
             // 
@@ -616,7 +286,7 @@
             this.DGVPhieuXuat.RowTemplate.Height = 30;
             this.DGVPhieuXuat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVPhieuXuat.Size = new System.Drawing.Size(1093, 397);
-            this.DGVPhieuXuat.TabIndex = 0;
+            this.DGVPhieuXuat.TabIndex = 1;
             // 
             // mapx
             // 
@@ -703,6 +373,202 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 5;
             // 
+            // artanPanel4
+            // 
+            this.artanPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel4.BorderRadius = 30;
+            this.artanPanel4.Controls.Add(this.textBox3);
+            this.artanPanel4.Controls.Add(this.artanButton4);
+            this.artanPanel4.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel4.GradientAngle = 90F;
+            this.artanPanel4.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel4.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel4.Location = new System.Drawing.Point(453, 92);
+            this.artanPanel4.Name = "artanPanel4";
+            this.artanPanel4.Size = new System.Drawing.Size(120, 37);
+            this.artanPanel4.TabIndex = 16;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.White;
+            this.textBox3.Location = new System.Drawing.Point(39, 6);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(63, 23);
+            this.textBox3.TabIndex = 13;
+            this.textBox3.Text = "Tổng tiền từ";
+            // 
+            // artanButton4
+            // 
+            this.artanButton4.BackColor = System.Drawing.Color.White;
+            this.artanButton4.BackgroundColor = System.Drawing.Color.White;
+            this.artanButton4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton4.BorderRadius = 30;
+            this.artanButton4.BorderSize = 0;
+            this.artanButton4.FlatAppearance.BorderSize = 0;
+            this.artanButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton4.ForeColor = System.Drawing.Color.White;
+            this.artanButton4.Image = ((System.Drawing.Image)(resources.GetObject("artanButton4.Image")));
+            this.artanButton4.Location = new System.Drawing.Point(3, 3);
+            this.artanButton4.Name = "artanButton4";
+            this.artanButton4.Size = new System.Drawing.Size(30, 30);
+            this.artanButton4.TabIndex = 12;
+            this.artanButton4.TextColor = System.Drawing.Color.White;
+            this.artanButton4.UseVisualStyleBackColor = false;
+            // 
+            // rjDatePicker2
+            // 
+            this.rjDatePicker2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjDatePicker2.BorderSize = 0;
+            this.rjDatePicker2.CustomFormat = "dd/MM/yyyy";
+            this.rjDatePicker2.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjDatePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rjDatePicker2.Location = new System.Drawing.Point(862, 91);
+            this.rjDatePicker2.MinimumSize = new System.Drawing.Size(100, 35);
+            this.rjDatePicker2.Name = "rjDatePicker2";
+            this.rjDatePicker2.Size = new System.Drawing.Size(113, 35);
+            this.rjDatePicker2.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.rjDatePicker2.TabIndex = 18;
+            this.rjDatePicker2.TextColor = System.Drawing.Color.White;
+            // 
+            // rjDatePicker1
+            // 
+            this.rjDatePicker1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjDatePicker1.BorderSize = 0;
+            this.rjDatePicker1.CustomFormat = "dd/MM/yyyy";
+            this.rjDatePicker1.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjDatePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rjDatePicker1.Location = new System.Drawing.Point(742, 93);
+            this.rjDatePicker1.MinimumSize = new System.Drawing.Size(100, 35);
+            this.rjDatePicker1.Name = "rjDatePicker1";
+            this.rjDatePicker1.Size = new System.Drawing.Size(114, 35);
+            this.rjDatePicker1.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.rjDatePicker1.TabIndex = 1;
+            this.rjDatePicker1.TextColor = System.Drawing.Color.White;
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.BorderRadius = 30;
+            this.pnlSearch.Controls.Add(this.txSearch);
+            this.pnlSearch.Controls.Add(this.artanButton1);
+            this.pnlSearch.ForeColor = System.Drawing.Color.Black;
+            this.pnlSearch.GradientAngle = 90F;
+            this.pnlSearch.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.Location = new System.Drawing.Point(151, 32);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(261, 37);
+            this.pnlSearch.TabIndex = 11;
+            // 
+            // txSearch
+            // 
+            this.txSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.txSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txSearch.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSearch.ForeColor = System.Drawing.Color.White;
+            this.txSearch.Location = new System.Drawing.Point(39, 6);
+            this.txSearch.Name = "txSearch";
+            this.txSearch.Size = new System.Drawing.Size(204, 23);
+            this.txSearch.TabIndex = 13;
+            // 
+            // artanButton1
+            // 
+            this.artanButton1.BackColor = System.Drawing.Color.White;
+            this.artanButton1.BackgroundColor = System.Drawing.Color.White;
+            this.artanButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton1.BorderRadius = 30;
+            this.artanButton1.BorderSize = 0;
+            this.artanButton1.FlatAppearance.BorderSize = 0;
+            this.artanButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton1.ForeColor = System.Drawing.Color.White;
+            this.artanButton1.Image = ((System.Drawing.Image)(resources.GetObject("artanButton1.Image")));
+            this.artanButton1.Location = new System.Drawing.Point(3, 3);
+            this.artanButton1.Name = "artanButton1";
+            this.artanButton1.Size = new System.Drawing.Size(30, 30);
+            this.artanButton1.TabIndex = 12;
+            this.artanButton1.TextColor = System.Drawing.Color.White;
+            this.artanButton1.UseVisualStyleBackColor = false;
+            // 
+            // lbHide
+            // 
+            this.lbHide.Location = new System.Drawing.Point(249, 0);
+            this.lbHide.Name = "lbHide";
+            this.lbHide.Size = new System.Drawing.Size(145, 20);
+            this.lbHide.TabIndex = 15;
+            // 
+            // kryptonComboBox1
+            // 
+            this.kryptonComboBox1.DropDownWidth = 115;
+            this.kryptonComboBox1.Location = new System.Drawing.Point(5, 34);
+            this.kryptonComboBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.kryptonComboBox1.MinimumSize = new System.Drawing.Size(0, 35);
+            this.kryptonComboBox1.Name = "kryptonComboBox1";
+            this.kryptonComboBox1.Size = new System.Drawing.Size(138, 37);
+            this.kryptonComboBox1.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.kryptonComboBox1.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.kryptonComboBox1.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.kryptonComboBox1.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonComboBox1.StateCommon.ComboBox.Border.Rounding = 20;
+            this.kryptonComboBox1.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.kryptonComboBox1.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonComboBox1.TabIndex = 19;
+            this.kryptonComboBox1.Text = "comboBox";
+            // 
+            // artanPanel2
+            // 
+            this.artanPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel2.BorderRadius = 30;
+            this.artanPanel2.Controls.Add(this.textBox1);
+            this.artanPanel2.Controls.Add(this.artanButton2);
+            this.artanPanel2.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel2.GradientAngle = 90F;
+            this.artanPanel2.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel2.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel2.Location = new System.Drawing.Point(591, 92);
+            this.artanPanel2.Name = "artanPanel2";
+            this.artanPanel2.Size = new System.Drawing.Size(120, 37);
+            this.artanPanel2.TabIndex = 17;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(39, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(39, 23);
+            this.textBox1.TabIndex = 13;
+            // 
+            // artanButton2
+            // 
+            this.artanButton2.BackColor = System.Drawing.Color.White;
+            this.artanButton2.BackgroundColor = System.Drawing.Color.White;
+            this.artanButton2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton2.BorderRadius = 30;
+            this.artanButton2.BorderSize = 0;
+            this.artanButton2.FlatAppearance.BorderSize = 0;
+            this.artanButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton2.ForeColor = System.Drawing.Color.White;
+            this.artanButton2.Image = ((System.Drawing.Image)(resources.GetObject("artanButton2.Image")));
+            this.artanButton2.Location = new System.Drawing.Point(3, 3);
+            this.artanButton2.Name = "artanButton2";
+            this.artanButton2.Size = new System.Drawing.Size(30, 30);
+            this.artanButton2.TabIndex = 12;
+            this.artanButton2.TextColor = System.Drawing.Color.White;
+            this.artanButton2.UseVisualStyleBackColor = false;
+            // 
             // PhieuXuatGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -710,75 +576,51 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);
             this.Controls.Add(this.pnlDGV);
-            this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.pnlTop);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PhieuXuatGUI";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Load += new System.EventHandler(this.PhieuXuat_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.panelHeader.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.grBoxTimKiem.ResumeLayout(false);
-            this.tlPheaderLeft.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel8.PerformLayout();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.pnlDGV.ResumeLayout(false);
+            this.pnlTop.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.lbTotalStatus.ResumeLayout(false);
+            this.lbTotalStatus.PerformLayout();
             this.artanPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhieuXuat)).EndInit();
+            this.artanPanel4.ResumeLayout(false);
+            this.artanPanel4.PerformLayout();
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            this.artanPanel2.ResumeLayout(false);
+            this.artanPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnXuat;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label txtNhanVienPN;
-        private System.Windows.Forms.TextBox txtSearchNV;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label txtGiaBegin;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox txtSearchKH;
-        private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.GroupBox grBoxTimKiem;
-        private System.Windows.Forms.TableLayoutPanel tlPheaderLeft;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.DateTimePicker dateTimeEnd;
-        private System.Windows.Forms.Label txtTimeEnd;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.DateTimePicker dateTimeBegin;
-        private System.Windows.Forms.Label txtTimeBegin;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Label txtGiaEnd;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlDGV;
         private Helper.component.ArtanPanel artanPanel1;
+        private Helper.component.RJDatePicker rjDatePicker1;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnThem;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnXuatExcel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private Helper.component.ArtanPanel pnlSearch;
+        private System.Windows.Forms.TextBox txSearch;
+        private Helper.component.ArtanButton artanButton1;
+        private System.Windows.Forms.Panel lbTotalStatus;
+        private System.Windows.Forms.Label lbTotal;
+        private Helper.component.RJDatePicker rjDatePicker2;
+        private Helper.component.ArtanPanel artanPanel4;
+        private System.Windows.Forms.TextBox textBox3;
+        private Helper.component.ArtanButton artanButton4;
         private System.Windows.Forms.DataGridView DGVPhieuXuat;
         private System.Windows.Forms.DataGridViewTextBoxColumn mapx;
         private System.Windows.Forms.DataGridViewTextBoxColumn nv;
@@ -790,5 +632,10 @@
         private System.Windows.Forms.DataGridViewImageColumn detail;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn remove;
+        private System.Windows.Forms.Label lbHide;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private Helper.component.ArtanPanel artanPanel2;
+        private System.Windows.Forms.TextBox textBox1;
+        private Helper.component.ArtanButton artanButton2;
     }
 }

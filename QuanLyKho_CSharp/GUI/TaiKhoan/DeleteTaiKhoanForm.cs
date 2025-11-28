@@ -20,6 +20,8 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         {
             InitializeComponent();
             tk = _tk;
+            string name = tk.Tendangnhap.ToString();
+            lbInfo.Text = $"Bạn có chắc chắn muốn xóa {name} không?";
         }
 
         private void DeleteTaiKhoanForm_Load(object sender, EventArgs e)

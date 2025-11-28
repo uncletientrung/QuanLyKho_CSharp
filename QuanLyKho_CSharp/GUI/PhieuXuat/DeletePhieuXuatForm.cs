@@ -1,31 +1,23 @@
-﻿namespace QuanLyKho_CSharp.GUI.TaiKhoan
+﻿using QuanLyKho.BUS;
+using QuanLyKho.DTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace QuanLyKho_CSharp.GUI.PhieuXuat
 {
-    partial class DeleteTaiKhoanForm
+    internal class DeletePhieuXuatForm : Form
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private PhieuXuatDTO px;
+        private PhieuXuatBUS pxBUS;
+        private Button btnClose;
+        private Button btnDelete;
+        private Label lbInfo;
+        private Label label1;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.btnClose = new System.Windows.Forms.Button();
@@ -41,7 +33,7 @@
             this.btnClose.Location = new System.Drawing.Point(247, 104);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(106, 31);
-            this.btnClose.TabIndex = 18;
+            this.btnClose.TabIndex = 22;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -55,7 +47,7 @@
             this.btnDelete.Location = new System.Drawing.Point(96, 104);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(106, 31);
-            this.btnDelete.TabIndex = 17;
+            this.btnDelete.TabIndex = 21;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -66,9 +58,10 @@
             this.lbInfo.Location = new System.Drawing.Point(-2, 52);
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(465, 49);
-            this.lbInfo.TabIndex = 16;
+            this.lbInfo.TabIndex = 20;
             this.lbInfo.Text = "Bạn có chắc chắn muốn xóa x không?";
             this.lbInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbInfo.Click += new System.EventHandler(this.lbInfo_Click);
             // 
             // label1
             // 
@@ -78,14 +71,12 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(461, 44);
-            this.label1.TabIndex = 15;
+            this.label1.TabIndex = 19;
             this.label1.Text = "Xác Nhận";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // DeleteTaiKhoanForm
+            // DeletePhieuXuatForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(459, 142);
             this.Controls.Add(this.btnClose);
@@ -93,21 +84,33 @@
             this.Controls.Add(this.lbInfo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "DeleteTaiKhoanForm";
+            this.Name = "DeletePhieuXuatForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.DeleteTaiKhoanForm_Load);
             this.ResumeLayout(false);
 
         }
 
-        #endregion
+        public DeletePhieuXuatForm(PhieuXuatDTO _px)
+        {
+            InitializeComponent();
+            px = _px;
+            string name = px.Maphieu.ToString();
+            lbInfo.Text = $"Bạn có chắc chắn muốn xóa mã phiếu {name} không?";
+        }
+        private void lbInfo_Click(object sender, EventArgs e)
+        {
 
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Label lbInfo;
-        private System.Windows.Forms.Label label1;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            pxBUS.removePhieuXuat(px.Maphieu);
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

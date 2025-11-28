@@ -62,8 +62,6 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         {
         }
 
-       
-
         
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -131,7 +129,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             }
             if (DGVTaiKhoan.Columns[e.ColumnIndex].Name == "remove")
             {
-                DetailTaiKhoanForm deleteTk = new DetailTaiKhoanForm(TaiKhoanDuocChon);
+                DeleteTaiKhoanForm deleteTk = new DeleteTaiKhoanForm(TaiKhoanDuocChon);
                 deleteTk.ShowDialog();
                 if (deleteTk.DialogResult == DialogResult.OK)
                 {

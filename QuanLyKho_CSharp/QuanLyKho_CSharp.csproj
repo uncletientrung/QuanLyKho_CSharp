@@ -329,6 +329,9 @@
     <Compile Include="GUI\PhieuXuat\AddPhieuXuatForm.Designer.cs">
       <DependentUpon>AddPhieuXuatForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PhieuXuat\DeletePhieuXuatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\PhieuXuat\DetailPhieuXuatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -626,6 +629,12 @@
     <Compile Include="Helper\component\CustomPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Helper\component\RJCombobox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helper\component\RJDatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Helper\component\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -742,6 +751,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuXuat\AddPhieuXuatForm.resx">
       <DependentUpon>AddPhieuXuatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhieuXuat\DeletePhieuXuatForm.resx">
+      <DependentUpon>DeletePhieuXuatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuXuat\DetailPhieuXuatForm.resx">
       <DependentUpon>DetailPhieuXuatForm.cs</DependentUpon>
@@ -960,6 +972,7 @@
     <Content Include="images\icon\account.png" />
     <Content Include="images\icon\area.png" />
     <Content Include="images\icon\avatar.png" />
+    <Content Include="images\icon\calendarWhite.png" />
     <Content Include="images\icon\catalog.png" />
     <Content Include="images\icon\check.png" />
     <Content Include="images\icon\customer.png" />
@@ -980,6 +993,7 @@
     <Content Include="images\icon\invoice.png" />
     <Content Include="images\icon\keys_security_door_key_passkey_password_icon_256486.png" />
     <Content Include="images\icon\material.png" />
+    <Content Include="images\icon\money.png" />
     <Content Include="images\icon\password.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
