@@ -102,7 +102,7 @@ namespace QuanLyKho_CSharp
         }
 
 
-        private void OpenChildForm(Form childForm, Guna2Button btn)
+        private void OpenChildForm(Form childForm, Guna2Button btn = null)
         {
             //  Nếu form hiện tại cùng loại và cùng button -> Không làm gì
             if (currentFormChild != null
@@ -134,7 +134,7 @@ namespace QuanLyKho_CSharp
 
             childForm.BringToFront();
             childForm.Show();
-            lbPage.Text= btn.Text;
+            if(btn != null) lbPage.Text = btn.Text;
 
 
             pnlBody.PerformLayout();
