@@ -23,5 +23,10 @@ namespace QuanLyKho.DTO
             get { return makh; }
             set { makh = value; }
         }
+        public override string ToString()
+        {
+            return base.ToString() + $" | Mã KH: {makh}";
+        }
+
     }
 }

@@ -44,6 +44,19 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dataGridView1.MultiSelect = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.ForeColor = Color.White;
+            headerStyle.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
+            headerStyle.SelectionBackColor = Color.FromArgb(17, 155, 248);
+            headerStyle.SelectionForeColor = Color.White;
+
+            DGVPhieuXuat.ColumnHeadersDefaultCellStyle = headerStyle;
+            DGVPhieuXuat.ColumnHeadersHeight = 30;
+            DGVPhieuXuat.RowHeadersDefaultCellStyle = headerStyle;
+            DGVPhieuXuat.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
         }
 
         private void LoadData()
@@ -51,7 +64,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             listPX = pxBUS.getListPX();
         }
 
-        private void PhieuXuat_Load(object sender, EventArgs e)
+        private void PhieuXuat_Load(object sender, EventArgs e) // Load của giao diện 
         {
             InitializeDataGridViewColumns();
             dateTimeBegin.Value = DateTime.Now.AddMonths(-1);
@@ -59,6 +72,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             numericUpDown1.Value = 0;
             numericUpDown2.Value = 0;
             LoadDataIntoGridView();
+            refreshDataGridView(listPX);
+
         }
 
         private void InitializeDataGridViewColumns()
@@ -106,26 +121,13 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dataGridView1.Columns["Actions"].Width = 100;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void LoadDataIntoGridView()
         {
             dataGridView1.Rows.Clear();
 
             if (listPX != null && listPX.Count > 0)
             {
+                
                 foreach (PhieuXuatDTO px in listPX)
                 {
                     if (px.Trangthai != 0)
@@ -186,27 +188,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 dataGridView1.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -686,6 +667,33 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                     LoadDataIntoGridView();
                 }
             }
+        }
+
+        private void refreshDataGridView(BindingList<PhieuXuatDTO> listRefresh) // Tải lại DataGridView
+        {
+            int soLuongNV = 0;
+            DGVPhieuXuat.Rows.Clear();
+            foreach (PhieuXuatDTO px in listPX)
+            {
+                if (px.Trangthai != 0)
+                {
+                    string tenNV = nvBUS.getNamebyID(px.Manv);
+                    string tenKH = khBUS.getNamebyID(px.Makh);
+                    string trangThai = GetTrangThaiDisplay(px);
+
+                    int rowIndex = DGVPhieuXuat.Rows.Add(
+                        px.Maphieu,
+                        tenNV,
+                        tenKH,
+                        px.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"),
+                        px.Tongtien,
+                        trangThai
+                    );
+                    SetRowColor(rowIndex, px);
+                }
+            }
+
+                DGVPhieuXuat.ClearSelection();
         }
 
         // Các sự kiện khác
