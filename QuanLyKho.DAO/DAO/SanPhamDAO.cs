@@ -50,7 +50,7 @@ namespace QuanLyKho.DAO
 
         public int Delete(int masp)
         {
-            string sql = $"DELETE from sanpham Where masp={masp}";
+            string sql = $"Update sanpham SET trangthai=0 Where masp={masp}";
             return ConnectionHelper.getExecuteNonQuery(sql);
         }
 
@@ -59,7 +59,7 @@ namespace QuanLyKho.DAO
             SanPhamDTO sanPhamResult = new SanPhamDTO();
             try
             {
-                string sql = $"select * from sanpham where masp={masp}";
+                string sql = $"select * from sanpham where masp={masp} and trangthai=1";
                 ConnectionHelper.getConnection();
                 using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
                 using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -89,7 +89,7 @@ namespace QuanLyKho.DAO
             BindingList<SanPhamDTO> listResult = new BindingList<SanPhamDTO>();
             try
             {
-                string sql = "select * from sanpham";
+                string sql = "select * from sanpham where trangthai=1";
                 ConnectionHelper.getConnection();
                 //tao reader de doc du lieu
                 using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))

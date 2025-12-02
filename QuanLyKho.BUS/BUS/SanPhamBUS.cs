@@ -29,23 +29,22 @@ namespace QuanLyKho.BUS
         {
             listSP = spDAO.SelectAll();
         }
-        public Boolean removeSanPham(int maSp) // Xoa db
+        public Boolean removeSanPham(int maSp)
         {
-            SanPhamDTO spXoa = spDAO.SelectById(maSp);
             Boolean result = spDAO.Delete(maSp) != 0;
+
             if (result)
             {
-                foreach (SanPhamDTO sp in listSP)
+                var spToRemove = listSP.FirstOrDefault(x => x.Masp == maSp);
+                if (spToRemove != null)
                 {
-                    if (sp.Equals(spXoa))
-                    {
-                        listSP.Remove(sp);
-                        return result;
-                    }
+                    listSP.Remove(spToRemove);
                 }
             }
+
             return result;
         }
+
         public Boolean insertSanPham(SanPhamDTO sp)
         {
             Boolean result = spDAO.Insert(sp) != 0;

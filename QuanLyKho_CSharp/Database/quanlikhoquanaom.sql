@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2025 at 07:32 PM
+-- Generation Time: Dec 02, 2025 at 09:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -86,7 +86,14 @@ INSERT INTO `ctphieunhap` (`maphieunhap`, `masp`, `soluong`, `dongia`) VALUES
 (36, 2, 50, 60000),
 (36, 3, 10, 67000),
 (37, 2, 20, 60000),
-(37, 3, 20, 67000);
+(37, 3, 20, 67000),
+(38, NULL, 29, 36000),
+(39, NULL, 8, 12),
+(39, NULL, 13, 36000),
+(39, 3, 12, 67000),
+(39, 2, 13, 60000),
+(40, 1, 30, 800000),
+(41, 1, 2, 800000);
 
 -- --------------------------------------------------------
 
@@ -110,7 +117,14 @@ INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`) VALUES
 (199, 1, 1, 80000),
 (200, 3, 100, 67000),
 (201, 1, 1, 80000),
-(201, 3, 57, 67000);
+(201, 3, 57, 67000),
+(202, 3, 5, 67000),
+(202, NULL, 3, 36000),
+(203, 1, 88, 80000),
+(204, 1, 101, 80000),
+(205, 1, 8, 800000),
+(206, 1, 50, 800000),
+(207, NULL, 3, 700000);
 
 -- --------------------------------------------------------
 
@@ -301,7 +315,8 @@ INSERT INTO `loai` (`maloai`, `tenloai`) VALUES
 (11, 'Áo khoác gió'),
 (12, 'Quần short'),
 (13, 'Áo ba lỗ'),
-(14, 'Áo polo');
+(14, 'Áo polo'),
+(15, 'ádfasf');
 
 -- --------------------------------------------------------
 
@@ -384,21 +399,13 @@ INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 CREATE TABLE `phieukiemke` (
   `maphieukiemke` int(11) NOT NULL,
   `thoigiantao` datetime NOT NULL DEFAULT current_timestamp(),
+  `thoigiancanbang` datetime NOT NULL DEFAULT current_timestamp(),
   `trangthai` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `ghichu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `makhuvuc` int(11) DEFAULT NULL,
   `manhanvientao` int(11) DEFAULT NULL,
   `manhanvienkiem` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `phieukiemke`
---
-
-INSERT INTO `phieukiemke` (`maphieukiemke`, `thoigiantao`, `trangthai`, `ghichu`, `makhuvuc`, `manhanvientao`, `manhanvienkiem`) VALUES
-(35, '2025-10-09 23:52:11', 'đủ hàng', 'đủ hàng', 1, 1, 2),
-(36, '2025-10-09 23:53:04', 'thiếu hàng', 'thiếu - 5 ', 2, 1, 4),
-(37, '2025-10-09 23:53:58', 'dư hàng', 'dư - 2', 3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -422,7 +429,11 @@ CREATE TABLE `phieunhap` (
 INSERT INTO `phieunhap` (`maphieunhap`, `manv`, `mancc`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
 (35, 6, 14, '2025-10-02 16:53:55', 80000000, 1),
 (36, 6, 11, '2025-10-02 16:57:59', 3670000, 1),
-(37, 6, 13, '2025-10-02 16:57:59', 2540000, 1);
+(37, 6, 13, '2025-10-02 16:57:59', 2540000, 1),
+(38, 6, 9, '2025-10-11 16:52:32', 1044000, 1),
+(39, 6, 12, '2025-10-12 15:38:40', 2052096, 1),
+(40, 6, 9, '2025-10-13 08:01:39', 24000000, 1),
+(41, 6, 13, '2025-10-14 15:46:50', 1600000, 1);
 
 -- --------------------------------------------------------
 
@@ -446,7 +457,13 @@ CREATE TABLE `phieuxuat` (
 INSERT INTO `phieuxuat` (`maphieuxuat`, `manv`, `makh`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
 (199, 6, 1, '2025-10-02 16:35:46', 140000, 1),
 (200, 6, 3, '2025-10-02 16:38:23', 6700000, 1),
-(201, 6, 2, '2025-10-02 16:39:57', 3899000, 1);
+(201, 6, 2, '2025-10-02 16:39:57', 3899000, 1),
+(202, 6, 1, '2025-10-11 16:35:36', 443000, 1),
+(203, 6, 1, '2025-10-11 16:52:05', 7040000, 1),
+(204, 6, 1, '2025-10-12 15:39:13', 8080000, 1),
+(205, 6, 1, '2025-10-12 15:39:31', 6400000, 1),
+(206, 6, 1, '2025-10-13 08:02:35', 40000000, 1),
+(207, 6, 1, '2025-10-24 16:53:55', 2100000, 1);
 
 -- --------------------------------------------------------
 
@@ -463,17 +480,19 @@ CREATE TABLE `sanpham` (
   `machatlieu` int(11) DEFAULT NULL,
   `maloai` int(11) DEFAULT NULL,
   `makhuvuc` int(11) DEFAULT NULL,
-  `masize` int(11) DEFAULT NULL
+  `masize` int(11) DEFAULT NULL,
+  `TrangThai` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sanpham`
 --
 
-INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `soluong`, `dongia`, `machatlieu`, `maloai`, `makhuvuc`, `masize`) VALUES
-(1, 'Áo Lovepik', 'images/stocks/ao1.png', 1000, 80000, 1, 1, 1, 3),
-(2, 'áo thun trắng', 'images/stocks/ao2.png', 70, 60000, 1, 2, 1, 5),
-(3, 'áo da bò', 'images/stocks/ao3.png', 30, 67000, 2, 1, 1, 5);
+INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `soluong`, `dongia`, `machatlieu`, `maloai`, `makhuvuc`, `masize`, `TrangThai`) VALUES
+(1, 'Áo Lovepik', 'images/stocks/ao1.png', 785, 800000, 1, 1, 1, 3, 1),
+(2, 'áo thun trắng', 'images/stocks/ao2.png', 83, 60000, 1, 2, 1, 5, 1),
+(3, 'áo da bò', 'images/stocks/ao3.png', 37, 67000, 2, 1, 1, 5, 1),
+(10, 'testxoammem', 'images/stocks/meo_639002870800773196.jpg', 100, 23000, 4, 8, 5, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -498,7 +517,8 @@ INSERT INTO `size` (`masize`, `tensize`, `ghichu`) VALUES
 (4, 'L', '60–70kg, 165–170cm'),
 (5, 'XL', '70–80kg, 170–175cm'),
 (6, 'XXL', '80–90kg, 175–180cm'),
-(7, 'XXXL', '90–100kg, 180–185cm');
+(7, 'XXXL', '90–100kg, 180–185cm'),
+(8, 'rt', 'szdfg');
 
 -- --------------------------------------------------------
 
@@ -681,7 +701,7 @@ ALTER TABLE `khuvuckho`
 -- AUTO_INCREMENT for table `loai`
 --
 ALTER TABLE `loai`
-  MODIFY `maloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `maloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `nhacungcap`
@@ -705,31 +725,31 @@ ALTER TABLE `nhomquyen`
 -- AUTO_INCREMENT for table `phieukiemke`
 --
 ALTER TABLE `phieukiemke`
-  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `phieunhap`
 --
 ALTER TABLE `phieunhap`
-  MODIFY `maphieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `maphieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
-  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `size`
 --
 ALTER TABLE `size`
-  MODIFY `masize` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `masize` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
