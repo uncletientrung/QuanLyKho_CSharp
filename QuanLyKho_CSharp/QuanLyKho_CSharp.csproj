@@ -416,11 +416,11 @@
     <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoNam.Designer.cs">
       <DependentUpon>ThongKeTheoNam.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoQuy.cs">
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTuNgayDenNgay.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoQuy.Designer.cs">
-      <DependentUpon>ThongKeTheoQuy.cs</DependentUpon>
+    <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTuNgayDenNgay.Designer.cs">
+      <DependentUpon>ThongKeTuNgayDenNgay.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoThang.cs">
       <SubType>UserControl</SubType>
@@ -797,8 +797,8 @@
     <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoNam.resx">
       <DependentUpon>ThongKeTheoNam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoQuy.resx">
-      <DependentUpon>ThongKeTheoQuy.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTuNgayDenNgay.resx">
+      <DependentUpon>ThongKeTuNgayDenNgay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThongKe\giaoDienTK\TKDoanhThu\ThongKeTheoThang.resx">
       <DependentUpon>ThongKeTheoThang.cs</DependentUpon>

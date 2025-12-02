@@ -52,9 +52,9 @@
             // 
             this.menuTable.ColumnCount = 4;
             this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.05263F));
-            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.05263F));
-            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.05263F));
-            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.84211F));
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.05263F));
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.05263F));
+            this.menuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.84211F));
             this.menuTable.Controls.Add(this.btnTKTheoNam, 0, 0);
             this.menuTable.Controls.Add(this.btnThongKeTheoQuy, 1, 0);
             this.menuTable.Controls.Add(this.btnThongKeTheoThang, 2, 0);
@@ -84,9 +84,9 @@
             this.btnThongKeTheoQuy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThongKeTheoQuy.Location = new System.Drawing.Point(241, 3);
             this.btnThongKeTheoQuy.Name = "btnThongKeTheoQuy";
-            this.btnThongKeTheoQuy.Size = new System.Drawing.Size(211, 38);
+            this.btnThongKeTheoQuy.Size = new System.Drawing.Size(242, 38);
             this.btnThongKeTheoQuy.TabIndex = 1;
-            this.btnThongKeTheoQuy.Text = "Thống kê theo quý";
+            this.btnThongKeTheoQuy.Text = "Thống kê từ ngày đến ngày";
             this.btnThongKeTheoQuy.UseVisualStyleBackColor = true;
             this.btnThongKeTheoQuy.Click += new System.EventHandler(this.btnThongKeTheoQuy_Click);
             // 
@@ -94,9 +94,9 @@
             // 
             this.btnThongKeTheoThang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnThongKeTheoThang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongKeTheoThang.Location = new System.Drawing.Point(458, 3);
+            this.btnThongKeTheoThang.Location = new System.Drawing.Point(489, 3);
             this.btnThongKeTheoThang.Name = "btnThongKeTheoThang";
-            this.btnThongKeTheoThang.Size = new System.Drawing.Size(232, 38);
+            this.btnThongKeTheoThang.Size = new System.Drawing.Size(222, 38);
             this.btnThongKeTheoThang.TabIndex = 1;
             this.btnThongKeTheoThang.Text = "Thống kê theo tháng";
             this.btnThongKeTheoThang.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             // 
             this.btnThongKeTheoNgay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnThongKeTheoNgay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongKeTheoNgay.Location = new System.Drawing.Point(696, 3);
+            this.btnThongKeTheoNgay.Location = new System.Drawing.Point(717, 3);
             this.btnThongKeTheoNgay.Name = "btnThongKeTheoNgay";
-            this.btnThongKeTheoNgay.Size = new System.Drawing.Size(336, 38);
+            this.btnThongKeTheoNgay.Size = new System.Drawing.Size(315, 38);
             this.btnThongKeTheoNgay.TabIndex = 1;
             this.btnThongKeTheoNgay.Text = "Thống kê theo ngày trong tháng";
             this.btnThongKeTheoNgay.UseVisualStyleBackColor = true;

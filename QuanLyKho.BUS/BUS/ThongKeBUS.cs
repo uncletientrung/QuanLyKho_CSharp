@@ -314,6 +314,40 @@ namespace QuanLyKho.BUS
             return result;
         }
 
+        public BindingList<ThongKeTungNgayTrongThangDTO> thongKeDoanhThuTuNgayDenNgay(DateTime NgayBD, DateTime NgayKT)
+        {
+            BindingList<ThongKeTungNgayTrongThangDTO> result = new BindingList<ThongKeTungNgayTrongThangDTO>();
+            BindingList<PhieuNhapDTO> danhSachPN = phieuNhapBUS.getListPN();
+            BindingList<PhieuXuatDTO> danhSachPX = phieuXuatBUS.getListPX();
+
+ 
+            for (DateTime date = NgayBD.Date; date <= NgayKT.Date; date = date.AddDays(1))
+            {
+               
+                int tongVon = danhSachPN
+                    .Where(pn => pn.Thoigiantao.Date == date)
+                    .Sum(pn => (int)pn.Tongtien);
+
+           
+                int tongDoanhThu = danhSachPX
+                    .Where(px => px.Thoigiantao.Date == date)
+                    .Sum(px => (int)px.Tongtien);
+
+                int loiNhuan = tongDoanhThu - tongVon;
+
+                result.Add(new ThongKeTungNgayTrongThangDTO
+                {
+                    Ngay = date,
+                    Chiphi = tongVon,
+                    Doanhthu = tongDoanhThu,
+                    Loinhuan = loiNhuan
+                });
+            }
+
+            return result;
+        }
+
+
 
 
     }

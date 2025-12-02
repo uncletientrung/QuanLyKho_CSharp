@@ -1,6 +1,6 @@
 ﻿namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 {
-    partial class ThongKeTheoQuy
+    partial class ThongKeTuNgayDenNgay
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvThongKeTuNgayDenNgay = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.bieuDoThongKeTuNgayDenNgay = new LiveCharts.WinForms.CartesianChart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.chonNam = new System.Windows.Forms.DateTimePicker();
+            this.chonNgayBD = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboChonQuy = new System.Windows.Forms.ComboBox();
+            this.chonNgayKT = new System.Windows.Forms.DateTimePicker();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThongKeTuNgayDenNgay)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dgvThongKeTuNgayDenNgay);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 162);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -57,39 +57,41 @@
             this.panel3.Size = new System.Drawing.Size(851, 354);
             this.panel3.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvThongKeTuNgayDenNgay
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(851, 354);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvThongKeTuNgayDenNgay.BackgroundColor = System.Drawing.Color.White;
+            this.dgvThongKeTuNgayDenNgay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThongKeTuNgayDenNgay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvThongKeTuNgayDenNgay.GridColor = System.Drawing.Color.Black;
+            this.dgvThongKeTuNgayDenNgay.Location = new System.Drawing.Point(0, 0);
+            this.dgvThongKeTuNgayDenNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvThongKeTuNgayDenNgay.Name = "dgvThongKeTuNgayDenNgay";
+            this.dgvThongKeTuNgayDenNgay.RowHeadersWidth = 51;
+            this.dgvThongKeTuNgayDenNgay.RowTemplate.Height = 24;
+            this.dgvThongKeTuNgayDenNgay.Size = new System.Drawing.Size(851, 354);
+            this.dgvThongKeTuNgayDenNgay.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.cartesianChart1);
+            this.panel2.Controls.Add(this.bieuDoThongKeTuNgayDenNgay);
             this.panel2.Location = new System.Drawing.Point(3, 59);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(844, 101);
             this.panel2.TabIndex = 4;
             // 
-            // cartesianChart1
+            // bieuDoThongKeTuNgayDenNgay
             // 
-            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartesianChart1.Location = new System.Drawing.Point(0, 0);
-            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(844, 101);
-            this.cartesianChart1.TabIndex = 0;
-            this.cartesianChart1.Text = "cartesianChart1";
+            this.bieuDoThongKeTuNgayDenNgay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bieuDoThongKeTuNgayDenNgay.Location = new System.Drawing.Point(0, 0);
+            this.bieuDoThongKeTuNgayDenNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bieuDoThongKeTuNgayDenNgay.Name = "bieuDoThongKeTuNgayDenNgay";
+            this.bieuDoThongKeTuNgayDenNgay.Size = new System.Drawing.Size(844, 101);
+            this.bieuDoThongKeTuNgayDenNgay.TabIndex = 0;
+            this.bieuDoThongKeTuNgayDenNgay.Text = "cartesianChart1";
             // 
             // panel1
             // 
@@ -115,9 +117,9 @@
             this.tableLayoutPanel1.Controls.Add(this.btnLamMoi, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnThongKe, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chonNam, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chonNgayBD, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cboChonQuy, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chonNgayKT, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -160,51 +162,52 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 39);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Chọn quý:";
+            this.label2.Text = "Đến ngày:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // chonNam
+            // chonNgayBD
             // 
-            this.chonNam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chonNam.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chonNam.Location = new System.Drawing.Point(258, 2);
-            this.chonNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chonNam.Name = "chonNam";
-            this.chonNam.Size = new System.Drawing.Size(79, 30);
-            this.chonNam.TabIndex = 4;
+            this.chonNgayBD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chonNgayBD.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chonNgayBD.Location = new System.Drawing.Point(258, 2);
+            this.chonNgayBD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chonNgayBD.Name = "chonNgayBD";
+            this.chonNgayBD.Size = new System.Drawing.Size(79, 30);
+            this.chonNgayBD.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(173, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 39);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Chọn năm:";
+            this.label1.Text = "Từ ngày:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cboChonQuy
+            // chonNgayKT
             // 
-            this.cboChonQuy.FormattingEnabled = true;
-            this.cboChonQuy.Location = new System.Drawing.Point(428, 3);
-            this.cboChonQuy.Name = "cboChonQuy";
-            this.cboChonQuy.Size = new System.Drawing.Size(79, 24);
-            this.cboChonQuy.TabIndex = 5;
+            this.chonNgayKT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chonNgayKT.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chonNgayKT.Location = new System.Drawing.Point(428, 3);
+            this.chonNgayKT.Name = "chonNgayKT";
+            this.chonNgayKT.Size = new System.Drawing.Size(79, 30);
+            this.chonNgayKT.TabIndex = 5;
             // 
-            // ThongKeTheoQuy
+            // ThongKeTuNgayDenNgay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
-            this.Name = "ThongKeTheoQuy";
+            this.Name = "ThongKeTuNgayDenNgay";
             this.Size = new System.Drawing.Size(851, 516);
             this.Load += new System.EventHandler(this.load_UC);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThongKeTuNgayDenNgay)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -216,16 +219,16 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvThongKeTuNgayDenNgay;
         private System.Windows.Forms.Panel panel2;
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private LiveCharts.WinForms.CartesianChart bieuDoThongKeTuNgayDenNgay;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker chonNam;
+        private System.Windows.Forms.DateTimePicker chonNgayBD;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboChonQuy;
+        private System.Windows.Forms.DateTimePicker chonNgayKT;
     }
 }

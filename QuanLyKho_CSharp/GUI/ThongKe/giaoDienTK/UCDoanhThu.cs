@@ -34,7 +34,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
 
         private void btnThongKeTheoQuy_Click(object sender, EventArgs e)
         {
-            ShowGiaoDien(new ThongKeTheoQuy());
+            ShowGiaoDien(new ThongKeTuNgayDenNgay());
             SetActiveButton(btnThongKeTheoQuy);
         }
 
