@@ -884,10 +884,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
             private void InitializeComponent()
             {
+                this.FormBorderStyle = FormBorderStyle.None;
                 this.Text = "Chỉnh sửa số lượng";
                 this.Size = new Size(350, 180);
                 this.StartPosition = FormStartPosition.CenterParent;
-                this.FormBorderStyle = FormBorderStyle.FixedDialog;
+                //this.FormBorderStyle = FormBorderStyle.FixedDialog;
                 this.MaximizeBox = false;
                 this.MinimizeBox = false;
 

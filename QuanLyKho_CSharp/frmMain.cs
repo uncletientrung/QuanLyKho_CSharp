@@ -39,12 +39,14 @@ namespace QuanLyKho_CSharp
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private DanhMucChucNangBUS dmncBUS = new DanhMucChucNangBUS();
         private BindingList<Guna2Button> listButton;
+        private NhanVienDTO currentUser2;
 
         public frmMain(TaiKhoanDTO _tkLogin)
         {
             InitializeComponent();
             tkLogin = _tkLogin;
             CurrentUser = _tkLogin;
+            currentUser2 = nvBUS.getNVById(_tkLogin.Manv);
             CustomizeDesign();
             setTagForButton();
             lbName.Text = LayTenNguoiDung(nvBUS.getNamebyID(_tkLogin.Manv)); // set Tên
@@ -219,7 +221,7 @@ namespace QuanLyKho_CSharp
         }
         private void btnPhieuXuat_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new PhieuXuatGUI(), btnPhieuXuat);
+            OpenChildForm(new PhieuXuatGUI(currentUser2), btnPhieuXuat);
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)

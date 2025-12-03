@@ -1,6 +1,7 @@
 ﻿using QuanLyKho.BUS;
 using QuanLyKho.DTO;
 using QuanLyKho_CSharp.GUI.KhachHang;
+using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QuanLyKho_CSharp.GUI.PhieuNhap.AddPhieuNhapForm;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyKho_CSharp.GUI.PhieuXuat
@@ -27,12 +29,14 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private BindingList<SanPhamDTO> listSP;
         private BindingList<SanPhamDTO> listSPDuocThem;
         private Action OnClose;
-        public AddPhieuXuatForm(Action btnOnClose)
+        private NhanVienDTO currentUser;
+        public AddPhieuXuatForm(Action btnOnClose, NhanVienDTO currentUser)
         {
             InitializeComponent();
+            this.currentUser = currentUser;
             OnClose=btnOnClose;
             SetupDataGridViews();
-            //LoadData();
+            LoadData();
             //UpdateButtonStates();
         }
 
@@ -76,226 +80,187 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dgvSPduocThem.ColumnHeadersHeight = 30;
             dgvSPduocThem.RowHeadersDefaultCellStyle = headerStyle;
             dgvSPduocThem.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
+            dgvSPduocThem.Columns[2].ReadOnly = false;
 
-            // Khởi tạo danh sách sản phẩm được thêm
             listSPDuocThem = new BindingList<SanPhamDTO>();
         }
 
-        //        private Image LoadImageSafe(string relativePath)
-        //        {
-        //            try
-        //            {
-        //                if (string.IsNullOrEmpty(relativePath))
-        //                {
-        //                    // Trả về ảnh mặc định nếu không có đường dẫn
-        //                    return CreateEmptyImage();
-        //                }
+        private Image LoadImageSafe(string absolutePath)
+        {
+            if (string.IsNullOrWhiteSpace(absolutePath)) return CreateEmptyImage();
+            if (!File.Exists(absolutePath)) return CreateEmptyImage();
+            try
+            {
+                using (var original = Image.FromFile(absolutePath)) // Stretch ảnh
+                {
+                    var resized = new Bitmap(40, 40);
+                    using (var g = Graphics.FromImage(resized))
+                    {
+                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        g.DrawImage(original, 0, 0, 40, 40);
+                    }
+                    return resized;
+                }
+            }
+            catch
+            {
+                return CreateEmptyImage();
+            }
+        }
 
-        //                string path = Path.Combine(Application.StartupPath, relativePath.Replace("/", "\\"));
+        private Image CreateEmptyImage() // Ảnh trống
+        {
+            Bitmap emptyImage = new Bitmap(50, 50);
+            using (Graphics g = Graphics.FromImage(emptyImage))
+            {
+                g.Clear(Color.Gray);
+            }
+            return emptyImage;
+        }
 
-        //                if (!File.Exists(path))
-        //                {
-        //                    // Thử tìm theo đường dẫn khác
-        //                    string alt = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\", relativePath.Replace("/", "\\"));
-        //                    alt = Path.GetFullPath(alt);
-        //                    if (File.Exists(alt))
-        //                    {
-        //                        path = alt;
-        //                    }
-        //                    else
-        //                    {
-        //                        Console.WriteLine($"File không tồn tại: {path}");
-        //                        return CreateEmptyImage();
-        //                    }
-        //                }
+        private void LoadData()
+        {
+            listSP = spBUS.getListSP();
+            listKH = khBUS.getListKH();
+            txNV.Text = currentUser.Tennv.ToString();
+            LoadSPTrongKho();
+            LoadSPDuocThem();
+        }
 
-        //                byte[] bytes = File.ReadAllBytes(path);
-        //                using (var ms = new MemoryStream(bytes))
-        //                {
-        //                    return Image.FromStream(ms);
-        //                }
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Console.WriteLine($"Lỗi khi tải ảnh {relativePath}: {ex.Message}");
-        //                return CreateEmptyImage();
-        //            }
-        //        }
 
-        //        private Image CreateEmptyImage()
-        //        {
-        //            // Tạo ảnh trống màu trắng
-        //            Bitmap emptyImage = new Bitmap(50, 50);
-        //            using (Graphics g = Graphics.FromImage(emptyImage))
-        //            {
-        //                g.Clear(Color.White);
-        //            }
-        //            return emptyImage;
-        //        }
+        private void LoadSPTrongKho()
+        {
+            dgvSPtrongKho.Rows.Clear();
+            // Thêm dữ liệu
+            if (listSP != null && listSP.Count > 0)
+            {
+                foreach (SanPhamDTO sp in listSP)
+                {
+                    Image productImage = LoadImageSafe(sp.Hinhanh);
+                    dgvSPtrongKho.Rows.Add(
+                        sp.Masp,
+                        sp.Tensp,
+                        productImage,
+                        sp.Dongia,
+                        sp.Soluong
+                    );
+                }
+            }
+            dgvSPtrongKho.ClearSelection();
+        }
 
-        //        private void LoadData()
-        //        {
-        //            listSP = spBUS.getListSP();
-        //            listKH = khBUS.getListKH();
-        //            boxMaPhieu.Text = pxBUS.getAutoMaPhieuXuat().ToString();
-        //            // Lấy tên nhân viên từ frmMain.CurrentUser
-        //            try
-        //            {
-        //                TaiKhoanDTO currentUser = frmMain.CurrentUser;
+        private void LoadSPDuocThem()
+        {
+            dgvSPduocThem.Rows.Clear();
+            if (listSPDuocThem != null && listSPDuocThem.Count > 0)
+            {
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    decimal thanhTien = sp.Dongia * sp.Soluong;
+                    dgvSPduocThem.Rows.Add(
+                        sp.Masp,
+                        sp.Tensp,
+                        sp.Soluong,
+                        sp.Dongia,
+                        $"{thanhTien:N0}đ"
+                    );
+                }
+            }
 
-        //                if (currentUser != null)
-        //                {
-        //                    int maNV = currentUser.Manv;
-        //                    string tenNV = nvBUS.getNamebyID(maNV);
-        //                    boxNVxuat.Text = !string.IsNullOrEmpty(tenNV) ? tenNV : "Không tìm thấy nhân viên";
-        //                }
-        //                else
-        //                {
-        //                    boxNVxuat.Text = "Chưa đăng nhập";
-        //                }
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                boxNVxuat.Text = "Lỗi: " + ex.Message;
-        //            }
-        //            LoadKhachHang();
-        //            LoadSPTrongKho();
-        //            LoadSPDuocThem();
-        //        }
+            dgvSPduocThem.ClearSelection();
+            UpdateTongTien();
+            //UpdateButtonStates();
+        }
 
-        //        private void LoadKhachHang()
-        //        {
-        //            comboBoxKH.Items.Clear();
+        private void UpdateTongTien()
+        {
+            decimal tongTien = 0;
+            if (listSPDuocThem != null && listSPDuocThem.Count > 0)
+            {
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    tongTien += sp.Dongia * sp.Soluong;
+                }
+            }
+            lbPrice.Text = $"{tongTien:N0}đ";
+        }
+        // Thêm sản phẩm vào phiếu
+        private void dgvSPtrongKho_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dgvSPtrongKho.CurrentRow == null || dgvSPtrongKho.CurrentRow.IsNewRow)
+                    return;
 
-        //            if (listKH != null && listKH.Count > 0)
-        //            {
-        //                foreach (KhachHangDTO kh in listKH)
-        //                {
-        //                    comboBoxKH.Items.Add(kh.Tenkhachhang);
-        //                }
-        //            }
+                var selectedRow = dgvSPtrongKho.CurrentRow;
+                int maSP = int.Parse(selectedRow.Cells[0].Value.ToString());
 
-        //            if (comboBoxKH.Items.Count > 0)
-        //            {
-        //                comboBoxKH.SelectedIndex = 0;
-        //            }
-        //        }
+                SanPhamDTO spTrongKho = listSP.FirstOrDefault(x => x.Masp == maSP);
+                if (spTrongKho == null) return;
 
-        //        private void LoadSPTrongKho()
-        //        {
-        //            dgvSPtrongKho.Columns.Clear();
-        //            dgvSPtrongKho.Rows.Clear();
+                if (spTrongKho.Soluong <= 0)
+                {
+                    MessageBox.Show("Sản phẩm này đã hết hàng!", "Hết hàng",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-        //            dgvSPtrongKho.Columns.Add("MaSP", "Mã SP");
-        //            dgvSPtrongKho.Columns.Add("TenSP", "Tên sản phẩm");
+                UpdateQuantity(spTrongKho);
+            }
+        }
 
-        //            DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
-        //            imgCol.Name = "HinhAnh";
-        //            imgCol.HeaderText = "Ảnh";
-        //            imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-        //            dgvSPtrongKho.Columns.Add(imgCol);
+        // Chính sửa số lượng nếu cần
+        private void dgvSPduocThem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvSPduocThem.Columns[e.ColumnIndex].Name!= "remove")
+            {
+                if (dgvSPtrongKho.CurrentRow == null) return;
+                var selectedRow = dgvSPduocThem.CurrentRow;
+                int maSP = int.Parse(selectedRow.Cells[0].Value.ToString());
+                SanPhamDTO spDuocChon = listSP.FirstOrDefault(x => x.Masp == maSP);
+                if (spDuocChon == null) return;
+                UpdateQuantity(spDuocChon);
 
-        //            dgvSPtrongKho.Columns.Add("DonGia", "Đơn giá");
-        //            dgvSPtrongKho.Columns.Add("SoLuong", "Số lượng");
+            }
+        }
+        private void UpdateQuantity(SanPhamDTO spDuocChon)
+        {
+            var existingSP = listSPDuocThem.FirstOrDefault(x => x.Masp == spDuocChon.Masp);
+            string title = existingSP != null ? "Chỉnh sửa số lượng" : "Nhập số lượng";
+            int soLuongTruyenVao = existingSP != null ? existingSP.Soluong : 1;
+            var inputForm = new QuantityForm(title, soLuongTruyenVao);
+            if (inputForm.ShowDialog() == DialogResult.OK)
+            {
+                int sl = inputForm.Quantity;
+                //MessageBox.Show(sl.ToString() + inputForm.Quantity.ToString());
 
-        //            foreach (DataGridViewColumn column in dgvSPtrongKho.Columns)
-        //            {
-        //                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        //            }
+                if (existingSP != null)
+                {
+                    existingSP.Soluong = sl;
+                }
+                else
+                {
+                    var spMoi = new SanPhamDTO
+                    {
+                        Masp = spDuocChon.Masp,
+                        Tensp = spDuocChon.Tensp,
+                        Dongia = spDuocChon.Dongia,
+                        Soluong = sl
+                    };
+                    listSPDuocThem.Add(spMoi);
+                }
 
-        //            dgvSPtrongKho.Columns["MaSP"].FillWeight = 10;      // 10%
-        //            dgvSPtrongKho.Columns["TenSP"].FillWeight = 40;     // 40%
-        //            dgvSPtrongKho.Columns["HinhAnh"].FillWeight = 15;   // 15%
-        //            dgvSPtrongKho.Columns["DonGia"].FillWeight = 20;    // 20%
-        //            dgvSPtrongKho.Columns["SoLuong"].FillWeight = 15;   // 15%
+                LoadSPDuocThem();
+            }
+        }
 
-        //            dgvSPtrongKho.RowTemplate.Height = 40; // set height
-
-        //            // Thêm dữ liệu
-        //            if (listSP != null && listSP.Count > 0)
-        //            {
-        //                foreach (SanPhamDTO sp in listSP)
-        //                {
-        //                    Image productImage = LoadImageSafe(sp.Hinhanh);
-        //                    dgvSPtrongKho.Rows.Add(
-        //                        sp.Masp,
-        //                        sp.Tensp,
-        //                        productImage,
-        //                        sp.Dongia,
-        //                        sp.Soluong
-        //                    );
-        //                }
-        //            }
-
-        //            dgvSPtrongKho.ClearSelection();
-        //        }
-
-        //        private void LoadSPDuocThem()
-        //        {
-        //            dgvSPduocThem.Columns.Clear();
-        //            dgvSPduocThem.Rows.Clear();
-
-        //            dgvSPduocThem.Columns.Add("STT", "STT");
-        //            dgvSPduocThem.Columns.Add("MaSP", "Mã SP");
-        //            dgvSPduocThem.Columns.Add("TenSP", "Tên sản phẩm");
-        //            dgvSPduocThem.Columns.Add("DonGia", "Đơn giá");
-        //            dgvSPduocThem.Columns.Add("SoLuong", "Số lượng");
-        //            dgvSPduocThem.Columns.Add("ThanhTien", "Thành tiền");
-
-        //            foreach (DataGridViewColumn column in dgvSPduocThem.Columns)
-        //            {
-        //                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        //            }
-
-        //            dgvSPduocThem.Columns["STT"].FillWeight = 8;        // 8%
-        //            dgvSPduocThem.Columns["MaSP"].FillWeight = 12;      // 12%
-        //            dgvSPduocThem.Columns["TenSP"].FillWeight = 35;     // 35%
-        //            dgvSPduocThem.Columns["DonGia"].FillWeight = 15;    // 15%
-        //            dgvSPduocThem.Columns["SoLuong"].FillWeight = 15;   // 15%
-        //            dgvSPduocThem.Columns["ThanhTien"].FillWeight = 15; // 15%
-
-        //            if (listSPDuocThem != null && listSPDuocThem.Count > 0)
-        //            {
-        //                int stt = 1;
-        //                foreach (SanPhamDTO sp in listSPDuocThem)
-        //                {
-        //                    decimal thanhTien = sp.Dongia * sp.Soluong;
-        //                    dgvSPduocThem.Rows.Add(
-        //                        stt++,
-        //                        sp.Masp,
-        //                        sp.Tensp,
-        //                        sp.Dongia,
-        //                        sp.Soluong,
-        //                        $"{thanhTien:N0}đ"
-        //                    );
-        //                }
-        //            }
-
-        //            dgvSPduocThem.ClearSelection();
-        //            UpdateTongTien();
-        //            UpdateButtonStates();
-        //        }
-
-        //        private void UpdateTongTien()
-        //        {
-        //            decimal tongTien = 0;
-        //            if (listSPDuocThem != null && listSPDuocThem.Count > 0)
-        //            {
-        //                foreach (SanPhamDTO sp in listSPDuocThem)
-        //                {
-        //                    tongTien += sp.Dongia * sp.Soluong;
-        //                }
-        //            }
-        //            labelPrice.Text = $"{tongTien:N0}đ";
-        //        }
-
-        //        private void UpdateButtonStates()
-        //        {
-        //            // Chỉ enable nút Sửa và Xóa khi có sản phẩm trong danh sách được thêm
-        //            bool hasProducts = listSPDuocThem != null && listSPDuocThem.Count > 0;
-        //            buttonSuaSP.Enabled = hasProducts;
-        //            buttonXoaSP.Enabled = hasProducts;
-        //        }
+        //private void UpdateButtonStates()
+        //{
+        //    // Chỉ enable nút Sửa và Xóa khi có sản phẩm trong danh sách được thêm
+        //    bool hasProducts = listSPDuocThem != null && listSPDuocThem.Count > 0;
+        //    buttonSuaSP.Enabled = hasProducts;
+        //    buttonXoaSP.Enabled = hasProducts;
+        //}
 
         //        private void txSearch_TextChanged(object sender, EventArgs e)
         //        {
@@ -713,6 +678,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
 
         }
+
+        
+
+
 
         //        private void dgvSPduocThem_CellContentClick(object sender, DataGridViewCellEventArgs e)
         //        {

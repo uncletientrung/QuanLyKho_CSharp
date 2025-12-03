@@ -28,12 +28,14 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private KhachHangBUS khBUS = new KhachHangBUS();
         private BindingList<PhieuXuatDTO> listPX;
+        private NhanVienDTO currentUser;
 
-        public PhieuXuatGUI()
+        public PhieuXuatGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             SetupDataGridView();
             LoadData();
+            this.currentUser = currentUser;
             cbbSearch.Items.Add("Tất cả");
             cbbSearch.Items.Add("Mã");
             cbbSearch.Items.Add("Nhân viên");
@@ -143,7 +145,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             pnlDGV.Visible = false;
             pnlTop.Visible = false;
             AddPhieuXuatForm addFormControl = null;
-            addFormControl = new AddPhieuXuatForm(() => btnOnClose(addFormControl));
+            addFormControl = new AddPhieuXuatForm(() => btnOnClose(addFormControl), currentUser);
             addFormControl.TopLevel = false;
             addFormControl.FormBorderStyle = FormBorderStyle.None;
             addFormControl.Dock = DockStyle.Fill;
