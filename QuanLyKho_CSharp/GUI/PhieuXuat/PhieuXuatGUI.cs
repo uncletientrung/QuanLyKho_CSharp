@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using ZstdSharp.Unsafe;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyKho_CSharp.GUI.PhieuXuat
@@ -33,6 +34,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             InitializeComponent();
             SetupDataGridView();
             LoadData();
+            cbbSearch.Items.Add("Tất cả");
+            cbbSearch.Items.Add("Mã");
+            cbbSearch.Items.Add("Nhân viên");
+            cbbSearch.Items.Add("Khách hàng");
+            cbbSearch.SelectedIndex = 0;
+            cbbSearch.DropDownStyle= ComboBoxStyle.DropDownList;
         }
 
         private void SetupDataGridView()
@@ -68,12 +75,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void PhieuXuat_Load(object sender, EventArgs e) // Load của giao diện 
         {
-            //dateTimeBegin.Value = DateTime.Now.AddMonths(-1);
-            //dateTimeEnd.Value = DateTime.Now;
-            //numericUpDown1.Value = 0;
-            //numericUpDown2.Value = 0;
             refreshDataGridView(listPX);
-
         }
 
         private string GetTrangThaiDisplay(PhieuXuatDTO px)
@@ -138,19 +140,23 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            frmMain mainForm = this.ParentForm as frmMain;
-            if (mainForm != null)
-            {
-                var method = mainForm.GetType().GetMethod("OpenChildForm",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                if (method != null)
-                {
-                    method.Invoke(mainForm, new object[] { new AddPhieuXuatForm(), null });
-                }
-            }
+            pnlDGV.Visible = false;
+            pnlTop.Visible = false;
+            AddPhieuXuatForm addFormControl = null;
+            addFormControl = new AddPhieuXuatForm(() => btnOnClose(addFormControl));
+            addFormControl.TopLevel = false;
+            addFormControl.FormBorderStyle = FormBorderStyle.None;
+            addFormControl.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(addFormControl);
+            addFormControl.Show();
         }
-
+        private void btnOnClose(AddPhieuXuatForm formAdd)
+        {
+            pnlDGV.Visible = true;
+            pnlTop.Visible = true;
+            pnlMain.Controls.Remove(formAdd);
+            formAdd.Dispose();
+        }
         private void btnXuat_Click(object sender, EventArgs e)
         {
             if (DGVPhieuXuat.Rows.Count == 0)
@@ -187,7 +193,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 titleRange.Font.Size = 16;
                 titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                worksheet.Cells[2, 1] = $"Ngày xuất: {now.ToString("dd/MM/yyyy HH:mm")}";
+                worksheet.Cells[2, 1] = $"Ngày xuất: {now.ToString("HH:mm dd/MM/yyyy")}";
                 worksheet.Cells[2, 1].Font.Italic = true;
 
                 // tiêu đề cột, bỏ qua 2 cột action và hoàn hàng
@@ -315,56 +321,71 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
         }
 
-        //private void FilterData()
-        //{
-        //    if (listPX == null) return;
+        private void FilterData()
+        {
+            if (listPX == null) return;
 
-        //    // HIỂN THỊ TẤT CẢ phiếu có trạng thái khác 0
-        //    var filteredList = listPX.Where(px => px.Trangthai != 0).AsEnumerable();
+            // HIỂN THỊ TẤT CẢ phiếu có trạng thái khác 0
+            var filteredList = listPX.Where(px => px.Trangthai != 0).AsEnumerable();
+            string searchText = txtSearchNV.Text.Trim().ToLower();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                if (cbbSearch.Text == "Tất cả")
+                {
+                    filteredList = filteredList.Where(px =>
+                        px.Maphieu.ToString().Contains(searchText) ||
+                        (nvBUS.getNamebyID(px.Manv) ?? "").ToLower().Contains(searchText) ||
+                        (khBUS.getNamebyID(px.Makh) ?? "").ToLower().Contains(searchText));
+                }
+                if (cbbSearch.Text == "Nhân viên")
+                {
+                    filteredList = filteredList.Where(px =>
+                        (nvBUS.getNamebyID(px.Manv) ?? "").ToLower().Contains(searchText));
+                }
+                if (cbbSearch.Text == "Khách hàng")
+                {
+                    filteredList = filteredList.Where(px =>
+                        (khBUS.getNamebyID(px.Makh) ?? "").ToLower().Contains(searchText));
+                }
+                if (cbbSearch.Text == "Mã")
+                {
+                    filteredList = filteredList.Where(px => px.Maphieu.ToString().Contains(searchText));
+                }
+            }
 
-        //    // Lọc theo tên nhân viên
-        //    if (!string.IsNullOrWhiteSpace(txtSearchNV.Text))
-        //    {
-        //        string searchText = txtSearchNV.Text.Trim().ToLower();
-        //        filteredList = filteredList.Where(px =>
-        //        {
-        //            string tenNV = nvBUS.getNamebyID(px.Manv)?.ToLower() ?? "";
-        //            return tenNV.Contains(searchText);
-        //        });
-        //    }
+            //// Lọc theo khoảng thời gian
+            if (dateS.Value != null && dateE.Value != null)
+            {
+                DateTime startDate = dateS.Value.Date;
+                DateTime endDate = dateE.Value.Date.AddDays(1).AddSeconds(-1);
+                filteredList = filteredList.Where(px =>
+                    px.Thoigiantao >= startDate && px.Thoigiantao <= endDate);
+            }
 
-        //    // Lọc theo tên khách hàng
-        //    if (!string.IsNullOrWhiteSpace(txtSearchKH.Text))
-        //    {
-        //        string searchText = txtSearchKH.Text.Trim().ToLower();
-        //        filteredList = filteredList.Where(px =>
-        //        {
-        //            string tenKH = khBUS.getNamebyID(px.Makh)?.ToLower() ?? "";
-        //            return tenKH.Contains(searchText);
-        //        });
-        //    }
+            // Lọc theo khoảng giá
+            decimal? minPrice = null; // có thể số hoặc null
+            decimal? maxPrice = null;
 
-        //    // Lọc theo khoảng thời gian
-        //    if (dateTimeBegin.Value != null && dateTimeEnd.Value != null)
-        //    {
-        //        DateTime startDate = dateTimeBegin.Value.Date;
-        //        DateTime endDate = dateTimeEnd.Value.Date.AddDays(1).AddSeconds(-1);
-        //        filteredList = filteredList.Where(px =>
-        //            px.Thoigiantao >= startDate && px.Thoigiantao <= endDate);
-        //    }
+            if (!string.IsNullOrWhiteSpace(txtSMoney.Text) && txtSMoney.Text != "Tiền từ")
+            {
+                if (decimal.TryParse(txtSMoney.Text, out decimal min)) minPrice = min;
+            }
+            if (!string.IsNullOrWhiteSpace(txtEMoney.Text) && txtEMoney.Text != "Đến tiền")
+            {
+                if (decimal.TryParse(txtEMoney.Text, out decimal max)) maxPrice = max;
+            }
+            if (minPrice.HasValue || maxPrice.HasValue) // True nếu có giá trị
+            {
+                filteredList = filteredList.Where(px =>
+                {
+                    if (minPrice.HasValue && px.Tongtien < minPrice.Value) return false;
+                    if (maxPrice.HasValue && px.Tongtien > maxPrice.Value) return false;
+                    return true;
+                });
+            }
 
-        //    // Lọc theo khoảng giá
-        //    if (numericUpDown1.Value > 0 || numericUpDown2.Value > 0)
-        //    {
-        //        decimal minPrice = numericUpDown1.Value;
-        //        decimal maxPrice = numericUpDown2.Value > 0 ? numericUpDown2.Value : decimal.MaxValue;
-
-        //        filteredList = filteredList.Where(px =>
-        //            px.Tongtien >= minPrice && px.Tongtien <= maxPrice);
-        //    }
-
-        //    DisplayFilteredData(filteredList.ToList());
-        //}
+            refreshDataGridView(new BindingList<PhieuXuatDTO>(filteredList.ToList()));
+        }
 
         private void DisplayFilteredData(List<PhieuXuatDTO> filteredData)
         {
@@ -412,7 +433,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         px.Maphieu,
                         tenNV,
                         tenKH,
-                        px.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                        px.Thoigiantao.ToString("HH:mm dd/MM/yyyy"),
                         px.Tongtien,
                         trangThai
                     );
@@ -427,7 +448,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
 
             DGVPhieuXuat.ClearSelection();
-        }
+        } // Chưa dùng
 
         private void ShowDetailPhieuXuatForm(PhieuXuatDTO phieuXuat)
         {
@@ -443,35 +464,30 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //private void txtSearchNV_TextChanged(object sender, EventArgs e)
-        //{
-        //    FilterData();
-        //}
+        private void txtSearchNV_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
 
-        //private void txtSearchKH_TextChanged(object sender, EventArgs e)
-        //{
-        //    FilterData();
-        //}
+        private void txtSMoney_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
 
-        //private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        //{
-        //    FilterData();
-        //}
+        private void txtEMoney_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
 
-        //private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        //{
-        //    FilterData();
-        //}
+        private void dateTimeBegin_ValueChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
 
-        //private void dateTimeBegin_ValueChanged(object sender, EventArgs e)
-        //{
-        //    FilterData();
-        //}
-
-        //private void dateTimeEnd_ValueChanged(object sender, EventArgs e)
-        //{
-        //    FilterData();
-        //}
+        private void dateTimeEnd_ValueChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
 
 
         // hiển thị dialog hoàn hàng
@@ -538,10 +554,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         trangThai
                     );
                     SetRowColor(rowIndex, px);
+                    soLuongNV++;
                 }
             }
-
-                DGVPhieuXuat.ClearSelection();
+            lbTotal.Text = "Tổng số phiếu xuất: " + soLuongNV.ToString();
+            DGVPhieuXuat.ClearSelection();
         }
 
         // Các sự kiện khác
@@ -564,6 +581,75 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private void pnlTop_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void rjDatePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSearchNV.Clear();
+            txtSMoney.Text = "Tiền từ";
+            txtEMoney.Text = "Đến tiền";
+            DateTime ngayDauTien = new DateTime(DateTime.Now.Year, 1, 1);
+            dateS.Value = ngayDauTien;
+            dateE.Value = DateTime.Today;
+        }
+
+        private void txtSMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                return;
+            if (e.KeyChar == (char)Keys.Back)
+                return;
+            e.Handled = true;
+        }
+
+        private void txtSMoney_MouseLeave(object sender, EventArgs e)
+        {
+            if(txtSMoney.Text == "" || txtSMoney.Text == null)
+            {
+                txtSMoney.Text = "Tiền từ";
+                if (txtEMoney.Text == "" || txtEMoney.Text == null)
+                {
+                    txtEMoney.Text = "Đến tiền";
+                }
+            }
+        }
+
+        private void txtEMoney_MouseLeave(object sender, EventArgs e)
+        {
+            if (txtEMoney.Text == "" || txtEMoney.Text == null)
+            {
+                txtEMoney.Text = "Đến tiền";
+                if (txtSMoney.Text == "" || txtEMoney.Text == null)
+                {
+                    txtSMoney.Text = "Tiền từ";
+                }
+            }
+        }
+
+        private void txtEMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                return;
+            if (e.KeyChar == (char)Keys.Back)
+                return;
+            e.Handled = true;
+        }
+
+        private void txtEMoney_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtEMoney.Text == "Đến tiền")
+                txtEMoney.Clear();
+        }
+
+        private void txtSMoney_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtSMoney.Text == "Tiền từ")
+                txtSMoney.Clear();
         }
     }
 }

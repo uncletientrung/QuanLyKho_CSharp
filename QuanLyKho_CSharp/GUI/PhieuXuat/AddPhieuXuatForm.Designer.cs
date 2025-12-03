@@ -28,549 +28,705 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPhieuXuatForm));
-            this.labelPrice = new System.Windows.Forms.Label();
-            this.buttonXuatHang = new System.Windows.Forms.Button();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTongTien = new System.Windows.Forms.Label();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonThemSP = new System.Windows.Forms.Button();
-            this.buttonNhapExcel = new System.Windows.Forms.Button();
-            this.buttonSuaSP = new System.Windows.Forms.Button();
-            this.buttonXoaSP = new System.Windows.Forms.Button();
-            this.dgvSPtrongKho = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pnlLeft = new System.Windows.Forms.Panel();
+            this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.dgvSPduocThem = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.manv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.artanPanel2 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txSearch = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBoxKH = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.linkNewKH = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.boxMaPhieu = new System.Windows.Forms.TextBox();
-            this.boxNVxuat = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).BeginInit();
+            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.artanPanel3 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.artanButton3 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.artanButton2 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.Right = new System.Windows.Forms.Panel();
+            this.artanPanel4 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.dgvSPtrongKho = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imgDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluongDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.artanPanel7 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.txSearch = new System.Windows.Forms.TextBox();
+            this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.dateE = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
+            this.artanPanel5 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.artanButton4 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnOnClose = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.pnlLeft.SuspendLayout();
+            this.artanPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.artanPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
+            this.artanPanel3.SuspendLayout();
+            this.Right.SuspendLayout();
+            this.artanPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.artanPanel7.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            this.artanPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelPrice
+            // pnlLeft
             // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.labelPrice.Location = new System.Drawing.Point(169, 6);
-            this.labelPrice.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(92, 46);
-            this.labelPrice.TabIndex = 1;
-            this.labelPrice.Text = "0đ";
-            this.labelPrice.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.pnlLeft.Controls.Add(this.artanPanel1);
+            this.pnlLeft.Controls.Add(this.artanPanel2);
+            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeft.Location = new System.Drawing.Point(0, 52);
+            this.pnlLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.pnlLeft.Size = new System.Drawing.Size(411, 465);
+            this.pnlLeft.TabIndex = 0;
             // 
-            // buttonXuatHang
+            // artanPanel1
             // 
-            this.buttonXuatHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonXuatHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.buttonXuatHang.Location = new System.Drawing.Point(8, 64);
-            this.buttonXuatHang.Margin = new System.Windows.Forms.Padding(8, 2, 8, 2);
-            this.buttonXuatHang.Name = "buttonXuatHang";
-            this.buttonXuatHang.Size = new System.Drawing.Size(251, 38);
-            this.buttonXuatHang.TabIndex = 0;
-            this.buttonXuatHang.Text = "Xuất hàng";
-            this.buttonXuatHang.UseVisualStyleBackColor = true;
-            this.buttonXuatHang.Click += new System.EventHandler(this.buttonXuatHang_Click);
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.66667F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.33333F));
-            this.tableLayoutPanel8.Controls.Add(this.labelTongTien, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.labelPrice, 1, 0);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(263, 58);
-            this.tableLayoutPanel8.TabIndex = 1;
-            // 
-            // labelTongTien
-            // 
-            this.labelTongTien.AutoSize = true;
-            this.labelTongTien.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelTongTien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold);
-            this.labelTongTien.ForeColor = System.Drawing.Color.Red;
-            this.labelTongTien.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelTongTien.Location = new System.Drawing.Point(2, 6);
-            this.labelTongTien.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
-            this.labelTongTien.Name = "labelTongTien";
-            this.labelTongTien.Size = new System.Drawing.Size(163, 46);
-            this.labelTongTien.TabIndex = 0;
-            this.labelTongTien.Text = "TỔNG TIỀN:";
-            this.labelTongTien.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 1;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Controls.Add(this.buttonXuatHang, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 407);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(267, 104);
-            this.tableLayoutPanel7.TabIndex = 1;
-            // 
-            // buttonThemSP
-            // 
-            this.buttonThemSP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonThemSP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonThemSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.buttonThemSP.Location = new System.Drawing.Point(23, 2);
-            this.buttonThemSP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.buttonThemSP.Name = "buttonThemSP";
-            this.buttonThemSP.Size = new System.Drawing.Size(119, 29);
-            this.buttonThemSP.TabIndex = 0;
-            this.buttonThemSP.Text = "Thêm sản phẩm";
-            this.buttonThemSP.UseVisualStyleBackColor = true;
-            this.buttonThemSP.Click += new System.EventHandler(this.buttonThemSP_Click);
-            // 
-            // buttonNhapExcel
-            // 
-            this.buttonNhapExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonNhapExcel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonNhapExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.buttonNhapExcel.Location = new System.Drawing.Point(150, 2);
-            this.buttonNhapExcel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.buttonNhapExcel.Name = "buttonNhapExcel";
-            this.buttonNhapExcel.Size = new System.Drawing.Size(119, 29);
-            this.buttonNhapExcel.TabIndex = 1;
-            this.buttonNhapExcel.Text = "Nhập Excel";
-            this.buttonNhapExcel.UseVisualStyleBackColor = true;
-            this.buttonNhapExcel.Click += new System.EventHandler(this.buttonNhapExcel_Click);
-            // 
-            // buttonSuaSP
-            // 
-            this.buttonSuaSP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSuaSP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSuaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.buttonSuaSP.Location = new System.Drawing.Point(353, 2);
-            this.buttonSuaSP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.buttonSuaSP.Name = "buttonSuaSP";
-            this.buttonSuaSP.Size = new System.Drawing.Size(119, 29);
-            this.buttonSuaSP.TabIndex = 2;
-            this.buttonSuaSP.Text = "Sửa sản phẩm";
-            this.buttonSuaSP.UseVisualStyleBackColor = true;
-            this.buttonSuaSP.Click += new System.EventHandler(this.buttonSuaSP_Click);
-            // 
-            // buttonXoaSP
-            // 
-            this.buttonXoaSP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonXoaSP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonXoaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.buttonXoaSP.Location = new System.Drawing.Point(480, 2);
-            this.buttonXoaSP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.buttonXoaSP.Name = "buttonXoaSP";
-            this.buttonXoaSP.Size = new System.Drawing.Size(119, 29);
-            this.buttonXoaSP.TabIndex = 3;
-            this.buttonXoaSP.Text = "Xoá sản phẩm";
-            this.buttonXoaSP.UseVisualStyleBackColor = true;
-            this.buttonXoaSP.Click += new System.EventHandler(this.buttonXoaSP_Click);
-            // 
-            // dgvSPtrongKho
-            // 
-            this.dgvSPtrongKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSPtrongKho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSPtrongKho.Location = new System.Drawing.Point(2, 2);
-            this.dgvSPtrongKho.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgvSPtrongKho.Name = "dgvSPtrongKho";
-            this.dgvSPtrongKho.RowHeadersWidth = 51;
-            this.dgvSPtrongKho.RowTemplate.Height = 24;
-            this.dgvSPtrongKho.Size = new System.Drawing.Size(626, 231);
-            this.dgvSPtrongKho.TabIndex = 0;
-            this.dgvSPtrongKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPtrongKho_CellContentClick);
+            this.artanPanel1.BackColor = System.Drawing.Color.White;
+            this.artanPanel1.BorderRadius = 20;
+            this.artanPanel1.Controls.Add(this.dgvSPduocThem);
+            this.artanPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artanPanel1.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel1.GradientAngle = 90F;
+            this.artanPanel1.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel1.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel1.Location = new System.Drawing.Point(0, 3);
+            this.artanPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.artanPanel1.Name = "artanPanel1";
+            this.artanPanel1.Padding = new System.Windows.Forms.Padding(4, 0, 4, 15);
+            this.artanPanel1.Size = new System.Drawing.Size(411, 310);
+            this.artanPanel1.TabIndex = 1;
             // 
             // dgvSPduocThem
             // 
-            this.dgvSPduocThem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSPduocThem.AllowUserToAddRows = false;
+            this.dgvSPduocThem.AllowUserToDeleteRows = false;
+            this.dgvSPduocThem.AllowUserToResizeColumns = false;
+            this.dgvSPduocThem.AllowUserToResizeRows = false;
+            this.dgvSPduocThem.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSPduocThem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSPduocThem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSPduocThem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSPduocThem.ColumnHeadersHeight = 30;
+            this.dgvSPduocThem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.manv,
+            this.productName,
+            this.count,
+            this.price,
+            this.sum,
+            this.edit,
+            this.remove});
             this.dgvSPduocThem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSPduocThem.Location = new System.Drawing.Point(2, 274);
-            this.dgvSPduocThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSPduocThem.EnableHeadersVisualStyles = false;
+            this.dgvSPduocThem.GridColor = System.Drawing.Color.LightGray;
+            this.dgvSPduocThem.Location = new System.Drawing.Point(4, 0);
+            this.dgvSPduocThem.MultiSelect = false;
             this.dgvSPduocThem.Name = "dgvSPduocThem";
-            this.dgvSPduocThem.RowHeadersWidth = 51;
-            this.dgvSPduocThem.RowTemplate.Height = 24;
-            this.dgvSPduocThem.Size = new System.Drawing.Size(626, 195);
-            this.dgvSPduocThem.TabIndex = 1;
-            this.dgvSPduocThem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPduocThem_CellContentClick);
+            this.dgvSPduocThem.ReadOnly = true;
+            this.dgvSPduocThem.RowHeadersVisible = false;
+            this.dgvSPduocThem.RowHeadersWidth = 25;
+            this.dgvSPduocThem.RowTemplate.Height = 30;
+            this.dgvSPduocThem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSPduocThem.Size = new System.Drawing.Size(403, 295);
+            this.dgvSPduocThem.TabIndex = 0;
             // 
-            // tableLayoutPanel4
+            // manv
             // 
-            this.tableLayoutPanel4.ColumnCount = 7;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.061224F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.40816F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.40816F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.2449F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.40816F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.40816F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.061224F));
-            this.tableLayoutPanel4.Controls.Add(this.buttonThemSP, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.buttonNhapExcel, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.buttonSuaSP, 4, 0);
-            this.tableLayoutPanel4.Controls.Add(this.buttonXoaSP, 5, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 237);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(626, 33);
-            this.tableLayoutPanel4.TabIndex = 2;
+            this.manv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.manv.FillWeight = 10F;
+            this.manv.HeaderText = "Mã";
+            this.manv.Name = "manv";
+            this.manv.ReadOnly = true;
+            this.manv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // tableLayoutPanel3
+            // productName
             // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.dgvSPtrongKho, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.dgvSPduocThem, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 40);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(630, 471);
-            this.tableLayoutPanel3.TabIndex = 11;
+            this.productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productName.FillWeight = 25F;
+            this.productName.HeaderText = "Tên sản phẩm";
+            this.productName.Name = "productName";
+            this.productName.ReadOnly = true;
             // 
-            // panel1
+            // count
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.tableLayoutPanel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Size = new System.Drawing.Size(634, 513);
-            this.panel1.TabIndex = 11;
+            this.count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.count.FillWeight = 10F;
+            this.count.HeaderText = "Số lượng";
+            this.count.Name = "count";
+            this.count.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.price.FillWeight = 20F;
+            this.price.HeaderText = "Đơn giá";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // sum
+            // 
+            this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sum.FillWeight = 10F;
+            this.sum.HeaderText = "Thành tiền";
+            this.sum.Name = "sum";
+            this.sum.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.edit.HeaderText = "";
+            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
+            this.edit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 5;
+            // 
+            // remove
+            // 
+            this.remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.remove.HeaderText = "";
+            this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
+            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.Name = "remove";
+            this.remove.ReadOnly = true;
+            this.remove.Width = 5;
+            // 
+            // artanPanel2
+            // 
+            this.artanPanel2.BackColor = System.Drawing.Color.White;
+            this.artanPanel2.BorderRadius = 30;
+            this.artanPanel2.Controls.Add(this.panel2);
+            this.artanPanel2.Controls.Add(this.btnThem);
+            this.artanPanel2.Controls.Add(this.artanPanel3);
+            this.artanPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.artanPanel2.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel2.GradientAngle = 90F;
+            this.artanPanel2.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel2.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel2.Location = new System.Drawing.Point(0, 313);
+            this.artanPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.artanPanel2.Name = "artanPanel2";
+            this.artanPanel2.Padding = new System.Windows.Forms.Padding(5);
+            this.artanPanel2.Size = new System.Drawing.Size(411, 152);
+            this.artanPanel2.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.tableLayoutPanel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.panel2.Location = new System.Drawing.Point(62, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(630, 38);
-            this.panel2.TabIndex = 10;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.40171F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.59829F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txSearch, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 36);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(29, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 36);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // txSearch
-            // 
-            this.txSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txSearch.BackColor = System.Drawing.Color.White;
-            this.txSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txSearch.ForeColor = System.Drawing.Color.Black;
-            this.txSearch.Location = new System.Drawing.Point(59, 3);
-            this.txSearch.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(561, 29);
-            this.txSearch.TabIndex = 6;
-            this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.95614F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.04386F));
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(913, 517);
-            this.tableLayoutPanel2.TabIndex = 12;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 0, 2);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(640, 2);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.7685F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.26376F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.80444F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(271, 513);
-            this.tableLayoutPanel5.TabIndex = 12;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 1;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.comboBoxKH, 0, 5);
-            this.tableLayoutPanel6.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel9, 0, 4);
-            this.tableLayoutPanel6.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.boxMaPhieu, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.boxNVxuat, 0, 3);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 6;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.01602F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.31732F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.01602F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.31732F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.01602F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.31732F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(267, 179);
-            this.tableLayoutPanel6.TabIndex = 0;
-            // 
-            // comboBoxKH
-            // 
-            this.comboBoxKH.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBoxKH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxKH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.comboBoxKH.FormattingEnabled = true;
-            this.comboBoxKH.Location = new System.Drawing.Point(11, 146);
-            this.comboBoxKH.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
-            this.comboBoxKH.Name = "comboBoxKH";
-            this.comboBoxKH.Size = new System.Drawing.Size(245, 28);
-            this.comboBoxKH.TabIndex = 0;
-            this.comboBoxKH.SelectedIndexChanged += new System.EventHandler(this.comboBoxKH_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(263, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã phiếu xuất";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.5F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.5F));
-            this.tableLayoutPanel9.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.linkNewKH, 1, 0);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(2, 118);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(263, 24);
-            this.tableLayoutPanel9.TabIndex = 2;
+            this.panel2.Size = new System.Drawing.Size(309, 40);
+            this.panel2.TabIndex = 15;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(2, 4);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 8);
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(176, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 12);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Khách hàng";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // linkNewKH
-            // 
-            this.linkNewKH.AutoSize = true;
-            this.linkNewKH.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linkNewKH.Location = new System.Drawing.Point(184, 4);
-            this.linkNewKH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 8);
-            this.linkNewKH.Name = "linkNewKH";
-            this.linkNewKH.Size = new System.Drawing.Size(77, 12);
-            this.linkNewKH.TabIndex = 8;
-            this.linkNewKH.TabStop = true;
-            this.linkNewKH.Text = "Thêm mới";
-            this.linkNewKH.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkNewKH_LinkClicked);
+            this.label3.Size = new System.Drawing.Size(133, 40);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "99999999";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(2, 58);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 8);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(263, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nhân viên xuất";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label2.Size = new System.Drawing.Size(133, 40);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Tổng thanh toán:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // boxMaPhieu
+            // btnThem
             // 
-            this.boxMaPhieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boxMaPhieu.Enabled = false;
-            this.boxMaPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.boxMaPhieu.Location = new System.Drawing.Point(11, 30);
-            this.boxMaPhieu.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
-            this.boxMaPhieu.Name = "boxMaPhieu";
-            this.boxMaPhieu.ReadOnly = true;
-            this.boxMaPhieu.Size = new System.Drawing.Size(245, 27);
-            this.boxMaPhieu.TabIndex = 3;
-            this.boxMaPhieu.TabStop = false;
-            this.boxMaPhieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.boxMaPhieu.TextChanged += new System.EventHandler(this.boxMaPhieu_TextChanged);
+            this.btnThem.Location = new System.Drawing.Point(59, 97);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
+            this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
+            this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnThem.Size = new System.Drawing.Size(315, 40);
+            this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Back.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Border.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnThem.StateCommon.Border.Rounding = 10;
+            this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.White;
+            this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnThem.TabIndex = 11;
+            this.btnThem.Values.Text = "Thanh toán";
             // 
-            // boxNVxuat
+            // artanPanel3
             // 
-            this.boxNVxuat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boxNVxuat.Enabled = false;
-            this.boxNVxuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.boxNVxuat.Location = new System.Drawing.Point(11, 88);
-            this.boxNVxuat.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
-            this.boxNVxuat.Name = "boxNVxuat";
-            this.boxNVxuat.ReadOnly = true;
-            this.boxNVxuat.Size = new System.Drawing.Size(245, 27);
-            this.boxNVxuat.TabIndex = 4;
-            this.boxNVxuat.TabStop = false;
-            this.boxNVxuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.artanPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel3.BorderRadius = 30;
+            this.artanPanel3.Controls.Add(this.artanButton3);
+            this.artanPanel3.Controls.Add(this.textBox1);
+            this.artanPanel3.Controls.Add(this.artanButton2);
+            this.artanPanel3.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel3.GradientAngle = 90F;
+            this.artanPanel3.GradientBottomColor = System.Drawing.Color.White;
+            this.artanPanel3.GradientTopColor = System.Drawing.Color.White;
+            this.artanPanel3.Location = new System.Drawing.Point(59, 54);
+            this.artanPanel3.Name = "artanPanel3";
+            this.artanPanel3.Size = new System.Drawing.Size(315, 37);
+            this.artanPanel3.TabIndex = 14;
+            // 
+            // artanButton3
+            // 
+            this.artanButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton3.BorderColor = System.Drawing.Color.White;
+            this.artanButton3.BorderRadius = 30;
+            this.artanButton3.BorderSize = 0;
+            this.artanButton3.FlatAppearance.BorderSize = 0;
+            this.artanButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton3.Image = ((System.Drawing.Image)(resources.GetObject("artanButton3.Image")));
+            this.artanButton3.Location = new System.Drawing.Point(282, 3);
+            this.artanButton3.Name = "artanButton3";
+            this.artanButton3.Size = new System.Drawing.Size(30, 30);
+            this.artanButton3.TabIndex = 14;
+            this.artanButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton3.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.textBox1.Location = new System.Drawing.Point(39, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(237, 23);
+            this.textBox1.TabIndex = 13;
+            // 
+            // artanButton2
+            // 
+            this.artanButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton2.BorderColor = System.Drawing.Color.White;
+            this.artanButton2.BorderRadius = 30;
+            this.artanButton2.BorderSize = 0;
+            this.artanButton2.FlatAppearance.BorderSize = 0;
+            this.artanButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton2.Image = ((System.Drawing.Image)(resources.GetObject("artanButton2.Image")));
+            this.artanButton2.Location = new System.Drawing.Point(3, 3);
+            this.artanButton2.Name = "artanButton2";
+            this.artanButton2.Size = new System.Drawing.Size(30, 30);
+            this.artanButton2.TabIndex = 12;
+            this.artanButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton2.UseVisualStyleBackColor = false;
+            // 
+            // Right
+            // 
+            this.Right.Controls.Add(this.artanPanel4);
+            this.Right.Controls.Add(this.panel1);
+            this.Right.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Right.Location = new System.Drawing.Point(411, 52);
+            this.Right.Margin = new System.Windows.Forms.Padding(0);
+            this.Right.Name = "Right";
+            this.Right.Padding = new System.Windows.Forms.Padding(3, 3, 0, 0);
+            this.Right.Size = new System.Drawing.Size(502, 465);
+            this.Right.TabIndex = 1;
+            // 
+            // artanPanel4
+            // 
+            this.artanPanel4.BackColor = System.Drawing.Color.White;
+            this.artanPanel4.BorderRadius = 20;
+            this.artanPanel4.Controls.Add(this.dgvSPtrongKho);
+            this.artanPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artanPanel4.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel4.GradientAngle = 90F;
+            this.artanPanel4.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel4.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel4.Location = new System.Drawing.Point(3, 54);
+            this.artanPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.artanPanel4.Name = "artanPanel4";
+            this.artanPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 15);
+            this.artanPanel4.Size = new System.Drawing.Size(499, 411);
+            this.artanPanel4.TabIndex = 1;
+            // 
+            // dgvSPtrongKho
+            // 
+            this.dgvSPtrongKho.AllowUserToAddRows = false;
+            this.dgvSPtrongKho.AllowUserToDeleteRows = false;
+            this.dgvSPtrongKho.AllowUserToResizeColumns = false;
+            this.dgvSPtrongKho.AllowUserToResizeRows = false;
+            this.dgvSPtrongKho.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSPtrongKho.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSPtrongKho.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSPtrongKho.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSPtrongKho.ColumnHeadersHeight = 30;
+            this.dgvSPtrongKho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.productNameDGVTon,
+            this.imgDGVTon,
+            this.priceDGVTon,
+            this.soluongDGVTon});
+            this.dgvSPtrongKho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSPtrongKho.EnableHeadersVisualStyles = false;
+            this.dgvSPtrongKho.GridColor = System.Drawing.Color.LightGray;
+            this.dgvSPtrongKho.Location = new System.Drawing.Point(4, 0);
+            this.dgvSPtrongKho.MultiSelect = false;
+            this.dgvSPtrongKho.Name = "dgvSPtrongKho";
+            this.dgvSPtrongKho.ReadOnly = true;
+            this.dgvSPtrongKho.RowHeadersVisible = false;
+            this.dgvSPtrongKho.RowHeadersWidth = 25;
+            this.dgvSPtrongKho.RowTemplate.Height = 30;
+            this.dgvSPtrongKho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSPtrongKho.Size = new System.Drawing.Size(491, 396);
+            this.dgvSPtrongKho.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 10F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // productNameDGVTon
+            // 
+            this.productNameDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productNameDGVTon.FillWeight = 25F;
+            this.productNameDGVTon.HeaderText = "Tên sản phẩm";
+            this.productNameDGVTon.Name = "productNameDGVTon";
+            this.productNameDGVTon.ReadOnly = true;
+            // 
+            // imgDGVTon
+            // 
+            this.imgDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.imgDGVTon.FillWeight = 10F;
+            this.imgDGVTon.HeaderText = "Ảnh";
+            this.imgDGVTon.Name = "imgDGVTon";
+            this.imgDGVTon.ReadOnly = true;
+            // 
+            // priceDGVTon
+            // 
+            this.priceDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.priceDGVTon.FillWeight = 20F;
+            this.priceDGVTon.HeaderText = "Đơn giá";
+            this.priceDGVTon.Name = "priceDGVTon";
+            this.priceDGVTon.ReadOnly = true;
+            // 
+            // soluongDGVTon
+            // 
+            this.soluongDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soluongDGVTon.FillWeight = 10F;
+            this.soluongDGVTon.HeaderText = "Số lượng";
+            this.soluongDGVTon.Name = "soluongDGVTon";
+            this.soluongDGVTon.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.artanPanel7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panel1.Size = new System.Drawing.Size(499, 51);
+            this.panel1.TabIndex = 1;
+            // 
+            // artanPanel7
+            // 
+            this.artanPanel7.BackColor = System.Drawing.Color.White;
+            this.artanPanel7.BorderRadius = 30;
+            this.artanPanel7.Controls.Add(this.label1);
+            this.artanPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artanPanel7.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel7.GradientAngle = 90F;
+            this.artanPanel7.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel7.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel7.Location = new System.Drawing.Point(0, 0);
+            this.artanPanel7.Name = "artanPanel7";
+            this.artanPanel7.Size = new System.Drawing.Size(499, 48);
+            this.artanPanel7.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(499, 48);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Danh sách hàng tồn";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlSearch.BorderRadius = 30;
+            this.pnlSearch.Controls.Add(this.txSearch);
+            this.pnlSearch.Controls.Add(this.artanButton1);
+            this.pnlSearch.ForeColor = System.Drawing.Color.Black;
+            this.pnlSearch.GradientAngle = 90F;
+            this.pnlSearch.GradientBottomColor = System.Drawing.Color.White;
+            this.pnlSearch.GradientTopColor = System.Drawing.Color.White;
+            this.pnlSearch.Location = new System.Drawing.Point(59, 8);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(332, 37);
+            this.pnlSearch.TabIndex = 12;
+            // 
+            // txSearch
+            // 
+            this.txSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txSearch.BackColor = System.Drawing.Color.White;
+            this.txSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txSearch.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.txSearch.Location = new System.Drawing.Point(39, 8);
+            this.txSearch.Name = "txSearch";
+            this.txSearch.Size = new System.Drawing.Size(275, 23);
+            this.txSearch.TabIndex = 13;
+            // 
+            // artanButton1
+            // 
+            this.artanButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton1.BorderColor = System.Drawing.Color.White;
+            this.artanButton1.BorderRadius = 30;
+            this.artanButton1.BorderSize = 0;
+            this.artanButton1.FlatAppearance.BorderSize = 0;
+            this.artanButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton1.Image = ((System.Drawing.Image)(resources.GetObject("artanButton1.Image")));
+            this.artanButton1.Location = new System.Drawing.Point(3, 3);
+            this.artanButton1.Name = "artanButton1";
+            this.artanButton1.Size = new System.Drawing.Size(30, 30);
+            this.artanButton1.TabIndex = 12;
+            this.artanButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton1.UseVisualStyleBackColor = false;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlTop.Controls.Add(this.dateE);
+            this.pnlTop.Controls.Add(this.artanPanel5);
+            this.pnlTop.Controls.Add(this.pnlSearch);
+            this.pnlTop.Controls.Add(this.btnOnClose);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(913, 52);
+            this.pnlTop.TabIndex = 0;
+            this.pnlTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTop_Paint);
+            // 
+            // dateE
+            // 
+            this.dateE.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.dateE.BorderSize = 0;
+            this.dateE.CalendarFont = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateE.CustomFormat = "dd/MM/yyyy";
+            this.dateE.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateE.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateE.Location = new System.Drawing.Point(616, 11);
+            this.dateE.Margin = new System.Windows.Forms.Padding(0);
+            this.dateE.MaximumSize = new System.Drawing.Size(122, 37);
+            this.dateE.MinimumSize = new System.Drawing.Size(122, 37);
+            this.dateE.Name = "dateE";
+            this.dateE.Size = new System.Drawing.Size(122, 37);
+            this.dateE.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.dateE.TabIndex = 23;
+            this.dateE.TextColor = System.Drawing.Color.White;
+            // 
+            // artanPanel5
+            // 
+            this.artanPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel5.BorderRadius = 30;
+            this.artanPanel5.Controls.Add(this.artanButton4);
+            this.artanPanel5.Controls.Add(this.textBox2);
+            this.artanPanel5.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel5.GradientAngle = 90F;
+            this.artanPanel5.GradientBottomColor = System.Drawing.Color.White;
+            this.artanPanel5.GradientTopColor = System.Drawing.Color.White;
+            this.artanPanel5.Location = new System.Drawing.Point(741, 8);
+            this.artanPanel5.Name = "artanPanel5";
+            this.artanPanel5.Size = new System.Drawing.Size(160, 37);
+            this.artanPanel5.TabIndex = 15;
+            // 
+            // artanButton4
+            // 
+            this.artanButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton4.BorderColor = System.Drawing.Color.White;
+            this.artanButton4.BorderRadius = 30;
+            this.artanButton4.BorderSize = 0;
+            this.artanButton4.FlatAppearance.BorderSize = 0;
+            this.artanButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.artanButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton4.Image = ((System.Drawing.Image)(resources.GetObject("artanButton4.Image")));
+            this.artanButton4.Location = new System.Drawing.Point(3, 4);
+            this.artanButton4.Name = "artanButton4";
+            this.artanButton4.Size = new System.Drawing.Size(30, 30);
+            this.artanButton4.TabIndex = 14;
+            this.artanButton4.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanButton4.UseVisualStyleBackColor = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.textBox2.Location = new System.Drawing.Point(39, 6);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(82, 23);
+            this.textBox2.TabIndex = 13;
+            // 
+            // btnOnClose
+            // 
+            this.btnOnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnOnClose.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnOnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnOnClose.BorderRadius = 5;
+            this.btnOnClose.BorderSize = 0;
+            this.btnOnClose.FlatAppearance.BorderSize = 0;
+            this.btnOnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOnClose.ForeColor = System.Drawing.Color.White;
+            this.btnOnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnOnClose.Image")));
+            this.btnOnClose.Location = new System.Drawing.Point(4, 3);
+            this.btnOnClose.Name = "btnOnClose";
+            this.btnOnClose.Size = new System.Drawing.Size(33, 45);
+            this.btnOnClose.TabIndex = 14;
+            this.btnOnClose.TextColor = System.Drawing.Color.White;
+            this.btnOnClose.UseVisualStyleBackColor = false;
+            this.btnOnClose.Click += new System.EventHandler(this.artanButton5_Click);
             // 
             // AddPhieuXuatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(913, 517);
-            this.Controls.Add(this.tableLayoutPanel2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.Right);
+            this.Controls.Add(this.pnlLeft);
+            this.Controls.Add(this.pnlTop);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddPhieuXuatForm";
-            this.Text = "AddPhieuXuatForm";
             this.Load += new System.EventHandler(this.AddPhieuXuatForm_Load);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel8.PerformLayout();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).EndInit();
+            this.pnlLeft.ResumeLayout(false);
+            this.artanPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.artanPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.tableLayoutPanel9.PerformLayout();
+            this.artanPanel3.ResumeLayout(false);
+            this.artanPanel3.PerformLayout();
+            this.Right.ResumeLayout(false);
+            this.artanPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.artanPanel7.ResumeLayout(false);
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            this.artanPanel5.ResumeLayout(false);
+            this.artanPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label labelPrice;
-        private System.Windows.Forms.Button buttonXuatHang;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Label labelTongTien;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button buttonThemSP;
-        private System.Windows.Forms.Button buttonNhapExcel;
-        private System.Windows.Forms.Button buttonSuaSP;
-        private System.Windows.Forms.Button buttonXoaSP;
-        private System.Windows.Forms.DataGridView dgvSPtrongKho;
-        private System.Windows.Forms.DataGridView dgvSPduocThem;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel pnlLeft;
+        private System.Windows.Forms.Panel Right;
+        private Helper.component.ArtanPanel pnlSearch;
         private System.Windows.Forms.TextBox txSearch;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private Helper.component.ArtanButton artanButton1;
+        private System.Windows.Forms.Panel pnlTop;
+        private Helper.component.ArtanPanel artanPanel1;
+        private System.Windows.Forms.DataGridView dgvSPduocThem;
+        private Helper.component.ArtanPanel artanPanel2;
+        private Helper.component.ArtanPanel artanPanel3;
+        private System.Windows.Forms.TextBox textBox1;
+        private Helper.component.ArtanButton artanButton2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnThem;
+        private Helper.component.ArtanButton artanButton3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sum;
+        private System.Windows.Forms.DataGridViewImageColumn edit;
+        private System.Windows.Forms.DataGridViewImageColumn remove;
+        private Helper.component.ArtanPanel artanPanel4;
+        private System.Windows.Forms.DataGridView dgvSPtrongKho;
+        private Helper.component.ArtanPanel artanPanel5;
+        private Helper.component.ArtanButton artanButton4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDGVTon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imgDGVTon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDGVTon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soluongDGVTon;
+        private System.Windows.Forms.Panel panel1;
+        private Helper.component.RJDatePicker dateE;
+        private Helper.component.ArtanButton btnOnClose;
+        private Helper.component.ArtanPanel artanPanel7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox boxMaPhieu;
-        private System.Windows.Forms.TextBox boxNVxuat;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBoxKH;
-        private System.Windows.Forms.LinkLabel linkNewKH;
+        private System.Windows.Forms.Label label2;
     }
 }
