@@ -152,7 +152,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 
             foreach (var item in dataDoanhThuTuNgayDenNgay)
             {
-                labels.Add(item.Ngay.ToString());
+                labels.Add(item.Ngay.ToString("dd/MM"));
                 von.Add(item.Chiphi / 1_000_000.0);
                 doanhThu.Add(item.Doanhthu / 1_000_000.0);
                 loiNhuan.Add(item.Loinhuan / 1_000_000.0);
