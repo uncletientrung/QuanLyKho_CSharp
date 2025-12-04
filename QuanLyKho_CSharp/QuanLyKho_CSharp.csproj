@@ -641,6 +641,12 @@
     <Compile Include="Helper\component\RoundedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Helper\DropDownSearch\SearchResultControlCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helper\DropDownSearch\SearchResultControlCustomer.Designer.cs">
+      <DependentUpon>SearchResultControlCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\QuantityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -648,6 +654,12 @@
       <DependentUpon>QuantityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\ScreenSize.cs" />
+    <Compile Include="Helper\DropDownSearch\SearchResultControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helper\DropDownSearch\SearchResultControl.Designer.cs">
+      <DependentUpon>SearchResultControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -908,8 +920,14 @@
     <EmbeddedResource Include="Helper\component\RoundedButton.resx">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Helper\DropDownSearch\SearchResultControlCustomer.resx">
+      <DependentUpon>SearchResultControlCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Helper\QuantityForm.resx">
       <DependentUpon>QuantityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\DropDownSearch\SearchResultControl.resx">
+      <DependentUpon>SearchResultControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

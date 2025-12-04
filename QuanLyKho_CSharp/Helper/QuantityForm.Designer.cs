@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.lbTonKho = new System.Windows.Forms.Label();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnOk = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.lb = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             // 
             this.artanPanel1.BackColor = System.Drawing.Color.DimGray;
             this.artanPanel1.BorderRadius = 30;
+            this.artanPanel1.Controls.Add(this.lbTonKho);
             this.artanPanel1.Controls.Add(this.btnCancel);
             this.artanPanel1.Controls.Add(this.btnOk);
             this.artanPanel1.Controls.Add(this.lb);
@@ -51,13 +53,25 @@
             this.artanPanel1.GradientTopColor = System.Drawing.Color.White;
             this.artanPanel1.Location = new System.Drawing.Point(5, 5);
             this.artanPanel1.Name = "artanPanel1";
-            this.artanPanel1.Size = new System.Drawing.Size(294, 143);
+            this.artanPanel1.Size = new System.Drawing.Size(370, 171);
             this.artanPanel1.TabIndex = 25;
             this.artanPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.artanPanel1_Paint);
             // 
+            // lbTonKho
+            // 
+            this.lbTonKho.BackColor = System.Drawing.Color.White;
+            this.lbTonKho.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTonKho.ForeColor = System.Drawing.Color.Black;
+            this.lbTonKho.Location = new System.Drawing.Point(223, 0);
+            this.lbTonKho.Name = "lbTonKho";
+            this.lbTonKho.Size = new System.Drawing.Size(147, 28);
+            this.lbTonKho.TabIndex = 25;
+            this.lbTonKho.Text = "Hàng tồn còn:  0";
+            this.lbTonKho.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(168, 87);
+            this.btnCancel.Location = new System.Drawing.Point(189, 106);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnCancel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
@@ -87,7 +101,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(59, 87);
+            this.btnOk.Location = new System.Drawing.Point(80, 106);
             this.btnOk.Name = "btnOk";
             this.btnOk.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnOk.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
@@ -120,7 +134,7 @@
             this.lb.BackColor = System.Drawing.Color.White;
             this.lb.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.lb.Location = new System.Drawing.Point(42, 9);
+            this.lb.Location = new System.Drawing.Point(63, 28);
             this.lb.Name = "lb";
             this.lb.Size = new System.Drawing.Size(227, 31);
             this.lb.TabIndex = 22;
@@ -129,7 +143,7 @@
             // 
             // soLuong
             // 
-            this.soLuong.Location = new System.Drawing.Point(80, 43);
+            this.soLuong.Location = new System.Drawing.Point(101, 62);
             this.soLuong.MaximumSize = new System.Drawing.Size(150, 27);
             this.soLuong.MinimumSize = new System.Drawing.Size(150, 27);
             this.soLuong.Name = "soLuong";
@@ -151,7 +165,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(304, 153);
+            this.ClientSize = new System.Drawing.Size(380, 181);
             this.Controls.Add(this.artanPanel1);
             this.Name = "QuantityForm";
             this.Padding = new System.Windows.Forms.Padding(5);
@@ -169,5 +183,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnOk;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private component.ArtanPanel artanPanel1;
+        private System.Windows.Forms.Label lbTonKho;
     }
 }

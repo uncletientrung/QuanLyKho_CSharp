@@ -142,7 +142,7 @@
         jovQkAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="artanButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnNewKH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAXFJREFUSEvd
         lLtKBEEQRRcxEQRlBRVEDEz8BB+Y+gjNDBQMDE3ED/EfzAxk8Q0+AxMTBSO/YNVQMFCj8tT0HUTbXqYX
@@ -211,6 +211,15 @@
         lDsKgDAQBeMpxPtfxFZRrP2dJc7TFSzExrVyBx6BXZgXUiQFwS0555J0pLaRH0grshDR29gHhLr5uquP
         s7TVeyQzqQj5AbKCDDLDRCpb+YDwWtAS3wKB9LsnOpHU5CJKnkGqr2JWAww29gWxSkbS2Cj4LyltGE3k
         zqlE3+cAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="dataGridViewImageColumn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAALdJREFUSEvd
+        llEKwjAQRHMLPU398KQWSr2F1xH1DnamELBrho4pVemD95FkdlNKYZt+zR628AqfQe7xjJlqzjA2jjJT
+        zQOySTOuphwgz+7jqpL8lIq58wkXmAuWyl5vrH5BJoc+xa7b5gV8p6/vNa7JogvinpOROMVORuIUOxmJ
+        U+xkJE6xk5E4xU5GUgqu/pk6/M8FHCAMloaM4ghZYw0fZ0wqezgLh3gHb7DUpCR/AE5wB79JSgODWLIu
+        jovQkAAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

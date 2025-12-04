@@ -13,14 +13,18 @@ namespace QuanLyKho_CSharp.Helper
     public partial class QuantityForm : Form
     {
         public int Quantity { get; set; }
-        public QuantityForm(string title, int soLuongTruyenVao)
+        private int soluongTon;
+        public QuantityForm(string title, int soLuongTruyenVao, int soluongton)
         {
             this.FormBorderStyle= FormBorderStyle.None;
             InitializeComponent();
+            this.soluongTon = soluongton;
             lb.Text = title;
+            lbTonKho.Text = "Hàng tồn còn: " + soluongTon.ToString();
             soLuong.Maximum = 10000;
             soLuong.Minimum= 1;
             soLuong.Value = soLuongTruyenVao;
+           
         }
 
         private void kryptonNumericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -30,8 +34,18 @@ namespace QuanLyKho_CSharp.Helper
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            Quantity = int.Parse(soLuong.Value.ToString());
-            this.DialogResult = DialogResult.OK;
+            int slNhap= int.Parse(soLuong.Value.ToString());
+            if (slNhap > soluongTon)
+            {
+                MessageBox.Show("Đã nhập quá số lượng tồn kho", "Cảnh báo",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                Quantity = int.Parse(soLuong.Value.ToString());
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

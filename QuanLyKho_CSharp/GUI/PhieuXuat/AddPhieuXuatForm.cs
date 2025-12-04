@@ -2,6 +2,7 @@
 using QuanLyKho.DTO;
 using QuanLyKho_CSharp.GUI.KhachHang;
 using QuanLyKho_CSharp.Helper;
+using QuanLyKho_CSharp.Helper.DropDownSearch;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -85,7 +86,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             listSPDuocThem = new BindingList<SanPhamDTO>();
         }
 
-        private Image LoadImageSafe(string absolutePath)
+        public static Image LoadImageSafe(string absolutePath)
         {
             if (string.IsNullOrWhiteSpace(absolutePath)) return CreateEmptyImage();
             if (!File.Exists(absolutePath)) return CreateEmptyImage();
@@ -108,7 +109,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
         }
 
-        private Image CreateEmptyImage() // Ảnh trống
+        public static Image CreateEmptyImage() // Ảnh trống
         {
             Bitmap emptyImage = new Bitmap(50, 50);
             using (Graphics g = Graphics.FromImage(emptyImage))
@@ -166,10 +167,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                     );
                 }
             }
-
             dgvSPduocThem.ClearSelection();
             UpdateTongTien();
-            //UpdateButtonStates();
         }
 
         private void UpdateTongTien()
@@ -185,7 +184,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             lbPrice.Text = $"{tongTien:N0}đ";
         }
         // Thêm sản phẩm vào phiếu
-        private void dgvSPtrongKho_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvSPtrongKho_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -204,7 +203,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 UpdateQuantity(spTrongKho);
             }
         }
@@ -212,15 +210,18 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         // Chính sửa số lượng nếu cần
         private void dgvSPduocThem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dgvSPduocThem.Columns[e.ColumnIndex].Name!= "remove")
+            if (e.RowIndex >= 0 )
             {
-                if (dgvSPtrongKho.CurrentRow == null) return;
+                if (dgvSPduocThem.CurrentRow == null) return;
                 var selectedRow = dgvSPduocThem.CurrentRow;
                 int maSP = int.Parse(selectedRow.Cells[0].Value.ToString());
-                SanPhamDTO spDuocChon = listSP.FirstOrDefault(x => x.Masp == maSP);
+                SanPhamDTO spDuocChon = listSPDuocThem.FirstOrDefault(x => x.Masp == maSP);
                 if (spDuocChon == null) return;
-                UpdateQuantity(spDuocChon);
-
+                if (dgvSPduocThem.Columns[e.ColumnIndex].Name != "remove") UpdateQuantity(spDuocChon);
+                else if (dgvSPduocThem.Columns[e.ColumnIndex].Name == "remove") {
+                    listSPDuocThem.Remove(spDuocChon);
+                    LoadSPDuocThem();  
+                }
             }
         }
         private void UpdateQuantity(SanPhamDTO spDuocChon)
@@ -228,12 +229,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             var existingSP = listSPDuocThem.FirstOrDefault(x => x.Masp == spDuocChon.Masp);
             string title = existingSP != null ? "Chỉnh sửa số lượng" : "Nhập số lượng";
             int soLuongTruyenVao = existingSP != null ? existingSP.Soluong : 1;
-            var inputForm = new QuantityForm(title, soLuongTruyenVao);
+            int soluongTon = listSP.FirstOrDefault(sp => sp.Masp == spDuocChon.Masp).Soluong;
+            var inputForm = new QuantityForm(title, soLuongTruyenVao, soluongTon);
             if (inputForm.ShowDialog() == DialogResult.OK)
             {
                 int sl = inputForm.Quantity;
-                //MessageBox.Show(sl.ToString() + inputForm.Quantity.ToString());
-
                 if (existingSP != null)
                 {
                     existingSP.Soluong = sl;
@@ -252,216 +252,105 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
                 LoadSPDuocThem();
             }
+            else
+            {
+                txSearch.Clear();
+            }
+        }
+        private void txSearch_TextChanged(object sender, EventArgs e) // Tìm kiếm sản phẩm
+        {
+            string textSearch = txSearch.Text.Trim();
+            listContainer.Controls.Clear();
+            if (string.IsNullOrEmpty(textSearch))
+            {
+                listContainer.Height = 0;
+                return;
+            }
+            BindingList<SanPhamDTO> resultList = SearchResultControl.TimKiem(textSearch);
+            if(resultList.Count == 0)
+            {
+                listContainer.Controls.Add(new Label
+                {
+                    Text = "Không tìm thấy sản phẩm",
+                    Dock = DockStyle.Top,
+                    Height = 50,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                });
+                listContainer.Height = 50;
+                return;
+            }
+            foreach( SanPhamDTO sp in resultList)
+            {
+                var item = new SearchResultControl();
+                item.BindData(sp);
+                item.OnProductSelected += (objPhatRaSuKien, selectedSp) =>
+                {
+                    txSearch.Text = $"{selectedSp.Masp} | {selectedSp.Tensp} "+ $"| SL: {sp.Soluong} | Giá: {sp.Dongia:N0}đ";
+                    listContainer.Height = 0;
+                    txSearch.SelectionStart = txSearch.Text.Length;
+                    UpdateQuantity(sp);
+                };
+                listContainer.Controls.Add(item);
+            }
+            listContainer.Height = Math.Min(resultList.Count * 54 + 10, 300);
         }
 
-        //private void UpdateButtonStates()
-        //{
-        //    // Chỉ enable nút Sửa và Xóa khi có sản phẩm trong danh sách được thêm
-        //    bool hasProducts = listSPDuocThem != null && listSPDuocThem.Count > 0;
-        //    buttonSuaSP.Enabled = hasProducts;
-        //    buttonXoaSP.Enabled = hasProducts;
-        //}
+        private void txSearchCustomer_TextChanged(object sender, EventArgs e) // Tìm khách hàng
+        {
+            listContainerCustomer.AutoScroll = true;
+            string textSearch = txSearchCustomer.Text.Trim();
+            listContainerCustomer.Controls.Clear();
+            if (string.IsNullOrEmpty(textSearch))
+            {
+                listContainerCustomer.Height = 0;
+                return;
+            }
+            BindingList<KhachHangDTO> resultList = SearchResultControlCustomer.TimKiem(textSearch);
+            if (resultList.Count == 0)
+            {
+                listContainerCustomer.Controls.Add(new Label
+                {
+                    Text = "Không tìm thấy khách hàng",
+                    Dock = DockStyle.Top,
+                    Height = 30,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                });
+                listContainerCustomer.Height = 30;
+                return;
+            }
+            foreach (KhachHangDTO kh in resultList)
+            {
+                var item = new SearchResultControlCustomer();
+                item.BindData(kh);
+                item.Dock = DockStyle.Top;
+                item.OnCustomerSelected += (objPhatRaSuKien, selectedKh) =>
+                {
+                    txSearchCustomer.Text = $"{selectedKh.Makh} | {selectedKh.Tenkhachhang} " + $"| SDT: {selectedKh.Sdt}";
+                    listContainerCustomer.Height = 0;
+                    txSearchCustomer.SelectionStart = txSearchCustomer.Text.Length;
+                };
+                listContainerCustomer.Controls.Add(item);
+            }
+            listContainerCustomer.Height = Math.Min(resultList.Count * 30 + 10, 120);
+        }
+        private void artanButton3_Click(object sender, EventArgs e) // Thêm khách mới
+        {
+            AddKhachHangForm addKHForm = new AddKhachHangForm();
+            DialogResult result = addKHForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                if (listKH != null && listKH.Count > 0)
+                {
+                    var newestKH = listKH.OrderByDescending(kh => kh.Makh).FirstOrDefault();
 
-        //        private void txSearch_TextChanged(object sender, EventArgs e)
-        //        {
-        //            string searchString = txSearch.Text.Trim();
+                    if (newestKH != null)
+                    {
+                        txSearchCustomer.Text = $"{newestKH.Makh} | {newestKH.Tenkhachhang} " + $"| SDT: {newestKH.Sdt}";
+                    }
+                }
+            }
+        }
 
-        //            if (string.IsNullOrEmpty(searchString))
-        //            {
-        //                LoadSPTrongKho();
-        //                return;
-        //            }
-
-        //            // Tìm kiếm theo mã hoặc tên sản phẩm
-        //            var filteredList = listSP.Where(sp =>
-        //                sp.Masp.ToString().Contains(searchString) ||
-        //                sp.Tensp.ToLower().Contains(searchString.ToLower())
-        //            ).ToList();
-
-        //            dgvSPtrongKho.Rows.Clear();
-
-        //            if (filteredList.Count > 0)
-        //            {
-        //                foreach (SanPhamDTO sp in filteredList)
-        //                {
-        //                    Image productImage = LoadImageSafe(sp.Hinhanh);
-        //                    dgvSPtrongKho.Rows.Add(
-        //                        sp.Masp,
-        //                        sp.Tensp,
-        //                        productImage,
-        //                        sp.Dongia,
-        //                        sp.Soluong
-        //                    );
-        //                }
-        //            }
-
-        //            dgvSPtrongKho.ClearSelection();
-        //        }
-
-        //        private void buttonThemSP_Click(object sender, EventArgs e)
-        //        {
-        //            if (dgvSPtrongKho.SelectedRows.Count > 0)
-        //            {
-        //                DataGridViewRow selectedRow = dgvSPtrongKho.SelectedRows[0];
-        //                int maSP = int.Parse(selectedRow.Cells["MaSP"].Value.ToString());
-
-        //                // Tìm sản phẩm trong danh sách
-        //                SanPhamDTO spToAdd = listSP.FirstOrDefault(sp => sp.Masp == maSP);
-
-        //                if (spToAdd != null)
-        //                {
-        //                    if (spToAdd.Soluong <= 0)
-        //                    {
-        //                        MessageBox.Show("Sản phẩm này đã hết hàng, không thể thêm!", "Thông báo",
-        //                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                        return;
-        //                    }
-
-        //                    // Kiểm tra xem sản phẩm đã có trong danh sách chưa
-        //                    SanPhamDTO existingSP = listSPDuocThem.FirstOrDefault(sp => sp.Masp == maSP);
-
-        //                    // Hiển thị form nhập số lượng
-        //                    using (var inputForm = new InputQuantityForm())
-        //                    {
-        //                        // Nếu sản phẩm đã có trong danh sách, hiển thị số lượng hiện tại
-        //                        if (existingSP != null)
-        //                        {
-        //                            inputForm.Quantity = existingSP.Soluong;
-        //                            inputForm.Text = "Chỉnh sửa số lượng"; // Đổi title cho rõ ràng
-        //                        }
-        //                        else
-        //                        {
-        //                            inputForm.Quantity = 1; // Mặc định là 1
-        //                            inputForm.Text = "Nhập số lượng"; // Title cho trường hợp thêm mới
-        //                        }
-
-        //                        // Hiển thị form và chờ người dùng nhập
-        //                        if (inputForm.ShowDialog() == DialogResult.OK)
-        //                        {
-        //                            int newQuantity = inputForm.Quantity;
-
-        //                            if (newQuantity <= 0)
-        //                            {
-        //                                MessageBox.Show("Số lượng phải lớn hơn 0!", "Lỗi",
-        //                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                                return;
-        //                            }
-
-        //                            if (newQuantity > spToAdd.Soluong)
-        //                            {
-        //                                MessageBox.Show($"Số lượng không được vượt quá {spToAdd.Soluong} (trong kho)!", "Lỗi",
-        //                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                                return;
-        //                            }
-
-        //                            if (existingSP != null)
-        //                            {
-        //                                // Nếu đã có, cập nhật số lượng
-        //                                existingSP.Soluong = newQuantity;
-        //                            }
-        //                            else
-        //                            {
-        //                                // Nếu chưa có, thêm sản phẩm mới với số lượng người dùng nhập
-        //                                SanPhamDTO newSP = new SanPhamDTO
-        //                                {
-        //                                    Masp = spToAdd.Masp,
-        //                                    Tensp = spToAdd.Tensp,
-        //                                    Dongia = spToAdd.Dongia,
-        //                                    Soluong = newQuantity
-        //                                };
-        //                                listSPDuocThem.Add(newSP);
-        //                            }
-
-        //                            LoadSPDuocThem();
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Vui lòng chọn sản phẩm để thêm!", "Thông báo",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            }
-        //        }
-
-        //        private void buttonSuaSP_Click(object sender, EventArgs e)
-        //        {
-        //            if (dgvSPduocThem.SelectedRows.Count > 0)
-        //            {
-        //                DataGridViewRow selectedRow = dgvSPduocThem.SelectedRows[0];
-        //                int maSP = int.Parse(selectedRow.Cells["MaSP"].Value.ToString());
-
-        //                SanPhamDTO spTrongKho = listSP.FirstOrDefault(sp => sp.Masp == maSP);
-        //                SanPhamDTO spToUpdate = listSPDuocThem.FirstOrDefault(sp => sp.Masp == maSP);
-
-        //                if (spTrongKho == null || spToUpdate == null) return;
-
-        //                using (var inputForm = new InputQuantityForm())
-        //                {
-        //                    inputForm.Quantity = spToUpdate.Soluong;
-
-        //                    if (inputForm.ShowDialog() == DialogResult.OK)
-        //                    {
-        //                        int newQuantity = inputForm.Quantity;
-
-        //                        if (newQuantity <= 0)
-        //                        {
-        //                            MessageBox.Show("Số lượng phải lớn hơn 0!", "Lỗi",
-        //                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                            return;
-        //                        }
-
-        //                        if (newQuantity > spTrongKho.Soluong)
-        //                        {
-        //                            MessageBox.Show($"Số lượng không được vượt quá {spTrongKho.Soluong} (trong kho)!", "Lỗi",
-        //                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                            return;
-        //                        }
-
-        //                        spToUpdate.Soluong = newQuantity;
-        //                        LoadSPDuocThem();
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Vui lòng chọn sản phẩm để sửa!", "Thông báo",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            }
-        //        }
-
-
-        //        private void buttonXoaSP_Click(object sender, EventArgs e)
-        //        {
-        //            if (dgvSPduocThem.SelectedRows.Count > 0)
-        //            {
-        //                DataGridViewRow selectedRow = dgvSPduocThem.SelectedRows[0];
-        //                int maSP = int.Parse(selectedRow.Cells["MaSP"].Value.ToString());
-
-        //                // Xác nhận xóa
-        //                DialogResult result = MessageBox.Show(
-        //                    "Bạn có chắc muốn xóa sản phẩm này khỏi danh sách?",
-        //                    "Xác nhận xóa",
-        //                    MessageBoxButtons.YesNo,
-        //                    MessageBoxIcon.Question);
-
-        //                if (result == DialogResult.Yes)
-        //                {
-        //                    // Xóa sản phẩm
-        //                    SanPhamDTO spToRemove = listSPDuocThem.FirstOrDefault(sp => sp.Masp == maSP);
-        //                    if (spToRemove != null)
-        //                    {
-        //                        listSPDuocThem.Remove(spToRemove);
-        //                        LoadSPDuocThem();
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Vui lòng chọn sản phẩm để xóa!", "Thông báo",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            }
-        //        }
 
         //        private void buttonXuatHang_Click(object sender, EventArgs e)
         //        {
@@ -590,38 +479,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         //            }
         //        }
 
-        //        private decimal CalculateTongTien()
-        //        {
-        //            decimal tongTien = 0;
-        //            foreach (SanPhamDTO sp in listSPDuocThem)
-        //            {
-        //                tongTien += sp.Dongia * sp.Soluong;
-        //            }
-        //            return tongTien;
-        //        }
-        //        private bool KiemTraSoLuongTonKho()
-        //        {
-        //            foreach (SanPhamDTO sp in listSPDuocThem)
-        //            {
-        //                SanPhamDTO spTrongKho = listSP.FirstOrDefault(s => s.Masp == sp.Masp);
-        //                if (spTrongKho == null)
-        //                {
-        //                    MessageBox.Show($"Sản phẩm mã {sp.Masp} không tồn tại trong kho!", "Lỗi",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return false;
-        //                }
-
-        //                if (sp.Soluong > spTrongKho.Soluong)
-        //                {
-        //                    MessageBox.Show($"Số lượng sản phẩm {sp.Tensp} vượt quá tồn kho! " +
-        //                                  $"Tồn kho: {spTrongKho.Soluong}, Yêu cầu: {sp.Soluong}", "Lỗi",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return false;
-        //                }
-        //            }
-        //            return true;
-        //        }
-
         //        private void UpdateSoLuongSanPhamAfterXuat()
         //        {
         //            try
@@ -659,10 +516,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             //LoadData();
         }
 
-        private void txSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -674,34 +528,22 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             OnClose?.Invoke(); // Thực hiện delegate
         }
 
-        private void pnlTop_Paint(object sender, PaintEventArgs e)
+
+        private void dgvSPtrongKho_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        
+        private void txSearch_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+       
 
 
 
-        //        private void dgvSPduocThem_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //        {
-        //        }
 
-        //        private void dgvSPtrongKho_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //        {
-        //        }
-
-        //        private void linkNewKH_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        //        {
-        //            AddKhachHangForm addKHForm = new AddKhachHangForm();
-        //            DialogResult result = addKHForm.ShowDialog();
-
-        //            if (result == DialogResult.OK)
-        //            {
-        //                ReloadKhachHang();
-        //                AutoSelectNewKhachHang();
-        //            }
-        //        }
 
         //        private void ReloadKhachHang()
         //        {
@@ -920,90 +762,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         //            }
         //        }
 
-        //        private void boxMaPhieu_TextChanged(object sender, EventArgs e)
-        //        {
-
-        //        }
-
-        //        private void comboBoxKH_SelectedIndexChanged(object sender, EventArgs e)
-        //        {
-
-        //        }
         //    }
 
-        //    // Form phụ để nhập số lượng
-        //    public class InputQuantityForm : Form
-        //    {
-        //        private NumericUpDown numericUpDown;
-        //        private Button btnOK;
-        //        private Button btnCancel;
-
-        //        public int Quantity { get; set; }
-
-        //        public InputQuantityForm()
-        //        {
-        //            InitializeComponent();
-        //        }
-
-        //        private void InitializeComponent()
-        //        {
-        //            this.Text = "Chỉnh sửa số lượng";
-        //            this.Size = new Size(350, 180);
-        //            this.StartPosition = FormStartPosition.CenterParent;
-        //            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-        //            this.MaximizeBox = false;
-        //            this.MinimizeBox = false;
-
-        //            // Tạo controls với kích thước lớn hơn
-        //            var label = new Label()
-        //            {
-        //                Text = "Nhập số lượng:",
-        //                Location = new Point(20, 20),
-        //                Size = new Size(300, 25),
-        //                Font = new Font("Microsoft Sans Serif", 12F),
-        //                TextAlign = ContentAlignment.MiddleLeft
-        //            };
-
-        //            numericUpDown = new NumericUpDown()
-        //            {
-        //                Location = new Point(20, 50),
-        //                Size = new Size(300, 35),
-        //                Minimum = 1,
-        //                Maximum = 100000,
-        //                Value = 1,
-        //                Font = new Font("Microsoft Sans Serif", 12F),
-        //                TextAlign = HorizontalAlignment.Center
-        //            };
-
-        //            btnOK = new Button()
-        //            {
-        //                Text = "OK",
-        //                Location = new Point(20, 100),
-        //                Size = new Size(140, 35),
-        //                DialogResult = DialogResult.OK,
-        //                Font = new Font("Microsoft Sans Serif", 11F)
-        //            };
-
-        //            btnCancel = new Button()
-        //            {
-        //                Text = "Cancel",
-        //                Location = new Point(180, 100),
-        //                Size = new Size(140, 35),
-        //                DialogResult = DialogResult.Cancel,
-        //                Font = new Font("Microsoft Sans Serif", 11F)
-        //            };
-
-        //            this.Controls.AddRange(new Control[] { label, numericUpDown, btnOK, btnCancel });
-
-        //            btnOK.Click += (s, e) => { Quantity = (int)numericUpDown.Value; };
-        //            this.AcceptButton = btnOK;
-        //            this.CancelButton = btnCancel;
-
-        //            this.Shown += (s, e) =>
-        //            {
-        //                numericUpDown.Select();
-        //                numericUpDown.Select(0, numericUpDown.Text.Length);
-        //            };
-        //        }
+ 
     }
 }
