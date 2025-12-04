@@ -660,6 +660,12 @@
     <Compile Include="Helper\DropDownSearch\SearchResultControl.Designer.cs">
       <DependentUpon>SearchResultControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ToastForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\ToastForm.Designer.cs">
+      <DependentUpon>ToastForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -929,6 +935,9 @@
     <EmbeddedResource Include="Helper\DropDownSearch\SearchResultControl.resx">
       <DependentUpon>SearchResultControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Helper\ToastForm.resx">
+      <DependentUpon>ToastForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -1003,6 +1012,7 @@
     <Content Include="images\icon\catalog.png" />
     <Content Include="images\icon\check.png" />
     <Content Include="images\icon\customer.png" />
+    <Content Include="images\icon\delete__success.png" />
     <Content Include="images\icon\detail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1016,6 +1026,7 @@
     <Content Include="images\icon\import.png" />
     <Content Include="images\icon\importPro.png" />
     <Content Include="images\icon\information.png" />
+    <Content Include="images\icon\insert_success.png" />
     <Content Include="images\icon\inventory.png" />
     <Content Include="images\icon\invoice.png" />
     <Content Include="images\icon\keys_security_door_key_passkey_password_icon_256486.png" />
@@ -1034,6 +1045,7 @@
     <Content Include="images\icon\staff.png" />
     <Content Include="images\icon\statistic.png" />
     <Content Include="images\icon\tag.png" />
+    <Content Include="images\icon\update_success.png" />
     <Content Include="images\icon\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

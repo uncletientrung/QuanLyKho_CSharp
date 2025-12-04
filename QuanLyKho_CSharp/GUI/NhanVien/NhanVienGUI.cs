@@ -85,9 +85,8 @@ namespace QuanLyKho_CSharp.GUI
         }   
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            AddSuccessNotification toast = new AddSuccessNotification();
+            ToastForm toast = new ToastForm("SUCCESS", "This is a Success Toast");
             toast.Show();
-            refreshDataGridView(nvBUS.getListNV());
         }
 
 
@@ -178,6 +177,11 @@ namespace QuanLyKho_CSharp.GUI
         private void lbTotalNV_Click(object sender, EventArgs e)
         {
 
+        }
+        private void btnNhapExcel_Click(object sender, EventArgs e)
+        {
+            AddSuccessNotification toast = new AddSuccessNotification();
+            toast.Show();
         }
     }
 }

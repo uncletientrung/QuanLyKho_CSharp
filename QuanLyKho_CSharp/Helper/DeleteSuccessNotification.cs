@@ -19,15 +19,18 @@ namespace QuanLyKho_CSharp.Helper
             // Cấu hình form nhỏ
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.Manual;
-            this.BackColor = Color.FromArgb(72, 128, 255);
+            this.BackColor = Color.FromArgb(255, 255, 255);
             this.Size = new Size(300, 70);
             this.TopMost = true;
-            this.ForeColor = Color.White;
+            this.ForeColor = Color.WhiteSmoke;
 
             // Vị trí (góc dưới phải)
-            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2;
-            int y = 24; // cách trên 10px
-            this.Location = new Point(x, y);
+            int ScreenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+            int ScreenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+
+            int toastX = ScreenWidth - this.Width - 10;
+            int toastY = ScreenHeight - this.Height + 16;
+            this.Location = new Point(toastX, toastY);
 
             // Label
             Label lbl = new Label();
@@ -35,6 +38,8 @@ namespace QuanLyKho_CSharp.Helper
             lbl.Dock = DockStyle.Fill;
             lbl.Height = 30;
             lbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl.BackColor = Color.White; // nền trắng
+            lbl.ForeColor = Color.FromArgb(72, 128, 255);
             lbl.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             this.Controls.Add(lbl);
 

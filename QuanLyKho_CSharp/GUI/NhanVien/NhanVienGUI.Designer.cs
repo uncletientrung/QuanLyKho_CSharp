@@ -290,6 +290,7 @@ namespace QuanLyKho_CSharp.GUI
             this.btnNhapExcel.TabIndex = 13;
             this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapExcel.Values.Image")));
             this.btnNhapExcel.Values.Text = "Nhập Excel";
+            this.btnNhapExcel.Click += new System.EventHandler(this.btnNhapExcel_Click);
             // 
             // btnXuatExcel
             // 

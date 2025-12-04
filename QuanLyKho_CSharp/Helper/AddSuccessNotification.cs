@@ -19,24 +19,38 @@ namespace QuanLyKho_CSharp.Helper
             // Cấu hình form nhỏ
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.Manual;
-            this.BackColor = Color.FromArgb(95, 207, 51);
+            this.BackColor = Color.FromArgb(255,255,255);
             this.Size = new Size(300, 70);
             this.TopMost = true;
-            this.ForeColor=Color.White;
+            this.ForeColor=Color.WhiteSmoke;
 
             // Vị trí (góc dưới phải)
-            int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2;
-            int y = 24; // cách trên 10px
-            this.Location = new Point(x, y);
+            int ScreenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+            int ScreenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+
+            int toastX = ScreenWidth - this.Width - 10;
+            int toastY = ScreenHeight - this.Height +16;
+
+            this.Location = new Point(toastX, toastY);
 
             // Label
             Label lbl = new Label();
             lbl.Text = "THÊM THÀNH CÔNG";
             lbl.Dock = DockStyle.Fill;
             lbl.Height = 30;
+            lbl.BackColor = Color.White; // nền trắng
+            lbl.ForeColor = Color.FromArgb(57, 155, 53); // chữ xanh
             lbl.TextAlign = ContentAlignment.MiddleCenter;
             lbl.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             this.Controls.Add(lbl);
+
+            // Panel màu xanh bên trái
+            Panel leftBorder = new Panel();
+            leftBorder.Dock = DockStyle.Left;
+            leftBorder.Width = 8;
+            leftBorder.BackColor = Color.FromArgb(57, 155, 53);
+            this.Controls.Add(leftBorder);
+
 
             // ProgressBar (thanh tua ngược)
             progressBar = new ProgressBar();
@@ -51,6 +65,16 @@ namespace QuanLyKho_CSharp.Helper
             timer = new Timer();
             timer.Interval = 10; // cập nhật mỗi 0.01 giây
             timer.Tick += Timer_Tick;
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            // Vẽ viền đen 1px
+            using (Pen pen = new Pen(Color.Black, 1))
+            {
+                e.Graphics.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
+            }
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -75,15 +99,21 @@ namespace QuanLyKho_CSharp.Helper
             // 
             // AddSuccessNotification
             // 
-            this.ClientSize = new System.Drawing.Size(298, 59);
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddSuccessNotification";
             this.Load += new System.EventHandler(this.NotificationSuccessful_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.AddSuccessNotification_Paint);
             this.ResumeLayout(false);
 
         }
 
         private void NotificationSuccessful_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddSuccessNotification_Paint(object sender, PaintEventArgs e)
         {
 
         }
