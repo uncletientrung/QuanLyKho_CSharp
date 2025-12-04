@@ -125,6 +125,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             if (DGVPhieuXuat.Columns[e.ColumnIndex].Name == "detail")
             {
                 ShowDetailPhieuXuatForm(phieuDuocChon);
+                refreshDataGridView(pxBUS.getListPX());
             }
             if(DGVPhieuXuat.Columns[e.ColumnIndex].Name == "remove"){
                 DeletePhieuXuatForm deleteTk = new DeletePhieuXuatForm(phieuDuocChon);

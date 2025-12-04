@@ -73,10 +73,11 @@ namespace QuanLyKho_CSharp.Helper
         {
             this.SuspendLayout();
             // 
-            // NotificationSuccessful
+            // AddSuccessNotification
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "NotificationSuccessful";
+            this.ClientSize = new System.Drawing.Size(298, 59);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "AddSuccessNotification";
             this.Load += new System.EventHandler(this.NotificationSuccessful_Load);
             this.ResumeLayout(false);
 

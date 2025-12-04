@@ -12,7 +12,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
     internal class DeletePhieuXuatForm : Form
     {
         private PhieuXuatDTO px;
-        private PhieuXuatBUS pxBUS;
+        private PhieuXuatBUS pxBUS = new PhieuXuatBUS();
         private Button btnClose;
         private Button btnDelete;
         private Label lbInfo;
