@@ -39,7 +39,7 @@ namespace QuanLyKho.DAO
                          $"WHERE masp='{sp.Masp}'";
             return ConnectionHelper.getExecuteNonQuery(sql);
         }
-        // thêm hàm cập nhật số lượng tồn cho HoanHangBUS
+        
         public bool updateSoLuongTon(int maSP, int soLuongThem)
         {
             string sql = $"UPDATE sanpham SET soluong = soluong + {soLuongThem} WHERE masp = {maSP}";

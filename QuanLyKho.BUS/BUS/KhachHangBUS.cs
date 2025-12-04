@@ -90,6 +90,7 @@ namespace QuanLyKho.BUS
 
         public BindingList<KhachHangDTO> SearchKhachHang(string search)
         {
+            listKH = getListKH();
             BindingList<KhachHangDTO> result = new BindingList<KhachHangDTO>();
             foreach (KhachHangDTO kh in listKH)
             {

@@ -139,13 +139,13 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
         }
 
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             pnlDGV.Visible = false;
             pnlTop.Visible = false;
             AddPhieuXuatForm addFormControl = null;
-            addFormControl = new AddPhieuXuatForm(() => btnOnClose(addFormControl), currentUser);
+            addFormControl = new AddPhieuXuatForm(() => btnOnClose(addFormControl), currentUser,
+               () => refreshDataGridView(pxBUS.getListPX()));
             addFormControl.TopLevel = false;
             addFormControl.FormBorderStyle = FormBorderStyle.None;
             addFormControl.Dock = DockStyle.Fill;
@@ -563,29 +563,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             DGVPhieuXuat.ClearSelection();
         }
 
-        // Các sự kiện khác
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
-        private void groupBox1_Enter(object sender, EventArgs e) { }
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void panel4_Paint(object sender, PaintEventArgs e) { }
-        private void txtSearchNV_Enter(object sender, EventArgs e) { }
-        private void txtSearchNV_Leave(object sender, EventArgs e) { }
-        private void txtSearchKH_Enter(object sender, EventArgs e) { }
-        private void txtSearchKH_Leave(object sender, EventArgs e) { }
-
-        private void rjDatePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void pnlTop_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void rjDatePicker2_ValueChanged(object sender, EventArgs e)
         {
 
         }

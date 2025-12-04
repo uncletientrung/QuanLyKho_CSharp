@@ -1,4 +1,5 @@
-﻿using QuanLyKho.BUS;
+﻿using Google.Protobuf.WellKnownTypes;
+using QuanLyKho.BUS;
 using QuanLyKho.DTO;
 using QuanLyKho_CSharp.GUI.KhachHang;
 using QuanLyKho_CSharp.Helper;
@@ -30,15 +31,16 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private BindingList<SanPhamDTO> listSP;
         private BindingList<SanPhamDTO> listSPDuocThem;
         private Action OnClose;
+        private Action RefreshDGVPX;
         private NhanVienDTO currentUser;
-        public AddPhieuXuatForm(Action btnOnClose, NhanVienDTO currentUser)
+        public AddPhieuXuatForm(Action btnOnClose, NhanVienDTO currentUser, Action RefreshDgvPX)
         {
             InitializeComponent();
             this.currentUser = currentUser;
             OnClose=btnOnClose;
+            RefreshDGVPX = RefreshDgvPX;
             SetupDataGridViews();
             LoadData();
-            //UpdateButtonStates();
         }
 
         private void SetupDataGridViews()
@@ -83,6 +85,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dgvSPduocThem.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
             dgvSPduocThem.Columns[2].ReadOnly = false;
 
+            // set cứng tên người xuất
+            txNV.ReadOnly = true;
+            txNV.Enabled = false;
+
             listSPDuocThem = new BindingList<SanPhamDTO>();
         }
 
@@ -121,7 +127,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void LoadData()
         {
-            listSP = spBUS.getListSP();
             listKH = khBUS.getListKH();
             txNV.Text = currentUser.Tennv.ToString();
             LoadSPTrongKho();
@@ -131,6 +136,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void LoadSPTrongKho()
         {
+            listSP = spBUS.getListSP();
             dgvSPtrongKho.Rows.Clear();
             // Thêm dữ liệu
             if (listSP != null && listSP.Count > 0)
@@ -326,6 +332,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 item.OnCustomerSelected += (objPhatRaSuKien, selectedKh) =>
                 {
                     txSearchCustomer.Text = $"{selectedKh.Makh} | {selectedKh.Tenkhachhang} " + $"| SDT: {selectedKh.Sdt}";
+                    lbNameCustomer.Text = $"{selectedKh.Makh} - {selectedKh.Tenkhachhang} ";
                     listContainerCustomer.Height = 0;
                     txSearchCustomer.SelectionStart = txSearchCustomer.Text.Length;
                 };
@@ -339,431 +346,126 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             DialogResult result = addKHForm.ShowDialog();
             if (result == DialogResult.OK)
             {
+                listKH = khBUS.getListKH();
                 if (listKH != null && listKH.Count > 0)
                 {
                     var newestKH = listKH.OrderByDescending(kh => kh.Makh).FirstOrDefault();
-
                     if (newestKH != null)
                     {
                         txSearchCustomer.Text = $"{newestKH.Makh} | {newestKH.Tenkhachhang} " + $"| SDT: {newestKH.Sdt}";
+                        lbNameCustomer.Text = $"{newestKH.Makh} - {newestKH.Tenkhachhang} ";
+                        listContainerCustomer.Height = 0;
                     }
                 }
             }
         }
 
+        private void btnThem_Click(object sender, EventArgs e) // Thêm phiếu
+        {
+            int makh;
+            int manv = currentUser.Manv;
+            string labelPrice = lbPrice.Text.Replace("đ", "").Replace(",", "").Trim();
+            int tongtien = int.Parse(labelPrice);
+            DateTime ngayTao;
 
-        //        private void buttonXuatHang_Click(object sender, EventArgs e)
-        //        {
-        //            if (listSPDuocThem == null || listSPDuocThem.Count == 0)
-        //            {
-        //                MessageBox.Show("Vui lòng thêm ít nhất một sản phẩm!", "Thông báo",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                return;
-        //            }
+            if (listSPDuocThem == null || listSPDuocThem.Count == 0)
+            {
+                MessageBox.Show("Vui lòng thêm ít nhất một sản phẩm", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if(lbNameCustomer.Text== "Chưa chọn khách hàng")
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng!", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }else
+            {
+                makh = int.Parse(lbNameCustomer.Text.Split('-')[0].Trim());
+                KhachHangDTO kh= khBUS.getKHById(makh);
+                if(kh == null)
+                {
+                    MessageBox.Show("Khách hàng không hợp lệ!", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            // Xử lý ngày
+            if(dateCreate.Value.Date == DateTime.Now.Date)
+            {
+                ngayTao = DateTime.Now;
+            }
+            else
+            {
+                ngayTao = dateCreate.Value.Date;
+            }
+            PhieuXuatDTO newPhieuXuat = new PhieuXuatDTO // Tạo phiếu xuất mới 
+            {
+                Maphieu = pxBUS.getAutoMaPhieuXuat(),
+                Manv = manv,
+                Makh = makh,
+                Thoigiantao = ngayTao,
+                Tongtien = tongtien,
+                Trangthai = 1
+            };
 
-        //            // Kiểm tra số lượng tồn kho trước khi xuất
-        //            if (!KiemTraSoLuongTonKho())
-        //            {
-        //                return;
-        //            }
-
-        //            // Xử lý mã khách hàng - để tạm 0 nếu không có
-        //            int maKH = 0;
-        //            if (!string.IsNullOrEmpty(comboBoxKH.Text))
-        //            {
-        //                string tenKHChon = comboBoxKH.Text.Trim();
-
-        //                // Tìm KH trong danh sách dựa trên tên
-        //                KhachHangDTO khDuocChon = listKH.FirstOrDefault(kh =>
-        //                    kh.Tenkhachhang.Equals(tenKHChon));
-
-        //                if (khDuocChon != null)
-        //                {
-        //                    maKH = khDuocChon.Makh;
-        //                }
-        //                else
-        //                {
-        //                    MessageBox.Show("Khách hàng không hợp lệ!", "Lỗi",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Vui lòng chọn khách hàng!", "Thông báo",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                return;
-        //            }
-
-        //            // Lấy mã nhân viên từ frmMain.CurrentUser
-        //            int maNV = 1; // Mặc định
-        //            try
-        //            {
-        //                TaiKhoanDTO currentUser = frmMain.CurrentUser;
-        //                if (currentUser != null)
-        //                {
-        //                    maNV = currentUser.Manv;
-        //                }
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show("Không thể lấy thông tin nhân viên: " + ex.Message, "Cảnh báo",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            }
-
-        //            // Tạo phiếu xuất mới
-        //            PhieuXuatDTO newPhieuXuat = new PhieuXuatDTO
-        //            {
-        //                Maphieu = int.Parse(boxMaPhieu.Text),
-        //                Manv = maNV,
-        //                Makh = maKH,
-        //                Thoigiantao = DateTime.Now,
-        //                Tongtien = (int)CalculateTongTien(),
-        //                Trangthai = 1
-        //            };
-
-        //            // Lưu phiếu xuất
-        //            if (pxBUS.insertPhieuXuat(newPhieuXuat))
-        //            {
-        //                // Tạo danh sách chi tiết phiếu xuất
-        //                BindingList<ChiTietPhieuXuatDTO> listCTPX = new BindingList<ChiTietPhieuXuatDTO>();
-
-        //                foreach (SanPhamDTO sp in listSPDuocThem)
-        //                {
-        //                    ChiTietPhieuXuatDTO ctpx = new ChiTietPhieuXuatDTO
-        //                    {
-        //                        Maphieuxuat = newPhieuXuat.Maphieu,
-        //                        Masp = sp.Masp,
-        //                        Soluong = sp.Soluong,
-        //                        Dongia = sp.Dongia
-        //                    };
-        //                    listCTPX.Add(ctpx);
-        //                }
-
-        //                // Lưu chi tiết phiếu xuất
-        //                if (ctpxBUS.insertChiTietPhieuXuat(listCTPX))
-        //                {
-        //                    // Cập nhật số lượng sản phẩm trong kho (giảm số lượng)
-        //                    UpdateSoLuongSanPhamAfterXuat();
-
-        //                    MessageBox.Show("Xuất hàng thành công!", "Thông báo",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        //                    // Đóng form hiện tại và mở PhieuXuatGUI
-        //                    frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
-        //                    if (mainForm != null)
-        //                    {
-        //                        var method = mainForm.GetType().GetMethod("OpenChildForm",
-        //                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-        //                        if (method != null)
-        //                        {
-        //                            method.Invoke(mainForm, new object[] { new PhieuXuatGUI(), mainForm.Controls.Find("btnPhieuXuat", true).FirstOrDefault() });
-        //                        }
-        //                    }
-
-        //                    this.Close();
-        //                }
-        //                else
-        //                {
-        //                    // Nếu có lỗi khi lưu chi tiết, xóa phiếu xuất đã tạo
-        //                    pxBUS.removePhieuXuat(newPhieuXuat.Maphieu);
-        //                    MessageBox.Show("Có lỗi xảy ra khi lưu chi tiết phiếu xuất!", "Lỗi",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Có lỗi xảy ra khi tạo phiếu xuất!", "Lỗi",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-
-        //        private void UpdateSoLuongSanPhamAfterXuat()
-        //        {
-        //            try
-        //            {
-        //                foreach (SanPhamDTO sp in listSPDuocThem)
-        //                {
-        //                    // Tìm sản phẩm trong danh sách hiện tại
-        //                    SanPhamDTO spInList = listSP.FirstOrDefault(s => s.Masp == sp.Masp);
-        //                    if (spInList != null)
-        //                    {
-        //                        // Cập nhật số lượng (giảm số lượng sản phẩm trong kho)
-        //                        spInList.Soluong -= sp.Soluong;
-
-        //                        // Cập nhật trong database
-        //                        spBUS.updateSanPham(spInList);
-        //                    }
-        //                }
-
-        //                // Reload lại danh sách sản phẩm để cập nhật số lượng mới nhất
-        //                listSP = spBUS.getListSP();
-        //                LoadSPTrongKho();
-
-        //                MessageBox.Show("Đã cập nhật số lượng sản phẩm trong kho!", "Thông báo",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show("Có lỗi khi cập nhật số lượng sản phẩm: " + ex.Message, "Lỗi",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
+            if (pxBUS.insertPhieuXuat(newPhieuXuat))
+            {
+                BindingList<ChiTietPhieuXuatDTO> listCTPX = new BindingList<ChiTietPhieuXuatDTO>();
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    ChiTietPhieuXuatDTO ctpx = new ChiTietPhieuXuatDTO
+                    {
+                        Maphieuxuat = newPhieuXuat.Maphieu,
+                        Masp = sp.Masp,
+                        Soluong = sp.Soluong,
+                        Dongia = sp.Dongia
+                    };
+                    listCTPX.Add(ctpx);
+                }
+                if (ctpxBUS.insertChiTietPhieuXuat(listCTPX))
+                {
+                    UpdateSoLuongSanPhamAfterXuat();
+                }
+                else
+                {
+                    pxBUS.removePhieuXuat(newPhieuXuat.Maphieu);
+                    MessageBox.Show("Có lỗi xảy ra khi lưu chi tiết phiếu xuất!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi xảy ra khi tạo phiếu xuất!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void UpdateSoLuongSanPhamAfterXuat()
+        {
+            LoadSPTrongKho(); // Load lại sp trong kho
+            listSPDuocThem.Clear();
+            LoadSPDuocThem();// Load lại sp dc them
+            lbNameCustomer.Text = "Chưa chọn khách hàng";
+            txSearch.Clear(); txSearchCustomer.Clear();
+            dateCreate.Value = DateTime.Now;    
+            AddSuccessNotification tb = new AddSuccessNotification();
+            tb.Show();
+        }
 
         private void AddPhieuXuatForm_Load(object sender, EventArgs e)
         {
-            //LoadData();
         }
 
-        
-
-        private void label1_Click(object sender, EventArgs e)
+        private void artanButton5_Click(object sender, EventArgs e) // Quay veef
         {
-
-        }
-
-        private void artanButton5_Click(object sender, EventArgs e)
-        {
+            RefreshDGVPX(); 
             OnClose?.Invoke(); // Thực hiện delegate
         }
-
-
         private void dgvSPtrongKho_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void txSearch_TextChanged_1(object sender, EventArgs e)
-        {
 
-        }
-
-       
-
-
-
-
-
-        //        private void ReloadKhachHang()
-        //        {
-        //            listKH = khBUS.getListKH();
-        //            string currentSelection = comboBoxKH.Text;
-
-        //            // Clear và load lại combobox
-        //            comboBoxKH.Items.Clear();
-
-        //            if (listKH != null && listKH.Count > 0)
-        //            {
-        //                foreach (KhachHangDTO kh in listKH)
-        //                {
-        //                    comboBoxKH.Items.Add(kh.Tenkhachhang);
-        //                }
-        //            }
-
-        //            // Khôi phục selection cũ (nếu vẫn tồn tại)
-        //            if (!string.IsNullOrEmpty(currentSelection) && comboBoxKH.Items.Contains(currentSelection))
-        //            {
-        //                comboBoxKH.Text = currentSelection;
-        //            }
-        //        }
-
-        //        private void AutoSelectNewKhachHang()
-        //        {
-        //            if (listKH != null && listKH.Count > 0)
-        //            {
-        //                // Lấy khách hàng mới nhất (có mã khách hàng lớn nhất)
-        //                var newestKH = listKH.OrderByDescending(kh => kh.Makh).FirstOrDefault();
-
-        //                if (newestKH != null)
-        //                {
-        //                    // Chọn khách hàng mới nhất trong combobox
-        //                    comboBoxKH.Text = newestKH.Tenkhachhang;
-        //                }
-        //            }
-        //        }
-
-        //        private void buttonNhapExcel_Click(object sender, EventArgs e)
-        //        {
-        //            OpenFileDialog openFileDialog = new OpenFileDialog();
-        //            openFileDialog.Filter = "Excel Files|*.xlsx;*.xls";
-        //            openFileDialog.Title = "Chọn file Excel để nhập";
-
-        //            if (openFileDialog.ShowDialog() != DialogResult.OK)
-        //                return;
-
-        //            Excel.Application excelApp = null;
-        //            Excel.Workbook workbook = null;
-        //            Excel.Worksheet worksheet = null;
-
-        //            try
-        //            {
-        //                excelApp = new Excel.Application();
-        //                workbook = excelApp.Workbooks.Open(openFileDialog.FileName);
-        //                worksheet = workbook.Sheets[1];
-
-        //                // Đọc dữ liệu từ Excel
-        //                Excel.Range usedRange = worksheet.UsedRange;
-        //                int rowCount = usedRange.Rows.Count;
-
-        //                if (rowCount < 2)
-        //                {
-        //                    MessageBox.Show("File Excel không có dữ liệu!", "Thông báo",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                    return;
-        //                }
-
-        //                int successCount = 0;
-        //                int errorCount = 0;
-        //                StringBuilder errorMessages = new StringBuilder();
-
-        //                // Bắt đầu từ row 2 (bỏ qua header)
-        //                for (int row = 2; row <= rowCount; row++)
-        //                {
-        //                    try
-        //                    {
-        //                        // Đọc Mã SP từ cột A
-        //                        var maSPCell = worksheet.Cells[row, 1].Value;
-        //                        if (maSPCell == null)
-        //                            continue;
-
-        //                        int maSP = Convert.ToInt32(maSPCell);
-
-        //                        // Đọc Số lượng từ cột D
-        //                        var soLuongCell = worksheet.Cells[row, 4].Value;
-        //                        if (soLuongCell == null)
-        //                        {
-        //                            errorMessages.AppendLine($"Dòng {row}: Thiếu số lượng cho mã SP {maSP}");
-        //                            errorCount++;
-        //                            continue;
-        //                        }
-
-        //                        int soLuong = Convert.ToInt32(soLuongCell);
-
-        //                        if (soLuong <= 0)
-        //                        {
-        //                            errorMessages.AppendLine($"Dòng {row}: Số lượng phải lớn hơn 0 (Mã SP: {maSP})");
-        //                            errorCount++;
-        //                            continue;
-        //                        }
-
-        //                        // Tìm sản phẩm trong kho
-        //                        SanPhamDTO spTrongKho = listSP.FirstOrDefault(sp => sp.Masp == maSP);
-
-        //                        if (spTrongKho == null)
-        //                        {
-        //                            errorMessages.AppendLine($"Dòng {row}: Không tìm thấy sản phẩm mã {maSP} trong kho");
-        //                            errorCount++;
-        //                            continue;
-        //                        }
-
-        //                        if (spTrongKho.Soluong <= 0)
-        //                        {
-        //                            errorMessages.AppendLine($"Dòng {row}: Sản phẩm {spTrongKho.Tensp} (Mã: {maSP}) đã hết hàng");
-        //                            errorCount++;
-        //                            continue;
-        //                        }
-
-        //                        if (soLuong > spTrongKho.Soluong)
-        //                        {
-        //                            errorMessages.AppendLine($"Dòng {row}: Số lượng vượt quá tồn kho. " +
-        //                                $"SP: {spTrongKho.Tensp}, Tồn: {spTrongKho.Soluong}, Yêu cầu: {soLuong}");
-        //                            errorCount++;
-        //                            continue;
-        //                        }
-
-        //                        // Kiểm tra xem sản phẩm đã có trong danh sách chưa
-        //                        SanPhamDTO existingSP = listSPDuocThem.FirstOrDefault(sp => sp.Masp == maSP);
-
-        //                        if (existingSP != null)
-        //                        {
-        //                            // Nếu đã có, cộng thêm số lượng
-        //                            int tongSoLuong = existingSP.Soluong + soLuong;
-
-        //                            if (tongSoLuong > spTrongKho.Soluong)
-        //                            {
-        //                                errorMessages.AppendLine($"Dòng {row}: Tổng số lượng vượt quá tồn kho. " +
-        //                                    $"SP: {spTrongKho.Tensp}, Tồn: {spTrongKho.Soluong}, " +
-        //                                    $"Đã thêm: {existingSP.Soluong}, Yêu cầu thêm: {soLuong}");
-        //                                errorCount++;
-        //                                continue;
-        //                            }
-
-        //                            existingSP.Soluong = tongSoLuong;
-        //                        }
-        //                        else
-        //                        {
-        //                            // Nếu chưa có, thêm mới
-        //                            SanPhamDTO newSP = new SanPhamDTO
-        //                            {
-        //                                Masp = spTrongKho.Masp,
-        //                                Tensp = spTrongKho.Tensp,
-        //                                Dongia = spTrongKho.Dongia,
-        //                                Soluong = soLuong
-        //                            };
-        //                            listSPDuocThem.Add(newSP);
-        //                        }
-
-        //                        successCount++;
-        //                    }
-        //                    catch (Exception ex)
-        //                    {
-        //                        errorMessages.AppendLine($"Dòng {row}: Lỗi - {ex.Message}");
-        //                        errorCount++;
-        //                    }
-        //                }
-
-        //                // Cập nhật lại DataGridView
-        //                LoadSPDuocThem();
-
-        //                // Hiển thị kết quả
-        //                StringBuilder resultMessage = new StringBuilder();
-        //                resultMessage.AppendLine($"Kết quả nhập Excel:");
-        //                resultMessage.AppendLine($"✓ Thành công: {successCount} sản phẩm");
-
-        //                if (errorCount > 0)
-        //                {
-        //                    resultMessage.AppendLine($"✗ Lỗi: {errorCount} dòng");
-        //                    resultMessage.AppendLine();
-        //                    resultMessage.AppendLine("Chi tiết lỗi:");
-        //                    resultMessage.Append(errorMessages.ToString());
-
-        //                    MessageBox.Show(resultMessage.ToString(), "Kết quả nhập Excel",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                }
-        //                else
-        //                {
-        //                    MessageBox.Show(resultMessage.ToString(), "Thành công",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //                }
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show($"Có lỗi xảy ra khi đọc file Excel: {ex.Message}", "Lỗi",
-        //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //            finally
-        //            {
-        //                // Giải phóng tài nguyên
-        //                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
-        //                if (workbook != null)
-        //                {
-        //                    workbook.Close(false);
-        //                    Marshal.ReleaseComObject(workbook);
-        //                }
-        //                if (excelApp != null)
-        //                {
-        //                    excelApp.Quit();
-        //                    Marshal.ReleaseComObject(excelApp);
-        //                }
-
-        //                GC.Collect();
-        //                GC.WaitForPendingFinalizers();
-        //            }
-        //        }
-
-        //    }
-
- 
     }
 }

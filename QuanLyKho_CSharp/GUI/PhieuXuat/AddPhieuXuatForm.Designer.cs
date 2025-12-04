@@ -56,6 +56,9 @@
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlLeftBot = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.listContainerCustomer = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lbNameCustomer = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbPrice = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,7 +67,7 @@
             this.btnNewKH = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.txSearchCustomer = new System.Windows.Forms.TextBox();
             this.artanButton2 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
-            this.dateE = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
+            this.dateCreate = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
             this.artanPanel5 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.artanButton4 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.txNV = new System.Windows.Forms.TextBox();
@@ -82,6 +85,7 @@
             this.pnlLeftTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).BeginInit();
             this.pnlLeftBot.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.artanPanel3.SuspendLayout();
             this.artanPanel5.SuspendLayout();
@@ -135,7 +139,7 @@
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.pnlTop.Controls.Add(this.dateE);
+            this.pnlTop.Controls.Add(this.dateCreate);
             this.pnlTop.Controls.Add(this.artanPanel5);
             this.pnlTop.Controls.Add(this.pnlSearch);
             this.pnlTop.Controls.Add(this.btnOnClose);
@@ -401,6 +405,7 @@
             this.pnlLeftBot.BackColor = System.Drawing.Color.White;
             this.pnlLeftBot.BorderRadius = 30;
             this.pnlLeftBot.Controls.Add(this.listContainerCustomer);
+            this.pnlLeftBot.Controls.Add(this.panel3);
             this.pnlLeftBot.Controls.Add(this.panel2);
             this.pnlLeftBot.Controls.Add(this.btnThem);
             this.pnlLeftBot.Controls.Add(this.artanPanel3);
@@ -424,13 +429,49 @@
             this.listContainerCustomer.Size = new System.Drawing.Size(237, 0);
             this.listContainerCustomer.TabIndex = 16;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.panel3.Controls.Add(this.lbNameCustomer);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.panel3.Location = new System.Drawing.Point(62, 50);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(309, 40);
+            this.panel3.TabIndex = 16;
+            // 
+            // lbNameCustomer
+            // 
+            this.lbNameCustomer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbNameCustomer.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameCustomer.ForeColor = System.Drawing.Color.White;
+            this.lbNameCustomer.Location = new System.Drawing.Point(136, 0);
+            this.lbNameCustomer.Name = "lbNameCustomer";
+            this.lbNameCustomer.Size = new System.Drawing.Size(173, 40);
+            this.lbNameCustomer.TabIndex = 1;
+            this.lbNameCustomer.Text = "Chưa chọn khách hàng";
+            this.lbNameCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label4.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(133, 40);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Khách hàng:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.panel2.Controls.Add(this.lbPrice);
             this.panel2.Controls.Add(this.label2);
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.panel2.Location = new System.Drawing.Point(62, 55);
+            this.panel2.Location = new System.Drawing.Point(62, 85);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(309, 40);
             this.panel2.TabIndex = 15;
@@ -462,7 +503,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(59, 107);
+            this.btnThem.Location = new System.Drawing.Point(58, 131);
             this.btnThem.Name = "btnThem";
             this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -488,6 +529,7 @@
             this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
             this.btnThem.TabIndex = 11;
             this.btnThem.Values.Text = "Thanh toán";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // artanPanel3
             // 
@@ -556,23 +598,23 @@
             this.artanButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.artanButton2.UseVisualStyleBackColor = false;
             // 
-            // dateE
+            // dateCreate
             // 
-            this.dateE.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.dateE.BorderSize = 0;
-            this.dateE.CalendarFont = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateE.CustomFormat = "dd/MM/yyyy";
-            this.dateE.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateE.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateE.Location = new System.Drawing.Point(616, 11);
-            this.dateE.Margin = new System.Windows.Forms.Padding(0);
-            this.dateE.MaximumSize = new System.Drawing.Size(122, 37);
-            this.dateE.MinimumSize = new System.Drawing.Size(122, 37);
-            this.dateE.Name = "dateE";
-            this.dateE.Size = new System.Drawing.Size(122, 37);
-            this.dateE.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.dateE.TabIndex = 23;
-            this.dateE.TextColor = System.Drawing.Color.White;
+            this.dateCreate.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.dateCreate.BorderSize = 0;
+            this.dateCreate.CalendarFont = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCreate.CustomFormat = "dd/MM/yyyy";
+            this.dateCreate.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCreate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateCreate.Location = new System.Drawing.Point(616, 11);
+            this.dateCreate.Margin = new System.Windows.Forms.Padding(0);
+            this.dateCreate.MaximumSize = new System.Drawing.Size(122, 37);
+            this.dateCreate.MinimumSize = new System.Drawing.Size(122, 37);
+            this.dateCreate.Name = "dateCreate";
+            this.dateCreate.Size = new System.Drawing.Size(122, 37);
+            this.dateCreate.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.dateCreate.TabIndex = 23;
+            this.dateCreate.TextColor = System.Drawing.Color.White;
             // 
             // artanPanel5
             // 
@@ -615,9 +657,9 @@
             this.txNV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txNV.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.txNV.Location = new System.Drawing.Point(39, 6);
+            this.txNV.Location = new System.Drawing.Point(39, 10);
             this.txNV.Name = "txNV";
-            this.txNV.Size = new System.Drawing.Size(82, 23);
+            this.txNV.Size = new System.Drawing.Size(101, 23);
             this.txNV.TabIndex = 13;
             // 
             // pnlSearch
@@ -708,6 +750,7 @@
             this.pnlLeftTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).EndInit();
             this.pnlLeftBot.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.artanPanel3.ResumeLayout(false);
             this.artanPanel3.PerformLayout();
@@ -741,7 +784,7 @@
         private Helper.component.ArtanButton artanButton4;
         private System.Windows.Forms.TextBox txNV;
         private System.Windows.Forms.Panel panel1;
-        private Helper.component.RJDatePicker dateE;
+        private Helper.component.RJDatePicker dateCreate;
         private Helper.component.ArtanButton btnOnClose;
         private Helper.component.ArtanPanel artanPanel7;
         private System.Windows.Forms.Label label1;
@@ -762,5 +805,8 @@
         private System.Windows.Forms.FlowLayoutPanel listContainer;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.Panel listContainerCustomer;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lbNameCustomer;
+        private System.Windows.Forms.Label label4;
     }
 }

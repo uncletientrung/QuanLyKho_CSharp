@@ -30,6 +30,7 @@ namespace QuanLyKho_CSharp.Helper.DropDownSearch
         }
         public static BindingList<KhachHangDTO> TimKiem(string key)
         {
+
             if (string.IsNullOrWhiteSpace(key))
                 return new BindingList<KhachHangDTO>();
             return khBUS.SearchKhachHang(key) ?? new BindingList<KhachHangDTO>();
