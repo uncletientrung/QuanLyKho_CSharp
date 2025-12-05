@@ -20,6 +20,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         {
             InitializeComponent();
             sp = _sp;
+            lbInfo.Text = $"Bạn có chắc chắn muốn xóa {sp.Tensp} không?";
         }
 
         private void btnOK_Click(object sender, EventArgs e)
