@@ -75,6 +75,7 @@ namespace QuanLyKho.DAO
                         sanPhamResult.Maloai = reader.GetInt32("maloai");
                         sanPhamResult.Makhuvuc = reader.GetInt32("makhuvuc");
                         sanPhamResult.Masize = reader.GetInt32("masize");
+                        
                     }
                 }
             }
@@ -108,7 +109,8 @@ namespace QuanLyKho.DAO
                             Machatlieu = reader.GetInt32("machatlieu"),
                             Maloai = reader.GetInt32("maloai"),
                             Makhuvuc = reader.GetInt32("makhuvuc"),
-                            Masize = reader.GetInt32("masize")
+                            Masize = reader.GetInt32("masize"),
+                            Trangthai = reader.GetInt32("TrangThai")
 
                         };
                         //add sp sau khi doc

@@ -107,13 +107,15 @@ namespace QuanLyKho_CSharp.GUI
             cbbLoai.SelectedIndexChanged += (s, ev) => Filter();
             cbbKhuVuc.SelectedIndexChanged += (s, ev) => Filter();
             cbbSize.SelectedIndexChanged += (s, ev) => Filter();
+            txtSMoney.TextChanged += (s,ev) => Filter();
+            txtEMoney.TextChanged += (s,ev) => Filter();
         }
         private void LoadDataToGrid(BindingList<SanPhamDTO> loadList)
         {
             try
             {
                 dgvSanPham.Rows.Clear();
-
+                int soLuongSP = 0;
                 if (listSP == null || listSP.Count == 0)
                 {
                     MessageBox.Show("Không có dữ liệu sản phẩm để hiển thị.", "Debug - No Data");
@@ -121,6 +123,7 @@ namespace QuanLyKho_CSharp.GUI
                 }
                 foreach (SanPhamDTO sp in loadList)
                 {
+                    if (sp.Trangthai == 0) continue; 
                     Image productImage = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
                     String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
                     String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
@@ -137,9 +140,11 @@ namespace QuanLyKho_CSharp.GUI
                         tenKhuVuc,
                         tenSize
                     );
+                    soLuongSP++;
                 }
 
                 dgvSanPham.ClearSelection();
+                lbTotal.Text = $"Tổng số sản phẩm {soLuongSP}";
             }
             catch (Exception ex)
             {
@@ -175,7 +180,7 @@ namespace QuanLyKho_CSharp.GUI
             }
             if (dgvSanPham.Columns[e.ColumnIndex].Name == "remove")
             {
-                UpdateSanPhamForm updateForm = new UpdateSanPhamForm(spDuocChon);
+                DeleteSanPhamForm updateForm = new DeleteSanPhamForm(spDuocChon);
                 updateForm.ShowDialog();
                 if (updateForm.DialogResult == DialogResult.OK)
                 {
@@ -185,18 +190,18 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
-        //        private void btnThem_Click(object sender, EventArgs e)
-        //        {
+        private void btnThem_Click(object sender, EventArgs e)
+        {
 
-        //            AddSanPhamForm addSP = new AddSanPhamForm();
-        //            addSP.ShowDialog();
-        //            if(addSP.DialogResult == DialogResult.OK)
-        //            {
-        //                LoadDataToGrid();
-        //                AddSuccessNotification tb = new AddSuccessNotification();
-        //                tb.Show();
-        //            }
-        //        }
+            AddSanPhamForm addSP = new AddSanPhamForm();
+            addSP.ShowDialog();
+            if (addSP.DialogResult == DialogResult.OK)
+            {
+                LoadDataToGrid(spBUS.getListSP());
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
+            }
+        }
         private void Filter()
         {
             string keyword = txtSearch.Text.Trim().ToLower();
@@ -350,7 +355,8 @@ namespace QuanLyKho_CSharp.GUI
 
         private void txtSMoney_MouseEnter(object sender, EventArgs e)
         {
-
+            if (txtSMoney.Text == "Tiền từ")
+                txtSMoney.Clear();
         }
     }
 }

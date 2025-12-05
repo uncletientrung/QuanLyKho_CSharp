@@ -17,11 +17,12 @@ namespace QuanLyKho.DTO
         private int maloai;
         private int makhuvuc;
         private int masize;
+        private int trangthai;
 
         public SanPhamDTO() { }
 
         public SanPhamDTO(int _masp, string _tensp, string _hinhanh, int _soluong, int _dongia,
-                          int _machatlieu, int _maloai, int _makhuvuc, int _masize)
+                          int _machatlieu, int _maloai, int _makhuvuc, int _masize, int trangthai)
         {
             masp = _masp;
             tensp = _tensp;
@@ -32,6 +33,8 @@ namespace QuanLyKho.DTO
             maloai = _maloai;
             makhuvuc = _makhuvuc;
             masize = _masize;
+            this.trangthai = trangthai;
+
         }
 
         public int Masp
@@ -86,6 +89,25 @@ namespace QuanLyKho.DTO
         {
             get { return masize; }
             set { masize = value; }
+        }
+        public int Trangthai
+        {
+            get { return trangthai; }
+            set { trangthai = value; }
+        }
+        public override string ToString()
+        {
+            return
+                $"Mã SP: {masp}\n" +
+                $"Tên SP: {tensp}\n" +
+                $"Hình ảnh: {hinhanh}\n" +
+                $"Số lượng: {soluong}\n" +
+                $"Đơn giá: {dongia}\n" +
+                $"Mã chất liệu: {machatlieu}\n" +
+                $"Mã loại: {maloai}\n" +
+                $"Mã khu vực: {makhuvuc}\n" +
+                $"Mã size: {masize}\n" +
+                $"Trạng thái: {trangthai}";
         }
     }
 }

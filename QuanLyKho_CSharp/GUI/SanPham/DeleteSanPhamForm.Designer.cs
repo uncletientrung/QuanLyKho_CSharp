@@ -44,6 +44,7 @@
             this.btnClose.TabIndex = 26;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
@@ -57,6 +58,7 @@
             this.btnDelete.TabIndex = 25;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // lbInfo
             // 

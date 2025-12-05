@@ -33,6 +33,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         public AddSanPhamForm()
         {
             InitializeComponent();
+
         }
 
         private Image LoadImageSafe(string relativePath)
@@ -285,7 +286,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             int maChatLieu = int.Parse(cboMaChatLieu.Text.ToString().Split('.')[0]);
             int maLoai = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
             int maSize = int.Parse(cboMaSize.Text.ToString().Split('.')[0]);
-            SanPhamDTO sanPham = new SanPhamDTO(maSp, txtTenSanPham.Text,duongDanAnhMoi,soLuong,donGia,maChatLieu,maLoai, maKhuVuc, maSize);
+            SanPhamDTO sanPham = new SanPhamDTO(maSp, txtTenSanPham.Text,duongDanAnhMoi,soLuong,donGia,maChatLieu,maLoai, maKhuVuc, maSize,1);
             spBUS.insertSanPham(sanPham);
             this.DialogResult = DialogResult.OK;
 

@@ -28,6 +28,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private PhieuNhapBUS pnBUS = new PhieuNhapBUS();
         private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
+        private KhuVucKhoBUS kvBUS= new KhuVucKhoBUS();
         private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
         private BindingList<NhaCungCapDTO> listNCC;
         private BindingList<SanPhamDTO> listSP;
@@ -35,6 +36,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private Action btnClose;
         private NhanVienDTO currentUser;
         private Action refreshDGVPN;
+        private int KhuVucDangLenDon = 0;
 
         public AddPhieuNhapForm(Action btnClose, NhanVienDTO currentUser, Action refreshDGVPN)
         {
@@ -42,9 +44,17 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.btnClose = btnClose;
             this.currentUser = currentUser;
             this.refreshDGVPN = refreshDGVPN;
+            cbbKV.Items.Add("Tất cả khu vực");
+            cbbKV.SelectedIndex = 0;
+            foreach (KhuVucKhoDTO kv in kvBUS.getKhuVucKhoList())
+            {
+                cbbKV.Items.Add(kv.Tenkhuvuc);
+            }
             SetupDataGridViews();
             LoadData();
-            //LoadSPDuocThem();
+
+            
+
         }
         private void btnOnClose_Click(object sender, EventArgs e)
         {
@@ -110,20 +120,28 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void LoadSPTrongKho()
         {
+
             listSP = spBUS.getListSP();
             dgvSPtrongKho.Rows.Clear();
             if (listSP != null && listSP.Count > 0)
             {
+                int makv = kvBUS.LayMaKhuVuc(cbbKV.SelectedItem.ToString());
                 foreach (SanPhamDTO sp in listSP)
                 {
-                    Image productImage = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
-                    dgvSPtrongKho.Rows.Add(
-                        sp.Masp,
-                        sp.Tensp,
-                        productImage,
-                        sp.Dongia,
-                        sp.Soluong
-                    );
+                    if (sp.Trangthai == 0) continue;
+                    if(sp.Makhuvuc == makv || makv == 0) // In dựa trên khu vực chọn
+                    {
+                        string tenKV = kvBUS.LayTenKhuVuc(sp);
+                        Image productImage = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
+                        dgvSPtrongKho.Rows.Add(
+                            sp.Masp,
+                            sp.Tensp,
+                            productImage,
+                            sp.Dongia,
+                            sp.Soluong,
+                            tenKV
+                        );
+                    }          
                 }
             }
             dgvSPtrongKho.ClearSelection();
@@ -190,6 +208,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 if (dgvSPduocThem.Columns[e.ColumnIndex].Name != "remove") UpdateQuantity(spDuocChon);
                 else if (dgvSPduocThem.Columns[e.ColumnIndex].Name == "remove")
                 {
+
                     listSPDuocThem.Remove(spDuocChon);
                     LoadSPDuocThem();
                 }
@@ -198,6 +217,14 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void UpdateQuantity(SanPhamDTO spDuocChon)
         {
+            if (listSPDuocThem.Count == 0) KhuVucDangLenDon = 0; // Xử lý lên đơn khác khu vực
+            if (KhuVucDangLenDon !=0 && spDuocChon.Makhuvuc != KhuVucDangLenDon)
+            {
+                MessageBox.Show("Sản phẩm khác với khu vực được chọn! Hãy chọn sản phẩm khác", "Cảnh báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txSearch.Clear();
+                return;
+            }
             var existingSP = listSPDuocThem.FirstOrDefault(x => x.Masp == spDuocChon.Masp);
             string title = existingSP != null ? "Chỉnh sửa số lượng" : "Nhập số lượng";
             int soLuongTruyenVao = existingSP != null ? existingSP.Soluong : 1;
@@ -221,6 +248,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     };
                     listSPDuocThem.Add(spMoi);
                 }
+                // Xử lý lên đơn khác khu vực
+                if (listSPDuocThem.Count == 1) KhuVucDangLenDon = spDuocChon.Makhuvuc; 
                 LoadSPDuocThem();
             }
             else
@@ -431,6 +460,9 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         }
 
-        
+        private void cbbKV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSPTrongKho();
+        }
     }
 }

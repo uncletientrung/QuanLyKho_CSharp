@@ -34,10 +34,8 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         {
             this.sp= _sp;
             InitializeComponent();
+            txtSoLuong.Enabled = false;
         }
-
-
-
 
         private Image LoadImageSafe(string relativePath)
         {
@@ -260,7 +258,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                             int maLoaiMoi = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
                             int maSizeMoi = int.Parse(cboMaSize.Text.ToString().Split('.')[0]);
 
-                            SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi);
+                            SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi,1);
                             spBUS.updateSanPham(sanPhamUpdate);
                             this.DialogResult = DialogResult.OK;
                             this.Close();

@@ -133,7 +133,7 @@ namespace QuanLyKho.BUS
             foreach (var sp in listSP)
             {
                 string tenSP = sp.Tensp?.ToLower() ?? "";
-                if (tenSP.Contains(searchString))
+                if (tenSP.Contains(searchString) || sp.Masp.ToString().Contains(searchString))
                 {
                     result.Add(sp);
                     continue;
