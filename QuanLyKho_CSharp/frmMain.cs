@@ -312,5 +312,19 @@ namespace QuanLyKho_CSharp
         {
 
         }
+
+        private void guna2ControlBox3_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+        
+
     }
 }

@@ -220,7 +220,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             if (listSPDuocThem.Count == 0) KhuVucDangLenDon = 0; // Xử lý lên đơn khác khu vực
             if (KhuVucDangLenDon !=0 && spDuocChon.Makhuvuc != KhuVucDangLenDon)
             {
-                MessageBox.Show("Sản phẩm khác với khu vực được chọn! Hãy chọn sản phẩm khác", "Cảnh báo",
+                MessageBox.Show("Sản phẩm khác khu vực với các sản phẩm trong phiếu! \nHãy chọn sản phẩm khác", "Cảnh báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txSearch.Clear();
                 return;
