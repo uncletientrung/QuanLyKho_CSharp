@@ -41,7 +41,7 @@ namespace QuanLyKho.BUS
 
         public int LayMaLoai(string tenLoai)
         {
-            if (string.IsNullOrEmpty(tenLoai) || tenLoai == "Tất cả")
+            if (string.IsNullOrEmpty(tenLoai) || tenLoai == "Tất cả loại")
             {
                 return 0; 
             }

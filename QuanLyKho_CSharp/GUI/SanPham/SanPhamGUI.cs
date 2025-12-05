@@ -48,7 +48,6 @@ namespace QuanLyKho_CSharp.GUI
             setUpBoxTimKiem();
             LoadDataToGrid(spBUS.getListSP());
         }
-
         private void ConfigureDataGridView() // Setting cho DGV
         {
             dgvSanPham.ClearSelection();
@@ -74,7 +73,6 @@ namespace QuanLyKho_CSharp.GUI
             dgvSanPham.RowHeadersDefaultCellStyle = headerStyle;
             dgvSanPham.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
         }
-
 
         public void setUpBoxTimKiem()
         {
@@ -104,16 +102,13 @@ namespace QuanLyKho_CSharp.GUI
             cbbSize.SelectedIndex = 0;
 
             //gan sk de khi thay doi no tim luon
-            //txtTimKiem.TextChanged += (s, ev) => Filter();
-            //cboChatLieu.SelectedIndexChanged += (s, ev) => Filter();
-            //cboLoai.SelectedIndexChanged += (s, ev) => Filter();
-            //cboKhuVuc.SelectedIndexChanged += (s, ev) => Filter();
-            //cboSize.SelectedIndexChanged += (s, ev) => Filter();
-
-            // Gọi Filter() để hiển thị dữ liệu ban đầu
-            //Filter();
+            txtSearch.TextChanged += (s, ev) => Filter();
+            cbbChatLieu.SelectedIndexChanged += (s, ev) => Filter();
+            cbbLoai.SelectedIndexChanged += (s, ev) => Filter();
+            cbbKhuVuc.SelectedIndexChanged += (s, ev) => Filter();
+            cbbSize.SelectedIndexChanged += (s, ev) => Filter();
         }
-        private void LoadDataToGrid(BindingList<SanPhamDTO> newList)
+        private void LoadDataToGrid(BindingList<SanPhamDTO> loadList)
         {
             try
             {
@@ -124,7 +119,7 @@ namespace QuanLyKho_CSharp.GUI
                     MessageBox.Show("Không có dữ liệu sản phẩm để hiển thị.", "Debug - No Data");
                     return;
                 }
-                foreach (SanPhamDTO sp in listSP)
+                foreach (SanPhamDTO sp in loadList)
                 {
                     Image productImage = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
                     String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
@@ -190,59 +185,6 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
-        //        private void LoadDataToGridFind(BindingList<SanPhamDTO> newList)
-        //        {
-        //            try
-        //            {
-        //                dgvSanPham.Rows.Clear();
-
-        //                if (listSP == null || listSP.Count == 0)
-        //                {
-        //                    MessageBox.Show("Không có dữ liệu sản phẩm để hiển thị.", "Debug - No Data");
-        //                    return;
-        //                }
-
-        //                foreach (SanPhamDTO sp in newList)
-        //                {
-        //                    Image img = LoadImageSafe(sp.Hinhanh);
-        //                    String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
-        //                    String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
-        //                    String tenLoai = loaiBUS.LayTenLoai(sp);
-        //                    String tenSize = sizeBUS.LayTenSize(sp);
-
-        //                    dgvSanPham.Rows.Add(
-        //                        sp.Masp,
-        //                        sp.Tensp,
-        //                        img,
-        //                        sp.Soluong,
-        //                        sp.Dongia,
-        //                        tenChatLieu,
-        //                        tenLoai,
-        //                        tenKhuVuc,
-        //                        tenSize
-        //                    );
-        //                }
-
-        //                dgvSanPham.ClearSelection();
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show($"Lỗi trong LoadDataToGrid: {ex.Message}\n{ex.StackTrace}", "Debug Error");
-        //            }
-        //        }
-
-        //        private void txtTimKiem_TextChanged(object sender, EventArgs e)
-        //        {
-        //            //string searchString = txtTimKiem.Text.Trim();
-        //            //BindingList<SanPhamDTO> listSP = spBUS.TimkiemSanPham(searchString);
-        //            //LoadDataToGridFind(listSP);
-        //        }
-
-        //        private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //        {
-
-        //        }
-
         //        private void btnThem_Click(object sender, EventArgs e)
         //        {
 
@@ -255,101 +197,160 @@ namespace QuanLyKho_CSharp.GUI
         //                tb.Show();
         //            }
         //        }
+        private void Filter()
+        {
+            string keyword = txtSearch.Text.Trim().ToLower();
+            string chatLieu = cbbChatLieu.SelectedItem?.ToString();
+            string loai = cbbLoai.SelectedItem?.ToString();
+            string khuVuc = cbbKhuVuc.SelectedItem?.ToString();
+            string size = cbbSize.SelectedItem?.ToString();
 
-        //        private void groupBox1_Enter(object sender, EventArgs e)
-        //        {
+            int maLoai = loaiBUS.LayMaLoai(loai);
+            int makv = khuVucKhoBUS.LayMaKhuVuc(khuVuc);
+            int maCl = chatLieuBUS.LayMaChatLieu(chatLieu);
+            int maSize = sizeBUS.LayMaSize(size);
 
-        //        }
-
-
-        //        private void Filter()
-        //        {
-        //            string keyword = txtTimKiem.Text.Trim().ToLower();
-        //            string chatLieu = cboChatLieu.SelectedItem?.ToString();
-        //            string loai = cboLoai.SelectedItem?.ToString();
-        //            string khuVuc = cboKhuVuc.SelectedItem?.ToString();
-        //            string size = cboSize.SelectedItem?.ToString();
-
-        //            int maLoai = loaiBUS.LayMaLoai(loai);
-        //            int makv = khuVucKhoBUS.LayMaKhuVuc(khuVuc);
-        //            int maCl = chatLieuBUS.LayMaChatLieu(chatLieu);
-        //            int maSize = sizeBUS.LayMaSize(size); 
-
-        //            var filtered = spBUS.getListSP().Where(sp =>
-        //                (string.IsNullOrEmpty(keyword) || sp.Tensp.ToLower().Contains(keyword)) &&
-        //                (chatLieu == "Tất cả" || maCl == 0 || sp.Machatlieu == maCl) &&
-        //                (loai == "Tất cả" || maLoai == 0 || sp.Maloai == maLoai) &&
-        //                (khuVuc == "Tất cả" || makv == 0 || sp.Makhuvuc == makv) &&
-        //                (size == "Tất cả" || maSize == 0 || sp.Masize == maSize)
-        //            ).ToList();
-
-        //            BindingList<SanPhamDTO> filteredList = new BindingList<SanPhamDTO>(filtered);
-        //            LoadDataToGridFind(filteredList);
-        //        }
-
-        //        private void btnLamMoi_Click(object sender, EventArgs e)
-        //        {
-        //            cboChatLieu.SelectedIndex = 0;
-        //            cboKhuVuc.SelectedIndex = 0;
-        //            cboLoai.SelectedIndex = 0;
-        //            cboSize.SelectedIndex = 0;
-        //            txtTimKiem.Text= string.Empty;
-
-        //        }
-
-        //        private void button2_Click(object sender, EventArgs e)
-        //        {
-        //            Excel.Application excelApp = new Excel.Application();
-        //            excelApp.Application.Workbooks.Add(Type.Missing);
-
-        //            Excel._Worksheet worksheet = (Excel._Worksheet)excelApp.ActiveSheet;
-        //            worksheet.Name = "SanPham";//tạo 1 workshet 
-
-        //            int colIndex = 1;
-
-        //            worksheet.Cells[1, 1] = "DANH SÁCH SẢN PHẨM";
-        //            Excel.Range titleRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[1, dgvSanPham.Columns.Count - 2]];
-        //            titleRange.Merge(); 
-        //            titleRange.Font.Size = 16;
-        //            titleRange.Font.Bold = true;
-        //            titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            var filtered = spBUS.getListSP().ToList();
+            if (!string.IsNullOrWhiteSpace(keyword)) {
+                filtered = spBUS.TimkiemSanPhamOFormSP(keyword).ToList();
+            }
+            if (maCl > 0)
+                filtered = filtered.Where(sp => sp.Machatlieu == maCl).ToList();
+            if (maLoai > 0)
+                filtered = filtered.Where(sp => sp.Maloai == maLoai).ToList();
+            if (makv > 0)
+                filtered = filtered.Where(sp => sp.Makhuvuc == makv).ToList();
+            if (maSize > 0)
+                filtered = filtered.Where(sp => sp.Masize == maSize).ToList();
+            decimal? minPrice = null; // có thể số hoặc null
+            decimal? maxPrice = null;
+            if (!string.IsNullOrWhiteSpace(txtSMoney.Text) && txtSMoney.Text != "Tiền từ")
+            {
+                if (decimal.TryParse(txtSMoney.Text, out decimal min)) minPrice = min;
+            }
+            if (!string.IsNullOrWhiteSpace(txtEMoney.Text) && txtEMoney.Text != "Đến tiền")
+            {
+                if (decimal.TryParse(txtEMoney.Text, out decimal max)) maxPrice = max;
+            }
+            if (minPrice.HasValue || maxPrice.HasValue) // True nếu có giá trị
+            {
+                filtered = filtered.Where(sp =>
+                {
+                    if (minPrice.HasValue && sp.Dongia < minPrice.Value) return false;
+                    if (maxPrice.HasValue && sp.Dongia > maxPrice.Value) return false;
+                    return true;
+                }).ToList();
+            }
 
 
-        //            for (int i = 0; i < dgvSanPham.Columns.Count; i++)
-        //            {
-        //                if (i == 2 || i == 9) continue; 
+            LoadDataToGrid(new BindingList<SanPhamDTO>(filtered));
+        }
 
-        //                worksheet.Cells[2, colIndex] = dgvSanPham.Columns[i].HeaderText;
-        //                colIndex++;
-        //            }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelApp = new Excel.Application();
+            excelApp.Application.Workbooks.Add(Type.Missing);
 
-        //            // định dạng tiêu đề cột
-        //            Excel.Range tieuDeCot = worksheet.Range[worksheet.Cells[2, 1], worksheet.Cells[2, colIndex - 1]];
-        //            tieuDeCot.Font.Bold = true;
-        //            tieuDeCot.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
-        //            tieuDeCot.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            Excel._Worksheet worksheet = (Excel._Worksheet)excelApp.ActiveSheet;
+            worksheet.Name = "SanPham";//tạo 1 workshet 
 
-        //            // ghi du lieu vô 
-        //            int rowIndex = 3;
-        //            foreach (DataGridViewRow row in dgvSanPham.Rows)
-        //            {
-        //                if (!row.IsNewRow)
-        //                {
-        //                    colIndex = 1;
-        //                    for (int i = 0; i < dgvSanPham.Columns.Count; i++)
-        //                    {
-        //                        if (i == 2 || i == 9) continue; 
-        //                        worksheet.Cells[rowIndex, colIndex] = row.Cells[i].Value?.ToString();
-        //                        colIndex++;
-        //                    }
-        //                    rowIndex++;
-        //                }
-        //            }
+            int colIndex = 1;
+
+            worksheet.Cells[1, 1] = "DANH SÁCH SẢN PHẨM";
+            Excel.Range titleRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[1, dgvSanPham.Columns.Count - 2]];
+            titleRange.Merge();
+            titleRange.Font.Size = 16;
+            titleRange.Font.Bold = true;
+            titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
 
-        //            worksheet.Columns.AutoFit();// dùng để chỉnh cột cho vừa vặn với nooij dung
+            for (int i = 0; i < dgvSanPham.Columns.Count; i++)
+            {
+                if (i == 2 || i == 9) continue;
 
-        //            excelApp.Visible = true;
-        //        }
+                worksheet.Cells[2, colIndex] = dgvSanPham.Columns[i].HeaderText;
+                colIndex++;
+            }
+
+            // định dạng tiêu đề cột
+            Excel.Range tieuDeCot = worksheet.Range[worksheet.Cells[2, 1], worksheet.Cells[2, colIndex - 1]];
+            tieuDeCot.Font.Bold = true;
+            tieuDeCot.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
+            tieuDeCot.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+            // ghi du lieu vô 
+            int rowIndex = 3;
+            foreach (DataGridViewRow row in dgvSanPham.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    colIndex = 1;
+                    for (int i = 0; i < dgvSanPham.Columns.Count; i++)
+                    {
+                        if (i == 2 || i == 9) continue;
+                        worksheet.Cells[rowIndex, colIndex] = row.Cells[i].Value?.ToString();
+                        colIndex++;
+                    }
+                    rowIndex++;
+                }
+            }
+
+
+            worksheet.Columns.AutoFit();// dùng để chỉnh cột cho vừa vặn với nooij dung
+
+            excelApp.Visible = true;
+        }
+
+        // Xử lý playholder và keypress
+        private void txtSMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                return;
+            if (e.KeyChar == (char)Keys.Back)
+                return;
+            e.Handled = true;
+        }
+        private void txtSMoney_MouseLeave(object sender, EventArgs e)
+        {
+            if (txtSMoney.Text == "" || txtSMoney.Text == null)
+            {
+                txtSMoney.Text = "Tiền từ";
+                if (txtEMoney.Text == "" || txtEMoney.Text == null)
+                {
+                    txtEMoney.Text = "Đến tiền";
+                }
+            }
+        }
+
+        private void txtEMoney_MouseLeave(object sender, EventArgs e)
+        {
+            if (txtEMoney.Text == "" || txtEMoney.Text == null)
+            {
+                txtEMoney.Text = "Đến tiền";
+                if (txtSMoney.Text == "" || txtEMoney.Text == null)
+                {
+                    txtSMoney.Text = "Tiền từ";
+                }
+            }
+        }
+        private void txtEMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                return;
+            if (e.KeyChar == (char)Keys.Back)
+                return;
+            e.Handled = true;
+        }
+
+        private void txtEMoney_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtEMoney.Text == "Đến tiền")
+                txtEMoney.Clear();
+        }
+
+        private void txtSMoney_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

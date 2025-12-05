@@ -34,7 +34,7 @@ namespace QuanLyKho.BUS
 
         public int LayMaChatLieu(String tenCl)
         {
-            if (string.IsNullOrEmpty(tenCl) || tenCl == "Tất cả")
+            if (string.IsNullOrEmpty(tenCl) || tenCl == "Tất cả chất liệu")
             {
                 return 0;
             }

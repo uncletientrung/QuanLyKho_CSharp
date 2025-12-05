@@ -159,7 +159,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 titleRange.Font.Size = 16;
                 titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                worksheet.Cells[2, 1] = $"Ngày xuất: {now.ToString("dd/MM/yyyy HH:mm")}";
+                worksheet.Cells[2, 1] = $"Ngày xuất: {now.ToString("HH:mm dd/MM/yyyy")}";
                 worksheet.Cells[2, 1].Font.Italic = true;
 
                 // tiêu đề cột, bỏ qua cột action
@@ -406,7 +406,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                         pn.Maphieu,
                         tenNV,
                         tenNCC,
-                        pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
+                        pn.Thoigiantao.ToString("HH:mm dd/MM/yyyy"),
                         pn.Tongtien,
                         trangThai
                     );

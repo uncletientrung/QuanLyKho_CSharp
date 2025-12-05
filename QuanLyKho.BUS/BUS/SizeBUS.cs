@@ -39,7 +39,7 @@ namespace QuanLyKho.BUS
 
         public int LayMaSize(String tenMA)
         {
-            if (string.IsNullOrEmpty(tenMA) || tenMA == "Tất cả")
+            if (string.IsNullOrEmpty(tenMA) || tenMA == "Tất cả size")
             {
                 return 0;
             }

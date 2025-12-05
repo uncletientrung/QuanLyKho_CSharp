@@ -15,6 +15,9 @@ namespace QuanLyKho.BUS
     public class SanPhamBUS
     {
         public readonly SanPhamDAO spDAO = SanPhamDAO.getInstance();
+        private KhuVucKhoBUS kvBus= new KhuVucKhoBUS();
+        private ChatLieuBUS clBUS= new ChatLieuBUS();
+        private SizeBUS sizeBUS= new SizeBUS();
         private BindingList<SanPhamDTO> listSP;
         private BindingList<LoaiDTO> listLoai;
         private LoaiBUS loaiBUS= new LoaiBUS();
@@ -114,8 +117,8 @@ namespace QuanLyKho.BUS
             BindingList<SanPhamDTO> result = new BindingList<SanPhamDTO> ();
             foreach (SanPhamDTO sp in listSP) {
                 if (sp.Tensp.ToLower().Contains(searchString.ToLower()) ||
-                    sp.Maloai.ToString().Contains(searchString) ||
-                    sp.Makhuvuc.ToString().Contains(searchString) ||
+                    sp.Masp.ToString().Contains(searchString) ||
+                    sp.Soluong.ToString().Contains(searchString) ||
                     sp.Dongia.ToString().Contains(searchString))
                 {
                     result.Add(sp);
@@ -123,7 +126,28 @@ namespace QuanLyKho.BUS
             }
             return result;
         }
-
+        public BindingList<SanPhamDTO> TimkiemSanPhamOFormSP(string searchString)
+        {
+            searchString = searchString.ToLower().Trim();
+            var result = new BindingList<SanPhamDTO>();
+            foreach (var sp in listSP)
+            {
+                string tenSP = sp.Tensp?.ToLower() ?? "";
+                if (tenSP.Contains(searchString))
+                {
+                    result.Add(sp);
+                    continue;
+                }
+                if (kvBus.LayTenKhuVuc(sp).ToLower().Contains(searchString) ||
+                    clBUS.LayTenChatLieu(sp).ToLower().Contains(searchString) ||
+                    loaiBUS.LayTenLoai(sp).ToLower().Contains(searchString) ||
+                    sizeBUS.LayTenSize(sp).ToLower().Contains(searchString))
+                {
+                    result.Add(sp);
+                }
+            }
+            return result;
+        }
 
         public Dictionary<string, int> TinhSoLuongTungLoai()
         {

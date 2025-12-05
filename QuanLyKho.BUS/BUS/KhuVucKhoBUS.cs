@@ -39,7 +39,7 @@ namespace QuanLyKho.BUS
         public int LayMaKhuVuc(String tenkv)
         {
 
-            if (string.IsNullOrEmpty(tenkv) || tenkv == "Tất cả")
+            if (string.IsNullOrEmpty(tenkv) || tenkv == "Tất cả khu vực")
             {
                 return 0;
             }
