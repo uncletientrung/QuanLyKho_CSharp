@@ -117,6 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnNewClothes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAcdJREFUSEvt
+        VctKw0AUjQs3Nm0SFz6+QNB/UFFwIwouFEFxL6IgfoIb0aXP3EkVQVG/wYWvPxDXFXThCyyIMDNWGO9M
+        bmJaq5EuBKEHLm3PPeee22noWH8PpRocxvtckHmXiSLWCXW+wAVxjPVstEGpW3upVQV7KueBWHEZf/SY
+        UMlyNpRHqhi5QDVX6si7bOVVlmQhbJBduMl1QvziAj+NwpxAjpI0hgNyTPdQ96C12kNeDBIFe1t2ktSy
+        cPMl0wRx6QVi0PJVo+YdXwyEJn7nMTlpb6qWJl+1u+xtCsPvdU8fpxmCHlxyGGdcmRDgi4bX8IAfmUGB
+        GCIqBm6zgPUeBn2W5txAzJMsBv4eI6GG7xNlhqwZE4hZosqQzYsO3AzQdGOOEt9rjtplwFlzNGuVKPwG
+        TMyYVBBbRNUMnOObWUxME6VTea8m8fWcqJqBx31hZkGphygEPlZIvlJydMbfPv+VwMXOKrxFa13Z1A7h
+        gZzAM75NCqmViqQHhxdyIMepVR21BtDHdNQDUlEPSMX/D8D/8idtMNdgCpyA9xsteohKB/5lHEZb/bqA
+        H5A9HZkd1aYvjOjK/Kn0zYa1m2Gqlex/Ccv6APeF08YCMxmzAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -132,7 +146,6 @@
   <metadata name="soluongDGVTon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="artanButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAQxJREFUSEvl
@@ -197,7 +210,7 @@
         jovQkAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnNewKH.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnNewNCC.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAXFJREFUSEvd
         lLtKBEEQRRcxEQRlBRVEDEz8BB+Y+gjNDBQMDE3ED/EfzAxk8Q0+AxMTBSO/YNVQMFCj8tT0HUTbXqYX

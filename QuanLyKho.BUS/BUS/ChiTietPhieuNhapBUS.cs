@@ -12,6 +12,7 @@ namespace QuanLyKho.BUS
     public class ChiTietPhieuNhapBUS
     {
         public readonly ChiTietPhieuNhapDAO ctpnDAO = ChiTietPhieuNhapDAO.getInstance();
+        private SanPhamDAO sDAO= SanPhamDAO.getInstance();
         private BindingList<ChiTietPhieuNhapDTO> listCTPN;
 
         public BindingList<ChiTietPhieuNhapDTO> getListCTPN()
@@ -28,6 +29,11 @@ namespace QuanLyKho.BUS
         public Boolean insertChiTietPhieuNhap(BindingList<ChiTietPhieuNhapDTO> listCTPN)
         {
             int result = ctpnDAO.Insert(listCTPN);
+            foreach(ChiTietPhieuNhapDTO ctpn in listCTPN)
+            {
+                int soluongThem = ctpn.Soluong;
+                sDAO.updateSoLuongTon(ctpn.Masp,soluongThem);
+            }
             return result == listCTPN.Count;
         }
 

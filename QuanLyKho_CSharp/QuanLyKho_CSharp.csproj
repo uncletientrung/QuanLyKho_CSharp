@@ -653,6 +653,12 @@
     <Compile Include="Helper\DropDownSearch\SearchResultControlCustomer.Designer.cs">
       <DependentUpon>SearchResultControlCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DropDownSearch\SearchResultControlVendor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helper\DropDownSearch\SearchResultControlVendor.Designer.cs">
+      <DependentUpon>SearchResultControlVendor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\QuantityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -937,6 +943,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Helper\DropDownSearch\SearchResultControlCustomer.resx">
       <DependentUpon>SearchResultControlCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\DropDownSearch\SearchResultControlVendor.resx">
+      <DependentUpon>SearchResultControlVendor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Helper\QuantityForm.resx">
       <DependentUpon>QuantityForm.cs</DependentUpon>

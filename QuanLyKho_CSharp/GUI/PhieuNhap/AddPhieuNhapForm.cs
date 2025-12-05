@@ -1,8 +1,11 @@
 ﻿using QuanLyKho.BUS;
 using QuanLyKho.DTO;
+using QuanLyKho_CSharp.GUI.KhachHang;
 using QuanLyKho_CSharp.GUI.PhieuXuat;
+using QuanLyKho_CSharp.GUI.SanPham;
 using QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap;
 using QuanLyKho_CSharp.Helper;
+using QuanLyKho_CSharp.Helper.DropDownSearch;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +45,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             SetupDataGridViews();
             LoadData();
             //LoadSPDuocThem();
+        }
+        private void btnOnClose_Click(object sender, EventArgs e)
+        {
+            refreshDGVPN();
+            btnClose?.Invoke(); // Thực hiện delegate
         }
         private void SetupDataGridViews()
         {
@@ -161,14 +169,30 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             {
                 if (dgvSPtrongKho.CurrentRow == null || dgvSPtrongKho.CurrentRow.IsNewRow)
                     return;
-
                 var selectedRow = dgvSPtrongKho.CurrentRow;
                 int maSP = int.Parse(selectedRow.Cells[0].Value.ToString());
-
                 SanPhamDTO spTrongKho = listSP.FirstOrDefault(x => x.Masp == maSP);
                 if (spTrongKho == null) return;
 
                 UpdateQuantity(spTrongKho);
+            }
+        }
+        // Chính sửa số lượng nếu cần
+        private void dgvSPduocThem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dgvSPduocThem.CurrentRow == null) return;
+                var selectedRow = dgvSPduocThem.CurrentRow;
+                int maSP = int.Parse(selectedRow.Cells[0].Value.ToString());
+                SanPhamDTO spDuocChon = listSPDuocThem.FirstOrDefault(x => x.Masp == maSP);
+                if (spDuocChon == null) return;
+                if (dgvSPduocThem.Columns[e.ColumnIndex].Name != "remove") UpdateQuantity(spDuocChon);
+                else if (dgvSPduocThem.Columns[e.ColumnIndex].Name == "remove")
+                {
+                    listSPDuocThem.Remove(spDuocChon);
+                    LoadSPDuocThem();
+                }
             }
         }
 
@@ -241,22 +265,172 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
             listContainer.Height = Math.Min(resultList.Count * 54 + 10, 300);
         }
+        private void txSearchVendor_TextChanged(object sender, EventArgs e) // Tìm nhà cung cấp
+        {
+            listContainerVendor.AutoScroll = true;
+            string textSearch = txSearchVendor.Text.Trim();
+            listContainerVendor.Controls.Clear();
+            if (string.IsNullOrEmpty(textSearch))
+            {
+                listContainerVendor.Height = 0;
+                return;
+            }
+            BindingList<NhaCungCapDTO> resultList = SearchResultControlVendor.TimKiem(textSearch);
+            if (resultList.Count == 0)
+            {
+                listContainerVendor.Controls.Add(new Label
+                {
+                    Text = "Không tìm thấy nhà cung cấp",
+                    Dock = DockStyle.Top,
+                    Height = 30,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                });
+                listContainerVendor.Height = 30;
+                return;
+            }
+            foreach (NhaCungCapDTO ncc in resultList)
+            {
+                var item = new SearchResultControlVendor();
+                item.BindData(ncc);
+                item.Dock = DockStyle.Top;
+                item.OnCustomerSelected += (objPhatRaSuKien, selectedVendor) =>
+                {
+                    txSearchVendor.Text = $"{selectedVendor.Mancc} | {selectedVendor.Tenncc} " + $"| SDT: {selectedVendor.Sdt}";
+                    lbNameVendor.Text = $"{selectedVendor.Mancc} - {selectedVendor.Tenncc} ";
+                    listContainerVendor.Height = 0;
+                    txSearchVendor.SelectionStart = txSearchVendor.Text.Length;
+                };
+                listContainerVendor.Controls.Add(item);
+            }
+            listContainerVendor.Height = Math.Min(resultList.Count * 30 + 10, 120);
+        }
+        private void btnNewNCC_Click(object sender, EventArgs e) // Thêm nhà cung cấp
+        {
+            AddNhaCungCapForm addNCCForm = new AddNhaCungCapForm();
+            DialogResult result = addNCCForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                listNCC = nccBUS.getListNCC();
+                if (listNCC != null && listNCC.Count > 0)
+                {
+                    var newestNCC = listNCC.OrderByDescending(ncc => ncc.Mancc).FirstOrDefault();
+                    if (newestNCC != null)
+                    {
+                        txSearchVendor.Text = $"{newestNCC.Mancc} | {newestNCC.Tenncc} " + $"| SDT: {newestNCC.Sdt}";
+                        lbNameVendor.Text = $"{newestNCC.Mancc} - {newestNCC.Tenncc} ";
+                        listContainerVendor.Height = 0;
+                    }
+                }
+            }
+        }
 
+        private void btnThem_Click(object sender, EventArgs e) // Thêm phiếu
+        {
+            int mancc;
+            int manv = currentUser.Manv;
+            string labelPrice = lbPrice.Text.Replace("đ", "").Replace(",", "").Trim();
+            int tongtien = int.Parse(labelPrice);
+            DateTime ngayTao;
 
-    
+            if (listSPDuocThem == null || listSPDuocThem.Count == 0)
+            {
+                MessageBox.Show("Vui lòng thêm ít nhất một sản phẩm", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (lbNameVendor.Text == "Chưa chọn nhà cung cấp")
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng!", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                mancc = int.Parse(lbNameVendor.Text.Split('-')[0].Trim());
+                NhaCungCapDTO kh = nccBUS.getNCCById(mancc);
+                if (kh == null)
+                {
+                    MessageBox.Show("Nhà cung cấp không hợp lệ!", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            // Xử lý ngày
+            if (dateCreate.Value.Date == DateTime.Now.Date)
+            {
+                ngayTao = DateTime.Now;
+            }
+            else
+            {
+                ngayTao = dateCreate.Value.Date;
+            }
+            PhieuNhapDTO newPhieuNhap = new PhieuNhapDTO // Tạo phiếu xuất mới 
+            {
+                Maphieu = pnBUS.getAutoMaPhieuNhap(),
+                Manv = manv,
+                Mancc = mancc,
+                Thoigiantao = ngayTao,
+                Tongtien = tongtien,
+                Trangthai = 1
+            };
 
+            if (pnBUS.insertPhieuNhap(newPhieuNhap))
+            {
+                BindingList<ChiTietPhieuNhapDTO> listCTPX = new BindingList<ChiTietPhieuNhapDTO>();
+                foreach (SanPhamDTO sp in listSPDuocThem)
+                {
+                    ChiTietPhieuNhapDTO ctpn = new ChiTietPhieuNhapDTO
+                    {
+                        Maphieunhap = newPhieuNhap.Maphieu,
+                        Masp = sp.Masp,
+                        Soluong = sp.Soluong,
+                        Dongia = sp.Dongia
+                    };
+                    listCTPX.Add(ctpn);
+                }
+                if (ctpnBUS.insertChiTietPhieuNhap(listCTPX))
+                {
+                    UpdateSoLuongSanPhamAfterNhap();
+                }
+                else
+                {
+                    pnBUS.removePhieuNhap(newPhieuNhap.Maphieu);
+                    MessageBox.Show("Có lỗi xảy ra khi lưu chi tiết phiếu xuất!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi xảy ra khi tạo phiếu xuất!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void UpdateSoLuongSanPhamAfterNhap()
+        {
+            LoadSPTrongKho(); // Load lại sp trong kho
+            listSPDuocThem.Clear();
+            LoadSPDuocThem();// Load lại sp dc them
+            lbNameVendor.Text = "Chưa chọn nhà cung cấp";
+            txSearch.Clear(); txSearchVendor.Clear();
+            dateCreate.Value = DateTime.Now;
+            AddSuccessNotification tb = new AddSuccessNotification();
+            tb.Show();
+        }
+        private void btnNewClothes_Click(object sender, EventArgs e) // Thêm quần áo mới
+        {
+            AddSanPhamForm addSPForm = new AddSanPhamForm();
+            DialogResult result = addSPForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                listSP = spBUS.getListSP();
+                LoadSPTrongKho();
+            }
+        }
         private void AddPhieuNhapForm_Load(object sender, EventArgs e)
         {
 
         }
 
-
-        private void btnOnClose_Click(object sender, EventArgs e)
-        {
-            refreshDGVPN();
-            btnClose?.Invoke(); // Thực hiện delegate
-        }
-
-    
+        
     }
 }
