@@ -138,6 +138,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                     refreshDataGridView(pxBUS.getListPX());
                 }
             }
+            if (DGVPhieuXuat.Columns[e.ColumnIndex].Name == "hoanhang")
+            {
+                xuLyHoanHang(maPhieu);
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -322,7 +326,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 if (workbook != null) Marshal.ReleaseComObject(workbook);
                 if (app != null) Marshal.ReleaseComObject(app);
             }
-        }
+        } // Xuất Excel
 
         private void FilterData()
         {
@@ -388,7 +392,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
 
             refreshDataGridView(new BindingList<PhieuXuatDTO>(filteredList.ToList()));
-        }
+        } // Bộ lọc & tìm kiếm
 
         private void DisplayFilteredData(List<PhieuXuatDTO> filteredData)
         {
@@ -491,48 +495,35 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
             FilterData();
         }
-
-
         // hiển thị dialog hoàn hàng
-        private void dialogHoanHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void xuLyHoanHang(int maPhieu)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == DGVPhieuXuat.Columns["hoanhang"].Index)
+            PhieuXuatDTO phieu = pxBUS.getPhieuXuatById(maPhieu);
+            string tenKH = khBUS.getNamebyID(phieu.Makh);
+            decimal tongTien = phieu.Tongtien;
+
+            ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
+            DataTable chiTiet = ctpxBUS.getChiTietByMaPhieu(maPhieu);
+            var dialog = new QuanLyKho_CSharp.GUI.HoanHang.HoanHang(maPhieu, tenKH, (int)phieu.Manv, tongTien, chiTiet);
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                int maPhieu = Convert.ToInt32(DGVPhieuXuat.Rows[e.RowIndex].Cells["maphieu"].Value);
-
-                PhieuXuatDTO phieu = pxBUS.getPhieuXuatById(maPhieu);
-                string tenKH = khBUS.getNamebyID(phieu.Makh);
-                decimal tongTien = phieu.Tongtien;
-
-                ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
-                DataTable chiTiet = ctpxBUS.getChiTietByMaPhieu(maPhieu);
-
-                var dialog = new QuanLyKho_CSharp.GUI.HoanHang.HoanHang(maPhieu, tenKH, (int)phieu.Manv, tongTien, chiTiet);
-
-                if (dialog.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    try
-                    {
-                        // Đơn giản chỉ cần reload dữ liệu
-                        // Không cần gọi CapNhatTrangThaiPhieuXuat vì đã được xử lý trong HoanHangGUI
-                        LoadData();
-                        //LoadDataIntoGridView();
-
-                        MessageBox.Show("Cập nhật hoàn hàng thành công!", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    refreshDataGridView(pxBUS.getListPX());
+                    MessageBox.Show("Cập nhật hoàn hàng thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Reload để đảm bảo đồng bộ
-                    LoadData();
-                    //LoadDataIntoGridView();
+                    MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                // Reload để đảm bảo đồng bộ
+                LoadData();
+                //LoadDataIntoGridView();
             }
         }
 
