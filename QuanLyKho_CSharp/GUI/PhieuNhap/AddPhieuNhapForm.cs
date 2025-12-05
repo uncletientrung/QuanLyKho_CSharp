@@ -562,17 +562,17 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Đóng form hiện tại và mở PhieuNhapGUI
-                    frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
-                    if (mainForm != null)
-                    {
-                        var method = mainForm.GetType().GetMethod("OpenChildForm",
-                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    //frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                    //if (mainForm != null)
+                    //{
+                    //    var method = mainForm.GetType().GetMethod("OpenChildForm",
+                    //        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-                        if (method != null)
-                        {
-                            method.Invoke(mainForm, new object[] { new PhieuNhapGUI(), mainForm.Controls.Find("btnPhieuNhap", true).FirstOrDefault() });
-                        }
-                    }
+                    //    if (method != null)
+                    //    {
+                    //        method.Invoke(mainForm, new object[] { new PhieuNhapGUI(), mainForm.Controls.Find("btnPhieuNhap", true).FirstOrDefault() });
+                    //    }
+                    //}
 
                     this.Close();
                 }

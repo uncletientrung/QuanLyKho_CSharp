@@ -311,6 +311,12 @@
     <Compile Include="GUI\PhieuNhap\AddPhieuNhapForm.Designer.cs">
       <DependentUpon>AddPhieuNhapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PhieuNhap\DeletePhieuNhapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PhieuNhap\DeletePhieuNhapForm.Designer.cs">
+      <DependentUpon>DeletePhieuNhapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\PhieuNhap\DetailPhieuNhapForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -766,6 +772,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuNhap\AddPhieuNhapForm.resx">
       <DependentUpon>AddPhieuNhapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PhieuNhap\DeletePhieuNhapForm.resx">
+      <DependentUpon>DeletePhieuNhapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\PhieuNhap\DetailPhieuNhapForm.resx">
       <DependentUpon>DetailPhieuNhapForm.cs</DependentUpon>

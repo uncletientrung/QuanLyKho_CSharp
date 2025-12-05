@@ -569,7 +569,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
 
         }
-
+        // Xử lý chọn cbb
         private void cbbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtSearchNV.Clear();
@@ -579,7 +579,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dateS.Value = ngayDauTien;
             dateE.Value = DateTime.Today;
         }
-
+        // Xử lý playholder và keypress
         private void txtSMoney_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))

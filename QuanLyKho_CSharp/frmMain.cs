@@ -217,7 +217,7 @@ namespace QuanLyKho_CSharp
 
         private void btnPhieuNhap_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new PhieuNhapGUI(), btnPhieuNhap);
+            OpenChildForm(new PhieuNhapGUI(currentUser2), btnPhieuNhap);
         }
         private void btnPhieuXuat_Click(object sender, EventArgs e)
         {

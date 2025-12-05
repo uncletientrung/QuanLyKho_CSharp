@@ -1,5 +1,7 @@
 ﻿using QuanLyKho.BUS;
 using QuanLyKho.DTO;
+using QuanLyKho_CSharp.GUI.PhieuXuat;
+using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,27 +25,33 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
         private BindingList<PhieuNhapDTO> listPN;
-
-        public PhieuNhapGUI()
+        private NhanVienDTO currentUser;
+        public PhieuNhapGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             SetupDataGridView();
             LoadData();
-            
+            this.currentUser = currentUser;
+            cbbSearch.Items.Add("Tất cả");
+            cbbSearch.Items.Add("Mã");
+            cbbSearch.Items.Add("Nhân viên");
+            cbbSearch.Items.Add("Nhà cung cấp");
+            cbbSearch.SelectedIndex = 0;
+            cbbSearch.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         private void SetupDataGridView()
         {
-            dataGridView1.ClearSelection();
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            DGVPhieuNhap.ClearSelection();
+            DGVPhieuNhap.RowHeadersVisible = false;
+            DGVPhieuNhap.AllowUserToResizeRows = false;
+            DGVPhieuNhap.AllowUserToAddRows = false;
+            DGVPhieuNhap.ReadOnly = true;
+            DGVPhieuNhap.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGVPhieuNhap.MultiSelect = false;
+            DGVPhieuNhap.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DGVPhieuNhap.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
             headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -67,186 +75,57 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void PhieuNhap_Load(object sender, EventArgs e)
         {
-            InitializeDataGridViewColumns();
-            dateTimeBegin.Value = DateTime.Now.AddMonths(-1); // 1 tháng trước
-            dateTimeEnd.Value = DateTime.Now;
-            numericUpDown1.Value = 0;
-            numericUpDown2.Value = 0;
-            LoadDataIntoGridView();
             refreshDataGridView(listPN);
         }
 
-        private void InitializeDataGridViewColumns()
+        private void DGVPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.Columns.Clear();
-
-            dataGridView1.Columns.Add("MaPhieu", "Mã phiếu");
-            dataGridView1.Columns.Add("TenNV", "Tên nhân viên");
-            dataGridView1.Columns.Add("TenNCC", "Nhà cung cấp");
-            dataGridView1.Columns.Add("ThoiGian", "Thời gian tạo");
-            dataGridView1.Columns.Add("TongTien", "Tổng tiền");
-            dataGridView1.Columns.Add("TrangThai", "Trạng thái");
-
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            if (e.RowIndex < 0) return;
+            int mapn = int.Parse(DGVPhieuNhap.CurrentRow.Cells[0].Value.ToString());
+            PhieuNhapDTO pnDTO= pnBUS.getPhieuNhapById(mapn);
+            if (DGVPhieuNhap.Columns[e.ColumnIndex].Name == "detail")
             {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
-
-            dataGridView1.Columns["MaPhieu"].FillWeight = 10;      // 10%
-            dataGridView1.Columns["TenNV"].FillWeight = 20;        // 20%
-            dataGridView1.Columns["TenNCC"].FillWeight = 25;        // 10%
-            dataGridView1.Columns["ThoiGian"].FillWeight = 15;     // 20%
-            dataGridView1.Columns["TongTien"].FillWeight = 15;     // 20%
-            dataGridView1.Columns["TrangThai"].FillWeight = 15;    // 20%
-
-            dataGridView1.RowTemplate.Height = 40;
-
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.HeaderText = "Thao tác";
-            btn.Name = "Actions";
-            btn.Text = "";
-            btn.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns.Add(btn);
-            btn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridView1.Columns["Actions"].Width = 100;
-        }
-
-        private void LoadDataIntoGridView()
-        {
-            dataGridView1.Rows.Clear();
-
-            if (listPN != null && listPN.Count > 0)
+                ShowDetailPhieuNhapForm(pnDTO);
+                refreshDataGridView(pnBUS.getListPN());
+            }else if(DGVPhieuNhap.Columns[e.ColumnIndex].Name == "remove")
             {
-                foreach (PhieuNhapDTO pn in listPN)
+                DeletePhieuNhapForm deleteTk = new DeletePhieuNhapForm(pnDTO);
+                deleteTk.ShowDialog();
+                if (deleteTk.DialogResult == DialogResult.OK)
                 {
-                    if (pn.Trangthai == 1)
-                    {
-                        string tenNV = nvBUS.getNamebyID(pn.Manv);
-                        string tenNCC = nccBUS.getNamebyID(pn.Mancc);
-                        string trangThai = pn.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
-                        dataGridView1.Rows.Add(
-                            pn.Maphieu,
-                            tenNV,
-                            tenNCC,
-                            pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
-                            pn.Tongtien,
-                            trangThai
-                        );
-                    }
+
+                    DeleteSuccessNotification tb = new DeleteSuccessNotification();
+                    tb.Show();
+                    refreshDataGridView(pnBUS.getListPN());
                 }
             }
 
-            dataGridView1.ClearSelection();
-            FilterData();
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["Actions"].Index && e.RowIndex >= 0)
-            {
-                e.PaintBackground(e.CellBounds, true);
-
-                int padding = 5;
-                int totalButtons = 2;
-                int buttonWidth = (e.CellBounds.Width - padding * (totalButtons + 1)) / totalButtons;
-
-                Rectangle btnXem = new Rectangle(e.CellBounds.Left + padding, e.CellBounds.Top + padding,
-                    buttonWidth, e.CellBounds.Height - 2 * padding);
-                Rectangle btnXoa = new Rectangle(btnXem.Right + padding, e.CellBounds.Top + padding,
-                    buttonWidth, e.CellBounds.Height - 2 * padding);
-
-                ButtonRenderer.DrawButton(e.Graphics, btnXem, "", this.Font, false, PushButtonState.Normal);
-                ButtonRenderer.DrawButton(e.Graphics, btnXoa, "", this.Font, false, PushButtonState.Normal);
-
-                try
-                {
-                    Image imgXoa = Image.FromFile("images\\icon\\remove.png");
-                    Image imgXem = Image.FromFile("images\\icon\\detail.png");
-
-                    int targetWidth = 24;
-                    int targetHeight = 24;
-
-                    e.Graphics.DrawImage(imgXem, new Rectangle(
-                        btnXem.Left + (btnXem.Width - targetWidth) / 2,
-                        btnXem.Top + (btnXem.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-
-                    e.Graphics.DrawImage(imgXoa, new Rectangle(
-                        btnXoa.Left + (btnXoa.Width - targetWidth) / 2,
-                        btnXoa.Top + (btnXoa.Height - targetHeight) / 2,
-                        targetWidth,
-                        targetHeight));
-
-                    imgXem.Dispose();
-                    imgXoa.Dispose();
-                }
-                catch (Exception)
-                {
-                    // Bỏ qua lỗi ảnh
-                }
-
-                e.Handled = true;
-            }
-        }
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["Actions"].Index && e.RowIndex >= 0)
-            {
-                int buttonWidth = 50;
-                int padding = 5;
-                int xRel = e.Location.X;
-
-                int maPhieu = int.Parse(dataGridView1.Rows[e.RowIndex].Cells["MaPhieu"].Value.ToString());
-                PhieuNhapDTO phieuDuocChon = pnBUS.getPhieuNhapById(maPhieu);
-
-                if (xRel < padding + buttonWidth) // nút Xem
-                {
-                    ShowDetailPhieuNhapForm(phieuDuocChon);
-                }
-                else // nút Xóa
-                {
-                    if (MessageBox.Show($"Bạn có chắc muốn xóa phiếu nhập {maPhieu}?", "Xác nhận xóa",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        if (pnBUS.removePhieuNhap(maPhieu))
-                        {
-                            LoadData();
-                            LoadDataIntoGridView();
-                            MessageBox.Show("Xóa phiếu nhập thành công!", "Thông báo",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xóa phiếu nhập thất bại!", "Lỗi",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            // Tìm frmMain từ ParentForm
-            frmMain mainForm = this.ParentForm as frmMain;
-            if (mainForm != null)
-            {
-                // Sử dụng reflection để gọi OpenChildForm
-                var method = mainForm.GetType().GetMethod("OpenChildForm",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                if (method != null)
-                {
-                    method.Invoke(mainForm, new object[] { new AddPhieuNhapForm(), null });
-                }
-            }
-        }
+        //private void btnThem_Click(object sender, EventArgs e)
+        //{
+        //    pnlDGV.Visible = false;
+        //    pnlTop.Visible = false;
+        //    AddPhieuXuatForm addFormControl = null;
+        //    addFormControl = new AddPhieuNhapForm(() => btnOnClose(addFormControl), currentUser,
+        //       () => refreshDataGridView(pxBUS.getListPX()));
+        //    addFormControl.TopLevel = false;
+        //    addFormControl.FormBorderStyle = FormBorderStyle.None;
+        //    addFormControl.Dock = DockStyle.Fill;
+        //    pnlMain.Controls.Add(addFormControl);
+        //    addFormControl.Show();
+        //}
+        //private void btnOnClose(AddPhieuNhapForm formAdd)
+        //{
+        //    pnlDGV.Visible = true;
+        //    pnlTop.Visible = true;
+        //    pnlMain.Controls.Remove(formAdd);
+        //    formAdd.Dispose();
+        //}
 
         private void btnXuat_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
+            if (DGVPhieuNhap.Rows.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -285,26 +164,26 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                 // tiêu đề cột, bỏ qua cột action
                 int colIndex = 1;
-                for (int i = 0; i < dataGridView1.Columns.Count - 1; i++) // -1 để bỏ qua cột button
+                for (int i = 0; i < DGVPhieuNhap.Columns.Count - 1; i++) // -1 để bỏ qua cột button
                 {
-                    worksheet.Cells[4, colIndex] = dataGridView1.Columns[i].HeaderText;
+                    worksheet.Cells[4, colIndex] = DGVPhieuNhap.Columns[i].HeaderText;
                     colIndex++;
                 }
 
                 // dữ liệu
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                for (int i = 0; i < DGVPhieuNhap.Rows.Count; i++)
                 {
                     colIndex = 1;
-                    for (int j = 0; j < dataGridView1.Columns.Count - 1; j++) // -1 để bỏ qua cột button
+                    for (int j = 0; j < DGVPhieuNhap.Columns.Count - 1; j++) // -1 để bỏ qua cột button
                     {
-                        object value = dataGridView1.Rows[i].Cells[j].Value;
+                        object value = DGVPhieuNhap.Rows[i].Cells[j].Value;
                         worksheet.Cells[i + 5, colIndex] = value != null ? value.ToString() : "";
                         colIndex++;
                     }
                 }
 
                 // Định dạng header
-                int columnCount = dataGridView1.Columns.Count - 1;
+                int columnCount = DGVPhieuNhap.Columns.Count - 1;
                 Excel.Range headerRange = worksheet.Range[
                     worksheet.Cells[4, 1],
                     worksheet.Cells[4, columnCount]
@@ -318,7 +197,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 // Định dạng dữ liệu
                 Excel.Range dataRange = worksheet.Range[
                     worksheet.Cells[4, 1],
-                    worksheet.Cells[dataGridView1.Rows.Count + 4, columnCount]
+                    worksheet.Cells[DGVPhieuNhap.Rows.Count + 4, columnCount]
                 ];
                 dataRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
                 dataRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
@@ -328,7 +207,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 {
                     Excel.Range columnRange = worksheet.Range[
                         worksheet.Cells[5, col],
-                        worksheet.Cells[dataGridView1.Rows.Count + 4, col]
+                        worksheet.Cells[DGVPhieuNhap.Rows.Count + 4, col]
                     ];
 
                     if (col == 2 || col == 3) // Cột Tên NV và Tên NCC (căn trái)
@@ -345,7 +224,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 dataRange.Columns.AutoFit();
 
                 // Tổng kết - Sử dụng merge cell để hiển thị đẹp hơn
-                int lastRow = dataGridView1.Rows.Count + 5;
+                int lastRow = DGVPhieuNhap.Rows.Count + 5;
 
                 // Tổng số phiếu - Merge từ cột A đến B
                 Excel.Range totalPhieuRange = worksheet.Range[worksheet.Cells[lastRow + 1, 1], worksheet.Cells[lastRow + 1, 2]];
@@ -354,17 +233,17 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 totalPhieuRange.Font.Bold = true;
                 totalPhieuRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
 
-                worksheet.Cells[lastRow + 1, 3] = dataGridView1.Rows.Count;
+                worksheet.Cells[lastRow + 1, 3] = DGVPhieuNhap.Rows.Count;
                 worksheet.Cells[lastRow + 1, 3].Font.Bold = true;
                 worksheet.Cells[lastRow + 1, 3].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
 
                 // Tính tổng tiền
                 decimal tongTien = 0;
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                for (int i = 0; i < DGVPhieuNhap.Rows.Count; i++)
                 {
-                    if (dataGridView1.Rows[i].Cells["TongTien"].Value != null)
+                    if (DGVPhieuNhap.Rows[i].Cells["TongTien"].Value != null)
                     {
-                        tongTien += Convert.ToDecimal(dataGridView1.Rows[i].Cells["TongTien"].Value);
+                        tongTien += Convert.ToDecimal(DGVPhieuNhap.Rows[i].Cells["TongTien"].Value);
                     }
                 }
 
@@ -406,82 +285,72 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 if (workbook != null) Marshal.ReleaseComObject(workbook);
                 if (app != null) Marshal.ReleaseComObject(app);
             }
-        }
+        } // Xuất Excel
 
         private void FilterData()
         {
             if (listPN == null) return;
 
-            var filteredList = listPN.Where(pn => pn.Trangthai == 1).AsEnumerable();
-
-            // Lọc theo tên nhân viên
-            if (!string.IsNullOrWhiteSpace(txtSearchNV.Text))
+            // HIỂN THỊ TẤT CẢ phiếu có trạng thái khác 0
+            var filteredList = listPN.Where(px => px.Trangthai != 0).AsEnumerable();
+            string searchText = txtSearchNV.Text.Trim().ToLower();
+            if (!string.IsNullOrWhiteSpace(searchText))
             {
-                string searchText = txtSearchNV.Text.Trim().ToLower();
-                filteredList = filteredList.Where(pn =>
+                if (cbbSearch.Text == "Tất cả")
                 {
-                    string tenNV = nvBUS.getNamebyID(pn.Manv)?.ToLower() ?? "";
-                    return tenNV.Contains(searchText);
-                });
-            }
-
-            // Lọc theo tên nhà cung cấp
-            if (!string.IsNullOrWhiteSpace(txtSearchNCC.Text))
-            {
-                string searchText = txtSearchNCC.Text.Trim().ToLower();
-                filteredList = filteredList.Where(pn =>
+                    filteredList = filteredList.Where(pn =>
+                        pn.Maphieu.ToString().Contains(searchText) ||
+                        (nvBUS.getNamebyID(pn.Manv) ?? "").ToLower().Contains(searchText) ||
+                        (nccBUS.getNamebyID(pn.Mancc) ?? "").ToLower().Contains(searchText));
+                }
+                if (cbbSearch.Text == "Nhân viên")
                 {
-                    string tenNCC = nccBUS.getNamebyID(pn.Mancc)?.ToLower() ?? "";
-                    return tenNCC.Contains(searchText);
-                });
-            }
-
-            // Lọc theo khoảng thời gian
-            if (dateTimeBegin.Value != null && dateTimeEnd.Value != null)
-            {
-                DateTime startDate = dateTimeBegin.Value.Date;
-                DateTime endDate = dateTimeEnd.Value.Date.AddDays(1).AddSeconds(-1); // Đến hết ngày
-                filteredList = filteredList.Where(pn =>
-                    pn.Thoigiantao >= startDate && pn.Thoigiantao <= endDate);
-            }
-
-            // Lọc theo khoảng giá
-            if (numericUpDown1.Value > 0 || numericUpDown2.Value > 0)
-            {
-                decimal minPrice = numericUpDown1.Value;
-                decimal maxPrice = numericUpDown2.Value > 0 ? numericUpDown2.Value : decimal.MaxValue;
-
-                filteredList = filteredList.Where(pn =>
-                    pn.Tongtien >= minPrice && pn.Tongtien <= maxPrice);
-            }
-
-            // Hiển thị kết quả lọc
-            DisplayFilteredData(filteredList.ToList());
-        }
-
-        private void DisplayFilteredData(List<PhieuNhapDTO> filteredData)
-        {
-            dataGridView1.Rows.Clear();
-
-            if (filteredData != null && filteredData.Count > 0)
-            {
-                foreach (PhieuNhapDTO pn in filteredData)
+                    filteredList = filteredList.Where(px =>
+                        (nvBUS.getNamebyID(px.Manv) ?? "").ToLower().Contains(searchText));
+                }
+                if (cbbSearch.Text == "Nhà cung cấp")
                 {
-                    string tenNV = nvBUS.getNamebyID(pn.Manv);
-                    string tenNCC = nccBUS.getNamebyID(pn.Mancc);
-                    string trangThai = pn.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
-                    dataGridView1.Rows.Add(
-                        pn.Maphieu,
-                        tenNV,
-                        tenNCC,
-                        pn.Thoigiantao.ToString("dd/MM/yyyy HH:mm"),
-                        pn.Tongtien,
-                        trangThai
-                    );
+                    filteredList = filteredList.Where(pn =>
+                        (nccBUS.getNamebyID(pn.Mancc) ?? "").ToLower().Contains(searchText));
+                }
+                if (cbbSearch.Text == "Mã")
+                {
+                    filteredList = filteredList.Where(pn => pn.Maphieu.ToString().Contains(searchText));
                 }
             }
 
-            dataGridView1.ClearSelection();
+            //// Lọc theo khoảng thời gian
+            if (dateS.Value != null && dateE.Value != null)
+            {
+                DateTime startDate = dateS.Value.Date;
+                DateTime endDate = dateE.Value.Date.AddDays(1).AddSeconds(-1);
+                filteredList = filteredList.Where(px =>
+                    px.Thoigiantao >= startDate && px.Thoigiantao <= endDate);
+            }
+
+            // Lọc theo khoảng giá
+            decimal? minPrice = null; // có thể số hoặc null
+            decimal? maxPrice = null;
+
+            if (!string.IsNullOrWhiteSpace(txtSMoney.Text) && txtSMoney.Text != "Tiền từ")
+            {
+                if (decimal.TryParse(txtSMoney.Text, out decimal min)) minPrice = min;
+            }
+            if (!string.IsNullOrWhiteSpace(txtEMoney.Text) && txtEMoney.Text != "Đến tiền")
+            {
+                if (decimal.TryParse(txtEMoney.Text, out decimal max)) maxPrice = max;
+            }
+            if (minPrice.HasValue || maxPrice.HasValue) // True nếu có giá trị
+            {
+                filteredList = filteredList.Where(px =>
+                {
+                    if (minPrice.HasValue && px.Tongtien < minPrice.Value) return false;
+                    if (maxPrice.HasValue && px.Tongtien > maxPrice.Value) return false;
+                    return true;
+                });
+            }
+
+            refreshDataGridView(new BindingList<PhieuNhapDTO>(filteredList.ToList()));
         }
 
         private void txtSearchNV_TextChanged(object sender, EventArgs e)
@@ -489,17 +358,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             FilterData();
         }
 
-        private void txtSearchNCC_TextChanged(object sender, EventArgs e)
+        private void txtSMoney_TextChanged(object sender, EventArgs e)
         {
             FilterData();
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            FilterData();
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        private void txtEMoney_TextChanged(object sender, EventArgs e)
         {
             FilterData();
         }
@@ -512,7 +376,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private void dateTimeEnd_ValueChanged(object sender, EventArgs e)
         {
             FilterData();
-         }
+        }
         private void ShowDetailPhieuNhapForm(PhieuNhapDTO phieuNhap)
         {
             try
@@ -530,6 +394,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private void refreshDataGridView(BindingList<PhieuNhapDTO> listRefresh) // Tải lại DataGridView
         {
             int soLuongNV = 0;
+            DGVPhieuNhap.Rows.Clear();
             foreach (PhieuNhapDTO pn in listRefresh)
             {
                 if (pn.Trangthai == 1)
@@ -545,21 +410,78 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                         pn.Tongtien,
                         trangThai
                     );
+                    soLuongNV++;
                 }
             }
+            lbTotal.Text = "Tổng số phiếu xuất: " + soLuongNV.ToString();
 
             DGVPhieuNhap.ClearSelection();
         }
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
-        private void groupBox1_Enter(object sender, EventArgs e) { }
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void panel4_Paint(object sender, PaintEventArgs e) { }
-        private void txtSearchNV_Enter(object sender, EventArgs e) { }
-        private void txtSearchNV_Leave(object sender, EventArgs e) { }
-        private void txtSearchNCC_Enter(object sender, EventArgs e) { }
-        private void txtSearchNCC_Leave(object sender, EventArgs e) { }
+        // Xử lý thay đổi cbb
+        private void cbbSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSearchNV.Clear();
+            txtSMoney.Text = "Tiền từ";
+            txtEMoney.Text = "Đến tiền";
+            DateTime ngayDauTien = new DateTime(DateTime.Now.Year, 1, 1);
+            dateS.Value = ngayDauTien;
+            dateE.Value = DateTime.Today;
+        }
+
+        // Xử lý placeholder và keypress
+        private void txtSMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                return;
+            if (e.KeyChar == (char)Keys.Back)
+                return;
+            e.Handled = true;
+        }
+
+        private void txtSMoney_MouseLeave(object sender, EventArgs e)
+        {
+            if (txtSMoney.Text == "" || txtSMoney.Text == null)
+            {
+                txtSMoney.Text = "Tiền từ";
+                if (txtEMoney.Text == "" || txtEMoney.Text == null)
+                {
+                    txtEMoney.Text = "Đến tiền";
+                }
+            }
+        }
+
+        private void txtEMoney_MouseLeave(object sender, EventArgs e)
+        {
+            if (txtEMoney.Text == "" || txtEMoney.Text == null)
+            {
+                txtEMoney.Text = "Đến tiền";
+                if (txtSMoney.Text == "" || txtEMoney.Text == null)
+                {
+                    txtSMoney.Text = "Tiền từ";
+                }
+            }
+        }
+
+        private void txtEMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+                return;
+            if (e.KeyChar == (char)Keys.Back)
+                return;
+            e.Handled = true;
+        }
+
+        private void txtEMoney_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtEMoney.Text == "Đến tiền")
+                txtEMoney.Clear();
+        }
+
+        private void txtSMoney_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtSMoney.Text == "Tiền từ")
+                txtSMoney.Clear();
+        }
+
     }
 }
