@@ -14,11 +14,13 @@ namespace QuanLyKho_CSharp.Helper
     {
         public int Quantity { get; set; }
         private int soluongTon;
-        public QuantityForm(string title, int soLuongTruyenVao, int soluongton)
+        private string DayLaPhieu;
+        public QuantityForm(string title, int soLuongTruyenVao, int soluongton, string phieu ="Xuat")
         {
             this.FormBorderStyle= FormBorderStyle.None;
             InitializeComponent();
             this.soluongTon = soluongton;
+            this.DayLaPhieu = phieu;
             lb.Text = title;
             lbTonKho.Text = "Hàng tồn còn: " + soluongTon.ToString();
             soLuong.Maximum = 10000;
@@ -35,7 +37,7 @@ namespace QuanLyKho_CSharp.Helper
         private void btnOk_Click(object sender, EventArgs e)
         {
             int slNhap= int.Parse(soLuong.Value.ToString());
-            if (slNhap > soluongTon)
+            if (slNhap > soluongTon && DayLaPhieu == "Xuat") 
             {
                 MessageBox.Show("Đã nhập quá số lượng tồn kho", "Cảnh báo",
                          MessageBoxButtons.OK, MessageBoxIcon.Warning);

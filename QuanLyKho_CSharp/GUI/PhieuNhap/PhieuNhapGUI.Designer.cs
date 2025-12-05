@@ -416,6 +416,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.btnThem.TabIndex = 10;
             this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
             this.btnThem.Values.Text = "";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // cbbSearch
             // 
@@ -572,6 +573,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.btnXuatExcel.TabIndex = 12;
             this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
             this.btnXuatExcel.Values.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuat_Click);
             // 
             // PhieuNhapGUI
             // 

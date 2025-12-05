@@ -102,26 +102,26 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         }
 
-        //private void btnThem_Click(object sender, EventArgs e)
-        //{
-        //    pnlDGV.Visible = false;
-        //    pnlTop.Visible = false;
-        //    AddPhieuXuatForm addFormControl = null;
-        //    addFormControl = new AddPhieuNhapForm(() => btnOnClose(addFormControl), currentUser,
-        //       () => refreshDataGridView(pxBUS.getListPX()));
-        //    addFormControl.TopLevel = false;
-        //    addFormControl.FormBorderStyle = FormBorderStyle.None;
-        //    addFormControl.Dock = DockStyle.Fill;
-        //    pnlMain.Controls.Add(addFormControl);
-        //    addFormControl.Show();
-        //}
-        //private void btnOnClose(AddPhieuNhapForm formAdd)
-        //{
-        //    pnlDGV.Visible = true;
-        //    pnlTop.Visible = true;
-        //    pnlMain.Controls.Remove(formAdd);
-        //    formAdd.Dispose();
-        //}
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            pnlDGV.Visible = false;
+            pnlTop.Visible = false;
+            AddPhieuNhapForm addFormControl = null;
+            addFormControl = new AddPhieuNhapForm(() => btnOnClose(addFormControl), currentUser,
+               () => refreshDataGridView(pnBUS.getListPN()));
+            addFormControl.TopLevel = false;
+            addFormControl.FormBorderStyle = FormBorderStyle.None;
+            addFormControl.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(addFormControl);
+            addFormControl.Show();
+        }
+        private void btnOnClose(AddPhieuNhapForm formAdd)
+        {
+            pnlDGV.Visible = true;
+            pnlTop.Visible = true;
+            pnlMain.Controls.Remove(formAdd);
+            formAdd.Dispose();
+        }
 
         private void btnXuat_Click(object sender, EventArgs e)
         {
