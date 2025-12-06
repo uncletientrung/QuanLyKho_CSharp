@@ -545,7 +545,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         tenNV,
                         tenKH,
                         px.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"),
-                        px.Tongtien,
+                        $"{px.Tongtien:N0}đ",
                         trangThai
                     );
                     SetRowColor(rowIndex, px);

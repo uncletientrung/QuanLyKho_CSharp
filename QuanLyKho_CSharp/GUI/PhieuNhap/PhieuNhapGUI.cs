@@ -407,7 +407,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                         tenNV,
                         tenNCC,
                         pn.Thoigiantao.ToString("HH:mm dd/MM/yyyy"),
-                        pn.Tongtien,
+                        $"{pn.Tongtien:N0}đ",
                         trangThai
                     );
                     soLuongNV++;
