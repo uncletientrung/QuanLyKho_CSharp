@@ -250,7 +250,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     
 
                     dgvDoanhThu7ngay.Rows.Add(
-                        tk.Ngay,
+                        tk.Ngay.ToString("dd/MM/yyyy"),
                         tk.Chiphi,
                         tk.Doanhthu,
                         tk.Loinhuan
