@@ -410,159 +410,205 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         // xuat file
         private void button_AddPhieuKiemKeClick(object sender, EventArgs e)
         {
-            // Kiểm tra các trường bắt buộc
-            if (comboBoxKhuvuckho.SelectedIndex == -1 || string.IsNullOrWhiteSpace(comboBoxKhuvuckho.Text))
+            try
             {
-                MessageBox.Show("Vui lòng chọn khu vực kho kiểm.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                comboBoxKhuvuckho.Focus();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxTonchinhanh.Text) || textBoxTonchinhanh.Text == TonChiNhanhPlaceholder)
-            {
-                MessageBox.Show("Vui lòng nhập số lượng tồn kho chi nhánh.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBoxTonchinhanh.Focus();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxMaNhanVienKiem.Text))
-            {
-                MessageBox.Show("Vui lòng nhập mã nhân viên kiểm hàng.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBoxMaNhanVienKiem.Focus();
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxSoluonglech.Text) || string.IsNullOrWhiteSpace(comboBox2.Text))
-            {
-                MessageBox.Show("Hãy kiểm tra số lượng hàng trước.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            DataGridViewRow selectedRow = null;
-
-            if (DGVKiemKe.SelectedRows.Count > 0)
-            {
-                selectedRow = DGVKiemKe.SelectedRows[0];
-            }
-            else if (DGVKiemKe.CurrentCell != null)
-            {
-                selectedRow = DGVKiemKe.Rows[DGVKiemKe.CurrentCell.RowIndex];
-            }
-
-            if (selectedRow == null || selectedRow.IsNewRow)
-            {
-                MessageBox.Show("Vui lòng chọn một sản phẩm để kiểm tra.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int maPhieu;
-            if (!int.TryParse(boxMaPhieu.Text.Trim(), out maPhieu))
-            {
-                MessageBox.Show("Mã phiếu kiểm kê không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            int maKhuVuc = 0;
-            if (!string.IsNullOrWhiteSpace(comboBoxKhuvuckho.Text))
-            {
-                var parts = comboBoxKhuvuckho.Text.Split('-');
-                int.TryParse(parts[0].Trim(), out maKhuVuc);
-            }
-
-            // QUAN TRỌNG: Lấy mã nhân viên từ hệ thống thay vì từ textbox
-            int maNvTao = GetCurrentUserID(); 
-            int maNvKiem;
-
-            if (!int.TryParse(textBoxMaNhanVienKiem.Text.Trim(), out maNvKiem))
-            {
-                MessageBox.Show("Mã nhân viên kiểm không hợp lệ. Vui lòng nhập số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxMaNhanVienKiem.Focus();
-                return;
-            }
-
-            // LẤY THÔNG TIN SẢN PHẨM - ĐẢM BẢO BIẾN selectedRow ĐÃ ĐƯỢC KHAI BÁO
-            int maSP = Convert.ToInt32(selectedRow.Cells["MaSP"].Value);
-            int tonThucTe = Convert.ToInt32(selectedRow.Cells["SoLuong"].Value); // Số lượng tồn kho hiện tại
-            int tonChiNhanh;
-
-            if (!int.TryParse(textBoxTonchinhanh.Text, out tonChiNhanh))
-            {
-                MessageBox.Show("Số lượng tồn chi nhánh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Tạo phiếu kiểm kê
-            string ghiChu;
-            if (comboBox2.Text == "Đủ hàng")
-            {
-                ghiChu = $"{comboBox2.Text}";
-            }
-            else
-            {
-                ghiChu = $"{comboBox2.Text} - {textBoxSoluonglech.Text}";
-            }
-
-            PhieuKiemKeDTO phieuKiemKe = new PhieuKiemKeDTO
-            {
-                Maphieukiemke = maPhieu,
-                Thoigiantao = DateTime.Now,
-                Trangthai = comboBox2.Text,
-                Ghichu = ghiChu, // <-- Sử dụng biến ghiChu vừa khai báo
-                Makhuvuc = maKhuVuc,
-                Manhanvientao = maNvTao,
-                Manhanvienkiem = maNvKiem
-            };
-
-            // Thêm phiếu kiểm kê
-            int result = PhieuKiemKeBUS.Instance.Insert(phieuKiemKe);
-            if (result > 0)
-            {
-                // Tạo chi tiết kiểm kê
-                ChiTietKiemKeDTO chiTiet = new ChiTietKiemKeDTO
+                // Kiểm tra các trường bắt buộc
+                if (comboBoxKhuvuckho.SelectedIndex == -1 || string.IsNullOrWhiteSpace(comboBoxKhuvuckho.Text))
                 {
-                    Maphieukiemke = maPhieu,
-                    Masp = maSP,
-                    Tonchinhanh = tonChiNhanh,
-                    Tonthucte = tonThucTe,
-                    Ghichu = ghiChu,
-                };
-
-                // Thêm chi tiết kiểm kê (cần có ChiTietKiemKeBUS)
-                bool chiTietResult = AddChiTietKiemKe(chiTiet);
-
-                if (chiTietResult)
+                    MessageBox.Show("Vui lòng chọn khu vực kho kiểm.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    comboBoxKhuvuckho.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(textBoxTonchinhanh.Text) || textBoxTonchinhanh.Text == TonChiNhanhPlaceholder)
                 {
-                    MessageBox.Show("Thêm phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Vui lòng nhập số lượng tồn kho chi nhánh.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBoxTonchinhanh.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(boxMaNVkiem.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập mã nhân viên tạo phiếu.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    boxMaNVkiem.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(textBoxMaNhanVienKiem.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập mã nhân viên kiểm hàng.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBoxMaNhanVienKiem.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(textBoxSoluonglech.Text) || string.IsNullOrWhiteSpace(comboBox2.Text))
+                {
+                    MessageBox.Show("Hãy kiểm tra số lượng hàng trước.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                DataGridViewRow selectedRow = null;
 
-                    // Mở lại KiemKeGUI sau khi thêm
-                    try
-                    {
-                        frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
-                        if (mainForm != null)
-                        {
-                            var method = mainForm.GetType().GetMethod("OpenChildForm",
-                                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                            if (method != null)
-                            {
-                                method.Invoke(mainForm, new object[] { new QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI(_userName), null });
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Đã xảy ra lỗi khi mở lại giao diện Kiểm kê:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    this.Close();
+                if (DGVKiemKe.SelectedRows.Count > 0)
+                {
+                    selectedRow = DGVKiemKe.SelectedRows[0];
+                }
+                else if (DGVKiemKe.CurrentCell != null)
+                {
+                    selectedRow = DGVKiemKe.Rows[DGVKiemKe.CurrentCell.RowIndex];
                 }
 
+                if (selectedRow == null || selectedRow.IsNewRow)
+                {
+                    MessageBox.Show("Vui lòng chọn một sản phẩm để kiểm tra.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int maPhieu;
+                if (!int.TryParse(boxMaPhieu.Text.Trim(), out maPhieu))
+                {
+                    MessageBox.Show("Mã phiếu kiểm kê không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int maKhuVuc = 0;
+                if (!string.IsNullOrWhiteSpace(comboBoxKhuvuckho.Text))
+                {
+                    var parts = comboBoxKhuvuckho.Text.Split('-');
+                    int.TryParse(parts[0].Trim(), out maKhuVuc);
+                }
+
+
+                int maNvTao;
+                if (!int.TryParse(boxMaNVkiem.Text.Trim(), out maNvTao))
+                {
+                    MessageBox.Show("Mã nhân viên tạo phiếu không hợp lệ. Vui lòng nhập số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    boxMaNVkiem.Focus();
+                    return;
+                }
+                if (!IsNhanVienExists(maNvTao))
+                {
+                    MessageBox.Show("Mã nhân viên tạo phiếu không tồn tại. Vui lòng nhập đúng mã.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    boxMaNVkiem.Focus();
+                    return;
+                }
+
+                if (!int.TryParse(textBoxMaNhanVienKiem.Text.Trim(), out int maNvKiem))
+                {
+                    MessageBox.Show("Mã nhân viên kiểm không hợp lệ. Vui lòng nhập số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxMaNhanVienKiem.Focus();
+                    return;
+                }
+                if (!IsNhanVienExists(maNvKiem))
+                {
+                    MessageBox.Show("Mã nhân viên kiểm không tồn tại. Vui lòng nhập đúng mã.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxMaNhanVienKiem.Focus();
+                    return;
+                }
+
+                // check sự tồn tại nhân viên
+                var nvKiem = QuanLyKho.DAO.NhanVienDAO.getInstance().SelectById(maNvKiem);
+                if (nvKiem == null)
+                {
+                    MessageBox.Show("Mã nhân viên kiểm không tồn tại. Vui lòng nhập lại đúng mã.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxMaNhanVienKiem.Focus();
+                    return;
+                }
+
+                int maSP = Convert.ToInt32(selectedRow.Cells["MaSP"].Value);
+                int tonThucTe = Convert.ToInt32(selectedRow.Cells["SoLuong"].Value); // Số lượng tồn kho hiện tại
+                int tonChiNhanh;
+
+                if (!int.TryParse(textBoxTonchinhanh.Text, out tonChiNhanh))
+                {
+                    MessageBox.Show("Số lượng tồn chi nhánh không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Tạo phiếu kiểm kê
+                string ghiChu;
+                if (comboBox2.Text == "Đủ hàng")
+                {
+                    ghiChu = $"{comboBox2.Text}";
+                }
                 else
                 {
-                    MessageBox.Show("Thêm chi tiết kiểm kê thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ghiChu = $"{comboBox2.Text} - {textBoxSoluonglech.Text}";
+                }
+
+                PhieuKiemKeDTO phieuKiemKe = new PhieuKiemKeDTO
+                {
+                    Maphieukiemke = maPhieu,
+                    Thoigiantao = DateTime.Now,
+                    Trangthai = comboBox2.Text,
+                    Ghichu = ghiChu,
+                    Makhuvuc = maKhuVuc,
+                    Manhanvientao = maNvTao,
+                    Manhanvienkiem = maNvKiem
+                };
+
+                // Thêm phiếu kiểm kê
+                int result = PhieuKiemKeBUS.Instance.Insert(phieuKiemKe);
+                if (result > 0)
+                {
+                    // Tạo chi tiết kiểm kê
+                    ChiTietKiemKeDTO chiTiet = new ChiTietKiemKeDTO
+                    {
+                        Maphieukiemke = maPhieu,
+                        Masp = maSP,
+                        Tonchinhanh = tonChiNhanh,
+                        Tonthucte = tonThucTe,
+                        Ghichu = ghiChu,
+                    };
+
+                    // Thêm chi tiết kiểm kê (cần có ChiTietKiemKeBUS)
+                    bool chiTietResult = AddChiTietKiemKe(chiTiet);
+
+                    if (chiTietResult)
+                    {
+                        MessageBox.Show("Thêm phiếu kiểm kê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Mở lại KiemKeGUI sau khi thêm
+                        try
+                        {
+                            frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                            if (mainForm != null)
+                            {
+                                var method = mainForm.GetType().GetMethod("OpenChildForm",
+                                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                                if (method != null)
+                                {
+                                    method.Invoke(mainForm, new object[] { new QuanLyKho_CSharp.GUI.KiemKe.KiemKeGUI(_userName), null });
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Đã xảy ra lỗi khi mở lại giao diện Kiểm kê:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        this.Close();
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Thêm chi tiết kiểm kê thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không thể thêm phiếu kiểm kê!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể thêm phiếu kiểm kê!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Mã nhân viên kiểm hoặc mã nhân viên tạo phiếu không tồn tại hoặc bị lỗi.\n" +
+                    "Vui lòng kiểm tra lại mã đã nhập.",
+                    "Lỗi dữ liệu",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
             }
         }
+
+        
 
         // Hàm lấy mã nhân viên hiện tại từ hệ thống
         private int GetCurrentUserID()
@@ -583,6 +629,12 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
         }
 
+        private bool IsNhanVienExists(int maNv)
+        {
+            // Kiểm tra sự tồn tại của nhân viên trong cơ sở dữ liệu
+            var nv = QuanLyKho.DAO.NhanVienDAO.getInstance().SelectById(maNv);
+            return nv != null;
+        }
 
         // huy bo
         private void buttonHuyBo_Click(object sender, EventArgs e)
@@ -654,5 +706,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private void boxMaPhieu_TextChanged(object sender, EventArgs e) {}
 
         private void boxMaNVkiem_TextChanged(object sender, EventArgs e) {}
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e){}
     }
 }
