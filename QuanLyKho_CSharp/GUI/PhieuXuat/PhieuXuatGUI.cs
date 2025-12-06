@@ -68,6 +68,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             DGVPhieuXuat.ColumnHeadersHeight = 30;
             DGVPhieuXuat.RowHeadersDefaultCellStyle = headerStyle;
             DGVPhieuXuat.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
+
         }
 
         private void LoadData()
@@ -99,7 +100,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 switch (px.Trangthai)
                 {
                     case 2:
-                        DGVPhieuXuat.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightYellow;
+                        DGVPhieuXuat.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 102);
                         break;
                     case 3:
                         DGVPhieuXuat.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
@@ -142,7 +143,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             {
                 xuLyHoanHang(maPhieu);
             }
-        }
+        } // Ấn vào DGV
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -504,6 +505,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
             ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
             DataTable chiTiet = ctpxBUS.getChiTietByMaPhieu(maPhieu);
+
             var dialog = new QuanLyKho_CSharp.GUI.HoanHang.HoanHang(maPhieu, tenKH, (int)phieu.Manv, tongTien, chiTiet);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -522,8 +524,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             else
             {
                 // Reload để đảm bảo đồng bộ
-                LoadData();
-                //LoadDataIntoGridView();
+                refreshDataGridView(pxBUS.getListPX());
             }
         }
 

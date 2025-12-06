@@ -32,11 +32,23 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             _phieuXuat = phieuXuat;
             LoadDataToForm();
             LoadChiTietPhieuXuat();
+            txGiaCu.Text = $"{phieuXuat.Tongtien:N0}đ";
+            
+            txGiaMoi.Text = $"{LayGiaDonHangSauHoan():N0}đ";
+            this.Shown += HoanHang_Shown; // Chặn bôi dòng đầu
         }
-
-        public DetailPhieuXuatForm()
+        private int LayGiaDonHangSauHoan()
         {
-            InitializeComponent();
+            int result = 0;
+            foreach(ChiTietPhieuXuatDTO ctpx in _chiTietPhieuXuatBUS.getChiTietByMaPhieuXuat(_phieuXuat.Maphieu))
+            {
+                if (ctpx.TrangTHaiHoanHang == 1) result = ctpx.Soluong * ctpx.Dongia;
+            }
+            return result;
+        }
+        private void HoanHang_Shown(object sender, EventArgs e)
+        {
+            dgvXemChiTiet.ClearSelection();
         }
 
         private void LoadDataToForm()
@@ -78,6 +90,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dgvXemChiTiet.Columns.Add("SoLuong", "Số lượng");
             dgvXemChiTiet.Columns.Add("DonGia", "Đơn giá");
             dgvXemChiTiet.Columns.Add("ThanhTien", "Thành tiền");
+            dgvXemChiTiet.Columns.Add("HoanHang", "Trạng thái");
 
             // Căn giữa nội dung các ô
             dgvXemChiTiet.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -86,6 +99,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dgvXemChiTiet.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvXemChiTiet.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvXemChiTiet.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvXemChiTiet.Columns["HoanHang"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             // Định dạng số
             dgvXemChiTiet.Columns["DonGia"].DefaultCellStyle.Format = "N0";
@@ -99,10 +113,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             // Tỷ lệ cột
             dgvXemChiTiet.Columns["STT"].FillWeight = 8;
             dgvXemChiTiet.Columns["MaSP"].FillWeight = 12;
-            dgvXemChiTiet.Columns["TenSP"].FillWeight = 35;
+            dgvXemChiTiet.Columns["TenSP"].FillWeight = 30;
             dgvXemChiTiet.Columns["SoLuong"].FillWeight = 15;
             dgvXemChiTiet.Columns["DonGia"].FillWeight = 15;
             dgvXemChiTiet.Columns["ThanhTien"].FillWeight = 15;
+            dgvXemChiTiet.Columns["HoanHang"].FillWeight = 15;
 
             // Cấu hình khác
             dgvXemChiTiet.ReadOnly = true;
@@ -125,15 +140,18 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 {
                     string tenSanPham = _sanPhamBUS.getNamebyID(chiTiet.Masp);
                     decimal thanhTien = chiTiet.Soluong * chiTiet.Dongia;
+                    string tenTrangTHai = getCTTrangThai(chiTiet);
 
-                    dgvXemChiTiet.Rows.Add(
+                    int rowIndex=dgvXemChiTiet.Rows.Add(
                         stt++,
                         chiTiet.Masp,
                         tenSanPham,
                         chiTiet.Soluong,
                         chiTiet.Dongia,
-                        thanhTien
+                        thanhTien,
+                        tenTrangTHai
                     );
+                    SetRowColor(rowIndex, chiTiet);
                 }
             }
             else
@@ -320,10 +338,40 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
 
         }
-
-        private void buttonXuatFile_Click_1(object sender, EventArgs e)
+        private string getCTTrangThai(ChiTietPhieuXuatDTO ctpx)
         {
-
+            switch (ctpx.TrangTHaiHoanHang)
+            {
+                case 1: return "Hoạt động";
+                case 2: return "Đã hoàn";
+                case 0: return "Đã hủy";
+                default: return "Không xác định";
+            }
         }
+
+        private void SetRowColor(int rowIndex, ChiTietPhieuXuatDTO ctpx)
+        {
+            if (dgvXemChiTiet.Rows.Count > rowIndex)
+            {
+                switch (ctpx.TrangTHaiHoanHang)
+                {
+                    case 2:
+                        dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightYellow;
+                        break;
+                    case 3:
+                        dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
+                        break;
+                    case 1:
+                        dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                    default:
+                        dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                }
+
+                dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
+            }
+        }
+
     }
 }

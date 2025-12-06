@@ -80,7 +80,8 @@ namespace QuanLyKho.DAO
                         Maphieuxuat = Convert.ToInt32(row["maphieuxuat"]),
                         Masp = Convert.ToInt32(row["masp"]),
                         Soluong = Convert.ToInt32(row["soluong"]),
-                        Dongia = Convert.ToInt32(row["dongia"])
+                        Dongia = Convert.ToInt32(row["dongia"]),
+                        TrangTHaiHoanHang = Convert.ToInt32(row["trangThaiHoanHang"])
                     };
                     result.Add(ctpx);
                 }
@@ -100,10 +101,10 @@ namespace QuanLyKho.DAO
                         $"VALUES ({ctpx.Maphieuxuat}, {ctpx.Masp}, {ctpx.Soluong}, {ctpx.Dongia})";
             return ConnectionHelper.getExecuteNonQuery(sql);
         }
-
-        public int UpdateSingle(ChiTietPhieuXuatDTO ctpx)
+        
+        public int UpdateSingle(ChiTietPhieuXuatDTO ctpx) // Tái sử dụng trạng thái hoàn hàng
         {
-            string sql = $"UPDATE ctphieuxuat SET soluong = {ctpx.Soluong}, dongia = {ctpx.Dongia} " +
+            string sql = $"UPDATE ctphieuxuat SET soluong = {ctpx.Soluong}, dongia = {ctpx.Dongia}, trangThaiHoanHang = {ctpx.TrangTHaiHoanHang} " +
                         $"WHERE maphieuxuat = {ctpx.Maphieuxuat} AND masp = {ctpx.Masp}";
             return ConnectionHelper.getExecuteNonQuery(sql);
         }
@@ -129,7 +130,8 @@ namespace QuanLyKho.DAO
                         Maphieuxuat = Convert.ToInt32(row["maphieuxuat"]),
                         Masp = Convert.ToInt32(row["masp"]),
                         Soluong = Convert.ToInt32(row["soluong"]),
-                        Dongia = Convert.ToInt32(row["dongia"])
+                        Dongia = Convert.ToInt32(row["dongia"]),
+                        TrangTHaiHoanHang = Convert.ToInt32(row["trangThaiHoanHang"])
                     };
                     result.Add(ctpx);
                 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Runtime.InteropServices;
 
 
 namespace QuanLyKho.BUS
@@ -65,9 +66,15 @@ namespace QuanLyKho.BUS
             return ctpxDAO.SelectAll(maPhieuXuat);
         }
 
-        public Boolean updateSingleChiTietPhieuXuat(ChiTietPhieuXuatDTO ctpx)
+        public Boolean updateTrangThaiHoanHang(ChiTietPhieuXuatDTO ctpx)
         {
-            return ctpxDAO.UpdateSingle(ctpx) != 0;
+            Boolean result =ctpxDAO.UpdateSingle(ctpx) != 0;
+            if (result)
+            {
+                int soLuongCong = ctpx.Soluong;
+                spDAO.updateSoLuongTon(ctpx.Masp, soLuongCong);
+            }
+            return result;
         }
 
         public Boolean deleteByMaPhieuXuatAndMaSP(int maPhieuXuat, int maSP)
@@ -97,7 +104,10 @@ namespace QuanLyKho.BUS
 
             return dt;
         }
-
+        public BindingList<ChiTietPhieuXuatDTO> getCTPXByMaPX(int mapx)
+        {
+            return ctpxDAO.SelectAll(mapx);
+        }
 
 
     }

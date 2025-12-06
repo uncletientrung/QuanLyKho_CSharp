@@ -1,6 +1,7 @@
 ﻿using QuanLyKho.BUS;
 
 using QuanLyKho.DTO;
+using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,205 +20,163 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
         private readonly ChiTietPhieuXuatBUS _chiTietPhieuXuatBUS = new ChiTietPhieuXuatBUS();
         private readonly SanPhamBUS _sanPhamBUS = new SanPhamBUS();
         private readonly PhieuXuatBUS _phieuXuatBUS = new PhieuXuatBUS(); // THÊM DÒNG NÀY
+        private ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
+        private NhanVienBUS nvBUS = new NhanVienBUS();
+        private KhachHangBUS khBUS = new KhachHangBUS();
+        private SanPhamBUS spBUS = new SanPhamBUS();
         private int _maPhieuXuat;
-
-        public HoanHang(ChiTietHoanHangDTO phieuHoan)
-        {
-            InitializeComponent();
-            buttonHuyBo.Click += buttonHuyBo_Click_1;
-        }
-
-        public HoanHang(int maPhieuXuat)
-        {
-            InitializeComponent();
-            buttonHuyBo.Click += buttonHuyBo_Click_1;
-            _maPhieuXuat = maPhieuXuat;
-            SetupDataGridView();
-        }
+        BindingList<ChiTietPhieuXuatDTO> listCTPX;
 
         // 4 thông số chính của phiếu xuất
-        public HoanHang(int maPhieu, string tenKH, int someValue, decimal tongTien, DataTable dt)
+        public HoanHang(int maPhieu, string tenKH, int manv, decimal tongTien, DataTable dt)
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            listCTPX = _chiTietPhieuXuatBUS.getCTPXByMaPX(maPhieu);
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             this.ControlBox = true;
             this.ShowInTaskbar = false;
-            this.StartPosition = FormStartPosition.CenterParent;
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             _maPhieuXuat = maPhieu;
 
             textBoxMaPhieuXuat.Text = maPhieu.ToString();
             textBoxTenKhachHang.Text = tenKH;
+            txtGiaCu.Text = $"{tongTien:N0}đ";
 
             SetupDataGridView();
 
-            if (dt != null && dt.Rows.Count > 0)
+            refreshDataGridView(listCTPX);
+            this.Shown += HoanHang_Shown; // Chặn bôi dòng đầu
+        }
+        private void HoanHang_Shown(object sender, EventArgs e)
+        {
+            dgvXemChiTiet.ClearSelection();
+        }
+        private void refreshDataGridView(BindingList<ChiTietPhieuXuatDTO> listRefresh) // Tải lại DataGridView
+        {
+            dgvXemChiTiet.Rows.Clear();
+            int tienSauHoan = 0;
+            foreach (ChiTietPhieuXuatDTO ctpx in listRefresh)
             {
-                dgvXemChiTiet.DataSource = dt;
-
-                textBoxSoLuongMatHang.Text = dt.Rows.Count.ToString();
-
-                decimal tongGiaTri = 0;
-                if (dt.Columns.Contains("DonGia"))
+                if (ctpx.TrangTHaiHoanHang != 0)
                 {
-                    foreach (DataRow row in dt.Rows)
+                    string trangThai = GetTrangThaiDisplay(ctpx);
+                    string tenSP = spBUS.getNamebyID(ctpx.Masp);
+                    int tongtien = ctpx.Soluong * ctpx.Dongia;
+                    int rowIndex = dgvXemChiTiet.Rows.Add(
+                        ctpx.Masp,
+                        tenSP,
+                        ctpx.Soluong,
+                        $"{ctpx.Dongia:N0}đ",
+                        $"{tongtien:N0}đ",
+                        trangThai
+                    );
+                    dgvXemChiTiet.Rows[rowIndex].Cells["btnHoanHang"].Value = "Hoàn hàng";
+                    SetRowColor(rowIndex, ctpx);
+                    if(ctpx.TrangTHaiHoanHang == 1)
                     {
-                        if (decimal.TryParse(row["DonGia"]?.ToString(), out decimal donGia) &&
-                            int.TryParse(row["SoLuong"]?.ToString(), out int soLuong))
-                        {
-                            tongGiaTri += donGia * soLuong;
-                        }
+                        tienSauHoan += (ctpx.Soluong * ctpx.Dongia);
                     }
                 }
-
-                textBoxDonGia.Text = tongGiaTri.ToString("N0"); // format tiền tệ
             }
-            else
+            txGiaMoi.Text = $"{tienSauHoan:N0}đ";
+            dgvXemChiTiet.ClearSelection();
+        }
+        private string GetTrangThaiDisplay(ChiTietPhieuXuatDTO ctpx)
+        {
+            switch (ctpx.TrangTHaiHoanHang)
             {
-                textBoxSoLuongMatHang.Text = "0";
-                textBoxDonGia.Text = "0";
+                case 1: return "Hoạt động";
+                case 2: return "Đã hoàn";
+                case 0: return "Đã hủy";
+                default: return "Không xác định";
             }
         }
-
-        public HoanHang(string maPhieu, string tenKH, string maSP, string donGia)
+        private void SetRowColor(int rowIndex, ChiTietPhieuXuatDTO ctpx)
         {
-            InitializeComponent();
-            textBoxMaPhieuXuat.Text = maPhieu;
-            textBoxTenKhachHang.Text = tenKH;
-            textBoxSoLuongMatHang.Text = maSP;
-            textBoxDonGia.Text = donGia;
-        }
+            if (dgvXemChiTiet.Rows.Count > rowIndex)
+            {
+                switch (ctpx.TrangTHaiHoanHang)
+                {
+                    case 2:
+                        dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 102);
+                        dgvXemChiTiet.Rows[rowIndex].Cells["btnHoanHang"].Value = "Đã hoàn";
+                        break;
+                    case 1:
+                        dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                    default:
+                        dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                }
 
-        public HoanHang(int maPhieu, string tenKH, string maSP, decimal donGia)
-        {
-            InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
-            this.ControlBox = true;
-            this.ShowInTaskbar = false;
-            this.StartPosition = FormStartPosition.CenterParent;
-
-            textBoxMaPhieuXuat.Text = maPhieu.ToString();
-            textBoxTenKhachHang.Text = tenKH;
-            textBoxSoLuongMatHang.Text = maSP;
-            textBoxDonGia.Text = donGia.ToString("N0");
+                dgvXemChiTiet.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
+            }
         }
 
         private void SetupDataGridView()
         {
-            dgvXemChiTiet.Columns.Clear();
-            dgvXemChiTiet.AutoGenerateColumns = false;
-            dgvXemChiTiet.RowHeadersVisible = false;
-            dgvXemChiTiet.AllowUserToAddRows = false;
-            dgvXemChiTiet.ReadOnly = true;
-
-            dgvXemChiTiet.Columns.Add(new DataGridViewTextBoxColumn()
+            dgvXemChiTiet.ClearSelection();
+            dgvXemChiTiet.RowHeadersVisible = false; // Tắt cột header
+            dgvXemChiTiet.AllowUserToResizeRows = false; // Chặn kéo dài row
+            dgvXemChiTiet.AllowUserToResizeColumns = false; // chặn thay đổi kích thước cột
+            dgvXemChiTiet.AllowUserToAddRows = false;      // chặn thêm dòng
+            dgvXemChiTiet.ReadOnly = true;                // chặn chỉnh sửa dữ liệu
+            dgvXemChiTiet.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Bôi full row
+            dgvXemChiTiet.MultiSelect = false; // Nếu muốn chỉ chọn 1 row tại 1 thời điểm
+            dgvXemChiTiet.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Text columnheader ở giữa
+            dgvXemChiTiet.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Dữ liệu các cột canh giũa
+            DataGridViewButtonColumn btnCol =
+                dgvXemChiTiet.Columns["btnHoanHang"] as DataGridViewButtonColumn;
+            if (btnCol != null)
             {
-                Name = "TenSP",
-                HeaderText = "Tên sản phẩm",
-                DataPropertyName = "TenSP",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-
-            dgvXemChiTiet.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                Name = "SoLuong",
-                HeaderText = "Số lượng",
-                DataPropertyName = "SoLuong",
-                Width = 100
-            });
-
-            DataGridViewButtonColumn btnHoanTra = new DataGridViewButtonColumn()
-            {
-                Name = "btnHoanTra",
-                HeaderText = "Hoàn trả",
-                Text = "Hoàn trả",
-                UseColumnTextForButtonValue = true,
-                Width = 100
-            };
-            dgvXemChiTiet.Columns.Add(btnHoanTra);
-
+                btnCol.UseColumnTextForButtonValue = false;
+            }
             dgvXemChiTiet.CellContentClick += dgvXemChiTiet_CellContentClick;
+            dgvXemChiTiet.ClearSelection();
         }
-
-
-
-
-
-
-
-
-
-        // sử lý logic click hoàn từng sản phẩm
-        private bool _isHandlingClick = false;
 
         private void dgvXemChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != dgvXemChiTiet.Columns["btnHoanTra"].Index)
-                return;
-
-            string tenSP = dgvXemChiTiet.Rows[e.RowIndex].Cells["TenSP"].Value?.ToString();
-            int soLuong = Convert.ToInt32(dgvXemChiTiet.Rows[e.RowIndex].Cells["SoLuong"].Value);
-
-            // Tìm mã sản phẩm để cập nhật DB
-            int maSP = _sanPhamBUS.getIDbyName(tenSP);
-
-            MessageBox.Show($"Hoàn trả mặt hàng: {tenSP} (Số lượng: {soLuong}) thành công!",
-                            "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Xóa dòng khỏi DataGridView (chỉ trên UI, không xóa trong database)
-            if (dgvXemChiTiet.DataSource is DataTable dt)
+            if (e.RowIndex < 0) return;// Xử lý hoàn 1 phần
+            var currentRow = dgvXemChiTiet.CurrentRow;
+            if (dgvXemChiTiet.Columns[e.ColumnIndex].Name == "btnHoanHang")
             {
-                DataRow[] found = dt.Select($"TenSP = '{tenSP.Replace("'", "''")}'");
-                if (found.Length > 0)
+                if (currentRow.Cells["trangThaiHoanHang"].Value == "Hoạt động")
                 {
-                    dt.Rows.Remove(found[0]);
-                    dgvXemChiTiet.DataSource = null;
-                    dgvXemChiTiet.DataSource = dt;
+                    int masp = int.Parse(currentRow.Cells["masp"].Value.ToString());
+                    CapNhatTrangThaiHoanMotPhan(_maPhieuXuat, masp);
+                    refreshDataGridView(ctpxBUS.getCTPXByMaPX(_maPhieuXuat));
                 }
-            }
-            else
-            {
-                dgvXemChiTiet.Rows.RemoveAt(e.RowIndex);
-            }
-
-            // Cập nhật trạng thái hoàn một phần - SỬA THÀNH int
-            CapNhatTrangThaiHoanMotPhan(_maPhieuXuat);
-
-            // Kiểm tra nếu đã hoàn hết tất cả sản phẩm
-            if (dgvXemChiTiet.Rows.Count == 0)
-            {
-                // Cập nhật trạng thái hoàn toàn bộ
-                var phieu = _phieuXuatBUS.getPhieuXuatById(_maPhieuXuat);
-                if (phieu != null)
-                {
-                    phieu.Trangthai = 3; // 3 = Đã hoàn toàn bộ
-                    _phieuXuatBUS.updatePhieuXuat(phieu);
-                }
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
         }
 
-
-        private void CapNhatTrangThaiHoanMotPhan(int maPhieuXuat)
+        private void CapNhatTrangThaiHoanMotPhan(int mapx, int masp)
         {
             try
             {
+                if (MessageBox.Show("Bạn có chắc muốn hoàn trả sản phẩm này không?",
+                                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
                 // Sử dụng PhieuXuatBUS để cập nhật trạng thái
-                var phieu = _phieuXuatBUS.getPhieuXuatById(maPhieuXuat);
+                var phieu = _phieuXuatBUS.getPhieuXuatById(mapx);
                 if (phieu != null)
                 {
-                    // Giả sử có trường TrangThaiHoan trong DTO
-                    // Nếu không có, bạn có thể thêm hoặc dùng trường khác
                     phieu.Trangthai = 2; // 2 = Đã hoàn một phần
-                    _phieuXuatBUS.updatePhieuXuat(phieu);
+                    
+                    var ctpxDuocChon = listCTPX
+                        .FirstOrDefault(ctpx => ctpx.Maphieuxuat == mapx && ctpx.Masp == masp);
+                    if (ctpxDuocChon == null)
+                    {
 
-                    MessageBox.Show("Đã cập nhật trạng thái hoàn một phần thành công!");
+                        MessageBox.Show($"{mapx} - {masp} Không tìm thấy sản phẩm trong phiếu xuất!");
+                        return;
+                    }
+                    _phieuXuatBUS.updatePhieuXuat(phieu);
+                    ctpxDuocChon.TrangTHaiHoanHang = 2; // Cái này là đã hoàn
+                    ctpxBUS.updateTrangThaiHoanHang(ctpxDuocChon);
+                    new UpdateSuccessNotification().Show();
                 }
                 else
                 {
@@ -238,6 +197,12 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (KiemTrHoanHetChua())
+            {
+                MessageBox.Show("Tất cả sản phẩm đã được hoàn.", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             if (MessageBox.Show("Bạn có chắc muốn hoàn trả tất cả sản phẩm không?",
                                 "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -250,80 +215,54 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
                 {
                     phieu.Trangthai = 3; // 3 = Đã hoàn toàn bộ
                     _phieuXuatBUS.updatePhieuXuat(phieu);
+                    foreach(ChiTietPhieuXuatDTO ctpxDuocChon in listCTPX)
+                    {
+                        ctpxDuocChon.TrangTHaiHoanHang = 2; // Hoàn tất cả
+                        ctpxBUS.updateTrangThaiHoanHang(ctpxDuocChon);
+                    }
                 }
-
-                // Làm trống bảng hiển thị (chỉ trên UI, không xóa trong database)
-                if (dgvXemChiTiet.DataSource is DataTable dt)
-                {
-                    dt.Clear();
-                    dgvXemChiTiet.DataSource = null;
-                    dgvXemChiTiet.DataSource = dt;
-                }
-                else
-                {
-                    dgvXemChiTiet.Rows.Clear();
-                }
-
-                // Đặt DialogResult để báo cho form cha biết đã cập nhật
-                this.DialogResult = DialogResult.OK;
-
-                MessageBox.Show("Đã hoàn trả tất cả sản phẩm! Phiếu xuất vẫn sẽ được lưu lại với trạng thái 'Đã hoàn toàn bộ'.", "Thông báo",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.Close(); // đóng form hoàn hàng
+                refreshDataGridView(ctpxBUS.getCTPXByMaPX(_maPhieuXuat));
+                new UpdateSuccessNotification().Show();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi hoàn trả: {ex.Message}", "Lỗi",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        } // Hoàn tất cả
 
         // nút đóng dialog
         private void buttonHuyBo_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        // Thêm phương thức để xử lý khi form đóng
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        private Boolean KiemTrHoanHetChua()
         {
-            base.OnFormClosing(e);
-
-            // Nếu người dùng đóng form bằng nút X, vẫn cập nhật trạng thái nếu đã hoàn một phần
-            if (this.DialogResult != DialogResult.OK && dgvXemChiTiet.Rows.Count > 0)
+            Boolean checkHoanHetChua = true; // true là là đã hoàn hết
+            foreach (ChiTietPhieuXuatDTO ctpx in ctpxBUS.getChiTietByMaPhieuXuat(_maPhieuXuat))
             {
-                var listCT = _chiTietPhieuXuatBUS.getChiTietByMaPhieuXuat(_maPhieuXuat);
-                if (listCT != null && listCT.Count > 0 && listCT.Count < GetTongSoDongBanDau())
+                if (ctpx.TrangTHaiHoanHang == 1)
                 {
-                    CapNhatTrangThaiHoanMotPhan(_maPhieuXuat);
+                    checkHoanHetChua = false;
                 }
             }
+            return checkHoanHetChua;
         }
-
-        // Phương thức hỗ trợ để lấy tổng số dòng ban đầu (nếu cần)
-        private int GetTongSoDongBanDau()
+        private void xuLyDongDialig()
         {
-            if (dgvXemChiTiet.DataSource is DataTable dt)
+            Boolean ktrHoanHetChua = KiemTrHoanHetChua();
+            if (ktrHoanHetChua)
             {
-                return dt.Rows.Count;
+                var phieu = _phieuXuatBUS.getPhieuXuatById(_maPhieuXuat);
+                phieu.Trangthai = 3;
+                _phieuXuatBUS.updatePhieuXuat(phieu);
             }
-            return dgvXemChiTiet.Rows.Count;
+        } // Xử lý đóng dilog
+
+        private void HoanHang_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            xuLyDongDialig();
         }
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
         // readonly
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void textBox1_TextChanged_1(object sender, EventArgs e) { }
@@ -333,5 +272,7 @@ namespace QuanLyKho_CSharp.GUI.HoanHang
         private void label3_Click(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }
         private void dgvXemChiTiet_CellContentClick_1(object sender, DataGridViewCellEventArgs e) { }
+
+       
     }
 }
