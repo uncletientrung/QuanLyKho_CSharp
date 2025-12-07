@@ -28,24 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPhieuXuatForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.listContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.Right = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.artanPanel4 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
-            this.dgvSPtrongKho = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imgDGVTon = new System.Windows.Forms.DataGridViewImageColumn();
-            this.priceDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluongDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.artanPanel7 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlLeftTop = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.dgvSPduocThem = new System.Windows.Forms.DataGridView();
             this.manv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +54,18 @@
             this.btnNewKH = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.txSearchCustomer = new System.Windows.Forms.TextBox();
             this.artanButton2 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.Right = new System.Windows.Forms.Panel();
+            this.artanPanel4 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.dgvSPtrongKho = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imgDGVTon = new System.Windows.Forms.DataGridViewImageColumn();
+            this.priceDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluongDGVTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.artanPanel7 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.dateCreate = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
             this.artanPanel5 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.artanButton4 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
@@ -75,19 +74,20 @@
             this.txSearch = new System.Windows.Forms.TextBox();
             this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.btnOnClose = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlLeft.SuspendLayout();
-            this.Right.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.pnlTop.SuspendLayout();
-            this.artanPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).BeginInit();
-            this.artanPanel7.SuspendLayout();
             this.pnlLeftTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).BeginInit();
             this.pnlLeftBot.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.artanPanel3.SuspendLayout();
+            this.Right.SuspendLayout();
+            this.artanPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.artanPanel7.SuspendLayout();
+            this.pnlTop.SuspendLayout();
             this.artanPanel5.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.SuspendLayout();
@@ -113,178 +113,6 @@
             this.listContainer.Name = "listContainer";
             this.listContainer.Size = new System.Drawing.Size(275, 0);
             this.listContainer.TabIndex = 24;
-            // 
-            // Right
-            // 
-            this.Right.Controls.Add(this.artanPanel4);
-            this.Right.Controls.Add(this.panel1);
-            this.Right.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Right.Location = new System.Drawing.Point(411, 52);
-            this.Right.Margin = new System.Windows.Forms.Padding(0);
-            this.Right.Name = "Right";
-            this.Right.Padding = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.Right.Size = new System.Drawing.Size(502, 465);
-            this.Right.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.artanPanel7);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.panel1.Size = new System.Drawing.Size(499, 51);
-            this.panel1.TabIndex = 1;
-            // 
-            // pnlTop
-            // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.pnlTop.Controls.Add(this.dateCreate);
-            this.pnlTop.Controls.Add(this.artanPanel5);
-            this.pnlTop.Controls.Add(this.pnlSearch);
-            this.pnlTop.Controls.Add(this.btnOnClose);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(913, 52);
-            this.pnlTop.TabIndex = 0;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // artanPanel4
-            // 
-            this.artanPanel4.BackColor = System.Drawing.Color.White;
-            this.artanPanel4.BorderRadius = 20;
-            this.artanPanel4.Controls.Add(this.dgvSPtrongKho);
-            this.artanPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.artanPanel4.ForeColor = System.Drawing.Color.Black;
-            this.artanPanel4.GradientAngle = 90F;
-            this.artanPanel4.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.artanPanel4.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.artanPanel4.Location = new System.Drawing.Point(3, 54);
-            this.artanPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.artanPanel4.Name = "artanPanel4";
-            this.artanPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 15);
-            this.artanPanel4.Size = new System.Drawing.Size(499, 411);
-            this.artanPanel4.TabIndex = 1;
-            // 
-            // dgvSPtrongKho
-            // 
-            this.dgvSPtrongKho.AllowUserToAddRows = false;
-            this.dgvSPtrongKho.AllowUserToDeleteRows = false;
-            this.dgvSPtrongKho.AllowUserToResizeColumns = false;
-            this.dgvSPtrongKho.AllowUserToResizeRows = false;
-            this.dgvSPtrongKho.BackgroundColor = System.Drawing.Color.White;
-            this.dgvSPtrongKho.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvSPtrongKho.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSPtrongKho.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSPtrongKho.ColumnHeadersHeight = 30;
-            this.dgvSPtrongKho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.productNameDGVTon,
-            this.imgDGVTon,
-            this.priceDGVTon,
-            this.soluongDGVTon});
-            this.dgvSPtrongKho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSPtrongKho.EnableHeadersVisualStyles = false;
-            this.dgvSPtrongKho.GridColor = System.Drawing.Color.LightGray;
-            this.dgvSPtrongKho.Location = new System.Drawing.Point(4, 0);
-            this.dgvSPtrongKho.MultiSelect = false;
-            this.dgvSPtrongKho.Name = "dgvSPtrongKho";
-            this.dgvSPtrongKho.ReadOnly = true;
-            this.dgvSPtrongKho.RowHeadersVisible = false;
-            this.dgvSPtrongKho.RowHeadersWidth = 25;
-            this.dgvSPtrongKho.RowTemplate.Height = 30;
-            this.dgvSPtrongKho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSPtrongKho.Size = new System.Drawing.Size(491, 396);
-            this.dgvSPtrongKho.TabIndex = 0;
-            this.dgvSPtrongKho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPtrongKho_CellClick);
-            this.dgvSPtrongKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPtrongKho_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.FillWeight = 7F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mã";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // productNameDGVTon
-            // 
-            this.productNameDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.productNameDGVTon.FillWeight = 20F;
-            this.productNameDGVTon.HeaderText = "Tên sản phẩm";
-            this.productNameDGVTon.Name = "productNameDGVTon";
-            this.productNameDGVTon.ReadOnly = true;
-            // 
-            // imgDGVTon
-            // 
-            this.imgDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.imgDGVTon.FillWeight = 15F;
-            this.imgDGVTon.HeaderText = "Ảnh";
-            this.imgDGVTon.Name = "imgDGVTon";
-            this.imgDGVTon.ReadOnly = true;
-            this.imgDGVTon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.imgDGVTon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // priceDGVTon
-            // 
-            this.priceDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.priceDGVTon.FillWeight = 15F;
-            this.priceDGVTon.HeaderText = "Đơn giá";
-            this.priceDGVTon.Name = "priceDGVTon";
-            this.priceDGVTon.ReadOnly = true;
-            this.priceDGVTon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // soluongDGVTon
-            // 
-            this.soluongDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.soluongDGVTon.FillWeight = 15F;
-            this.soluongDGVTon.HeaderText = "Số lượng";
-            this.soluongDGVTon.Name = "soluongDGVTon";
-            this.soluongDGVTon.ReadOnly = true;
-            // 
-            // artanPanel7
-            // 
-            this.artanPanel7.BackColor = System.Drawing.Color.White;
-            this.artanPanel7.BorderRadius = 30;
-            this.artanPanel7.Controls.Add(this.label1);
-            this.artanPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.artanPanel7.ForeColor = System.Drawing.Color.Black;
-            this.artanPanel7.GradientAngle = 90F;
-            this.artanPanel7.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.artanPanel7.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.artanPanel7.Location = new System.Drawing.Point(0, 0);
-            this.artanPanel7.Name = "artanPanel7";
-            this.artanPanel7.Size = new System.Drawing.Size(499, 48);
-            this.artanPanel7.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(499, 48);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Danh sách hàng tồn";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlLeftTop
             // 
@@ -598,6 +426,170 @@
             this.artanButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.artanButton2.UseVisualStyleBackColor = false;
             // 
+            // Right
+            // 
+            this.Right.Controls.Add(this.artanPanel4);
+            this.Right.Controls.Add(this.panel1);
+            this.Right.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Right.Location = new System.Drawing.Point(411, 52);
+            this.Right.Margin = new System.Windows.Forms.Padding(0);
+            this.Right.Name = "Right";
+            this.Right.Padding = new System.Windows.Forms.Padding(3, 3, 0, 0);
+            this.Right.Size = new System.Drawing.Size(502, 465);
+            this.Right.TabIndex = 1;
+            // 
+            // artanPanel4
+            // 
+            this.artanPanel4.BackColor = System.Drawing.Color.White;
+            this.artanPanel4.BorderRadius = 20;
+            this.artanPanel4.Controls.Add(this.dgvSPtrongKho);
+            this.artanPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artanPanel4.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel4.GradientAngle = 90F;
+            this.artanPanel4.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel4.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel4.Location = new System.Drawing.Point(3, 54);
+            this.artanPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.artanPanel4.Name = "artanPanel4";
+            this.artanPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 15);
+            this.artanPanel4.Size = new System.Drawing.Size(499, 411);
+            this.artanPanel4.TabIndex = 1;
+            // 
+            // dgvSPtrongKho
+            // 
+            this.dgvSPtrongKho.AllowUserToAddRows = false;
+            this.dgvSPtrongKho.AllowUserToDeleteRows = false;
+            this.dgvSPtrongKho.AllowUserToResizeColumns = false;
+            this.dgvSPtrongKho.AllowUserToResizeRows = false;
+            this.dgvSPtrongKho.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSPtrongKho.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSPtrongKho.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSPtrongKho.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSPtrongKho.ColumnHeadersHeight = 30;
+            this.dgvSPtrongKho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.productNameDGVTon,
+            this.imgDGVTon,
+            this.priceDGVTon,
+            this.soluongDGVTon});
+            this.dgvSPtrongKho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSPtrongKho.EnableHeadersVisualStyles = false;
+            this.dgvSPtrongKho.GridColor = System.Drawing.Color.LightGray;
+            this.dgvSPtrongKho.Location = new System.Drawing.Point(4, 0);
+            this.dgvSPtrongKho.MultiSelect = false;
+            this.dgvSPtrongKho.Name = "dgvSPtrongKho";
+            this.dgvSPtrongKho.ReadOnly = true;
+            this.dgvSPtrongKho.RowHeadersVisible = false;
+            this.dgvSPtrongKho.RowHeadersWidth = 25;
+            this.dgvSPtrongKho.RowTemplate.Height = 30;
+            this.dgvSPtrongKho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSPtrongKho.Size = new System.Drawing.Size(491, 396);
+            this.dgvSPtrongKho.TabIndex = 0;
+            this.dgvSPtrongKho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPtrongKho_CellClick);
+            this.dgvSPtrongKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSPtrongKho_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 7F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // productNameDGVTon
+            // 
+            this.productNameDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productNameDGVTon.FillWeight = 20F;
+            this.productNameDGVTon.HeaderText = "Tên sản phẩm";
+            this.productNameDGVTon.Name = "productNameDGVTon";
+            this.productNameDGVTon.ReadOnly = true;
+            // 
+            // imgDGVTon
+            // 
+            this.imgDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.imgDGVTon.FillWeight = 15F;
+            this.imgDGVTon.HeaderText = "Ảnh";
+            this.imgDGVTon.Name = "imgDGVTon";
+            this.imgDGVTon.ReadOnly = true;
+            this.imgDGVTon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.imgDGVTon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // priceDGVTon
+            // 
+            this.priceDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.priceDGVTon.FillWeight = 15F;
+            this.priceDGVTon.HeaderText = "Đơn giá";
+            this.priceDGVTon.Name = "priceDGVTon";
+            this.priceDGVTon.ReadOnly = true;
+            this.priceDGVTon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // soluongDGVTon
+            // 
+            this.soluongDGVTon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soluongDGVTon.FillWeight = 15F;
+            this.soluongDGVTon.HeaderText = "Số lượng";
+            this.soluongDGVTon.Name = "soluongDGVTon";
+            this.soluongDGVTon.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.artanPanel7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panel1.Size = new System.Drawing.Size(499, 51);
+            this.panel1.TabIndex = 1;
+            // 
+            // artanPanel7
+            // 
+            this.artanPanel7.BackColor = System.Drawing.Color.White;
+            this.artanPanel7.BorderRadius = 30;
+            this.artanPanel7.Controls.Add(this.label1);
+            this.artanPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artanPanel7.ForeColor = System.Drawing.Color.Black;
+            this.artanPanel7.GradientAngle = 90F;
+            this.artanPanel7.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel7.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.artanPanel7.Location = new System.Drawing.Point(0, 0);
+            this.artanPanel7.Name = "artanPanel7";
+            this.artanPanel7.Size = new System.Drawing.Size(499, 48);
+            this.artanPanel7.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(499, 48);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Danh sách hàng tồn";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlTop.Controls.Add(this.dateCreate);
+            this.pnlTop.Controls.Add(this.artanPanel5);
+            this.pnlTop.Controls.Add(this.pnlSearch);
+            this.pnlTop.Controls.Add(this.btnOnClose);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(913, 52);
+            this.pnlTop.TabIndex = 0;
+            // 
             // dateCreate
             // 
             this.dateCreate.BorderColor = System.Drawing.Color.PaleVioletRed;
@@ -728,6 +720,14 @@
             this.btnOnClose.UseVisualStyleBackColor = false;
             this.btnOnClose.Click += new System.EventHandler(this.artanButton5_Click);
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
             // AddPhieuXuatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,12 +741,6 @@
             this.Name = "AddPhieuXuatForm";
             this.Load += new System.EventHandler(this.AddPhieuXuatForm_Load);
             this.pnlLeft.ResumeLayout(false);
-            this.Right.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.pnlTop.ResumeLayout(false);
-            this.artanPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).EndInit();
-            this.artanPanel7.ResumeLayout(false);
             this.pnlLeftTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).EndInit();
             this.pnlLeftBot.ResumeLayout(false);
@@ -754,6 +748,12 @@
             this.panel2.ResumeLayout(false);
             this.artanPanel3.ResumeLayout(false);
             this.artanPanel3.PerformLayout();
+            this.Right.ResumeLayout(false);
+            this.artanPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSPtrongKho)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.artanPanel7.ResumeLayout(false);
+            this.pnlTop.ResumeLayout(false);
             this.artanPanel5.ResumeLayout(false);
             this.artanPanel5.PerformLayout();
             this.pnlSearch.ResumeLayout(false);

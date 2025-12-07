@@ -9,21 +9,18 @@ namespace QuanLyKho.BUS
 {
     public class PhieuKiemKeBUS
     {
-        private static PhieuKiemKeBUS instance;
         private PhieuKiemKeDAO pkkDAO= PhieuKiemKeDAO.getInstance();
-        public static PhieuKiemKeBUS Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new PhieuKiemKeBUS();
-                return instance;
-            }
-        }
+        private ChiTietKiemKeDAO ctkkDAO = ChiTietKiemKeDAO.getInstance();
+        private BindingList<PhieuKiemKeDTO> listPKK;
+        private BindingList<ChiTietKiemKeDTO> listCTKKById;
 
+        public PhieuKiemKeBUS()
+        {
+            listPKK = pkkDAO.SelectAll();
+        }
         public BindingList<PhieuKiemKeDTO> getListPKK()
         {
-            return PhieuKiemKeDAO.getInstance().SelectAll();
+            return listPKK;
         }
 
         public PhieuKiemKeDTO getPKKById(int id)
@@ -32,21 +29,17 @@ namespace QuanLyKho.BUS
             return getListPKK().FirstOrDefault(pkk => pkk.Manhanvienkiem == id);
         }
 
-        public int Insert(PhieuKiemKeDTO dto)
-        {
-            return PhieuKiemKeDAO.getInstance().Insert(dto);
-        }
-
-        public int Update(PhieuKiemKeDTO dto)
-        {
-            return PhieuKiemKeDAO.getInstance().Update(dto);
-        }
-
         public Boolean Delete(int mapkk)
         {
             Boolean result = pkkDAO.Delete(mapkk) !=0;
             return result;
         }
+        public BindingList<ChiTietKiemKeDTO> getlistCTKKById(int mapkk)
+        {
+            listCTKKById = ctkkDAO.SelectAll(mapkk);
+            return listCTKKById;
+        }
+
 
 
     }

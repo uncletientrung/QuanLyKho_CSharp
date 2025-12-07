@@ -1,6 +1,7 @@
 ﻿using QuanLyKho.BUS;
 using QuanLyKho.DTO;
 using QuanLyKho_CSharp.GUI.PhieuNhap;
+using QuanLyKho_CSharp.GUI.PhieuXuat;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,17 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 {
     public partial class KiemKeGUI : Form
     {
-        private string _currentUserName; // Thêm field để lưu tên người dùng
+        private NhanVienDTO currentUser;
         private PhieuKiemKeBUS pkkBUS= new PhieuKiemKeBUS();
         private BindingList<PhieuKiemKeDTO> listPKK;
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private BindingList<NhanVienDTO> listNV;
 
-        public KiemKeGUI(string userName = null)
+        public KiemKeGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             listPKK = pkkBUS.getListPKK();
+            this.currentUser= currentUser;
             SettingDGV();
             SettingTopPanel();
             refreshDGV(listPKK);
@@ -195,9 +197,34 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 if(deleteForm.ShowDialog() == DialogResult.OK)
                 {
                     new DeleteSuccessNotification().Show();
+                    pkkBUS = new PhieuKiemKeBUS();
+                    refreshDGV(pkkBUS.getListPKK());
                 }
             }
         } // nút nhấn
+
+        private void btnThem_Click(object sender, EventArgs e) // Thêm phiếu
+        {
+
+            pnlDGV.Visible = false;
+            pnlTop.Visible = false;
+            AddPhieuKiemKeForm addFormControl = null;
+            addFormControl = new AddPhieuKiemKeForm(() => btnOnClose(addFormControl), currentUser,
+               () => refreshDGV(pkkBUS.getListPKK()));
+            addFormControl.TopLevel = false;
+            addFormControl.FormBorderStyle = FormBorderStyle.None;
+            addFormControl.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(addFormControl);
+            addFormControl.Show();
+
+        }
+        private void btnOnClose(AddPhieuKiemKeForm formAdd)
+        {
+            pnlDGV.Visible = true;
+            pnlTop.Visible = true;
+            pnlMain.Controls.Remove(formAdd);
+            formAdd.Dispose();
+        }
     }
 }
 

@@ -400,6 +400,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.btnThem.TabIndex = 10;
             this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
             this.btnThem.Values.Text = "";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // cbbSearchNVTao
             // 

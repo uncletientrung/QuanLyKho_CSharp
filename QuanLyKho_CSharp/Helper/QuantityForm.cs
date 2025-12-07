@@ -37,7 +37,7 @@ namespace QuanLyKho_CSharp.Helper
         private void btnOk_Click(object sender, EventArgs e)
         {
             int slNhap= int.Parse(soLuong.Value.ToString());
-            if (slNhap > soluongTon && DayLaPhieu == "Xuat") 
+            if (slNhap > soluongTon && DayLaPhieu == "Xuat") // Nếu là xuất thì mới kiểm tra
             {
                 MessageBox.Show("Đã nhập quá số lượng tồn kho", "Cảnh báo",
                          MessageBoxButtons.OK, MessageBoxIcon.Warning);

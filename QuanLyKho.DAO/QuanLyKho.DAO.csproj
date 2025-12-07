@@ -114,6 +114,7 @@
     <Compile Include="DAO\ChatLieuDAO.cs" />
     <Compile Include="DAO\ChiTietHoanHangDAO.cs" />
     <Compile Include="DAO\ChiTietInterface.cs" />
+    <Compile Include="DAO\ChiTietKiemKeDAO.cs" />
     <Compile Include="DAO\ChiTietPhieuNhapDAO.cs" />
     <Compile Include="DAO\ChiTietPhieuXuatDAO.cs" />
     <Compile Include="DAO\ChiTietQuyenDAO.cs" />
