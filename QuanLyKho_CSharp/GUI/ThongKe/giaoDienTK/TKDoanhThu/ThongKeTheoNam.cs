@@ -29,6 +29,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
         public ThongKeTheoNam()
         {
             InitializeComponent();
+            
         }
 
         public void load_UC(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
             namEnd.ShowUpDown = true; // Dạng spinbox (không hiển thị lịch)
             loadDataChart();
             setUpColumnAndData();
+            btnThongKe_Click(null, null);
 
 
 
@@ -193,9 +195,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 
                     dgvThongKeDoanhThuTheoNam.Rows.Add(
                         tk.Thoigian,
-                        tk.Von,
-                        tk.Doanhthu,
-                        tk.Loinhuan
+                        tk.Von.ToString("N0"),
+                        tk.Doanhthu.ToString("N0"),
+                        tk.Loinhuan.ToString("N0")
                     );
                 }
                 dgvThongKeDoanhThuTheoNam.ClearSelection();

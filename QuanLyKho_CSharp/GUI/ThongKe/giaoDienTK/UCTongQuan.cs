@@ -250,10 +250,10 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     
 
                     dgvDoanhThu7ngay.Rows.Add(
-                        tk.Ngay,
-                        tk.Chiphi,
-                        tk.Doanhthu,
-                        tk.Loinhuan
+                        tk.Ngay.ToString("dd/MM/yyyy"),
+                        tk.Chiphi.ToString("N0"),
+                        tk.Doanhthu.ToString("N0"),
+                        tk.Loinhuan.ToString("N0")
                     );
                 }
                 dgvDoanhThu7ngay.ClearSelection();

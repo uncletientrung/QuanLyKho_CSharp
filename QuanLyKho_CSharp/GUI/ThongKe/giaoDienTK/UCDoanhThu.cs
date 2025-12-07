@@ -16,6 +16,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
         public UCDoanhThu()
         {
             InitializeComponent();
+            ShowGiaoDien(new ThongKeTheoNam());
+            SetActiveButton(btnTKTheoNam);
+
         }
 
 
