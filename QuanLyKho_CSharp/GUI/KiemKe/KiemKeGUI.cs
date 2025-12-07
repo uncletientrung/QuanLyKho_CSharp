@@ -19,12 +19,16 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private string _currentUserName; // Thêm field để lưu tên người dùng
         private PhieuKiemKeBUS pkkBUS= new PhieuKiemKeBUS();
         private BindingList<PhieuKiemKeDTO> listPKK;
+        private NhanVienBUS nvBUS = new NhanVienBUS();
+        private BindingList<NhanVienDTO> listNV;
 
         public KiemKeGUI(string userName = null)
         {
             InitializeComponent();
+            listPKK = pkkBUS.getListPKK();
             SettingDGV();
-
+            SettingTopPanel();
+            refreshDGV(listPKK);
         }
 
         private void SettingDGV()
@@ -54,19 +58,116 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             DGVPhieuKiem.RowHeadersDefaultCellStyle = headerStyle;
             DGVPhieuKiem.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
         }
+        private void SettingTopPanel()
+        {
+            listNV = nvBUS.getListNV();
+            cbbSearchNVTao.Items.Add("Nhân viên tạo");
+            cbbSearchNVKiem.Items.Add("Nhân viên kiểm");
+            foreach(NhanVienDTO nv in  listNV)
+            {
+                string tenNv = nv.Tennv;
+                cbbSearchNVTao.Items.Add(tenNv);
+                cbbSearchNVKiem.Items.Add(tenNv);
+            }
+            cbbSearchNVTao.SelectedIndex = 0;
+            cbbSearchNVKiem.SelectedIndex = 0;
+            DateTime ngayDauTien = new DateTime(DateTime.Now.Year, 1, 1);
+            dateS.Value = ngayDauTien;
+            dateE.Value = DateTime.Today;
+        }
         private void DanhSachKiemKeGUI_Load(object sender, EventArgs e)
         {
         } // Chưa dùng
-        private void refreshDGV()
+        private void refreshDGV(BindingList<PhieuKiemKeDTO> listLoadData)
         {
-            listPKK = pkkBUS.getListPKK();
-            foreach(PhieuKiemKeDTO pkk in listPKK)
+            DGVPhieuKiem.Rows.Clear();
+            int soPKK = 0;
+            foreach (PhieuKiemKeDTO pkk in listLoadData)
             {
-
+                string NhanVienTao = nvBUS.getNamebyID(pkk.Manhanvientao);
+                string NhanVienKiem = nvBUS.getNamebyID(pkk.Manhanvienkiem);
+                int rowIndex =DGVPhieuKiem.Rows.Add(
+                    $"PKK-{pkk.Maphieukiemke}", NhanVienTao, NhanVienKiem,
+                    pkk.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"),
+                    pkk.Thoigiancanbang.ToString(" HH:mm dd/MM/yyyy"),
+                    pkk.Ghichu, pkk.Trangthai);
+                soPKK++;
+                SetRowColor(rowIndex, pkk);
+            }
+            lbTotal.Text = $"Tổng số phiếu kiểm {soPKK}";
+            DGVPhieuKiem.ClearSelection();
+        }
+        private void SetRowColor(int rowIndex, PhieuKiemKeDTO pkk)
+        {
+            if (DGVPhieuKiem.Rows.Count > rowIndex)
+            {
+                switch (pkk.Trangthai)
+                {
+                    case "Đã cân bằng":
+                        DGVPhieuKiem.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(152, 251, 152);
+                        break;
+                    case "Chưa cân bằng":
+                        DGVPhieuKiem.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
+                        break;
+                    default:
+                        DGVPhieuKiem.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;
+                        break;
+                }
+                DGVPhieuKiem.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
             }
         }
 
-   
+        private void FilterData()
+        {
+            if (listPKK == null) return;
+            var filteredList = listPKK.Where(pkk => pkk.Trangthai != "Đã xóa").AsEnumerable();
+            string searchText = txtSearchNV.Text.Trim().ToLower();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filteredList = filteredList.Where(pkk =>
+                        pkk.Maphieukiemke.ToString().Contains(searchText) ||
+                        (nvBUS.getNamebyID(pkk.Manhanvientao) ?? "").ToLower().Contains(searchText) ||
+                        (nvBUS.getNamebyID(pkk.Manhanvienkiem) ?? "").ToLower().Contains(searchText) ||
+                        pkk.Ghichu.ToLower().Contains(searchText) ||
+                        pkk.Trangthai.ToLower().Contains(searchText));
+
+                if (cbbSearchNVTao.Text != "Nhân viên tạo")
+                {
+                    filteredList = filteredList.Where(pkk =>
+                        nvBUS.getNamebyID(pkk.Manhanvientao) == cbbSearchNVTao.Text);
+                }
+            }
+            refreshDGV(new BindingList<PhieuKiemKeDTO>(filteredList.ToList()));
+        }
+        private void txtSearchNV_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void cbbSearchNVTao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void cbbSearchNVKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void dateS_ValueChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void dateE_ValueChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void artanPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

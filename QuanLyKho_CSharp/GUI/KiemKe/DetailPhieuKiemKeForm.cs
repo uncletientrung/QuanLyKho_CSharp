@@ -84,27 +84,27 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         }
         private void DisplayChiTietPhieuKiemKe(BindingList<PhieuKiemKeDTO> chiTietList)
         {
-            dgvXemChiTiet.Rows.Clear();
+            //dgvXemChiTiet.Rows.Clear();
 
-            if (chiTietList != null && chiTietList.Count > 0)
-            {
-                foreach (var chiTiet in chiTietList)
-                {
-                    dgvXemChiTiet.Rows.Add(
-                        chiTiet.TenNhanVienTao,
-                        chiTiet.Manhanvientao,
-                        chiTiet.TenNhanVienKiem,
-                        chiTiet.Manhanvienkiem,
-                        chiTiet.TenKho,
-                        chiTiet.Makhuvuc
-                    );
-                }
-            }
-            else
-            {
-                MessageBox.Show("Không có chi tiết phiếu kiểm kê!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //if (chiTietList != null && chiTietList.Count > 0)
+            //{
+            //    foreach (var chiTiet in chiTietList)
+            //    {
+            //        dgvXemChiTiet.Rows.Add(
+            //            chiTiet.TenNhanVienTao,
+            //            chiTiet.Manhanvientao,
+            //            chiTiet.TenNhanVienKiem,
+            //            chiTiet.Manhanvienkiem,
+            //            chiTiet.TenKho,
+            //            chiTiet.Makhuvuc
+            //        );
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Không có chi tiết phiếu kiểm kê!", "Thông báo",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
 

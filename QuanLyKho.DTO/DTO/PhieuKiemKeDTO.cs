@@ -10,6 +10,7 @@ namespace QuanLyKho.DTO
     {
         private int maphieukiemke;
         private DateTime thoigiantao;
+        private DateTime thoigiancanbang;
         private string trangthai;
         private string ghichu;
         private int makhuvuc;
@@ -17,15 +18,16 @@ namespace QuanLyKho.DTO
         private int manhanvienkiem;
 
         // thêm tên kho và tên nhân viên để hiển thị trong CTPhieuKiemKe không cần tạo thêm thằng cu CTPhieuKiemKeDTO
-        private string tenkho;
-        private string tennhanvienta;
-        private string tennhanvienkiem;
+        //private string tenkho;
+        //private string tennhanvienta;
+        //private string tennhanvienkiem;
 
         public PhieuKiemKeDTO() { }
 
         public PhieuKiemKeDTO(
             int _maphieukiemke,
             DateTime _thoigiantao,
+            DateTime _thoigiancanbang,
             string _trangthai,
             string _ghichu,
             int _makhuvuc,
@@ -34,6 +36,7 @@ namespace QuanLyKho.DTO
         {
             maphieukiemke = _maphieukiemke;
             thoigiantao = _thoigiantao;
+            thoigiancanbang= _thoigiancanbang;
             trangthai = _trangthai;
             ghichu = _ghichu;
             makhuvuc = _makhuvuc;
@@ -51,6 +54,11 @@ namespace QuanLyKho.DTO
         {
             get { return thoigiantao; }
             set { thoigiantao = value; }
+        }
+        public DateTime Thoigiancanbang
+        {
+            get { return thoigiancanbang; }
+            set { thoigiancanbang = value; }
         }
 
         public string Trangthai
@@ -83,22 +91,22 @@ namespace QuanLyKho.DTO
             set { manhanvienkiem = value; }
         }
 
-        public string TenKho
-        {
-            get { return tenkho; }
-            set { tenkho = value; }
-        }
+        //public string TenKho
+        //{
+        //    get { return tenkho; }
+        //    set { tenkho = value; }
+        //}
 
-        public string TenNhanVienTao
-        {
-            get { return tennhanvienta; }
-            set { tennhanvienta = value; }
-        }
+        //public string TenNhanVienTao
+        //{
+        //    get { return tennhanvienta; }
+        //    set { tennhanvienta = value; }
+        //}
 
-        public string TenNhanVienKiem
-        {
-            get { return tennhanvienkiem; }
-            set { tennhanvienkiem = value; }
-        }
+        //public string TenNhanVienKiem
+        //{
+        //    get { return tennhanvienkiem; }
+        //    set { tennhanvienkiem = value; }
+        //}
     }
 }

@@ -29,28 +29,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KiemKeGUI));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlDGV = new System.Windows.Forms.Panel();
             this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.DGVPhieuKiem = new System.Windows.Forms.DataGridView();
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.kryptonComboBox1 = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dateE = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
-            this.artanPanel3 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
-            this.txtSearchNV = new System.Windows.Forms.TextBox();
-            this.artanButton3 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
-            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.cbbSearch = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.dateS = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbTotalStatus = new System.Windows.Forms.Panel();
-            this.lbTotal = new System.Windows.Forms.Label();
-            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.mapk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kh = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,14 +47,28 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.hoanhang = new System.Windows.Forms.DataGridViewButtonColumn();
             this.detail = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.cbbSearchNVKiem = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dateE = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
+            this.artanPanel3 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.txtSearchNV = new System.Windows.Forms.TextBox();
+            this.artanButton3 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.cbbSearchNVTao = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.dateS = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbTotalStatus = new System.Windows.Forms.Panel();
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pnlMain.SuspendLayout();
             this.pnlDGV.SuspendLayout();
             this.artanPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhieuKiem)).BeginInit();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSearchNVKiem)).BeginInit();
             this.artanPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSearchNVTao)).BeginInit();
             this.lbTotalStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,20 +112,21 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // 
             // DGVPhieuKiem
             // 
+            this.DGVPhieuKiem.AllowUserToAddRows = false;
             this.DGVPhieuKiem.AllowUserToDeleteRows = false;
             this.DGVPhieuKiem.AllowUserToResizeColumns = false;
             this.DGVPhieuKiem.AllowUserToResizeRows = false;
             this.DGVPhieuKiem.BackgroundColor = System.Drawing.Color.White;
             this.DGVPhieuKiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVPhieuKiem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVPhieuKiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVPhieuKiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DGVPhieuKiem.ColumnHeadersHeight = 30;
             this.DGVPhieuKiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.mapk,
@@ -138,14 +139,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.hoanhang,
             this.detail,
             this.remove});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVPhieuKiem.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVPhieuKiem.DefaultCellStyle = dataGridViewCellStyle6;
             this.DGVPhieuKiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVPhieuKiem.EnableHeadersVisualStyles = false;
             this.DGVPhieuKiem.GridColor = System.Drawing.Color.LightGray;
@@ -161,15 +162,110 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.DGVPhieuKiem.Size = new System.Drawing.Size(1093, 397);
             this.DGVPhieuKiem.TabIndex = 1;
             // 
+            // mapk
+            // 
+            this.mapk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mapk.FillWeight = 7F;
+            this.mapk.HeaderText = "Mã kiểm";
+            this.mapk.Name = "mapk";
+            this.mapk.ReadOnly = true;
+            this.mapk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // nv
+            // 
+            this.nv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nv.FillWeight = 12F;
+            this.nv.HeaderText = "Nhân viên tạo";
+            this.nv.Name = "nv";
+            this.nv.ReadOnly = true;
+            // 
+            // kh
+            // 
+            this.kh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.kh.FillWeight = 12F;
+            this.kh.HeaderText = "Nhân viên kiểm";
+            this.kh.Name = "kh";
+            this.kh.ReadOnly = true;
+            // 
+            // thoigiantao
+            // 
+            this.thoigiantao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.thoigiantao.FillWeight = 12F;
+            this.thoigiantao.HeaderText = "Thời gian tạo";
+            this.thoigiantao.Name = "thoigiantao";
+            this.thoigiantao.ReadOnly = true;
+            // 
+            // tongtien
+            // 
+            this.tongtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tongtien.FillWeight = 12F;
+            this.tongtien.HeaderText = "Thời gian cân bằng";
+            this.tongtien.Name = "tongtien";
+            this.tongtien.ReadOnly = true;
+            // 
+            // ghichu
+            // 
+            this.ghichu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ghichu.FillWeight = 10F;
+            this.ghichu.HeaderText = "Ghi chú";
+            this.ghichu.Name = "ghichu";
+            this.ghichu.ReadOnly = true;
+            // 
+            // trangthai
+            // 
+            this.trangthai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.trangthai.FillWeight = 10F;
+            this.trangthai.HeaderText = "Trạng thái";
+            this.trangthai.Name = "trangthai";
+            this.trangthai.ReadOnly = true;
+            // 
+            // hoanhang
+            // 
+            this.hoanhang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.hoanhang.DefaultCellStyle = dataGridViewCellStyle5;
+            this.hoanhang.FillWeight = 10F;
+            this.hoanhang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hoanhang.HeaderText = "Cân bằng";
+            this.hoanhang.Name = "hoanhang";
+            this.hoanhang.ReadOnly = true;
+            this.hoanhang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hoanhang.Text = "Cân bằng";
+            this.hoanhang.UseColumnTextForButtonValue = true;
+            // 
+            // detail
+            // 
+            this.detail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.detail.HeaderText = "";
+            this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
+            this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.detail.Name = "detail";
+            this.detail.ReadOnly = true;
+            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.detail.Width = 5;
+            // 
+            // remove
+            // 
+            this.remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.remove.HeaderText = "";
+            this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
+            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.Name = "remove";
+            this.remove.ReadOnly = true;
+            this.remove.Width = 5;
+            // 
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
-            this.pnlTop.Controls.Add(this.kryptonComboBox1);
+            this.pnlTop.Controls.Add(this.cbbSearchNVKiem);
             this.pnlTop.Controls.Add(this.panel2);
             this.pnlTop.Controls.Add(this.dateE);
             this.pnlTop.Controls.Add(this.artanPanel3);
             this.pnlTop.Controls.Add(this.btnThem);
-            this.pnlTop.Controls.Add(this.cbbSearch);
+            this.pnlTop.Controls.Add(this.cbbSearchNVTao);
             this.pnlTop.Controls.Add(this.dateS);
             this.pnlTop.Controls.Add(this.label2);
             this.pnlTop.Controls.Add(this.lbTotalStatus);
@@ -179,26 +275,27 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.pnlTop.Size = new System.Drawing.Size(1103, 132);
             this.pnlTop.TabIndex = 14;
             // 
-            // kryptonComboBox1
+            // cbbSearchNVKiem
             // 
-            this.kryptonComboBox1.DropDownWidth = 115;
-            this.kryptonComboBox1.Location = new System.Drawing.Point(640, 91);
-            this.kryptonComboBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.kryptonComboBox1.MaximumSize = new System.Drawing.Size(120, 37);
-            this.kryptonComboBox1.MinimumSize = new System.Drawing.Size(120, 37);
-            this.kryptonComboBox1.Name = "kryptonComboBox1";
-            this.kryptonComboBox1.Size = new System.Drawing.Size(120, 37);
-            this.kryptonComboBox1.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.kryptonComboBox1.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.kryptonComboBox1.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.kryptonComboBox1.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.cbbSearchNVKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSearchNVKiem.DropDownWidth = 115;
+            this.cbbSearchNVKiem.Location = new System.Drawing.Point(640, 91);
+            this.cbbSearchNVKiem.Margin = new System.Windows.Forms.Padding(5);
+            this.cbbSearchNVKiem.MaximumSize = new System.Drawing.Size(120, 37);
+            this.cbbSearchNVKiem.MinimumSize = new System.Drawing.Size(120, 37);
+            this.cbbSearchNVKiem.Name = "cbbSearchNVKiem";
+            this.cbbSearchNVKiem.Size = new System.Drawing.Size(120, 37);
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonComboBox1.StateCommon.ComboBox.Border.Rounding = 15;
-            this.kryptonComboBox1.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.kryptonComboBox1.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonComboBox1.TabIndex = 23;
-            this.kryptonComboBox1.Text = "Tất cả";
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Border.Rounding = 15;
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSearchNVKiem.TabIndex = 23;
+            this.cbbSearchNVKiem.SelectedIndexChanged += new System.EventHandler(this.cbbSearchNVKiem_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -224,6 +321,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.dateE.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.dateE.TabIndex = 22;
             this.dateE.TextColor = System.Drawing.Color.White;
+            this.dateE.ValueChanged += new System.EventHandler(this.dateE_ValueChanged);
             // 
             // artanPanel3
             // 
@@ -252,6 +350,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.txtSearchNV.Name = "txtSearchNV";
             this.txtSearchNV.Size = new System.Drawing.Size(204, 23);
             this.txtSearchNV.TabIndex = 13;
+            this.txtSearchNV.TextChanged += new System.EventHandler(this.txtSearchNV_TextChanged);
             // 
             // artanButton3
             // 
@@ -301,26 +400,27 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
             this.btnThem.Values.Text = "";
             // 
-            // cbbSearch
+            // cbbSearchNVTao
             // 
-            this.cbbSearch.DropDownWidth = 115;
-            this.cbbSearch.Location = new System.Drawing.Point(512, 91);
-            this.cbbSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.cbbSearch.MaximumSize = new System.Drawing.Size(120, 37);
-            this.cbbSearch.MinimumSize = new System.Drawing.Size(120, 37);
-            this.cbbSearch.Name = "cbbSearch";
-            this.cbbSearch.Size = new System.Drawing.Size(120, 37);
-            this.cbbSearch.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbSearch.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbSearch.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbSearch.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.cbbSearchNVTao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSearchNVTao.DropDownWidth = 115;
+            this.cbbSearchNVTao.Location = new System.Drawing.Point(512, 91);
+            this.cbbSearchNVTao.Margin = new System.Windows.Forms.Padding(5);
+            this.cbbSearchNVTao.MaximumSize = new System.Drawing.Size(120, 37);
+            this.cbbSearchNVTao.MinimumSize = new System.Drawing.Size(120, 37);
+            this.cbbSearchNVTao.Name = "cbbSearchNVTao";
+            this.cbbSearchNVTao.Size = new System.Drawing.Size(120, 37);
+            this.cbbSearchNVTao.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSearchNVTao.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSearchNVTao.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSearchNVTao.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.cbbSearch.StateCommon.ComboBox.Border.Rounding = 15;
-            this.cbbSearch.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.cbbSearch.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbSearch.TabIndex = 20;
-            this.cbbSearch.Text = "Tất cả";
+            this.cbbSearchNVTao.StateCommon.ComboBox.Border.Rounding = 15;
+            this.cbbSearchNVTao.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.cbbSearchNVTao.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSearchNVTao.TabIndex = 20;
+            this.cbbSearchNVTao.SelectedIndexChanged += new System.EventHandler(this.cbbSearchNVTao_SelectedIndexChanged);
             // 
             // dateS
             // 
@@ -339,6 +439,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.dateS.TabIndex = 1;
             this.dateS.TextColor = System.Drawing.Color.White;
             this.dateS.Value = new System.DateTime(2025, 1, 1, 0, 0, 0, 0);
+            this.dateS.ValueChanged += new System.EventHandler(this.dateS_ValueChanged);
             // 
             // label2
             // 
@@ -403,101 +504,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
             this.btnXuatExcel.Values.Text = "Xuất Excel";
             // 
-            // mapk
-            // 
-            this.mapk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mapk.FillWeight = 7F;
-            this.mapk.HeaderText = "Mã kiểm";
-            this.mapk.Name = "mapk";
-            this.mapk.ReadOnly = true;
-            this.mapk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // nv
-            // 
-            this.nv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nv.FillWeight = 12F;
-            this.nv.HeaderText = "Nhân viên tạo";
-            this.nv.Name = "nv";
-            this.nv.ReadOnly = true;
-            // 
-            // kh
-            // 
-            this.kh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.kh.FillWeight = 12F;
-            this.kh.HeaderText = "Nhân viên kiểm";
-            this.kh.Name = "kh";
-            this.kh.ReadOnly = true;
-            // 
-            // thoigiantao
-            // 
-            this.thoigiantao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.thoigiantao.FillWeight = 12F;
-            this.thoigiantao.HeaderText = "Thời gian tạo";
-            this.thoigiantao.Name = "thoigiantao";
-            this.thoigiantao.ReadOnly = true;
-            // 
-            // tongtien
-            // 
-            this.tongtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tongtien.FillWeight = 12F;
-            this.tongtien.HeaderText = "Thời gian cân bằng";
-            this.tongtien.Name = "tongtien";
-            this.tongtien.ReadOnly = true;
-            // 
-            // ghichu
-            // 
-            this.ghichu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ghichu.FillWeight = 10F;
-            this.ghichu.HeaderText = "Ghi chú";
-            this.ghichu.Name = "ghichu";
-            this.ghichu.ReadOnly = true;
-            // 
-            // trangthai
-            // 
-            this.trangthai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.trangthai.FillWeight = 10F;
-            this.trangthai.HeaderText = "Trạng thái";
-            this.trangthai.Name = "trangthai";
-            this.trangthai.ReadOnly = true;
-            // 
-            // hoanhang
-            // 
-            this.hoanhang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.hoanhang.DefaultCellStyle = dataGridViewCellStyle2;
-            this.hoanhang.FillWeight = 10F;
-            this.hoanhang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hoanhang.HeaderText = "Cân bằng";
-            this.hoanhang.Name = "hoanhang";
-            this.hoanhang.ReadOnly = true;
-            this.hoanhang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.hoanhang.Text = "Cân bằng";
-            this.hoanhang.UseColumnTextForButtonValue = true;
-            // 
-            // detail
-            // 
-            this.detail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.detail.HeaderText = "";
-            this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
-            this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.detail.Name = "detail";
-            this.detail.ReadOnly = true;
-            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.Width = 21;
-            // 
-            // remove
-            // 
-            this.remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.remove.HeaderText = "";
-            this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
-            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.remove.Name = "remove";
-            this.remove.ReadOnly = true;
-            this.remove.Width = 21;
-            // 
             // KiemKeGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -516,10 +522,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             ((System.ComponentModel.ISupportInitialize)(this.DGVPhieuKiem)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSearchNVKiem)).EndInit();
             this.artanPanel3.ResumeLayout(false);
             this.artanPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSearchNVTao)).EndInit();
             this.lbTotalStatus.ResumeLayout(false);
             this.lbTotalStatus.PerformLayout();
             this.ResumeLayout(false);
@@ -536,14 +542,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private Helper.component.ArtanPanel artanPanel1;
         private System.Windows.Forms.DataGridView DGVPhieuKiem;
         private System.Windows.Forms.Panel pnlTop;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox kryptonComboBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbbSearchNVKiem;
         private System.Windows.Forms.Panel panel2;
         private Helper.component.RJDatePicker dateE;
         private Helper.component.ArtanPanel artanPanel3;
         private System.Windows.Forms.TextBox txtSearchNV;
         private Helper.component.ArtanButton artanButton3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnThem;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbbSearch;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbbSearchNVTao;
         private Helper.component.RJDatePicker dateS;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel lbTotalStatus;

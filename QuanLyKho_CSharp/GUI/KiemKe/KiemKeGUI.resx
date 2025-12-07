@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnThem.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAE9JREFUSEtj
+        GAVDC/z//2U/CEO51AdAw/+DMJRLfTBqAUEwNCwAGgBKimCDyMCEkzBIEZomUjBleQRmEJRLfTBqAUEw
+        LCygbXE9CmgAGBgAd6jqfULCM5AAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="mapk.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -144,7 +152,6 @@
   <metadata name="detail.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="detail.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAY5JREFUSEvt
@@ -182,13 +189,6 @@
         vU6NJu7RrqUk0rqZ9efwPB9KSl43VvCWtKDDaMcLOBI8hHJnOJrK+6J9B+IJRlWXETT8ubb0HW05GXU5
         W/pIMd7+Vpvnhd8XfnAM3ZePKFymoXuidYzfo7ZIdrfsJG0Jj56l1yGJcTMR8wqd+nPIHWGH7/5agn9A
         FP0Co4aFTG/qE/kAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnThem.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAE9JREFUSEtj
-        GAVDC/z//2U/CEO51AdAw/+DMJRLfTBqAUEwNCwAGgBKimCDyMCEkzBIEZomUjBleQRmEJRLfTBqAUEw
-        LCygbXE9CmgAGBgAd6jqfULCM5AAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnXuatExcel.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
