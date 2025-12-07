@@ -263,6 +263,12 @@
     <Compile Include="GUI\KiemKe\AddPhieuKiemKeForm.Designer.cs">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KiemKe\DeletePhieuKiemKeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemKe\DeletePhieuKiemKeForm.Designer.cs">
+      <DependentUpon>DeletePhieuKiemKeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KiemKe\DetailPhieuKiemKeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -754,6 +760,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\AddPhieuKiemKeForm.resx">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KiemKe\DeletePhieuKiemKeForm.resx">
+      <DependentUpon>DeletePhieuKiemKeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\DetailPhieuKiemKeForm.resx">
       <DependentUpon>DetailPhieuKiemKeForm.cs</DependentUpon>

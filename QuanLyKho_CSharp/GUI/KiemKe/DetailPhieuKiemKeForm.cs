@@ -41,20 +41,20 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         private void LoadChiTietPhieuKiem()
         {
-            if (_phieuKiem != null)
-            {
-                // Sử dụng phương thức GetById để lấy chi tiết phiếu kiểm kê
-                var chiTietPhieuKiemKe = new BindingList<PhieuKiemKeDTO>();
-                var phieu = _phieuKiemKeBUS.GetById(_phieuKiem.Maphieukiemke);
-                if (phieu != null)
-                {
-                    chiTietPhieuKiemKe.Add(phieu);
-                }
-                // Cấu hình DataGridView
-                SetupDataGridView();
-                // Hiển thị dữ liệu
-                DisplayChiTietPhieuKiemKe(chiTietPhieuKiemKe);
-            }
+            //if (_phieuKiem != null)
+            //{
+            //    // Sử dụng phương thức GetById để lấy chi tiết phiếu kiểm kê
+            //    var chiTietPhieuKiemKe = new BindingList<PhieuKiemKeDTO>();
+            //    var phieu = _phieuKiemKeBUS.GetById(_phieuKiem.Maphieukiemke);
+            //    if (phieu != null)
+            //    {
+            //        chiTietPhieuKiemKe.Add(phieu);
+            //    }
+            //    // Cấu hình DataGridView
+            //    SetupDataGridView();
+            //    // Hiển thị dữ liệu
+            //    DisplayChiTietPhieuKiemKe(chiTietPhieuKiemKe);
+            //}
         }
         private void SetupDataGridView()
         {

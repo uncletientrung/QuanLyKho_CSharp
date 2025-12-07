@@ -3,12 +3,14 @@ using QuanLyKho.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace QuanLyKho.BUS
 {
     public class PhieuKiemKeBUS
     {
         private static PhieuKiemKeBUS instance;
+        private PhieuKiemKeDAO pkkDAO= PhieuKiemKeDAO.getInstance();
         public static PhieuKiemKeBUS Instance
         {
             get
@@ -24,9 +26,10 @@ namespace QuanLyKho.BUS
             return PhieuKiemKeDAO.getInstance().SelectAll();
         }
 
-        public PhieuKiemKeDTO GetById(int id)
+        public PhieuKiemKeDTO getPKKById(int id)
         {
-            return PhieuKiemKeDAO.getInstance().SelectById(id);
+            PhieuKiemKeDTO result = new PhieuKiemKeDTO();
+            return getListPKK().FirstOrDefault(pkk => pkk.Manhanvienkiem == id);
         }
 
         public int Insert(PhieuKiemKeDTO dto)
@@ -39,9 +42,10 @@ namespace QuanLyKho.BUS
             return PhieuKiemKeDAO.getInstance().Update(dto);
         }
 
-        public int Delete(int id)
+        public Boolean Delete(int mapkk)
         {
-            return PhieuKiemKeDAO.getInstance().Delete(id);
+            Boolean result = pkkDAO.Delete(mapkk) !=0;
+            return result;
         }
 
 

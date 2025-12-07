@@ -29,9 +29,9 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KiemKeGUI));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlDGV = new System.Windows.Forms.Panel();
@@ -119,14 +119,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.DGVPhieuKiem.BackgroundColor = System.Drawing.Color.White;
             this.DGVPhieuKiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVPhieuKiem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVPhieuKiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVPhieuKiem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVPhieuKiem.ColumnHeadersHeight = 30;
             this.DGVPhieuKiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.mapk,
@@ -139,14 +139,14 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.hoanhang,
             this.detail,
             this.remove});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVPhieuKiem.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVPhieuKiem.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGVPhieuKiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVPhieuKiem.EnableHeadersVisualStyles = false;
             this.DGVPhieuKiem.GridColor = System.Drawing.Color.LightGray;
@@ -161,6 +161,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.DGVPhieuKiem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVPhieuKiem.Size = new System.Drawing.Size(1093, 397);
             this.DGVPhieuKiem.TabIndex = 1;
+            this.DGVPhieuKiem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVPhieuKiem_CellContentClick);
             // 
             // mapk
             // 
@@ -222,11 +223,11 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             // hoanhang
             // 
             this.hoanhang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.hoanhang.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.hoanhang.DefaultCellStyle = dataGridViewCellStyle2;
             this.hoanhang.FillWeight = 10F;
             this.hoanhang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hoanhang.HeaderText = "Cân bằng";
@@ -293,7 +294,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cbbSearchNVKiem.StateCommon.ComboBox.Border.Rounding = 15;
             this.cbbSearchNVKiem.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.cbbSearchNVKiem.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSearchNVKiem.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbSearchNVKiem.TabIndex = 23;
             this.cbbSearchNVKiem.SelectedIndexChanged += new System.EventHandler(this.cbbSearchNVKiem_SelectedIndexChanged);
             // 
@@ -418,7 +419,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cbbSearchNVTao.StateCommon.ComboBox.Border.Rounding = 15;
             this.cbbSearchNVTao.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.cbbSearchNVTao.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSearchNVTao.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbSearchNVTao.TabIndex = 20;
             this.cbbSearchNVTao.SelectedIndexChanged += new System.EventHandler(this.cbbSearchNVTao_SelectedIndexChanged);
             // 

@@ -1,6 +1,7 @@
 ﻿using QuanLyKho.BUS;
 using QuanLyKho.DTO;
 using QuanLyKho_CSharp.GUI.PhieuNhap;
+using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,15 +85,18 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             int soPKK = 0;
             foreach (PhieuKiemKeDTO pkk in listLoadData)
             {
-                string NhanVienTao = nvBUS.getNamebyID(pkk.Manhanvientao);
-                string NhanVienKiem = nvBUS.getNamebyID(pkk.Manhanvienkiem);
-                int rowIndex =DGVPhieuKiem.Rows.Add(
-                    $"PKK-{pkk.Maphieukiemke}", NhanVienTao, NhanVienKiem,
-                    pkk.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"),
-                    pkk.Thoigiancanbang.ToString(" HH:mm dd/MM/yyyy"),
-                    pkk.Ghichu, pkk.Trangthai);
-                soPKK++;
-                SetRowColor(rowIndex, pkk);
+                if(pkk.Trangthai != "Đã xóa")
+                {
+                    string NhanVienTao = nvBUS.getNamebyID(pkk.Manhanvientao);
+                    string NhanVienKiem = nvBUS.getNamebyID(pkk.Manhanvienkiem);
+                    int rowIndex = DGVPhieuKiem.Rows.Add(
+                        $"PKK-{pkk.Maphieukiemke}", NhanVienTao, NhanVienKiem,
+                        pkk.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"),
+                        pkk.Thoigiancanbang.ToString(" HH:mm dd/MM/yyyy"),
+                        pkk.Ghichu, pkk.Trangthai);
+                    soPKK++;
+                    SetRowColor(rowIndex, pkk);
+                }
             }
             lbTotal.Text = $"Tổng số phiếu kiểm {soPKK}";
             DGVPhieuKiem.ClearSelection();
@@ -119,6 +123,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         private void FilterData()
         {
+            listPKK = pkkBUS.getListPKK();
             if (listPKK == null) return;
             var filteredList = listPKK.Where(pkk => pkk.Trangthai != "Đã xóa").AsEnumerable();
             string searchText = txtSearchNV.Text.Trim().ToLower();
@@ -131,14 +136,27 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                         pkk.Ghichu.ToLower().Contains(searchText) ||
                         pkk.Trangthai.ToLower().Contains(searchText));
 
-                if (cbbSearchNVTao.Text != "Nhân viên tạo")
-                {
-                    filteredList = filteredList.Where(pkk =>
-                        nvBUS.getNamebyID(pkk.Manhanvientao) == cbbSearchNVTao.Text);
-                }
+            }
+            if (cbbSearchNVTao.Text != "Nhân viên tạo")
+            {
+                filteredList = filteredList.Where(pkk =>
+                    nvBUS.getNamebyID(pkk.Manhanvientao) == cbbSearchNVTao.Text);
+            }
+            if (cbbSearchNVKiem.Text != "Nhân viên kiểm")
+            {
+                filteredList = filteredList.Where(pkk =>
+                    nvBUS.getNamebyID(pkk.Manhanvienkiem) == cbbSearchNVKiem.Text);
+            }
+            //// Lọc theo khoảng thời gian
+            if (dateS.Value != null && dateE.Value != null)
+            {
+                DateTime startDate = dateS.Value.Date;
+                DateTime endDate = dateE.Value.Date.AddDays(1).AddSeconds(-1);
+                filteredList = filteredList.Where(pkk =>
+                    pkk.Thoigiantao >= startDate && pkk.Thoigiantao <= endDate);
             }
             refreshDGV(new BindingList<PhieuKiemKeDTO>(filteredList.ToList()));
-        }
+        } // Tìm kiếm
         private void txtSearchNV_TextChanged(object sender, EventArgs e)
         {
             FilterData();
@@ -164,10 +182,22 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             FilterData();
         }
 
-        private void artanPanel1_Paint(object sender, PaintEventArgs e)
+        private void DGVPhieuKiem_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
+            if (e.RowIndex < 0) return;
+            var currentRow = DGVPhieuKiem.CurrentRow;
+            int mapkk = int.Parse(currentRow.Cells["mapk"].Value.ToString().Replace("PKK-", ""));
+            PhieuKiemKeDTO pkkDTO = pkkBUS.getPKKById(mapkk);
+            if(pkkDTO == null) return;
+            if (DGVPhieuKiem.Columns[e.ColumnIndex].Name == "remove")
+            {
+                DeletePhieuKiemKeForm deleteForm = new DeletePhieuKiemKeForm(pkkDTO);
+                if(deleteForm.ShowDialog() == DialogResult.OK)
+                {
+                    new DeleteSuccessNotification().Show();
+                }
+            }
+        } // nút nhấn
     }
 }
 

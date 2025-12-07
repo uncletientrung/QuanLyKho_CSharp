@@ -37,10 +37,10 @@ namespace QuanLyKho.DAO
             return result;
         }
 
-        public int Delete(int t)
+        public int Delete(int mapkk)
         {
             int result = 0;
-            string sql = $"DELETE FROM phieukiemke WHERE maphieukiemke = {t}";
+            string sql = $"UPDATE phieukiemke SET trangthai = 'Đã xóa' WHERE maphieukiemke = {mapkk}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
