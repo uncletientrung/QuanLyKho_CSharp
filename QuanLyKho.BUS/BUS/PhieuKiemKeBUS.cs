@@ -19,7 +19,7 @@ namespace QuanLyKho.BUS
             }
         }
 
-        public BindingList<PhieuKiemKeDTO> GetAll()
+        public BindingList<PhieuKiemKeDTO> getListPKK()
         {
             return PhieuKiemKeDAO.getInstance().SelectAll();
         }
@@ -45,11 +45,5 @@ namespace QuanLyKho.BUS
         }
 
 
-        public int GetNextId()
-        {
-            var all = GetAll();
-            if (all.Count == 0) return 1;
-            return all[all.Count - 1].Maphieukiemke + 1;
-        }
     }
 }
