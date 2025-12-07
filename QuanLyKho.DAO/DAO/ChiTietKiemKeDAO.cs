@@ -29,9 +29,9 @@ namespace QuanLyKho.DAO
                 foreach (ChiTietKiemKeDTO ct in list)
                 {
                     string sql = $@"
-                        INSERT INTO chitietkiemke(maphieukiemke, masp, tonchinhanh, tonthucte, ghichu) 
+                        INSERT INTO ctkiemke(maphieukiemke, masp, tonchinhanh, tonthucte, ghichu) 
                         VALUES ({ct.Maphieukiemke}, {ct.Masp}, {ct.Tonchinhanh}, {ct.Tonthucte}, 
-                                {ct.Ghichu})";
+                        '{ct.Ghichu}')";
 
                     int result = ConnectionHelper.getExecuteNonQuery(sql);
                     if (result > 0)
@@ -49,7 +49,7 @@ namespace QuanLyKho.DAO
 
         public int Delete(int maPhieuKiemKe)
         {
-            string sql = $"DELETE FROM chitietkiemke WHERE maphieukiemke = {maPhieuKiemKe}";
+            string sql = $"DELETE FROM ctkiemke WHERE maphieukiemke = {maPhieuKiemKe}";
             return ConnectionHelper.getExecuteNonQuery(sql);
         }
 
@@ -64,7 +64,7 @@ namespace QuanLyKho.DAO
             BindingList<ChiTietKiemKeDTO> result = new BindingList<ChiTietKiemKeDTO>();
             try
             {
-                string sql = $"SELECT * FROM chitietkiemke WHERE maphieukiemke = {maPhieuKiemKe}";
+                string sql = $"SELECT * FROM ctkiemke WHERE maphieukiemke = {maPhieuKiemKe}";
                 DataTable dt = ConnectionHelper.getDataTable(sql);
 
                 foreach (DataRow row in dt.Rows)

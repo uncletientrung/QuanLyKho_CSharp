@@ -39,6 +39,18 @@ namespace QuanLyKho.BUS
             listCTKKById = ctkkDAO.SelectAll(mapkk);
             return listCTKKById;
         }
+        public int getMaTiepTheo() { return pkkDAO.GetAutoIncrement(); }
+        public Boolean insertPKK(PhieuKiemKeDTO pkk, BindingList<ChiTietKiemKeDTO> listctpkk)
+        {
+            Boolean result = pkkDAO.Insert(pkk) != 0;
+            if(result)
+            {
+                listPKK.Add(pkk);
+                ctkkDAO.Insert(listctpkk);
+                listCTKKById = listctpkk;
+            }
+            return result;
+        }
 
 
 

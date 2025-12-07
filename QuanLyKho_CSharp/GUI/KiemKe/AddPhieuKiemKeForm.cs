@@ -20,18 +20,17 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
     public partial class AddPhieuKiemKeForm : Form
     {
         private Action btnClose;
-        private Action refreshDGVPKK;
         private NhanVienDTO currentUser;
         private SanPhamBUS spBus = new SanPhamBUS();
+        private PhieuKiemKeBUS pkkBUS= new PhieuKiemKeBUS();
         private BindingList<SanPhamDTO> listSP;
-        private BindingList<SanPhamDTO> listSPDuocThem=new BindingList<SanPhamDTO>();
-        public AddPhieuKiemKeForm(Action btnClose, NhanVienDTO currentU, Action refreshDGVPKK)
+        private BindingList<ChiTietKiemKeDTO> listCTKKDuocThem=new BindingList<ChiTietKiemKeDTO>();
+        public AddPhieuKiemKeForm(Action btnClose, NhanVienDTO currentU)
         {
             InitializeComponent();
             settingDGV();
             this.btnClose = btnClose;
             this.currentUser = currentU;
-            this.refreshDGVPKK = refreshDGVPKK;
             txNVTao.Text= $"{currentU.Manv} | {currentU.Tennv}";
             txNVKiem.Text= $"{currentU.Manv} | {currentU.Tennv}";
             listNVTao.Height = 0;
@@ -169,18 +168,20 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     txSearch.Text = $"{selectedSp.Tensp}";
                     listContainerProduct.Height = 0;
                     txSearch.SelectionStart = txSearch.Text.Length;
-                    ThemSPVaoPhieu(selectedSp);
+                    ChiTietKiemKeDTO ctkkDuocCHon = new ChiTietKiemKeDTO();
+                    ctkkDuocCHon.Masp=selectedSp.Masp;
+                    ThemSPVaoPhieu(ctkkDuocCHon);
                 };
                 listContainerProduct.Controls.Add(item);
             }
             listContainerProduct.Height = Math.Min(resultList.Count * 54 + 10, 300);
         }
 
-        private void ThemSPVaoPhieu(SanPhamDTO spDuocChon)
+        private void ThemSPVaoPhieu(ChiTietKiemKeDTO spDuocChon)
         {
-            var existingSP = listSPDuocThem.FirstOrDefault(x => x.Masp == spDuocChon.Masp);
+            var existingSP = listCTKKDuocThem.FirstOrDefault(x => x.Masp == spDuocChon.Masp);
             string title = existingSP != null ? "Chỉnh sửa số lượng" : "Nhập số lượng thực tế";
-            int soLuongTruyenVao = existingSP != null ? existingSP.Soluong : 1;
+            int soLuongTruyenVao = existingSP != null ? existingSP.Tonthucte : 1;
             int soluongTon = listSP.FirstOrDefault(sp => sp.Masp == spDuocChon.Masp).Soluong;
             var inputForm = new QuantityForm(title, soLuongTruyenVao, soluongTon,"KiemKe");
             if (inputForm.ShowDialog() == DialogResult.OK)
@@ -188,19 +189,16 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 int sl = inputForm.Quantity;
                 if (existingSP != null)
                 {
-                    existingSP.Soluong = sl;
+                    existingSP.Tonthucte = sl;
                 }
                 else
                 {
-                    var spKiemKe = new SanPhamDTO
+                    var spKiemKe = new ChiTietKiemKeDTO
                     {
                         Masp = spDuocChon.Masp,
-                        Tensp = spDuocChon.Tensp,
-                        Hinhanh = spDuocChon.Hinhanh,
-                        Dongia = spDuocChon.Dongia,
-                        Soluong = sl
+                        Tonthucte = sl
                     };
-                    listSPDuocThem.Add(spKiemKe);
+                    listCTKKDuocThem.Add(spKiemKe);
                 }
                 LoadDanhSachKiemKe();
             }
@@ -217,20 +215,28 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
             dgvSPduocThem.Rows.Clear();
             int stt = 1;
-            foreach(SanPhamDTO sp in listSPDuocThem)
+            foreach(ChiTietKiemKeDTO ctkk in listCTKKDuocThem)
             {
-                int tonChiNhanh = listSP.FirstOrDefault(s => s.Masp == sp.Masp).Soluong;
-                int giaTriChenhLech = CalcGiaTriChenhLech( tonChiNhanh, sp.Soluong, sp.Dongia);
+                SanPhamDTO spDuocChon = listSP.FirstOrDefault(sp => sp.Masp == ctkk.Masp);
+                int tonChiNhanh = spDuocChon.Soluong;
+                int giaTriChenhLech = CalcGiaTriChenhLech( tonChiNhanh, ctkk.Tonthucte, spDuocChon.Dongia);
                 string gTriChenhLech = giaTriChenhLech > 0 ? $"+{giaTriChenhLech:N0}đ" : $"{giaTriChenhLech:N0}đ";
                 string lyDo="";
                 if (giaTriChenhLech == 0) lyDo = "Đủ hàng"; 
-                Image imageProduct = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
+                if (giaTriChenhLech < 0) lyDo = "Thiếu sản phâm"; 
+                if (giaTriChenhLech > 0) lyDo = "Thừa sản phẩm"; 
+                Image imageProduct = AddPhieuXuatForm.LoadImageSafe(spDuocChon.Hinhanh);
                 dgvSPduocThem.Rows.Add(
-                    stt, sp.Masp, sp.Tensp, imageProduct, $"{sp.Dongia:N0}đ", tonChiNhanh, sp.Soluong,
-                    tonChiNhanh - sp.Soluong, gTriChenhLech, lyDo
+                    stt, ctkk.Masp, spDuocChon.Tensp, imageProduct, $"{spDuocChon.Dongia:N0}đ", 
+                    tonChiNhanh, ctkk.Tonthucte,
+                    tonChiNhanh - ctkk.Tonthucte, gTriChenhLech, lyDo
                     );
                 stt++;
-                
+                // Nhét dữ liệu vào list để thêm
+                ctkk.Tonchinhanh = tonChiNhanh;
+                ctkk.Ghichu = lyDo;
+                ctkk.Maphieukiemke = pkkBUS.getMaTiepTheo();
+
             }
             dgvSPduocThem.ClearSelection();
         }
@@ -243,15 +249,55 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 if (dgvSPduocThem.CurrentRow == null) return;
                 var selectedRow = dgvSPduocThem.CurrentRow;
                 int maSP = int.Parse(selectedRow.Cells[1].Value.ToString());
-                SanPhamDTO spDuocChon = listSPDuocThem.FirstOrDefault(x => x.Masp == maSP);
-                if (spDuocChon == null) return;
-                if (dgvSPduocThem.Columns[e.ColumnIndex].Name != "remove") ThemSPVaoPhieu(spDuocChon);
+                ChiTietKiemKeDTO ctkkDuocChon = listCTKKDuocThem.FirstOrDefault(x => x.Masp == maSP);
+                if (ctkkDuocChon == null) return;
+                if (dgvSPduocThem.Columns[e.ColumnIndex].Name != "remove" &&
+                    dgvSPduocThem.Columns[e.ColumnIndex].Name != "cbbLyDo") ThemSPVaoPhieu(ctkkDuocChon);
                 else if (dgvSPduocThem.Columns[e.ColumnIndex].Name == "remove")
                 {
-                    listSPDuocThem.Remove(spDuocChon);
+                    listCTKKDuocThem.Remove(ctkkDuocChon);
                     LoadDanhSachKiemKe();
                 }
             }
+        }
+
+        private void artanButton3_Click(object sender, EventArgs e) // Thêm phiếu
+        {
+            PhieuKiemKeDTO pkNew = new PhieuKiemKeDTO();
+            pkNew.Maphieukiemke = pkkBUS.getMaTiepTheo();
+            Boolean checkCanBang = true; // Kiểm tra đã cân bằng hết trong chi tiết chưa
+            foreach(ChiTietKiemKeDTO ctkk in listCTKKDuocThem)
+            {
+                if(ctkk.Tonchinhanh < ctkk.Tonthucte || ctkk.Tonchinhanh > ctkk.Tonthucte)
+                {
+                    checkCanBang = false; break;
+                }
+            }
+            if (!checkCanBang) pkNew.Trangthai = "Chưa cân bằng"; 
+            else pkNew.Trangthai = "Đã cân bằng";
+
+            pkNew.Ghichu = txNote.Text;
+            int manvTao = int.Parse(txNVTao.Text.Split('|')[0].Trim());
+            int manvKiem= int.Parse(txNVKiem.Text.Split('|')[0].Trim());
+            pkNew.Manhanvientao = manvTao;
+            pkNew.Manhanvienkiem = manvKiem;
+            pkNew.Thoigiantao = DateTime.Now;
+
+            // Thêm
+            Boolean result= pkkBUS.insertPKK(pkNew, listCTKKDuocThem);
+            if (result)
+            {
+                new AddSuccessNotification().Show();
+                listCTKKDuocThem.Clear();
+                LoadDanhSachKiemKe();
+                txNote.Clear();
+                txSearch.Clear();
+                dateCreate.Value= DateTime.Now;
+                txNVTao.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
+                txNVKiem.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
+            }
+
+
         }
     }
     

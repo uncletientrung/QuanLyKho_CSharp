@@ -62,7 +62,9 @@ namespace QuanLyKho.DAO
                         {
                             Maphieukiemke = reader.GetInt32("maphieukiemke"),
                             Thoigiantao = reader.GetDateTime("thoigiantao"),
-                            Thoigiancanbang = reader.GetDateTime("thoigiancanbang"),
+                            Thoigiancanbang = reader.IsDBNull(reader.GetOrdinal("thoigiancanbang"))
+                           ? new DateTime(1900, 1, 1)
+                           : reader.GetDateTime("thoigiancanbang"),
                             Trangthai = reader.GetString("trangthai"),
                             Ghichu = reader.GetString("ghichu"),
                             Makhuvuc = -1,

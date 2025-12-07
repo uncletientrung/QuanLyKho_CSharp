@@ -91,10 +91,13 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 {
                     string NhanVienTao = nvBUS.getNamebyID(pkk.Manhanvientao);
                     string NhanVienKiem = nvBUS.getNamebyID(pkk.Manhanvienkiem);
+                    string ThoiGianCanBangStr = pkk.Thoigiancanbang == new DateTime(1900, 1, 1)
+                                        ? "Chưa cân bằng"
+                                        : pkk.Thoigiancanbang.ToString("HH:mm dd/MM/yyyy");
                     int rowIndex = DGVPhieuKiem.Rows.Add(
                         $"PKK-{pkk.Maphieukiemke}", NhanVienTao, NhanVienKiem,
                         pkk.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"),
-                        pkk.Thoigiancanbang.ToString(" HH:mm dd/MM/yyyy"),
+                        ThoiGianCanBangStr,
                         pkk.Ghichu, pkk.Trangthai);
                     soPKK++;
                     SetRowColor(rowIndex, pkk);
@@ -209,8 +212,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             pnlDGV.Visible = false;
             pnlTop.Visible = false;
             AddPhieuKiemKeForm addFormControl = null;
-            addFormControl = new AddPhieuKiemKeForm(() => btnOnClose(addFormControl), currentUser,
-               () => refreshDGV(pkkBUS.getListPKK()));
+            addFormControl = new AddPhieuKiemKeForm(() => btnOnClose(addFormControl), currentUser);
+
             addFormControl.TopLevel = false;
             addFormControl.FormBorderStyle = FormBorderStyle.None;
             addFormControl.Dock = DockStyle.Fill;
@@ -224,6 +227,9 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             pnlTop.Visible = true;
             pnlMain.Controls.Remove(formAdd);
             formAdd.Dispose();
+            pkkBUS = new PhieuKiemKeBUS();
+            listPKK = pkkBUS.getListPKK();
+            refreshDGV(pkkBUS.getListPKK());
         }
     }
 }
