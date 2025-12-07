@@ -43,6 +43,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 
             loadDataChart();
             setUpColumnAndData();
+            btnThongKe_Click(null, null);
 
         }
 
@@ -135,9 +136,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 
                     dgvThongKeTungNgayTrongThang.Rows.Add(
                         tk.Ngay,
-                        tk.Chiphi,
-                        tk.Doanhthu,
-                        tk.Loinhuan
+                        tk.Chiphi.ToString("N0"),
+                        tk.Doanhthu.ToString("N0"),
+                        tk.Loinhuan.ToString("N0")
                     );
                 }
                 dgvThongKeTungNgayTrongThang.ClearSelection();

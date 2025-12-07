@@ -195,9 +195,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 
                     dgvThongKeDoanhThuTheoNam.Rows.Add(
                         tk.Thoigian,
-                        tk.Von,
-                        tk.Doanhthu,
-                        tk.Loinhuan
+                        tk.Von.ToString("N0"),
+                        tk.Doanhthu.ToString("N0"),
+                        tk.Loinhuan.ToString("N0")
                     );
                 }
                 dgvThongKeDoanhThuTheoNam.ClearSelection();

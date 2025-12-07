@@ -34,6 +34,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
         {
             loadDataChart();
             setUpColumnAndData();
+            btnThongKe_Click(null, null);
 
         }
 
@@ -124,9 +125,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 
                     dgvThongKeTuNgayDenNgay.Rows.Add(
                         tk.Ngay.ToString("dd/MM/yyyy"),
-                        tk.Chiphi,
-                        tk.Doanhthu,
-                        tk.Loinhuan
+                        tk.Chiphi.ToString("N0"),
+                        tk.Doanhthu.ToString("N0"),
+                        tk.Loinhuan.ToString("N0")
                     );
                 }
                 dgvThongKeTuNgayDenNgay.ClearSelection();
