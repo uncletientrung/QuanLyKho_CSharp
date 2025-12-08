@@ -21,6 +21,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe
         private void ThongKeGUI_Load(object sender, EventArgs e)
         {
             ShowGiaoDien(new UCTongQuan());
+            SetActiveButton(btnTongQuan);
         }
         private void ShowGiaoDien(UserControl uc)
         {

@@ -84,7 +84,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 dgvThongKeKhachHang.Rows.Add(
                     kh.Stt,
-                    kh.Makh,
+                    $"KH-{kh.Makh}",
                     kh.Tenkh,
                     kh.Soluongphieu,
                     kh.Tongtien
@@ -111,7 +111,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 dgvThongKeKhachHang.Rows.Add(
                     kh.Stt,
-                    kh.Makh,
+                    $"KH-{kh.Makh}",
                     kh.Tenkh,
                     kh.Soluongphieu,
                     kh.Tongtien

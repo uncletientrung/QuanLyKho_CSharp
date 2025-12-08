@@ -88,7 +88,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 dgvThongKeTonKho.Rows.Add(
                     sp.Stt,
-                    sp.Masp,
+                    $"SP-{sp.Masp}",
                     sp.Tensp,
                     sp.TonDauKy,
                     sp.NhapTrongKy,
@@ -112,7 +112,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 dgvThongKeTonKho.Rows.Add(
                     sp.Stt,
-                    sp.Masp,
+                    $"SP-{sp.Masp}",
                     sp.Tensp,
                     sp.TonDauKy,
                     sp.NhapTrongKy,

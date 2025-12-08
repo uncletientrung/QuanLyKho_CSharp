@@ -26,7 +26,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             Image imgSanpham = LoadImageSafe(sp.Hinhanh);
             picHinhanh.Image = imgSanpham;
             picHinhanh.SizeMode=PictureBoxSizeMode.StretchImage;
-            txtMasp.Text= sp.Masp.ToString();
+            txtMasp.Text= "SP-"+sp.Masp.ToString();
             txtMasp.Enabled= false;
             txtTensp.Text= sp.Tensp.ToString();
             txtTensp.Enabled= false;

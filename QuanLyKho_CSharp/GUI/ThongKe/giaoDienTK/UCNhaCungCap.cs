@@ -81,7 +81,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 dgvThongKeNhaCungCap.Rows.Add(
                     ncc.Stt,
-                    ncc.Mancc,
+                    $"NCC-{ncc.Mancc}",
                     ncc.Tenncc,
                     ncc.Soluong,
                     ncc.Tongtien
@@ -108,7 +108,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 dgvThongKeNhaCungCap.Rows.Add(
                     ncc.Stt,
-                    ncc.Mancc,
+                    $"NCC-{ncc.Mancc}",
                     ncc.Tenncc,
                     ncc.Soluong,
                     ncc.Tongtien

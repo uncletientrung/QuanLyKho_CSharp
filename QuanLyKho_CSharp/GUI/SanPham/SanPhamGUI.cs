@@ -130,7 +130,7 @@ namespace QuanLyKho_CSharp.GUI
                     String tenLoai = loaiBUS.LayTenLoai(sp);
                     String tenSize = sizeBUS.LayTenSize(sp);
                     dgvSanPham.Rows.Add(
-                        sp.Masp,
+                        $"SP-{sp.Masp}",
                         sp.Tensp,
                         productImage,
                         sp.Soluong,
@@ -156,7 +156,8 @@ namespace QuanLyKho_CSharp.GUI
         {
             if (e.RowIndex < 0) return;
             var selectedRow = dgvSanPham.CurrentRow;
-            int masp =int.Parse(selectedRow.Cells["masp"].Value.ToString());
+            string fakeMa = selectedRow.Cells["masp"].Value.ToString();
+            int masp = int.Parse(fakeMa.Replace("SP-", ""));
             SanPhamDTO spDuocChon = spBUS.getSPById(masp);
             if (spDuocChon == null) MessageBox.Show($"Sản phẩm không tồn tại");
             if (dgvSanPham.Columns[e.ColumnIndex].Name == "detail")

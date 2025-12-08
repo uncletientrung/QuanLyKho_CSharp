@@ -85,6 +85,7 @@
             // 
             // bieuDoThongKeTuNgayDenNgay
             // 
+            this.bieuDoThongKeTuNgayDenNgay.BackColor = System.Drawing.Color.White;
             this.bieuDoThongKeTuNgayDenNgay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bieuDoThongKeTuNgayDenNgay.Location = new System.Drawing.Point(0, 0);
             this.bieuDoThongKeTuNgayDenNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

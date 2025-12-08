@@ -191,27 +191,28 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         {
 
             // xu ly ma bang return som
-            if (string.IsNullOrWhiteSpace(txtMaSanPham.Text))
-            {
-                MessageBox.Show(
-                    "Mã sản phẩm không được để trống!",
-                    "Lỗi dữ liệu",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(txtMaSanPham.Text))
+            //{
+            //    MessageBox.Show(
+            //        "Mã sản phẩm không được để trống!",
+            //        "Lỗi dữ liệu",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error
+            //    );
+            //    return;
+            //}
 
-            if (!int.TryParse(txtMaSanPham.Text, out int maSp))
-            {
-                MessageBox.Show(
-                    "Mã sản phẩm phải là số nguyên!",
-                    "Lỗi dữ liệu",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return;
-            }
+            //if (!int.TryParse(txtMaSanPham.Text, out int maSp))
+            //{
+            //    MessageBox.Show(
+            //        "Mã sản phẩm phải là số nguyên!",
+            //        "Lỗi dữ liệu",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error
+            //    );
+            //    return;
+            //}
+            int maSp = (int)txtMaSanPham.Tag;
 
 
             SanPhamDTO spTonTai = spBUS.getListSP().FirstOrDefault(sp => sp.Masp == maSp);
@@ -300,7 +301,9 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         private void AddSanPhamForm_Load(object sender, EventArgs e)
         {
 
-            txtMaSanPham.Text =  spBUS.getAutoMaSP().ToString();
+            int id = spBUS.getAutoMaSP();
+            txtMaSanPham.Text = $"SP-{id}";
+            txtMaSanPham.Tag = id;
             txtMaSanPham.Enabled= false;
             listKV = kvBUS.getKhuVucKhoList();
             foreach (KhuVucKhoDTO kv in listKV)

@@ -165,11 +165,14 @@ namespace QuanLyKho_CSharp.GUI.SanPham
 
         private void UpdateSanPhamForm_Load(object sender, EventArgs e)
         {
+            
+            
             txtMaSanPham.Enabled = false;
             Image imgSanpham = LoadImageSafe(sp.Hinhanh);
             picHinhanh.Image = imgSanpham;
             picHinhanh.SizeMode = PictureBoxSizeMode.StretchImage;
-            txtMaSanPham.Text = sp.Masp.ToString();
+
+            txtMaSanPham.Text = "SP-" + sp.Masp.ToString();
             txtTenSanPham.Text=sp.Tensp.ToString();
             txtSoLuong.Text=sp.Soluong.ToString();
             txtDonGia.Text=sp.Dongia.ToString();
