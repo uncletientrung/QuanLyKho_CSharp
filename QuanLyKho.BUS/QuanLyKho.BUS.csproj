@@ -37,20 +37,23 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\QuanLyKho_CSharp\packages\BouncyCastle.Cryptography.2.5.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="ComponentFactory.Krypton.Design">
+      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Design.dll</HintPath>
+    </Reference>
     <Reference Include="ComponentFactory.Krypton.Docking">
-      <HintPath>..\..\..\giaodienmoi\ex\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Navigator">
-      <HintPath>..\..\..\giaodienmoi\ex\Krypton\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Ribbon">
-      <HintPath>..\..\..\giaodienmoi\ex\Krypton\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit">
-      <HintPath>..\..\..\giaodienmoi\ex\Krypton\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Workspace">
-      <HintPath>..\..\..\giaodienmoi\ex\Krypton\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
+      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.30.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\QuanLyKho_CSharp\packages\Google.Protobuf.3.30.0\lib\net45\Google.Protobuf.dll</HintPath>

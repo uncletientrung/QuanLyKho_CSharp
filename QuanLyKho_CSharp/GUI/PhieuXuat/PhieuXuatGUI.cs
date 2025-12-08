@@ -41,7 +41,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             cbbSearch.Items.Add("Nhân viên");
             cbbSearch.Items.Add("Khách hàng");
             cbbSearch.SelectedIndex = 0;
-            cbbSearch.DropDownStyle= ComboBoxStyle.DropDownList;
+            cbbSearch.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void SetupDataGridView()
@@ -128,7 +128,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 ShowDetailPhieuXuatForm(phieuDuocChon);
                 refreshDataGridView(pxBUS.getListPX());
             }
-            if(DGVPhieuXuat.Columns[e.ColumnIndex].Name == "remove"){
+            if (DGVPhieuXuat.Columns[e.ColumnIndex].Name == "remove")
+            {
                 DeletePhieuXuatForm deleteTk = new DeletePhieuXuatForm(phieuDuocChon);
                 deleteTk.ShowDialog();
                 if (deleteTk.DialogResult == DialogResult.OK)
@@ -169,14 +170,15 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
             if (DGVPhieuXuat.Rows.Count == 0)
             {
-                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel Workbook|*.xlsx";
             saveFileDialog.Title = "Chọn nơi lưu file Excel";
-            saveFileDialog.FileName = "DanhSachPhieuXuat.xlsx";
+            saveFileDialog.FileName = $"DanhSachPhieuXuat_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
                 return;
@@ -188,144 +190,248 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             try
             {
                 app = new Excel.Application();
+                app.Visible = false;
+                app.DisplayAlerts = false;
+
                 workbook = app.Workbooks.Add(Type.Missing);
                 worksheet = workbook.ActiveSheet;
-                worksheet.Name = "Danh sách phiếu xuất";
+                worksheet.Name = "Phiếu xuất";
 
                 DateTime now = DateTime.Now;
 
-                worksheet.Cells[1, 1] = $"DANH SÁCH PHIẾU XUẤT";
+                // 1. TIÊU ĐỀ CHÍNH
+                worksheet.Cells[1, 1] = "DANH SÁCH PHIẾU XUẤT";
                 Excel.Range titleRange = worksheet.Range["A1", "F1"];
                 titleRange.Merge();
                 titleRange.Font.Bold = true;
                 titleRange.Font.Size = 16;
                 titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                titleRange.Font.Name = "Times New Roman";
 
-                worksheet.Cells[2, 1] = $"Ngày xuất: {now.ToString("HH:mm dd/MM/yyyy")}";
+                // 2. THÔNG TIN XUẤT BÁO CÁO
+                worksheet.Cells[2, 1] = $"Người xuất: {currentUser.Tennv}";
                 worksheet.Cells[2, 1].Font.Italic = true;
+                worksheet.Cells[2, 1].Font.Size = 10;
 
-                // tiêu đề cột, bỏ qua 2 cột action và hoàn hàng
+                worksheet.Cells[3, 1] = $"Ngày xuất: {now:HH:mm dd/MM/yyyy}";
+                worksheet.Cells[3, 1].Font.Italic = true;
+                worksheet.Cells[3, 1].Font.Size = 10;
+
+                // 3. TIÊU ĐỀ CỘT
+                int startRow = 5; // Dòng bắt đầu dữ liệu
                 int colIndex = 1;
-                for (int i = 0; i < DGVPhieuXuat.Columns.Count - 2; i++) // -2 để bỏ qua 2 cột button
+
+                // Xác định các cột cần xuất (bỏ cột action cuối cùng)
+                var columnsToExport = new List<DataGridViewColumn>();
+                foreach (DataGridViewColumn col in DGVPhieuXuat.Columns)
                 {
-                    worksheet.Cells[4, colIndex] = DGVPhieuXuat.Columns[i].HeaderText;
+                    if (col.Name != "detail" && col.Name != "remove" && col.Name != "hoanhang")
+                    {
+                        columnsToExport.Add(col);
+                    }
+                }
+
+                // Ghi tiêu đề cột
+                foreach (var col in columnsToExport)
+                {
+                    worksheet.Cells[startRow, colIndex] = col.HeaderText;
                     colIndex++;
                 }
 
-                // dữ liệu
+                // 4. DỮ LIỆU
                 for (int i = 0; i < DGVPhieuXuat.Rows.Count; i++)
                 {
                     colIndex = 1;
-                    for (int j = 0; j < DGVPhieuXuat.Columns.Count - 2; j++) // -2 để bỏ qua 2 cột button
+                    foreach (var col in columnsToExport)
                     {
-                        object value = DGVPhieuXuat.Rows[i].Cells[j].Value;
-                        worksheet.Cells[i + 5, colIndex] = value != null ? value.ToString() : "";
+                        object value = DGVPhieuXuat.Rows[i].Cells[col.Index].Value;
+
+                        // Xử lý riêng cho cột tổng tiền (cột số 5, index 4)
+                        if (col.Index == 4 && value != null)
+                        {
+                            string moneyValue = value.ToString();
+                            // Loại bỏ ký tự 'đ' nếu có
+                            moneyValue = moneyValue.Replace("đ", "").Replace(",", "").Trim();
+                            if (decimal.TryParse(moneyValue, out decimal money))
+                            {
+                                worksheet.Cells[startRow + i + 1, colIndex] = money;
+                                // Định dạng số tiền
+                                worksheet.Cells[startRow + i + 1, colIndex].NumberFormat = "#,##0";
+                            }
+                            else
+                            {
+                                worksheet.Cells[startRow + i + 1, colIndex] = value?.ToString() ?? "";
+                            }
+                        }
+                        else
+                        {
+                            worksheet.Cells[startRow + i + 1, colIndex] = value?.ToString() ?? "";
+                        }
                         colIndex++;
                     }
                 }
 
+                // 5. ĐỊNH DẠNG BẢNG
+                int totalRows = DGVPhieuXuat.Rows.Count;
+                int totalCols = columnsToExport.Count;
+
                 // Định dạng header
-                int columnCount = DGVPhieuXuat.Columns.Count - 2;
                 Excel.Range headerRange = worksheet.Range[
-                    worksheet.Cells[4, 1],
-                    worksheet.Cells[4, columnCount]
+                    worksheet.Cells[startRow, 1],
+                    worksheet.Cells[startRow, totalCols]
                 ];
                 headerRange.Font.Bold = true;
-                headerRange.Interior.Color = Color.LightGray;
+                headerRange.Interior.Color = Color.FromArgb(217, 225, 242); // Màu xanh nhạt
                 headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
                 headerRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                headerRange.Borders.Weight = Excel.XlBorderWeight.xlThin;
 
-                // Định dạng dữ liệu
-                Excel.Range dataRange = worksheet.Range[
-                    worksheet.Cells[4, 1],
-                    worksheet.Cells[DGVPhieuXuat.Rows.Count + 4, columnCount]
+                // Định dạng toàn bộ bảng
+                Excel.Range tableRange = worksheet.Range[
+                    worksheet.Cells[startRow, 1],
+                    worksheet.Cells[startRow + totalRows, totalCols]
                 ];
-                dataRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
-                dataRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                tableRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                tableRange.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                tableRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
 
-                // Căn giữa tất cả các cột trừ cột tên
-                for (int col = 1; col <= columnCount; col++)
+                // Căn chỉnh từng cột
+                for (int col = 1; col <= totalCols; col++)
                 {
                     Excel.Range columnRange = worksheet.Range[
-                        worksheet.Cells[5, col],
-                        worksheet.Cells[DGVPhieuXuat.Rows.Count + 4, col]
+                        worksheet.Cells[startRow + 1, col],
+                        worksheet.Cells[startRow + totalRows, col]
                     ];
 
-                    if (col == 2 || col == 3) // Cột Tên NV và Tên KH (căn trái)
-                    {
-                        columnRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-                    }
-                    else // Các cột còn lại căn giữa
+                    // Các cột số (Mã, Tổng tiền) căn giữa
+                    if (col == 1 || col == 5) // Mã phiếu và Tổng tiền
                     {
                         columnRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     }
+                    else // Các cột text căn trái
+                    {
+                        columnRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    }
                 }
 
-                // Auto-fit columns
-                dataRange.Columns.AutoFit();
+                // Cột tổng tiền format
+                if (totalCols >= 5) // Đảm bảo có cột tổng tiền
+                {
+                    Excel.Range moneyColumn = worksheet.Range[
+                        worksheet.Cells[startRow + 1, 5],
+                        worksheet.Cells[startRow + totalRows, 5]
+                    ];
+                    moneyColumn.NumberFormat = "#,##0\" ₫\"";
+                    moneyColumn.Font.Color = Color.Black;
+                }
 
-                // Tổng kết - Sử dụng merge cell để hiển thị đẹp hơn
-                int lastRow = DGVPhieuXuat.Rows.Count + 5;
+                // 6. TỔNG KẾT - ĐẶT Ở CỘT H VÀ I
+                int summaryRow = startRow + totalRows + 2;
 
-                // Tổng số phiếu - Merge từ cột A đến B
-                Excel.Range totalPhieuRange = worksheet.Range[worksheet.Cells[lastRow + 1, 1], worksheet.Cells[lastRow + 1, 2]];
+                // Tổng số phiếu - Chiếm 2 cột H5,I5
+                Excel.Range totalPhieuRange = worksheet.Range[worksheet.Cells[summaryRow, 8], worksheet.Cells[summaryRow, 9]];
                 totalPhieuRange.Merge();
                 totalPhieuRange.Value = "TỔNG SỐ PHIẾU:";
                 totalPhieuRange.Font.Bold = true;
-                totalPhieuRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                totalPhieuRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                totalPhieuRange.Font.Size = 11;
 
-                worksheet.Cells[lastRow + 1, 3] = DGVPhieuXuat.Rows.Count;
-                worksheet.Cells[lastRow + 1, 3].Font.Bold = true;
-                worksheet.Cells[lastRow + 1, 3].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                worksheet.Cells[summaryRow, 10] = totalRows;
+                worksheet.Cells[summaryRow, 10].Font.Bold = true;
+                worksheet.Cells[summaryRow, 10].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                worksheet.Cells[summaryRow, 10].Font.Size = 11;
+                worksheet.Cells[summaryRow, 10].NumberFormat = "#,##0";
+
+                // Tổng tiền - Chiếm 2 cột H6,I6
+                Excel.Range totalCostLabelRange = worksheet.Range[worksheet.Cells[summaryRow + 1, 8], worksheet.Cells[summaryRow + 1, 9]];
+                totalCostLabelRange.Merge();
+                totalCostLabelRange.Value = "TỔNG DOANH THU:";
+                totalCostLabelRange.Font.Bold = true;
+                totalCostLabelRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                totalCostLabelRange.Font.Size = 11;
 
                 // Tính tổng tiền
                 decimal tongTien = 0;
                 for (int i = 0; i < DGVPhieuXuat.Rows.Count; i++)
                 {
-                    if (DGVPhieuXuat.Rows[i].Cells["TongTien"].Value != null)
+                    if (DGVPhieuXuat.Rows[i].Cells[4].Value != null)
                     {
-                        tongTien += Convert.ToDecimal(DGVPhieuXuat.Rows[i].Cells["TongTien"].Value);
+                        string moneyValue = DGVPhieuXuat.Rows[i].Cells[4].Value.ToString()
+                            .Replace("đ", "").Replace(",", "").Trim();
+                        if (decimal.TryParse(moneyValue, out decimal money))
+                        {
+                            tongTien += money;
+                        }
                     }
                 }
 
-                // Tổng doanh thu - Merge từ cột A đến B
-                Excel.Range totalDoanhThuLabelRange = worksheet.Range[worksheet.Cells[lastRow + 2, 1], worksheet.Cells[lastRow + 2, 2]];
-                totalDoanhThuLabelRange.Merge();
-                totalDoanhThuLabelRange.Value = "TỔNG DOANH THU:";
-                totalDoanhThuLabelRange.Font.Bold = true;
-                totalDoanhThuLabelRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                worksheet.Cells[summaryRow + 1, 10] = tongTien;
+                worksheet.Cells[summaryRow + 1, 10].NumberFormat = "#,##0\" ₫\"";
+                worksheet.Cells[summaryRow + 1, 10].Font.Bold = true;
+                worksheet.Cells[summaryRow + 1, 10].Font.Color = Color.Red;
+                worksheet.Cells[summaryRow + 1, 10].Font.Size = 11;
 
-                // Merge từ cột C đến D cho giá trị tổng doanh thu
-                Excel.Range totalDoanhThuValueRange = worksheet.Range[worksheet.Cells[lastRow + 2, 3], worksheet.Cells[lastRow + 2, 4]];
-                totalDoanhThuValueRange.Merge();
-                totalDoanhThuValueRange.Value = tongTien.ToString("N0") + " VNĐ";
-                totalDoanhThuValueRange.Font.Bold = true;
-                totalDoanhThuValueRange.Font.Color = Color.Red;
-                totalDoanhThuValueRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                // Thêm border cho phần tổng kết
+                Excel.Range summaryBorderRange = worksheet.Range[
+                    worksheet.Cells[summaryRow, 8],
+                    worksheet.Cells[summaryRow + 1, 10]
+                ];
+                summaryBorderRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                summaryBorderRange.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                summaryBorderRange.Borders.Color = Color.Black;
 
-                // ---- LƯU FILE ----
+                // 7. TỰ ĐỘNG ĐIỀU CHỈNH CỘT
+                tableRange.Columns.AutoFit();
+
+                // 8. LƯU FILE
                 workbook.SaveAs(saveFileDialog.FileName);
-                workbook.Close();
+                workbook.Close(true);
                 app.Quit();
 
-                MessageBox.Show("Xuất Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Xuất Excel thành công!\nFile: {Path.GetFileName(saveFileDialog.FileName)}",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // ---- MỞ FILE SAU KHI LƯU ----
+                // 9. MỞ FILE VỪA XUẤT
                 if (File.Exists(saveFileDialog.FileName))
                 {
-                    Process.Start(new ProcessStartInfo(saveFileDialog.FileName) { UseShellExecute = true });
+                    try
+                    {
+                        Process.Start(new ProcessStartInfo(saveFileDialog.FileName) { UseShellExecute = true });
+                    }
+                    catch
+                    {
+                        // Nếu không mở được, chỉ cần thông báo
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Có lỗi xảy ra khi xuất Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Có lỗi xảy ra khi xuất Excel:\n{ex.Message}",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
-                if (workbook != null) Marshal.ReleaseComObject(workbook);
-                if (app != null) Marshal.ReleaseComObject(app);
+                // GIẢI PHÓNG TÀI NGUYÊN ĐÚNG CÁCH
+                if (worksheet != null)
+                {
+                    Marshal.ReleaseComObject(worksheet);
+                    worksheet = null;
+                }
+                if (workbook != null)
+                {
+                    Marshal.ReleaseComObject(workbook);
+                    workbook = null;
+                }
+                if (app != null)
+                {
+                    Marshal.FinalReleaseComObject(app);
+                    app = null;
+                }
+
+                // Gọi GC để giải phóng bộ nhớ
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
         } // Xuất Excel
 
@@ -583,7 +689,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void txtSMoney_MouseLeave(object sender, EventArgs e)
         {
-            if(txtSMoney.Text == "" || txtSMoney.Text == null)
+            if (txtSMoney.Text == "" || txtSMoney.Text == null)
             {
                 txtSMoney.Text = "Tiền từ";
                 if (txtEMoney.Text == "" || txtEMoney.Text == null)
@@ -624,6 +730,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
             if (txtSMoney.Text == "Tiền từ")
                 txtSMoney.Clear();
+        }
+
+        private void btnNhapExcel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

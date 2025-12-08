@@ -62,6 +62,7 @@
             this.dateS = new QuanLyKho_CSharp.Helper.component.RJDatePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.lbTotalStatus = new System.Windows.Forms.Panel();
+            this.btnNhapExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.lbTotal = new System.Windows.Forms.Label();
             this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pnlMain = new System.Windows.Forms.Panel();
@@ -161,6 +162,7 @@
             this.mapx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.mapx.FillWeight = 10F;
             this.mapx.HeaderText = "Mã";
+            this.mapx.MinimumWidth = 6;
             this.mapx.Name = "mapx";
             this.mapx.ReadOnly = true;
             this.mapx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -170,6 +172,7 @@
             this.nv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nv.FillWeight = 20F;
             this.nv.HeaderText = "Nhân viên tạo";
+            this.nv.MinimumWidth = 6;
             this.nv.Name = "nv";
             this.nv.ReadOnly = true;
             // 
@@ -178,6 +181,7 @@
             this.kh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.kh.FillWeight = 20F;
             this.kh.HeaderText = "Khách hàng";
+            this.kh.MinimumWidth = 6;
             this.kh.Name = "kh";
             this.kh.ReadOnly = true;
             // 
@@ -186,6 +190,7 @@
             this.thoigiantao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.thoigiantao.FillWeight = 20F;
             this.thoigiantao.HeaderText = "Thời gian tạo";
+            this.thoigiantao.MinimumWidth = 6;
             this.thoigiantao.Name = "thoigiantao";
             this.thoigiantao.ReadOnly = true;
             // 
@@ -194,6 +199,7 @@
             this.tongtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.tongtien.FillWeight = 10F;
             this.tongtien.HeaderText = "Tổng tiền";
+            this.tongtien.MinimumWidth = 6;
             this.tongtien.Name = "tongtien";
             this.tongtien.ReadOnly = true;
             // 
@@ -202,6 +208,7 @@
             this.trangthai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.trangthai.FillWeight = 15F;
             this.trangthai.HeaderText = "Trạng thái";
+            this.trangthai.MinimumWidth = 6;
             this.trangthai.Name = "trangthai";
             this.trangthai.ReadOnly = true;
             // 
@@ -214,11 +221,13 @@
             this.hoanhang.DefaultCellStyle = dataGridViewCellStyle2;
             this.hoanhang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hoanhang.HeaderText = "Hoàn hàng";
+            this.hoanhang.MinimumWidth = 6;
             this.hoanhang.Name = "hoanhang";
             this.hoanhang.ReadOnly = true;
             this.hoanhang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.hoanhang.Text = "Hoàn hàng";
             this.hoanhang.UseColumnTextForButtonValue = true;
+            this.hoanhang.Width = 125;
             // 
             // detail
             // 
@@ -226,10 +235,11 @@
             this.detail.HeaderText = "";
             this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
             this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.detail.MinimumWidth = 6;
             this.detail.Name = "detail";
             this.detail.ReadOnly = true;
             this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.Width = 5;
+            this.detail.Width = 6;
             // 
             // remove
             // 
@@ -237,9 +247,10 @@
             this.remove.HeaderText = "";
             this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
             this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.MinimumWidth = 6;
             this.remove.Name = "remove";
             this.remove.ReadOnly = true;
-            this.remove.Width = 5;
+            this.remove.Width = 6;
             // 
             // pnlTop
             // 
@@ -322,7 +333,7 @@
             this.txtEMoney.ForeColor = System.Drawing.Color.White;
             this.txtEMoney.Location = new System.Drawing.Point(39, 10);
             this.txtEMoney.Name = "txtEMoney";
-            this.txtEMoney.Size = new System.Drawing.Size(69, 19);
+            this.txtEMoney.Size = new System.Drawing.Size(69, 23);
             this.txtEMoney.TabIndex = 13;
             this.txtEMoney.Text = "Đến tiền";
             this.txtEMoney.TextChanged += new System.EventHandler(this.txtEMoney_TextChanged);
@@ -373,7 +384,7 @@
             this.txtSearchNV.ForeColor = System.Drawing.Color.White;
             this.txtSearchNV.Location = new System.Drawing.Point(39, 6);
             this.txtSearchNV.Name = "txtSearchNV";
-            this.txtSearchNV.Size = new System.Drawing.Size(204, 23);
+            this.txtSearchNV.Size = new System.Drawing.Size(204, 29);
             this.txtSearchNV.TabIndex = 13;
             this.txtSearchNV.TextChanged += new System.EventHandler(this.txtSearchNV_TextChanged);
             // 
@@ -401,11 +412,13 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.OverrideDefault.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.btnThem.Size = new System.Drawing.Size(40, 40);
             this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnThem.StateCommon.Back.ColorAngle = 45F;
+            this.btnThem.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnThem.StateCommon.Border.ColorAngle = 45F;
@@ -413,11 +426,14 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnThem.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.btnThem.StateCommon.Border.Rounding = 10;
             this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
             this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.btnThem.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.White;
             this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
@@ -441,6 +457,7 @@
             this.cbbSearch.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.cbbSearch.StateCommon.ComboBox.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.cbbSearch.StateCommon.ComboBox.Border.Rounding = 10;
             this.cbbSearch.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
             this.cbbSearch.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -474,7 +491,7 @@
             this.txtSMoney.ForeColor = System.Drawing.Color.White;
             this.txtSMoney.Location = new System.Drawing.Point(39, 10);
             this.txtSMoney.Name = "txtSMoney";
-            this.txtSMoney.Size = new System.Drawing.Size(69, 19);
+            this.txtSMoney.Size = new System.Drawing.Size(69, 23);
             this.txtSMoney.TabIndex = 13;
             this.txtSMoney.Text = "Tiền từ";
             this.txtSMoney.TextChanged += new System.EventHandler(this.txtSMoney_TextChanged);
@@ -526,12 +543,13 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.label2.Location = new System.Drawing.Point(3, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(240, 29);
+            this.label2.Size = new System.Drawing.Size(306, 36);
             this.label2.TabIndex = 20;
             this.label2.Text = "Danh sách phiếu xuất";
             // 
             // lbTotalStatus
             // 
+            this.lbTotalStatus.Controls.Add(this.btnNhapExcel);
             this.lbTotalStatus.Controls.Add(this.lbTotal);
             this.lbTotalStatus.Controls.Add(this.btnXuatExcel);
             this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
@@ -539,6 +557,42 @@
             this.lbTotalStatus.Name = "lbTotalStatus";
             this.lbTotalStatus.Size = new System.Drawing.Size(1103, 48);
             this.lbTotalStatus.TabIndex = 14;
+            // 
+            // btnNhapExcel
+            // 
+            this.btnNhapExcel.Location = new System.Drawing.Point(812, 3);
+            this.btnNhapExcel.Name = "btnNhapExcel";
+            this.btnNhapExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.OverrideDefault.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.btnNhapExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnNhapExcel.Size = new System.Drawing.Size(145, 40);
+            this.btnNhapExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Back.ColorAngle = 45F;
+            this.btnNhapExcel.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.btnNhapExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StateCommon.Border.ColorAngle = 45F;
+            this.btnNhapExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnNhapExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnNhapExcel.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.btnNhapExcel.StateCommon.Border.Rounding = 10;
+            this.btnNhapExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnNhapExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnNhapExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnNhapExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapExcel.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.btnNhapExcel.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
+            this.btnNhapExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnNhapExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnNhapExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnNhapExcel.TabIndex = 24;
+            this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapExcel.Values.Image")));
+            this.btnNhapExcel.Values.Text = "Nhập Excel";
+            this.btnNhapExcel.Click += new System.EventHandler(this.btnNhapExcel_Click);
             // 
             // lbTotal
             // 
@@ -548,7 +602,7 @@
             this.lbTotal.ForeColor = System.Drawing.Color.Black;
             this.lbTotal.Location = new System.Drawing.Point(0, 0);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(146, 18);
+            this.lbTotal.Size = new System.Drawing.Size(187, 23);
             this.lbTotal.TabIndex = 15;
             this.lbTotal.Text = "Tổng số phiếu xuất: x";
             // 
@@ -558,11 +612,13 @@
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.OverrideDefault.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.btnXuatExcel.Size = new System.Drawing.Size(116, 40);
             this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.btnXuatExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StateCommon.Border.ColorAngle = 45F;
@@ -570,17 +626,21 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnXuatExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnXuatExcel.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.btnXuatExcel.StateCommon.Border.Rounding = 10;
             this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
             this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold);
+            this.btnXuatExcel.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
             this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
             this.btnXuatExcel.TabIndex = 12;
             this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
             this.btnXuatExcel.Values.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuat_Click);
             // 
             // pnlMain
             // 
@@ -595,7 +655,7 @@
             // 
             // PhieuXuatGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);
@@ -658,5 +718,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn hoanhang;
         private System.Windows.Forms.DataGridViewImageColumn detail;
         private System.Windows.Forms.DataGridViewImageColumn remove;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNhapExcel;
     }
 }
