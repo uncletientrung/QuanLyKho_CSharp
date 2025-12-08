@@ -21,9 +21,25 @@ namespace QuanLyKho.DAO
         public int Insert(PhieuKiemKeDTO t)
         {
             int result = 0;
-            string sql = $"INSERT INTO phieukiemke(manhanvientao, manhanvienkiem, thoigiantao, makhuvuc, ghichu, trangthai) " +
-                         $"VALUES ({t.Manhanvientao}, {t.Manhanvienkiem}, '{t.Thoigiantao:yyyy-MM-dd HH:mm:ss}', {t.Makhuvuc}, '{t.Ghichu}', '{t.Trangthai}')";
-            result = ConnectionHelper.getExecuteNonQuery(sql);
+            string sql = "INSERT INTO phieukiemke(manhanvientao, manhanvienkiem, thoigiantao, thoigiancanbang, ghichu, trangthai) " +
+                         "VALUES (@manhanvientao, @manhanvienkiem, @thoigiantao, @thoigiancanbang, @ghichu, @trangthai)";
+
+            ConnectionHelper.getConnection();
+            using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+            {
+                cmd.Parameters.AddWithValue("@manhanvientao", t.Manhanvientao);
+                cmd.Parameters.AddWithValue("@manhanvienkiem", t.Manhanvienkiem);
+                cmd.Parameters.AddWithValue("@thoigiantao", t.Thoigiantao);
+                if (t.Thoigiancanbang != null)
+                    cmd.Parameters.AddWithValue("@thoigiancanbang", t.Thoigiancanbang);
+
+
+                cmd.Parameters.AddWithValue("@ghichu", t.Ghichu ?? "");
+                cmd.Parameters.AddWithValue("@trangthai", t.Trangthai ?? "Chưa cân bằng");
+
+                result = cmd.ExecuteNonQuery();
+            }
+            ConnectionHelper.closeConnection();
             return result;
         }
 

@@ -26,7 +26,7 @@ namespace QuanLyKho.BUS
         public PhieuKiemKeDTO getPKKById(int id)
         {
             PhieuKiemKeDTO result = new PhieuKiemKeDTO();
-            return getListPKK().FirstOrDefault(pkk => pkk.Manhanvienkiem == id);
+            return getListPKK().FirstOrDefault(pkk => pkk.Maphieukiemke == id);
         }
 
         public Boolean Delete(int mapkk)

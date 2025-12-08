@@ -91,7 +91,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 {
                     string NhanVienTao = nvBUS.getNamebyID(pkk.Manhanvientao);
                     string NhanVienKiem = nvBUS.getNamebyID(pkk.Manhanvienkiem);
-                    string ThoiGianCanBangStr = pkk.Thoigiancanbang == new DateTime(1900, 1, 1)
+                    string ThoiGianCanBangStr = pkk.Thoigiancanbang == new DateTime(1, 1, 1)
                                         ? "Chưa cân bằng"
                                         : pkk.Thoigiancanbang.ToString("HH:mm dd/MM/yyyy");
                     int rowIndex = DGVPhieuKiem.Rows.Add(
@@ -192,8 +192,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             if (e.RowIndex < 0) return;
             var currentRow = DGVPhieuKiem.CurrentRow;
             int mapkk = int.Parse(currentRow.Cells["mapk"].Value.ToString().Replace("PKK-", ""));
+
             PhieuKiemKeDTO pkkDTO = pkkBUS.getPKKById(mapkk);
-            if(pkkDTO == null) return;
+            if (pkkDTO == null) return;
+
             if (DGVPhieuKiem.Columns[e.ColumnIndex].Name == "remove")
             {
                 DeletePhieuKiemKeForm deleteForm = new DeletePhieuKiemKeForm(pkkDTO);

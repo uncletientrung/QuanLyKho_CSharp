@@ -266,22 +266,26 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             PhieuKiemKeDTO pkNew = new PhieuKiemKeDTO();
             pkNew.Maphieukiemke = pkkBUS.getMaTiepTheo();
             Boolean checkCanBang = true; // Kiểm tra đã cân bằng hết trong chi tiết chưa
-            foreach(ChiTietKiemKeDTO ctkk in listCTKKDuocThem)
+            pkNew.Ghichu = txNote.Text;
+            int manvTao = int.Parse(txNVTao.Text.Split('|')[0].Trim());
+            int manvKiem = int.Parse(txNVKiem.Text.Split('|')[0].Trim());
+            pkNew.Manhanvientao = manvTao;
+            pkNew.Manhanvienkiem = manvKiem;
+            pkNew.Thoigiantao = DateTime.Now;
+            foreach (ChiTietKiemKeDTO ctkk in listCTKKDuocThem)
             {
                 if(ctkk.Tonchinhanh < ctkk.Tonthucte || ctkk.Tonchinhanh > ctkk.Tonthucte)
                 {
                     checkCanBang = false; break;
                 }
             }
-            if (!checkCanBang) pkNew.Trangthai = "Chưa cân bằng"; 
-            else pkNew.Trangthai = "Đã cân bằng";
+            if (!checkCanBang) pkNew.Trangthai = "Chưa cân bằng";
+            else { 
+                pkNew.Trangthai = "Đã cân bằng";
+                pkNew.Thoigiancanbang = DateTime.Now;
+            }
 
-            pkNew.Ghichu = txNote.Text;
-            int manvTao = int.Parse(txNVTao.Text.Split('|')[0].Trim());
-            int manvKiem= int.Parse(txNVKiem.Text.Split('|')[0].Trim());
-            pkNew.Manhanvientao = manvTao;
-            pkNew.Manhanvienkiem = manvKiem;
-            pkNew.Thoigiantao = DateTime.Now;
+           
 
             // Thêm
             Boolean result= pkkBUS.insertPKK(pkNew, listCTKKDuocThem);
