@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 06, 2025 lúc 12:16 PM
+-- Thời gian đã tạo: Th12 08, 2025 lúc 10:52 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -60,9 +60,26 @@ CREATE TABLE `ctkiemke` (
   `maphieukiemke` int(11) NOT NULL,
   `masp` int(11) DEFAULT NULL,
   `tonchinhanh` int(50) NOT NULL DEFAULT 0,
-  `tonthucthe` int(50) NOT NULL DEFAULT 0,
-  `ghichu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+  `tonthucte` int(50) NOT NULL DEFAULT 0,
+  `ghichu` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ctkiemke`
+--
+
+INSERT INTO `ctkiemke` (`maphieukiemke`, `masp`, `tonchinhanh`, `tonthucte`, `ghichu`) VALUES
+(4, 1, 991, 990, 'Mất'),
+(4, 6, 125, 125, 'Đủ'),
+(19, 3, 31, 31, 'Đủ hàng'),
+(20, 3, 31, 13, 'Thiếu sản phâm'),
+(21, 3, 31, 13, 'Thiếu sản phâm'),
+(22, 3, 31, 31, 'Đủ hàng'),
+(23, 3, 31, 1, 'Thiếu sản phâm'),
+(24, 3, 31, 1, 'Thiếu sản phâm'),
+(25, 3, 31, 1, 'Thiếu sản phâm'),
+(25, 2, 58, 1, 'Thiếu sản phâm'),
+(25, 6, 125, 1, 'Thiếu sản phâm');
 
 -- --------------------------------------------------------
 
@@ -148,7 +165,15 @@ INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`, `trangTha
 (219, 1, 20, 80000, 2),
 (219, 2, 1, 60000, 2),
 (220, 1, 20, 80000, 2),
-(220, 2, 1, 60000, 2);
+(220, 2, 1, 60000, 2),
+(221, 1, 10, 80000, 1),
+(221, 3, 1, 67000, 2),
+(221, 2, 10, 60000, 1),
+(222, 3, 1, 67000, 2),
+(222, 2, 1, 60000, 2),
+(222, 1, 1, 80000, 2),
+(223, 3, 1, 67000, 1),
+(224, 1, 1, 80000, 1);
 
 -- --------------------------------------------------------
 
@@ -432,13 +457,30 @@ INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 CREATE TABLE `phieukiemke` (
   `maphieukiemke` int(11) NOT NULL,
   `thoigiantao` datetime NOT NULL DEFAULT current_timestamp(),
-  `thoigiancanbang` datetime NOT NULL DEFAULT current_timestamp(),
+  `thoigiancanbang` datetime DEFAULT NULL,
   `trangthai` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `ghichu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `makhuvuc` int(11) DEFAULT NULL,
   `manhanvientao` int(11) DEFAULT NULL,
   `manhanvienkiem` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `phieukiemke`
+--
+
+INSERT INTO `phieukiemke` (`maphieukiemke`, `thoigiantao`, `thoigiancanbang`, `trangthai`, `ghichu`, `makhuvuc`, `manhanvientao`, `manhanvienkiem`) VALUES
+(2, '2025-12-07 19:52:56', '2025-12-07 19:52:56', 'Đã xóa', 'Đã cân bằng', 2, 1, 1),
+(3, '2025-12-07 19:55:40', '2025-12-07 19:55:40', 'Đã xóa', 'Dư hàng - 30', 3, 1, 1),
+(4, '2025-12-07 22:15:14', '2025-12-07 22:15:14', 'Chưa cân bằng', 'Mất 1 áo hoodie', NULL, 6, 3),
+(19, '2025-12-08 14:24:16', '2025-12-08 14:24:16', 'Đã cân bằng', 'đủ đều', NULL, 6, 6),
+(20, '2025-12-08 14:24:33', '0001-01-01 00:00:00', 'Chưa cân bằng', 'xuất ', NULL, 6, 6),
+(21, '2025-12-08 14:36:56', '2025-12-08 15:14:40', 'Đã cân bằng', 'Chưa đủ', NULL, 6, 6),
+(22, '2025-12-08 14:37:06', '2025-12-08 14:37:06', 'Đã cân bằng', '', NULL, 6, 6),
+(23, '2025-12-08 15:13:51', '0001-01-01 00:00:00', 'Đã xóa', 'a', NULL, 6, 6),
+(24, '2025-12-08 15:26:14', '2025-12-08 15:26:21', 'Đã cân bằng', 'a', NULL, 6, 6),
+(25, '2025-12-08 16:45:46', '0001-01-01 00:00:00', 'Chưa cân bằng', 'tesst kieemr nhieeuf', NULL, 6, 6),
+(26, '2025-12-08 16:47:24', '2025-12-08 16:47:24', 'Đã xóa', '', NULL, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -500,15 +542,19 @@ INSERT INTO `phieuxuat` (`maphieuxuat`, `manv`, `makh`, `thoigiantao`, `tongtien
 (209, 6, 7, '2025-12-04 23:30:25', 487000, 0),
 (210, 6, 13, '2025-12-05 14:19:41', 1, 0),
 (211, 6, 13, '2025-12-06 16:36:23', 207000, 3),
-(212, 6, 11, '2025-12-06 16:53:58', 207000, 3),
+(212, 6, 11, '2025-12-06 16:53:58', 207000, 0),
 (213, 6, 13, '2025-12-06 17:01:41', 800000, 3),
 (214, 6, 13, '2025-12-06 17:12:39', 207000, 3),
-(215, 6, 13, '2025-12-06 17:21:31', 123, 3),
+(215, 6, 13, '2025-12-06 17:21:31', 123, 0),
 (216, 6, 11, '2025-12-06 17:29:28', 60000, 3),
 (217, 6, 13, '2025-12-06 17:46:48', 207000, 3),
 (218, 6, 13, '2025-12-06 17:50:53', 140000, 3),
 (219, 6, 14, '2025-12-06 17:53:13', 1660000, 3),
-(220, 6, 11, '2025-12-06 17:53:48', 1660000, 3);
+(220, 6, 11, '2025-12-06 17:53:48', 1660000, 3),
+(221, 6, 11, '2025-12-07 19:51:51', 1467000, 2),
+(222, 6, 15, '2025-12-08 04:35:20', 207000, 3),
+(223, 6, 13, '2025-12-08 13:51:46', 67000, 1),
+(224, 6, 13, '2025-12-08 14:07:27', 80000, 1);
 
 -- --------------------------------------------------------
 
@@ -534,8 +580,8 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `soluong`, `dongia`, `machatlieu`, `maloai`, `makhuvuc`, `masize`, `TrangThai`) VALUES
-(1, 'Áo Lovepik', 'images/stocks/ao1.png', 1001, 80000, 1, 1, 1, 3, 1),
-(2, 'áo thun trắng', 'images/stocks/ao2.png', 68, 60000, 1, 2, 1, 5, 1),
+(1, 'Áo Lovepik', 'images/stocks/ao1.png', 990, 80000, 1, 1, 1, 3, 1),
+(2, 'áo thun trắng', 'images/stocks/ao2.png', 58, 60000, 1, 2, 1, 5, 1),
 (3, 'áo da bò', 'images/stocks/ao3.png', 31, 67000, 2, 1, 1, 5, 1),
 (5, 'ssss', 'images/stocks/shirt_plusIcon.png', 0, 1, 3, 3, 1, 5, 1),
 (6, 'Áo lót', 'images/stocks/bus_7828520_639005483916817061.png', 125, 123, 2, 1, 3, 1, 1);
@@ -672,7 +718,6 @@ ALTER TABLE `nhomquyen`
 --
 ALTER TABLE `phieukiemke`
   ADD PRIMARY KEY (`maphieukiemke`),
-  ADD KEY `FK_phieukiemke_khuvuc` (`makhuvuc`),
   ADD KEY `FK_phieukiemke_nhanvien` (`manhanvienkiem`),
   ADD KEY `FK_phieukiemke_taikhoan` (`manhanvientao`);
 
@@ -771,7 +816,7 @@ ALTER TABLE `nhomquyen`
 -- AUTO_INCREMENT cho bảng `phieukiemke`
 --
 ALTER TABLE `phieukiemke`
-  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `phieunhap`
@@ -783,7 +828,7 @@ ALTER TABLE `phieunhap`
 -- AUTO_INCREMENT cho bảng `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
-  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
