@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.Collections;
+using Org.BouncyCastle.Asn1.Mozilla;
 using QuanLyKho.DAO;
 using QuanLyKho.DTO;
 using System;
@@ -173,6 +174,10 @@ namespace QuanLyKho.BUS
         public bool updateSoLuongTon(int maSP, int soLuongThem)
         {
             return spDAO.updateSoLuongTon(maSP, soLuongThem);
+        }
+        public SanPhamDTO getSPByIdSP(int masp)
+        {
+            return listSP.FirstOrDefault(sp => sp.Masp == masp);
         }
 
 

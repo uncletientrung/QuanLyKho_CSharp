@@ -46,10 +46,22 @@ namespace QuanLyKho.DAO
         public int Update(PhieuKiemKeDTO t)
         {
             int result = 0;
-            string sql = $"UPDATE phieukiemke SET manhanvientao = {t.Manhanvientao}, manhanvienkiem = {t.Manhanvienkiem}, " +
-                         $"thoigiantao = '{t.Thoigiantao:yyyy-MM-dd HH:mm:ss}', makhuvuc = {t.Makhuvuc}, ghichu = '{t.Ghichu}', trangthai = '{t.Trangthai}' " +
-                         $"WHERE maphieukiemke = {t.Maphieukiemke}";
-            result = ConnectionHelper.getExecuteNonQuery(sql);
+
+            string sql = "UPDATE phieukiemke SET " +
+                         "thoigiancanbang = @thoigiancanbang, " +
+                         "trangthai = @trangthai " +
+                         "WHERE maphieukiemke = @maphieukiemke";
+
+            ConnectionHelper.getConnection();
+            using (MySqlCommand cmd = new MySqlCommand(sql, ConnectionHelper.conn))
+            {
+                if(t.Thoigiancanbang != null) cmd.Parameters.AddWithValue("@thoigiancanbang", t.Thoigiancanbang);
+                cmd.Parameters.AddWithValue("@trangthai", t.Trangthai ?? "Chưa cân bằng");
+                cmd.Parameters.AddWithValue("@maphieukiemke", t.Maphieukiemke);
+
+                result = cmd.ExecuteNonQuery();
+            }
+            ConnectionHelper.closeConnection();
             return result;
         }
 

@@ -263,17 +263,23 @@
     <Compile Include="GUI\KiemKe\AddPhieuKiemKeForm.Designer.cs">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\KiemKe\CanBangForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\KiemKe\CanBangForm.Designer.cs">
+      <DependentUpon>CanBangForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\KiemKe\DeletePhieuKiemKeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\KiemKe\DeletePhieuKiemKeForm.Designer.cs">
       <DependentUpon>DeletePhieuKiemKeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\KiemKe\DetailPhieuKiemKeForm.cs">
+    <Compile Include="GUI\KiemKe\DetailPhieuKiemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\KiemKe\DetailPhieuKiemKeForm.Designer.cs">
-      <DependentUpon>DetailPhieuKiemKeForm.cs</DependentUpon>
+    <Compile Include="GUI\KiemKe\DetailPhieuKiemForm.Designer.cs">
+      <DependentUpon>DetailPhieuKiemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\KiemKe\KiemKeGUI.cs">
       <SubType>Form</SubType>
@@ -767,11 +773,14 @@
     <EmbeddedResource Include="GUI\KiemKe\AddPhieuKiemKeForm.resx">
       <DependentUpon>AddPhieuKiemKeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\KiemKe\CanBangForm.resx">
+      <DependentUpon>CanBangForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\DeletePhieuKiemKeForm.resx">
       <DependentUpon>DeletePhieuKiemKeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\KiemKe\DetailPhieuKiemKeForm.resx">
-      <DependentUpon>DetailPhieuKiemKeForm.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\KiemKe\DetailPhieuKiemForm.resx">
+      <DependentUpon>DetailPhieuKiemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\KiemKe\KiemKeGUI.resx">
       <DependentUpon>KiemKeGUI.cs</DependentUpon>

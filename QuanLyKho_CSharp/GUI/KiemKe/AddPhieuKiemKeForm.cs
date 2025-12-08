@@ -63,13 +63,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             dgvSPduocThem.RowHeadersDefaultCellStyle = headerStyle;
             dgvSPduocThem.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
-            // Thêm dữ liệu vào cbb của dgv
-            DataGridViewComboBoxColumn cbb = dgvSPduocThem.Columns["cbbLyDo"] as DataGridViewComboBoxColumn;
 
-            if (cbb != null)
-            {
-                cbb.DataSource = new string[] { "Đủ", "Hư hỏng", "Khác" };
-            }
             foreach (DataGridViewColumn col in dgvSPduocThem.Columns)
             {
                 col.ReadOnly = true;
@@ -263,6 +257,16 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         private void artanButton3_Click(object sender, EventArgs e) // Thêm phiếu
         {
+            if(listCTKKDuocThem.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng nhập sản phẩm đã kiểm!",
+                    "Cảnh báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
             PhieuKiemKeDTO pkNew = new PhieuKiemKeDTO();
             pkNew.Maphieukiemke = pkkBUS.getMaTiepTheo();
             Boolean checkCanBang = true; // Kiểm tra đã cân bằng hết trong chi tiết chưa

@@ -100,6 +100,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                         ThoiGianCanBangStr,
                         pkk.Ghichu, pkk.Trangthai);
                     soPKK++;
+                    DGVPhieuKiem.Rows[rowIndex].Cells["btnCanBang"].Value =
+                        pkk.Trangthai == "Đã cân bằng" ? "Đã cân bằng xong" : "Cân bằng";
                     SetRowColor(rowIndex, pkk);
                 }
             }
@@ -206,6 +208,34 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     refreshDGV(pkkBUS.getListPKK());
                 }
             }
+            else if (DGVPhieuKiem.Columns[e.ColumnIndex].Name == "btnCanBang")
+            {
+                if(currentRow.Cells["trangthai"].Value.ToString() == "Đã cân bằng")
+                {
+                    MessageBox.Show("Phiếu này đã cân bằng, không thể thao tác.");
+                    return;
+                }
+                CanBangForm canBangForm = new CanBangForm(pkkDTO);
+                if (canBangForm.ShowDialog() == DialogResult.OK)
+                {
+                    new UpdateSuccessNotification().Show();
+                    pkkBUS = new PhieuKiemKeBUS();
+                    refreshDGV(pkkBUS.getListPKK());
+                }
+            }
+            else if (DGVPhieuKiem.Columns[e.ColumnIndex].Name == "detail")
+            {
+                pnlDGV.Visible = false;
+                pnlTop.Visible = false;
+                DetailPhieuKiemForm addFormControl = null;
+                addFormControl = new DetailPhieuKiemForm(() => btnOnCloseDetail(addFormControl), pkkDTO);
+
+                addFormControl.TopLevel = false;
+                addFormControl.FormBorderStyle = FormBorderStyle.None;
+                addFormControl.Dock = DockStyle.Fill;
+                pnlMain.Controls.Add(addFormControl);
+                addFormControl.Show();
+            }
         } // nút nhấn
 
         private void btnThem_Click(object sender, EventArgs e) // Thêm phiếu
@@ -229,6 +259,16 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             pnlTop.Visible = true;
             pnlMain.Controls.Remove(formAdd);
             formAdd.Dispose();
+            pkkBUS = new PhieuKiemKeBUS();
+            listPKK = pkkBUS.getListPKK();
+            refreshDGV(pkkBUS.getListPKK());
+        }
+        private void btnOnCloseDetail(DetailPhieuKiemForm formDetail)
+        {
+            pnlDGV.Visible = true;
+            pnlTop.Visible = true;
+            pnlMain.Controls.Remove(formDetail);
+            formDetail.Dispose();
             pkkBUS = new PhieuKiemKeBUS();
             listPKK = pkkBUS.getListPKK();
             refreshDGV(pkkBUS.getListPKK());

@@ -52,6 +52,18 @@ namespace QuanLyKho.BUS
             return result;
         }
 
+        public Boolean updateTrangThai(PhieuKiemKeDTO pkk)
+        {
+            Boolean result  = pkkDAO.Update(pkk) != 0;
+            if (result)
+            {
+                var pkkSua = listPKK.FirstOrDefault(pk => pk.Maphieukiemke == pkk.Maphieukiemke);
+                pkkSua.Thoigiancanbang = pkk.Thoigiancanbang;
+                pkkSua.Trangthai = pkk.Trangthai;
+            }
+            return result;
+        }
+
 
 
     }
