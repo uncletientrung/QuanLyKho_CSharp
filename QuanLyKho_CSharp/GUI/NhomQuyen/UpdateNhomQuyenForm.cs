@@ -117,7 +117,33 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             // Show các chức năng đã có
             ListCTQuyen = nqBUS.getListCTNQByIdNQ(NQDuocChon.Manhomquyen);
             ShowDetail(ListCTQuyen);
-            
+
+            // Chặn 1 số ô
+            ChanCacOKhongDung(1, "No", "Yes", "No");
+            ChanCacOKhongDung(6, "No", "Yes", "No");
+            ChanCacOKhongDung(7, "Yes", "Yes", "Yes");
+
+        }
+
+        private void ChanCacOKhongDung(int indexRow, string Them = "No", string Sua = "No", string Xoa = "No")
+        { // yes là chặn
+            if (Them == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Create");
+
+            if (Sua == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Update");
+
+            if (Xoa == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Remove");
+        }
+        private void ReplaceCheckboxByTextbox(int row, string col)
+        {
+            DataGridViewTextBoxCell tb = new DataGridViewTextBoxCell();
+            tb.Value = ""; // Ô trống
+            tb.Style.BackColor = Color.LightGray;
+            tb.Style.SelectionBackColor = Color.LightGray;
+
+            DGVUpdateNhomQuyen.Rows[row].Cells[col] = tb;
         }
 
         private void DGVUpdateNhomQuyen_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -129,7 +155,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                 foreach (DataGridViewCell cell in DGVUpdateNhomQuyen.Rows[e.RowIndex].Cells)
                 {
                     if (cell.OwningColumn.Name == "Fast") continue;
-                    cell.Value = TichNhanh;
+                    if (cell is DataGridViewCheckBoxCell) cell.Value = TichNhanh;
                 }
 
             }
@@ -141,6 +167,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             {
                 for (int j = 0; j < DGVUpdateNhomQuyen.Columns.Count - 1; j++)
                 {
+                    if (DGVUpdateNhomQuyen.Rows[i].Cells[j] is DataGridViewTextBoxCell) continue;
                     bool isChecked = Convert.ToBoolean(DGVUpdateNhomQuyen.Rows[i].Cells[j].Value);
                     if (isChecked) // Nếu đc check thì thêm vào
                     {
@@ -216,7 +243,8 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                         string tagRow = DGVUpdateNhomQuyen.Rows[i].Tag.ToString().ToLower();
                         string headerCRUD = DGVUpdateNhomQuyen.Columns[j].HeaderText.ToLower();
                         if (nameChucNang.Equals(tagRow) &&
-                           ctq.Hanhdong.ToLower().Equals(headerCRUD)) // Nếu chi tiết = hanhdong 
+                           ctq.Hanhdong.ToLower().Equals(headerCRUD)&&
+                           DGVUpdateNhomQuyen.Rows[i].Cells[j] is DataGridViewCheckBoxCell) // Nếu chi tiết = hanhdong 
                         {
                             DGVUpdateNhomQuyen.Rows[i].Cells[j].Value = true;
                         }
@@ -225,6 +253,11 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             }
             //DGVUpdateNhomQuyen.ReadOnly = true;                // chặn chỉnh sửa dữ liệu
             DGVUpdateNhomQuyen.ClearSelection();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

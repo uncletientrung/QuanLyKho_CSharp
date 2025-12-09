@@ -124,7 +124,31 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             // Hiển thị các checkbox được chọn
             ListCTNQ = nqBUS.getListCTNQByIdNQ(nq.Manhomquyen);
             ShowDetail(ListCTNQ);
-           
+
+            // Chặn 1 số cột trong dòng
+            ChanCacOKhongDung(1, "No", "Yes", "No");
+            ChanCacOKhongDung(6, "No", "Yes", "No");
+            ChanCacOKhongDung(7, "Yes", "Yes", "Yes");
+        }
+        private void ChanCacOKhongDung(int indexRow, string Them = "No", string Sua = "No", string Xoa = "No")
+        { // yes là chặn
+            if (Them == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Create");
+
+            if (Sua == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Update");
+
+            if (Xoa == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Remove");
+        }
+        private void ReplaceCheckboxByTextbox(int row, string col)
+        {
+            DataGridViewTextBoxCell tb = new DataGridViewTextBoxCell();
+            tb.Value = ""; // Ô trống
+            tb.Style.BackColor = Color.LightGray;
+            tb.Style.SelectionBackColor = Color.LightGray;
+
+            DGVDetailNhomQuyen.Rows[row].Cells[col] = tb;
         }
 
         private void DGVDetailNhomQuyen_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -143,7 +167,8 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                         string tagRow= DGVDetailNhomQuyen.Rows[i].Tag.ToString().ToLower();
                         string headerCRUD = DGVDetailNhomQuyen.Columns[j].HeaderText.ToLower().ToLower();
                         if(nameChucNang.Equals(tagRow) && 
-                           ctq.Hanhdong.ToLower().Equals(headerCRUD)) // Nếu chi tiết = hanhdong 
+                           ctq.Hanhdong.ToLower().Equals(headerCRUD)&&
+                           DGVDetailNhomQuyen.Rows[i].Cells[j] is DataGridViewCheckBoxCell) // Nếu chi tiết = hanhdong 
                         {
                             DGVDetailNhomQuyen.Rows[i].Cells[j].Value = true;
                         }

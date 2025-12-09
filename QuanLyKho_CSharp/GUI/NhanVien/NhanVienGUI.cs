@@ -24,10 +24,13 @@ namespace QuanLyKho_CSharp.GUI
         
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private BindingList<NhanVienDTO> listNV;
+        private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
 
-        public NhanVienGUI()
+        public NhanVienGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
+            this.currentUser = currentUser;
             DGVNhanVien.ClearSelection();
             DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
             DGVNhanVien.AllowUserToResizeRows = false; // Chặn kéo dài row
@@ -57,17 +60,12 @@ namespace QuanLyKho_CSharp.GUI
             
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
-            refreshDataGridView(nvBUS.getListNV());
+            refreshDataGridView(listNV);
         }
 
-        private void DGVNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void settingRole()
         {
 
         }

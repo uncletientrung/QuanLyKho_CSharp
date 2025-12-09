@@ -39,7 +39,7 @@ namespace QuanLyKho_CSharp
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private DanhMucChucNangBUS dmncBUS = new DanhMucChucNangBUS();
         private BindingList<Guna2Button> listButton;
-        private NhanVienDTO currentUser2;
+        private NhanVienDTO currentUser2; // Nhân viên đăng nhập
 
         public frmMain(TaiKhoanDTO _tkLogin)
         {
@@ -230,7 +230,7 @@ namespace QuanLyKho_CSharp
 
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new NhanVienGUI(), btnNhanVien);
+            OpenChildForm(new NhanVienGUI(currentUser2), btnNhanVien);
         }
 
         private void btnNhaCungCap_Click(object sender, EventArgs e)

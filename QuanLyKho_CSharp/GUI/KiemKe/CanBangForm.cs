@@ -20,7 +20,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
             InitializeComponent();
             this.pkkDuocChon = _pkkDuocChon;
-            lbInfo.Text = $"Bạn chắc chắn đã cân bằng phiếu PKK-{pkkDuocChon.Manhanvienkiem} hết chưa?";
+            lbInfo.Text = $"Bạn chắc chắn đã cân bằng phiếu PKK-{pkkDuocChon.Maphieukiemke} hết chưa?";
         }
         private void btnCanBang_Click(object sender, EventArgs e)
         {

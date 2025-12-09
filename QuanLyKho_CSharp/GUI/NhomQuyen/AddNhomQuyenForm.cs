@@ -116,8 +116,11 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             DGVAddNhomQuyen.Rows[8].Tag = "taikhoan";
             DGVAddNhomQuyen.Rows[9].Tag = "phanquyen";
 
-            // Chặn 1 số cột
-            ChanCacOKhongDung(1, "No", "Yes", "Yes");
+            // Chặn 1 số cột trong dòng
+            ChanCacOKhongDung(1, "No", "Yes", "No");
+            ChanCacOKhongDung(6, "No", "Yes", "No");
+            ChanCacOKhongDung(7, "Yes", "Yes", "Yes");
+
         }
 
         private void ChanCacOKhongDung(int indexRow, string Them = "No",string Sua="No", string Xoa="No")
@@ -151,7 +154,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                 foreach (DataGridViewCell cell in DGVAddNhomQuyen.Rows[e.RowIndex].Cells)
                 {
                     if (cell.OwningColumn.Name == "Fast") continue;
-                    cell.Value = TichNhanh;
+                    if(cell is DataGridViewCheckBoxCell) cell.Value = TichNhanh;
                 }
 
             }
@@ -173,6 +176,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             {
                 for (int j = 0; j < DGVAddNhomQuyen.Columns.Count - 1; j++)
                 {
+                    if (DGVAddNhomQuyen.Rows[i].Cells[j] is DataGridViewTextBoxCell) continue;
                     bool isChecked = Convert.ToBoolean(DGVAddNhomQuyen.Rows[i].Cells[j].Value);
                     if (isChecked) // Nếu đc check thì thêm vào
                     {
