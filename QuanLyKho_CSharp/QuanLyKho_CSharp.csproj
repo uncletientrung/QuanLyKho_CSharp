@@ -1098,6 +1098,9 @@
     <Content Include="images\icon\warehouse.png" />
     <Content Include="images\icon\x.png" />
     <Content Include="images\icon\xxl.png" />
+    <Content Include="images\khopdf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\login.png" />
     <Content Include="images\stocks\ao1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
