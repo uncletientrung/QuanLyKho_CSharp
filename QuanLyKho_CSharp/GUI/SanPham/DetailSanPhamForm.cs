@@ -34,13 +34,13 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             txtSoluong.Enabled= false;
             txtDongia.Text= sp.Dongia.ToString();
             txtDongia.Enabled= false;
-            txtMachatlieu.Text= sp.Machatlieu.ToString();
+            txtMachatlieu.Text= "CL-"+sp.Machatlieu.ToString();
             txtMachatlieu.Enabled= false;
-            txtMaloai.Text= sp.Maloai.ToString();
+            txtMaloai.Text= "L-"+sp.Maloai.ToString();
             txtMaloai.Enabled= false;
-            txtMakhuvuc.Text= sp.Makhuvuc.ToString();
+            txtMakhuvuc.Text= "KV-"+sp.Makhuvuc.ToString();
             txtMakhuvuc.Enabled= false;
-            txtMasize.Text= sp.Masize.ToString();
+            txtMasize.Text= "S-"+sp.Masize.ToString();
             txtMasize.Enabled= false;
         }
 

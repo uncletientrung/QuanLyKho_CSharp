@@ -48,6 +48,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -159,6 +160,7 @@
             // 
             // dgvThongKeTonKho
             // 
+            this.dgvThongKeTonKho.BackgroundColor = System.Drawing.Color.White;
             this.dgvThongKeTonKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvThongKeTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvThongKeTonKho.Location = new System.Drawing.Point(0, 0);

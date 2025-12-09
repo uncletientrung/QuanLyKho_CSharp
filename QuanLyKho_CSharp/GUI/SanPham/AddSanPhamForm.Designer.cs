@@ -228,7 +228,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(162, 49);
             this.label10.TabIndex = 15;
-            this.label10.Text = "Mã size:";
+            this.label10.Text = "Size:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
@@ -240,7 +240,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(162, 44);
             this.label9.TabIndex = 14;
-            this.label9.Text = "Mã khu vực:";
+            this.label9.Text = "Khu vực:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
@@ -252,7 +252,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(162, 44);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Mã loại:";
+            this.label8.Text = "Loại:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label7
@@ -264,7 +264,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(162, 44);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Mã chất liệu:";
+            this.label7.Text = "Chất liệu:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
