@@ -466,6 +466,274 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         }
 
+        private void btnNhapExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+                openFileDialog.Title = "Chọn file Excel để nhập";
 
+                if (openFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string filePath = openFileDialog.FileName;
+
+                // Tạo DataTable từ file Excel
+                DataTable dataTable = ReadExcelFile(filePath);
+
+                if (dataTable == null || dataTable.Rows.Count == 0)
+                {
+                    MessageBox.Show("File Excel không có dữ liệu!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Kiểm tra cấu trúc file
+                if (!CheckExcelStructure(dataTable))
+                {
+                    MessageBox.Show("File Excel không đúng định dạng!\n" +
+                                   "Yêu cầu các cột: Tên sản phẩm, Số lượng, Đơn giá",
+                                   "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Nhập dữ liệu
+                int successCount = 0;
+                int errorCount = 0;
+                StringBuilder errors = new StringBuilder();
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        string tenSP = row["Tên sản phẩm"]?.ToString()?.Trim();
+                        string slStr = row["Số lượng"]?.ToString()?.Trim();
+                        string giaStr = row["Đơn giá"]?.ToString()?.Trim();
+
+                        if (string.IsNullOrEmpty(tenSP))
+                        {
+                            errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Thiếu tên sản phẩm");
+                            errorCount++;
+                            continue;
+                        }
+
+                        if (!int.TryParse(slStr, out int soLuong) || soLuong <= 0)
+                        {
+                            errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Số lượng '{slStr}' không hợp lệ (phải là số dương)");
+                            errorCount++;
+                            continue;
+                        }
+
+                        if (!int.TryParse(giaStr, out int donGia) || donGia < 0)
+                        {
+                            errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Đơn giá '{giaStr}' không hợp lệ (phải là số không âm)");
+                            errorCount++;
+                            continue;
+                        }
+
+                        // Tìm sản phẩm trong kho theo tên
+                        SanPhamDTO sanPham = listSP.FirstOrDefault(sp =>
+                            sp.Tensp.Equals(tenSP, StringComparison.OrdinalIgnoreCase) && sp.Trangthai == 1);
+
+                        if (sanPham == null)
+                        {
+                            errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Sản phẩm '{tenSP}' không tồn tại trong hệ thống. Vui lòng thêm sản phẩm trước!");
+                            errorCount++;
+                            continue;
+                        }
+
+                        // KIỂM TRA ĐIỀU KIỆN ĐẶC BIỆT CHO PHIẾU XUẤT
+
+                        // 1. Kiểm tra sản phẩm có đủ số lượng trong kho không
+                        if (sanPham.Soluong <= 0)
+                        {
+                            errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Sản phẩm '{tenSP}' đã hết hàng trong kho");
+                            errorCount++;
+                            continue;
+                        }
+
+                        // 2. Kiểm tra số lượng xuất có lớn hơn số lượng tồn không
+                        if (soLuong > sanPham.Soluong)
+                        {
+                            errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Số lượng xuất ({soLuong}) vượt quá số lượng tồn kho ({sanPham.Soluong}) của sản phẩm '{tenSP}'");
+                            errorCount++;
+                            continue;
+                        }
+
+                        // 3. Kiểm tra nếu sản phẩm đã có trong danh sách xuất, tổng số lượng xuất không vượt quá tồn kho
+                        var existingSPInList = listSPDuocThem.FirstOrDefault(x => x.Masp == sanPham.Masp);
+                        int soLuongDaCo = existingSPInList?.Soluong ?? 0;
+                        int tongSoLuongXuat = soLuongDaCo + soLuong;
+
+                        if (tongSoLuongXuat > sanPham.Soluong)
+                        {
+                            errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Tổng số lượng xuất ({tongSoLuongXuat}) vượt quá số lượng tồn kho ({sanPham.Soluong}) của sản phẩm '{tenSP}'");
+                            errorCount++;
+                            continue;
+                        }
+
+                        // Thêm vào danh sách sản phẩm được chọn
+                        if (existingSPInList != null)
+                        {
+                            // Nếu đã có, cộng dồn số lượng
+                            existingSPInList.Soluong += soLuong;
+                        }
+                        else
+                        {
+                            var spThem = new SanPhamDTO
+                            {
+                                Masp = sanPham.Masp,
+                                Tensp = sanPham.Tensp,
+                                Dongia = donGia,
+                                Soluong = soLuong
+                            };
+                            listSPDuocThem.Add(spThem);
+                        }
+
+                        successCount++;
+                    }
+                    catch (Exception ex)
+                    {
+                        errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Lỗi - {ex.Message}");
+                        errorCount++;
+                    }
+                }
+
+                // Cập nhật giao diện
+                LoadSPDuocThem();
+                LoadSPTrongKho();
+
+                // Hiển thị kết quả
+                string message = $"Đã nhập thành công {successCount} sản phẩm.";
+                if (errorCount > 0)
+                {
+                    message += $"\n\nCó {errorCount} lỗi:\n{errors.ToString()}";
+
+                    // Nếu có lỗi sản phẩm không tồn tại, đề xuất thêm sản phẩm
+                    if (errors.ToString().Contains("không tồn tại trong hệ thống"))
+                    {
+                        message += "\n\nGợi ý: Sử dụng nút 'Thêm quần áo mới' (trong menu Sản phẩm) để thêm sản phẩm trước khi nhập Excel.";
+                    }
+
+                    // Nếu có lỗi hết hàng hoặc vượt quá tồn kho
+                    if (errors.ToString().Contains("hết hàng") || errors.ToString().Contains("vượt quá số lượng tồn"))
+                    {
+                        message += "\n\nGợi ý: Kiểm tra lại số lượng tồn kho hoặc thực hiện nhập hàng trước khi xuất.";
+                    }
+                }
+
+                MessageBox.Show(message, "Kết quả nhập Excel cho phiếu xuất",
+                    MessageBoxButtons.OK,
+                    errorCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi nhập Excel: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private DataTable ReadExcelFile(string filePath)
+        {
+            Excel.Application excelApp = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
+            {
+                excelApp = new Excel.Application();
+                excelApp.Visible = false;
+                excelApp.DisplayAlerts = false;
+
+                workbook = excelApp.Workbooks.Open(filePath);
+                worksheet = workbook.Sheets[1]; // Lấy sheet đầu tiên
+
+                Excel.Range usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+                int colCount = usedRange.Columns.Count;
+
+                // Tạo DataTable
+                DataTable dataTable = new DataTable();
+
+                // Thêm cột cho header
+                for (int col = 1; col <= colCount; col++)
+                {
+                    string columnName = usedRange.Cells[1, col]?.Value?.ToString() ?? $"Column{col}";
+                    dataTable.Columns.Add(columnName);
+                }
+
+                // Thêm dữ liệu (bắt đầu từ dòng 2 vì dòng 1 là header)
+                for (int row = 2; row <= rowCount; row++)
+                {
+                    DataRow dataRow = dataTable.NewRow();
+                    bool hasData = false;
+
+                    for (int col = 1; col <= colCount; col++)
+                    {
+                        object cellValue = usedRange.Cells[row, col]?.Value;
+                        if (cellValue != null)
+                        {
+                            dataRow[col - 1] = cellValue.ToString();
+                            hasData = true;
+                        }
+                    }
+
+                    if (hasData)
+                    {
+                        dataTable.Rows.Add(dataRow);
+                    }
+                }
+
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi đọc file Excel: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            finally
+            {
+                // Giải phóng tài nguyên
+                if (worksheet != null)
+                {
+                    Marshal.ReleaseComObject(worksheet);
+                    worksheet = null;
+                }
+                if (workbook != null)
+                {
+                    workbook.Close(false);
+                    Marshal.ReleaseComObject(workbook);
+                    workbook = null;
+                }
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    Marshal.FinalReleaseComObject(excelApp);
+                    excelApp = null;
+                }
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+        }
+
+        private bool CheckExcelStructure(DataTable dataTable)
+        {
+            // Kiểm tra các cột bắt buộc
+            string[] requiredColumns = { "Tên sản phẩm", "Số lượng", "Đơn giá" };
+
+            foreach (string column in requiredColumns)
+            {
+                if (!dataTable.Columns.Contains(column))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

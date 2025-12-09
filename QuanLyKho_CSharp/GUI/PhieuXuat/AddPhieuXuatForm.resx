@@ -180,6 +180,25 @@
   <metadata name="soluongDGVTon.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="btnNhapExcel.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAASpJREFUSEvt
+        lUFKxEAQRUcvoR5GXXgNvZN6AwfEuYXiVsW9OmvFWSvU60VJQXfoqUqPSXQlPigIv3//SneSzmz2J1DV
+        XWAOvAFal4i8AqequuXnDQZY+OCeOvfzBgOsLCSltN8zdlKt5tiPD6IEeL1gd9+zolbZNs9t2+uAjQ1U
+        dRs4y8/DB7Zq0QV812AMKaXDnLfqxN9sYIS8IDQArq287gl5QWgw2ReEBpN9QcjY1wvcAnequlN8+foe
+        uPFzjJAXhExu8GhjIvJSfNX1g59jhLwgVNjdisiyeKomSxvzfiPkBcGhqnsi8lyFP5nmfYWQF4QecpNP
+        4GNTuBHygvBDQl51mh6sOSeQUjrKDdaOiiH/g7F11TXIf7RL4L3HOLbsuL5ovWH/BL4A4k3nVjO8ITwA
+        AAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnOnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAG1JREFUSEvt
+        1DsOgCAQhGE8hfH+F7HVaKh9neU3xLWZ0ChYuV9DMWSHQEIIzuUALTABvWbFgA7YucyaF7GTHzY8ra3u
+        ec2HZwENEG34mh5Y9xSRgrF6QfLpFd285BH7KjYriZpXYSULMGjmfugEGE3kzvag8FUAAAAASUVORK5C
+        YII=
+</value>
+  </data>
   <data name="artanButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAOpJREFUSEvl
@@ -200,14 +219,6 @@
         gevRfZZdBe5H6FZ2TcRmLIxnV4EBfMN7HM2+DnTjA77jTPYt4HbMZC67OrAcndHs9oBDWI1C01HRh8XI
         fsXxnNkXnNs1SHl17+AyjuEUruBeHISF8mgKrw+aUAvlCMbDhuP6RxzXZQ12Nul624MUMBx/OE/LJorF
         fBLfDe7KlV/3e4O0Sxx6b2KQBXTmzB8Ta/T2rw3wT/gFOiVtEhJtsxUAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnOnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAG1JREFUSEvt
-        1DsOgCAQhGE8hfH+F7HVaKh9neU3xLWZ0ChYuV9DMWSHQEIIzuUALTABvWbFgA7YucyaF7GTHzY8ra3u
-        ec2HZwENEG34mh5Y9xSRgrF6QfLpFd285BH7KjYriZpXYSULMGjmfugEGE3kzvag8FUAAAAASUVORK5C
-        YII=
 </value>
   </data>
   <data name="dataGridViewImageColumn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

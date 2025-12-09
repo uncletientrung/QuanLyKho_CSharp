@@ -585,10 +585,5 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             if (txtSMoney.Text == "Tiền từ")
                 txtSMoney.Clear();
         }
-
-        private void btnNhapExcel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
