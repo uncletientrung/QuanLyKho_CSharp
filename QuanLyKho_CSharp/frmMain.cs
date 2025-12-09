@@ -60,9 +60,8 @@ namespace QuanLyKho_CSharp
             {
                 string name = dmncBUS.getNameById(ctq.Machucnang);
                 var btnToShow = listButton.FirstOrDefault(b => b.Tag != null && b.Tag.ToString() == name);
-                if (btnToShow != null)
+                if (btnToShow != null && ctq.Hanhdong == "Xem")
                 {
-                    //MessageBox.Show(btnToShow.Text);
                     if (btnToShow.Tag == "thongtin")
                     {
                         btnNhaCungCap.Visible = true;

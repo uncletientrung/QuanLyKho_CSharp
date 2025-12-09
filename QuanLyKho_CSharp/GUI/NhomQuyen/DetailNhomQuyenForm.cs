@@ -23,7 +23,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
         {
             InitializeComponent();
             nq = _nq;
-
+                
             txtName.Text = nq.Tennhomquyen;
             DGVDetailNhomQuyen.ClearSelection();
             //DGVDetailNhomQuyen.RowHeadersVisible = false; // Tắt cột header
@@ -68,7 +68,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             DGVDetailNhomQuyen.Columns["Remove"].Width = 100;
 
             DataGridViewCheckBoxColumn chkXem = new DataGridViewCheckBoxColumn();
-            chkXem.HeaderText = "Xem chi tiết";
+            chkXem.HeaderText = "Xem";
             chkXem.Name = "Detail";
             DGVDetailNhomQuyen.Columns.Add(chkXem);
             DGVDetailNhomQuyen.Columns["Detail"].Width = 135;

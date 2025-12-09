@@ -22,7 +22,6 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
         {
             InitializeComponent();
             DGVAddNhomQuyen.ClearSelection();
-            //DGVAddNhomQuyen.RowHeadersVisible = false; // Tắt cột header
             DGVAddNhomQuyen.AllowUserToResizeRows = false; // Chặn kéo dài row
             DGVAddNhomQuyen.AllowUserToResizeColumns = false; // chặn thay đổi kích thước cột
             DGVAddNhomQuyen.AllowUserToAddRows = false;      // chặn thêm dòng
@@ -62,7 +61,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             DGVAddNhomQuyen.Columns["Remove"].Width = 70;
 
             DataGridViewCheckBoxColumn chkXem = new DataGridViewCheckBoxColumn();
-            chkXem.HeaderText = "Xem chi tiết";
+            chkXem.HeaderText = "Xem";
             chkXem.Name = "Detail";
             DGVAddNhomQuyen.Columns.Add(chkXem);
 
@@ -117,6 +116,29 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             DGVAddNhomQuyen.Rows[8].Tag = "taikhoan";
             DGVAddNhomQuyen.Rows[9].Tag = "phanquyen";
 
+            // Chặn 1 số cột
+            ChanCacOKhongDung(1, "No", "Yes", "Yes");
+        }
+
+        private void ChanCacOKhongDung(int indexRow, string Them = "No",string Sua="No", string Xoa="No")
+        { // yes là chặn
+            if (Them == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Create");
+
+            if (Sua == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Update");
+
+            if (Xoa == "Yes")
+                ReplaceCheckboxByTextbox(indexRow, "Remove");
+        }
+        private void ReplaceCheckboxByTextbox(int row, string col)
+        {
+            DataGridViewTextBoxCell tb = new DataGridViewTextBoxCell();
+            tb.Value = ""; // Ô trống
+            tb.Style.BackColor = Color.LightGray;
+            tb.Style.SelectionBackColor = Color.LightGray;
+
+            DGVAddNhomQuyen.Rows[row].Cells[col] = tb;
         }
 
 
@@ -124,7 +146,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
         {
             if (e.ColumnIndex == DGVAddNhomQuyen.Columns["Fast"].Index && e.RowIndex >= 0)
             {
-                DGVAddNhomQuyen.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                DGVAddNhomQuyen.CommitEdit(DataGridViewDataErrorContexts.Commit); //Cập nhật giá trị khi vừa tác động
                 Boolean TichNhanh = Convert.ToBoolean(DGVAddNhomQuyen.Rows[e.RowIndex].Cells["Fast"].Value);
                 foreach (DataGridViewCell cell in DGVAddNhomQuyen.Rows[e.RowIndex].Cells)
                 {
@@ -190,7 +212,6 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                 
                 string TenQuyen = txtName.Text.ToString();
                 ListCTQuyen = getListChiTietQuyen(maQuyenTiepTheo);
-                // Test chuyển list sang bindinglist
                 BindingList<ChiTietQuyenDTO> LCTQ = new BindingList<ChiTietQuyenDTO>(ListCTQuyen);
                 nqBUS.addNhomQuyen(maQuyenTiepTheo, TenQuyen, LCTQ);
                 this.DialogResult = DialogResult.OK;

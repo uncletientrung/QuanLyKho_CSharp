@@ -65,7 +65,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
             DGVUpdateNhomQuyen.Columns["Remove"].Width = 70;
 
             DataGridViewCheckBoxColumn chkXem = new DataGridViewCheckBoxColumn();
-            chkXem.HeaderText = "Xem chi tiết";
+            chkXem.HeaderText = "Xem";
             chkXem.Name = "Detail";
             DGVUpdateNhomQuyen.Columns.Add(chkXem);
 
@@ -162,6 +162,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             if (txtName.Text.Length > 0)
             {
                 ListQuyen = nqBUS.getListNQ();
@@ -180,6 +181,15 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                 }
                 NQDuocChon.Tennhomquyen=txtName.Text;
                 ListCTQuyen = this.getListChiTietQuyen(NQDuocChon.Manhomquyen);
+                if (ListCTQuyen.Count == 0) {
+                    MessageBox.Show(
+                                    "Hãy thêm ít nhất 1 chức năng cho quyền này",
+                                    "Cảnh báo",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error
+                                );
+                    return;
+                }
                 nqBUS.UpdateNhomQuyen(NQDuocChon, ListCTQuyen);
                 this.DialogResult = DialogResult.OK;
             }
@@ -204,7 +214,7 @@ namespace QuanLyKho_CSharp.GUI.NhomQuyen
                     {
                         string nameChucNang = dmcnBUS.getNameById(ctq.Machucnang).ToLower();
                         string tagRow = DGVUpdateNhomQuyen.Rows[i].Tag.ToString().ToLower();
-                        string headerCRUD = DGVUpdateNhomQuyen.Columns[j].HeaderText.ToLower().ToLower();
+                        string headerCRUD = DGVUpdateNhomQuyen.Columns[j].HeaderText.ToLower();
                         if (nameChucNang.Equals(tagRow) &&
                            ctq.Hanhdong.ToLower().Equals(headerCRUD)) // Nếu chi tiết = hanhdong 
                         {

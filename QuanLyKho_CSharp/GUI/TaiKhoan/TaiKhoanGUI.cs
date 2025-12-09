@@ -98,7 +98,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             foreach (TaiKhoanDTO tk in listRefresh.Where(tk => tk.Trangthai == 1))
             {
 
-                DGVTaiKhoan.Rows.Add(tk.Manv, tk.Tendangnhap, tk.Matkhau,
+                DGVTaiKhoan.Rows.Add($"TK-{tk.Manv}", tk.Tendangnhap, tk.Matkhau,
                     tk.Manhomquyen, "Hoạt động");
                 soLuongNV++;
             }
@@ -109,7 +109,7 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
         private void DGVTaiKhoan_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int matk = int.Parse(DGVTaiKhoan.Rows[e.RowIndex].Cells["matk"].Value.ToString());
+            int matk = int.Parse(DGVTaiKhoan.Rows[e.RowIndex].Cells["matk"].Value.ToString().Replace("TK-",""));
             TaiKhoanDTO TaiKhoanDuocChon = tkBUS.getTKById(matk);
             if (DGVTaiKhoan.Columns[e.ColumnIndex].Name == "detail")
             {

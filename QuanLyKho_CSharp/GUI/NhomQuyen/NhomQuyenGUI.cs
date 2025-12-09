@@ -99,7 +99,7 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
         private void DGVPhanQuyen_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int manq = int.Parse(DGVPhanQuyen.Rows[e.RowIndex].Cells["manq"].Value.ToString());
+            int manq = int.Parse(DGVPhanQuyen.Rows[e.RowIndex].Cells["manq"].Value.ToString().Replace("NQ-",""));
             NhomQuyenDTO NhomQuyenDuocChon = nqBUS.getNQById(manq);
             if (DGVPhanQuyen.Columns[e.ColumnIndex].Name == "detail")
             {
@@ -145,7 +145,7 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
             DGVPhanQuyen.Rows.Clear();
             foreach (NhomQuyenDTO nq in listRefresh.Where( item => item.Trangthai == 1))
             {
-                DGVPhanQuyen.Rows.Add(nq.Manhomquyen, nq.Tennhomquyen, "Hoạt động");
+                DGVPhanQuyen.Rows.Add($"NQ-{nq.Manhomquyen}", nq.Tennhomquyen, "Hoạt động");
                 soluong++;
             }
             lbTotalNV.Text = "Tổng số nhóm quyền: " + soluong.ToString();

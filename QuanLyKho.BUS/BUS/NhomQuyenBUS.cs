@@ -87,7 +87,6 @@ namespace QuanLyKho.BUS
                 {
                     nqCheck.Tennhomquyen = NQ.Tennhomquyen;
                     nqCheck.Trangthai= NQ.Trangthai;
-                    // Sửa chi tiết trong database
                     ctnqDAO.Update(listCTQ, NQ.Manhomquyen);
                 }
             }   

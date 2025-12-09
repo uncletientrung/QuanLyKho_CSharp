@@ -81,7 +81,8 @@ namespace QuanLyKho.DAO
                         Masp = Convert.ToInt32(row["masp"]),
                         Soluong = Convert.ToInt32(row["soluong"]),
                         Dongia = Convert.ToInt32(row["dongia"]),
-                        TrangTHaiHoanHang = Convert.ToInt32(row["trangThaiHoanHang"])
+                        TrangTHaiHoanHang = Convert.ToInt32(row["trangThaiHoanHang"]),
+                        TenSP = Convert.ToString(row["tensp"])
                     };
                     result.Add(ctpx);
                 }

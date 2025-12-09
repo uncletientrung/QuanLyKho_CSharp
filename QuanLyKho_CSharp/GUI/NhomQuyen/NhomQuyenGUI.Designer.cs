@@ -248,7 +248,7 @@
             // hoten
             // 
             this.hoten.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.hoten.FillWeight = 25F;
+            this.hoten.FillWeight = 55F;
             this.hoten.HeaderText = "Tên nhóm quyền";
             this.hoten.Name = "hoten";
             this.hoten.ReadOnly = true;
