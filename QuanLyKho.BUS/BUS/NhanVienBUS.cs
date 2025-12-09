@@ -1,4 +1,5 @@
 ﻿using QuanLyKho.DAO;
+using QuanLyKho.DAO.DAO;
 using QuanLyKho.DTO;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace QuanLyKho.BUS
     public class NhanVienBUS
     {
         public readonly NhanVienDAO nvDAO=NhanVienDAO.getInstance();
+        private NhanVienDAO2 nvDAO2= new NhanVienDAO2();
         private BindingList<NhanVienDTO> listNV;
 
         public BindingList<NhanVienDTO> getListNV()
@@ -117,5 +119,11 @@ namespace QuanLyKho.BUS
                                         nv.Sdt.ToLower().Contains(search.ToLower())).ToList();
             return new BindingList<NhanVienDTO>(result);
         }
+        public BindingList<NhanVienDTO> testDAO2()
+        {
+
+            return new BindingList<NhanVienDTO>(nvDAO2.GetAll());
+        }
+        
     }
 }

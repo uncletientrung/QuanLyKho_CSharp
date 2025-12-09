@@ -10,12 +10,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace QuanLyKho_CSharp.GUI
 {
@@ -60,8 +64,14 @@ namespace QuanLyKho_CSharp.GUI
             listNV = nvBUS.getListNV();
             this.currentUser = currentUser;
             settingRole();
+            //testDAO2();
 
             
+        }
+        private void testDAO2()
+        {
+            BindingList<NhanVienDTO> listNV = nvBUS.testDAO2();
+            MessageBox.Show(listNV.Count.ToString());
         }
         private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
         {
@@ -201,8 +211,124 @@ namespace QuanLyKho_CSharp.GUI
         }
         private void btnNhapExcel_Click(object sender, EventArgs e)
         {
-            AddSuccessNotification toast = new AddSuccessNotification();
-            toast.Show();
+            XuatExcel_DSNhanVien();
+        }
+        private void XuatExcel_DSNhanVien()
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+            saveDialog.FileName = "DSNhanVien_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx";
+            saveDialog.Title = "Xuất danh sách nhân viên";
+
+            if (saveDialog.ShowDialog() != DialogResult.OK) return;
+
+            Excel.Application excel = null;
+            Excel.Workbooks workbooks = null;
+            Excel.Workbook wb = null;
+            Excel.Worksheet ws = null;
+
+            try
+            {
+                excel = new Excel.Application();
+                excel.Visible = false;
+                excel.DisplayAlerts = false;
+                excel.ScreenUpdating = false;     // BẮT BUỘC
+                excel.UserControl = false;        // Quan trọng nhất để tránh RPC_E_CALL_REJECTED
+                excel.Interactive = false;        // Cũng rất quan trọng
+
+                workbooks = excel.Workbooks;
+                wb = workbooks.Add();
+                ws = (Excel.Worksheet)wb.ActiveSheet;
+                ws.Name = "DS Nhan Vien";
+
+                // === Dòng 1: Tiêu đề ===
+                ws.Range["A1:F1"].Merge();
+                ws.Cells[1, 1] = "DANH SÁCH NHÂN VIÊN";
+                withStyle(ws.Range["A1"], bold: true, size: 16, color: Color.Yellow, hAlign: Excel.XlHAlign.xlHAlignCenter);
+                ws.Rows[1].RowHeight = 40;
+
+                ws.Rows[2].RowHeight = 20;
+
+                // === Header ===
+                string[] header = { "Mã NV", "Họ tên", "Giới tính", "SĐT", "Ngày sinh", "Trạng thái" };
+                for (int i = 0; i < header.Length; i++)
+                {
+                    ws.Cells[3, i + 1] = header[i];
+                    Excel.Range cell = ws.Cells[3, i + 1];
+                    cell.Font.Bold = true;
+                    cell.Font.Color = Color.White;
+                    cell.Interior.Color = Color.FromArgb(0, 112, 192);
+                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                }
+                ws.Rows[3].RowHeight = 30;
+
+                // === Dữ liệu ===
+                int row = 4;
+                foreach (NhanVienDTO nv in listNV.Where(x => x.Trangthai == 1))
+                {
+                    ws.Cells[row, 1] = "NV-" + nv.Manv;
+                    ws.Cells[row, 2] = nv.Tennv;
+                    ws.Cells[row, 3] = nv.Gioitinh == 1 ? "Nam" : (nv.Gioitinh == 2 ? "Nữ" : "Khác");
+                    ws.Cells[row, 4] = nv.Sdt;
+                    ws.Cells[row, 5] = nv.Ngaysinh.ToString("dd/MM/yyyy");
+                    ws.Cells[row, 6] = "Hoạt động";
+                    row++;
+                }
+
+                ws.Columns.AutoFit();
+                ws.Range["A3:F" + (row - 1)].Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+
+                // Lưu file
+                wb.SaveAs(saveDialog.FileName, Excel.XlFileFormat.xlOpenXMLWorkbook);
+
+                MessageBox.Show("Xuất danh sách nhân viên thành công!\n" + saveDialog.FileName,
+                                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất Excel:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Đóng sạch sẽ – không bao giờ lỗi nữa
+                try { wb?.Close(false); } catch { }
+                try { excel?.Quit(); } catch { }
+
+                if (ws != null) Marshal.ReleaseComObject(ws);
+                if (wb != null) Marshal.ReleaseComObject(wb);
+                if (workbooks != null) Marshal.ReleaseComObject(workbooks);
+                if (excel != null) Marshal.ReleaseComObject(excel);
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                // Giết chết process Excel treo (bí kíp cuối cùng)
+                KillExcelProcesses();
+            }
+        }
+
+        // Hàm phụ để style nhanh
+        private void withStyle(Excel.Range range, bool bold = false, int size = 11, Color? color = null, Excel.XlHAlign hAlign = Excel.XlHAlign.xlHAlignLeft)
+        {
+            if (bold) range.Font.Bold = true;
+            if (size > 0) range.Font.Size = size;
+            if (color.HasValue) range.Interior.Color = color.Value;
+            range.HorizontalAlignment = hAlign;
+            range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+        }
+
+        // Giết process Excel do Interop tạo ra
+        private void KillExcelProcesses()
+        {
+            try
+            {
+                foreach (var p in System.Diagnostics.Process.GetProcessesByName("EXCEL"))
+                {
+                    if (p.MainWindowHandle == IntPtr.Zero) // process ẩn = do code tạo
+                        p.Kill();
+                }
+            }
+            catch { }
         }
     }
 }
