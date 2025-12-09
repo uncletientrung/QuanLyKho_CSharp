@@ -183,30 +183,30 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             listKV= kvBUS.getKhuVucKhoList();
             foreach(KhuVucKhoDTO kv in listKV)
             {
-                cboMaKhuVuc.Items.Add(kv.Makhuvuc + ". "+kv.Tenkhuvuc);
+                cboMaKhuVuc.Items.Add(kv.Tenkhuvuc);
                 if (kv.Makhuvuc == sp.Makhuvuc)// dong nay de hien thi cai dang duoc chon len cbo
                 {
-                    cboMaKhuVuc.SelectedItem = kv.Makhuvuc + ". " + kv.Tenkhuvuc;
+                    cboMaKhuVuc.SelectedItem = kv.Tenkhuvuc;
                 }
             }
 
             listCL = clBUS.getChatLieuList();
             foreach(ChatLieuDTO cl in listCL)
             {
-                cboMaChatLieu.Items.Add(cl.Machatlieu + ". " + cl.Tenchatlieu);
+                cboMaChatLieu.Items.Add(cl.Tenchatlieu);
                 if(cl.Machatlieu== sp.Machatlieu)
                 {
-                    cboMaChatLieu.SelectedItem= cl.Machatlieu+". " + cl.Tenchatlieu;
+                    cboMaChatLieu.SelectedItem= cl.Tenchatlieu;
                 }
             }
 
             listLoai= loaiBUS.getLoaiList();
             foreach(LoaiDTO loai in listLoai)
             {
-                cboMaLoai.Items.Add(loai.Maloai + ". " + loai.Tenloai);
+                cboMaLoai.Items.Add(loai.Tenloai);
                 if (loai.Maloai == sp.Maloai)
                 {
-                    cboMaLoai.SelectedItem = loai.Maloai + ". " + loai.Tenloai;
+                    cboMaLoai.SelectedItem = loai.Tenloai;
                 }
 
             }
@@ -214,10 +214,10 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             listSize= sizeBUS.getSizeList();
             foreach(SizeDTO size in listSize)
             {
-                cboMaSize.Items.Add(size.Masize + ". " + size.Tensize);
+                cboMaSize.Items.Add(size.Tensize);
                 if (size.Masize == sp.Masize)
                 {
-                    cboMaSize.SelectedItem = size.Masize + ". " + size.Tensize;
+                    cboMaSize.SelectedItem = size.Tensize;
                 }
             }
 
@@ -256,10 +256,11 @@ namespace QuanLyKho_CSharp.GUI.SanPham
 
                         } else {
                             string duongDanLuuDB = duongDanAnhMoi ?? sp.Hinhanh;
-                            int maKhuVucMoi = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
-                            int maChatLieuMoi = int.Parse(cboMaChatLieu.Text.ToString().Split('.')[0]);
-                            int maLoaiMoi = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
-                            int maSizeMoi = int.Parse(cboMaSize.Text.ToString().Split('.')[0]);
+                            int maKhuVucMoi = kvBUS.LayMaKhuVuc(cboMaKhuVuc.Text);
+                            int maChatLieuMoi = clBUS.LayMaChatLieu(cboMaChatLieu.Text);
+                            int maLoaiMoi = loaiBUS.LayMaLoai(cboMaLoai.Text);
+                            int maSizeMoi = sizeBUS.LayMaSize(cboMaSize.Text);
+                            
 
                             SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi,1);
                             spBUS.updateSanPham(sanPhamUpdate);

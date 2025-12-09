@@ -272,7 +272,7 @@
             // 
             // dgvDoanhThu7ngay
             // 
-            this.dgvDoanhThu7ngay.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvDoanhThu7ngay.BackgroundColor = System.Drawing.Color.White;
             this.dgvDoanhThu7ngay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDoanhThu7ngay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDoanhThu7ngay.GridColor = System.Drawing.Color.LightSlateGray;

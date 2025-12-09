@@ -247,10 +247,21 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 MessageBox.Show("Số lượng phải là số!");
                 return;
             }
+            if(soLuong < 0)
+            {
+                MessageBox.Show("Số lượng không được âm!");
+                return;
+            }
 
             //xu li don gia
             if(!int.TryParse(txtDonGia.Text, out int donGia)){
                 MessageBox.Show("Đơn giá phải là số!");
+                return;
+            }
+
+            if(donGia <= 0)
+            {
+                MessageBox.Show("Đơn giá phải lớn hơn 0!");
                 return;
             }
 
@@ -283,17 +294,13 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 MessageBox.Show("Vui lòng chọn size cho sản phẩm!");
                 return;
             }
-            int maKhuVuc = int.Parse(cboMaKhuVuc.Text.ToString().Split('.')[0]);
-            int maChatLieu = int.Parse(cboMaChatLieu.Text.ToString().Split('.')[0]);
-            int maLoai = int.Parse(cboMaLoai.Text.ToString().Split('.')[0]);
-            int maSize = int.Parse(cboMaSize.Text.ToString().Split('.')[0]);
+            int maKhuVuc = kvBUS.LayMaKhuVuc(cboMaKhuVuc.Text);
+            int maChatLieu = clBUS.LayMaChatLieu(cboMaChatLieu.Text);
+            int maLoai = loaiBUS.LayMaLoai(cboMaLoai.Text);
+            int maSize = sizeBUS.LayMaSize(cboMaSize.Text);
             SanPhamDTO sanPham = new SanPhamDTO(maSp, txtTenSanPham.Text,duongDanAnhMoi,soLuong,donGia,maChatLieu,maLoai, maKhuVuc, maSize,1);
             spBUS.insertSanPham(sanPham);
             this.DialogResult = DialogResult.OK;
-
-
-
-
 
 
         }
@@ -308,21 +315,21 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             listKV = kvBUS.getKhuVucKhoList();
             foreach (KhuVucKhoDTO kv in listKV)
             {
-                cboMaKhuVuc.Items.Add(kv.Makhuvuc + ". " + kv.Tenkhuvuc);
+                cboMaKhuVuc.Items.Add(kv.Tenkhuvuc);
                 
             }
 
             listCL = clBUS.getChatLieuList();
             foreach (ChatLieuDTO cl in listCL)
             {
-                cboMaChatLieu.Items.Add(cl.Machatlieu + ". " + cl.Tenchatlieu);
+                cboMaChatLieu.Items.Add(cl.Tenchatlieu);
                 
             }
 
             listLoai = loaiBUS.getLoaiList();
             foreach (LoaiDTO loai in listLoai)
             {
-                cboMaLoai.Items.Add(loai.Maloai + ". " + loai.Tenloai);
+                cboMaLoai.Items.Add(loai.Tenloai);
                 
 
             }
@@ -330,7 +337,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             listSize = sizeBUS.getSizeList();
             foreach (SizeDTO size in listSize)
             {
-                cboMaSize.Items.Add(size.Masize + ". " + size.Tensize);
+                cboMaSize.Items.Add(size.Tensize);
                 
             }
         }

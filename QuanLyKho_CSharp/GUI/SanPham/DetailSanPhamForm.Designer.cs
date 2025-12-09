@@ -149,7 +149,7 @@
             this.txtMasp.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMasp.Location = new System.Drawing.Point(137, 3);
             this.txtMasp.Name = "txtMasp";
-            this.txtMasp.Size = new System.Drawing.Size(151, 27);
+            this.txtMasp.Size = new System.Drawing.Size(151, 31);
             this.txtMasp.TabIndex = 9;
             // 
             // txtTensp
@@ -157,7 +157,7 @@
             this.txtTensp.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTensp.Location = new System.Drawing.Point(137, 33);
             this.txtTensp.Name = "txtTensp";
-            this.txtTensp.Size = new System.Drawing.Size(151, 27);
+            this.txtTensp.Size = new System.Drawing.Size(151, 31);
             this.txtTensp.TabIndex = 10;
             // 
             // txtSoluong
@@ -165,7 +165,7 @@
             this.txtSoluong.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoluong.Location = new System.Drawing.Point(137, 63);
             this.txtSoluong.Name = "txtSoluong";
-            this.txtSoluong.Size = new System.Drawing.Size(151, 27);
+            this.txtSoluong.Size = new System.Drawing.Size(151, 31);
             this.txtSoluong.TabIndex = 11;
             // 
             // txtDongia
@@ -173,7 +173,7 @@
             this.txtDongia.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDongia.Location = new System.Drawing.Point(137, 93);
             this.txtDongia.Name = "txtDongia";
-            this.txtDongia.Size = new System.Drawing.Size(151, 27);
+            this.txtDongia.Size = new System.Drawing.Size(151, 31);
             this.txtDongia.TabIndex = 12;
             // 
             // txtMachatlieu
@@ -181,7 +181,7 @@
             this.txtMachatlieu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMachatlieu.Location = new System.Drawing.Point(137, 123);
             this.txtMachatlieu.Name = "txtMachatlieu";
-            this.txtMachatlieu.Size = new System.Drawing.Size(151, 27);
+            this.txtMachatlieu.Size = new System.Drawing.Size(151, 31);
             this.txtMachatlieu.TabIndex = 13;
             // 
             // txtMaloai
@@ -189,7 +189,7 @@
             this.txtMaloai.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaloai.Location = new System.Drawing.Point(137, 153);
             this.txtMaloai.Name = "txtMaloai";
-            this.txtMaloai.Size = new System.Drawing.Size(151, 27);
+            this.txtMaloai.Size = new System.Drawing.Size(151, 31);
             this.txtMaloai.TabIndex = 14;
             // 
             // txtMakhuvuc
@@ -197,7 +197,7 @@
             this.txtMakhuvuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMakhuvuc.Location = new System.Drawing.Point(137, 183);
             this.txtMakhuvuc.Name = "txtMakhuvuc";
-            this.txtMakhuvuc.Size = new System.Drawing.Size(151, 27);
+            this.txtMakhuvuc.Size = new System.Drawing.Size(151, 31);
             this.txtMakhuvuc.TabIndex = 15;
             // 
             // label8
@@ -217,7 +217,7 @@
             this.txtMasize.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMasize.Location = new System.Drawing.Point(137, 213);
             this.txtMasize.Name = "txtMasize";
-            this.txtMasize.Size = new System.Drawing.Size(151, 27);
+            this.txtMasize.Size = new System.Drawing.Size(151, 31);
             this.txtMasize.TabIndex = 17;
             // 
             // label2
@@ -310,7 +310,7 @@
             // 
             // DetailSanPhamForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 393);
             this.Controls.Add(this.tableLayoutPanel1);
