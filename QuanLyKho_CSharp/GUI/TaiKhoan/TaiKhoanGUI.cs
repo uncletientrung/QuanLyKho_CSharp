@@ -20,8 +20,12 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
     {
         public TaiKhoanBUS tkBUS = new TaiKhoanBUS();
         private BindingList<TaiKhoanDTO> listTK;
+        private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
 
-        public TaiKhoanGUI()
+        public TaiKhoanGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             DGVTaiKhoan.ClearSelection();
@@ -48,21 +52,46 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             DGVTaiKhoan.ColumnHeadersHeight = 30;
             DGVTaiKhoan.RowHeadersDefaultCellStyle = headerStyle;
             DGVTaiKhoan.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
+
             listTK =tkBUS.getListTK();
+            this.currentUser = currentUser;
+            settingRole();
 
         }
         private void TaiKhoanGUI_Load(object sender, EventArgs e)
         {
 
-            refreshDataGridView(tkBUS.getListTK());
-
+            refreshDataGridView(listTK);
         }
-
-        private void DGVTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
         {
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("taikhoan");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+                btnNhapExcel.Visible = false;
+            }
+            if (!checkSua) DGVTaiKhoan.Columns.Remove("edit");
+            if (!checkXoa) DGVTaiKhoan.Columns.Remove("remove");
         }
 
-        
+
+
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddTaiKhoanForm addTK = new AddTaiKhoanForm();

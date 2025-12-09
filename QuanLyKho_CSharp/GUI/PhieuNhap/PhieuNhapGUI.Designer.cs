@@ -323,7 +323,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.txtEMoney.ForeColor = System.Drawing.Color.White;
             this.txtEMoney.Location = new System.Drawing.Point(39, 10);
             this.txtEMoney.Name = "txtEMoney";
-            this.txtEMoney.Size = new System.Drawing.Size(69, 23);
+            this.txtEMoney.Size = new System.Drawing.Size(69, 19);
             this.txtEMoney.TabIndex = 13;
             this.txtEMoney.Text = "Đến tiền";
             this.txtEMoney.TextChanged += new System.EventHandler(this.txtEMoney_TextChanged);
@@ -374,7 +374,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.txtSearchNV.ForeColor = System.Drawing.Color.White;
             this.txtSearchNV.Location = new System.Drawing.Point(39, 6);
             this.txtSearchNV.Name = "txtSearchNV";
-            this.txtSearchNV.Size = new System.Drawing.Size(204, 29);
+            this.txtSearchNV.Size = new System.Drawing.Size(204, 23);
             this.txtSearchNV.TabIndex = 13;
             this.txtSearchNV.TextChanged += new System.EventHandler(this.txtSearchNV_TextChanged);
             // 
@@ -475,7 +475,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.txtSMoney.ForeColor = System.Drawing.Color.White;
             this.txtSMoney.Location = new System.Drawing.Point(39, 10);
             this.txtSMoney.Name = "txtSMoney";
-            this.txtSMoney.Size = new System.Drawing.Size(69, 23);
+            this.txtSMoney.Size = new System.Drawing.Size(69, 19);
             this.txtSMoney.TabIndex = 13;
             this.txtSMoney.Text = "Tiền từ";
             this.txtSMoney.TextChanged += new System.EventHandler(this.txtSMoney_TextChanged);
@@ -527,7 +527,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.label2.Location = new System.Drawing.Point(3, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(313, 36);
+            this.label2.Size = new System.Drawing.Size(246, 29);
             this.label2.TabIndex = 20;
             this.label2.Text = "Danh sách phiếu nhập";
             // 
@@ -549,7 +549,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.lbTotal.ForeColor = System.Drawing.Color.Black;
             this.lbTotal.Location = new System.Drawing.Point(0, 0);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(192, 23);
+            this.lbTotal.Size = new System.Drawing.Size(149, 18);
             this.lbTotal.TabIndex = 15;
             this.lbTotal.Text = "Tổng số phiếu nhập: x";
             // 
@@ -586,7 +586,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             // 
             // PhieuNhapGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);

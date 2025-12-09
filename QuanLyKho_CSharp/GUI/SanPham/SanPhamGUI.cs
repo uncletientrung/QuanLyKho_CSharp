@@ -35,7 +35,13 @@ namespace QuanLyKho_CSharp.GUI
         private BindingList<ChatLieuDTO> listCL;
         private BindingList<SizeDTO> listSize;
         private BindingList<LoaiDTO> listLoai;
-        public SanPhamGUI()
+
+        private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
+        public SanPhamGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             listSP = spBUS.getListSP();
@@ -47,6 +53,32 @@ namespace QuanLyKho_CSharp.GUI
             ConfigureDataGridView();
             setUpBoxTimKiem();
             LoadDataToGrid(spBUS.getListSP());
+            this.currentUser = currentUser;
+            settingRole();
+        }
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
+        {
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("tonkho");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+            }
+            if (!checkSua) dgvSanPham.Columns.Remove("edit");
+            if (!checkXoa) dgvSanPham.Columns.Remove("remove");
         }
         private void ConfigureDataGridView() // Setting cho DGV
         {

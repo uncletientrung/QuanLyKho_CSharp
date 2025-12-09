@@ -44,9 +44,9 @@
             this.pnlDGV = new System.Windows.Forms.Panel();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.lbTotalStatus = new System.Windows.Forms.Panel();
-            this.lbTotalNV = new System.Windows.Forms.Label();
             this.btnNhapExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.lbTotalNV = new System.Windows.Forms.Label();
             this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.txSearch = new System.Windows.Forms.TextBox();
             this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
@@ -215,8 +215,6 @@
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
             this.pnlTop.Controls.Add(this.lbTotalStatus);
-            this.pnlTop.Controls.Add(this.btnNhapExcel);
-            this.pnlTop.Controls.Add(this.btnXuatExcel);
             this.pnlTop.Controls.Add(this.pnlSearch);
             this.pnlTop.Controls.Add(this.btnThem);
             this.pnlTop.Controls.Add(this.label1);
@@ -228,33 +226,23 @@
             // 
             // lbTotalStatus
             // 
+            this.lbTotalStatus.Controls.Add(this.btnNhapExcel);
+            this.lbTotalStatus.Controls.Add(this.btnXuatExcel);
             this.lbTotalStatus.Controls.Add(this.lbTotalNV);
             this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbTotalStatus.Location = new System.Drawing.Point(0, 0);
             this.lbTotalStatus.Name = "lbTotalStatus";
-            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 30);
+            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 48);
             this.lbTotalStatus.TabIndex = 14;
-            // 
-            // lbTotalNV
-            // 
-            this.lbTotalNV.AutoSize = true;
-            this.lbTotalNV.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbTotalNV.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
-            this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
-            this.lbTotalNV.Name = "lbTotalNV";
-            this.lbTotalNV.Size = new System.Drawing.Size(163, 18);
-            this.lbTotalNV.TabIndex = 15;
-            this.lbTotalNV.Text = "Tổng số nhà cung cấp: x";
             // 
             // btnNhapExcel
             // 
-            this.btnNhapExcel.Location = new System.Drawing.Point(737, 88);
+            this.btnNhapExcel.Location = new System.Drawing.Point(842, 3);
             this.btnNhapExcel.Name = "btnNhapExcel";
             this.btnNhapExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnNhapExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnNhapExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnNhapExcel.Size = new System.Drawing.Size(145, 40);
+            this.btnNhapExcel.Size = new System.Drawing.Size(116, 40);
             this.btnNhapExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnNhapExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnNhapExcel.StateCommon.Back.ColorAngle = 45F;
@@ -269,22 +257,22 @@
             this.btnNhapExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
             this.btnNhapExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnNhapExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnNhapExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold);
             this.btnNhapExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
             this.btnNhapExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnNhapExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
-            this.btnNhapExcel.TabIndex = 13;
+            this.btnNhapExcel.TabIndex = 17;
             this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapExcel.Values.Image")));
             this.btnNhapExcel.Values.Text = "Nhập Excel";
             // 
             // btnXuatExcel
             // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(888, 88);
+            this.btnXuatExcel.Location = new System.Drawing.Point(963, 3);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnXuatExcel.Size = new System.Drawing.Size(145, 40);
+            this.btnXuatExcel.Size = new System.Drawing.Size(116, 40);
             this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
@@ -299,13 +287,25 @@
             this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
             this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold);
             this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
             this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
-            this.btnXuatExcel.TabIndex = 12;
+            this.btnXuatExcel.TabIndex = 16;
             this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
             this.btnXuatExcel.Values.Text = "Xuất Excel";
+            // 
+            // lbTotalNV
+            // 
+            this.lbTotalNV.AutoSize = true;
+            this.lbTotalNV.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotalNV.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
+            this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
+            this.lbTotalNV.Name = "lbTotalNV";
+            this.lbTotalNV.Size = new System.Drawing.Size(163, 18);
+            this.lbTotalNV.TabIndex = 15;
+            this.lbTotalNV.Text = "Tổng số nhà cung cấp: x";
             // 
             // pnlSearch
             // 
@@ -431,8 +431,6 @@
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel lbTotalStatus;
         private System.Windows.Forms.Label lbTotalNV;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNhapExcel;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnXuatExcel;
         private Helper.component.ArtanPanel pnlSearch;
         private System.Windows.Forms.TextBox txSearch;
         private Helper.component.ArtanButton artanButton1;
@@ -447,5 +445,7 @@
         private System.Windows.Forms.DataGridViewImageColumn detail;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn remove;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNhapExcel;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnXuatExcel;
     }
 }

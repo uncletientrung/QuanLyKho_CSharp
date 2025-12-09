@@ -26,11 +26,13 @@ namespace QuanLyKho_CSharp.GUI
         private BindingList<NhanVienDTO> listNV;
         private NhanVienDTO currentUser;
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS= new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
 
         public NhanVienGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
-            this.currentUser = currentUser;
             DGVNhanVien.ClearSelection();
             DGVNhanVien.RowHeadersVisible = false; // Tắt cột header
             DGVNhanVien.AllowUserToResizeRows = false; // Chặn kéo dài row
@@ -56,20 +58,41 @@ namespace QuanLyKho_CSharp.GUI
             DGVNhanVien.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
             listNV = nvBUS.getListNV();
+            this.currentUser = currentUser;
+            settingRole();
 
             
+        }
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
+        {
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("nhanvien");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if(ctq.Hanhdong =="Thêm") checkThem = true;
+                if(ctq.Hanhdong =="Sửa") checkSua = true;
+                if(ctq.Hanhdong =="Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+                btnNhapExcel.Visible = false;
+            }
+            if (!checkSua) DGVNhanVien.Columns.Remove("edit");
+            if (!checkXoa) DGVNhanVien.Columns.Remove("remove");
         }
 
         private void NhanVienGUI_Load(object sender, EventArgs e)
         {
             refreshDataGridView(listNV);
         }
-
-        private void settingRole()
-        {
-
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddNhanVienForm addNV = new AddNhanVienForm();

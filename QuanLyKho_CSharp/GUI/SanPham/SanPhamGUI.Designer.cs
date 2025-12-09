@@ -419,7 +419,7 @@
             this.txtEMoney.ForeColor = System.Drawing.Color.White;
             this.txtEMoney.Location = new System.Drawing.Point(36, 10);
             this.txtEMoney.Name = "txtEMoney";
-            this.txtEMoney.Size = new System.Drawing.Size(69, 23);
+            this.txtEMoney.Size = new System.Drawing.Size(69, 19);
             this.txtEMoney.TabIndex = 13;
             this.txtEMoney.Text = "Đến tiền";
             this.txtEMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEMoney_KeyPress);
@@ -469,7 +469,7 @@
             this.txtSearch.ForeColor = System.Drawing.Color.White;
             this.txtSearch.Location = new System.Drawing.Point(39, 6);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(204, 29);
+            this.txtSearch.Size = new System.Drawing.Size(204, 23);
             this.txtSearch.TabIndex = 13;
             // 
             // artanButton3
@@ -547,7 +547,7 @@
             this.txtSMoney.ForeColor = System.Drawing.Color.White;
             this.txtSMoney.Location = new System.Drawing.Point(39, 10);
             this.txtSMoney.Name = "txtSMoney";
-            this.txtSMoney.Size = new System.Drawing.Size(69, 23);
+            this.txtSMoney.Size = new System.Drawing.Size(69, 19);
             this.txtSMoney.TabIndex = 13;
             this.txtSMoney.Text = "Tiền từ";
             this.txtSMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSMoney_KeyPress);
@@ -579,7 +579,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.label2.Location = new System.Drawing.Point(3, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(297, 36);
+            this.label2.Size = new System.Drawing.Size(234, 29);
             this.label2.TabIndex = 20;
             this.label2.Text = "Danh sách sản phẩm";
             // 
@@ -601,7 +601,7 @@
             this.lbTotal.ForeColor = System.Drawing.Color.Black;
             this.lbTotal.Location = new System.Drawing.Point(0, 0);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(181, 23);
+            this.lbTotal.Size = new System.Drawing.Size(142, 18);
             this.lbTotal.TabIndex = 15;
             this.lbTotal.Text = "Tổng số sản phẩm: x";
             // 
@@ -638,7 +638,7 @@
             // 
             // SanPhamGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);

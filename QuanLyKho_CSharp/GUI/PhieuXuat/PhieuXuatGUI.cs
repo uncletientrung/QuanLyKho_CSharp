@@ -29,6 +29,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private KhachHangBUS khBUS = new KhachHangBUS();
         private BindingList<PhieuXuatDTO> listPX;
         private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
 
         public PhieuXuatGUI(NhanVienDTO currentUser)
         {
@@ -42,6 +46,31 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             cbbSearch.Items.Add("Khách hàng");
             cbbSearch.SelectedIndex = 0;
             cbbSearch.DropDownStyle = ComboBoxStyle.DropDownList;
+            settingRole();
+        }
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
+        {
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("xuathang");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+            }
+            if (!checkSua) DGVPhieuXuat.Columns.Remove("hoanhang");
+            if (!checkXoa) DGVPhieuXuat.Columns.Remove("remove");
         }
 
         private void SetupDataGridView()

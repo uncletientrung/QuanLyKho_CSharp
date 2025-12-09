@@ -1,4 +1,5 @@
-﻿ using QuanLyKho.DAO;
+﻿using MySqlX.XDevAPI.Common;
+using QuanLyKho.DAO;
 using QuanLyKho.DTO;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,10 @@ namespace QuanLyKho.BUS
                                     item.Manv.ToString().ToLower().Contains(text.ToLower())).ToList();
             return new BindingList<TaiKhoanDTO>(result);
 
+        }
+        public int getIdNQByIdNV(int manv)
+        {
+            return listTK.FirstOrDefault(tk => tk.Manv == manv).Manhomquyen;  
         }
     }
 }

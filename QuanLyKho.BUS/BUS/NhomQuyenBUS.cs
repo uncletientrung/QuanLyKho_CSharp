@@ -31,7 +31,7 @@ namespace QuanLyKho.BUS
         public NhomQuyenDTO getNQById(int id)
         {
             NhomQuyenDTO result = new NhomQuyenDTO();
-            result=nqDAO.SelectById(id);
+            result = listNQ.FirstOrDefault(nq => nq.Manhomquyen == id);
             return result;
         }
         public int getAutoMaNQ()
@@ -112,7 +112,6 @@ namespace QuanLyKho.BUS
 
             return new BindingList<Guna2Button>(result);
         }
-
 
 
     }

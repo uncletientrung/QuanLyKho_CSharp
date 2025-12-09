@@ -29,10 +29,15 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
     {
         private SizeBUS sizeBUS = new SizeBUS();
         private BindingList<SizeDTO> listSize;
+        private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
 
 
 
-        public SizeGUI()
+        public SizeGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             // Thiết lập DataGridView
@@ -61,8 +66,34 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
             DGVSize.RowHeadersDefaultCellStyle = headerStyle;
             DGVSize.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
             listSize = sizeBUS.getSizeList();
+            this.currentUser = currentUser;
+            settingRole();
         }
-
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
+        {
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("thongtin");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+                btnNhapExcel.Visible = false;
+            }
+            if (!checkSua) DGVSize.Columns.Remove("edit");
+            if (!checkXoa) DGVSize.Columns.Remove("remove");
+        }
         private void roundedButton2_Click_1(object sender, EventArgs e)
         {
             AddSizeForm addSize = new AddSizeForm();

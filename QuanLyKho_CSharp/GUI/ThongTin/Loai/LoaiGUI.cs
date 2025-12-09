@@ -28,8 +28,12 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
 
         private LoaiBUS loaiBUS = new LoaiBUS();
         private BindingList<LoaiDTO> listLoai;
-
-        public LoaiGUI()
+        private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
+        public LoaiGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
 
@@ -59,11 +63,34 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
             DGVLoai.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
             listLoai = loaiBUS.getLoaiList();
+            this.currentUser = currentUser;
+            settingRole();
         }
 
-        private void DGVLoai_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
         {
-
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("thongtin");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+                btnNhapExcel.Visible = false;
+            }
+            if (!checkSua) DGVLoai.Columns.Remove("edit");
+            if (!checkXoa) DGVLoai.Columns.Remove("remove");
         }
 
         private void DGVLoai_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

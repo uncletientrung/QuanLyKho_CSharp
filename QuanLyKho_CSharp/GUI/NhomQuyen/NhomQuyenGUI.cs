@@ -21,7 +21,11 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
     {
         private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
         private BindingList<NhomQuyenDTO> listNQ;
-        public NhomQuyenGUI()
+        private NhanVienDTO currentUser;
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
+        public NhomQuyenGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             DGVPhanQuyen.ClearSelection();
@@ -50,11 +54,34 @@ namespace QuanLyKho_CSharp.GUI.PhanQuyen
             DGVPhanQuyen.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
             listNQ = nqBUS.getListNQ();
             refreshDataGridView(listNQ);
+            this.currentUser = currentUser;
+            settingRole();
         }
 
-        private void lbFormName_Click(object sender, EventArgs e)
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
         {
-
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("phanquyen");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+                btnNhapExcel.Visible = false;
+            }
+            if (!checkSua) DGVPhanQuyen.Columns.Remove("edit");
+            if (!checkXoa) DGVPhanQuyen.Columns.Remove("remove");
         }
 
         private void btnExcel_Click(object sender, EventArgs e)

@@ -206,7 +206,7 @@ namespace QuanLyKho_CSharp
 
         private void btnTonKho_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SanPhamGUI(), btnTonKho);
+            OpenChildForm(new SanPhamGUI(currentUser2), btnTonKho);
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)
@@ -225,7 +225,7 @@ namespace QuanLyKho_CSharp
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new KhachHangGUI(), btnKhachHang);
+            OpenChildForm(new KhachHangGUI(currentUser2), btnKhachHang);
         }
 
         private void btnNhanVien_Click(object sender, EventArgs e)
@@ -235,27 +235,27 @@ namespace QuanLyKho_CSharp
 
         private void btnNhaCungCap_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new NhaCungCapGUI(), btnNhaCungCap);
+            OpenChildForm(new NhaCungCapGUI(currentUser2), btnNhaCungCap);
         }
 
         private void btnChatLieu_Click_1(object sender, EventArgs e)
         {
-            OpenChildForm(new ChatLieuGUI(), btnChatLieu);
+            OpenChildForm(new ChatLieuGUI(currentUser2), btnChatLieu);
         }
 
         private void btnLoai_Click_1(object sender, EventArgs e)
         {
-            OpenChildForm(new LoaiGUI(), btnLoai);
+            OpenChildForm(new LoaiGUI(currentUser2), btnLoai);
         }
 
         private void btnSize_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SizeGUI(), btnSize);
+            OpenChildForm(new SizeGUI(currentUser2), btnSize);
         }
 
         private void btnKhuVuc_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new KhuVucGUI(), btnKhuVuc);
+            OpenChildForm(new KhuVucGUI(currentUser2), btnKhuVuc);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -266,12 +266,12 @@ namespace QuanLyKho_CSharp
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new TaiKhoanGUI(), btnTaiKhoan);
+            OpenChildForm(new TaiKhoanGUI(currentUser2), btnTaiKhoan);
         }
 
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new NhomQuyenGUI(), btnPhanQuyen);
+            OpenChildForm(new NhomQuyenGUI(currentUser2), btnPhanQuyen);
         }
 
 

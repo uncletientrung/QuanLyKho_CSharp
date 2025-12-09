@@ -28,7 +28,12 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
 
         private KhachHangBUS khBUS = new KhachHangBUS();
         private BindingList<KhachHangDTO> listKH;
-        public KhachHangGUI()
+        private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
+        public KhachHangGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
             DGVKhachHang.ClearSelection();
@@ -57,8 +62,34 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
             DGVKhachHang.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
             listKH = khBUS.getListKH();
+            this.currentUser = currentUser;
+            settingRole();
         }
-
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
+        {
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("khachhang");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+                btnNhapExcel.Visible = false;
+            }
+            if (!checkSua) DGVKhachHang.Columns.Remove("edit");
+            if (!checkXoa) DGVKhachHang.Columns.Remove("remove");
+        }
 
         private void KhachHangGUI_Load(object sender, EventArgs e)
         {

@@ -24,6 +24,11 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private BindingList<NhanVienDTO> listNV;
 
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
+
         public KiemKeGUI(NhanVienDTO currentUser)
         {
             InitializeComponent();
@@ -32,8 +37,32 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             SettingDGV();
             SettingTopPanel();
             refreshDGV(listPKK);
+            settingRole();
         }
-
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
+        {
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("kiemke");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+            }
+            if (!checkSua) DGVPhieuKiem.Columns.Remove("btnCanBang");
+            if (!checkXoa) DGVPhieuKiem.Columns.Remove("remove");
+        }
         private void SettingDGV()
         {
             DGVPhieuKiem.ClearSelection();
@@ -100,8 +129,11 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                         ThoiGianCanBangStr,
                         pkk.Ghichu, pkk.Trangthai);
                     soPKK++;
-                    DGVPhieuKiem.Rows[rowIndex].Cells["btnCanBang"].Value =
-                        pkk.Trangthai == "Đã cân bằng" ? "Đã cân bằng xong" : "Cân bằng";
+                    if (DGVPhieuKiem.Columns.Contains("btnCanBang")) // Nếu có trong DGV mới gán
+                    {
+                        DGVPhieuKiem.Rows[rowIndex].Cells["btnCanBang"].Value =
+                            pkk.Trangthai == "Đã cân bằng" ? "Đã cân bằng xong" : "Cân bằng";
+                    }
                     SetRowColor(rowIndex, pkk);
                 }
             }

@@ -26,7 +26,12 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
     {
         private ChatLieuBUS clBUS = new ChatLieuBUS();
         private BindingList<ChatLieuDTO> listCL;
-        public ChatLieuGUI()
+        private NhanVienDTO currentUser;
+        private NhomQuyenBUS nqBUS = new NhomQuyenBUS();
+        private TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        private DanhMucChucNangBUS dmcnBUS = new DanhMucChucNangBUS();
+        private BindingList<ChiTietQuyenDTO> listCTQ;
+        public ChatLieuGUI(NhanVienDTO cureentUser)
         {
             InitializeComponent();
             // Thiết lập DataGridView
@@ -56,11 +61,34 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
             DGVChatLieu.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
             listCL = clBUS.getChatLieuList();
+            this.currentUser = cureentUser;
+            settingRole();
         }
 
-        private void lblDanhSachChatLieu_Click(object sender, EventArgs e)
+        private void settingRole() // Xử lý ẩn hiện các nút dựa trên role
         {
-
+            int maNQ = tkBUS.getIdNQByIdNV(currentUser.Manv);
+            int maDMNC = dmcnBUS.getIdByNameCN("thongtin");
+            var listCT = nqBUS.getListCTNQByIdNQ(maNQ)
+                .Where(ctnq => ctnq.Machucnang == maDMNC).ToList();
+            listCTQ = new BindingList<ChiTietQuyenDTO>(listCT);
+            // Thực hiện ẩn nút
+            bool checkThem = false;
+            bool checkSua = false;
+            bool checkXoa = false;
+            foreach (ChiTietQuyenDTO ctq in listCTQ)
+            {
+                if (ctq.Hanhdong == "Thêm") checkThem = true;
+                if (ctq.Hanhdong == "Sửa") checkSua = true;
+                if (ctq.Hanhdong == "Xóa") checkXoa = true;
+            }
+            if (!checkThem)
+            {
+                btnThem.Visible = false;
+                btnNhapExcel.Visible = false;
+            }
+            if (!checkSua) DGVChatLieu.Columns.Remove("edit");
+            if (!checkXoa) DGVChatLieu.Columns.Remove("remove");
         }
 
         private void ChatLieuGUI_Load(object sender, EventArgs e)
