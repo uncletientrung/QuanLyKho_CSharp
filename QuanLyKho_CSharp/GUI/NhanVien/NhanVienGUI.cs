@@ -105,7 +105,7 @@ namespace QuanLyKho_CSharp.GUI
             foreach (NhanVienDTO nv in listRefresh.Where(nv => nv.Trangthai == 1))
             {
                 string gioiTinh = nv.Gioitinh == 1 ? "Nam" : nv.Gioitinh == 2 ? "Nữ" : "Khác";
-                DGVNhanVien.Rows.Add(nv.Manv, nv.Tennv, gioiTinh, nv.Sdt
+                DGVNhanVien.Rows.Add($"NV-{nv.Manv}", nv.Tennv, gioiTinh, nv.Sdt
                 , nv.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
                 soLuongNV++;
             }
@@ -122,7 +122,7 @@ namespace QuanLyKho_CSharp.GUI
         private void DGVNhanVien_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString());
+            int manv = int.Parse(DGVNhanVien.Rows[e.RowIndex].Cells["manv"].Value.ToString().Replace("NV-",""));
             NhanVienDTO NhanVienDuocChon = nvBUS.getNVById(manv);
             if (DGVNhanVien.Columns[e.ColumnIndex].Name == "detail")
             {

@@ -121,7 +121,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private void DGVPhieuXuat_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int maPhieu = int.Parse(DGVPhieuXuat.Rows[e.RowIndex].Cells["mapx"].Value.ToString());
+            int maPhieu = int.Parse(DGVPhieuXuat.Rows[e.RowIndex].Cells["mapx"].Value.ToString().Replace("PX-",""));
             PhieuXuatDTO phieuDuocChon = pxBUS.getPhieuXuatById(maPhieu);
             if (DGVPhieuXuat.Columns[e.ColumnIndex].Name == "detail")
             {
@@ -647,7 +647,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                     string trangThai = GetTrangThaiDisplay(px);
 
                     int rowIndex = DGVPhieuXuat.Rows.Add(
-                        px.Maphieu,
+                        $"PX-{px.Maphieu}",
                         tenNV,
                         tenKH,
                         px.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"),

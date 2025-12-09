@@ -14,7 +14,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +27,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private PhieuNhapBUS pnBUS = new PhieuNhapBUS();
         private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
-        private KhuVucKhoBUS kvBUS= new KhuVucKhoBUS();
         private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
         private BindingList<NhaCungCapDTO> listNCC;
         private BindingList<SanPhamDTO> listSP;
@@ -36,7 +34,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private Action btnClose;
         private NhanVienDTO currentUser;
         private Action refreshDGVPN;
-        private int KhuVucDangLenDon = 0;
 
         public AddPhieuNhapForm(Action btnClose, NhanVienDTO currentUser, Action refreshDGVPN)
         {
@@ -44,23 +41,16 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             this.btnClose = btnClose;
             this.currentUser = currentUser;
             this.refreshDGVPN = refreshDGVPN;
-            cbbKV.Items.Add("Tất cả khu vực");
-            cbbKV.SelectedIndex = 0;
-            foreach (KhuVucKhoDTO kv in kvBUS.getKhuVucKhoList())
-            {
-                cbbKV.Items.Add(kv.Tenkhuvuc);
-            }
             SetupDataGridViews();
             LoadData();
-
-            
-
         }
+
         private void btnOnClose_Click(object sender, EventArgs e)
         {
             refreshDGVPN();
             btnClose?.Invoke(); // Thực hiện delegate
         }
+
         private void SetupDataGridViews()
         {
             // Thiết lập lại style cho header và row
@@ -120,28 +110,22 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void LoadSPTrongKho()
         {
-
             listSP = spBUS.getListSP();
             dgvSPtrongKho.Rows.Clear();
             if (listSP != null && listSP.Count > 0)
             {
-                int makv = kvBUS.LayMaKhuVuc(cbbKV.SelectedItem.ToString());
                 foreach (SanPhamDTO sp in listSP)
                 {
                     if (sp.Trangthai == 0) continue;
-                    if(sp.Makhuvuc == makv || makv == 0) // In dựa trên khu vực chọn
-                    {
-                        string tenKV = kvBUS.LayTenKhuVuc(sp);
-                        Image productImage = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
-                        dgvSPtrongKho.Rows.Add(
-                            sp.Masp,
-                            sp.Tensp,
-                            productImage,
-                            sp.Dongia,
-                            sp.Soluong,
-                            tenKV
-                        );
-                    }          
+
+                    Image productImage = LoadImageSafe(sp.Hinhanh);
+                    dgvSPtrongKho.Rows.Add(
+                        sp.Masp,
+                        sp.Tensp,
+                        productImage,
+                        sp.Dongia,
+                        sp.Soluong
+                    );
                 }
             }
             dgvSPtrongKho.ClearSelection();
@@ -180,6 +164,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
             lbPrice.Text = $"{tongTien:N0}đ";
         }
+
         // Thêm sản phẩm vào phiếu
         private void dgvSPtrongKho_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -195,6 +180,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 UpdateQuantity(spTrongKho);
             }
         }
+
         // Chính sửa số lượng nếu cần
         private void dgvSPduocThem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -208,7 +194,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 if (dgvSPduocThem.Columns[e.ColumnIndex].Name != "remove") UpdateQuantity(spDuocChon);
                 else if (dgvSPduocThem.Columns[e.ColumnIndex].Name == "remove")
                 {
-
                     listSPDuocThem.Remove(spDuocChon);
                     LoadSPDuocThem();
                 }
@@ -217,14 +202,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void UpdateQuantity(SanPhamDTO spDuocChon)
         {
-            if (listSPDuocThem.Count == 0) KhuVucDangLenDon = 0; // Xử lý lên đơn khác khu vực
-            if (KhuVucDangLenDon !=0 && spDuocChon.Makhuvuc != KhuVucDangLenDon)
-            {
-                MessageBox.Show("Sản phẩm khác khu vực với các sản phẩm trong phiếu! \nHãy chọn sản phẩm khác", "Cảnh báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txSearch.Clear();
-                return;
-            }
             var existingSP = listSPDuocThem.FirstOrDefault(x => x.Masp == spDuocChon.Masp);
             string title = existingSP != null ? "Chỉnh sửa số lượng" : "Nhập số lượng";
             int soLuongTruyenVao = existingSP != null ? existingSP.Soluong : 1;
@@ -248,8 +225,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     };
                     listSPDuocThem.Add(spMoi);
                 }
-                // Xử lý lên đơn khác khu vực
-                if (listSPDuocThem.Count == 1) KhuVucDangLenDon = spDuocChon.Makhuvuc; 
                 LoadSPDuocThem();
             }
             else
@@ -257,6 +232,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 txSearch.Clear();
             }
         }
+
         private void txSearch_TextChanged(object sender, EventArgs e) // Tìm kiếm sản phẩm
         {
             string textSearch = txSearch.Text.Trim();
@@ -267,7 +243,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 return;
             }
             BindingList<SanPhamDTO> resultList = SearchResultControl.TimKiem(textSearch);
-            if(resultList.Count == 0)
+            if (resultList.Count == 0)
             {
                 listContainer.Controls.Add(new Label
                 {
@@ -279,13 +255,13 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 listContainer.Height = 50;
                 return;
             }
-            foreach( SanPhamDTO sp in resultList)
+            foreach (SanPhamDTO sp in resultList)
             {
                 var item = new SearchResultControl();
                 item.BindData(sp);
                 item.OnProductSelected += (objPhatRaSuKien, selectedSp) =>
                 {
-                    txSearch.Text = $"{selectedSp.Masp} | {selectedSp.Tensp} "+ $"| SL: {sp.Soluong} | Giá: {sp.Dongia:N0}đ";
+                    txSearch.Text = $"{selectedSp.Masp} | {selectedSp.Tensp} " + $"| SL: {sp.Soluong} | Giá: {sp.Dongia:N0}đ";
                     listContainer.Height = 0;
                     txSearch.SelectionStart = txSearch.Text.Length;
                     UpdateQuantity(sp);
@@ -294,6 +270,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
             listContainer.Height = Math.Min(resultList.Count * 54 + 10, 300);
         }
+
         private void txSearchVendor_TextChanged(object sender, EventArgs e) // Tìm nhà cung cấp
         {
             listContainerVendor.AutoScroll = true;
@@ -333,6 +310,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
             listContainerVendor.Height = Math.Min(resultList.Count * 30 + 10, 120);
         }
+
         private void btnNewNCC_Click(object sender, EventArgs e) // Thêm nhà cung cấp
         {
             AddNhaCungCapForm addNCCForm = new AddNhaCungCapForm();
@@ -369,7 +347,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
             if (lbNameVendor.Text == "Chưa chọn nhà cung cấp")
             {
-                MessageBox.Show("Vui lòng chọn khách hàng!", "Lỗi",
+                MessageBox.Show("Vui lòng chọn nhà cung cấp!", "Lỗi",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -393,7 +371,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             {
                 ngayTao = dateCreate.Value.Date;
             }
-            PhieuNhapDTO newPhieuNhap = new PhieuNhapDTO // Tạo phiếu xuất mới 
+            PhieuNhapDTO newPhieuNhap = new PhieuNhapDTO // Tạo phiếu nhập mới 
             {
                 Maphieu = pnBUS.getAutoMaPhieuNhap(),
                 Manv = manv,
@@ -424,16 +402,17 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 else
                 {
                     pnBUS.removePhieuNhap(newPhieuNhap.Maphieu);
-                    MessageBox.Show("Có lỗi xảy ra khi lưu chi tiết phiếu xuất!", "Lỗi",
+                    MessageBox.Show("Có lỗi xảy ra khi lưu chi tiết phiếu nhập!", "Lỗi",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Có lỗi xảy ra khi tạo phiếu xuất!", "Lỗi",
+                MessageBox.Show("Có lỗi xảy ra khi tạo phiếu nhập!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void UpdateSoLuongSanPhamAfterNhap()
         {
             LoadSPTrongKho(); // Load lại sp trong kho
@@ -445,6 +424,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             AddSuccessNotification tb = new AddSuccessNotification();
             tb.Show();
         }
+
         private void btnNewClothes_Click(object sender, EventArgs e) // Thêm quần áo mới
         {
             AddSanPhamForm addSPForm = new AddSanPhamForm();
@@ -455,14 +435,44 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 LoadSPTrongKho();
             }
         }
+
         private void AddPhieuNhapForm_Load(object sender, EventArgs e)
         {
-
+            // Không cần xử lý gì
         }
 
-        private void cbbKV_SelectedIndexChanged(object sender, EventArgs e)
+        // Thêm phương thức LoadImageSafe giống AddPhieuXuatForm
+        public static Image LoadImageSafe(string absolutePath)
         {
-            LoadSPTrongKho();
+            if (string.IsNullOrWhiteSpace(absolutePath)) return CreateEmptyImage();
+            if (!File.Exists(absolutePath)) return CreateEmptyImage();
+            try
+            {
+                using (var original = Image.FromFile(absolutePath))
+                {
+                    var resized = new Bitmap(40, 40);
+                    using (var g = Graphics.FromImage(resized))
+                    {
+                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        g.DrawImage(original, 0, 0, 40, 40);
+                    }
+                    return resized;
+                }
+            }
+            catch
+            {
+                return CreateEmptyImage();
+            }
+        }
+
+        public static Image CreateEmptyImage() // Ảnh trống
+        {
+            Bitmap emptyImage = new Bitmap(50, 50);
+            using (Graphics g = Graphics.FromImage(emptyImage))
+            {
+                g.Clear(Color.Gray);
+            }
+            return emptyImage;
         }
     }
 }

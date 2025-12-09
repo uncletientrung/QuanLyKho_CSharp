@@ -1,6 +1,5 @@
 ﻿using QuanLyKho.BUS;
 using QuanLyKho.DTO;
-using QuanLyKho_CSharp.GUI.PhieuXuat;
 using QuanLyKho_CSharp.Helper;
 using System;
 using System.Collections.Generic;
@@ -69,8 +68,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void LoadData()
         {
-            listPN = pnBUS.getListPN();
-            
+            listPN = pnBUS.getListPN();    
         }
 
         private void PhieuNhap_Load(object sender, EventArgs e)
@@ -81,7 +79,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
         private void DGVPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int mapn = int.Parse(DGVPhieuNhap.CurrentRow.Cells[0].Value.ToString());
+            int mapn = int.Parse(DGVPhieuNhap.CurrentRow.Cells[0].Value.ToString().Replace("PN-",""));
             PhieuNhapDTO pnDTO= pnBUS.getPhieuNhapById(mapn);
             if (DGVPhieuNhap.Columns[e.ColumnIndex].Name == "detail")
             {
@@ -508,7 +506,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     string tenNCC = nccBUS.getNamebyID(pn.Mancc);
                     string trangThai = pn.Trangthai == 1 ? "Hoạt động" : "Đã hủy";
                     DGVPhieuNhap.Rows.Add(
-                        pn.Maphieu,
+                        $"PN-{pn.Maphieu}",
                         tenNV,
                         tenNCC,
                         pn.Thoigiantao.ToString("HH:mm dd/MM/yyyy"),
