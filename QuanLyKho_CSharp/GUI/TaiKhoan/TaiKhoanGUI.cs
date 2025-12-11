@@ -175,6 +175,16 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
 
         }
 
-
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            AddTaiKhoanForm addNV = new AddTaiKhoanForm();
+            addNV.ShowDialog();
+            if (addNV.DialogResult == DialogResult.OK)
+            {
+                refreshDataGridView(tkBUS.getListTK());
+                AddSuccessNotification tb = new AddSuccessNotification();
+                tb.Show();
+            }
+        }
     }
 }

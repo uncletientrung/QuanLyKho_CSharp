@@ -49,7 +49,7 @@ namespace QuanLyKho.DAO
         public int Delete(int t)
         {
             int result = 0;
-            string sql = $"UPDATE taikhoan Set trangthai= 0 WHERE manv={t}";
+            string sql = $"DELETE FROM taikhoan WHERE manv = {t}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }

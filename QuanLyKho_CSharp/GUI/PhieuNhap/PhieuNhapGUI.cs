@@ -109,6 +109,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             if (DGVPhieuNhap.Columns[e.ColumnIndex].Name == "detail")
             {
                 ShowDetailPhieuNhapForm(pnDTO);
+                pnBUS = new PhieuNhapBUS();
                 refreshDataGridView(pnBUS.getListPN());
             }else if(DGVPhieuNhap.Columns[e.ColumnIndex].Name == "remove")
             {
