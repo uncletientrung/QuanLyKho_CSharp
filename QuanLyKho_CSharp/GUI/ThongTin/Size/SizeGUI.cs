@@ -207,8 +207,8 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
                     {
                         try
                         {
-                            string tenSize = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
-                            string ghiChu = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
+                            string tenSize = worksheet.Cells[row, 1].Value?.ToString()?.Trim();
+                            string ghiChu = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
 
                             if (string.IsNullOrEmpty(tenSize))
                             {

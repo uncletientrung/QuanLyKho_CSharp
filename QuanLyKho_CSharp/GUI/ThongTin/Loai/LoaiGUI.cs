@@ -261,7 +261,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
                     {
                         try
                         {
-                            string tenLoai = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
+                            string tenLoai = worksheet.Cells[row, 1].Value?.ToString()?.Trim();
 
                             if (string.IsNullOrEmpty(tenLoai))
                             {

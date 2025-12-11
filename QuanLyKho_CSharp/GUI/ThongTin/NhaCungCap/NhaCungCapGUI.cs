@@ -245,10 +245,10 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                     {
                         try
                         {
-                            string tenNCC = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
-                            string diaChi = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
-                            string sdt = worksheet.Cells[row, 4].Value?.ToString()?.Trim();
-                            string email = worksheet.Cells[row, 5].Value?.ToString()?.Trim();
+                            string tenNCC = worksheet.Cells[row, 1].Value?.ToString()?.Trim();
+                            string diaChi = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
+                            string sdt = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
+                            string email = worksheet.Cells[row, 4].Value?.ToString()?.Trim();
 
                             if (string.IsNullOrEmpty(tenNCC))
                             {

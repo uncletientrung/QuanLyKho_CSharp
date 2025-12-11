@@ -206,10 +206,10 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
                     {
                         try
                         {
-                            string tenKH = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
-                            string email = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
-                            string sdt = worksheet.Cells[row, 4].Value?.ToString()?.Trim();
-                            object ngaySinhValue = worksheet.Cells[row, 5].Value;
+                            string tenKH = worksheet.Cells[row, 1].Value?.ToString()?.Trim();
+                            string email = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
+                            string sdt = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
+                            object ngaySinhValue = worksheet.Cells[row, 4].Value;
 
                             if (string.IsNullOrEmpty(tenKH))
                             {

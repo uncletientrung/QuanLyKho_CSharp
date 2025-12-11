@@ -192,7 +192,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
                     {
                         try
                         {
-                            string tenCL = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
+                            string tenCL = worksheet.Cells[row, 1].Value?.ToString()?.Trim();
 
                             if (string.IsNullOrEmpty(tenCL))
                             {
