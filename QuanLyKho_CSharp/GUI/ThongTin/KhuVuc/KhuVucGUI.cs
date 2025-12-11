@@ -161,7 +161,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             int soluong = 0;
             foreach (KhuVucKhoDTO kvk in list)
             {
-                DGVKhuVuc.Rows.Add(kvk.Makhuvuc, kvk.Tenkhuvuc, kvk.Diachi, kvk.Sdt, kvk.Email);
+                DGVKhuVuc.Rows.Add($"KV-{kvk.Makhuvuc}", kvk.Tenkhuvuc, kvk.Diachi, kvk.Sdt, kvk.Email);
                 soluong++;
             }
             DGVKhuVuc.ClearSelection();
@@ -191,7 +191,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
         private void DGVKhuVuc_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int makv = int.Parse(DGVKhuVuc.Rows[e.RowIndex].Cells["makv"].Value.ToString());
+            int makv = int.Parse(DGVKhuVuc.Rows[e.RowIndex].Cells["makv"].Value.ToString().Replace("KV-", ""));
             KhuVucKhoDTO KhuVucKhoDuocChon = kvkBUS.getKVKById(makv);
             if (DGVKhuVuc.Columns[e.ColumnIndex].Name == "detail")
             {

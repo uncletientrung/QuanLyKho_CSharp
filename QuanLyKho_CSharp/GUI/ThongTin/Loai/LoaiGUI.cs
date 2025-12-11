@@ -186,7 +186,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
             int soluong = 0;
             foreach (LoaiDTO loai in list)
             {
-                DGVLoai.Rows.Add(loai.Maloai, loai.Tenloai);
+                DGVLoai.Rows.Add($"L-{loai.Maloai}", loai.Tenloai);
                 soluong++;
             }
             DGVLoai.ClearSelection();
@@ -201,7 +201,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
         private void DGVLoai_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int maLoai = Convert.ToInt32(DGVLoai.Rows[e.RowIndex].Cells["mal"].Value);
+            int maLoai = int.Parse(DGVLoai.Rows[e.RowIndex].Cells["mal"].Value.ToString().Replace("L-", ""));
             LoaiDTO loaiDuocChon = loaiBUS.getLoaiById(maLoai);
             if (DGVLoai.Columns[e.ColumnIndex].Name == "detail")
             {

@@ -100,7 +100,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
             foreach (NhaCungCapDTO ncc in list)
             {
                 string trangThai = ncc.Trangthai == 1 ? "Hoạt động" : "Ngừng hoạt động";
-                DGVNhaCungCap.Rows.Add(ncc.Mancc, ncc.Tenncc, ncc.Diachincc, ncc.Sdt, ncc.Email, trangThai);
+                DGVNhaCungCap.Rows.Add($"NCC-{ncc.Mancc}", ncc.Tenncc, ncc.Diachincc, ncc.Sdt, ncc.Email, trangThai);
                 soluong++;
             }
             DGVNhaCungCap.ClearSelection();
@@ -182,7 +182,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
         private void DGVNhaCungCap_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int maNCC = int.Parse(DGVNhaCungCap.Rows[e.RowIndex].Cells["mancc"].Value.ToString());
+            int maNCC = int.Parse(DGVNhaCungCap.Rows[e.RowIndex].Cells["mancc"].Value.ToString().Replace("NCC-", ""));
             NhaCungCapDTO NhaCungCapDuocChon = nccBUS.getNCCById(maNCC);
             if (DGVNhaCungCap.Columns[e.ColumnIndex].Name == "detail")
             {

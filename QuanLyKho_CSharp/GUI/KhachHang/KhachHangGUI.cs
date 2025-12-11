@@ -103,7 +103,7 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
             int soluong = 0;
             foreach (KhachHangDTO kh in listRefresh.Where(kh => kh.Trangthai == 1))
             {
-                DGVKhachHang.Rows.Add(kh.Makh, kh.Tenkhachhang, kh.Email, kh.Sdt
+                DGVKhachHang.Rows.Add($"KH-{kh.Makh}", kh.Tenkhachhang, kh.Email, kh.Sdt
                 , kh.Ngaysinh.ToString("dd/MM/yyyy"), "Hoạt động");
                 soluong++;
             }
@@ -138,7 +138,7 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
         private void DGVKhachHang_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int maKH = int.Parse(DGVKhachHang.Rows[e.RowIndex].Cells["makh"].Value.ToString());
+            int maKH = int.Parse(DGVKhachHang.Rows[e.RowIndex].Cells["makh"].Value.ToString().Replace("KH-", ""));
             KhachHangDTO KhachHangDuocChon = khBUS.getKHById(maKH);
             if (DGVKhachHang.Columns[e.ColumnIndex].Name == "edit")
             {

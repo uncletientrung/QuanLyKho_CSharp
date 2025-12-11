@@ -109,7 +109,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
             int soluong = 0;
             foreach (ChatLieuDTO cl in list)
             {
-                DGVChatLieu.Rows.Add(cl.Machatlieu, cl.Tenchatlieu);
+                DGVChatLieu.Rows.Add($"CL-{cl.Machatlieu}", cl.Tenchatlieu);
                 soluong++;
             }
             DGVChatLieu.ClearSelection();
@@ -119,7 +119,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.ChatLieu
         private void DGVChatLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int maCL = int.Parse(DGVChatLieu.Rows[e.RowIndex].Cells["macl"].Value.ToString());
+            int maCL = int.Parse(DGVChatLieu.Rows[e.RowIndex].Cells["macl"].Value.ToString().Replace("CL-", ""));
             ChatLieuDTO chatLieuDuocChon = clBUS.getChatLieuById(maCL);
             if (DGVChatLieu.Columns[e.ColumnIndex].Name == "detail")
             {

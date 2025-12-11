@@ -113,7 +113,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
             int soluong = 0;
             foreach (SizeDTO size in list)
             {
-                DGVSize.Rows.Add(size.Masize, size.Tensize, size.Ghichu);
+                DGVSize.Rows.Add($"S-{size.Masize}", size.Tensize, size.Ghichu);
                 soluong++;
             }
             DGVSize.ClearSelection();
@@ -147,7 +147,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
         private void DGVSize_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            int maSize = Convert.ToInt32(DGVSize.Rows[e.RowIndex].Cells["masize"].Value);
+            int maSize = int.Parse(DGVSize.Rows[e.RowIndex].Cells["masize"].Value.ToString().Replace("S-", ""));
             SizeDTO SizeDuocChon = sizeBUS.getSizeById(maSize);
             if (DGVSize.Columns[e.ColumnIndex].Name == "detail")
             {
