@@ -12,15 +12,18 @@ namespace QuanLyKho.DTO
         private int masp;
         private int soluong;
         private int dongia;
+        private string tensp;
 
         public ChiTietPhieuNhapDTO() { }
 
-        public ChiTietPhieuNhapDTO(int _maphieunhap, int _masp, int _soluong, int _dongia)
+        public ChiTietPhieuNhapDTO(int _maphieunhap, int _masp, int _soluong, int _dongia, string tensp)
         {
             maphieunhap = _maphieunhap;
             masp = _masp;
             soluong = _soluong;
             dongia = _dongia;
+            this.tensp = tensp;
+
         }
 
         public int Maphieunhap
@@ -45,6 +48,11 @@ namespace QuanLyKho.DTO
         {
             get { return dongia; }
             set { dongia = value; }
+        }
+        public string Tensp
+        {
+            get { return tensp; }
+            set { tensp = value; }
         }
     }
 }

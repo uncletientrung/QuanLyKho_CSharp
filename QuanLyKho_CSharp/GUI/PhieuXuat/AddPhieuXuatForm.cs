@@ -419,7 +419,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         Maphieuxuat = newPhieuXuat.Maphieu,
                         Masp = sp.Masp,
                         Soluong = sp.Soluong,
-                        Dongia = sp.Dongia
+                        Dongia = sp.Dongia,
+                        TenSP= sp.Tensp
                     };
                     listCTPX.Add(ctpx);
                 }

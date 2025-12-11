@@ -85,7 +85,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dgvXemChiTiet.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dgvXemChiTiet.Columns.Add("STT", "STT");
-            dgvXemChiTiet.Columns.Add("MaSP", "Mã SP");
             dgvXemChiTiet.Columns.Add("TenSP", "Tên sản phẩm");
             dgvXemChiTiet.Columns.Add("SoLuong", "Số lượng");
             dgvXemChiTiet.Columns.Add("DonGia", "Đơn giá");
@@ -94,7 +93,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
             // Căn giữa nội dung các ô
             dgvXemChiTiet.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvXemChiTiet.Columns["MaSP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvXemChiTiet.Columns["TenSP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvXemChiTiet.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvXemChiTiet.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -112,7 +110,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
             // Tỷ lệ cột
             dgvXemChiTiet.Columns["STT"].FillWeight = 8;
-            dgvXemChiTiet.Columns["MaSP"].FillWeight = 12;
             dgvXemChiTiet.Columns["TenSP"].FillWeight = 30;
             dgvXemChiTiet.Columns["SoLuong"].FillWeight = 15;
             dgvXemChiTiet.Columns["DonGia"].FillWeight = 15;
@@ -138,14 +135,13 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
                 foreach (var chiTiet in chiTietList)
                 {
-                    string tenSanPham = _sanPhamBUS.getNamebyID(chiTiet.Masp);
+                    //string tenSanPham = _sanPhamBUS.getNamebyID(chiTiet.Masp);
                     decimal thanhTien = chiTiet.Soluong * chiTiet.Dongia;
                     string tenTrangTHai = getCTTrangThai(chiTiet);
 
                     int rowIndex = dgvXemChiTiet.Rows.Add(
                         stt++,
-                        $"SP-{chiTiet.Masp}",
-                        tenSanPham,
+                        chiTiet.TenSP,
                         chiTiet.Soluong,
                         chiTiet.Dongia,
                         thanhTien,

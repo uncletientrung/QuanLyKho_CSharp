@@ -27,8 +27,8 @@ namespace QuanLyKho.DAO
             {
                 foreach (ChiTietPhieuNhapDTO ctpn in list)
                 {
-                    string sql = $"INSERT INTO ctphieunhap(maphieunhap, masp, soluong, dongia) " +
-                                $"VALUES ({ctpn.Maphieunhap}, {ctpn.Masp}, {ctpn.Soluong}, {ctpn.Dongia})";
+                    string sql = $"INSERT INTO ctphieunhap(maphieunhap, masp, soluong, dongia, tensp) " +
+                                $"VALUES ({ctpn.Maphieunhap}, {ctpn.Masp}, {ctpn.Soluong}, {ctpn.Dongia} , '{ctpn.Tensp}')";
                     int result = ConnectionHelper.getExecuteNonQuery(sql);
                     if (result > 0)
                     {
@@ -81,7 +81,8 @@ namespace QuanLyKho.DAO
                         Maphieunhap = Convert.ToInt32(row["maphieunhap"]),
                         Masp = Convert.ToInt32(row["masp"]),
                         Soluong = Convert.ToInt32(row["soluong"]),
-                        Dongia = Convert.ToInt32(row["dongia"])
+                        Dongia = Convert.ToInt32(row["dongia"]),
+                        Tensp = Convert.ToString(row["tensp"])
                     };
                     result.Add(ctpn);
                 }

@@ -77,7 +77,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             dgvXemChiTiet.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dgvXemChiTiet.Columns.Add("STT", "STT");
-            dgvXemChiTiet.Columns.Add("MaSP", "Mã SP");
             dgvXemChiTiet.Columns.Add("TenSP", "Tên sản phẩm");
             dgvXemChiTiet.Columns.Add("SoLuong", "Số lượng");
             dgvXemChiTiet.Columns.Add("DonGia", "Đơn giá");
@@ -87,7 +86,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             dgvXemChiTiet.Columns["ThanhTien"].DefaultCellStyle.Format = "N0";
 
             dgvXemChiTiet.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvXemChiTiet.Columns["MaSP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            
             dgvXemChiTiet.Columns["TenSP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvXemChiTiet.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvXemChiTiet.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -99,7 +98,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             }
 
             dgvXemChiTiet.Columns["STT"].FillWeight = 8;
-            dgvXemChiTiet.Columns["MaSP"].FillWeight = 12;
             dgvXemChiTiet.Columns["TenSP"].FillWeight = 35;
             dgvXemChiTiet.Columns["SoLuong"].FillWeight = 15;
             dgvXemChiTiet.Columns["DonGia"].FillWeight = 15;
@@ -123,15 +121,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                 foreach (var chiTiet in chiTietList)
                 {
-                    // Lấy tên sản phẩm bằng getNamebyID
-                    string tenSanPham = _sanPhamBUS.getNamebyID(chiTiet.Masp);
 
                     decimal thanhTien = chiTiet.Soluong * chiTiet.Dongia;
 
                     dgvXemChiTiet.Rows.Add(
                         stt++,
-                        $"SP-{chiTiet.Masp}",
-                        tenSanPham,
+                        chiTiet.Tensp,
                         chiTiet.Soluong,
                         chiTiet.Dongia,
                         thanhTien
