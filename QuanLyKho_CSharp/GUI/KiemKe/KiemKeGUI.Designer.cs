@@ -506,6 +506,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.btnXuatExcel.TabIndex = 12;
             this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
             this.btnXuatExcel.Values.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // dataGridViewImageColumn1
             // 

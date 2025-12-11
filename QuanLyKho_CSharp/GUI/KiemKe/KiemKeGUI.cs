@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using ClosedXML.Excel;
+using System.Diagnostics;
 
 namespace QuanLyKho_CSharp.GUI.KiemKe
 {
@@ -304,6 +306,61 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             pkkBUS = new PhieuKiemKeBUS();
             listPKK = pkkBUS.getListPKK();
             refreshDGV(pkkBUS.getListPKK());
+        }
+
+        // Xuất Excel
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel Workbook|*.xlsx";
+                sfd.Title = "Chọn nơi lưu file Excel";
+                sfd.FileName = $"DanhSachKiemKe_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Tạo file Excel mới
+                        using (var workbook = new XLWorkbook())
+                        {
+                            var worksheet = workbook.Worksheets.Add("PhieuKiemKe");
+                            // thêm bảng
+                            worksheet.Cell(1, 1).Value = "Mã phiếu";
+                            worksheet.Cell(1, 2).Value = "Nhân viên tạo";
+                            worksheet.Cell(1, 3).Value = "Nhân viên kiểm";
+                            worksheet.Cell(1, 4).Value = "Thời gian tạo";
+                            worksheet.Cell(1, 5).Value = "Thời gian cân bằng";
+                            worksheet.Cell(1, 6).Value = "Ghi chú";
+                            worksheet.Cell(1, 7).Value = "Trạng thái";
+
+                            int row = 2;
+                            foreach (PhieuKiemKeDTO pkk in listPKK)
+                            {
+                                if (pkk.Trangthai != "Đã xóa")
+                                {
+                                    worksheet.Cell(row, 1).Value = $"PKK-{pkk.Maphieukiemke}";
+                                    worksheet.Cell(row, 2).Value = nvBUS.getNamebyID(pkk.Manhanvientao);
+                                    worksheet.Cell(row, 3).Value = nvBUS.getNamebyID(pkk.Manhanvienkiem);
+                                    worksheet.Cell(row, 4).Value = pkk.Thoigiantao.ToString("HH:mm dd/MM/yyyy");
+                                    worksheet.Cell(row, 5).Value = pkk.Thoigiancanbang == new DateTime(1, 1, 1)
+                                        ? "Chưa cân bằng"
+                                        : pkk.Thoigiancanbang.ToString("HH:mm dd/MM/yyyy");
+                                    worksheet.Cell(row, 6).Value = pkk.Ghichu;
+                                    worksheet.Cell(row, 7).Value = pkk.Trangthai;
+                                    row++;
+                                }
+                            }
+                            worksheet.Columns().AdjustToContents();
+                            workbook.SaveAs(sfd.FileName);
+                        }
+                        Process.Start(sfd.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi xuất Excel: " + ex.Message);
+                    }
+                }
+            }
         }
     }
 }
