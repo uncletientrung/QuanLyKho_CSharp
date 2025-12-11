@@ -11,9 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -286,58 +288,110 @@ namespace QuanLyKho_CSharp.GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Excel.Application excelApp = new Excel.Application();
-            excelApp.Application.Workbooks.Add(Type.Missing);
-
-            Excel._Worksheet worksheet = (Excel._Worksheet)excelApp.ActiveSheet;
-            worksheet.Name = "SanPham";//tạo 1 workshet 
-
-            int colIndex = 1;
-
-            worksheet.Cells[1, 1] = "DANH SÁCH SẢN PHẨM";
-            Excel.Range titleRange = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[1, dgvSanPham.Columns.Count - 2]];
-            titleRange.Merge();
-            titleRange.Font.Size = 16;
-            titleRange.Font.Bold = true;
-            titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-
-
-            for (int i = 0; i < dgvSanPham.Columns.Count; i++)
+            if (dgvSanPham.Rows.Count == 0)
             {
-                if (i == 2 || i == 9) continue;
-
-                worksheet.Cells[2, colIndex] = dgvSanPham.Columns[i].HeaderText;
-                colIndex++;
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
-            // định dạng tiêu đề cột
-            Excel.Range tieuDeCot = worksheet.Range[worksheet.Cells[2, 1], worksheet.Cells[2, colIndex - 1]];
-            tieuDeCot.Font.Bold = true;
-            tieuDeCot.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
-            tieuDeCot.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-            // ghi du lieu vô 
-            int rowIndex = 3;
-            foreach (DataGridViewRow row in dgvSanPham.Rows)
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel Workbook|*.xlsx";
+            saveFileDialog.Title = "Chọn nơi lưu file Excel";
+            saveFileDialog.FileName = "DanhSachSanPham.xlsx";
+
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            Excel.Application excelApp = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
             {
-                if (!row.IsNewRow)
+                excelApp = new Excel.Application();
+                workbook = excelApp.Workbooks.Add(Type.Missing);
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "SanPham";
+
+                int colIndex = 1;
+
+               
+                worksheet.Cells[1, 1] = "DANH SÁCH SẢN PHẨM";
+                Excel.Range titleRange = worksheet.Range[
+                    worksheet.Cells[1, 1],
+                    worksheet.Cells[1, dgvSanPham.Columns.Count - 4]
+                ];
+                titleRange.Merge();
+                titleRange.Font.Size = 16;
+                titleRange.Font.Bold = true;
+                titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                // tieu de cot
+                colIndex = 1;
+                foreach (DataGridViewColumn col in dgvSanPham.Columns)
                 {
-                    colIndex = 1;
-                    for (int i = 0; i < dgvSanPham.Columns.Count; i++)
+                    if (col is DataGridViewImageColumn) continue; 
+
+                    worksheet.Cells[2, colIndex] = col.HeaderText;
+                    colIndex++;
+                }
+
+               
+                Excel.Range headerRange = worksheet.Range[
+                    worksheet.Cells[2, 1],
+                    worksheet.Cells[2, colIndex - 1]
+                ];
+                headerRange.Font.Bold = true;
+                headerRange.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
+                headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                // ghi dlieu
+                int rowIndex = 3;
+
+                foreach (DataGridViewRow row in dgvSanPham.Rows)
+                {
+                    if (!row.IsNewRow)
                     {
-                        if (i == 2 || i == 9) continue;
-                        worksheet.Cells[rowIndex, colIndex] = row.Cells[i].Value?.ToString();
-                        colIndex++;
+                        colIndex = 1;
+                        foreach (DataGridViewColumn col in dgvSanPham.Columns)
+                        {
+                            if (col is DataGridViewImageColumn) continue;
+
+                            worksheet.Cells[rowIndex, colIndex] = row.Cells[col.Index].Value?.ToString();
+                            colIndex++;
+                        }
+                        rowIndex++;
                     }
-                    rowIndex++;
+                }
+
+             
+                worksheet.Columns.AutoFit();
+
+                // luu filwe
+                workbook.SaveAs(saveFileDialog.FileName);
+                workbook.Close();
+                excelApp.Quit();
+
+                // mo file
+                if (File.Exists(saveFileDialog.FileName))
+                {
+                    Process.Start(new ProcessStartInfo(saveFileDialog.FileName) { UseShellExecute = true });
                 }
             }
-
-
-            worksheet.Columns.AutoFit();// dùng để chỉnh cột cho vừa vặn với nooij dung
-
-            excelApp.Visible = true;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message);
+            }
+            finally
+            {
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                if (workbook != null) Marshal.ReleaseComObject(workbook);
+                if (excelApp != null) Marshal.ReleaseComObject(excelApp);
+            }
         }
+
+
 
         // Xử lý playholder và keypress
         private void txtSMoney_KeyPress(object sender, KeyPressEventArgs e)

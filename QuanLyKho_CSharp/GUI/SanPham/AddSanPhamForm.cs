@@ -213,6 +213,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             //    return;
             //}
             int maSp = (int)txtMaSanPham.Tag;
+            
 
 
             SanPhamDTO spTonTai = spBUS.getListSP().FirstOrDefault(sp => sp.Masp == maSp);
@@ -240,18 +241,18 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 return;
             }
 
-            //xu li solupng
+            ////xu li solupng
 
-            if(!int.TryParse(txtSoLuong.Text, out int soLuong))
-            {
-                MessageBox.Show("Số lượng phải là số!");
-                return;
-            }
-            if(soLuong < 0)
-            {
-                MessageBox.Show("Số lượng không được âm!");
-                return;
-            }
+            //if(!int.TryParse(txtSoLuong.Text, out int soLuong))
+            //{
+            //    MessageBox.Show("Số lượng phải là số!");
+            //    return;
+            //}
+            //if(soLuong < 0)
+            //{
+            //    MessageBox.Show("Số lượng không được âm!");
+            //    return;
+            //}
 
             //xu li don gia
             if(!int.TryParse(txtDonGia.Text, out int donGia)){
@@ -298,6 +299,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             int maChatLieu = clBUS.LayMaChatLieu(cboMaChatLieu.Text);
             int maLoai = loaiBUS.LayMaLoai(cboMaLoai.Text);
             int maSize = sizeBUS.LayMaSize(cboMaSize.Text);
+            int soLuong = 0;
             SanPhamDTO sanPham = new SanPhamDTO(maSp, txtTenSanPham.Text,duongDanAnhMoi,soLuong,donGia,maChatLieu,maLoai, maKhuVuc, maSize,1);
             spBUS.insertSanPham(sanPham);
             this.DialogResult = DialogResult.OK;
@@ -312,6 +314,8 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             txtMaSanPham.Text = $"SP-{id}";
             txtMaSanPham.Tag = id;
             txtMaSanPham.Enabled= false;
+            txtSoLuong.Text = "0";
+            txtSoLuong.Enabled = false;
             listKV = kvBUS.getKhuVucKhoList();
             foreach (KhuVucKhoDTO kv in listKV)
             {
