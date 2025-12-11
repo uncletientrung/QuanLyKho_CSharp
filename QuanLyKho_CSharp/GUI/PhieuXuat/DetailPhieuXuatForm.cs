@@ -56,7 +56,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             if (_phieuXuat != null)
             {
                 // Hiển thị thông tin cơ bản của phiếu xuất
-                textBox1.Text = _phieuXuat.Maphieu.ToString();
+                textBox1.Text = $"PX-{_phieuXuat.Maphieu.ToString()}";
                 textBox2.Text = _nhanVienBUS.getNamebyID(_phieuXuat.Manv);
                 textBox3.Text = GetTenKhachHang(_phieuXuat.Makh);
                 textBox4.Text = _phieuXuat.Thoigiantao.ToString("dd/MM/yyyy HH:mm:ss");
@@ -144,7 +144,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
                     int rowIndex = dgvXemChiTiet.Rows.Add(
                         stt++,
-                        chiTiet.Masp,
+                        $"SP-{chiTiet.Masp}",
                         tenSanPham,
                         chiTiet.Soluong,
                         chiTiet.Dongia,

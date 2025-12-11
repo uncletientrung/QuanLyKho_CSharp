@@ -38,22 +38,22 @@
       <HintPath>..\QuanLyKho_CSharp\packages\BouncyCastle.Cryptography.2.5.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Design">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Design.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Design.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Docking">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Navigator">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Ribbon">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Workspace">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\QuanLyKho_CSharp\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>

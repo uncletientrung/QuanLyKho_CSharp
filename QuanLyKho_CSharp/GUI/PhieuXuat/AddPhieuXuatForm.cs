@@ -145,7 +145,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 {
                     Image productImage = LoadImageSafe(sp.Hinhanh);
                     dgvSPtrongKho.Rows.Add(
-                        sp.Masp,
+                        $"SP-{sp.Masp}",
                         sp.Tensp,
                         productImage,
                         sp.Dongia,
@@ -165,7 +165,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                 {
                     decimal thanhTien = sp.Dongia * sp.Soluong;
                     dgvSPduocThem.Rows.Add(
-                        sp.Masp,
+                        $"SP-{sp.Masp}",
                         sp.Tensp,
                         sp.Soluong,
                         sp.Dongia,
@@ -198,7 +198,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                     return;
 
                 var selectedRow = dgvSPtrongKho.CurrentRow;
-                int maSP = int.Parse(selectedRow.Cells[0].Value.ToString());
+                int maSP = int.Parse(selectedRow.Cells[0].Value.ToString().Replace("SP-",""));
 
                 SanPhamDTO spTrongKho = listSP.FirstOrDefault(x => x.Masp == maSP);
                 if (spTrongKho == null) return;
@@ -220,7 +220,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             {
                 if (dgvSPduocThem.CurrentRow == null) return;
                 var selectedRow = dgvSPduocThem.CurrentRow;
-                int maSP = int.Parse(selectedRow.Cells[0].Value.ToString());
+                int maSP = int.Parse(selectedRow.Cells[0].Value.ToString().Replace("SP-",""));
                 SanPhamDTO spDuocChon = listSPDuocThem.FirstOrDefault(x => x.Masp == maSP);
                 if (spDuocChon == null) return;
                 if (dgvSPduocThem.Columns[e.ColumnIndex].Name != "remove") UpdateQuantity(spDuocChon);

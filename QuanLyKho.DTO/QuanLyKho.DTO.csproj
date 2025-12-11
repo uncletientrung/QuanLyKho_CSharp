@@ -32,22 +32,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Design">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Design.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Design.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Docking">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Navigator">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Ribbon">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Workspace">
-      <HintPath>..\..\VISUAL\test-git\Krypton\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
+      <HintPath>..\..\test-git\Krypton\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.30.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\QuanLyKho_CSharp\packages\Google.Protobuf.3.30.0\lib\net45\Google.Protobuf.dll</HintPath>

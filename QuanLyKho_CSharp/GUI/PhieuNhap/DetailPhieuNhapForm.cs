@@ -48,7 +48,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             if (_phieuNhap != null)
             {
                 // Hiển thị thông tin cơ bản của phiếu nhập
-                textBox1.Text = _phieuNhap.Maphieu.ToString();
+                textBox1.Text = $"PN-{_phieuNhap.Maphieu.ToString()}";
                 textBox2.Text = _nhanVienBUS.getNamebyID(_phieuNhap.Manv);
                 textBox3.Text = _nhaCungCapBUS.getNamebyID(_phieuNhap.Mancc);
                 textBox4.Text = _phieuNhap.Thoigiantao.ToString("dd/MM/yyyy HH:mm:ss");
@@ -130,7 +130,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                     dgvXemChiTiet.Rows.Add(
                         stt++,
-                        chiTiet.Masp,
+                        $"SP-{chiTiet.Masp}",
                         tenSanPham,
                         chiTiet.Soluong,
                         chiTiet.Dongia,
