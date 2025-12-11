@@ -106,6 +106,10 @@ namespace QuanLyKho.BUS
                         sanpham.Maloai = sp.Maloai;
                         sanpham.Makhuvuc = sp.Makhuvuc;
                         sanpham.Masize = sp.Masize;
+                        sanpham.Tensize = sp.Tensize;
+                        sanpham.Tenkhuvuc = sp.Tenkhuvuc;
+                        sanpham.Tenchatlieu = sp.Tenchatlieu;
+                        sanpham.Tenloai = sp.Tenloai;
                         return result;
                     }
                 }
@@ -139,10 +143,10 @@ namespace QuanLyKho.BUS
                     result.Add(sp);
                     continue;
                 }
-                if (kvBus.LayTenKhuVuc(sp).ToLower().Contains(searchString) ||
-                    clBUS.LayTenChatLieu(sp).ToLower().Contains(searchString) ||
-                    loaiBUS.LayTenLoai(sp).ToLower().Contains(searchString) ||
-                    sizeBUS.LayTenSize(sp).ToLower().Contains(searchString))
+                if (sp.Tenkhuvuc.ToLower().Contains(searchString) ||
+                    sp.Tenchatlieu.ToLower().Contains(searchString) ||
+                    sp.Tenloai.ToLower().Contains(searchString) ||
+                    sp.Tensize.ToLower().Contains(searchString))
                 {
                     result.Add(sp);
                 }

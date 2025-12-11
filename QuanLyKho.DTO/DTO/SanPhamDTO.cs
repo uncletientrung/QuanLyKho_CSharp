@@ -18,11 +18,17 @@ namespace QuanLyKho.DTO
         private int makhuvuc;
         private int masize;
         private int trangthai;
+        private string tenloai;
+        private string tenkhuvuc;
+        private string tenchatlieu;
+        private string tensize;
+
 
         public SanPhamDTO() { }
 
         public SanPhamDTO(int _masp, string _tensp, string _hinhanh, int _soluong, int _dongia,
-                          int _machatlieu, int _maloai, int _makhuvuc, int _masize, int trangthai)
+                          int _machatlieu, int _maloai, int _makhuvuc, int _masize, int trangthai,
+                          string _tenloai, string _tenkhuvuc, string _tenchatlieu, string _tensize)
         {
             masp = _masp;
             tensp = _tensp;
@@ -34,6 +40,10 @@ namespace QuanLyKho.DTO
             makhuvuc = _makhuvuc;
             masize = _masize;
             this.trangthai = trangthai;
+            this.tenloai = _tenloai;
+            this.tenkhuvuc = _tenkhuvuc;
+            this.tenchatlieu = _tenchatlieu;
+            this.tensize = _tensize;
 
         }
 
@@ -94,6 +104,29 @@ namespace QuanLyKho.DTO
         {
             get { return trangthai; }
             set { trangthai = value; }
+        }
+        public string Tenloai
+        {
+            get { return tenloai; }
+            set { tenloai = value; }
+        }
+
+        public string Tenkhuvuc
+        {
+            get { return tenkhuvuc; }
+            set { tenkhuvuc = value; }
+        }
+
+        public string Tenchatlieu
+        {
+            get { return tenchatlieu; }
+            set { tenchatlieu = value; }
+        }
+
+        public string Tensize
+        {
+            get { return tensize; }
+            set { tensize = value; }
         }
         public override string ToString()
         {

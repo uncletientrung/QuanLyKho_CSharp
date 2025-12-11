@@ -41,9 +41,9 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                 string email = txtEmail.Text.Trim();
 
                 // Regex số điện thoại cơ bản (bạn có thể thay bằng regex VN như trong code nhân viên)
-                string phonePattern = @"^(0|\+84)[0-9]{9,10}$";
+                string phonePattern = @"^(0|\+84)(3[2-9]|5[2-9]|7[0|6-9]|8[1-9]|9[0-9])[0-9]{7}$";
 
-                if(sdt.Length == 0)
+                if (sdt.Length == 0)
                 {
                     MessageBox.Show(
                         "Số điện thoại không được để trống!",
@@ -51,6 +51,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                      );
+                    return;
                 }
 
                 else if(tenNCC.Length == 0)
@@ -61,6 +62,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                      );
+                    return;
                 }
 
                 else if (!Regex.IsMatch(sdt, phonePattern))
@@ -71,6 +73,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                      );
+                    return;
                 }
 
                 else if (email.Length > 0 && !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
@@ -81,6 +84,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                      );
+                    return;
                 }
 
                 NhaCungCapDTO nccInsert = new NhaCungCapDTO(
@@ -113,6 +117,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.NhaCungCap
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                         );
+                return;
             }
         }
 

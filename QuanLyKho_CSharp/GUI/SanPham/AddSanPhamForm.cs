@@ -189,32 +189,8 @@ namespace QuanLyKho_CSharp.GUI.SanPham
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-
-            // xu ly ma bang return som
-            //if (string.IsNullOrWhiteSpace(txtMaSanPham.Text))
-            //{
-            //    MessageBox.Show(
-            //        "Mã sản phẩm không được để trống!",
-            //        "Lỗi dữ liệu",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Error
-            //    );
-            //    return;
-            //}
-
-            //if (!int.TryParse(txtMaSanPham.Text, out int maSp))
-            //{
-            //    MessageBox.Show(
-            //        "Mã sản phẩm phải là số nguyên!",
-            //        "Lỗi dữ liệu",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Error
-            //    );
-            //    return;
-            //}
             int maSp = (int)txtMaSanPham.Tag;
             
-
 
             SanPhamDTO spTonTai = spBUS.getListSP().FirstOrDefault(sp => sp.Masp == maSp);
 
@@ -240,19 +216,6 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                 );
                 return;
             }
-
-            ////xu li solupng
-
-            //if(!int.TryParse(txtSoLuong.Text, out int soLuong))
-            //{
-            //    MessageBox.Show("Số lượng phải là số!");
-            //    return;
-            //}
-            //if(soLuong < 0)
-            //{
-            //    MessageBox.Show("Số lượng không được âm!");
-            //    return;
-            //}
 
             //xu li don gia
             if(!int.TryParse(txtDonGia.Text, out int donGia)){
@@ -300,7 +263,9 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             int maLoai = loaiBUS.LayMaLoai(cboMaLoai.Text);
             int maSize = sizeBUS.LayMaSize(cboMaSize.Text);
             int soLuong = 0;
-            SanPhamDTO sanPham = new SanPhamDTO(maSp, txtTenSanPham.Text,duongDanAnhMoi,soLuong,donGia,maChatLieu,maLoai, maKhuVuc, maSize,1);
+            SanPhamDTO sanPham = new SanPhamDTO(maSp, txtTenSanPham.Text,duongDanAnhMoi,
+                soLuong,donGia,maChatLieu,maLoai, maKhuVuc, maSize,1,
+                cboMaLoai.Text, cboMaKhuVuc.Text, cboMaChatLieu.Text, cboMaSize.Text);
             spBUS.insertSanPham(sanPham);
             this.DialogResult = DialogResult.OK;
 

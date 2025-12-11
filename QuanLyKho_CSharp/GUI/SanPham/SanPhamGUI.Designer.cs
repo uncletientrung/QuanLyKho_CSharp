@@ -32,17 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SanPhamGUI));
             this.pnlDGV = new System.Windows.Forms.Panel();
-            this.cbbLoai = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.cbbKhuVuc = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.cbbSize = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.cbbChatLieu = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbTotalStatus = new System.Windows.Forms.Panel();
-            this.lbTotal = new System.Windows.Forms.Label();
-            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.masp = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,28 +46,39 @@
             this.detail = new System.Windows.Forms.DataGridViewImageColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.cbbLoai = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.cbbKhuVuc = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cbbSize = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cbbChatLieu = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.artanPanel2 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.txtEMoney = new System.Windows.Forms.TextBox();
             this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.artanPanel3 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.artanButton3 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.artanPanel4 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.txtSMoney = new System.Windows.Forms.TextBox();
             this.artanButton4 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbTotalStatus = new System.Windows.Forms.Panel();
             this.btnNhapExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.lbTotal = new System.Windows.Forms.Label();
+            this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pnlDGV.SuspendLayout();
+            this.artanPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbLoai)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbKhuVuc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbChatLieu)).BeginInit();
-            this.lbTotalStatus.SuspendLayout();
-            this.artanPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.artanPanel2.SuspendLayout();
             this.artanPanel3.SuspendLayout();
             this.artanPanel4.SuspendLayout();
+            this.lbTotalStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDGV
@@ -90,214 +90,6 @@
             this.pnlDGV.Name = "pnlDGV";
             this.pnlDGV.Size = new System.Drawing.Size(1103, 414);
             this.pnlDGV.TabIndex = 14;
-            // 
-            // cbbLoai
-            // 
-            this.cbbLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbLoai.DropDownWidth = 115;
-            this.cbbLoai.Location = new System.Drawing.Point(760, 91);
-            this.cbbLoai.Margin = new System.Windows.Forms.Padding(6);
-            this.cbbLoai.MaximumSize = new System.Drawing.Size(140, 37);
-            this.cbbLoai.MinimumSize = new System.Drawing.Size(117, 30);
-            this.cbbLoai.Name = "cbbLoai";
-            this.cbbLoai.Size = new System.Drawing.Size(120, 37);
-            this.cbbLoai.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbLoai.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbLoai.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbLoai.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.cbbLoai.StateCommon.ComboBox.Border.Rounding = 20;
-            this.cbbLoai.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.cbbLoai.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbLoai.TabIndex = 26;
-            // 
-            // pnlTop
-            // 
-            this.pnlTop.BackColor = System.Drawing.Color.White;
-            this.pnlTop.Controls.Add(this.cbbKhuVuc);
-            this.pnlTop.Controls.Add(this.cbbSize);
-            this.pnlTop.Controls.Add(this.cbbChatLieu);
-            this.pnlTop.Controls.Add(this.cbbLoai);
-            this.pnlTop.Controls.Add(this.panel1);
-            this.pnlTop.Controls.Add(this.artanPanel2);
-            this.pnlTop.Controls.Add(this.artanPanel3);
-            this.pnlTop.Controls.Add(this.btnThem);
-            this.pnlTop.Controls.Add(this.artanPanel4);
-            this.pnlTop.Controls.Add(this.label2);
-            this.pnlTop.Controls.Add(this.lbTotalStatus);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(5, 5);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1103, 132);
-            this.pnlTop.TabIndex = 15;
-            // 
-            // cbbKhuVuc
-            // 
-            this.cbbKhuVuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbKhuVuc.DropDownWidth = 115;
-            this.cbbKhuVuc.Location = new System.Drawing.Point(885, 51);
-            this.cbbKhuVuc.Margin = new System.Windows.Forms.Padding(6);
-            this.cbbKhuVuc.MaximumSize = new System.Drawing.Size(140, 37);
-            this.cbbKhuVuc.MinimumSize = new System.Drawing.Size(117, 30);
-            this.cbbKhuVuc.Name = "cbbKhuVuc";
-            this.cbbKhuVuc.Size = new System.Drawing.Size(140, 37);
-            this.cbbKhuVuc.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbKhuVuc.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbKhuVuc.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbKhuVuc.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.cbbKhuVuc.StateCommon.ComboBox.Border.Rounding = 20;
-            this.cbbKhuVuc.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.cbbKhuVuc.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbKhuVuc.TabIndex = 29;
-            // 
-            // cbbSize
-            // 
-            this.cbbSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbSize.DropDownWidth = 115;
-            this.cbbSize.Location = new System.Drawing.Point(760, 51);
-            this.cbbSize.Margin = new System.Windows.Forms.Padding(6);
-            this.cbbSize.MaximumSize = new System.Drawing.Size(140, 37);
-            this.cbbSize.MinimumSize = new System.Drawing.Size(117, 30);
-            this.cbbSize.Name = "cbbSize";
-            this.cbbSize.Size = new System.Drawing.Size(120, 37);
-            this.cbbSize.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbSize.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbSize.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbSize.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.cbbSize.StateCommon.ComboBox.Border.Rounding = 20;
-            this.cbbSize.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.cbbSize.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbSize.TabIndex = 28;
-            // 
-            // cbbChatLieu
-            // 
-            this.cbbChatLieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbChatLieu.DropDownWidth = 115;
-            this.cbbChatLieu.Location = new System.Drawing.Point(885, 91);
-            this.cbbChatLieu.Margin = new System.Windows.Forms.Padding(6);
-            this.cbbChatLieu.MaximumSize = new System.Drawing.Size(140, 37);
-            this.cbbChatLieu.MinimumSize = new System.Drawing.Size(117, 30);
-            this.cbbChatLieu.Name = "cbbChatLieu";
-            this.cbbChatLieu.Size = new System.Drawing.Size(140, 37);
-            this.cbbChatLieu.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbChatLieu.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbChatLieu.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.cbbChatLieu.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.cbbChatLieu.StateCommon.ComboBox.Border.Rounding = 20;
-            this.cbbChatLieu.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
-            this.cbbChatLieu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbChatLieu.TabIndex = 27;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.panel1.Location = new System.Drawing.Point(621, 109);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 5);
-            this.panel1.TabIndex = 21;
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(1039, 88);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnThem.Size = new System.Drawing.Size(40, 40);
-            this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Back.ColorAngle = 45F;
-            this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StateCommon.Border.ColorAngle = 45F;
-            this.btnThem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnThem.StateCommon.Border.Rounding = 10;
-            this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
-            this.btnThem.TabIndex = 10;
-            this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
-            this.btnThem.Values.Text = "";
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.label2.Location = new System.Drawing.Point(3, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(297, 36);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Danh sách sản phẩm";
-            // 
-            // lbTotalStatus
-            // 
-            this.lbTotalStatus.Controls.Add(this.btnNhapExcel);
-            this.lbTotalStatus.Controls.Add(this.lbTotal);
-            this.lbTotalStatus.Controls.Add(this.btnXuatExcel);
-            this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbTotalStatus.Location = new System.Drawing.Point(0, 0);
-            this.lbTotalStatus.Name = "lbTotalStatus";
-            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 48);
-            this.lbTotalStatus.TabIndex = 14;
-            // 
-            // lbTotal
-            // 
-            this.lbTotal.AutoSize = true;
-            this.lbTotal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbTotal.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotal.ForeColor = System.Drawing.Color.Black;
-            this.lbTotal.Location = new System.Drawing.Point(0, 0);
-            this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(181, 23);
-            this.lbTotal.TabIndex = 15;
-            this.lbTotal.Text = "Tổng số sản phẩm: x";
-            // 
-            // btnXuatExcel
-            // 
-            this.btnXuatExcel.Location = new System.Drawing.Point(963, 3);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnXuatExcel.Size = new System.Drawing.Size(116, 40);
-            this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
-            this.btnXuatExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StateCommon.Border.ColorAngle = 45F;
-            this.btnXuatExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnXuatExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnXuatExcel.StateCommon.Border.Rounding = 10;
-            this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold);
-            this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
-            this.btnXuatExcel.TabIndex = 12;
-            this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
-            this.btnXuatExcel.Values.Text = "Xuất Excel";
-            this.btnXuatExcel.Click += new System.EventHandler(this.button2_Click);
             // 
             // artanPanel1
             // 
@@ -490,6 +282,118 @@
             this.remove.ReadOnly = true;
             this.remove.Width = 6;
             // 
+            // cbbLoai
+            // 
+            this.cbbLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbLoai.DropDownWidth = 115;
+            this.cbbLoai.Location = new System.Drawing.Point(760, 91);
+            this.cbbLoai.Margin = new System.Windows.Forms.Padding(6);
+            this.cbbLoai.MaximumSize = new System.Drawing.Size(140, 37);
+            this.cbbLoai.MinimumSize = new System.Drawing.Size(117, 30);
+            this.cbbLoai.Name = "cbbLoai";
+            this.cbbLoai.Size = new System.Drawing.Size(120, 37);
+            this.cbbLoai.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbLoai.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbLoai.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbLoai.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.cbbLoai.StateCommon.ComboBox.Border.Rounding = 20;
+            this.cbbLoai.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.cbbLoai.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbLoai.TabIndex = 26;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.White;
+            this.pnlTop.Controls.Add(this.cbbKhuVuc);
+            this.pnlTop.Controls.Add(this.cbbSize);
+            this.pnlTop.Controls.Add(this.cbbChatLieu);
+            this.pnlTop.Controls.Add(this.cbbLoai);
+            this.pnlTop.Controls.Add(this.panel1);
+            this.pnlTop.Controls.Add(this.artanPanel2);
+            this.pnlTop.Controls.Add(this.artanPanel3);
+            this.pnlTop.Controls.Add(this.btnThem);
+            this.pnlTop.Controls.Add(this.artanPanel4);
+            this.pnlTop.Controls.Add(this.label2);
+            this.pnlTop.Controls.Add(this.lbTotalStatus);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(5, 5);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1103, 132);
+            this.pnlTop.TabIndex = 15;
+            // 
+            // cbbKhuVuc
+            // 
+            this.cbbKhuVuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhuVuc.DropDownWidth = 115;
+            this.cbbKhuVuc.Location = new System.Drawing.Point(885, 51);
+            this.cbbKhuVuc.Margin = new System.Windows.Forms.Padding(6);
+            this.cbbKhuVuc.MaximumSize = new System.Drawing.Size(140, 37);
+            this.cbbKhuVuc.MinimumSize = new System.Drawing.Size(117, 30);
+            this.cbbKhuVuc.Name = "cbbKhuVuc";
+            this.cbbKhuVuc.Size = new System.Drawing.Size(140, 37);
+            this.cbbKhuVuc.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbKhuVuc.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbKhuVuc.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbKhuVuc.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.cbbKhuVuc.StateCommon.ComboBox.Border.Rounding = 20;
+            this.cbbKhuVuc.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.cbbKhuVuc.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbKhuVuc.TabIndex = 29;
+            // 
+            // cbbSize
+            // 
+            this.cbbSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSize.DropDownWidth = 115;
+            this.cbbSize.Location = new System.Drawing.Point(760, 51);
+            this.cbbSize.Margin = new System.Windows.Forms.Padding(6);
+            this.cbbSize.MaximumSize = new System.Drawing.Size(140, 37);
+            this.cbbSize.MinimumSize = new System.Drawing.Size(117, 30);
+            this.cbbSize.Name = "cbbSize";
+            this.cbbSize.Size = new System.Drawing.Size(120, 37);
+            this.cbbSize.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSize.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSize.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbSize.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.cbbSize.StateCommon.ComboBox.Border.Rounding = 20;
+            this.cbbSize.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.cbbSize.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbSize.TabIndex = 28;
+            // 
+            // cbbChatLieu
+            // 
+            this.cbbChatLieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbChatLieu.DropDownWidth = 115;
+            this.cbbChatLieu.Location = new System.Drawing.Point(885, 91);
+            this.cbbChatLieu.Margin = new System.Windows.Forms.Padding(6);
+            this.cbbChatLieu.MaximumSize = new System.Drawing.Size(140, 37);
+            this.cbbChatLieu.MinimumSize = new System.Drawing.Size(117, 30);
+            this.cbbChatLieu.Name = "cbbChatLieu";
+            this.cbbChatLieu.Size = new System.Drawing.Size(140, 37);
+            this.cbbChatLieu.StateCommon.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbChatLieu.StateCommon.ComboBox.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbChatLieu.StateCommon.ComboBox.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.cbbChatLieu.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.cbbChatLieu.StateCommon.ComboBox.Border.Rounding = 20;
+            this.cbbChatLieu.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.White;
+            this.cbbChatLieu.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbChatLieu.TabIndex = 27;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.panel1.Location = new System.Drawing.Point(621, 109);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 5);
+            this.panel1.TabIndex = 21;
+            // 
             // artanPanel2
             // 
             this.artanPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
@@ -516,7 +420,7 @@
             this.txtEMoney.ForeColor = System.Drawing.Color.White;
             this.txtEMoney.Location = new System.Drawing.Point(36, 10);
             this.txtEMoney.Name = "txtEMoney";
-            this.txtEMoney.Size = new System.Drawing.Size(69, 23);
+            this.txtEMoney.Size = new System.Drawing.Size(69, 19);
             this.txtEMoney.TabIndex = 13;
             this.txtEMoney.Text = "Đến tiền";
             this.txtEMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEMoney_KeyPress);
@@ -566,7 +470,7 @@
             this.txtSearch.ForeColor = System.Drawing.Color.White;
             this.txtSearch.Location = new System.Drawing.Point(39, 6);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(204, 29);
+            this.txtSearch.Size = new System.Drawing.Size(204, 23);
             this.txtSearch.TabIndex = 13;
             // 
             // artanButton3
@@ -586,6 +490,37 @@
             this.artanButton3.TabIndex = 12;
             this.artanButton3.TextColor = System.Drawing.Color.White;
             this.artanButton3.UseVisualStyleBackColor = false;
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(1039, 88);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnThem.Size = new System.Drawing.Size(40, 40);
+            this.btnThem.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Back.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StateCommon.Border.ColorAngle = 45F;
+            this.btnThem.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnThem.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnThem.StateCommon.Border.Rounding = 10;
+            this.btnThem.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnThem.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnThem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnThem.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnThem.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnThem.TabIndex = 10;
+            this.btnThem.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Values.Image")));
+            this.btnThem.Values.Text = "";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // artanPanel4
             // 
@@ -613,7 +548,7 @@
             this.txtSMoney.ForeColor = System.Drawing.Color.White;
             this.txtSMoney.Location = new System.Drawing.Point(39, 10);
             this.txtSMoney.Name = "txtSMoney";
-            this.txtSMoney.Size = new System.Drawing.Size(69, 23);
+            this.txtSMoney.Size = new System.Drawing.Size(69, 19);
             this.txtSMoney.TabIndex = 13;
             this.txtSMoney.Text = "Tiền từ";
             this.txtSMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSMoney_KeyPress);
@@ -637,6 +572,28 @@
             this.artanButton4.TabIndex = 12;
             this.artanButton4.TextColor = System.Drawing.Color.White;
             this.artanButton4.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.label2.Location = new System.Drawing.Point(3, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(234, 29);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Danh sách sản phẩm";
+            // 
+            // lbTotalStatus
+            // 
+            this.lbTotalStatus.Controls.Add(this.btnNhapExcel);
+            this.lbTotalStatus.Controls.Add(this.lbTotal);
+            this.lbTotalStatus.Controls.Add(this.btnXuatExcel);
+            this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotalStatus.Location = new System.Drawing.Point(0, 0);
+            this.lbTotalStatus.Name = "lbTotalStatus";
+            this.lbTotalStatus.Size = new System.Drawing.Size(1103, 48);
+            this.lbTotalStatus.TabIndex = 14;
             // 
             // btnNhapExcel
             // 
@@ -665,13 +622,56 @@
             this.btnNhapExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
             this.btnNhapExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
             this.btnNhapExcel.TabIndex = 18;
-            this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton1.Values.Image")));
+            this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapExcel.Values.Image")));
             this.btnNhapExcel.Values.Text = "Nhập Excel";
             this.btnNhapExcel.Click += new System.EventHandler(this.btnNhapExcel_Click);
             // 
+            // lbTotal
+            // 
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTotal.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotal.ForeColor = System.Drawing.Color.Black;
+            this.lbTotal.Location = new System.Drawing.Point(0, 0);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(142, 18);
+            this.lbTotal.TabIndex = 15;
+            this.lbTotal.Text = "Tổng số sản phẩm: x";
+            // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.Location = new System.Drawing.Point(963, 3);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnXuatExcel.Size = new System.Drawing.Size(116, 40);
+            this.btnXuatExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Back.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StateCommon.Border.ColorAngle = 45F;
+            this.btnXuatExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnXuatExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnXuatExcel.StateCommon.Border.Rounding = 10;
+            this.btnXuatExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnXuatExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold);
+            this.btnXuatExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
+            this.btnXuatExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
+            this.btnXuatExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
+            this.btnXuatExcel.TabIndex = 12;
+            this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
+            this.btnXuatExcel.Values.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.button2_Click);
+            // 
             // SanPhamGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);
@@ -683,22 +683,22 @@
             this.Padding = new System.Windows.Forms.Padding(5);
             this.TopMost = true;
             this.pnlDGV.ResumeLayout(false);
+            this.artanPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbLoai)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbKhuVuc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbChatLieu)).EndInit();
-            this.lbTotalStatus.ResumeLayout(false);
-            this.lbTotalStatus.PerformLayout();
-            this.artanPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             this.artanPanel2.ResumeLayout(false);
             this.artanPanel2.PerformLayout();
             this.artanPanel3.ResumeLayout(false);
             this.artanPanel3.PerformLayout();
             this.artanPanel4.ResumeLayout(false);
             this.artanPanel4.PerformLayout();
+            this.lbTotalStatus.ResumeLayout(false);
+            this.lbTotalStatus.PerformLayout();
             this.ResumeLayout(false);
 
         }

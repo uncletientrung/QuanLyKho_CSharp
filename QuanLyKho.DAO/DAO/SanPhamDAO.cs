@@ -27,16 +27,29 @@ namespace QuanLyKho.DAO
         {
 
 
-            string sql = $"INSERT into sanpham(tensp,hinhanh,soluong,dongia,machatlieu,maloai,makhuvuc,masize)"
-                + $"VALUES ('{sp.Tensp}','{sp.Hinhanh}','{sp.Soluong}','{sp.Dongia}','{sp.Machatlieu}','{sp.Maloai}','{sp.Makhuvuc}','{sp.Masize}')";
+            string sql = $"INSERT into sanpham(tensp,hinhanh,soluong,dongia,machatlieu,maloai,makhuvuc,masize, tenloai, tenkhuvuc, tenchatlieu, tensize)"
+                + $"VALUES ('{sp.Tensp}','{sp.Hinhanh}','{sp.Soluong}','{sp.Dongia}','{sp.Machatlieu}'," +
+                $"'{sp.Maloai}','{sp.Makhuvuc}','{sp.Masize}','{sp.Tenloai}','{sp.Tenkhuvuc}','{sp.Tenchatlieu}','{sp.Tensize}')";
             return ConnectionHelper.getExecuteNonQuery(sql);// tra ve so luong dong anh huong
         }
 
         public int Update(SanPhamDTO sp)
         {
             string sql = $"UPDATE sanpham SET " +
-                         $"tensp='{sp.Tensp}',hinhanh='{sp.Hinhanh}',soluong='{sp.Soluong}',dongia='{sp.Dongia}',machatlieu='{sp.Machatlieu}',maloai='{sp.Maloai}',makhuvuc='{sp.Makhuvuc}',masize='{sp.Masize}'" +
-                         $"WHERE masp='{sp.Masp}'";
+                 $"tensp='{sp.Tensp}', " +
+                 $"hinhanh='{sp.Hinhanh}', " +
+                 $"soluong='{sp.Soluong}', " +
+                 $"dongia='{sp.Dongia}', " +
+                 $"machatlieu='{sp.Machatlieu}', " +
+                 $"maloai='{sp.Maloai}', " +
+                 $"makhuvuc='{sp.Makhuvuc}', " +
+                 $"masize='{sp.Masize}', " +
+                 $"tenloai='{sp.Tenloai}', " +
+                 $"tenkhuvuc='{sp.Tenkhuvuc}', " +
+                 $"tenchatlieu='{sp.Tenchatlieu}', " +
+                 $"tensize='{sp.Tensize}' " +
+                 $"WHERE masp='{sp.Masp}'";
+
             return ConnectionHelper.getExecuteNonQuery(sql);
         }
         
@@ -75,7 +88,10 @@ namespace QuanLyKho.DAO
                         sanPhamResult.Maloai = reader.GetInt32("maloai");
                         sanPhamResult.Makhuvuc = reader.GetInt32("makhuvuc");
                         sanPhamResult.Masize = reader.GetInt32("masize");
-                        
+                        sanPhamResult.Tenloai = reader.GetString("tenloai");
+                        sanPhamResult.Tenkhuvuc = reader.GetString("tenkhuvuc");
+                        sanPhamResult.Tenchatlieu = reader.GetString("tenchatlieu");
+                        sanPhamResult.Tensize = reader.GetString("tensize");
                     }
                 }
             }
@@ -110,7 +126,11 @@ namespace QuanLyKho.DAO
                             Maloai = reader.GetInt32("maloai"),
                             Makhuvuc = reader.GetInt32("makhuvuc"),
                             Masize = reader.GetInt32("masize"),
-                            Trangthai = reader.GetInt32("TrangThai")
+                            Trangthai = reader.GetInt32("TrangThai"),
+                            Tenloai = reader.GetString("tenloai"),
+                            Tenkhuvuc = reader.GetString("tenkhuvuc"),
+                            Tenchatlieu = reader.GetString("tenchatlieu"),
+                            Tensize = reader.GetString("tensize")
 
                         };
                         //add sp sau khi doc

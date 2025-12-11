@@ -262,7 +262,9 @@ namespace QuanLyKho_CSharp.GUI.SanPham
                             int maSizeMoi = sizeBUS.LayMaSize(cboMaSize.Text);
                             
 
-                            SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi,1);
+                            SanPhamDTO sanPhamUpdate= new SanPhamDTO(sp.Masp,tenSanPhamMoi,duongDanLuuDB,
+                                soLuongMoi,donGiaMoi,maChatLieuMoi,maLoaiMoi,maKhuVucMoi,maSizeMoi,1,
+                                cboMaLoai.Text, cboMaKhuVuc.Text, cboMaChatLieu.Text, cboMaSize.Text);
                             spBUS.updateSanPham(sanPhamUpdate);
                             this.DialogResult = DialogResult.OK;
                             this.Close();

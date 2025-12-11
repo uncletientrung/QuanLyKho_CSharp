@@ -192,7 +192,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Loai
                 DGVLoai.Rows.Add($"L-{loai.Maloai}", loai.Tenloai);
                 soluong++;
             }
-            DGVLoai.ClearSelection();
+            DGVLoai.ClearSelection();   
             lbTotalNV.Text = "Tổng số loại: " + soluong.ToString();
         }
 

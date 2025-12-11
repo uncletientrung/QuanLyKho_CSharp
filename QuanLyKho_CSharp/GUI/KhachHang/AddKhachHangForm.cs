@@ -69,11 +69,11 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
             }
 
             // Sử dụng pattern linh hoạt hơn cho số điện thoại
-            string phonePattern = @"^(0|\+84)[0-9]{9,10}$";
+            string phonePattern = @"^(0|\+84)(3[2-9]|5[2-9]|7[0|6-9]|8[1-9]|9[0-9])[0-9]{7}$";
             if (!Regex.IsMatch(sdt, phonePattern))
             {
                 MessageBox.Show(
-                    "Số điện thoại không hợp lệ! Vui lòng nhập số điện thoại 10-11 số bắt đầu bằng 0 hoặc +84.",
+                    "Số điện thoại không hợp lệ!",
                     "Lỗi nhập liệu",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error

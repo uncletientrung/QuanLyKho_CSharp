@@ -159,20 +159,16 @@ namespace QuanLyKho_CSharp.GUI
                 {
                     if (sp.Trangthai == 0) continue; 
                     Image productImage = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
-                    String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
-                    String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
-                    String tenLoai = loaiBUS.LayTenLoai(sp);
-                    String tenSize = sizeBUS.LayTenSize(sp);
                     dgvSanPham.Rows.Add(
                         $"SP-{sp.Masp}",
                         sp.Tensp,
                         productImage,
                         sp.Soluong,
                         sp.Dongia,
-                        tenChatLieu,
-                        tenLoai,
-                        tenKhuVuc,
-                        tenSize
+                        sp.Tenchatlieu,
+                        sp.Tenloai,
+                        sp.Tenkhuvuc,
+                        sp.Tensize
                     );
                     soLuongSP++;
                 }
@@ -245,23 +241,23 @@ namespace QuanLyKho_CSharp.GUI
             string khuVuc = cbbKhuVuc.SelectedItem?.ToString();
             string size = cbbSize.SelectedItem?.ToString();
 
-            int maLoai = loaiBUS.LayMaLoai(loai);
-            int makv = khuVucKhoBUS.LayMaKhuVuc(khuVuc);
-            int maCl = chatLieuBUS.LayMaChatLieu(chatLieu);
-            int maSize = sizeBUS.LayMaSize(size);
+            //int maLoai = loaiBUS.LayMaLoai(loai);
+            //int makv = khuVucKhoBUS.LayMaKhuVuc(khuVuc);
+            //int maCl = chatLieuBUS.LayMaChatLieu(chatLieu);
+            //int maSize = sizeBUS.LayMaSize(size);
 
             var filtered = spBUS.getListSP().ToList();
             if (!string.IsNullOrWhiteSpace(keyword)) {
                 filtered = spBUS.TimkiemSanPhamOFormSP(keyword).ToList();
             }
-            if (maCl > 0)
-                filtered = filtered.Where(sp => sp.Machatlieu == maCl).ToList();
-            if (maLoai > 0)
-                filtered = filtered.Where(sp => sp.Maloai == maLoai).ToList();
-            if (makv > 0)
-                filtered = filtered.Where(sp => sp.Makhuvuc == makv).ToList();
-            if (maSize > 0)
-                filtered = filtered.Where(sp => sp.Masize == maSize).ToList();
+            if (chatLieu != "Tất cả chất liệu")
+                filtered = filtered.Where(sp => sp.Tenchatlieu.Contains(chatLieu)).ToList();
+            if (loai != "Tất cả loại")
+                filtered = filtered.Where(sp => sp.Tenloai.Contains(loai)).ToList();
+            if (khuVuc !="Tất cả khu vực")
+                filtered = filtered.Where(sp => sp.Tenkhuvuc.Contains(khuVuc)).ToList();
+            if (size !="Tất cả size")
+                filtered = filtered.Where(sp => sp.Tensize.Contains(size)).ToList();
             decimal? minPrice = null; // có thể số hoặc null
             decimal? maxPrice = null;
             if (!string.IsNullOrWhiteSpace(txtSMoney.Text) && txtSMoney.Text != "Tiền từ")
