@@ -31,7 +31,7 @@ namespace QuanLyKho.DAO
                     string sql = $@"
                         INSERT INTO ctkiemke(maphieukiemke, masp, tonchinhanh, tonthucte, ghichu) 
                         VALUES ({ct.Maphieukiemke}, {ct.Masp}, {ct.Tonchinhanh}, {ct.Tonthucte}, 
-                        '{ct.Ghichu}')";
+                        '{ct.Ghichu.Replace("'", "''")}')";
 
                     int result = ConnectionHelper.getExecuteNonQuery(sql);
                     if (result > 0)

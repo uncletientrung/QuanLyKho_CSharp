@@ -27,8 +27,8 @@ namespace QuanLyKho.DAO
             {
                 foreach (ChiTietPhieuNhapDTO ctpn in list)
                 {
-                    string sql = $"INSERT INTO ctphieunhap(maphieunhap, masp, soluong, dongia, tensp) " +
-                                $"VALUES ({ctpn.Maphieunhap}, {ctpn.Masp}, {ctpn.Soluong}, {ctpn.Dongia} , '{ctpn.Tensp}')";
+                    string sql = $"INSERT INTO ctphieunhap(maphieunhap, masp, soluong, dongia,tensp) " +
+                                $"VALUES ({ctpn.Maphieunhap}, {ctpn.Masp}, {ctpn.Soluong}, {ctpn.Dongia} ,'{ctpn.Tensp.Replace("'", "''")}')";
                     int result = ConnectionHelper.getExecuteNonQuery(sql);
                     if (result > 0)
                     {

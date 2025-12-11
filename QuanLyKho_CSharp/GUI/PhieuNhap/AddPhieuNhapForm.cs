@@ -371,9 +371,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             {
                 ngayTao = dateCreate.Value.Date;
             }
+            int mapnNew = pnBUS.getAutoMaPhieuNhap();
             PhieuNhapDTO newPhieuNhap = new PhieuNhapDTO // Tạo phiếu nhập mới 
             {
-                Maphieu = pnBUS.getAutoMaPhieuNhap(),
+                Maphieu = mapnNew,
                 Manv = manv,
                 Mancc = mancc,
                 Thoigiantao = ngayTao,
@@ -388,7 +389,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 {
                     ChiTietPhieuNhapDTO ctpn = new ChiTietPhieuNhapDTO
                     {
-                        Maphieunhap = newPhieuNhap.Maphieu,
+                        Maphieunhap = mapnNew,
                         Masp = sp.Masp,
                         Soluong = sp.Soluong,
                         Dongia = sp.Dongia,
