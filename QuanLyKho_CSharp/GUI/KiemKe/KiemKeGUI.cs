@@ -315,45 +315,72 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             {
                 sfd.Filter = "Excel Workbook|*.xlsx";
                 sfd.Title = "Chọn nơi lưu file Excel";
-                sfd.FileName = $"DanhSachKiemKe_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+                sfd.FileName = $"DanhSachPhieuKiem_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        // Tạo file Excel mới
-                        using (var workbook = new XLWorkbook())
+                        using (var workbook = new ClosedXML.Excel.XLWorkbook())
                         {
-                            var worksheet = workbook.Worksheets.Add("PhieuKiemKe");
-                            // thêm bảng
-                            worksheet.Cell(1, 1).Value = "Mã phiếu";
-                            worksheet.Cell(1, 2).Value = "Nhân viên tạo";
-                            worksheet.Cell(1, 3).Value = "Nhân viên kiểm";
-                            worksheet.Cell(1, 4).Value = "Thời gian tạo";
-                            worksheet.Cell(1, 5).Value = "Thời gian cân bằng";
-                            worksheet.Cell(1, 6).Value = "Ghi chú";
-                            worksheet.Cell(1, 7).Value = "Trạng thái";
+                            var ws = workbook.Worksheets.Add("PhieuKiem");
 
-                            int row = 2;
+                            ws.Range("A1:G1").Merge();
+                            ws.Cell("A1").Value = "DANH SÁCH PHIẾU KIỂM";
+                            ws.Cell("A1").Style.Font.Bold = true;
+                            ws.Cell("A1").Style.Font.FontSize = 16;
+                            ws.Cell("A1").Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
+
+                            ws.Cell("A2").Value = $"Người xuất: {currentUser?.Tennv ?? "N/A"}";
+                            ws.Cell("A3").Value = $"Ngày xuất: {DateTime.Now:HH:mm dd/MM/yyyy}";
+
+                            int headerRow = 5;
+                            ws.Cell(headerRow, 1).Value = "Mã";
+                            ws.Cell(headerRow, 2).Value = "Nhân viên tạo";
+                            ws.Cell(headerRow, 3).Value = "Nhân viên kiểm";
+                            ws.Cell(headerRow, 4).Value = "Thời gian tạo";
+                            ws.Cell(headerRow, 5).Value = "Thời gian cân bằng";
+                            ws.Cell(headerRow, 6).Value = "Ghi chú";
+                            ws.Cell(headerRow, 7).Value = "Trạng thái";
+
+                            var headerRange = ws.Range(headerRow, 1, headerRow, 7);
+                            headerRange.Style.Font.Bold = true;
+                            headerRange.Style.Fill.BackgroundColor = ClosedXML.Excel.XLColor.FromArgb(222, 235, 247);
+                            headerRange.Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
+                            headerRange.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+                            headerRange.Style.Border.InsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+
+                            int row = headerRow + 1;
                             foreach (PhieuKiemKeDTO pkk in listPKK)
                             {
-                                if (pkk.Trangthai != "Đã xóa")
-                                {
-                                    worksheet.Cell(row, 1).Value = $"PKK-{pkk.Maphieukiemke}";
-                                    worksheet.Cell(row, 2).Value = nvBUS.getNamebyID(pkk.Manhanvientao);
-                                    worksheet.Cell(row, 3).Value = nvBUS.getNamebyID(pkk.Manhanvienkiem);
-                                    worksheet.Cell(row, 4).Value = pkk.Thoigiantao.ToString("HH:mm dd/MM/yyyy");
-                                    worksheet.Cell(row, 5).Value = pkk.Thoigiancanbang == new DateTime(1, 1, 1)
-                                        ? "Chưa cân bằng"
-                                        : pkk.Thoigiancanbang.ToString("HH:mm dd/MM/yyyy");
-                                    worksheet.Cell(row, 6).Value = pkk.Ghichu;
-                                    worksheet.Cell(row, 7).Value = pkk.Trangthai;
-                                    row++;
-                                }
+                                if (pkk.Trangthai == "Đã xóa") continue;
+
+                                ws.Cell(row, 1).Value = $"PKK-{pkk.Maphieukiemke}";
+                                ws.Cell(row, 2).Value = nvBUS.getNamebyID(pkk.Manhanvientao);
+                                ws.Cell(row, 3).Value = nvBUS.getNamebyID(pkk.Manhanvienkiem);
+                                ws.Cell(row, 4).Value = pkk.Thoigiantao.ToString("dd/MM/yyyy HH:mm");
+                                ws.Cell(row, 5).Value = pkk.Thoigiancanbang == new DateTime(1, 1, 1)
+                                    ? "Chưa cân bằng"
+                                    : pkk.Thoigiancanbang.ToString("dd/MM/yyyy HH:mm");
+                                ws.Cell(row, 6).Value = pkk.Ghichu;
+                                ws.Cell(row, 7).Value = pkk.Trangthai;
+
+                                var dataRange = ws.Range(row, 1, row, 7);
+                                dataRange.Style.Border.OutsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+                                dataRange.Style.Border.InsideBorder = ClosedXML.Excel.XLBorderStyleValues.Thin;
+                                dataRange.Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
+
+                                row++;
                             }
-                            worksheet.Columns().AdjustToContents();
+
+                            ws.Columns(1, 7).AdjustToContents();
+                            ws.Column(6).Width = Math.Max(ws.Column(6).Width, 25); 
+                            ws.Column(2).Width = Math.Max(ws.Column(2).Width, 20);
+                            ws.Column(3).Width = Math.Max(ws.Column(3).Width, 20);
+
                             workbook.SaveAs(sfd.FileName);
                         }
-                        Process.Start(sfd.FileName);
+
+                        System.Diagnostics.Process.Start(sfd.FileName);
                     }
                     catch (Exception ex)
                     {
@@ -362,6 +389,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 }
             }
         }
+    
     }
 }
 
