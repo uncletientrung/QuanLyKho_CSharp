@@ -33,7 +33,6 @@
             this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.lbTotalNV = new System.Windows.Forms.Label();
             this.lbTotalStatus = new System.Windows.Forms.Panel();
-            this.btnNhapExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pnlDGV = new System.Windows.Forms.Panel();
             this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
@@ -102,7 +101,6 @@
             // 
             // lbTotalStatus
             // 
-            this.lbTotalStatus.Controls.Add(this.btnNhapExcel);
             this.lbTotalStatus.Controls.Add(this.btnXuatExcel);
             this.lbTotalStatus.Controls.Add(this.lbTotalNV);
             this.lbTotalStatus.Dock = System.Windows.Forms.DockStyle.Top;
@@ -110,36 +108,6 @@
             this.lbTotalStatus.Name = "lbTotalStatus";
             this.lbTotalStatus.Size = new System.Drawing.Size(1103, 48);
             this.lbTotalStatus.TabIndex = 14;
-            // 
-            // btnNhapExcel
-            // 
-            this.btnNhapExcel.Location = new System.Drawing.Point(842, 3);
-            this.btnNhapExcel.Name = "btnNhapExcel";
-            this.btnNhapExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnNhapExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnNhapExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnNhapExcel.Size = new System.Drawing.Size(116, 40);
-            this.btnNhapExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnNhapExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnNhapExcel.StateCommon.Back.ColorAngle = 45F;
-            this.btnNhapExcel.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnNhapExcel.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnNhapExcel.StateCommon.Border.ColorAngle = 45F;
-            this.btnNhapExcel.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnNhapExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.btnNhapExcel.StateCommon.Border.Rounding = 10;
-            this.btnNhapExcel.StateCommon.Content.Padding = new System.Windows.Forms.Padding(-1, 5, -1, -1);
-            this.btnNhapExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNhapExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnNhapExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold);
-            this.btnNhapExcel.StatePressed.Back.Color1 = System.Drawing.Color.White;
-            this.btnNhapExcel.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(200)))), ((int)(((byte)(112)))));
-            this.btnNhapExcel.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Stretch;
-            this.btnNhapExcel.TabIndex = 17;
-            this.btnNhapExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnNhapExcel.Values.Image")));
-            this.btnNhapExcel.Values.Text = "Nhập Excel";
             // 
             // btnXuatExcel
             // 
@@ -170,6 +138,7 @@
             this.btnXuatExcel.TabIndex = 16;
             this.btnXuatExcel.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Values.Image")));
             this.btnXuatExcel.Values.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // pnlDGV
             // 
@@ -412,6 +381,5 @@
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn remove;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnXuatExcel;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNhapExcel;
     }
 }

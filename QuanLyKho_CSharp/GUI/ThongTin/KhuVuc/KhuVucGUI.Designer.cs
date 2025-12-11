@@ -34,6 +34,11 @@
             this.pnlSearch = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.txSearch = new System.Windows.Forms.TextBox();
             this.DGVKhuVuc = new System.Windows.Forms.DataGridView();
+            this.makv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenkv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detail = new System.Windows.Forms.DataGridViewImageColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.artanPanel1 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.btnThem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,11 +48,6 @@
             this.btnXuatExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.pnlDGV = new System.Windows.Forms.Panel();
-            this.makv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenkv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detail = new System.Windows.Forms.DataGridViewImageColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVKhuVuc)).BeginInit();
             this.artanPanel1.SuspendLayout();
@@ -142,6 +142,54 @@
             this.DGVKhuVuc.Size = new System.Drawing.Size(1093, 397);
             this.DGVKhuVuc.TabIndex = 0;
             this.DGVKhuVuc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVKhuVuc_CellContentClick_1);
+            // 
+            // makv
+            // 
+            this.makv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.makv.FillWeight = 10F;
+            this.makv.HeaderText = "Mã";
+            this.makv.Name = "makv";
+            this.makv.ReadOnly = true;
+            this.makv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // tenkv
+            // 
+            this.tenkv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tenkv.FillWeight = 20F;
+            this.tenkv.HeaderText = "Tên khu vực";
+            this.tenkv.Name = "tenkv";
+            this.tenkv.ReadOnly = true;
+            // 
+            // detail
+            // 
+            this.detail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.detail.HeaderText = "";
+            this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
+            this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.detail.Name = "detail";
+            this.detail.ReadOnly = true;
+            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.detail.Width = 5;
+            // 
+            // edit
+            // 
+            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.edit.HeaderText = "";
+            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
+            this.edit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.edit.Name = "edit";
+            this.edit.ReadOnly = true;
+            this.edit.Width = 5;
+            // 
+            // remove
+            // 
+            this.remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.remove.HeaderText = "";
+            this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
+            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.Name = "remove";
+            this.remove.ReadOnly = true;
+            this.remove.Width = 5;
             // 
             // artanPanel1
             // 
@@ -309,54 +357,6 @@
             this.pnlDGV.Name = "pnlDGV";
             this.pnlDGV.Size = new System.Drawing.Size(1103, 414);
             this.pnlDGV.TabIndex = 15;
-            // 
-            // makv
-            // 
-            this.makv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.makv.FillWeight = 10F;
-            this.makv.HeaderText = "Mã";
-            this.makv.Name = "makv";
-            this.makv.ReadOnly = true;
-            this.makv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // tenkv
-            // 
-            this.tenkv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tenkv.FillWeight = 20F;
-            this.tenkv.HeaderText = "Tên khu vực";
-            this.tenkv.Name = "tenkv";
-            this.tenkv.ReadOnly = true;
-            // 
-            // detail
-            // 
-            this.detail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.detail.HeaderText = "";
-            this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
-            this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.detail.Name = "detail";
-            this.detail.ReadOnly = true;
-            this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.Width = 5;
-            // 
-            // edit
-            // 
-            this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.edit.HeaderText = "";
-            this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
-            this.edit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.edit.Name = "edit";
-            this.edit.ReadOnly = true;
-            this.edit.Width = 5;
-            // 
-            // remove
-            // 
-            this.remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.remove.HeaderText = "";
-            this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
-            this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.remove.Name = "remove";
-            this.remove.ReadOnly = true;
-            this.remove.Width = 5;
             // 
             // KhuVucGUI
             // 

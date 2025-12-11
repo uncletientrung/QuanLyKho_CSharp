@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -93,7 +94,7 @@ namespace QuanLyKho_CSharp.GUI
             if (!checkThem)
             {
                 btnThem.Visible = false;
-                btnNhapExcel.Visible = false;
+                
             }
             if (!checkSua) DGVNhanVien.Columns.Remove("edit");
             if (!checkXoa) DGVNhanVien.Columns.Remove("remove");
@@ -114,11 +115,6 @@ namespace QuanLyKho_CSharp.GUI
                 tb.Show();
             }
         }   
-        private void btnExcel_Click(object sender, EventArgs e)
-        {
-            ToastForm toast = new ToastForm("SUCCESS", "This is a Success Toast");
-            toast.Show();
-        }
 
 
         private void txSearch_TextChanged(object sender, EventArgs e)
@@ -209,126 +205,110 @@ namespace QuanLyKho_CSharp.GUI
         {
 
         }
-        private void btnNhapExcel_Click(object sender, EventArgs e)
+        private void btnExcel_Click(object sender, EventArgs e)
         {
-            XuatExcel_DSNhanVien();
-        }
-        private void XuatExcel_DSNhanVien()
-        {
-            SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
-            saveDialog.FileName = "DSNhanVien_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx";
-            saveDialog.Title = "Xuất danh sách nhân viên";
+            if (DGVNhanVien.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-            if (saveDialog.ShowDialog() != DialogResult.OK) return;
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Excel Workbook|*.xlsx";
+            save.Title = "Chọn nơi lưu file Excel";
+            save.FileName = "DanhSachNhanVien.xlsx";
 
-            Excel.Application excel = null;
-            Excel.Workbooks workbooks = null;
-            Excel.Workbook wb = null;
-            Excel.Worksheet ws = null;
+            if (save.ShowDialog() != DialogResult.OK)
+                return;
+
+            Excel.Application excelApp = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
 
             try
             {
-                excel = new Excel.Application();
-                excel.Visible = false;
-                excel.DisplayAlerts = false;
-                excel.ScreenUpdating = false;     // BẮT BUỘC
-                excel.UserControl = false;        // Quan trọng nhất để tránh RPC_E_CALL_REJECTED
-                excel.Interactive = false;        // Cũng rất quan trọng
+                excelApp = new Excel.Application();
+                workbook = excelApp.Workbooks.Add(Type.Missing);
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "NhanVien";
 
-                workbooks = excel.Workbooks;
-                wb = workbooks.Add();
-                ws = (Excel.Worksheet)wb.ActiveSheet;
-                ws.Name = "DS Nhan Vien";
+                int colIndex = 1;
+                worksheet.Cells[1, 1] = "DANH SÁCH NHÂN VIÊN";
+                Excel.Range titleRange = worksheet.Range[
+                    worksheet.Cells[1, 1],
+                    worksheet.Cells[1, 6]
+                ];
+                titleRange.Merge();
+                titleRange.Font.Size = 16;
+                titleRange.Font.Bold = true;
+                titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                // === Dòng 1: Tiêu đề ===
-                ws.Range["A1:F1"].Merge();
-                ws.Cells[1, 1] = "DANH SÁCH NHÂN VIÊN";
-                withStyle(ws.Range["A1"], bold: true, size: 16, color: Color.Yellow, hAlign: Excel.XlHAlign.xlHAlignCenter);
-                ws.Rows[1].RowHeight = 40;
-
-                ws.Rows[2].RowHeight = 20;
-
-                // === Header ===
-                string[] header = { "Mã NV", "Họ tên", "Giới tính", "SĐT", "Ngày sinh", "Trạng thái" };
-                for (int i = 0; i < header.Length; i++)
+                colIndex = 1;
+                int check = 0;
+                foreach (DataGridViewColumn col in DGVNhanVien.Columns)
                 {
-                    ws.Cells[3, i + 1] = header[i];
-                    Excel.Range cell = ws.Cells[3, i + 1];
-                    cell.Font.Bold = true;
-                    cell.Font.Color = Color.White;
-                    cell.Interior.Color = Color.FromArgb(0, 112, 192);
-                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                }
-                ws.Rows[3].RowHeight = 30;
-
-                // === Dữ liệu ===
-                int row = 4;
-                foreach (NhanVienDTO nv in listNV.Where(x => x.Trangthai == 1))
-                {
-                    ws.Cells[row, 1] = "NV-" + nv.Manv;
-                    ws.Cells[row, 2] = nv.Tennv;
-                    ws.Cells[row, 3] = nv.Gioitinh == 1 ? "Nam" : (nv.Gioitinh == 2 ? "Nữ" : "Khác");
-                    ws.Cells[row, 4] = nv.Sdt;
-                    ws.Cells[row, 5] = nv.Ngaysinh.ToString("dd/MM/yyyy");
-                    ws.Cells[row, 6] = "Hoạt động";
-                    row++;
+                    if (check == 6) break;
+                    worksheet.Cells[2, colIndex] = col.HeaderText;
+                    colIndex++;
+                    check++;
                 }
 
-                ws.Columns.AutoFit();
-                ws.Range["A3:F" + (row - 1)].Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                Excel.Range headerRange = worksheet.Range[
+                    worksheet.Cells[2, 1],
+                    worksheet.Cells[2, colIndex - 1]
+                ];
+                headerRange.Font.Bold = true;
+                headerRange.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
+                headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                // Lưu file
-                wb.SaveAs(saveDialog.FileName, Excel.XlFileFormat.xlOpenXMLWorkbook);
+                int rowIndex = 3;
+                foreach (DataGridViewRow row in DGVNhanVien.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        colIndex = 1;
+                        check = 0;
 
-                MessageBox.Show("Xuất danh sách nhân viên thành công!\n" + saveDialog.FileName,
-                                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        foreach (DataGridViewColumn col in DGVNhanVien.Columns)
+                        {
+                            if (check == 6) break;
+                            worksheet.Cells[rowIndex, colIndex] =
+                                row.Cells[col.Index].Value?.ToString();
+
+                            colIndex++;
+                            check++;
+                        }
+
+                        rowIndex++;
+                    }
+                }
+                worksheet.Columns.AutoFit();
+                workbook.SaveAs(save.FileName);
+                workbook.Close();
+                excelApp.Quit();
+
+                if (File.Exists(save.FileName))
+                {
+                    Process.Start(new ProcessStartInfo(save.FileName) { UseShellExecute = true });
+                }
+
+                MessageBox.Show("Xuất Excel thành công!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi xuất Excel:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message);
             }
             finally
             {
-                // Đóng sạch sẽ – không bao giờ lỗi nữa
-                try { wb?.Close(false); } catch { }
-                try { excel?.Quit(); } catch { }
-
-                if (ws != null) Marshal.ReleaseComObject(ws);
-                if (wb != null) Marshal.ReleaseComObject(wb);
-                if (workbooks != null) Marshal.ReleaseComObject(workbooks);
-                if (excel != null) Marshal.ReleaseComObject(excel);
-
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-
-                // Giết chết process Excel treo (bí kíp cuối cùng)
-                KillExcelProcesses();
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                if (workbook != null) Marshal.ReleaseComObject(workbook);
+                if (excelApp != null) Marshal.ReleaseComObject(excelApp);
             }
         }
 
-        // Hàm phụ để style nhanh
-        private void withStyle(Excel.Range range, bool bold = false, int size = 11, Color? color = null, Excel.XlHAlign hAlign = Excel.XlHAlign.xlHAlignLeft)
-        {
-            if (bold) range.Font.Bold = true;
-            if (size > 0) range.Font.Size = size;
-            if (color.HasValue) range.Interior.Color = color.Value;
-            range.HorizontalAlignment = hAlign;
-            range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
-        }
 
-        // Giết process Excel do Interop tạo ra
-        private void KillExcelProcesses()
-        {
-            try
-            {
-                foreach (var p in System.Diagnostics.Process.GetProcessesByName("EXCEL"))
-                {
-                    if (p.MainWindowHandle == IntPtr.Zero) // process ẩn = do code tạo
-                        p.Kill();
-                }
-            }
-            catch { }
-        }
+
     }
 }

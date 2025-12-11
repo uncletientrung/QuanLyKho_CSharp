@@ -44,51 +44,11 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                 return;
             }
 
-            // Validate số điện thoại
-                string sdt = txtSoDienThoai.Text.Trim();
-            if (string.IsNullOrWhiteSpace(sdt))
-                {
-                    MessageBox.Show(
-                         "Số điện thoại không được để trống!",
-                             "Lỗi dữ liệu",
-                             MessageBoxButtons.OK,
-                             MessageBoxIcon.Error
-                         );
-                return;
-                }
 
-            // Sử dụng pattern linh hoạt hơn cho số điện thoại Việt Nam
-            string pattern = @"^(0|\+84)[0-9]{9,10}$";
-            if (!Regex.IsMatch(sdt, pattern))
-                {
-                MessageBox.Show(
-                         "Số điện thoại không hợp lệ! Vui lòng nhập số điện thoại 10-11 số bắt đầu bằng 0 hoặc +84.",
-                         "Lỗi dữ liệu",
-                         MessageBoxButtons.OK,
-                         MessageBoxIcon.Error
-                     );
-                return;
-            }
-
-            // Validate email (chỉ khi có nhập email)
-                    string email = txtEmail.Text.Trim();
-                    string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, emailPattern))
-                    {
-                        MessageBox.Show(
-                                 "Email không hợp lệ!",
-                                 "Lỗi dữ liệu",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Error
-                             );
-                return;
-                    }
 
             // Cập nhật thông tin
             kvk.Tenkhuvuc = txtTenKhuVucKho.Text.Trim();
-            kvk.Sdt = sdt;
-            kvk.Diachi = txtDiaChi.Text.Trim();
-            kvk.Email = email;
+           
             
                         Boolean result = kvkBUS.updateKhuVuc(kvk);
                         if (result)
@@ -116,17 +76,11 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
         private void UpdateKhuVucForm_Load(object sender, EventArgs e)
         {
             txtTenKhuVucKho.Text = kvk.Tenkhuvuc.ToString();
-            txtSoDienThoai.Text = kvk.Sdt.ToString();
-            txtDiaChi.Text = kvk.Diachi.ToString();
-            txtEmail.Text = kvk.Email.ToString();
         }
 
         private void UpdateKhuVucKhoForm_Shown(object sender, EventArgs e)
         {
             txtTenKhuVucKho.SelectionLength = 0; // Chặn bị bôi đen khi mở form
-            txtSoDienThoai.SelectionLength = 0;
-            txtDiaChi.SelectionLength = 0;
-            txtEmail.SelectionLength = 0;
         }
     }
 }

@@ -7,12 +7,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyKho_CSharp.GUI.TaiKhoan
 {
@@ -83,7 +87,6 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
             if (!checkThem)
             {
                 btnThem.Visible = false;
-                btnNhapExcel.Visible = false;
             }
             if (!checkSua) DGVTaiKhoan.Columns.Remove("edit");
             if (!checkXoa) DGVTaiKhoan.Columns.Remove("remove");
@@ -186,5 +189,114 @@ namespace QuanLyKho_CSharp.GUI.TaiKhoan
                 tb.Show();
             }
         }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            if (DGVTaiKhoan.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Excel Workbook|*.xlsx";
+            save.Title = "Chọn nơi lưu file Excel";
+            save.FileName = "DanhSachTaiKhoan.xlsx";
+
+            if (save.ShowDialog() != DialogResult.OK)
+                return;
+
+            Excel.Application excelApp = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
+            {
+                excelApp = new Excel.Application();
+                workbook = excelApp.Workbooks.Add(Type.Missing);
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "TaiKhoan";
+
+                int colIndex = 1;
+                worksheet.Cells[1, 1] = "DANH SÁCH TÀI KHOẢN";
+                Excel.Range titleRange = worksheet.Range[
+                    worksheet.Cells[1, 1],
+                    worksheet.Cells[1, DGVTaiKhoan.Columns.Count]
+                ];
+                titleRange.Merge();
+                titleRange.Font.Size = 16;
+                titleRange.Font.Bold = true;
+                titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                colIndex = 1;
+                int check = 0;
+
+                foreach (DataGridViewColumn col in DGVTaiKhoan.Columns)
+                {
+                    if (check == 5) break;
+                    worksheet.Cells[2, colIndex] = col.HeaderText;
+                    colIndex++;
+                    check++;
+                }
+
+                Excel.Range headerRange = worksheet.Range[
+                    worksheet.Cells[2, 1],
+                    worksheet.Cells[2, colIndex - 1]
+                ];
+                headerRange.Font.Bold = true;
+                headerRange.Interior.Color = ColorTranslator.ToOle(Color.LightGray);
+                headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                int rowIndex = 3;
+
+                foreach (DataGridViewRow row in DGVTaiKhoan.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        colIndex = 1;
+                        check = 0;
+
+                        foreach (DataGridViewColumn col in DGVTaiKhoan.Columns)
+                        {
+                            if (check == 5) break;
+
+                            worksheet.Cells[rowIndex, colIndex] =
+                                row.Cells[col.Index].Value?.ToString();
+
+                            colIndex++;
+                            check++;
+                        }
+
+                        rowIndex++;
+                    }
+                }
+
+                worksheet.Columns.AutoFit();
+                workbook.SaveAs(save.FileName);
+                workbook.Close();
+                excelApp.Quit();
+
+                if (File.Exists(save.FileName))
+                {
+                    Process.Start(new ProcessStartInfo(save.FileName) { UseShellExecute = true });
+                }
+
+                MessageBox.Show("Xuất Excel thành công!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message);
+            }
+            finally
+            {
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                if (workbook != null) Marshal.ReleaseComObject(workbook);
+                if (excelApp != null) Marshal.ReleaseComObject(excelApp);
+            }
+        }
+
+
     }
 }
