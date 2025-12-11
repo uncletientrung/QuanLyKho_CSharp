@@ -167,7 +167,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                 int thang = now.Month;
                 int nam = now.Year;
 
-                // ---- DÒNG TIÊU ĐỀ LỚN ----
+           
                 worksheet.Cells[1, 1] = $"BÁO CÁO THỐNG KÊ NHÀ CUNG CẤP THÁNG {thang} NĂM {nam}";
                 Excel.Range titleRange = worksheet.Range["A1", "G1"];
                 titleRange.Merge();
@@ -175,14 +175,14 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                 titleRange.Font.Size = 16;
                 titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                // ---- TIÊU ĐỀ CỘT ----
+           
                 string[] headers = { "STT", "Mã NCC", "Tên Nhà Cung Cấp", "Số Phiếu Nhập", "Tổng Tiền (VNĐ)" };
                 for (int i = 0; i < headers.Length; i++)
                 {
                     worksheet.Cells[3, i + 1] = headers[i];
                 }
 
-                // ---- DỮ LIỆU ----
+              
                 for (int i = 0; i < dgvThongKeNhaCungCap.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgvThongKeNhaCungCap.Columns.Count; j++)
@@ -192,7 +192,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     }
                 }
 
-                // ---- ĐỊNH DẠNG ----
+          
                 Excel.Range headerRange = worksheet.Range["A3", "E3"];
                 headerRange.Font.Bold = true;
                 headerRange.Interior.Color = Color.LightGray;
@@ -207,19 +207,19 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                 dataRange.Columns.AutoFit();
                 dataRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                // ---- ĐỊNH DẠNG CỘT TỔNG TIỀN ----
+               
                 Excel.Range moneyRange = worksheet.Range[
                     worksheet.Cells[4, 5],
                     worksheet.Cells[dgvThongKeNhaCungCap.Rows.Count + 3, 5]
                 ];
                 moneyRange.NumberFormat = "#,##0 \"VNĐ\"";
 
-                // ---- LƯU FILE ----
+               
                 workbook.SaveAs(saveFileDialog.FileName);
                 workbook.Close();
                 app.Quit();
 
-                // ---- MỞ FILE SAU KHI LƯU ----
+           
                 if (File.Exists(saveFileDialog.FileName))
                 {
                     Process.Start(new ProcessStartInfo(saveFileDialog.FileName) { UseShellExecute = true });

@@ -183,7 +183,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                 int thang = now.Month;
                 int nam = now.Year;
 
-                // ---- DÒNG TIÊU ĐỀ LỚN ----
+              
                 worksheet.Cells[1, 1] = $"BÁO CÁO TỒN KHO THÁNG {thang} NĂM {nam}";
                 Excel.Range titleRange = worksheet.Range["A1", "G1"];
                 titleRange.Merge();
@@ -191,13 +191,13 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                 titleRange.Font.Size = 16;
                 titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                // ---- TIÊU ĐỀ CỘT ----
+            
                 for (int i = 0; i < dgvThongKeTonKho.Columns.Count; i++)
                 {
                     worksheet.Cells[3, i + 1] = dgvThongKeTonKho.Columns[i].HeaderText;
                 }
 
-                // ---- DỮ LIỆU ----
+                
                 for (int i = 0; i < dgvThongKeTonKho.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgvThongKeTonKho.Columns.Count; j++)
@@ -207,7 +207,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     }
                 }
 
-                // ---- ĐỊNH DẠNG ----
+            
                 Excel.Range headerRange = worksheet.Range[
                     worksheet.Cells[3, 1],
                     worksheet.Cells[3, dgvThongKeTonKho.Columns.Count]
@@ -225,14 +225,14 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                 dataRange.Columns.AutoFit();
                 dataRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                // ---- LƯU FILE ----
+            
                 workbook.SaveAs(saveFileDialog.FileName);
                 workbook.Close();
                 app.Quit();
 
                
 
-                // ---- MỞ FILE SAU KHI LƯU ----
+              
                 if (File.Exists(saveFileDialog.FileName))
                 {
                     Process.Start(new ProcessStartInfo(saveFileDialog.FileName) { UseShellExecute = true });

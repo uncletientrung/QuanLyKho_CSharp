@@ -391,6 +391,97 @@ namespace QuanLyKho_CSharp.GUI
             }
         }
 
+        private void btnNhapExcel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Excel File|*.xlsx;*.xls";
+
+            if (open.ShowDialog() != DialogResult.OK)
+                return;
+
+            Excel.Application xlApp = null;
+            Excel.Workbook xlWorkbook = null;
+            Excel._Worksheet xlWorksheet = null;
+            Excel.Range xlRange = null;
+
+            try
+            {
+                xlApp = new Excel.Application();
+                xlWorkbook = xlApp.Workbooks.Open(open.FileName);
+                xlWorksheet = xlWorkbook.Sheets[1];
+                xlRange = xlWorksheet.UsedRange;
+
+                int rowCount = xlRange.Rows.Count;
+                int colCount = xlRange.Columns.Count;
+
+                // Kiểm tra số cột hợp lệ
+                if (colCount < 6)
+                {
+                    MessageBox.Show("File Excel thiếu cột dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                
+                for (int row = 3; row <= rowCount; row++)
+                {
+                    string tensp = xlRange.Cells[row, 1].Value?.ToString();
+                    string dongiaStr = xlRange.Cells[row, 2].Value?.ToString();
+                    string chatlieu = xlRange.Cells[row, 3].Value?.ToString();
+                    string loai = xlRange.Cells[row, 4].Value?.ToString();
+                    string khuvuc = xlRange.Cells[row, 5].Value?.ToString();
+                    string size = xlRange.Cells[row, 6].Value?.ToString();
+
+
+                    if (string.IsNullOrWhiteSpace(tensp))
+                        continue; // Bỏ dòng trống
+
+                    int soluong = 0;
+                    int dongia = int.TryParse(dongiaStr, out int dg) ? dg : 0;
+                    int maCl = chatLieuBUS.LayMaChatLieu(chatlieu);
+                    int maLoai = loaiBUS.LayMaLoai(loai);
+                    int maKV = khuVucKhoBUS.LayMaKhuVuc(khuvuc);
+                    int maSize = sizeBUS.LayMaSize(size);
+
+
+
+                    SanPhamDTO sp = new SanPhamDTO();
+                    sp.Tensp = tensp;
+                    sp.Soluong = soluong;
+                    sp.Dongia = dongia;
+                    sp.Machatlieu = maCl;
+                    sp.Maloai = maLoai;
+                    sp.Makhuvuc = maKV;
+                    sp.Masize = maSize;
+                    sp.Hinhanh = "../images/stocks/no_image.png";   
+
+                    
+                    spBUS.insertSanPham(sp);
+                }
+
+                MessageBox.Show("Nhập dữ liệu thành công!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Reload lại bảng
+                LoadDataToGrid(spBUS.getListSP());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi đọc excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (xlRange != null) Marshal.ReleaseComObject(xlRange);
+                if (xlWorksheet != null) Marshal.ReleaseComObject(xlWorksheet);
+                if (xlWorkbook != null)
+                {
+                    xlWorkbook.Close(false);
+                    Marshal.ReleaseComObject(xlWorkbook);
+                }
+                if (xlApp != null) Marshal.ReleaseComObject(xlApp);
+            }
+        }
+
+
 
 
         // Xử lý playholder và keypress
