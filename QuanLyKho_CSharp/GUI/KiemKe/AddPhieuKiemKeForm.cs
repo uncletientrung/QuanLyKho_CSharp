@@ -310,198 +310,212 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         private void btnNhapExcel_Click(object sender, EventArgs e)
         {
+            Microsoft.Office.Interop.Excel.Application excelApp = null;
+            Microsoft.Office.Interop.Excel.Workbook workbook = null;
+            Microsoft.Office.Interop.Excel.Worksheet worksheet = null;
+
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog
                 {
-                    Filter = "Excel Files|*.xls;*.xlsx;*.xlsm",
+                    Filter = "Excel Files|*.xlsx;*.xls",
                     Title = "Chọn file Excel để nhập"
                 };
 
                 if (openFileDialog.ShowDialog() != DialogResult.OK)
                     return;
 
-                string filePath = openFileDialog.FileName;
+                excelApp = new Microsoft.Office.Interop.Excel.Application();
+                excelApp.DisplayAlerts = false;
+                workbook = excelApp.Workbooks.Open(openFileDialog.FileName);
+                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Worksheets[1];
 
-                // Đọc sheet đầu tiên
-                DataTable sheet = ReadExcelFile(filePath);
+                Microsoft.Office.Interop.Excel.Range usedRange = worksheet.UsedRange;
+                int rowCount = usedRange.Rows.Count;
+                int colCount = usedRange.Columns.Count;
 
-                if (sheet == null || sheet.Rows.Count == 0)
+                // Kiểm tra tối thiểu 4 dòng: 2 dòng info + 1 header detail + 1 dữ liệu
+                if (rowCount < 4)
                 {
-                    MessageBox.Show("File Excel không có dữ liệu!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Kiểm tra cấu trúc 2 phần
-                if (!CheckExcelStructureForKiemKe(sheet))
-                {
-                    MessageBox.Show("File Excel không đúng định dạng!\n" +
-                                    "Yêu cầu các cột:\n" +
-                                    "- Bên trái (Phiếu): Mã phiếu, Nhân viên tạo, Nhân viên kiểm, Thời gian tạo, Thời gian cân bằng, Ghi chú, Trạng thái\n" +
-                                    "- Bên phải (Chi tiết): Mã Phiếu, STT, Mã SP, tên sản phẩm, Giá SP, Tồn chi nhánh, Tồn thực tế, SL chênh lệch, giá trị chênh lệch, Lý do",
-                                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Tách dòng phiếu bên trái
-                var excelPhieuRows = new List<DataRow>();
-                foreach (DataRow r in sheet.Rows)
-                {
-                    var maPhieuStr = (r["Mã phiếu"] ?? "").ToString().Trim();
-                    var nvTaoStr = (r["Nhân viên tạo"] ?? "").ToString().Trim();
-                    var nvKiemStr = (r["Nhân viên kiểm"] ?? "").ToString().Trim();
-                    var timeTaoStr = (r["Thời gian tạo"] ?? "").ToString().Trim();
-                    var trangThaiStr = (r["Trạng thái"] ?? "").ToString().Trim();
-
-                    if (!string.IsNullOrEmpty(maPhieuStr) &&
-                        (!string.IsNullOrEmpty(nvTaoStr) || !string.IsNullOrEmpty(trangThaiStr) || !string.IsNullOrEmpty(timeTaoStr)))
-                    {
-                        excelPhieuRows.Add(r);
-                    }
-                }
-
-                if (excelPhieuRows.Count == 0)
-                {
-                    MessageBox.Show("Không tìm thấy dòng Phiếu kiểm bên trái!", "Lỗi",
+                    MessageBox.Show("File Excel không đúng định dạng (thiếu dữ liệu).", "Lỗi",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Gom chi tiết theo "Mã Phiếu" bên phải
-                var detailsByDisplayMaPhieu = new Dictionary<string, BindingList<ChiTietKiemKeDTO>>(StringComparer.OrdinalIgnoreCase);
-
-                int sanitizeInt(string s)
+                Func<int, int, string> cell = (r, c) =>
                 {
-                    s = (s ?? "").Trim().Replace(".", "").Replace(",", "").Replace("đ", "").Replace("Đ", "");
-                    int v;
-                    return int.TryParse(s, out v) ? v : 0;
-                }
-
-                foreach (DataRow r in sheet.Rows)
-                {
-                    var maPhieuDisplay = (r["Mã Phiếu"] ?? "").ToString().Trim();
-                    var maSpStr = (r["Mã SP"] ?? "").ToString().Trim();
-                    var tonCNStr = (r["Tồn chi nhánh"] ?? "").ToString().Trim();
-                    var tonTTStr = (r["Tồn thực tế"] ?? "").ToString().Trim();
-                    var lyDoStr = (r["Lý do"] ?? "").ToString().Trim();
-
-                    if (string.IsNullOrEmpty(maPhieuDisplay)) continue;
-                    if (!int.TryParse(maSpStr, out var maSp)) continue;
-
-                    var dto = new ChiTietKiemKeDTO
-                    {
-                        Masp = maSp,
-                        Tonchinhanh = sanitizeInt(tonCNStr),
-                        Tonthucte = sanitizeInt(tonTTStr),
-                        Ghichu = lyDoStr
-                    };
-
-                    if (!detailsByDisplayMaPhieu.TryGetValue(maPhieuDisplay, out var list))
-                    {
-                        list = new BindingList<ChiTietKiemKeDTO>();
-                        detailsByDisplayMaPhieu[maPhieuDisplay] = list;
-                    }
-                    list.Add(dto);
-                }
-
-                // Helper parse
-                DateTime parseDateTimeOrNow(string s)
-                {
-                    s = (s ?? "").Trim();
-                    if (string.IsNullOrEmpty(s)) return DateTime.Now;
-                    if (DateTime.TryParse(s, out var dt)) return dt;
-                    var parts = s.Split(' ');
-                    if (parts.Length == 2 &&
-                        DateTime.TryParse(parts[1], out var date) &&
-                        TimeSpan.TryParse(parts[0], out var time))
-                    {
-                        return date.Date + time;
-                    }
-                    return DateTime.Now;
-                }
-
-                Func<string, int?> resolveNhanVienId = (nameOrLabel) =>
-                {
-                    var s = (nameOrLabel ?? "").Trim();
-                    if (string.IsNullOrEmpty(s)) return null;
-                    var pipeIdx = s.IndexOf("|", StringComparison.Ordinal);
-                    if (pipeIdx > 0 && int.TryParse(s.Substring(0, pipeIdx).Trim(), out var idFromLabel))
-                        return idFromLabel;
-                    return null; // fallback không resolve được
+                    object v = usedRange.Cells[r, c]?.Value;
+                    return v == null ? "" : v.ToString().Trim();
                 };
 
-                // Lưu từng phiếu với chi tiết
-                int insertedCount = 0;
+                // Dòng 1: header thông tin phiếu (không bắt buộc vị trí chính xác, chỉ cần đủ nhãn)
+                var infoHeaders = new[] { "Nhân viên tạo", "Nhân viên kiểm", "Thời gian tạo", "Ghi chú" };
+                var headersRow1 = new List<string>();
+                for (int c = 1; c <= colCount; c++) headersRow1.Add(cell(1, c));
+                foreach (var h in infoHeaders)
+                {
+                    if (!headersRow1.Any(x => string.Equals(x, h, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        MessageBox.Show("Thiếu header thông tin phiếu ở dòng 1.", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // Tìm cột theo tên header ở dòng 1
+                Func<string, int> colOfInfo = (name) =>
+                {
+                    for (int c = 1; c <= colCount; c++)
+                        if (string.Equals(cell(1, c), name, StringComparison.OrdinalIgnoreCase)) return c;
+                    return -1;
+                };
+
+                int colNVTAO = colOfInfo("Nhân viên tạo");
+                int colNVKIEM = colOfInfo("Nhân viên kiểm");
+                int colTGTAO = colOfInfo("Thời gian tạo");
+                int colGHICHU = colOfInfo("Ghi chú");
+
+                string nvTaoStr = cell(2, colNVTAO);
+                string nvKiemStr = cell(2, colNVKIEM);
+                string tgTaoStr = cell(2, colTGTAO);
+                string ghiChuStr = cell(2, colGHICHU);
+
+                DateTime thoigiantao;
+                if (string.IsNullOrEmpty(tgTaoStr))
+                {
+                    thoigiantao = DateTime.Now;
+                }
+                else
+                {
+                    if (!DateTime.TryParse(tgTaoStr, out thoigiantao))
+                    {
+                        // Hỗ trợ định dạng "HH:mm dd/MM/yyyy"
+                        var parts = tgTaoStr.Split(' ');
+                        if (parts.Length == 2 &&
+                            DateTime.TryParse(parts[1], out var d) &&
+                            TimeSpan.TryParse(parts[0], out var t))
+                        {
+                            thoigiantao = d.Date + t;
+                        }
+                        else
+                        {
+                            thoigiantao = DateTime.Now;
+                        }
+                    }
+                }
+
+                // Dòng 3: header chi tiết (cố định nhãn)
+                var detailHeaders = new[]
+                {
+            "STT","Mã SP","Tên sản phẩm","Giá SP","Tồn chi nhánh","Tồn thực tế","SL chênh lệch","Giá trị chênh lệch","Lý do"
+        };
+                var headerCols = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+                for (int c = 1; c <= colCount; c++)
+                {
+                    string h = cell(3, c);
+                    if (!string.IsNullOrEmpty(h) && detailHeaders.Any(x => string.Equals(x, h, StringComparison.OrdinalIgnoreCase)))
+                        headerCols[h] = c;
+                }
+                foreach (var h in detailHeaders)
+                {
+                    if (!headerCols.ContainsKey(h))
+                    {
+                        MessageBox.Show("Thiếu header chi tiết ở dòng 3.", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                int parseIntSafe(string s)
+                {
+                    s = (s ?? "").Trim().Replace(".", "").Replace(",", "").Replace("đ", "").Replace("Đ", "");
+                    int v; return int.TryParse(s, out v) ? v : 0;
+                }
+
+                var chiTiet = new BindingList<ChiTietKiemKeDTO>();
+                int successCount = 0;
+                int errorCount = 0;
                 var errors = new StringBuilder();
 
-                foreach (var r in excelPhieuRows)
+                // Dòng 4 trở đi: dữ liệu chi tiết
+                for (int r = 4; r <= rowCount; r++)
                 {
-                    string displayMaPhieu = (r["Mã phiếu"] ?? "").ToString().Trim();
-                    string nvTaoStr = (r["Nhân viên tạo"] ?? "").ToString().Trim();
-                    string nvKiemStr = (r["Nhân viên kiểm"] ?? "").ToString().Trim();
-                    string timeTaoStr = (r["Thời gian tạo"] ?? "").ToString().Trim();
-                    string timeCanBangStr = (r["Thời gian cân bằng"] ?? "").ToString().Trim();
-                    string ghiChuStr = (r["Ghi chú"] ?? "").ToString().Trim();
-                    string trangThaiStr = (r["Trạng thái"] ?? "").ToString().Trim();
-
-                    if (!detailsByDisplayMaPhieu.TryGetValue(displayMaPhieu, out var chiTietList) || chiTietList.Count == 0)
-                    {
-                        errors.AppendLine($"- Phiếu '{displayMaPhieu}': Không tìm thấy chi tiết ở cột bên phải.");
-                        continue;
-                    }
-
-                    var pkk = new PhieuKiemKeDTO();
-                    pkk.Maphieukiemke = pkkBUS.getMaTiepTheo();
-
-                    foreach (var ct in chiTietList)
-                    {
-                        ct.Maphieukiemke = pkk.Maphieukiemke;
-                    }
-
-                    var pkkThucTe = new QuanLyKho.DTO.PhieuKiemKeDTO
-                    {
-                        Maphieukiemke = pkk.Maphieukiemke
-                    };
                     try
                     {
-                        pkkThucTe.GetType().GetProperty("Ghichu")?.SetValue(pkkThucTe, ghiChuStr, null);
-                        pkkThucTe.GetType().GetProperty("Trangthai")?.SetValue(pkkThucTe, string.IsNullOrEmpty(trangThaiStr) ? "Chưa cân bằng" : trangThaiStr, null);
-                        pkkThucTe.GetType().GetProperty("Thoigiantao")?.SetValue(pkkThucTe, parseDateTimeOrNow(timeTaoStr), null);
-                        var manvTao = resolveNhanVienId(nvTaoStr) ?? currentUser.Manv;
-                        var manvKiem = resolveNhanVienId(nvKiemStr) ?? currentUser.Manv;
-                        pkkThucTe.GetType().GetProperty("Manhanvientao")?.SetValue(pkkThucTe, manvTao, null);
-                        pkkThucTe.GetType().GetProperty("Manhanvienkiem")?.SetValue(pkkThucTe, manvKiem, null);
+                        string stt = cell(r, headerCols["STT"]);
+                        string maSpStr = cell(r, headerCols["Mã SP"]);
+                        if (string.IsNullOrEmpty(maSpStr)) continue;
+                        if (!string.IsNullOrEmpty(stt) && !int.TryParse(stt, out _)) { errors.AppendLine($"Dòng {r}: STT không hợp lệ."); errorCount++; continue; }
+                        if (!int.TryParse(maSpStr, out var maSp)) { errors.AppendLine($"Dòng {r}: Mã SP không hợp lệ."); errorCount++; continue; }
 
-                        var trangthai = (string)pkkThucTe.GetType().GetProperty("Trangthai")?.GetValue(pkkThucTe, null);
-                        if (!string.IsNullOrEmpty(timeCanBangStr) &&
-                            !string.IsNullOrEmpty(trangthai) &&
-                            trangthai.IndexOf("Đã cân bằng", StringComparison.OrdinalIgnoreCase) >= 0)
-                        {
-                            pkkThucTe.GetType().GetProperty("Thoigiancanbang")?.SetValue(pkkThucTe, parseDateTimeOrNow(timeCanBangStr), null);
-                        }
-                    }
-                    catch
-                    {
-                       
-                    }
+                        string tonCNStr = cell(r, headerCols["Tồn chi nhánh"]);
+                        string tonTTStr = cell(r, headerCols["Tồn thực tế"]);
+                        string lyDoStr = cell(r, headerCols["Lý do"]);
 
-                    try
-                    {
-                        bool ok = pkkBUS.insertPKK(pkkThucTe, chiTietList);
-                        if (!ok)
+                        var dto = new ChiTietKiemKeDTO
                         {
-                            errors.AppendLine($"- Phiếu '{displayMaPhieu}': Insert thất bại.");
-                            continue;
-                        }
-                        insertedCount++;
+                            Masp = maSp,
+                            Tonchinhanh = parseIntSafe(tonCNStr),
+                            Tonthucte = parseIntSafe(tonTTStr),
+                            Ghichu = lyDoStr
+                        };
+                        chiTiet.Add(dto);
+                        successCount++;
                     }
                     catch (Exception ex)
                     {
-                        errors.AppendLine($"- Phiếu '{displayMaPhieu}': Lỗi {ex.Message}");
+                        errors.AppendLine($"Dòng {r}: {ex.Message}");
+                        errorCount++;
                     }
                 }
 
+                if (chiTiet.Count == 0)
+                {
+                    MessageBox.Show("Không có chi tiết sản phẩm hợp lệ trong file.", "Cảnh báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo phiếu và tính trạng thái
+                var pkk = new PhieuKiemKeDTO
+                {
+                    Maphieukiemke = pkkBUS.getMaTiepTheo(),
+                    Ghichu = ghiChuStr,
+                    Thoigiantao = thoigiantao
+                };
+
+                int resolveNV(string s, int fallback)
+                {
+                    s = (s ?? "").Trim();
+                    if (string.IsNullOrEmpty(s)) return fallback;
+                    int pipeIdx = s.IndexOf("|", StringComparison.Ordinal);
+                    if (pipeIdx > 0 && int.TryParse(s.Substring(0, pipeIdx).Trim(), out var id)) return id;
+                    return fallback;
+                }
+                pkk.Manhanvientao = resolveNV(nvTaoStr, currentUser.Manv);
+                pkk.Manhanvienkiem = resolveNV(nvKiemStr, currentUser.Manv);
+
+                bool canBang = chiTiet.All(ct => ct.Tonchinhanh == ct.Tonthucte);
+                pkk.Trangthai = canBang ? "Đã cân bằng" : "Chưa cân bằng";
+                if (canBang) pkk.Thoigiancanbang = DateTime.Now;
+
+                foreach (var ct in chiTiet) ct.Maphieukiemke = pkk.Maphieukiemke;
+
+                if (!pkkBUS.insertPKK(pkk, chiTiet))
+                {
+                    MessageBox.Show("Thêm phiếu kiểm từ Excel thất bại.", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string message = $"Nhập chi tiết thành công: {successCount} dòng";
+                if (errorCount > 0) message += $"\nLỗi: {errorCount} dòng\n\n{errors}";
+                MessageBox.Show(message, "Kết quả nhập Excel",
+                    MessageBoxButtons.OK,
+                    errorCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Information);
+
+                // Reset UI
+                new AddSuccessNotification().Show();
                 listCTKKDuocThem.Clear();
                 LoadDanhSachKiemKe();
                 txNote.Clear();
@@ -509,127 +523,29 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 dateCreate.Value = DateTime.Now;
                 txNVTao.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
                 txNVKiem.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
-
-                string message = $"Đã nhập và lưu {insertedCount} phiếu kiểm từ Excel.";
-                if (errors.Length > 0)
-                {
-                    message += "\n\nCác lỗi:\n" + errors.ToString();
-                    MessageBox.Show(message, "Kết quả nhập Excel", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show(message, "Kết quả nhập Excel", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
                 btnClose?.Invoke();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi nhập Excel: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Lỗi khi nhập file Excel: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private DataTable ReadExcelFile(string filePath)
-        {
-            Microsoft.Office.Interop.Excel.Application excelApp = null;
-            Microsoft.Office.Interop.Excel.Workbook workbook = null;
-            Microsoft.Office.Interop.Excel.Worksheet worksheet = null;
-
-            try
-            {
-                excelApp = new Microsoft.Office.Interop.Excel.Application();
-                excelApp.Visible = false;
-                excelApp.DisplayAlerts = false;
-
-                workbook = excelApp.Workbooks.Open(filePath);
-                worksheet = workbook.Sheets[1];
-
-                Microsoft.Office.Interop.Excel.Range usedRange = worksheet.UsedRange;
-                int rowCount = usedRange.Rows.Count;
-                int colCount = usedRange.Columns.Count;
-
-                DataTable dataTable = new DataTable();
-
-                // Header
-                for (int col = 1; col <= colCount; col++)
-                {
-                    string columnName = usedRange.Cells[1, col]?.Value?.ToString() ?? $"Column{col}";
-                    dataTable.Columns.Add(columnName);
-                }
-
-                // Data
-                for (int row = 2; row <= rowCount; row++)
-                {
-                    DataRow dataRow = dataTable.NewRow();
-                    bool hasData = false;
-
-                    for (int col = 1; col <= colCount; col++)
-                    {
-                        object cellValue = usedRange.Cells[row, col]?.Value;
-                        if (cellValue != null)
-                        {
-                            dataRow[col - 1] = cellValue.ToString();
-                            hasData = true;
-                        }
-                    }
-
-                    if (hasData)
-                    {
-                        dataTable.Rows.Add(dataRow);
-                    }
-                }
-
-                return dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi đọc file Excel: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
             }
             finally
             {
-                if (worksheet != null)
-                {
-                    Marshal.ReleaseComObject(worksheet);
-                    worksheet = null;
-                }
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
                 if (workbook != null)
                 {
                     workbook.Close(false);
                     Marshal.ReleaseComObject(workbook);
-                    workbook = null;
                 }
                 if (excelApp != null)
                 {
                     excelApp.Quit();
-                    Marshal.FinalReleaseComObject(excelApp);
-                    excelApp = null;
+                    Marshal.ReleaseComObject(excelApp);
                 }
-
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-        }
-
-        private bool CheckExcelStructureForKiemKe(DataTable dt)
-        {
-            string[] pHeaders = {
-        "Mã phiếu", "Nhân viên tạo", "Nhân viên kiểm",
-        "Thời gian tạo", "Thời gian cân bằng", "Ghi chú", "Trạng thái"
-    };
-            string[] dHeaders = {
-        "Mã Phiếu", "STT", "Mã SP", "tên sản phẩm", "Giá SP",
-        "Tồn chi nhánh", "Tồn thực tế", "SL chênh lệch", "giá trị chênh lệch", "Lý do"
-    };
-
-            foreach (var h in pHeaders)
-                if (!dt.Columns.Contains(h)) return false;
-            foreach (var h in dHeaders)
-                if (!dt.Columns.Contains(h)) return false;
-
-            return true;
         }
     }
     
