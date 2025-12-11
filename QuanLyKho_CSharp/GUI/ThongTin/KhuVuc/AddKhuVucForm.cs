@@ -33,22 +33,9 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
             if(txtTenKhuVucKho.Text.Length > 0)
             {
                 string tenKVK = txtTenKhuVucKho.Text.Trim();
-                string diaChi = txtDiaChi.Text.Trim();
-                string sdt = txtSoDienThoai.Text.Trim();
-                string email = txtEmail.Text.Trim();
 
-                string phonePattern = @"^(0|\+84)[0-9]{9,10}$";
                 
-                if(sdt.Length == 0)
-                {
-                    MessageBox.Show(
-                        "Số điện thoại không được để trống!",
-                        "Lỗi dữ liệu",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                     );
-                    return; 
-                }
+
 
                 if(tenKVK.Length == 0)
                 {
@@ -61,34 +48,9 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                     return;
                 }
 
-                if (!Regex.IsMatch(sdt, phonePattern))
-                {
-                    MessageBox.Show(
-                        "Số điện thoại không hợp lệ!",
-                        "Lỗi dữ liệu",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                     );
-                    return;
-                }
-
-                if(email.Length > 0 && !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-                {
-                    MessageBox.Show(
-                        "Email không hợp lệ!",
-                        "Lỗi dữ liệu",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                     );
-                    return;
-                }
-
                 KhuVucKhoDTO kvkInsert = new KhuVucKhoDTO(
                     kvkBUS.getAutoMaKVK(),
-                    tenKVK,
-                    diaChi,
-                    sdt,
-                    email
+                    tenKVK, null, null, null
                 );
 
                 if (kvkBUS.insertKhuVuc(kvkInsert))

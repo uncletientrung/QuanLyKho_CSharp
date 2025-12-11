@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.btnDong = new System.Windows.Forms.Button();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.txtSoDienThoai = new System.Windows.Forms.TextBox();
-            this.lblSoDienThoai = new System.Windows.Forms.Label();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
-            this.lblDiaChi = new System.Windows.Forms.Label();
             this.txtTenKhuVucKho = new System.Windows.Forms.TextBox();
             this.lblTenKhuVucKho = new System.Windows.Forms.Label();
             this.lbDetailKhuVucKho = new System.Windows.Forms.Label();
@@ -46,70 +40,13 @@
             this.btnDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDong.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDong.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnDong.Location = new System.Drawing.Point(52, 370);
+            this.btnDong.Location = new System.Drawing.Point(52, 181);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(350, 35);
             this.btnDong.TabIndex = 29;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtEmail.Location = new System.Drawing.Point(52, 319);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(350, 24);
-            this.txtEmail.TabIndex = 28;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.Location = new System.Drawing.Point(48, 295);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(47, 20);
-            this.lblEmail.TabIndex = 27;
-            this.lblEmail.Text = "Email";
-            // 
-            // txtSoDienThoai
-            // 
-            this.txtSoDienThoai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSoDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtSoDienThoai.Location = new System.Drawing.Point(52, 255);
-            this.txtSoDienThoai.Name = "txtSoDienThoai";
-            this.txtSoDienThoai.Size = new System.Drawing.Size(350, 24);
-            this.txtSoDienThoai.TabIndex = 26;
-            // 
-            // lblSoDienThoai
-            // 
-            this.lblSoDienThoai.AutoSize = true;
-            this.lblSoDienThoai.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblSoDienThoai.Location = new System.Drawing.Point(48, 231);
-            this.lblSoDienThoai.Name = "lblSoDienThoai";
-            this.lblSoDienThoai.Size = new System.Drawing.Size(100, 20);
-            this.lblSoDienThoai.TabIndex = 25;
-            this.lblSoDienThoai.Text = "Số điện thoại";
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtDiaChi.Location = new System.Drawing.Point(52, 189);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(350, 24);
-            this.txtDiaChi.TabIndex = 24;
-            // 
-            // lblDiaChi
-            // 
-            this.lblDiaChi.AutoSize = true;
-            this.lblDiaChi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblDiaChi.Location = new System.Drawing.Point(48, 165);
-            this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(56, 20);
-            this.lblDiaChi.TabIndex = 23;
-            this.lblDiaChi.Text = "Địa chỉ";
             // 
             // txtTenKhuVucKho
             // 
@@ -148,14 +85,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(448, 454);
+            this.ClientSize = new System.Drawing.Size(448, 251);
             this.Controls.Add(this.btnDong);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.txtSoDienThoai);
-            this.Controls.Add(this.lblSoDienThoai);
-            this.Controls.Add(this.txtDiaChi);
-            this.Controls.Add(this.lblDiaChi);
             this.Controls.Add(this.txtTenKhuVucKho);
             this.Controls.Add(this.lblTenKhuVucKho);
             this.Controls.Add(this.lbDetailKhuVucKho);
@@ -172,12 +103,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnDong;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox txtSoDienThoai;
-        private System.Windows.Forms.Label lblSoDienThoai;
-        private System.Windows.Forms.TextBox txtDiaChi;
-        private System.Windows.Forms.Label lblDiaChi;
         private System.Windows.Forms.TextBox txtTenKhuVucKho;
         private System.Windows.Forms.Label lblTenKhuVucKho;
         private System.Windows.Forms.Label lbDetailKhuVucKho;

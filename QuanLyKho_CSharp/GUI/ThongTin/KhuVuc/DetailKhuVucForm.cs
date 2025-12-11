@@ -30,20 +30,11 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
         {
             txtTenKhuVucKho.Text = kvk.Tenkhuvuc.ToString();
             txtTenKhuVucKho.Enabled = false; //Chặn sửa
-            txtDiaChi.Text = kvk.Diachi.ToString();
-            txtDiaChi.Enabled = false; // Chặn sửa
-            txtSoDienThoai.Text = kvk.Sdt.ToString();
-            txtSoDienThoai.Enabled = false; //Chặn sửa
-            txtEmail.Text = kvk.Email.ToString();
-            txtEmail.Enabled = false; //Chặn sửa
         }
 
         private void DetailKhuVucKho_Shown(object sender, EventArgs e)
         {
             txtTenKhuVucKho.SelectionLength = 0; // Chặn bị bôi đen khi mở form
-            txtDiaChi.SelectionLength = 0;
-            txtSoDienThoai.SelectionLength = 0;
-            txtEmail.SelectionLength = 0;
         }
     }
 }
