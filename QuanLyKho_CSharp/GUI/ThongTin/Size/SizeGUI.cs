@@ -22,6 +22,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace QuanLyKho_CSharp.GUI.ThongTin.Size
 {
@@ -171,6 +174,191 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.Size
                     refreshDataGridView(sizeBUS.getSizeList());
                     new UpdateSuccessNotification().Show();
                 }
+            }
+        }
+
+        private void btnNhapExcel_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelApp = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Excel Files|*.xlsx;*.xls";
+                openFileDialog.Title = "Chọn file Excel để nhập";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    excelApp = new Excel.Application();
+                    excelApp.DisplayAlerts = false;
+                    workbook = excelApp.Workbooks.Open(openFileDialog.FileName);
+                    worksheet = (Excel.Worksheet)workbook.Worksheets[1];
+
+                    Excel.Range usedRange = worksheet.UsedRange;
+                    int rowCount = usedRange.Rows.Count;
+
+                    int successCount = 0;
+                    int errorCount = 0;
+                    StringBuilder errors = new StringBuilder();
+
+                    for (int row = 2; row <= rowCount; row++)
+                    {
+                        try
+                        {
+                            string tenSize = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
+                            string ghiChu = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
+
+                            if (string.IsNullOrEmpty(tenSize))
+                            {
+                                errors.AppendLine($"Dòng {row}: Tên size không được để trống");
+                                errorCount++;
+                                continue;
+                            }
+
+                            SizeDTO newSize = new SizeDTO
+                            {
+                                Tensize = tenSize,
+                                Ghichu = string.IsNullOrEmpty(ghiChu) ? "" : ghiChu
+                            };
+
+                            if (sizeBUS.insertSize(newSize))
+                            {
+                                successCount++;
+                            }
+                            else
+                            {
+                                errors.AppendLine($"Dòng {row}: Lỗi khi thêm vào database");
+                                errorCount++;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            errors.AppendLine($"Dòng {row}: {ex.Message}");
+                            errorCount++;
+                        }
+                    }
+
+                    string message = $"Nhập thành công: {successCount} size\n";
+                    if (errorCount > 0)
+                    {
+                        message += $"Lỗi: {errorCount} dòng\n\nChi tiết lỗi:\n{errors}";
+                    }
+
+                    MessageBox.Show(message, "Kết quả nhập Excel",
+                        MessageBoxButtons.OK,
+                        errorCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Information);
+
+                    if (successCount > 0)
+                    {
+                        listSize = sizeBUS.getSizeList();
+                        refreshDataGridView(listSize);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi nhập file Excel: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                if (workbook != null)
+                {
+                    workbook.Close(false);
+                    Marshal.ReleaseComObject(workbook);
+                }
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    Marshal.ReleaseComObject(excelApp);
+                }
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelApp = null;
+            Excel.Workbook workbook = null;
+            Excel.Worksheet worksheet = null;
+
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Excel Files|*.xlsx";
+                saveFileDialog.Title = "Lưu file Excel";
+                saveFileDialog.FileName = $"DanhSachSize_{DateTime.Now:ddMMyyyy_HHmmss}.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    excelApp = new Excel.Application();
+                    excelApp.DisplayAlerts = false;
+                    workbook = excelApp.Workbooks.Add(Type.Missing);
+                    worksheet = (Excel.Worksheet)workbook.Worksheets[1];
+
+                    worksheet.Name = "Danh sách size";
+
+                    worksheet.Cells[1, 1] = "Mã size";
+                    worksheet.Cells[1, 2] = "Tên size";
+                    worksheet.Cells[1, 3] = "Ghi chú";
+
+                    Excel.Range headerRange = worksheet.Range["A1", "C1"];
+                    headerRange.Font.Bold = true;
+                    headerRange.Interior.Color = System.Drawing.ColorTranslator.ToOle(Color.FromArgb(17, 155, 248));
+                    headerRange.Font.Color = System.Drawing.ColorTranslator.ToOle(Color.White);
+                    headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+
+                    int row = 2;
+                    foreach (SizeDTO size in listSize)
+                    {
+                        worksheet.Cells[row, 1] = $"S-{size.Masize}";
+                        worksheet.Cells[row, 2] = size.Tensize;
+                        worksheet.Cells[row, 3] = size.Ghichu;
+                        row++;
+                    }
+
+                    if (row > 2)
+                    {
+                        Excel.Range dataRange = worksheet.Range["A1", $"C{row - 1}"];
+                        dataRange.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                        dataRange.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                    }
+
+                    worksheet.Columns.AutoFit();
+
+                    workbook.SaveAs(saveFileDialog.FileName);
+
+                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    System.Diagnostics.Process.Start(saveFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xuất file Excel: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (worksheet != null) Marshal.ReleaseComObject(worksheet);
+                if (workbook != null)
+                {
+                    workbook.Close(false);
+                    Marshal.ReleaseComObject(workbook);
+                }
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    Marshal.ReleaseComObject(excelApp);
+                }
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
         }
     }

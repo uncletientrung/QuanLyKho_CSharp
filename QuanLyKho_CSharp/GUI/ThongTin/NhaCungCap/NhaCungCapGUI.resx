@@ -199,6 +199,13 @@
         4wAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnThem.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAEpJREFUSEtj
+        YBgFQwr8//9lPwiji1MN/P//5T8Io4tTDYxaQBAMDQugSRFsEBmYcBKmuQX4AMwgdHGqgVELCIJhYQFt
+        i+tRQBMAAHeo6n2nXnknAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="artanButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAh5JREFUSEvd
@@ -212,13 +219,6 @@
         gcQd3tML4o8ukDubEh9Kclk/nsm2NOPDQPZ8OQh9z9hB6X01bEP9ZDJmkC8PHdfEP4tx3RboXVJD/H70
         IL4nmZssPjjI9/wlKpqJfNf/10K3r+fz2f11kFEphh7x27In9lkkskp7lo3vESB/+GcB/gt/AKOGhUwt
         epQMAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnThem.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAEpJREFUSEtj
-        YBgFQwr8//9lPwiji1MN/P//5T8Io4tTDYxaQBAMDQugSRFsEBmYcBKmuQX4AMwgdHGqgVELCIJhYQFt
-        i+tRQBMAAHeo6n2nXnknAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>
