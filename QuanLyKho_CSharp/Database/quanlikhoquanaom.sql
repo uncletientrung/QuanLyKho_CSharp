@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 08, 2025 lúc 10:52 AM
+-- Thời gian đã tạo: Th12 12, 2025 lúc 12:57 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -69,17 +69,7 @@ CREATE TABLE `ctkiemke` (
 --
 
 INSERT INTO `ctkiemke` (`maphieukiemke`, `masp`, `tonchinhanh`, `tonthucte`, `ghichu`) VALUES
-(4, 1, 991, 990, 'Mất'),
-(4, 6, 125, 125, 'Đủ'),
-(19, 3, 31, 31, 'Đủ hàng'),
-(20, 3, 31, 13, 'Thiếu sản phâm'),
-(21, 3, 31, 13, 'Thiếu sản phâm'),
-(22, 3, 31, 31, 'Đủ hàng'),
-(23, 3, 31, 1, 'Thiếu sản phâm'),
-(24, 3, 31, 1, 'Thiếu sản phâm'),
-(25, 3, 31, 1, 'Thiếu sản phâm'),
-(25, 2, 58, 1, 'Thiếu sản phâm'),
-(25, 6, 125, 1, 'Thiếu sản phâm');
+(35, 11, 203, 1, 'Thiếu sản phâm');
 
 -- --------------------------------------------------------
 
@@ -91,23 +81,27 @@ CREATE TABLE `ctphieunhap` (
   `maphieunhap` int(11) NOT NULL,
   `masp` int(11) DEFAULT NULL,
   `soluong` int(11) NOT NULL DEFAULT 0,
-  `dongia` int(11) NOT NULL DEFAULT 0
+  `dongia` int(11) NOT NULL DEFAULT 0,
+  `tensp` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `ctphieunhap`
 --
 
-INSERT INTO `ctphieunhap` (`maphieunhap`, `masp`, `soluong`, `dongia`) VALUES
-(35, 1, 1000, 80000),
-(36, 2, 50, 60000),
-(36, 3, 10, 67000),
-(37, 2, 20, 60000),
-(37, 3, 20, 67000),
-(38, 3, 1, 67000),
-(38, 2, 1, 60000),
-(39, 1, 1, 80000),
-(40, 6, 1, 123);
+INSERT INTO `ctphieunhap` (`maphieunhap`, `masp`, `soluong`, `dongia`, `tensp`) VALUES
+(59, 11, 1, 250000, NULL),
+(60, 11, 1, 250000, 'Áo I HAVE LOVELY'),
+(62, 13, 1, 299000, 'Áo polo ARGENTBLUE'),
+(63, 11, 1, 250000, 'Áo I HAVE LOVELY'),
+(64, 15, 1, 349000, 'Áo polo LEGECY'),
+(65, 15, 1, 349000, 'Áo polo LEGECY'),
+(70, 11, 1, 250000, NULL),
+(71, 11, 100, 250000, NULL),
+(71, 13, 1000, 299000, NULL),
+(71, 14, 100, 399000, NULL),
+(72, 15, 100, 349000, NULL),
+(73, 13, 1, 299000, 'Áo polo ARGENTBLUE');
 
 -- --------------------------------------------------------
 
@@ -120,60 +114,16 @@ CREATE TABLE `ctphieuxuat` (
   `masp` int(11) DEFAULT NULL,
   `soluong` int(11) NOT NULL DEFAULT 0,
   `dongia` int(11) NOT NULL DEFAULT 0,
-  `trangThaiHoanHang` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 là đang hoạt động, 2 là đã hoàn hàng, 0 là hủy'
+  `trangThaiHoanHang` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 là đang hoạt động, 2 là đã hoàn hàng, 0 là hủy',
+  `tensp` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `ctphieuxuat`
 --
 
-INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`, `trangThaiHoanHang`) VALUES
-(199, 2, 1, 60000, 1),
-(199, 1, 1, 80000, 1),
-(200, 3, 100, 67000, 1),
-(201, 1, 1, 80000, 1),
-(201, 3, 57, 67000, 1),
-(202, 3, 1, 67000, 1),
-(203, 3, 1, 67000, 1),
-(204, 3, 1, 67000, 2),
-(205, 2, 1, 60000, 1),
-(205, 3, 1, 67000, 1),
-(206, 2, 1, 60000, 1),
-(206, 3, 1, 67000, 1),
-(207, 3, 1, 67000, 1),
-(208, 1, 1, 80000, 1),
-(209, 2, 7, 60000, 1),
-(209, 3, 1, 67000, 1),
-(210, 5, 1, 1, 1),
-(211, 2, 1, 60000, 2),
-(211, 1, 1, 80000, 2),
-(211, 3, 1, 67000, 2),
-(212, 1, 1, 80000, 2),
-(212, 2, 1, 60000, 2),
-(212, 3, 1, 67000, 2),
-(213, 1, 10, 80000, 2),
-(214, 1, 1, 80000, 2),
-(214, 3, 1, 67000, 2),
-(214, 2, 1, 60000, 2),
-(215, 6, 1, 123, 2),
-(216, 2, 1, 60000, 2),
-(217, 1, 1, 80000, 2),
-(217, 2, 1, 60000, 2),
-(217, 3, 1, 67000, 2),
-(218, 1, 1, 80000, 2),
-(218, 2, 1, 60000, 2),
-(219, 1, 20, 80000, 2),
-(219, 2, 1, 60000, 2),
-(220, 1, 20, 80000, 2),
-(220, 2, 1, 60000, 2),
-(221, 1, 10, 80000, 1),
-(221, 3, 1, 67000, 2),
-(221, 2, 10, 60000, 1),
-(222, 3, 1, 67000, 2),
-(222, 2, 1, 60000, 2),
-(222, 1, 1, 80000, 2),
-(223, 3, 1, 67000, 1),
-(224, 1, 1, 80000, 1);
+INSERT INTO `ctphieuxuat` (`maphieuxuat`, `masp`, `soluong`, `dongia`, `trangThaiHoanHang`, `tensp`) VALUES
+(236, 11, 1, 250000, 1, 'Áo I HAVE LOVELY');
 
 -- --------------------------------------------------------
 
@@ -195,59 +145,95 @@ CREATE TABLE `ctquyen` (
 INSERT INTO `ctquyen` (`manhomquyen`, `machucnang`, `hanhdong`, `trangthai`) VALUES
 (1, 1, 'Sửa', 1),
 (1, 1, 'Thêm', 1),
-(1, 1, 'Xem chi tiết', 1),
+(1, 1, 'Xem', 1),
 (1, 1, 'Xóa', 1),
 (1, 2, 'Sửa', 1),
 (1, 2, 'Thêm', 1),
-(1, 2, 'Xem chi tiết', 1),
+(1, 2, 'Xem', 1),
 (1, 2, 'Xóa', 1),
 (1, 3, 'Sửa', 1),
 (1, 3, 'Thêm', 1),
-(1, 3, 'Xem chi tiết', 1),
+(1, 3, 'Xem', 1),
 (1, 3, 'Xóa', 1),
 (1, 4, 'Sửa', 1),
 (1, 4, 'Thêm', 1),
-(1, 4, 'Xem chi tiết', 1),
+(1, 4, 'Xem', 1),
 (1, 4, 'Xóa', 1),
 (1, 5, 'Sửa', 1),
 (1, 5, 'Thêm', 1),
-(1, 5, 'Xem chi tiết', 1),
+(1, 5, 'Xem', 1),
 (1, 5, 'Xóa', 1),
 (1, 6, 'Sửa', 1),
 (1, 6, 'Thêm', 1),
-(1, 6, 'Xem chi tiết', 1),
+(1, 6, 'Xem', 1),
 (1, 6, 'Xóa', 1),
 (1, 7, 'Sửa', 1),
 (1, 7, 'Thêm', 1),
-(1, 7, 'Xem chi tiết', 1),
+(1, 7, 'Xem', 1),
 (1, 7, 'Xóa', 1),
-(1, 8, 'Xem chi tiết', 1),
+(1, 8, 'Xem', 1),
 (1, 9, 'Sửa', 1),
 (1, 9, 'Thêm', 1),
-(1, 9, 'Xem chi tiết', 1),
+(1, 9, 'Xem', 1),
 (1, 9, 'Xóa', 1),
 (1, 10, 'Sửa', 1),
 (1, 10, 'Thêm', 1),
-(1, 10, 'Xem chi tiết', 1),
+(1, 10, 'Xem', 1),
 (1, 10, 'Xóa', 1),
 (2, 2, 'Sửa', 1),
 (2, 2, 'Thêm', 1),
-(2, 2, 'Xem chi tiết', 1),
-(2, 2, 'Xóa', 1),
-(2, 3, 'Xem chi tiết', 1),
+(2, 2, 'Xem', 1),
 (2, 4, 'Sửa', 1),
 (2, 4, 'Thêm', 1),
-(2, 4, 'Xem chi tiết', 1),
-(2, 4, 'Xóa', 1),
-(2, 5, 'Sửa', 1),
+(2, 4, 'Xem', 1),
 (2, 5, 'Thêm', 1),
-(2, 5, 'Xem chi tiết', 1),
-(2, 5, 'Xóa', 1),
+(2, 5, 'Xem', 1),
 (2, 6, 'Sửa', 1),
 (2, 6, 'Thêm', 1),
-(2, 6, 'Xem chi tiết', 1),
-(2, 6, 'Xóa', 1),
-(31, 8, 'Xem chi tiết', 1);
+(2, 6, 'Xem', 1),
+(2, 7, 'Thêm', 1),
+(2, 7, 'Xem', 1),
+(3, 3, 'Xóa', 1),
+(3, 4, 'Xem', 1),
+(3, 5, 'Xem', 1),
+(3, 6, 'Xem', 1),
+(4, 1, 'Xem', 1),
+(4, 2, 'Xem', 1),
+(4, 3, 'Xem', 1),
+(4, 4, 'Xem', 1),
+(4, 5, 'Xem', 1),
+(4, 6, 'Xem', 1),
+(4, 7, 'Xem', 1),
+(4, 8, 'Xem', 1),
+(4, 9, 'Xem', 1),
+(4, 10, 'Xem', 1),
+(5, 1, 'Sửa', 1),
+(5, 1, 'Thêm', 1),
+(5, 1, 'Xem', 1),
+(5, 2, 'Sửa', 1),
+(5, 2, 'Thêm', 1),
+(5, 2, 'Xem', 1),
+(5, 2, 'Xóa', 1),
+(5, 3, 'Sửa', 1),
+(5, 3, 'Thêm', 1),
+(5, 3, 'Xem', 1),
+(5, 3, 'Xóa', 1),
+(5, 4, 'Sửa', 1),
+(5, 4, 'Thêm', 1),
+(5, 4, 'Xem', 1),
+(5, 4, 'Xóa', 1),
+(5, 5, 'Thêm', 1),
+(5, 5, 'Xem', 1),
+(5, 5, 'Xóa', 1),
+(5, 6, 'Sửa', 1),
+(5, 6, 'Thêm', 1),
+(5, 6, 'Xem', 1),
+(5, 6, 'Xóa', 1),
+(5, 7, 'Thêm', 1),
+(5, 7, 'Xem', 1),
+(5, 7, 'Xóa', 1),
+(5, 8, 'Xem', 1),
+(31, 8, 'Xem', 1);
 
 -- --------------------------------------------------------
 
@@ -297,25 +283,21 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`makh`, `tenkhachhang`, `email`, `ngaysinh`, `sdt`, `trangthai`) VALUES
-(1, 'An', 'an.nguyen@example.com', '1996-05-14', '0912345678', 1),
-(2, 'Bình', 'binh.tran@example.com', '1988-10-22', '0987654321', 1),
-(3, 'Cường', 'cuong.le@example.com', '1995-07-30', '0909876543', 1),
-(4, 'Dung', 'dung.pham@example.com', '2000-03-15', '0965123456', 1),
-(5, 'Đức', 'duc.dang@example.com', '1985-08-05', '0978456123', 1),
-(6, 'Hương	', 'huong.ho@example.com', '1993-11-25', '0911122233', 1),
-(7, 'Hòa', 'hoa.bui@example.com', '1998-06-18', '0922233344', 1),
-(8, 'Khang', 'khang.vo@example.com', '1987-09-12', '0933344455', 1),
-(9, 'Linh', 'linh.nguyen@example.com', '1996-04-07', '0944455566', 1),
-(10, 'Minh', 'minh.trinh@example.com', '2002-02-28', '0955566677', 1),
-(11, 'Nam', 'nam.duong@example.com', '1990-12-01', '0966677788', 1),
-(12, 'Quân', 'quan.phan@example.com	', '1989-07-19', '0977788899', 1),
-(13, 'Trang', 'trang.luong@example.com', '1997-01-23', '0988899000', 1),
-(14, 'Thuận', 'thihachcf@gmail.com', '2005-01-01', '0352447642', 1),
-(15, 'Trung', 'thihahcf@gmail.com', '2022-11-11', '0352447642', 1),
-(16, 'Văn Luyện', 'thi@gmail.com', '2005-12-12', '0987654321', 1),
-(17, 'testPX', 'thihachcf@gmail.com', '2025-01-06', '0352447642', 1),
-(18, 'test', 'thihachcf@gmail.com', '2025-12-02', '0352447642', 1),
-(19, 'Bro dductws', 'thihachcf@gmail.com', '2025-12-01', '0352447642', 1);
+(35, 'Nguyễn Minh Khôi', 'minhkhoi.nguyen@gmail.com', '1995-04-10', '0905123456', 1),
+(36, 'Trần Thị Thu Hà', 'thuhatran@yahoo.com', '1993-09-22', '0916234988', 1),
+(37, 'Lê Anh Tuấn', 'tuan.le@hotmail.com', '1988-12-05', '0987651123', 1),
+(38, 'Phạm Ngọc Mai', 'ngocmai.pham@gmail.com', '2000-06-17', '0934112233', 1),
+(39, 'Đỗ Quốc Huy', 'quochuy.do@gmail.com', '1997-02-14', '0907556677', 1),
+(40, 'Võ Thị Mỹ Linh', 'mylinh.vo@gmail.com', '1999-11-03', '0945332211', 1),
+(41, 'Bùi Hoàng Phúc', 'hoangphuc.bui@gmail.com', '1994-08-29', '0908776655', 1),
+(42, 'Hoàng Ngọc Trâm', 'ngoctram.hoang@yahoo.com', '1996-03-11', '0984115599', 1),
+(43, 'Ngô Minh Tâm', 'minhtam.ngo@gmail.com', '1989-10-09', '0912663344', 1),
+(44, 'Phan Thị Thanh Hằng', 'thanhhang.phan@gmail.com', '1998-07-25', '0935778899', 1),
+(45, 'Nguyễn Hoài Nam', 'hoainam.nguyen@gmail.com', '1992-01-20', '0909443322', 1),
+(46, 'Trương Mỹ Duyên', 'myduyen.truong@hotmail.com', '2001-05-19', '0946221144', 1),
+(47, 'Lâm Quốc Toàn', 'quoctoan.lam@gmail.com', '1990-11-30', '0905889944', 1),
+(48, 'Đặng Thị Kiều Oanh', 'kieuanh.dang@gmail.com', '1997-09-08', '0917334455', 1),
+(49, 'Huỳnh Gia Bảo', 'giabao.huynh@gmail.com', '1999-04-27', '0988112233', 1);
 
 -- --------------------------------------------------------
 
@@ -336,11 +318,12 @@ CREATE TABLE `khuvuckho` (
 --
 
 INSERT INTO `khuvuckho` (`makhuvuc`, `tenkhuvuc`, `diachi`, `sdt`, `email`) VALUES
-(1, 'Kho Trung Tâm', '123 Đường Lê Lợi, Quận 1, TP.HCM', '02812345678', 'trungtam@kho.com'),
-(2, 'Kho Miền Bắc', '456 Đường Hoàng Hoa Thám, Hà Nội', '02487654321', 'mienbac@kho.com'),
-(3, 'Kho Miền Nam', '789 Đường Trần Hưng Đạo, Cần Thơ', '02921234567', 'miennam@kho.com'),
-(4, 'Kho Hàng Hóa Nhỏ', '12 Đường Nguyễn Huệ, Đà Nẵng', '02363891234', 'khohoahoc@kho.com'),
-(5, 'Kho Dự Phòng', '99 Đường Phạm Văn Đồng, Bình Dương', '02743876543', 'duphong@kho.com');
+(1, 'Khu B', '123 Đường Lê Lợi, Quận 1, TP.HCM', '02812345678', 'trungtam@kho.com'),
+(2, 'Khu C', '456 Đường Hoàng Hoa Thám, Hà Nội', '02487654321', 'mienbac@kho.com'),
+(3, 'Khu A1', '789 Đường Trần Hưng Đạo, Cần Thơ', '02921234567', 'miennam@kho.com'),
+(4, 'Khu A2', '12 Đường Nguyễn Huệ, Đà Nẵng', '02363891234', 'khohoahoc@kho.com'),
+(5, 'Khu D', '99 Đường Phạm Văn Đồng, Bình Dương', '02743876543', 'duphong@kho.com'),
+(6, 'Khu A3', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -358,7 +341,6 @@ CREATE TABLE `loai` (
 --
 
 INSERT INTO `loai` (`maloai`, `tenloai`) VALUES
-(1, 'Áo thun'),
 (2, 'Áo sơ mi'),
 (3, 'Áo khoác'),
 (4, 'Áo len'),
@@ -371,7 +353,7 @@ INSERT INTO `loai` (`maloai`, `tenloai`) VALUES
 (11, 'Áo khoác gió'),
 (12, 'Quần short'),
 (13, 'Áo ba lỗ'),
-(14, 'Áo polo');
+(15, 'Áo thun');
 
 -- --------------------------------------------------------
 
@@ -393,13 +375,13 @@ CREATE TABLE `nhacungcap` (
 --
 
 INSERT INTO `nhacungcap` (`mancc`, `tenncc`, `diachincc`, `sdt`, `email`, `trangthai`) VALUES
-(9, 'Fashion Global Ltd', '10 Downing Street, London, UK', '+44 20 7946 0958', 'contact@fashionglobal.com', 1),
-(10, 'Textile World Inc', '500 Fifth Avenue, New York, USA', '+1 212 555 0199', 'sales@textileworld.com', 1),
-(11, 'Euro Fabrics GmbH', 'Kaiserstraße 45, Berlin, Germany', '+49 30 12345678', 'info@eurofabrics.de', 1),
-(12, 'Silk Route Co', '1 Rue de la Paix, Paris, France', '+33 1 23456789', 'support@silkroute.fr', 1),
-(13, 'Shenzhen Textile Co', 'No. 88, Futian Rd, Shenzhen, China', '+86 755 1234 5678', 'contact@sztextile.cn', 1),
-(14, 'Beijing Fashion Importers', 'No. 10, Wangfujing Street, Beijing, China', '+86 10 8765 4321', 'sales@bjfashion.cn', 1),
-(15, 'testNCCPX', '99 ADV KTX', '0352447642', 'thihachcf@gmail.com', 1);
+(17, 'Công ty TNHH May Mặc Thịnh Phát', '123 Lê Lợi, Q1, TP.HCM', '0909123456', 'contact@thinhphat.com', 1),
+(18, 'Công ty Cổ phần Thời Trang Sài Gòn', '456 Nguyễn Trãi, Q5, TP.HCM', '0912345678', 'info@saigonfashion.vn', 1),
+(19, 'Công ty TNHH Vải & Phụ Kiện Đông Phương', '789 Trần Hưng Đạo, Q1, TP.HCM', '0987654321', 'sales@dongphuongfabric.com', 1),
+(20, 'Công ty TNHH May Mặc Hùng Vương', '321 Phan Đình Phùng, Q3, TP.HCM', '0933111222', 'support@hungvuongclothing.com', 1),
+(21, 'Công ty TNHH Thời Trang Vina', '654 Nguyễn Văn Cừ, Q5, TP.HCM', '0911222333', 'info@vinafashion.vn', 1),
+(22, 'Công ty TNHH Sản Xuất Thời Trang GreenStyle', '987 Lý Thường Kiệt, Q10, TP.HCM', '0944556677', 'contact@greenstyle.com', 1),
+(23, 'Công ty Cổ phần May Mặc TechWear', '135 Pasteur, Q3, TP.HCM', '0909888777', 'support@techwear.vn', 1);
 
 -- --------------------------------------------------------
 
@@ -426,7 +408,9 @@ INSERT INTO `nhanvien` (`manv`, `tennv`, `gioitinh`, `sdt`, `ngaysinh`, `trangth
 (3, 'nguyen minh thuan', 1, '0909666666', '2025-08-31', 1),
 (4, 'Nguyễn Minh Thuận', 1, '0909669035', '2005-04-06', 1),
 (5, 'aaa', 1, '0352447642', '2025-10-06', 1),
-(6, 'Trung testy', 1, '0352447642', '2025-11-04', 1);
+(6, 'Trung testy', 1, '0352447642', '2025-11-04', 1),
+(7, 'test_nhân_viên', 1, '0352447642', '2000-01-01', 1),
+(8, 'test_qlKho', 1, '0334212476', '1995-12-09', 1);
 
 -- --------------------------------------------------------
 
@@ -446,7 +430,10 @@ CREATE TABLE `nhomquyen` (
 
 INSERT INTO `nhomquyen` (`manhomquyen`, `tennhomquyen`, `trangthai`) VALUES
 (1, 'Quản lý', 1),
-(2, 'Nhân viên', 1);
+(2, 'Nhân viên', 1),
+(3, 'test', 1),
+(4, 'test3', 1),
+(5, 'Quản lý kho', 1);
 
 -- --------------------------------------------------------
 
@@ -470,17 +457,14 @@ CREATE TABLE `phieukiemke` (
 --
 
 INSERT INTO `phieukiemke` (`maphieukiemke`, `thoigiantao`, `thoigiancanbang`, `trangthai`, `ghichu`, `makhuvuc`, `manhanvientao`, `manhanvienkiem`) VALUES
-(2, '2025-12-07 19:52:56', '2025-12-07 19:52:56', 'Đã xóa', 'Đã cân bằng', 2, 1, 1),
-(3, '2025-12-07 19:55:40', '2025-12-07 19:55:40', 'Đã xóa', 'Dư hàng - 30', 3, 1, 1),
-(4, '2025-12-07 22:15:14', '2025-12-07 22:15:14', 'Chưa cân bằng', 'Mất 1 áo hoodie', NULL, 6, 3),
-(19, '2025-12-08 14:24:16', '2025-12-08 14:24:16', 'Đã cân bằng', 'đủ đều', NULL, 6, 6),
-(20, '2025-12-08 14:24:33', '0001-01-01 00:00:00', 'Chưa cân bằng', 'xuất ', NULL, 6, 6),
-(21, '2025-12-08 14:36:56', '2025-12-08 15:14:40', 'Đã cân bằng', 'Chưa đủ', NULL, 6, 6),
-(22, '2025-12-08 14:37:06', '2025-12-08 14:37:06', 'Đã cân bằng', '', NULL, 6, 6),
-(23, '2025-12-08 15:13:51', '0001-01-01 00:00:00', 'Đã xóa', 'a', NULL, 6, 6),
-(24, '2025-12-08 15:26:14', '2025-12-08 15:26:21', 'Đã cân bằng', 'a', NULL, 6, 6),
-(25, '2025-12-08 16:45:46', '0001-01-01 00:00:00', 'Chưa cân bằng', 'tesst kieemr nhieeuf', NULL, 6, 6),
-(26, '2025-12-08 16:47:24', '2025-12-08 16:47:24', 'Đã xóa', '', NULL, 6, 6);
+(28, '2025-12-12 06:43:44', '2025-12-12 06:43:44', 'Đã xóa', 'Đủ ', NULL, 6, 6),
+(29, '2025-12-12 06:44:04', '2025-12-12 06:44:04', 'Đã xóa', 'đủ', NULL, 6, 6),
+(30, '2025-12-12 06:45:09', '0001-01-01 00:00:00', 'Đã xóa', 'đủ', NULL, 6, 6),
+(31, '2025-12-12 06:46:53', '0001-01-01 00:00:00', 'Đã xóa', 'thiếu', NULL, 6, 6),
+(32, '2025-12-12 06:49:09', '0001-01-01 00:00:00', 'Đã xóa', 'a', NULL, 6, 6),
+(33, '2025-12-12 06:50:30', '0001-01-01 00:00:00', 'Đã xóa', 'a', NULL, 6, 6),
+(34, '2025-12-12 06:52:10', '0001-01-01 00:00:00', 'Đã xóa', 'a', NULL, 6, 6),
+(35, '2025-12-12 06:54:40', '0001-01-01 00:00:00', 'Chưa cân bằng', '', NULL, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -502,12 +486,35 @@ CREATE TABLE `phieunhap` (
 --
 
 INSERT INTO `phieunhap` (`maphieunhap`, `manv`, `mancc`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
-(35, 6, 14, '2025-10-02 16:53:55', 80000000, 1),
-(36, 6, 11, '2025-10-02 16:57:59', 3670000, 1),
-(37, 6, 13, '2025-10-02 16:57:59', 2540000, 1),
-(38, 6, 14, '2025-12-05 15:47:19', 127000, 1),
-(39, 6, 15, '2025-12-05 15:47:54', 80000, 1),
-(40, 6, 15, '2025-12-05 16:20:27', 123, 1);
+(45, 6, 23, '2025-12-12 06:00:25', 477700000, 0),
+(46, 6, 23, '2025-12-12 06:02:28', 477700000, 0),
+(47, 6, 23, '2025-12-12 06:06:16', 723000000, 0),
+(48, 6, 23, '2025-12-12 06:10:02', 299000000, 0),
+(49, 6, 23, '2025-12-12 06:10:33', 299000000, 0),
+(50, 6, 23, '2025-12-12 06:12:25', 250000, 0),
+(51, 6, 22, '2025-12-12 06:13:46', 250000, 0),
+(52, 6, 21, '2025-12-12 06:14:51', 250000, 0),
+(53, 6, 21, '2025-12-12 06:16:26', 314800000, 0),
+(54, 6, 21, '2025-12-12 06:16:35', 250000000, 0),
+(55, 6, 22, '2025-12-12 06:18:02', 250000, 0),
+(56, 6, 22, '2025-12-12 06:18:39', 250000, 0),
+(57, 6, 23, '2025-12-12 06:26:33', 319800000, 0),
+(58, 6, 23, '2025-12-12 06:29:59', 250000, 0),
+(59, 6, 23, '2025-12-12 06:30:52', 250000, 0),
+(60, 6, 21, '2025-12-12 06:34:51', 250000, 0),
+(61, 6, 21, '2025-12-12 06:37:13', 250000, 0),
+(62, 6, 23, '2025-12-12 06:37:31', 299000, 0),
+(63, 6, 23, '2025-12-12 06:37:41', 250000, 0),
+(64, 6, 22, '2025-12-12 06:38:00', 349000, 0),
+(65, 6, 23, '2025-12-12 06:38:21', 349000, 0),
+(66, 6, 22, '2025-12-12 06:39:51', 250000, 0),
+(67, 6, 22, '2025-12-12 06:39:56', 250000, 0),
+(68, 6, 22, '2025-12-12 06:39:59', 649000, 0),
+(69, 6, 23, '2025-12-12 06:40:23', 25000000, 1),
+(70, 6, 22, '2025-12-12 06:42:28', 250000, 1),
+(71, 6, 22, '2025-12-12 06:42:47', 363900000, 1),
+(72, 6, 23, '2025-12-01 00:00:00', 34900000, 1),
+(73, 6, 21, '2025-12-12 06:55:00', 299000, 1);
 
 -- --------------------------------------------------------
 
@@ -529,32 +536,8 @@ CREATE TABLE `phieuxuat` (
 --
 
 INSERT INTO `phieuxuat` (`maphieuxuat`, `manv`, `makh`, `thoigiantao`, `tongtien`, `trangthai`) VALUES
-(199, 6, 1, '2025-10-02 16:35:46', 140000, 1),
-(200, 6, 3, '2025-10-02 16:38:23', 6700000, 1),
-(201, 6, 2, '2025-10-02 16:39:57', 3899000, 1),
-(202, 6, 13, '2025-12-04 22:47:25', 67000, 1),
-(203, 6, 13, '2025-12-04 22:48:03', 67000, 1),
-(204, 6, 13, '2025-12-04 22:48:16', 67000, 3),
-(205, 6, 13, '2025-12-04 23:10:04', 127000, 0),
-(206, 6, 13, '2025-12-04 23:13:59', 127000, 0),
-(207, 6, 19, '2025-12-04 23:15:11', 67000, 0),
-(208, 6, 13, '2025-12-03 00:00:00', 80000, 0),
-(209, 6, 7, '2025-12-04 23:30:25', 487000, 0),
-(210, 6, 13, '2025-12-05 14:19:41', 1, 0),
-(211, 6, 13, '2025-12-06 16:36:23', 207000, 3),
-(212, 6, 11, '2025-12-06 16:53:58', 207000, 0),
-(213, 6, 13, '2025-12-06 17:01:41', 800000, 3),
-(214, 6, 13, '2025-12-06 17:12:39', 207000, 3),
-(215, 6, 13, '2025-12-06 17:21:31', 123, 0),
-(216, 6, 11, '2025-12-06 17:29:28', 60000, 3),
-(217, 6, 13, '2025-12-06 17:46:48', 207000, 3),
-(218, 6, 13, '2025-12-06 17:50:53', 140000, 3),
-(219, 6, 14, '2025-12-06 17:53:13', 1660000, 3),
-(220, 6, 11, '2025-12-06 17:53:48', 1660000, 3),
-(221, 6, 11, '2025-12-07 19:51:51', 1467000, 2),
-(222, 6, 15, '2025-12-08 04:35:20', 207000, 3),
-(223, 6, 13, '2025-12-08 13:51:46', 67000, 1),
-(224, 6, 13, '2025-12-08 14:07:27', 80000, 1);
+(235, 6, 49, '2025-12-12 06:32:53', 250000, 0),
+(236, 6, 49, '2025-12-12 06:43:12', 250000, 1);
 
 -- --------------------------------------------------------
 
@@ -572,19 +555,38 @@ CREATE TABLE `sanpham` (
   `maloai` int(11) DEFAULT NULL,
   `makhuvuc` int(11) DEFAULT NULL,
   `masize` int(11) DEFAULT NULL,
-  `TrangThai` tinyint(1) NOT NULL DEFAULT 1
+  `TrangThai` tinyint(1) NOT NULL DEFAULT 1,
+  `tenloai` varchar(255) DEFAULT '',
+  `tenkhuvuc` varchar(255) DEFAULT '',
+  `tenchatlieu` varchar(255) DEFAULT '',
+  `tensize` varchar(255) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `soluong`, `dongia`, `machatlieu`, `maloai`, `makhuvuc`, `masize`, `TrangThai`) VALUES
-(1, 'Áo Lovepik', 'images/stocks/ao1.png', 990, 80000, 1, 1, 1, 3, 1),
-(2, 'áo thun trắng', 'images/stocks/ao2.png', 58, 60000, 1, 2, 1, 5, 1),
-(3, 'áo da bò', 'images/stocks/ao3.png', 31, 67000, 2, 1, 1, 5, 1),
-(5, 'ssss', 'images/stocks/shirt_plusIcon.png', 0, 1, 3, 3, 1, 5, 1),
-(6, 'Áo lót', 'images/stocks/bus_7828520_639005483916817061.png', 125, 123, 2, 1, 3, 1, 1);
+INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `soluong`, `dongia`, `machatlieu`, `maloai`, `makhuvuc`, `masize`, `TrangThai`, `tenloai`, `tenkhuvuc`, `tenchatlieu`, `tensize`) VALUES
+(9, 'Áo cugi', 'images/stocks/Bảng màu_639011058952048588.png', 0, 123, 2, 5, 2, 2, 0, 'Quần jeans', 'Kho Miền Bắc', 'Polyester', 'S'),
+(10, 'a', 'images/stocks/Bảng màu_639011059352560857.png', 0, 123, 2, 4, 2, 1, 0, 'Áo len', 'Kho Miền Bắc', 'Polyester', 'XS'),
+(11, 'Áo I HAVE LOVELY', 'images/stocks/den-_e42e1b262fb443208fbf929ba64b9e2e-21-510x510_639011141703246282.jpg', 203, 250000, 7, 15, 3, 1, 1, 'Áo thun', 'Khu A1', 'Nỉ', 'XS'),
+(12, 'Áo thun dài AT4P1009', 'images/stocks/te10004_hfwkm5ol-1-nlqx-hinh_mat_truoc-0_6faa7fe51d6b4e679b8b6fb8f4f6b4e9-7-510x510_639011142595765540.jpg', 0, 269000, 7, 2, 3, 4, 0, 'Áo sơ mi', 'Khu A1', 'Nỉ', 'L'),
+(13, 'Áo polo ARGENTBLUE', 'images/stocks/TA9102_LCR2YPDV-1-V6IX-hinh_mat_truoc-0-fotor-20250805171759-510x510_639011143207229712.jpg', 1001, 299000, 5, 2, 3, 4, 1, 'Áo sơ mi', 'Khu A1', 'Lụa', 'L'),
+(14, 'Áo sơ mi PRD WORK', 'images/stocks/SM5P0713-4-fotor-20250905142558-510x504_639011143467152295.jpg', 100, 399000, 12, 2, 3, 5, 1, 'Áo sơ mi', 'Khu A1', 'Vải kaki', 'XL'),
+(15, 'Áo polo LEGECY', 'images/stocks/TA9102_LCR2YPDV-1-O0B9-hinh_mat_truoc-0-fotor-20250805172639-510x510_639011144034800219.jpg', 100, 349000, 7, 4, 3, 5, 1, 'Áo len', 'Khu A1', 'Nỉ', 'XL'),
+(16, 'Áo hoodie IMPRESSION', 'images/stocks/kem-1_b10c1a5991454534a29da7f04670bec1-2_639011144926603164.jpg', 0, 529000, 6, 10, 1, 2, 1, 'Áo hoodie', 'Khu B', 'Vải bố', 'S'),
+(17, 'Áo hoodie CARAMEL', 'images/stocks/kem-_79e7c7b2f5d24a37938c3e96f8da1a14-19_639011147702835128.jpg', 0, 499000, 1, 10, 1, 6, 1, 'Áo hoodie', 'Khu B', 'Cotton', 'XXL'),
+(18, 'Áo hoodie FOSSIL', 'images/stocks/den-_fd6eb68d78a74ea49edc42f6e8b6a1e1-19-510x510_639011148634194385.jpg', 0, 429000, 6, 10, 1, 4, 1, 'Áo hoodie', 'Khu B', 'Vải bố', 'L'),
+(19, 'Áo sweater BABY LABEL ', 'images/stocks/ST5T0601-front-1536x1536_639011149230046723.jpg', 1, 399000, 6, 10, 1, 3, 1, 'Áo hoodie', 'Khu B', 'Vải bố', 'M'),
+(20, 'Áo RED SUN', 'images/stocks/AK5P0404-front-510x510_639011150336018499.jpg', 0, 389000, 7, 11, 1, 7, 1, 'Áo khoác gió', 'Khu B', 'Nỉ', 'XXXL'),
+(21, 'Áo GLEEFUL ', 'images/stocks/xanh-_ba3bbb63785944f496f449690f629128-1-510x510_639011150661057581.jpg', 0, 289000, 2, 11, 1, 3, 1, 'Áo khoác gió', 'Khu B', 'Polyester', 'M'),
+(22, ' Quần jeans ADORE', 'images/stocks/den-_ad749f515bb542c6b15a2d1ee684f8f2-6-510x510_639011151266283225.jpg', 0, 589000, 4, 5, 2, 4, 1, 'Quần jeans', 'Khu C', 'Jean', 'L'),
+(23, 'Quần jeans LUSTRE', 'images/stocks/kem-_96532d95fee740d1a638661418a44f76-6-510x510_639011152090764382.jpg', 0, 569000, 4, 5, 2, 5, 1, 'Quần jeans', 'Khu C', 'Jean', 'XL'),
+(24, ' Quần GRACEFUL', 'images/stocks/quan_tay_c45e807b86b140bc9d24070b10a16bf4-10-510x510_639011153099665753.jpg', 0, 196000, 4, 5, 2, 5, 1, 'Quần jeans', 'Khu C', 'Jean', 'XL'),
+(25, 'Quần VIBRANT COTTON', 'images/stocks/Quần ngắn dù ParadoxCOLLEGIATE – QS5T0502_639011154149079456.jpg', 0, 79000, 1, 12, 4, 3, 1, 'Quần short', 'Khu A2', 'Cotton', 'M'),
+(26, 'HADES BERMUDE WASH', 'images/stocks/dsc03116_large_5a43f0478dc74eb49b48b090be289ae6_639011155661463857.jpeg', 0, 259000, 4, 5, 4, 3, 1, 'Quần jeans', 'Khu A2', 'Jean', 'M'),
+(27, 'HADES ENLISTED HOODIE', 'images/stocks/dsc03398_large_dc9e5b1ba24f47a388972419fce06db3_639011156125024463.jpeg', 0, 129000, 11, 10, 1, 5, 1, 'Áo hoodie', 'Khu B', 'Vải thun Spandex', 'XL'),
+(28, 'HADES BACKSPIKE PANTS', 'images/stocks/_dsf7779_large_745ca06946c54eabb047e750cd7b41a4_639011157205079796.jpeg', 0, 899, 4, 5, 5, 5, 1, 'Quần jeans', 'Khu D', 'Jean', 'XL');
 
 -- --------------------------------------------------------
 
@@ -630,9 +632,9 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`manv`, `tendangnhap`, `matkhau`, `manhomquyen`, `trangthai`) VALUES
-(1, 'trung123', '12345', 2, 1),
-(2, 'test', '123', 2, 1),
-(6, 'admin', '12345', 1, 1);
+(6, 'admin', '123', 1, 1),
+(7, 'nv', '123', 2, 1),
+(8, 'qlk', '123', 5, 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -643,20 +645,6 @@ INSERT INTO `taikhoan` (`manv`, `tendangnhap`, `matkhau`, `manhomquyen`, `trangt
 --
 ALTER TABLE `chatlieu`
   ADD PRIMARY KEY (`machatlieu`);
-
---
--- Chỉ mục cho bảng `ctkiemke`
---
-ALTER TABLE `ctkiemke`
-  ADD KEY `FK_ctkiemke_phieukiemke` (`maphieukiemke`),
-  ADD KEY `FK_ctkiemke_sanpham` (`masp`);
-
---
--- Chỉ mục cho bảng `ctphieunhap`
---
-ALTER TABLE `ctphieunhap`
-  ADD KEY `FK_ctphieunhap_phieunhap` (`maphieunhap`),
-  ADD KEY `FK_ctphieunhap_sanpham` (`masp`);
 
 --
 -- Chỉ mục cho bảng `ctphieuxuat`
@@ -718,8 +706,7 @@ ALTER TABLE `nhomquyen`
 --
 ALTER TABLE `phieukiemke`
   ADD PRIMARY KEY (`maphieukiemke`),
-  ADD KEY `FK_phieukiemke_nhanvien` (`manhanvienkiem`),
-  ADD KEY `FK_phieukiemke_taikhoan` (`manhanvientao`);
+  ADD KEY `FK_phieukiemke_nhanvien` (`manhanvienkiem`);
 
 --
 -- Chỉ mục cho bảng `phieunhap`
@@ -780,61 +767,61 @@ ALTER TABLE `danhmucchucnang`
 -- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `makh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `makh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `khuvuckho`
 --
 ALTER TABLE `khuvuckho`
-  MODIFY `makhuvuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `makhuvuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `loai`
 --
 ALTER TABLE `loai`
-  MODIFY `maloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `maloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
-  MODIFY `mancc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `mancc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `manv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `nhomquyen`
 --
 ALTER TABLE `nhomquyen`
-  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `manhomquyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `phieukiemke`
 --
 ALTER TABLE `phieukiemke`
-  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `maphieukiemke` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT cho bảng `phieunhap`
 --
 ALTER TABLE `phieunhap`
-  MODIFY `maphieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `maphieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT cho bảng `phieuxuat`
 --
 ALTER TABLE `phieuxuat`
-  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=225;
+  MODIFY `maphieuxuat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=237;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `size`
@@ -866,14 +853,6 @@ ALTER TABLE `ctphieunhap`
 ALTER TABLE `ctphieuxuat`
   ADD CONSTRAINT `FK_ctphieuxuat_phieuxuat` FOREIGN KEY (`maphieuxuat`) REFERENCES `phieuxuat` (`maphieuxuat`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_ctphieuxuat_sanpham` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`) ON DELETE SET NULL;
-
---
--- Các ràng buộc cho bảng `phieukiemke`
---
-ALTER TABLE `phieukiemke`
-  ADD CONSTRAINT `FK_phieukiemke_khuvuc` FOREIGN KEY (`makhuvuc`) REFERENCES `khuvuckho` (`makhuvuc`) ON DELETE SET NULL,
-  ADD CONSTRAINT `FK_phieukiemke_nhanvien` FOREIGN KEY (`manhanvienkiem`) REFERENCES `nhanvien` (`manv`) ON DELETE SET NULL,
-  ADD CONSTRAINT `FK_phieukiemke_taikhoan` FOREIGN KEY (`manhanvientao`) REFERENCES `taikhoan` (`manv`) ON DELETE SET NULL;
 
 --
 -- Các ràng buộc cho bảng `phieunhap`
