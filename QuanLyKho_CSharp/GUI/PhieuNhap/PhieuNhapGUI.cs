@@ -98,7 +98,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
         private void PhieuNhap_Load(object sender, EventArgs e)
         {
-            refreshDataGridView(listPN);
+            //refreshDataGridView(listPN);
+            FilterData();
         }
 
         private void DGVPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -145,6 +146,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             pnlTop.Visible = true;
             pnlMain.Controls.Remove(formAdd);
             formAdd.Dispose();
+
         }
 
         private void btnXuat_Click(object sender, EventArgs e)
@@ -421,6 +423,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             if (listPN == null) return;
 
             // HIỂN THỊ TẤT CẢ phiếu có trạng thái khác 0
+            listPN = pnBUS.getListPN();
             var filteredList = listPN.Where(px => px.Trangthai != 0).AsEnumerable();
             string searchText = txtSearchNV.Text.Trim().ToLower();
             if (!string.IsNullOrWhiteSpace(searchText))

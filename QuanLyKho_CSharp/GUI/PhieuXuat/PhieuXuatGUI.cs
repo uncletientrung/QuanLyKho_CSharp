@@ -107,7 +107,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
         private void PhieuXuat_Load(object sender, EventArgs e) // Load của giao diện 
         {
-            refreshDataGridView(listPX);
+            //refreshDataGridView(listPX);
+            FilterData();
         }
 
         private string GetTrangThaiDisplay(PhieuXuatDTO px)
@@ -467,8 +468,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         private void FilterData()
         {
             if (listPX == null) return;
-
-            // HIỂN THỊ TẤT CẢ phiếu có trạng thái khác 0
+            listPX = pxBUS.getListPX();
             var filteredList = listPX.Where(px => px.Trangthai != 0).AsEnumerable();
             string searchText = txtSearchNV.Text.Trim().ToLower();
             if (!string.IsNullOrWhiteSpace(searchText))
@@ -506,26 +506,19 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             }
 
             // Lọc theo khoảng giá
-            decimal? minPrice = null; // có thể số hoặc null
-            decimal? maxPrice = null;
+            decimal minPrice = 0; // có thể số hoặc null
+            decimal maxPrice = decimal.MaxValue;
 
             if (!string.IsNullOrWhiteSpace(txtSMoney.Text) && txtSMoney.Text != "Tiền từ")
             {
-                if (decimal.TryParse(txtSMoney.Text, out decimal min)) minPrice = min;
+                decimal.TryParse(txtSMoney.Text, out minPrice);
             }
             if (!string.IsNullOrWhiteSpace(txtEMoney.Text) && txtEMoney.Text != "Đến tiền")
             {
-                if (decimal.TryParse(txtEMoney.Text, out decimal max)) maxPrice = max;
+                decimal.TryParse(txtEMoney.Text, out maxPrice);
             }
-            if (minPrice.HasValue || maxPrice.HasValue) // True nếu có giá trị
-            {
-                filteredList = filteredList.Where(px =>
-                {
-                    if (minPrice.HasValue && px.Tongtien < minPrice.Value) return false;
-                    if (maxPrice.HasValue && px.Tongtien > maxPrice.Value) return false;
-                    return true;
-                });
-            }
+            filteredList = filteredList.Where(px => px.Tongtien >= minPrice && px.Tongtien <= maxPrice);
+
 
             refreshDataGridView(new BindingList<PhieuXuatDTO>(filteredList.ToList()));
         } // Bộ lọc & tìm kiếm
