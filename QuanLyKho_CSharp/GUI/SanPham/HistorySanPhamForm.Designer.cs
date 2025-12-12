@@ -45,6 +45,7 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuXuatHang = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNhapHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.picHinhanh = new System.Windows.Forms.PictureBox();
             this.ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nhanvien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.khachhang = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +55,6 @@
             this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detail = new System.Windows.Forms.DataGridViewImageColumn();
-            this.picHinhanh = new System.Windows.Forms.PictureBox();
             this.pnlTop.SuspendLayout();
             this.pnlFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVHistory)).BeginInit();
@@ -66,12 +66,12 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.Controls.Add(this.picHinhanh);
             this.pnlTop.Controls.Add(this.lbSoLuongPhieu);
             this.pnlTop.Controls.Add(this.artanPanel3);
             this.pnlTop.Controls.Add(this.lbPrice);
             this.pnlTop.Controls.Add(this.lbSoLuongTon);
             this.pnlTop.Controls.Add(this.lbName);
+            this.pnlTop.Controls.Add(this.picHinhanh);
             this.pnlTop.Controls.Add(this.lbTitle);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F);
@@ -130,6 +130,7 @@
             this.DGVHistory.RowTemplate.Height = 24;
             this.DGVHistory.Size = new System.Drawing.Size(839, 298);
             this.DGVHistory.TabIndex = 1;
+            this.DGVHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVHistory_CellContentClick);
             // 
             // lbName
             // 
@@ -271,6 +272,16 @@
             this.menuNhapHang.Text = "Nhập hàng";
             this.menuNhapHang.Click += new System.EventHandler(this.nhậpHàngToolStripMenuItem_Click);
             // 
+            // picHinhanh
+            // 
+            this.picHinhanh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHinhanh.Location = new System.Drawing.Point(6, 64);
+            this.picHinhanh.Name = "picHinhanh";
+            this.picHinhanh.Size = new System.Drawing.Size(94, 64);
+            this.picHinhanh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHinhanh.TabIndex = 20;
+            this.picHinhanh.TabStop = false;
+            // 
             // ma
             // 
             this.ma.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -316,7 +327,7 @@
             // sum
             // 
             this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sum.FillWeight = 8F;
+            this.sum.FillWeight = 10F;
             this.sum.HeaderText = "Thành tiền";
             this.sum.Name = "sum";
             // 
@@ -333,16 +344,6 @@
             this.detail.MinimumWidth = 6;
             this.detail.Name = "detail";
             this.detail.Width = 6;
-            // 
-            // picHinhanh
-            // 
-            this.picHinhanh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHinhanh.Location = new System.Drawing.Point(6, 64);
-            this.picHinhanh.Name = "picHinhanh";
-            this.picHinhanh.Size = new System.Drawing.Size(94, 64);
-            this.picHinhanh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHinhanh.TabIndex = 25;
-            this.picHinhanh.TabStop = false;
             // 
             // HistorySanPhamForm
             // 

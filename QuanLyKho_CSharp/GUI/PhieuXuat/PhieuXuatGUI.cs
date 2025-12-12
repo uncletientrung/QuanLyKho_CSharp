@@ -758,5 +758,10 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
         {
 
         }
+
+        private void artanPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

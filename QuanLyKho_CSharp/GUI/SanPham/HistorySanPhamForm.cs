@@ -1,5 +1,6 @@
 ﻿using QuanLyKho.BUS;
 using QuanLyKho.DTO;
+using QuanLyKho_CSharp.GUI.PhieuNhap;
 using QuanLyKho_CSharp.GUI.PhieuXuat;
 using System;
 using System.Collections.Generic;
@@ -225,6 +226,32 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             loaiMenu = "Nhập hàng";
             SettingPanelTop();
             refreshDGVPN(listCTPN);
+        }
+
+        private void DGVHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            int maPhieu = 0;
+            if(loaiMenu == "Xuất hàng")
+            {
+                maPhieu = int.Parse(DGVHistory.Rows[e.RowIndex].Cells["ma"].Value.ToString().Replace("PX-", ""));
+                PhieuXuatDTO phieuDuocChon = pxBUS.getPhieuXuatById(maPhieu);
+                if (DGVHistory.Columns[e.ColumnIndex].Name == "detail")
+                {
+                    DetailPhieuXuatForm detailForm = new DetailPhieuXuatForm(phieuDuocChon);
+                    detailForm.ShowDialog();
+                }
+            }else if (loaiMenu == "Nhập hàng")
+            {
+                maPhieu = int.Parse(DGVHistory.Rows[e.RowIndex].Cells["ma"].Value.ToString().Replace("PN-", ""));
+                PhieuNhapDTO phieuDuocChon = pnBUS.getPhieuNhapById(maPhieu);
+                if (DGVHistory.Columns[e.ColumnIndex].Name == "detail")
+                {
+                    DetailPhieuNhapForm detailForm = new DetailPhieuNhapForm(phieuDuocChon);
+                    detailForm.ShowDialog();
+                }
+            }
+
         }
     }
 }
