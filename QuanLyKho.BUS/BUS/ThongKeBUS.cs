@@ -122,13 +122,16 @@ namespace QuanLyKho.BUS
                 int xuatTruoc = (
                     from px in listPX
                     join ctpx in listCTPX on px.Maphieu equals ctpx.Maphieuxuat
-                    where px.Thoigiantao.Year == nam && px.Thoigiantao.Month < thang && ctpx.Masp == sp.Masp
+                    where px.Thoigiantao.Year == nam && px.Thoigiantao.Month < thang && ctpx.Masp == sp.Masp && ctpx.TrangTHaiHoanHang==1
                     select ctpx.Soluong
                 ).Sum();
 
+            
+
+
                 tk.TonDauKy = nhapTruoc - xuatTruoc;
 
-                
+
                 tk.NhapTrongKy = (
                     from pn in listPN
                     join ctpn in listCTPN on pn.Maphieu equals ctpn.Maphieunhap
@@ -140,11 +143,14 @@ namespace QuanLyKho.BUS
                 tk.XuatTrongKy = (
                     from px in listPX
                     join ctpx in listCTPX on px.Maphieu equals ctpx.Maphieuxuat
-                    where px.Thoigiantao.Year == nam && px.Thoigiantao.Month == thang && ctpx.Masp == sp.Masp
+                    where px.Thoigiantao.Year == nam && px.Thoigiantao.Month == thang && ctpx.Masp == sp.Masp && ctpx.TrangTHaiHoanHang==1
                     select ctpx.Soluong
                 ).Sum();
 
-                
+              
+
+
+
                 tk.TonCuoiKy = tk.TonDauKy + tk.NhapTrongKy - tk.XuatTrongKy;
 
                 result.Add(tk);
