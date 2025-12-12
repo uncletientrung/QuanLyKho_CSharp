@@ -13,10 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.IO;
-using System.Diagnostics;
 
 namespace QuanLyKho_CSharp.GUI.PhieuNhap
 {
@@ -248,12 +244,12 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     document.Add(infoTable);
 
                     // BẢNG CHI TIẾT
-                    PdfPTable detailTable = new PdfPTable(6);
+                    PdfPTable detailTable = new PdfPTable(5);
                     detailTable.WidthPercentage = 100;
-                    detailTable.SetWidths(new float[] { 0.7f, 1f, 3f, 1f, 1.5f, 1.5f });
+                    detailTable.SetWidths(new float[] { 0.5f, 2.5f, 1f, 1.5f, 1.5f });
 
                     // Header bảng
-                    string[] headers = { "STT", "Mã SP", "Tên sản phẩm", "Số lượng", "Đơn giá", "Thành tiền" };
+                    string[] headers = { "STT", "Tên sản phẩm", "Số lượng", "Đơn giá", "Thành tiền" };
                     foreach (string header in headers)
                     {
                         PdfPCell cell = new PdfPCell(new Phrase(header, tableHeaderFont));
@@ -273,9 +269,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                         // STT
                         detailTable.AddCell(CreateTableCell(row.Cells["STT"].Value?.ToString() ?? "", tableContentFont, iTextSharp.text.Element.ALIGN_CENTER));
-
-                        // Mã SP
-                        detailTable.AddCell(CreateTableCell(row.Cells["MaSP"].Value?.ToString() ?? "", tableContentFont, iTextSharp.text.Element.ALIGN_CENTER));
 
                         // Tên sản phẩm
                         detailTable.AddCell(CreateTableCell(row.Cells["TenSP"].Value?.ToString() ?? "", tableContentFont, iTextSharp.text.Element.ALIGN_LEFT));
@@ -297,7 +290,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                     // Dòng trống
                     for (int i = 0; i < 5; i++)
                     {
-                        for (int j = 0; j < 6; j++)
+                        for (int j = 0; j < 5; j++)
                         {
                             detailTable.AddCell(CreateTableCell("", tableContentFont, iTextSharp.text.Element.ALIGN_CENTER));
                         }
@@ -305,7 +298,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                     // Dòng cộng
                     PdfPCell congCell = new PdfPCell(new Phrase("Tổng cộng:", headerFont));
-                    congCell.Colspan = 4;
+                    congCell.Colspan = 3;
                     congCell.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
                     congCell.Padding = 5;
                     detailTable.AddCell(congCell);
