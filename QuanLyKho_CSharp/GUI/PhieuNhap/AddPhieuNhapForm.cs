@@ -490,6 +490,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                 string filePath = openFileDialog.FileName;
 
+                listSP = spBUS.getListSP();
+
                 // Tạo DataTable từ file Excel
                 DataTable dataTable = ReadExcelFile(filePath);
 
@@ -544,12 +546,14 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                         }
 
                         // Tìm sản phẩm trong kho theo tên
+                        string tenSPNormalized = tenSP.ToLower().Trim();
+
                         SanPhamDTO sanPham = listSP.FirstOrDefault(sp =>
-                            sp.Tensp.Equals(tenSP, StringComparison.OrdinalIgnoreCase) && sp.Trangthai == 1);
+                            sp.Tensp.ToLower().Trim() == tenSPNormalized &&
+                            sp.Trangthai == 1);
 
                         if (sanPham == null)
                         {
-                            // KHÔNG tự động thêm sản phẩm mới, thay vào đó thông báo lỗi
                             errors.AppendLine($"- Dòng {dataTable.Rows.IndexOf(row) + 2}: Sản phẩm '{tenSP}' không tồn tại trong hệ thống. Vui lòng thêm sản phẩm trước!");
                             errorCount++;
                             continue;
