@@ -151,7 +151,8 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel Workbook|*.xlsx";
             saveFileDialog.Title = "Chọn nơi lưu file Excel";
-            saveFileDialog.FileName = "ThongKeKhachHang.xlsx";
+            string timeStamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            saveFileDialog.FileName = $"ThongKeKhachHang_{timeStamp}.xlsx";
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
                 return;
