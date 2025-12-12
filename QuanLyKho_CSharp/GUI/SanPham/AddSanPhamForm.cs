@@ -139,52 +139,51 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         private void btnChonAnh_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files|*.jpg;*.jpeg;*.png";
+            open.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
             open.Title = "Chọn ảnh sản phẩm";
 
-            if (open.ShowDialog() == DialogResult.OK)
+            if (open.ShowDialog() != DialogResult.OK) return;
+
+            FileInfo fi = new FileInfo(open.FileName);
+            if (fi.Length > 5 * 1024 * 1024)
             {
-                // Kiểm tra kích thước file (ví dụ: giới hạn 5MB)
-                FileInfo fileInfo = new FileInfo(open.FileName);
-                if (fileInfo.Length > 5 * 1024 * 1024) // 5MB
-                {
-                    MessageBox.Show("Ảnh quá lớn! Vui lòng chọn ảnh dưới 5MB.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Hiển thị ảnh lên PictureBox
-                try
-                {
-                    picHinhanh.Image?.Dispose(); // Giải phóng ảnh cũ nếu có
-                    picHinhanh.Image = Image.FromFile(open.FileName);
-
-                    // Đường dẫn file nguồn
-                    string fileNguon = open.FileName;
-
-                    // Thư mục đích
-                    string thuMucDich = Path.Combine(Application.StartupPath, "images", "stocks");
-                    if (!Directory.Exists(thuMucDich))
-                        Directory.CreateDirectory(thuMucDich);
-
-                    // Tạo tên file mới để tránh trùng lặp
-                    string tenFileMoi = Path.GetFileNameWithoutExtension(fileNguon) + "_" + DateTime.Now.Ticks + Path.GetExtension(fileNguon);
-                    string fileDich = Path.Combine(thuMucDich, tenFileMoi);
-
-                    // Sao chép file
-                    File.Copy(fileNguon, fileDich, false);
-                    duongDanAnhMoi = $"images/stocks/{tenFileMoi}";
-                    imgSanpham = LoadImageSafe(duongDanAnhMoi);
-                    picHinhanh.Image = imgSanpham;
-                    picHinhanh.SizeMode = PictureBoxSizeMode.StretchImage;
-                    //MessageBox.Show("Đã chọn ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi xử lý ảnh: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Ảnh quá lớn! Vui lòng chọn ảnh dưới 5MB.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            
+            try
+            {
+                picHinhanh.Image?.Dispose();
+                picHinhanh.Image = Image.FromFile(open.FileName);
+
+               
+                string tenFileMoi = Path.GetFileNameWithoutExtension(open.FileName) + "_" + DateTime.Now.Ticks + fi.Extension;
+
+               
+                string binFolder = Path.Combine(Application.StartupPath, "images", "stocks");
+                if (!Directory.Exists(binFolder)) Directory.CreateDirectory(binFolder);
+                string binPath = Path.Combine(binFolder, tenFileMoi);
+                File.Copy(open.FileName, binPath, true);
+
+               
+                string projectFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, "..\\..\\images\\stocks"));
+               
+                if (!Directory.Exists(projectFolder)) Directory.CreateDirectory(projectFolder);
+                string projectPath = Path.Combine(projectFolder, tenFileMoi);
+                File.Copy(open.FileName, projectPath, true);  // ← Ảnh sẽ xuất hiện ở đây ngay lập tức
+
+               
+                duongDanAnhMoi = $"images/stocks/{tenFileMoi}";
+
+              
+                imgSanpham = LoadImageSafe(duongDanAnhMoi);
+                picHinhanh.Image = imgSanpham;
+                picHinhanh.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message + "\nChi tiết: " + ex.StackTrace);
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)

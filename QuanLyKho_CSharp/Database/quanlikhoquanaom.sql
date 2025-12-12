@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2025 at 01:16 AM
+-- Generation Time: Dec 12, 2025 at 02:35 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -584,9 +584,8 @@ INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `soluong`, `dongia`, `machatl
 (23, 'Quần jeans LUSTRE', 'images/stocks/kem-_96532d95fee740d1a638661418a44f76-6-510x510_639011152090764382.jpg', 0, 569000, 4, 5, 2, 5, 1, 'Quần jeans', 'Khu C', 'Jean', 'XL'),
 (24, ' Quần GRACEFUL', 'images/stocks/quan_tay_c45e807b86b140bc9d24070b10a16bf4-10-510x510_639011153099665753.jpg', 0, 196000, 4, 5, 2, 5, 1, 'Quần jeans', 'Khu C', 'Jean', 'XL'),
 (25, 'Quần VIBRANT COTTON', 'images/stocks/Quần ngắn dù ParadoxCOLLEGIATE – QS5T0502_639011154149079456.jpg', 0, 79000, 1, 12, 4, 3, 1, 'Quần short', 'Khu A2', 'Cotton', 'M'),
-(26, 'HADES BERMUDE WASH', 'images/stocks/dsc03116_large_5a43f0478dc74eb49b48b090be289ae6_639011155661463857.jpeg', 0, 259000, 4, 5, 4, 3, 1, 'Quần jeans', 'Khu A2', 'Jean', 'M'),
-(27, 'HADES ENLISTED HOODIE', 'images/stocks/dsc03398_large_dc9e5b1ba24f47a388972419fce06db3_639011156125024463.jpeg', 0, 129000, 11, 10, 1, 5, 1, 'Áo hoodie', 'Khu B', 'Vải thun Spandex', 'XL'),
-(28, 'HADES BACKSPIKE PANTS', 'images/stocks/_dsf7779_large_745ca06946c54eabb047e750cd7b41a4_639011157205079796.jpeg', 0, 899, 4, 5, 5, 5, 1, 'Quần jeans', 'Khu D', 'Jean', 'XL');
+(32, 'trung', 'images/stocks/testtrung_639011251607157993.jpg', 0, 1, 1, 6, 5, 5, 1, 'Quần tây', 'Khu D', 'Cotton', 'XL'),
+(33, 'test trung 2', 'images/stocks/testtrung_639011252917655277.jpg', 0, 12, 4, 4, 5, 4, 1, 'Áo len', 'Khu D', 'Jean', 'L');
 
 -- --------------------------------------------------------
 
@@ -835,7 +834,7 @@ ALTER TABLE `phieuxuat`
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `size`
