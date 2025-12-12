@@ -480,6 +480,8 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
                 string filePath = openFileDialog.FileName;
 
+                listSP = spBUS.getListSP();
+
                 // Tạo DataTable từ file Excel
                 DataTable dataTable = ReadExcelFile(filePath);
 
@@ -534,8 +536,11 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         }
 
                         // Tìm sản phẩm trong kho theo tên
+                        string tenSPNormalized = tenSP.ToLower().Trim();
+
                         SanPhamDTO sanPham = listSP.FirstOrDefault(sp =>
-                            sp.Tensp.Equals(tenSP, StringComparison.OrdinalIgnoreCase) && sp.Trangthai == 1);
+                            sp.Tensp.ToLower().Trim() == tenSPNormalized &&
+                            sp.Trangthai == 1);
 
                         if (sanPham == null)
                         {
