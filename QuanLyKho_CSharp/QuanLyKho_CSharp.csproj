@@ -1171,6 +1171,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\stocks\no_image.png" />
+    <Content Include="images\stocks\testtrung_639011251607157993.jpg" />
+    <Content Include="images\stocks\testtrung_639011252917655277.jpg" />
     <Content Include="images\ui.jpg" />
   </ItemGroup>
   <ItemGroup>
