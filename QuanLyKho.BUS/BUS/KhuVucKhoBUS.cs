@@ -22,7 +22,8 @@ namespace QuanLyKho.BUS
             return listKVK;
         }
 
-        public KhuVucKhoBUS() {
+        public KhuVucKhoBUS()
+        {
             listKVK = khuVucKhoDAO.SelectAll();
         }
 
@@ -45,10 +46,10 @@ namespace QuanLyKho.BUS
             }
             KhuVucKhoDTO khuVucDTO;
             khuVucDTO = listKVK.FirstOrDefault(kv => kv.Tenkhuvuc == tenkv);//tra ve doi tượng đầu tiên đúng ddieuf kiện
-            if(khuVucDTO == null)
+            if (khuVucDTO == null)
             {
                 return 0;
-            }    
+            }
             return khuVucDTO.Makhuvuc;
 
         }
@@ -62,10 +63,7 @@ namespace QuanLyKho.BUS
         {
             List<KhuVucKhoDTO> result = listKVK.Where(kvk =>
                 kvk.Makhuvuc.ToString().ToLower().Contains(search) ||
-                kvk.Tenkhuvuc.ToLower().Contains(search) ||
-                kvk.Diachi.ToLower().Contains(search) ||
-                kvk.Sdt.ToLower().Contains(search) ||
-                kvk.Email.ToLower().Contains(search)
+                kvk.Tenkhuvuc.ToLower().Contains(search)
             ).ToList();
 
             return new BindingList<KhuVucKhoDTO>(result);
@@ -101,9 +99,6 @@ namespace QuanLyKho.BUS
                 if (kvkCapNhat != null)
                 {
                     kvkCapNhat.Tenkhuvuc = kvk.Tenkhuvuc;
-                    kvkCapNhat.Diachi = kvk.Diachi;
-                    kvkCapNhat.Sdt = kvk.Sdt;
-                    kvkCapNhat.Email = kvk.Email;
                 }
             }
             return result;

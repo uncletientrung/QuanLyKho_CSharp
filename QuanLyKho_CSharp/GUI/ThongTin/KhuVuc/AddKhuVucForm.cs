@@ -50,7 +50,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
 
                 KhuVucKhoDTO kvkInsert = new KhuVucKhoDTO(
                     kvkBUS.getAutoMaKVK(),
-                    tenKVK, null, null, null
+                    tenKVK
                 );
 
                 if (kvkBUS.insertKhuVuc(kvkInsert))

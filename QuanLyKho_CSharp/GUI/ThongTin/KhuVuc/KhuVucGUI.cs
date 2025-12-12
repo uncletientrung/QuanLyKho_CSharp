@@ -195,10 +195,7 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                     {
                         try
                         {
-                            string tenKV = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
-                            string diaChi = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
-                            string sdt = worksheet.Cells[row, 4].Value?.ToString()?.Trim();
-                            string email = worksheet.Cells[row, 5].Value?.ToString()?.Trim();
+                            string tenKV = worksheet.Cells[row, 1].Value?.ToString()?.Trim();
 
                             if (string.IsNullOrEmpty(tenKV))
                             {
@@ -207,33 +204,9 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                                 continue;
                             }
 
-                            if (string.IsNullOrEmpty(diaChi))
-                            {
-                                errors.AppendLine($"Dòng {row}: Địa chỉ không được để trống");
-                                errorCount++;
-                                continue;
-                            }
-
-                            if (string.IsNullOrEmpty(sdt))
-                            {
-                                errors.AppendLine($"Dòng {row}: Số điện thoại không được để trống");
-                                errorCount++;
-                                continue;
-                            }
-
-                            if (string.IsNullOrEmpty(email))
-                            {
-                                errors.AppendLine($"Dòng {row}: Email không được để trống");
-                                errorCount++;
-                                continue;
-                            }
-
                             KhuVucKhoDTO newKVK = new KhuVucKhoDTO
                             {
-                                Tenkhuvuc = tenKV,
-                                Diachi = diaChi,
-                                Sdt = sdt,
-                                Email = email
+                                Tenkhuvuc = tenKV
                             };
 
                             if (kvkBUS.insertKhuVuc(newKVK))
@@ -324,9 +297,6 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                         try
                         {
                             string tenKV = worksheet.Cells[row, 1].Value?.ToString()?.Trim();
-                            string diaChi = worksheet.Cells[row, 2].Value?.ToString()?.Trim();
-                            string sdt = worksheet.Cells[row, 3].Value?.ToString()?.Trim();
-                            string email = worksheet.Cells[row, 4].Value?.ToString()?.Trim();
 
                             if (string.IsNullOrEmpty(tenKV))
                             {
@@ -335,33 +305,9 @@ namespace QuanLyKho_CSharp.GUI.ThongTin.KhuVuc
                                 continue;
                             }
 
-                            if (string.IsNullOrEmpty(diaChi))
-                            {
-                                errors.AppendLine($"Dòng {row}: Địa chỉ không được để trống");
-                                errorCount++;
-                                continue;
-                            }
-
-                            if (string.IsNullOrEmpty(sdt))
-                            {
-                                errors.AppendLine($"Dòng {row}: Số điện thoại không được để trống");
-                                errorCount++;
-                                continue;
-                            }
-
-                            if (string.IsNullOrEmpty(email))
-                            {
-                                errors.AppendLine($"Dòng {row}: Email không được để trống");
-                                errorCount++;
-                                continue;
-                            }
-
                             KhuVucKhoDTO newKVK = new KhuVucKhoDTO
                             {
-                                Tenkhuvuc = tenKV,
-                                Diachi = diaChi,
-                                Sdt = sdt,
-                                Email = email
+                                Tenkhuvuc = tenKV
                             };
 
                             if (kvkBUS.insertKhuVuc(newKVK))

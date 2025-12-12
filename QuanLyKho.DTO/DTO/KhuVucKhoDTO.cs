@@ -10,19 +10,13 @@ namespace QuanLyKho.DTO
     {
         private int makhuvuc;
         private string tenkhuvuc;
-        private string diachi;
-        private string sdt;
-        private string email;
 
         public KhuVucKhoDTO() { }
 
-        public KhuVucKhoDTO(int _makhuvuc, string _tenkhuvuc, string _diachi, string _sdt, string _email)
+        public KhuVucKhoDTO(int _makhuvuc, string _tenkhuvuc)
         {
             makhuvuc = _makhuvuc;
             tenkhuvuc = _tenkhuvuc;
-            diachi = _diachi;
-            sdt = _sdt;
-            email = _email;
         }
 
         public int Makhuvuc
@@ -37,22 +31,5 @@ namespace QuanLyKho.DTO
             set { tenkhuvuc = value; }
         }
 
-        public string Diachi
-        {
-            get { return diachi; }
-            set { diachi = value; }
-        }
-
-        public string Sdt
-        {
-            get { return sdt; }
-            set { sdt = value; }
-        }
-
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
     }
 }

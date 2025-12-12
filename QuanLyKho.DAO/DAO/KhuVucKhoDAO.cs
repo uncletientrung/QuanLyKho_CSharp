@@ -27,9 +27,8 @@ namespace QuanLyKho.DAO
         public int Insert(KhuVucKhoDTO t)
         {
             int result = 0;
-            string sql = $"INSERT into khuvuckho(tenkhuvuc, diachi, sdt, email) " +
-                    $"values ('{t.Tenkhuvuc}', '{t.Diachi}','{t.Sdt}'," +
-                    $"'{t.Email}')";
+            string sql = $"INSERT into khuvuckho(tenkhuvuc) " +
+                    $"values ('{t.Tenkhuvuc}')";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
@@ -37,8 +36,7 @@ namespace QuanLyKho.DAO
         public int Update(KhuVucKhoDTO t)
         {
             int result = 0;
-            string sql = $"UPDATE khuvuckho Set tenkhuvuc= '{t.Tenkhuvuc}', diachi= '{t.Diachi}'," +
-                   $" sdt='{t.Sdt}', email ='{t.Email}' WHERE makhuvuc={t.Makhuvuc}";
+            string sql = $"UPDATE khuvuckho Set tenkhuvuc= '{t.Tenkhuvuc}' WHERE makhuvuc={t.Makhuvuc}";
             result = ConnectionHelper.getExecuteNonQuery(sql);
             return result;
         }
@@ -65,10 +63,7 @@ namespace QuanLyKho.DAO
                     KhuVucKhoDTO kv = new KhuVucKhoDTO
                     {
                         Makhuvuc = reader.GetInt32("makhuvuc"),
-                        Tenkhuvuc = reader.GetString("tenkhuvuc"),
-                        Diachi = reader.GetString("diachi"),
-                        Sdt = reader.GetString("sdt"),
-                        Email = reader.GetString("email"),
+                        Tenkhuvuc = reader.GetString("tenkhuvuc")
                     };
                     result.Add(kv);
                 }
@@ -94,9 +89,6 @@ namespace QuanLyKho.DAO
                     {
                         result.Makhuvuc = reader.GetInt32("makhuvuc");
                         result.Tenkhuvuc = reader.GetString("tenkhuvuc");
-                        result.Diachi = reader.GetString("diachi");
-                        result.Sdt = reader.GetString("sdt");
-                        result.Email = reader.GetString("email");
                     }
                 }   
             }
