@@ -572,7 +572,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                             {
                                 Masp = sanPham.Masp,
                                 Tensp = sanPham.Tensp,
-                                Dongia = donGia,
+                                Dongia = sanPham.Dongia,
                                 Soluong = soLuong
                             };
                             listSPDuocThem.Add(spThem);

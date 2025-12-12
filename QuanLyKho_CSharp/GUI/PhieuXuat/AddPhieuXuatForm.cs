@@ -549,8 +549,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                             continue;
                         }
 
-                        // KIỂM TRA ĐIỀU KIỆN ĐẶC BIỆT CHO PHIẾU XUẤT
-
                         // 1. Kiểm tra sản phẩm có đủ số lượng trong kho không
                         if (sanPham.Soluong <= 0)
                         {
