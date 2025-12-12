@@ -31,7 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
             this.btnChonanh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.picHinhanh = new System.Windows.Forms.PictureBox();
@@ -86,7 +85,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.btnChonanh);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Location = new System.Drawing.Point(23, 82);
@@ -94,15 +92,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(296, 343);
             this.panel3.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(128, 313);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(124, 16);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Định dạng .png, .jpg";
             // 
             // btnChonanh
             // 
@@ -403,7 +392,6 @@
             this.Load += new System.EventHandler(this.UpdateSanPhamForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picHinhanh)).EndInit();
             this.panel4.ResumeLayout(false);
@@ -422,7 +410,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnChonanh;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox picHinhanh;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnDong;
