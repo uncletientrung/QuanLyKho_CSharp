@@ -159,16 +159,20 @@ namespace QuanLyKho_CSharp.GUI
                 {
                     if (sp.Trangthai == 0) continue; 
                     Image productImage = AddPhieuXuatForm.LoadImageSafe(sp.Hinhanh);
+                    String tenKhuVuc = khuVucKhoBUS.LayTenKhuVuc(sp);
+                    String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
+                    String tenLoai = loaiBUS.LayTenLoai(sp);
+                    String tenSize = sizeBUS.LayTenSize(sp);
                     dgvSanPham.Rows.Add(
                         $"SP-{sp.Masp}",
                         sp.Tensp,
                         productImage,
                         sp.Soluong,
                         sp.Dongia,
-                        sp.Tenchatlieu,
-                        sp.Tenloai,
-                        sp.Tenkhuvuc,
-                        sp.Tensize
+                        tenChatLieu,
+                        tenLoai,
+                        tenKhuVuc,
+                        tenSize
                     );
                     soLuongSP++;
                 }
@@ -437,6 +441,7 @@ namespace QuanLyKho_CSharp.GUI
                     int maLoai = loaiBUS.LayMaLoai(loai);
                     int maKV = khuVucKhoBUS.LayMaKhuVuc(khuvuc);
                     int maSize = sizeBUS.LayMaSize(size);
+                    
 
 
 
@@ -448,7 +453,11 @@ namespace QuanLyKho_CSharp.GUI
                     sp.Maloai = maLoai;
                     sp.Makhuvuc = maKV;
                     sp.Masize = maSize;
-                    sp.Hinhanh = "../images/stocks/no_image.png";   
+                    sp.Hinhanh = "../images/stocks/no_image.png";
+                    sp.Tenchatlieu = chatlieu;
+                    sp.Tenkhuvuc = khuvuc;
+                    sp.Tenloai = loai;
+                    sp.Tensize = size;
 
                     
                     spBUS.insertSanPham(sp);
