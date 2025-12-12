@@ -313,7 +313,7 @@
             // soluong
             // 
             this.soluong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.soluong.FillWeight = 7F;
+            this.soluong.FillWeight = 8F;
             this.soluong.HeaderText = "SL xuất";
             this.soluong.Name = "soluong";
             // 
