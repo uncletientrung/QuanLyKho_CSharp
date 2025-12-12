@@ -84,7 +84,18 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             dgvSPduocThem.RowHeadersDefaultCellStyle = headerStyle;
             dgvSPduocThem.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
             dgvSPduocThem.Columns[2].ReadOnly = false;
-
+            if (dgvSPduocThem.Columns.Count > 0)
+            {
+                dgvSPduocThem.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvSPduocThem.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvSPduocThem.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvSPduocThem.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvSPduocThem.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                if (dgvSPduocThem.Columns.Count > 5)
+                {
+                    dgvSPduocThem.Columns[5].Width = 50;
+                }
+            }
             // set cứng tên người xuất
             txNV.ReadOnly = true;
             txNV.Enabled = false;
