@@ -116,7 +116,12 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             {
                 Title = "Đơn vị: Trăm triệu",
                 LabelFormatter = value => value.ToString("N0"),
-                MaxValue = 100 // max 20 cu
+               
+                Separator = new Separator
+                {
+                    Step = 10,
+                    IsEnabled = true
+                }
             });
 
             bieuDoDoanhThuTheoNgay.LegendLocation = LegendLocation.Right;
