@@ -86,9 +86,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     kh.Stt,
                     $"KH-{kh.Makh}",
                     kh.Tenkh,
-                    kh.Soluongphieu,
-                    kh.Tongtien
-                    
+                    kh.Soluongphieu,       
+                    $"{kh.Tongtien:N0} đ"
+
                 );
 
 
@@ -114,7 +114,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     $"KH-{kh.Makh}",
                     kh.Tenkh,
                     kh.Soluongphieu,
-                    kh.Tongtien
+                   $"{kh.Tongtien:N0} đ"
 
                 );
 

@@ -1161,6 +1161,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="images\login.png" />
+    <Content Include="images\stocks\AK5P0404-front-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\stocks\ao1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1170,12 +1173,63 @@
     <Content Include="images\stocks\ao3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\stocks\no_image.png" />
-    <Content Include="images\stocks\pngtree-pink-tshirt-aotest2.png" />
-    <Content Include="images\stocks\testtrung_639011251607157993.jpg">
+    <Content Include="images\stocks\den-_5a1b33a05cc84b3793b29ca1d86ec99a-48-510x510.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\stocks\testtrung_639011252917655277.jpg">
+    <Content Include="images\stocks\den-_ad749f515bb542c6b15a2d1ee684f8f2-6-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\den-_b63c307e70654e79a4d741b3549df17a-26-510x513.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\den-_e42e1b262fb443208fbf929ba64b9e2e-21-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\den-_fd6eb68d78a74ea49edc42f6e8b6a1e1-19-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\dsc03116_large_5a43f0478dc74eb49b48b090be289ae6.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\dsc03398_large_dc9e5b1ba24f47a388972419fce06db3.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\kem-1_b10c1a5991454534a29da7f04670bec1-2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\kem-_79e7c7b2f5d24a37938c3e96f8da1a14-19.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\kem-_96532d95fee740d1a638661418a44f76-6-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\no_image.png" />
+    <Content Include="images\stocks\pngtree-pink-tshirt-aotest2.png" />
+    <Content Include="images\stocks\quan_tay_c45e807b86b140bc9d24070b10a16bf4-10-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\Quần ngắn dù ParadoxCOLLEGIATE – QS5T0502.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\SM5P0713-4-fotor-20250905142558-510x504.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\ST5T0601-front-1536x1536.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\TA9102_LCR2YPDV-1-O0B9-hinh_mat_truoc-0-fotor-20250805172639-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\TA9102_LCR2YPDV-1-V6IX-hinh_mat_truoc-0-fotor-20250805171759-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\te10004_hfwkm5ol-1-nlqx-hinh_mat_truoc-0_6faa7fe51d6b4e679b8b6fb8f4f6b4e9-7-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\xanh-_ba3bbb63785944f496f449690f629128-1-510x510.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\stocks\_dsf7779_large_745ca06946c54eabb047e750cd7b41a4.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="images\ui.jpg" />

@@ -70,7 +70,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
             // va truc y
             bieuDoThongKeTheoThang.AxisY.Add(new Axis
             {
-                Title = "Đơn vị: Triệu đồng",
+                Title = "Đơn vị: Trăm triệu",
                 LabelFormatter = value => value.ToString("N0"),
                 Separator = new Separator
                 {
@@ -135,9 +135,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
 
                     dgvThongKeTheoThang.Rows.Add(
                         tk.Thang,
-                        tk.Chiphi.ToString("N0"),
-                        tk.Doanhthu.ToString("N0"),
-                        tk.Loinhuan.ToString("N0")
+                        $"{tk.Chiphi:N0} đ",
+                        $"{tk.Doanhthu:N0} đ",
+                        $"{tk.Loinhuan:N0} đ"
                     );
                 }
                 dgvThongKeTheoThang.ClearSelection();
@@ -162,9 +162,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK.TKDoanhThu
             foreach (var item in dataDoanhThuTungNam)
             {
                 labels.Add(item.Thang.ToString());
-                von.Add(item.Chiphi / 1_000_000.0);
-                doanhThu.Add(item.Doanhthu / 1_000_000.0);
-                loiNhuan.Add(item.Loinhuan / 1_000_000.0);
+                von.Add((double)(item.Chiphi / 100_000_000.0));
+                doanhThu.Add((double)(item.Doanhthu / 100_000_000.0));
+                loiNhuan.Add((double)(item.Loinhuan / 100_000_000.0));
             }
 
             // xoa du lieu cu

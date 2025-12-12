@@ -66,9 +66,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
             foreach (var item in data)
             {
                 labels.Add(item.Ngay.ToString("dd/MM"));
-                vonValues.Add(item.Chiphi / 1_000_000.0);     // chuyen sang trieu
-                doanhThuValues.Add(item.Doanhthu / 1_000_000.0);
-                loiNhuanValues.Add(item.Loinhuan / 1_000_000.0);
+                vonValues.Add((double)(item.Chiphi / 100_000_000.0));     // chuyen sang trieu
+                doanhThuValues.Add((double)(item.Doanhthu / 100_000_000.0));
+                loiNhuanValues.Add((double)(item.Loinhuan / 100_000_000.0));
             }
 
             //xoa cau hinh cu
@@ -114,7 +114,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
 
             bieuDoDoanhThuTheoNgay.AxisY.Add(new LiveCharts.Wpf.Axis
             {
-                Title = "Đơn vị: Triệu đồng",
+                Title = "Đơn vị: Trăm triệu",
                 LabelFormatter = value => value.ToString("N0"),
                 MaxValue = 100 // max 20 cu
             });
@@ -251,9 +251,9 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
 
                     dgvDoanhThu7ngay.Rows.Add(
                         tk.Ngay.ToString("dd/MM/yyyy"),
-                        tk.Chiphi.ToString("N0"),
-                        tk.Doanhthu.ToString("N0"),
-                        tk.Loinhuan.ToString("N0")
+                        $"{tk.Chiphi:N0} đ",
+                        $"{tk.Doanhthu:N0} đ",
+                        $"{tk.Loinhuan:N0} đ"
                     );
                 }
                 dgvDoanhThu7ngay.ClearSelection();
@@ -265,61 +265,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
         }
 
 
-        //private void LoadTop3SanPhamXuat()
-        //{
-        //    var top3 = tkBUS.GetTop3SanPhamXuatNhieuNhatTrongThang();
-
-            
-        //    tableTop3SP.Controls.Clear();
-        //    tableTop3SP.RowCount = 0;
-
-            
-        //    Label tieuDe1 = new Label()
-        //    {
-        //        Text = "Tên sản phẩm",
-        //        Font = new Font("Segoe UI", 10, FontStyle.Bold),
-        //        Dock = DockStyle.Fill,
-        //        TextAlign = ContentAlignment.MiddleCenter,
-        //        BackColor = Color.LightGray
-        //    };
-        //    Label tieuDe2 = new Label()
-        //    {
-        //        Text = "Số lượng",
-        //        Font = new Font("Segoe UI", 10, FontStyle.Bold),
-        //        Dock = DockStyle.Fill,
-        //        TextAlign = ContentAlignment.MiddleCenter,
-        //        BackColor= Color.LightGray
-        //    };
-
-        //    tableTop3SP.Controls.Add(tieuDe1, 0, 0);
-        //    tableTop3SP.Controls.Add(tieuDe2, 1, 0);
-        //    tableTop3SP.RowCount++;
-
-
-
-        //    foreach (var sp in top3)
-        //    {
-        //        Label lblTenSP = new Label()
-        //        {
-        //            Text = sp.TenSP,
-        //            Font = new Font("Segoe UI", 9, FontStyle.Regular),
-        //            Dock = DockStyle.Fill,
-        //            TextAlign = ContentAlignment.MiddleCenter
-        //        };
-        //        Label lblSoLuong = new Label()
-        //        {
-        //            Text = sp.TongSoLuong.ToString(),
-        //            Font = new Font("Segoe UI", 9, FontStyle.Bold),
-        //            Dock = DockStyle.Fill,
-        //            TextAlign = ContentAlignment.MiddleCenter,
-        //            ForeColor = Color.SeaGreen
-        //        };
-
-        //        tableTop3SP.Controls.Add(lblTenSP, 0, tableTop3SP.RowCount);
-        //        tableTop3SP.Controls.Add(lblSoLuong, 1, tableTop3SP.RowCount);
-        //        tableTop3SP.RowCount++;
-        //    }
-        //}
+   
 
 
         private void btnTinhHangTon_Click(object sender, EventArgs e)

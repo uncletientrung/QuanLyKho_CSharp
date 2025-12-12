@@ -84,7 +84,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     $"NCC-{ncc.Mancc}",
                     ncc.Tenncc,
                     ncc.Soluong,
-                    ncc.Tongtien
+                    $"{ncc.Tongtien:N0} đ"
 
                 );
 
@@ -111,7 +111,7 @@ namespace QuanLyKho_CSharp.GUI.ThongKe.giaoDienTK
                     $"NCC-{ncc.Mancc}",
                     ncc.Tenncc,
                     ncc.Soluong,
-                    ncc.Tongtien
+                    $"{ncc.Tongtien:N0} đ"
 
                 );
 

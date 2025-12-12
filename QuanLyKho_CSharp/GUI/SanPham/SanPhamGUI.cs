@@ -144,6 +144,8 @@ namespace QuanLyKho_CSharp.GUI
             txtSMoney.TextChanged += (s,ev) => Filter();
             txtEMoney.TextChanged += (s,ev) => Filter();
         }
+
+
         private void LoadDataToGrid(BindingList<SanPhamDTO> loadList)
         {
             try
@@ -163,12 +165,14 @@ namespace QuanLyKho_CSharp.GUI
                     String tenChatLieu = chatLieuBUS.LayTenChatLieu(sp);
                     String tenLoai = loaiBUS.LayTenLoai(sp);
                     String tenSize = sizeBUS.LayTenSize(sp);
+                    string donGiaFormatted = $"{sp.Dongia:N0} đ";
+
                     dgvSanPham.Rows.Add(
                         $"SP-{sp.Masp}",
                         sp.Tensp,
                         productImage,
                         sp.Soluong,
-                        sp.Dongia,
+                        donGiaFormatted,
                         tenChatLieu,
                         tenLoai,
                         tenKhuVuc,

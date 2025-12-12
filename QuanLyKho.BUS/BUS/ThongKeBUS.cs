@@ -228,12 +228,37 @@ namespace QuanLyKho.BUS
                 .Where(nam => nam >= namBatDau && nam <= namKethuc)
                 .OrderBy(nam => nam);///sap xep danh sach nam lay ra tang dan
 
-            foreach(var nam in cacNam)
+            foreach (var nam in cacNam)
             {
-                int tongVon = danhSachPN.Where(pn => pn.Thoigiantao.Year == nam).Sum(pn => pn.Tongtien);
-                int tongLoiNhuan = danhSachPX.Where(px => px.Thoigiantao.Year == nam).Sum(px => px.Tongtien);
-                int tongDoanhThuCuaNam = tongLoiNhuan - tongVon;
-                result.Add(new ThongKeDoanhThuDTO(nam, tongVon, tongLoiNhuan,tongDoanhThuCuaNam));
+                double tongVon = danhSachPN
+                .Where(pn => pn.Thoigiantao.Year == nam)
+                .Sum(pn => {
+                    double tongTien = 0;
+                    tongTien += (double)pn.Tongtien;
+                    return tongTien;
+                });
+
+
+                double tongLoiN = danhSachPX
+                .Where(px => px.Thoigiantao.Year == nam)
+                .Sum(px => {
+                    double tongTien = 0;
+                    tongTien += (double)px.Tongtien;
+                    return tongTien;
+                });
+
+                double tongDoanhThuCuaNam = tongLoiN - tongVon;
+
+
+
+
+
+
+
+
+                //decimal tongLoiNhuan = danhSachPX.Where(px => px.Thoigiantao.Year == nam).Sum(px => px.Tongtien);
+                //decimal tongDoanhThuCuaNam = tongLoiNhuan - tongVon;
+                result.Add(new ThongKeDoanhThuDTO(nam, tongVon, tongLoiN, tongDoanhThuCuaNam));
             }
 
             return result;

@@ -9,13 +9,13 @@ namespace QuanLyKho.DTO.ThongKeDTO
     public class ThongKeDoanhThuDTO // Dùng để thống kê theo quý, năm
     {
         private int thoigian;
-        private int von;
-        private int doanhthu;
-        private int loinhuan;
+        private double von;
+        private double doanhthu;
+        private double loinhuan;
 
         public ThongKeDoanhThuDTO() { }
 
-        public ThongKeDoanhThuDTO(int _thoigian, int _von, int _doanhthu, int _loinhuan)
+        public ThongKeDoanhThuDTO(int _thoigian, double _von, double _doanhthu, double _loinhuan)
         {
             thoigian = _thoigian;
             von = _von;
@@ -29,19 +29,19 @@ namespace QuanLyKho.DTO.ThongKeDTO
             set { thoigian = value; }
         }
 
-        public int Von
+        public double Von
         {
             get { return von; }
             set { von = value; }
         }
 
-        public int Doanhthu
+        public double Doanhthu
         {
             get { return doanhthu; }
             set { doanhthu = value; }
         }
 
-        public int Loinhuan
+        public double Loinhuan
         {
             get { return loinhuan; }
             set { loinhuan = value; }
