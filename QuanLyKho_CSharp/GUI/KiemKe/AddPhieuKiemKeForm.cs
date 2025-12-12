@@ -292,9 +292,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 pkNew.Thoigiancanbang = DateTime.Now;
             }
 
-
-
-
             // Thêm
             Boolean result = pkkBUS.insertPKK(pkNew, listCTKKDuocThem);
             if (result)
@@ -307,6 +304,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 dateCreate.Value = DateTime.Now;
                 txNVTao.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
                 txNVKiem.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
+                listNVTao.Height = 0;
+                listNVKiem.Height = 0;
             }
 
 
