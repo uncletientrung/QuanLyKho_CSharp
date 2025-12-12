@@ -110,9 +110,9 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
             if (DGVPhieuNhap.Columns[e.ColumnIndex].Name == "detail")
             {
                 ShowDetailPhieuNhapForm(pnDTO);
-                pnBUS = new PhieuNhapBUS();
-                refreshDataGridView(pnBUS.getListPN());
-            }else if(DGVPhieuNhap.Columns[e.ColumnIndex].Name == "remove")
+                FilterData();
+            }
+            else if(DGVPhieuNhap.Columns[e.ColumnIndex].Name == "remove")
             {
                 DeletePhieuNhapForm deleteTk = new DeletePhieuNhapForm(pnDTO);
                 deleteTk.ShowDialog();
@@ -121,7 +121,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
 
                     DeleteSuccessNotification tb = new DeleteSuccessNotification();
                     tb.Show();
-                    refreshDataGridView(pnBUS.getListPN());
+                    FilterData();
                 }
             }
 
@@ -546,7 +546,6 @@ namespace QuanLyKho_CSharp.GUI.PhieuNhap
                 }
             }
             lbTotal.Text = "Tổng số phiếu nhập: " + soLuongNV.ToString();
-
             DGVPhieuNhap.ClearSelection();
         }
         // Xử lý thay đổi cbb

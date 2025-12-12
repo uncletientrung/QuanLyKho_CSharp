@@ -156,7 +156,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
             if (DGVPhieuXuat.Columns[e.ColumnIndex].Name == "detail")
             {
                 ShowDetailPhieuXuatForm(phieuDuocChon);
-                refreshDataGridView(pxBUS.getListPX());
+                FilterData();
             }
             if (DGVPhieuXuat.Columns[e.ColumnIndex].Name == "remove")
             {
@@ -167,7 +167,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
 
                     DeleteSuccessNotification tb = new DeleteSuccessNotification();
                     tb.Show();
-                    refreshDataGridView(pxBUS.getListPX());
+                    FilterData();
                 }
             }
             if (DGVPhieuXuat.Columns[e.ColumnIndex].Name == "hoanhang")
