@@ -33,7 +33,6 @@
             this.pnlFill = new System.Windows.Forms.Panel();
             this.lbTitle = new System.Windows.Forms.Label();
             this.DGVHistory = new System.Windows.Forms.DataGridView();
-            this.picHinhanh = new System.Windows.Forms.PictureBox();
             this.lbName = new System.Windows.Forms.Label();
             this.lbSoLuongTon = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
@@ -43,6 +42,9 @@
             this.lbSoLuongPhieu = new System.Windows.Forms.Label();
             this.pnlBot = new System.Windows.Forms.Panel();
             this.btnDong = new System.Windows.Forms.Button();
+            this.menu = new System.Windows.Forms.MenuStrip();
+            this.menuXuatHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuNhapHang = new System.Windows.Forms.ToolStripMenuItem();
             this.ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nhanvien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.khachhang = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,38 +54,40 @@
             this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detail = new System.Windows.Forms.DataGridViewImageColumn();
+            this.picHinhanh = new System.Windows.Forms.PictureBox();
             this.pnlTop.SuspendLayout();
             this.pnlFill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVHistory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHinhanh)).BeginInit();
             this.artanPanel3.SuspendLayout();
             this.pnlBot.SuspendLayout();
+            this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHinhanh)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
             // 
+            this.pnlTop.Controls.Add(this.picHinhanh);
             this.pnlTop.Controls.Add(this.lbSoLuongPhieu);
             this.pnlTop.Controls.Add(this.artanPanel3);
             this.pnlTop.Controls.Add(this.lbPrice);
             this.pnlTop.Controls.Add(this.lbSoLuongTon);
             this.pnlTop.Controls.Add(this.lbName);
-            this.pnlTop.Controls.Add(this.picHinhanh);
             this.pnlTop.Controls.Add(this.lbTitle);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F);
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Location = new System.Drawing.Point(0, 24);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(839, 133);
+            this.pnlTop.Size = new System.Drawing.Size(849, 133);
             this.pnlTop.TabIndex = 0;
             // 
             // pnlFill
             // 
             this.pnlFill.Controls.Add(this.DGVHistory);
             this.pnlFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFill.Location = new System.Drawing.Point(0, 133);
+            this.pnlFill.Location = new System.Drawing.Point(0, 157);
             this.pnlFill.Name = "pnlFill";
             this.pnlFill.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlFill.Size = new System.Drawing.Size(839, 332);
+            this.pnlFill.Size = new System.Drawing.Size(849, 308);
             this.pnlFill.TabIndex = 1;
             // 
             // lbTitle
@@ -94,7 +98,7 @@
             this.lbTitle.ForeColor = System.Drawing.Color.AliceBlue;
             this.lbTitle.Location = new System.Drawing.Point(0, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(839, 55);
+            this.lbTitle.Size = new System.Drawing.Size(849, 55);
             this.lbTitle.TabIndex = 2;
             this.lbTitle.Text = "Lịch sử xuất sản phẩm SP-x";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -124,18 +128,8 @@
             this.DGVHistory.RowHeadersVisible = false;
             this.DGVHistory.RowHeadersWidth = 51;
             this.DGVHistory.RowTemplate.Height = 24;
-            this.DGVHistory.Size = new System.Drawing.Size(829, 322);
+            this.DGVHistory.Size = new System.Drawing.Size(839, 298);
             this.DGVHistory.TabIndex = 1;
-            // 
-            // picHinhanh
-            // 
-            this.picHinhanh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHinhanh.Location = new System.Drawing.Point(6, 64);
-            this.picHinhanh.Name = "picHinhanh";
-            this.picHinhanh.Size = new System.Drawing.Size(94, 64);
-            this.picHinhanh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHinhanh.TabIndex = 20;
-            this.picHinhanh.TabStop = false;
             // 
             // lbName
             // 
@@ -234,7 +228,7 @@
             this.pnlBot.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBot.Location = new System.Drawing.Point(0, 465);
             this.pnlBot.Name = "pnlBot";
-            this.pnlBot.Size = new System.Drawing.Size(839, 53);
+            this.pnlBot.Size = new System.Drawing.Size(849, 53);
             this.pnlBot.TabIndex = 2;
             // 
             // btnDong
@@ -249,6 +243,33 @@
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = false;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            // 
+            // menu
+            // 
+            this.menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.menu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuXuatHang,
+            this.menuNhapHang});
+            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(849, 24);
+            this.menu.TabIndex = 25;
+            this.menu.Text = "menuStrip1";
+            // 
+            // menuXuatHang
+            // 
+            this.menuXuatHang.Name = "menuXuatHang";
+            this.menuXuatHang.Size = new System.Drawing.Size(73, 20);
+            this.menuXuatHang.Text = "Xuất hàng";
+            this.menuXuatHang.Click += new System.EventHandler(this.menuXuatHang_Click);
+            // 
+            // menuNhapHang
+            // 
+            this.menuNhapHang.Name = "menuNhapHang";
+            this.menuNhapHang.Size = new System.Drawing.Size(78, 20);
+            this.menuNhapHang.Text = "Nhập hàng";
+            this.menuNhapHang.Click += new System.EventHandler(this.nhậpHàngToolStripMenuItem_Click);
             // 
             // ma
             // 
@@ -267,35 +288,35 @@
             // khachhang
             // 
             this.khachhang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.khachhang.FillWeight = 13F;
+            this.khachhang.FillWeight = 21F;
             this.khachhang.HeaderText = "Khách hàng";
             this.khachhang.Name = "khachhang";
             // 
             // thoigiantao
             // 
             this.thoigiantao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.thoigiantao.FillWeight = 10F;
+            this.thoigiantao.FillWeight = 12F;
             this.thoigiantao.HeaderText = "Thời gian tạo";
             this.thoigiantao.Name = "thoigiantao";
             // 
             // soluong
             // 
             this.soluong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.soluong.FillWeight = 12F;
-            this.soluong.HeaderText = "Số lượng xuất";
+            this.soluong.FillWeight = 7F;
+            this.soluong.HeaderText = "SL xuất";
             this.soluong.Name = "soluong";
             // 
             // price
             // 
             this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.price.FillWeight = 8F;
+            this.price.FillWeight = 7F;
             this.price.HeaderText = "Đơn giá";
             this.price.Name = "price";
             // 
             // sum
             // 
             this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sum.FillWeight = 10F;
+            this.sum.FillWeight = 8F;
             this.sum.HeaderText = "Thành tiền";
             this.sum.Name = "sum";
             // 
@@ -313,26 +334,41 @@
             this.detail.Name = "detail";
             this.detail.Width = 6;
             // 
+            // picHinhanh
+            // 
+            this.picHinhanh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHinhanh.Location = new System.Drawing.Point(6, 64);
+            this.picHinhanh.Name = "picHinhanh";
+            this.picHinhanh.Size = new System.Drawing.Size(94, 64);
+            this.picHinhanh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHinhanh.TabIndex = 25;
+            this.picHinhanh.TabStop = false;
+            // 
             // HistorySanPhamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(839, 518);
+            this.ClientSize = new System.Drawing.Size(849, 518);
             this.Controls.Add(this.pnlFill);
             this.Controls.Add(this.pnlBot);
             this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.menu);
+            this.MainMenuStrip = this.menu;
             this.Name = "HistorySanPhamForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlFill.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVHistory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHinhanh)).EndInit();
             this.artanPanel3.ResumeLayout(false);
             this.artanPanel3.PerformLayout();
             this.pnlBot.ResumeLayout(false);
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHinhanh)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -342,7 +378,6 @@
         private System.Windows.Forms.Panel pnlFill;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.DataGridView DGVHistory;
-        private System.Windows.Forms.PictureBox picHinhanh;
         private System.Windows.Forms.Label lbSoLuongTon;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label lbPrice;
@@ -352,6 +387,10 @@
         private System.Windows.Forms.Label lbSoLuongPhieu;
         private System.Windows.Forms.Panel pnlBot;
         private System.Windows.Forms.Button btnDong;
+        private System.Windows.Forms.MenuStrip menu;
+        private System.Windows.Forms.ToolStripMenuItem menuXuatHang;
+        private System.Windows.Forms.ToolStripMenuItem menuNhapHang;
+        private System.Windows.Forms.PictureBox picHinhanh;
         private System.Windows.Forms.DataGridViewTextBoxColumn ma;
         private System.Windows.Forms.DataGridViewTextBoxColumn nhanvien;
         private System.Windows.Forms.DataGridViewTextBoxColumn khachhang;

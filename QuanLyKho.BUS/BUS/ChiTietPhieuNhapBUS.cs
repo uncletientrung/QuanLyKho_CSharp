@@ -72,5 +72,10 @@ namespace QuanLyKho.BUS
         {
             return ctpnDAO.DeleteByMaPhieuNhapAndMaSP(maPhieuNhap, maSP) != 0;
         }
+        public BindingList<ChiTietPhieuNhapDTO> getCTPNByMaSP(int masp)
+        {
+            var result = listCTPN.Where(pn => pn.Masp == masp).ToList();
+            return new BindingList<ChiTietPhieuNhapDTO>(result);
+        }
     }
 }

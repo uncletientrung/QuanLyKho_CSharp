@@ -19,11 +19,16 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         private SanPhamDTO spDuocChon;
         private BindingList<PhieuXuatDTO> listPX;
         private BindingList<ChiTietPhieuXuatDTO> listCTPX;
+        private BindingList<PhieuNhapDTO> listPN;
+        private BindingList<ChiTietPhieuNhapDTO> listCTPN;
         private ChiTietPhieuXuatBUS ctpxBUS = new ChiTietPhieuXuatBUS();
         private PhieuXuatBUS pxBUS = new PhieuXuatBUS();
+        private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
+        private PhieuNhapBUS pnBUS = new PhieuNhapBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private KhachHangBUS khBUS = new KhachHangBUS();
-
+        private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
+        private string loaiMenu= "Xuất hàng";
         public HistorySanPhamForm(SanPhamDTO _spDuocChon)
         {
             InitializeComponent();
@@ -31,10 +36,12 @@ namespace QuanLyKho_CSharp.GUI.SanPham
             // Nạp dữ liệu
             listPX = pxBUS.getListPX();
             listCTPX = ctpxBUS.getCTPXByMaSP(spDuocChon.Masp);
+            listPN = pnBUS.getListPN();
+            listCTPN = ctpnBUS.getCTPNByMaSP(spDuocChon.Masp);
 
             SettingDGV();
             SettingPanelTop();
-            refreshDGV(listCTPX);
+            refreshDGVPX(listCTPX);
         }
         private void SettingDGV() // Setting cho DGV
         {
@@ -63,13 +70,23 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         }
         private void SettingPanelTop()
         {
-            lbTitle.Text = $"Lịch sử xuất sản phẩm SP-{spDuocChon.Masp}";
+            if (loaiMenu == "Xuất hàng") { 
+                lbTitle.Text = $"Lịch sử xuất sản phẩm SP-{spDuocChon.Masp}";
+                DGVHistory.Columns["khachhang"].HeaderText = "Khách hàng";
+                DGVHistory.Columns["soluong"].HeaderText = "SL xuất";
+            }
+            else { 
+                lbTitle.Text = $"Lịch sử nhập sản phẩm SP-{spDuocChon.Masp}";
+                DGVHistory.Columns["khachhang"].HeaderText = "Nhà cung cấp";
+                DGVHistory.Columns["soluong"].HeaderText = "SL nhập";
+            }
             lbName.Text = $"Tên sản phẩm: {spDuocChon.Tensp}";
             lbSoLuongTon.Text = $"Số lượng tồn: {spDuocChon.Soluong}";
             lbPrice.Text = $"Giá hiện tại: {spDuocChon.Dongia}";
-            picHinhanh.Image = AddPhieuXuatForm.LoadImageSafe(spDuocChon.Hinhanh);
+            Image imgSanpham = AddPhieuXuatForm.LoadImageSafe(spDuocChon.Hinhanh);
+            picHinhanh.Image = imgSanpham;
         }
-        private void refreshDGV(BindingList<ChiTietPhieuXuatDTO> listRefresh)
+        private void refreshDGVPX(BindingList<ChiTietPhieuXuatDTO> listRefresh)
         {
             int soLuong = 0;
             string nvTao = "";
@@ -124,30 +141,90 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         private void txtSearch_TextChanged(object sender, EventArgs e) // Search
         {
             string key = txtSearch.Text.ToLower();
-            PhieuXuatDTO pxDTO = new PhieuXuatDTO();
-            string nvTao = "";
-            string khMua = "";
-            var filterData = listCTPX.Where(ctpx =>
-            {
-                if (ctpx.TrangTHaiHoanHang != 0)
+            if(loaiMenu == "Xuất hàng") { 
+                PhieuXuatDTO pxDTO = new PhieuXuatDTO();
+                string nvTao = "";
+                string khMua = "";
+                var filterData = listCTPX.Where(ctpx =>
                 {
-                    pxDTO = listPX.FirstOrDefault(px => px.Maphieu == ctpx.Maphieuxuat);
-                    string MaPx = $"PX-{pxDTO.Maphieu}"; 
-                    nvTao = nvBUS.getNamebyID(pxDTO.Manv);
-                    khMua = khBUS.getNamebyID(pxDTO.Makh);
-                    string thanhtien = ((double)ctpx.Soluong * ctpx.Dongia).ToString();
-                    string trangthai = ctpx.TrangTHaiHoanHang == 1 ? "Hoạt động" : "Đã hoàn";
-                    if(nvTao.ToLower().Contains(key) || khMua.ToLower().Contains(key) || MaPx.ToLower().Contains(key)
-                    || thanhtien.ToLower().Contains(key) || ctpx.Soluong.ToString().ToLower().Contains(key)
-                    || ctpx.Dongia.ToString().ToLower().Contains(key) || trangthai.ToLower().Contains(key))
+                    if (ctpx.TrangTHaiHoanHang != 0)
+                    {
+                        pxDTO = listPX.FirstOrDefault(px => px.Maphieu == ctpx.Maphieuxuat);
+                        string MaPx = $"PX-{pxDTO.Maphieu}"; 
+                        nvTao = nvBUS.getNamebyID(pxDTO.Manv);
+                        khMua = khBUS.getNamebyID(pxDTO.Makh);
+                        string thanhtien = ((double)ctpx.Soluong * ctpx.Dongia).ToString();
+                        string trangthai = ctpx.TrangTHaiHoanHang == 1 ? "Hoạt động" : "Đã hoàn";
+                        if(nvTao.ToLower().Contains(key) || khMua.ToLower().Contains(key) || MaPx.ToLower().Contains(key)
+                        || thanhtien.ToLower().Contains(key) || ctpx.Soluong.ToString().ToLower().Contains(key)
+                        || ctpx.Dongia.ToString().ToLower().Contains(key) || trangthai.ToLower().Contains(key))
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }).ToList();
+                refreshDGVPX(new BindingList<ChiTietPhieuXuatDTO>(filterData));
+            }else if(loaiMenu=="Nhập hàng")
+            {
+                string nvTao = "";
+                string nCC = "";
+                PhieuNhapDTO pnDTO = new PhieuNhapDTO();
+                var filterData = listCTPN.Where(ctpn =>
+                {
+                    pnDTO = listPN.FirstOrDefault(pn => pn.Maphieu == ctpn.Maphieunhap);
+                    string MaPN = $"PN-{pnDTO.Maphieu}";
+                    nvTao = nvBUS.getNamebyID(pnDTO.Manv);
+                    nCC = nccBUS.getNamebyID(pnDTO.Mancc);
+                    string thanhtien = ((double)ctpn.Soluong * ctpn.Dongia).ToString();
+                    string trangthai = "Hoạt động";
+                    if (nvTao.ToLower().Contains(key) || nCC.ToLower().Contains(key) || MaPN.ToLower().Contains(key)
+                    || thanhtien.ToLower().Contains(key) || ctpn.Soluong.ToString().ToLower().Contains(key)
+                    || ctpn.Dongia.ToString().ToLower().Contains(key) || trangthai.ToLower().Contains(key))
                     {
                         return true;
                     }
-                }
-                return false;
-            }).ToList();
-            refreshDGV(new BindingList<ChiTietPhieuXuatDTO>(filterData));
-            
+                    return false;
+                }).ToList();
+                refreshDGVPN(new BindingList<ChiTietPhieuNhapDTO>(filterData));
+            }
+
+        }
+
+        private void refreshDGVPN(BindingList<ChiTietPhieuNhapDTO> listRefresh) // refresh cho phiếu nhập
+        {
+            int soLuong = 0;
+            string nvTao = "";
+            string nCC = "";
+            PhieuNhapDTO pnDTO = new PhieuNhapDTO();
+            DGVHistory.Rows.Clear();
+            foreach (ChiTietPhieuNhapDTO ctpn in listRefresh)
+            {
+                pnDTO = listPN.FirstOrDefault(pn => pn.Maphieu == ctpn.Maphieunhap);
+                nvTao = nvBUS.getNamebyID(pnDTO.Manv);
+                nCC = nccBUS.getNamebyID(pnDTO.Mancc);
+                double thanhtien = (double)ctpn.Soluong * ctpn.Dongia;
+                string trangthai ="Hoạt động";
+                var rowIndex = DGVHistory.Rows.Add($"PN-{ctpn.Maphieunhap}", nvTao, nCC,
+                    pnDTO.Thoigiantao.ToString(" HH:mm dd/MM/yyyy"), ctpn.Soluong,
+                    $"{ctpn.Dongia:N0}đ", $"{thanhtien:N0}đ", trangthai);
+                soLuong++;
+            }
+            lbSoLuongPhieu.Text = "Tổng số phiếu: " + soLuong.ToString();
+            DGVHistory.ClearSelection();
+        }
+
+        private void menuXuatHang_Click(object sender, EventArgs e)
+        {
+            loaiMenu = "Xuất hàng";
+            SettingPanelTop();
+            refreshDGVPX(listCTPX);
+        }
+        private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loaiMenu = "Nhập hàng";
+            SettingPanelTop();
+            refreshDGVPN(listCTPN);
         }
     }
 }
