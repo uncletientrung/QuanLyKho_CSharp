@@ -22,20 +22,20 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         private Action btnClose;
         private NhanVienDTO currentUser;
         private SanPhamBUS spBus = new SanPhamBUS();
-        private PhieuKiemKeBUS pkkBUS= new PhieuKiemKeBUS();
+        private PhieuKiemKeBUS pkkBUS = new PhieuKiemKeBUS();
         private BindingList<SanPhamDTO> listSP;
-        private BindingList<ChiTietKiemKeDTO> listCTKKDuocThem=new BindingList<ChiTietKiemKeDTO>();
+        private BindingList<ChiTietKiemKeDTO> listCTKKDuocThem = new BindingList<ChiTietKiemKeDTO>();
         public AddPhieuKiemKeForm(Action btnClose, NhanVienDTO currentU)
         {
             InitializeComponent();
             settingDGV();
             this.btnClose = btnClose;
             this.currentUser = currentU;
-            txNVTao.Text= $"{currentU.Manv} | {currentU.Tennv}";
-            txNVKiem.Text= $"{currentU.Manv} | {currentU.Tennv}";
+            txNVTao.Text = $"{currentU.Manv} | {currentU.Tennv}";
+            txNVKiem.Text = $"{currentU.Manv} | {currentU.Tennv}";
             listNVTao.Height = 0;
             listNVKiem.Height = 0;
-            listSP= spBus.getListSP();
+            listSP = spBus.getListSP();
         }
         private void settingDGV()
         {
@@ -68,7 +68,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             {
                 col.ReadOnly = true;
             }
-            
+
             dgvSPduocThem.Columns["cbbLyDo"].ReadOnly = false;
 
         }
@@ -163,7 +163,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     listContainerProduct.Height = 0;
                     txSearch.SelectionStart = txSearch.Text.Length;
                     ChiTietKiemKeDTO ctkkDuocCHon = new ChiTietKiemKeDTO();
-                    ctkkDuocCHon.Masp=selectedSp.Masp;
+                    ctkkDuocCHon.Masp = selectedSp.Masp;
+                    ctkkDuocCHon.Tensp = selectedSp.Tensp; // Set tên sản phẩm từ lúc bấm vào sản phẩm tìm
                     ThemSPVaoPhieu(ctkkDuocCHon);
                 };
                 listContainerProduct.Controls.Add(item);
@@ -177,7 +178,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             string title = existingSP != null ? "Chỉnh sửa số lượng" : "Nhập số lượng thực tế";
             int soLuongTruyenVao = existingSP != null ? existingSP.Tonthucte : 1;
             int soluongTon = listSP.FirstOrDefault(sp => sp.Masp == spDuocChon.Masp).Soluong;
-            var inputForm = new QuantityForm(title, soLuongTruyenVao, soluongTon,"KiemKe");
+            var inputForm = new QuantityForm(title, soLuongTruyenVao, soluongTon, "KiemKe");
             if (inputForm.ShowDialog() == DialogResult.OK)
             {
                 int sl = inputForm.Quantity;
@@ -190,7 +191,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                     var spKiemKe = new ChiTietKiemKeDTO
                     {
                         Masp = spDuocChon.Masp,
-                        Tonthucte = sl
+                        Tonthucte = sl,
+                        Tensp = spDuocChon.Tensp
                     };
                     listCTKKDuocThem.Add(spKiemKe);
                 }
@@ -209,19 +211,19 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
         {
             dgvSPduocThem.Rows.Clear();
             int stt = 1;
-            foreach(ChiTietKiemKeDTO ctkk in listCTKKDuocThem)
+            foreach (ChiTietKiemKeDTO ctkk in listCTKKDuocThem)
             {
                 SanPhamDTO spDuocChon = listSP.FirstOrDefault(sp => sp.Masp == ctkk.Masp);
                 int tonChiNhanh = spDuocChon.Soluong;
-                int giaTriChenhLech = CalcGiaTriChenhLech( tonChiNhanh, ctkk.Tonthucte, spDuocChon.Dongia);
+                int giaTriChenhLech = CalcGiaTriChenhLech(tonChiNhanh, ctkk.Tonthucte, spDuocChon.Dongia);
                 string gTriChenhLech = giaTriChenhLech > 0 ? $"+{giaTriChenhLech:N0}đ" : $"{giaTriChenhLech:N0}đ";
-                string lyDo="";
-                if (giaTriChenhLech == 0) lyDo = "Đủ hàng"; 
-                if (giaTriChenhLech < 0) lyDo = "Thiếu sản phâm"; 
-                if (giaTriChenhLech > 0) lyDo = "Thừa sản phẩm"; 
+                string lyDo = "";
+                if (giaTriChenhLech == 0) lyDo = "Đủ hàng";
+                if (giaTriChenhLech < 0) lyDo = "Thiếu sản phâm";
+                if (giaTriChenhLech > 0) lyDo = "Thừa sản phẩm";
                 Image imageProduct = AddPhieuXuatForm.LoadImageSafe(spDuocChon.Hinhanh);
                 dgvSPduocThem.Rows.Add(
-                    stt, ctkk.Masp, spDuocChon.Tensp, imageProduct, $"{spDuocChon.Dongia:N0}đ", 
+                    stt, ctkk.Masp, spDuocChon.Tensp, imageProduct, $"{spDuocChon.Dongia:N0}đ",
                     tonChiNhanh, ctkk.Tonthucte,
                     tonChiNhanh - ctkk.Tonthucte, gTriChenhLech, lyDo
                     );
@@ -257,7 +259,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
 
         private void artanButton3_Click(object sender, EventArgs e) // Thêm phiếu
         {
-            if(listCTKKDuocThem.Count == 0)
+            if (listCTKKDuocThem.Count == 0)
             {
                 MessageBox.Show(
                     "Vui lòng nhập sản phẩm đã kiểm!",
@@ -269,7 +271,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
             PhieuKiemKeDTO pkNew = new PhieuKiemKeDTO();
             pkNew.Maphieukiemke = pkkBUS.getMaTiepTheo();
-            Boolean checkCanBang = true; 
+            Boolean checkCanBang = true;
             pkNew.Ghichu = txNote.Text;
             int manvTao = int.Parse(txNVTao.Text.Split('|')[0].Trim());
             int manvKiem = int.Parse(txNVKiem.Text.Split('|')[0].Trim());
@@ -278,21 +280,23 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             pkNew.Thoigiantao = DateTime.Now;
             foreach (ChiTietKiemKeDTO ctkk in listCTKKDuocThem)
             {
-                if(ctkk.Tonchinhanh < ctkk.Tonthucte || ctkk.Tonchinhanh > ctkk.Tonthucte)
+                if (ctkk.Tonchinhanh < ctkk.Tonthucte || ctkk.Tonchinhanh > ctkk.Tonthucte)
                 {
                     checkCanBang = false; break;
                 }
             }
             if (!checkCanBang) pkNew.Trangthai = "Chưa cân bằng";
-            else { 
+            else
+            {
                 pkNew.Trangthai = "Đã cân bằng";
                 pkNew.Thoigiancanbang = DateTime.Now;
             }
 
-           
+
+
 
             // Thêm
-            Boolean result= pkkBUS.insertPKK(pkNew, listCTKKDuocThem);
+            Boolean result = pkkBUS.insertPKK(pkNew, listCTKKDuocThem);
             if (result)
             {
                 new AddSuccessNotification().Show();
@@ -300,7 +304,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 LoadDanhSachKiemKe();
                 txNote.Clear();
                 txSearch.Clear();
-                dateCreate.Value= DateTime.Now;
+                dateCreate.Value = DateTime.Now;
                 txNVTao.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
                 txNVKiem.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
             }
@@ -548,6 +552,6 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             }
         }
     }
-    
-       
+
+
 }

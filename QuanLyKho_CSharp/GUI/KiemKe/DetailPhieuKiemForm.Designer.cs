@@ -32,21 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnOnClose = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.lbInfo = new System.Windows.Forms.Label();
             this.pnlCenter = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlEnd = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
-            this.dgvSPduocThem = new System.Windows.Forms.DataGridView();
-            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.masp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.image = new System.Windows.Forms.DataGridViewImageColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tonThucThe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soChenhLech = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.giatrichenhlech = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbbLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artanPanel7 = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
             this.listNVKiem = new System.Windows.Forms.Panel();
             this.listNVTao = new System.Windows.Forms.Panel();
@@ -75,12 +63,20 @@
             this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
             this.txNVKiem = new System.Windows.Forms.TextBox();
             this.lbCanBang = new System.Windows.Forms.Label();
-            this.btnOnClose = new QuanLyKho_CSharp.Helper.component.ArtanButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlEnd = new QuanLyKho_CSharp.Helper.component.ArtanPanel();
+            this.dgvSPduocThem = new System.Windows.Forms.DataGridView();
+            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.image = new System.Windows.Forms.DataGridViewImageColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tonThucThe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soChenhLech = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giatrichenhlech = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbbLyDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTop.SuspendLayout();
             this.pnlCenter.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.pnlEnd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).BeginInit();
             this.artanPanel7.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.artanPanel4.SuspendLayout();
@@ -92,6 +88,9 @@
             this.artanPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.artanPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlEnd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewImageColumn1
@@ -113,6 +112,25 @@
             this.pnlTop.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.pnlTop.Size = new System.Drawing.Size(913, 52);
             this.pnlTop.TabIndex = 5;
+            // 
+            // btnOnClose
+            // 
+            this.btnOnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnOnClose.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnOnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.btnOnClose.BorderRadius = 5;
+            this.btnOnClose.BorderSize = 1;
+            this.btnOnClose.FlatAppearance.BorderSize = 0;
+            this.btnOnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOnClose.ForeColor = System.Drawing.Color.White;
+            this.btnOnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnOnClose.Image")));
+            this.btnOnClose.Location = new System.Drawing.Point(4, 3);
+            this.btnOnClose.Name = "btnOnClose";
+            this.btnOnClose.Size = new System.Drawing.Size(33, 45);
+            this.btnOnClose.TabIndex = 25;
+            this.btnOnClose.TextColor = System.Drawing.Color.White;
+            this.btnOnClose.UseVisualStyleBackColor = false;
+            this.btnOnClose.Click += new System.EventHandler(this.btnOnClose_Click);
             // 
             // lbInfo
             // 
@@ -136,150 +154,6 @@
             this.pnlCenter.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.pnlCenter.Size = new System.Drawing.Size(913, 195);
             this.pnlCenter.TabIndex = 6;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pnlEnd);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 247);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(913, 332);
-            this.panel1.TabIndex = 1;
-            // 
-            // pnlEnd
-            // 
-            this.pnlEnd.BackColor = System.Drawing.Color.White;
-            this.pnlEnd.BorderRadius = 20;
-            this.pnlEnd.Controls.Add(this.dgvSPduocThem);
-            this.pnlEnd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlEnd.ForeColor = System.Drawing.Color.Black;
-            this.pnlEnd.GradientAngle = 90F;
-            this.pnlEnd.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.pnlEnd.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.pnlEnd.Location = new System.Drawing.Point(0, 3);
-            this.pnlEnd.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlEnd.Name = "pnlEnd";
-            this.pnlEnd.Padding = new System.Windows.Forms.Padding(4, 0, 4, 15);
-            this.pnlEnd.Size = new System.Drawing.Size(913, 329);
-            this.pnlEnd.TabIndex = 8;
-            // 
-            // dgvSPduocThem
-            // 
-            this.dgvSPduocThem.AllowUserToAddRows = false;
-            this.dgvSPduocThem.AllowUserToDeleteRows = false;
-            this.dgvSPduocThem.AllowUserToResizeColumns = false;
-            this.dgvSPduocThem.AllowUserToResizeRows = false;
-            this.dgvSPduocThem.BackgroundColor = System.Drawing.Color.White;
-            this.dgvSPduocThem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvSPduocThem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSPduocThem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvSPduocThem.ColumnHeadersHeight = 30;
-            this.dgvSPduocThem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.stt,
-            this.masp,
-            this.count,
-            this.image,
-            this.price,
-            this.sum,
-            this.tonThucThe,
-            this.soChenhLech,
-            this.giatrichenhlech,
-            this.cbbLyDo});
-            this.dgvSPduocThem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSPduocThem.EnableHeadersVisualStyles = false;
-            this.dgvSPduocThem.GridColor = System.Drawing.Color.LightGray;
-            this.dgvSPduocThem.Location = new System.Drawing.Point(4, 0);
-            this.dgvSPduocThem.MultiSelect = false;
-            this.dgvSPduocThem.Name = "dgvSPduocThem";
-            this.dgvSPduocThem.RowHeadersVisible = false;
-            this.dgvSPduocThem.RowHeadersWidth = 25;
-            this.dgvSPduocThem.RowTemplate.Height = 30;
-            this.dgvSPduocThem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSPduocThem.Size = new System.Drawing.Size(905, 314);
-            this.dgvSPduocThem.TabIndex = 0;
-            // 
-            // stt
-            // 
-            this.stt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stt.FillWeight = 3F;
-            this.stt.HeaderText = "STT";
-            this.stt.Name = "stt";
-            this.stt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // masp
-            // 
-            this.masp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.masp.FillWeight = 7F;
-            this.masp.HeaderText = "Mã SP";
-            this.masp.Name = "masp";
-            // 
-            // count
-            // 
-            this.count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.count.FillWeight = 12F;
-            this.count.HeaderText = "Tên sản phẩm";
-            this.count.Name = "count";
-            this.count.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // image
-            // 
-            this.image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.image.FillWeight = 10F;
-            this.image.HeaderText = "Hỉnh ảnh";
-            this.image.Name = "image";
-            this.image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // price
-            // 
-            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.price.FillWeight = 7F;
-            this.price.HeaderText = "Giá SP";
-            this.price.Name = "price";
-            // 
-            // sum
-            // 
-            this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sum.FillWeight = 9F;
-            this.sum.HeaderText = "Tồn chi nhánh";
-            this.sum.Name = "sum";
-            // 
-            // tonThucThe
-            // 
-            this.tonThucThe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tonThucThe.FillWeight = 7F;
-            this.tonThucThe.HeaderText = "Tồn thực tế";
-            this.tonThucThe.Name = "tonThucThe";
-            // 
-            // soChenhLech
-            // 
-            this.soChenhLech.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.soChenhLech.FillWeight = 9F;
-            this.soChenhLech.HeaderText = "SL chênh lệch";
-            this.soChenhLech.Name = "soChenhLech";
-            // 
-            // giatrichenhlech
-            // 
-            this.giatrichenhlech.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.giatrichenhlech.FillWeight = 10F;
-            this.giatrichenhlech.HeaderText = "Giá trị chênh lệch";
-            this.giatrichenhlech.Name = "giatrichenhlech";
-            // 
-            // cbbLyDo
-            // 
-            this.cbbLyDo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cbbLyDo.FillWeight = 15F;
-            this.cbbLyDo.HeaderText = "Lý do";
-            this.cbbLyDo.Name = "cbbLyDo";
-            this.cbbLyDo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // artanPanel7
             // 
@@ -379,7 +253,7 @@
             // 
             // txDateCanBang
             // 
-            this.txDateCanBang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txDateCanBang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txDateCanBang.BackColor = System.Drawing.Color.White;
             this.txDateCanBang.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -450,7 +324,7 @@
             // 
             // txDateTao
             // 
-            this.txDateTao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txDateTao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txDateTao.BackColor = System.Drawing.Color.White;
             this.txDateTao.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -521,7 +395,7 @@
             // 
             // txNVTao
             // 
-            this.txNVTao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txNVTao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txNVTao.BackColor = System.Drawing.Color.White;
             this.txNVTao.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -574,7 +448,7 @@
             // 
             // txNote
             // 
-            this.txNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txNote.BackColor = System.Drawing.Color.White;
             this.txNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -646,7 +520,7 @@
             // 
             // txNVKiem
             // 
-            this.txNVKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txNVKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txNVKiem.BackColor = System.Drawing.Color.White;
             this.txNVKiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -672,24 +546,141 @@
             this.lbCanBang.Text = "Trạng thái đã cân bằng";
             this.lbCanBang.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnOnClose
+            // panel1
             // 
-            this.btnOnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnOnClose.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnOnClose.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            this.btnOnClose.BorderRadius = 5;
-            this.btnOnClose.BorderSize = 1;
-            this.btnOnClose.FlatAppearance.BorderSize = 0;
-            this.btnOnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOnClose.ForeColor = System.Drawing.Color.White;
-            this.btnOnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnOnClose.Image")));
-            this.btnOnClose.Location = new System.Drawing.Point(4, 3);
-            this.btnOnClose.Name = "btnOnClose";
-            this.btnOnClose.Size = new System.Drawing.Size(33, 45);
-            this.btnOnClose.TabIndex = 25;
-            this.btnOnClose.TextColor = System.Drawing.Color.White;
-            this.btnOnClose.UseVisualStyleBackColor = false;
-            this.btnOnClose.Click += new System.EventHandler(this.btnOnClose_Click);
+            this.panel1.Controls.Add(this.pnlEnd);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 247);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(913, 332);
+            this.panel1.TabIndex = 1;
+            // 
+            // pnlEnd
+            // 
+            this.pnlEnd.BackColor = System.Drawing.Color.White;
+            this.pnlEnd.BorderRadius = 20;
+            this.pnlEnd.Controls.Add(this.dgvSPduocThem);
+            this.pnlEnd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlEnd.ForeColor = System.Drawing.Color.Black;
+            this.pnlEnd.GradientAngle = 90F;
+            this.pnlEnd.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlEnd.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            this.pnlEnd.Location = new System.Drawing.Point(0, 3);
+            this.pnlEnd.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlEnd.Name = "pnlEnd";
+            this.pnlEnd.Padding = new System.Windows.Forms.Padding(4, 0, 4, 15);
+            this.pnlEnd.Size = new System.Drawing.Size(913, 329);
+            this.pnlEnd.TabIndex = 8;
+            // 
+            // dgvSPduocThem
+            // 
+            this.dgvSPduocThem.AllowUserToAddRows = false;
+            this.dgvSPduocThem.AllowUserToDeleteRows = false;
+            this.dgvSPduocThem.AllowUserToResizeColumns = false;
+            this.dgvSPduocThem.AllowUserToResizeRows = false;
+            this.dgvSPduocThem.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSPduocThem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSPduocThem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSPduocThem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSPduocThem.ColumnHeadersHeight = 30;
+            this.dgvSPduocThem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.stt,
+            this.count,
+            this.image,
+            this.price,
+            this.sum,
+            this.tonThucThe,
+            this.soChenhLech,
+            this.giatrichenhlech,
+            this.cbbLyDo});
+            this.dgvSPduocThem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSPduocThem.EnableHeadersVisualStyles = false;
+            this.dgvSPduocThem.GridColor = System.Drawing.Color.LightGray;
+            this.dgvSPduocThem.Location = new System.Drawing.Point(4, 0);
+            this.dgvSPduocThem.MultiSelect = false;
+            this.dgvSPduocThem.Name = "dgvSPduocThem";
+            this.dgvSPduocThem.RowHeadersVisible = false;
+            this.dgvSPduocThem.RowHeadersWidth = 25;
+            this.dgvSPduocThem.RowTemplate.Height = 30;
+            this.dgvSPduocThem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSPduocThem.Size = new System.Drawing.Size(905, 314);
+            this.dgvSPduocThem.TabIndex = 0;
+            // 
+            // stt
+            // 
+            this.stt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stt.FillWeight = 3F;
+            this.stt.HeaderText = "STT";
+            this.stt.Name = "stt";
+            this.stt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // count
+            // 
+            this.count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.count.FillWeight = 12F;
+            this.count.HeaderText = "Tên sản phẩm";
+            this.count.Name = "count";
+            this.count.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // image
+            // 
+            this.image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.image.FillWeight = 10F;
+            this.image.HeaderText = "Hỉnh ảnh";
+            this.image.Name = "image";
+            this.image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // price
+            // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.price.FillWeight = 7F;
+            this.price.HeaderText = "Giá SP";
+            this.price.Name = "price";
+            // 
+            // sum
+            // 
+            this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sum.FillWeight = 9F;
+            this.sum.HeaderText = "Tồn chi nhánh";
+            this.sum.Name = "sum";
+            // 
+            // tonThucThe
+            // 
+            this.tonThucThe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tonThucThe.FillWeight = 7F;
+            this.tonThucThe.HeaderText = "Tồn thực tế";
+            this.tonThucThe.Name = "tonThucThe";
+            // 
+            // soChenhLech
+            // 
+            this.soChenhLech.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soChenhLech.FillWeight = 9F;
+            this.soChenhLech.HeaderText = "SL chênh lệch";
+            this.soChenhLech.Name = "soChenhLech";
+            // 
+            // giatrichenhlech
+            // 
+            this.giatrichenhlech.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.giatrichenhlech.FillWeight = 10F;
+            this.giatrichenhlech.HeaderText = "Giá trị chênh lệch";
+            this.giatrichenhlech.Name = "giatrichenhlech";
+            // 
+            // cbbLyDo
+            // 
+            this.cbbLyDo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cbbLyDo.FillWeight = 15F;
+            this.cbbLyDo.HeaderText = "Lý do";
+            this.cbbLyDo.Name = "cbbLyDo";
+            this.cbbLyDo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // DetailPhieuKiemForm
             // 
@@ -703,9 +694,6 @@
             this.Name = "DetailPhieuKiemForm";
             this.pnlTop.ResumeLayout(false);
             this.pnlCenter.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.pnlEnd.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).EndInit();
             this.artanPanel7.ResumeLayout(false);
             this.flowLayoutPanel5.ResumeLayout(false);
             this.artanPanel4.ResumeLayout(false);
@@ -722,6 +710,9 @@
             this.flowLayoutPanel3.ResumeLayout(false);
             this.artanPanel1.ResumeLayout(false);
             this.artanPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.pnlEnd.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSPduocThem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -763,8 +754,8 @@
         private Helper.component.ArtanButton artanButton5;
         private System.Windows.Forms.TextBox txDateCanBang;
         private System.Windows.Forms.Panel panel1;
+        private Helper.component.ArtanButton btnOnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn stt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn masp;
         private System.Windows.Forms.DataGridViewTextBoxColumn count;
         private System.Windows.Forms.DataGridViewImageColumn image;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
@@ -773,6 +764,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn soChenhLech;
         private System.Windows.Forms.DataGridViewTextBoxColumn giatrichenhlech;
         private System.Windows.Forms.DataGridViewTextBoxColumn cbbLyDo;
-        private Helper.component.ArtanButton btnOnClose;
     }
 }

@@ -95,11 +95,12 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             foreach (ChiTietKiemKeDTO ctkk in listCTKK)
             {
                 SanPhamDTO spDuocChon = spBus.getSPByIdSP(ctkk.Masp);
-                int giaTriChenhLech = CalcGiaTriChenhLech(ctkk.Tonchinhanh, ctkk.Tonthucte, spDuocChon.Dongia);
+                int giaTriChenhLech = CalcGiaTriChenhLech(ctkk.Tonchinhanh, ctkk.Tonthucte,
+                    spDuocChon != null ? spDuocChon.Dongia : 0);
                 string gTriChenhLech = giaTriChenhLech > 0 ? $"+{giaTriChenhLech:N0}đ" : $"{giaTriChenhLech:N0}đ";
-                Image imageProduct = AddPhieuXuatForm.LoadImageSafe(spDuocChon.Hinhanh);
+                Image imageProduct = AddPhieuXuatForm.LoadImageSafe(spDuocChon != null ? spDuocChon.Hinhanh : "");
                 dgvSPduocThem.Rows.Add(
-                    stt, ctkk.Masp, spDuocChon.Tensp, imageProduct, $"{spDuocChon.Dongia:N0}đ",
+                    stt, ctkk.Tensp, imageProduct, spDuocChon != null ? $"{spDuocChon.Dongia:N0}đ" : $"Đã xóa",
                     ctkk.Tonchinhanh, ctkk.Tonthucte,
                     ctkk.Tonchinhanh - ctkk.Tonthucte, gTriChenhLech, ctkk.Ghichu
                     );

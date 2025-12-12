@@ -427,6 +427,12 @@
     <Compile Include="GUI\SanPham\DetailSanPhamForm.Designer.cs">
       <DependentUpon>DetailSanPhamForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\SanPham\HistorySanPhamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SanPham\HistorySanPhamForm.Designer.cs">
+      <DependentUpon>HistorySanPhamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\SanPham\UpdateSanPhamForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -888,6 +894,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\DetailSanPhamForm.resx">
       <DependentUpon>DetailSanPhamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SanPham\HistorySanPhamForm.resx">
+      <DependentUpon>HistorySanPhamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SanPham\UpdateSanPhamForm.resx">
       <DependentUpon>UpdateSanPhamForm.cs</DependentUpon>

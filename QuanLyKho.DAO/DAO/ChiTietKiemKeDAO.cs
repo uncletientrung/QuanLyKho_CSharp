@@ -29,9 +29,9 @@ namespace QuanLyKho.DAO
                 foreach (ChiTietKiemKeDTO ct in list)
                 {
                     string sql = $@"
-                        INSERT INTO ctkiemke(maphieukiemke, masp, tonchinhanh, tonthucte, ghichu) 
+                        INSERT INTO ctkiemke(maphieukiemke, masp, tonchinhanh, tonthucte, ghichu, tensp) 
                         VALUES ({ct.Maphieukiemke}, {ct.Masp}, {ct.Tonchinhanh}, {ct.Tonthucte}, 
-                        '{ct.Ghichu.Replace("'", "''")}')";
+                        '{ct.Ghichu.Replace("'", "''")}','{ct.Tensp.Replace("'", "''")}')";
 
                     int result = ConnectionHelper.getExecuteNonQuery(sql);
                     if (result > 0)
@@ -75,7 +75,8 @@ namespace QuanLyKho.DAO
                         Masp = Convert.ToInt32(row["masp"]),
                         Tonchinhanh = Convert.ToInt32(row["tonchinhanh"]),
                         Tonthucte = Convert.ToInt32(row["tonthucte"]),
-                        Ghichu = row["ghichu"] == DBNull.Value ? "" : row["ghichu"].ToString()
+                        Ghichu = row["ghichu"] == DBNull.Value ? "" : row["ghichu"].ToString(),
+                        Tensp = row["tensp"] == DBNull.Value ? "" : row["tensp"].ToString()
                     };
                     result.Add(ct);
                 }

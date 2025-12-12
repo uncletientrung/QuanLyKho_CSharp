@@ -108,6 +108,12 @@ namespace QuanLyKho.BUS
         {
             return ctpxDAO.SelectAll(mapx);
         }
+        public BindingList<ChiTietPhieuXuatDTO> getCTPXByMaSP(int masp)
+        {
+            var result = listCTPX.Where(ctpx => ctpx.Masp == masp).ToList();
+
+            return new BindingList<ChiTietPhieuXuatDTO>(result);
+        }
 
 
     }

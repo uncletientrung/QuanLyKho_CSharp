@@ -227,6 +227,12 @@ namespace QuanLyKho_CSharp.GUI
                     LoadDataToGrid(spBUS.getListSP());
                 }
             }
+            if (dgvSanPham.Columns[e.ColumnIndex].Name == "history")
+            {
+                HistorySanPhamForm updateForm = new HistorySanPhamForm(spDuocChon);
+                updateForm.ShowDialog();
+                
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)

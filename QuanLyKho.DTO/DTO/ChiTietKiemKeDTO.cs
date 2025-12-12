@@ -13,16 +13,18 @@ namespace QuanLyKho.DTO
         private int tonchinhanh;
         private int tonthucte;
         private string ghichu;
-
+        private string tensp;
         public ChiTietKiemKeDTO() { }
 
-        public ChiTietKiemKeDTO(int _maphieukiemke, int _masp, int _tonchinhanh, int _tonthucte, string _ghichu)
+        public ChiTietKiemKeDTO(int _maphieukiemke, int _masp, int _tonchinhanh, int _tonthucte, string _ghichu, string tensp)
         {
             maphieukiemke = _maphieukiemke;
             masp = _masp;
             tonchinhanh = _tonchinhanh;
             tonthucte = _tonthucte;
             ghichu = _ghichu;
+            this.tensp = tensp;
+
         }
 
         public int Maphieukiemke
@@ -59,6 +61,11 @@ namespace QuanLyKho.DTO
         public int Lech
         {
             get { return tonthucte - tonchinhanh; }
+        }
+        public string Tensp
+        {
+            get { return tensp; }
+            set { tensp = value; }
         }
     }
 }
