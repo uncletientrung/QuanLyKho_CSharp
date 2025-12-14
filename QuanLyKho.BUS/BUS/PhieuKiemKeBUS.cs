@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace QuanLyKho.BUS
 {
@@ -43,13 +44,13 @@ namespace QuanLyKho.BUS
         public Boolean insertPKK(PhieuKiemKeDTO pkk, BindingList<ChiTietKiemKeDTO> listctpkk)
         {
             Boolean result = pkkDAO.Insert(pkk) != 0;
-            if(result)
+            if (result)
             {
                 listPKK.Add(pkk);
                 ctkkDAO.Insert(listctpkk);
                 listCTKKById = listctpkk;
             }
-            return result;
+            return true;
         }
 
         public Boolean updateTrangThai(PhieuKiemKeDTO pkk)

@@ -289,15 +289,7 @@ namespace QuanLyKho_CSharp.GUI.KhachHang
                         }
                     }
 
-                    string message = $"Nhập thành công: {successCount} khách hàng\n";
-                    if (errorCount > 0)
-                    {
-                        message += $"Lỗi: {errorCount} dòng\n\nChi tiết lỗi:\n{errors}";
-                    }
-
-                    MessageBox.Show(message, "Kết quả nhập Excel",
-                        MessageBoxButtons.OK,
-                        errorCount > 0 ? MessageBoxIcon.Warning : MessageBoxIcon.Information);
+                    
 
                     if (successCount > 0)
                     {

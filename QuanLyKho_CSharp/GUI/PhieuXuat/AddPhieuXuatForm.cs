@@ -159,7 +159,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         $"SP-{sp.Masp}",
                         sp.Tensp,
                         productImage,
-                        sp.Dongia,
+                        $"{sp.Dongia:N0}đ",
                         sp.Soluong
                     );
                 }
@@ -179,7 +179,7 @@ namespace QuanLyKho_CSharp.GUI.PhieuXuat
                         $"SP-{sp.Masp}",
                         sp.Tensp,
                         sp.Soluong,
-                        sp.Dongia,
+                       $"{sp.Dongia:N0}đ",
                         $"{thanhTien:N0}đ"
                     );
                 }

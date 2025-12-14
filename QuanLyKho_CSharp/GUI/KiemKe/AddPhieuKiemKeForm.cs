@@ -63,6 +63,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             dgvSPduocThem.RowHeadersDefaultCellStyle = headerStyle;
             dgvSPduocThem.DefaultCellStyle.Font = new Font("Bahnschrift", 9F, FontStyle.Bold);
 
+            txNVTao.Enabled = false;
+
 
             foreach (DataGridViewColumn col in dgvSPduocThem.Columns)
             {
@@ -460,7 +462,8 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                             Masp = maSp,
                             Tonchinhanh = parseIntSafe(tonCNStr),
                             Tonthucte = parseIntSafe(tonTTStr),
-                            Ghichu = lyDoStr
+                            Ghichu = lyDoStr,
+                            Tensp = spBus.getNamebyID(maSp)
                         };
                         chiTiet.Add(dto);
                         successCount++;
@@ -526,7 +529,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
                 dateCreate.Value = DateTime.Now;
                 txNVTao.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
                 txNVKiem.Text = $"{currentUser.Manv} | {currentUser.Tennv}";
-                btnClose?.Invoke();
+                //btnClose?.Invoke();
             }
             catch (Exception ex)
             {

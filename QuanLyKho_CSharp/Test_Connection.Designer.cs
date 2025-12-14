@@ -46,7 +46,7 @@
             this.artanPanel1.GradientBottomColor = System.Drawing.Color.CadetBlue;
             this.artanPanel1.GradientTopColor = System.Drawing.Color.DodgerBlue;
             this.artanPanel1.Location = new System.Drawing.Point(7, 6);
-            this.artanPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artanPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.artanPanel1.Name = "artanPanel1";
             this.artanPanel1.Size = new System.Drawing.Size(1053, 542);
             this.artanPanel1.TabIndex = 1;
@@ -56,7 +56,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1053, 542);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,7 +70,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.artanPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Test_Connection";
             this.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Text = "Form1";

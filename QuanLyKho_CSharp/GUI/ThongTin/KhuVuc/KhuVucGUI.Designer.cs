@@ -99,7 +99,7 @@
             this.txSearch.ForeColor = System.Drawing.Color.White;
             this.txSearch.Location = new System.Drawing.Point(39, 6);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(258, 23);
+            this.txSearch.Size = new System.Drawing.Size(258, 29);
             this.txSearch.TabIndex = 13;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
@@ -148,6 +148,7 @@
             this.makv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.makv.FillWeight = 10F;
             this.makv.HeaderText = "Mã";
+            this.makv.MinimumWidth = 6;
             this.makv.Name = "makv";
             this.makv.ReadOnly = true;
             this.makv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -157,6 +158,7 @@
             this.tenkv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.tenkv.FillWeight = 20F;
             this.tenkv.HeaderText = "Tên khu vực";
+            this.tenkv.MinimumWidth = 6;
             this.tenkv.Name = "tenkv";
             this.tenkv.ReadOnly = true;
             // 
@@ -166,10 +168,11 @@
             this.detail.HeaderText = "";
             this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
             this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.detail.MinimumWidth = 6;
             this.detail.Name = "detail";
             this.detail.ReadOnly = true;
             this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.Width = 5;
+            this.detail.Width = 6;
             // 
             // edit
             // 
@@ -177,9 +180,10 @@
             this.edit.HeaderText = "";
             this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
             this.edit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.edit.MinimumWidth = 6;
             this.edit.Name = "edit";
             this.edit.ReadOnly = true;
-            this.edit.Width = 5;
+            this.edit.Width = 6;
             // 
             // remove
             // 
@@ -187,9 +191,10 @@
             this.remove.HeaderText = "";
             this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
             this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.MinimumWidth = 6;
             this.remove.Name = "remove";
             this.remove.ReadOnly = true;
-            this.remove.Width = 5;
+            this.remove.Width = 6;
             // 
             // artanPanel1
             // 
@@ -246,7 +251,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.label1.Location = new System.Drawing.Point(3, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 29);
+            this.label1.Size = new System.Drawing.Size(272, 36);
             this.label1.TabIndex = 8;
             this.label1.Text = "Danh sách khu vực";
             // 
@@ -258,7 +263,7 @@
             this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
             this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
             this.lbTotalNV.Name = "lbTotalNV";
-            this.lbTotalNV.Size = new System.Drawing.Size(129, 18);
+            this.lbTotalNV.Size = new System.Drawing.Size(166, 23);
             this.lbTotalNV.TabIndex = 15;
             this.lbTotalNV.Text = "Tổng số khu vực: x";
             // 
@@ -360,7 +365,7 @@
             // 
             // KhuVucGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);

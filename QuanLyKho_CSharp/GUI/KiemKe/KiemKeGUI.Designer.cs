@@ -170,6 +170,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.mapk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.mapk.FillWeight = 7F;
             this.mapk.HeaderText = "Mã kiểm";
+            this.mapk.MinimumWidth = 6;
             this.mapk.Name = "mapk";
             this.mapk.ReadOnly = true;
             this.mapk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -179,6 +180,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.nv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nv.FillWeight = 12F;
             this.nv.HeaderText = "Nhân viên tạo";
+            this.nv.MinimumWidth = 6;
             this.nv.Name = "nv";
             this.nv.ReadOnly = true;
             // 
@@ -187,6 +189,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.kh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.kh.FillWeight = 12F;
             this.kh.HeaderText = "Nhân viên kiểm";
+            this.kh.MinimumWidth = 6;
             this.kh.Name = "kh";
             this.kh.ReadOnly = true;
             // 
@@ -195,6 +198,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.thoigiantao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.thoigiantao.FillWeight = 12F;
             this.thoigiantao.HeaderText = "Thời gian tạo";
+            this.thoigiantao.MinimumWidth = 6;
             this.thoigiantao.Name = "thoigiantao";
             this.thoigiantao.ReadOnly = true;
             // 
@@ -203,6 +207,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.tongtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.tongtien.FillWeight = 14F;
             this.tongtien.HeaderText = "Thời gian cân bằng";
+            this.tongtien.MinimumWidth = 6;
             this.tongtien.Name = "tongtien";
             this.tongtien.ReadOnly = true;
             // 
@@ -211,6 +216,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.ghichu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ghichu.FillWeight = 10F;
             this.ghichu.HeaderText = "Ghi chú";
+            this.ghichu.MinimumWidth = 6;
             this.ghichu.Name = "ghichu";
             this.ghichu.ReadOnly = true;
             // 
@@ -219,6 +225,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.trangthai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.trangthai.FillWeight = 10F;
             this.trangthai.HeaderText = "Trạng thái";
+            this.trangthai.MinimumWidth = 6;
             this.trangthai.Name = "trangthai";
             this.trangthai.ReadOnly = true;
             // 
@@ -233,6 +240,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.btnCanBang.FillWeight = 10F;
             this.btnCanBang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCanBang.HeaderText = "Cân bằng";
+            this.btnCanBang.MinimumWidth = 6;
             this.btnCanBang.Name = "btnCanBang";
             this.btnCanBang.ReadOnly = true;
             this.btnCanBang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -244,10 +252,11 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.detail.HeaderText = "";
             this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
             this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.detail.MinimumWidth = 6;
             this.detail.Name = "detail";
             this.detail.ReadOnly = true;
             this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.Width = 5;
+            this.detail.Width = 6;
             // 
             // remove
             // 
@@ -255,9 +264,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.remove.HeaderText = "";
             this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
             this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.MinimumWidth = 6;
             this.remove.Name = "remove";
             this.remove.ReadOnly = true;
-            this.remove.Width = 5;
+            this.remove.Width = 6;
             // 
             // pnlTop
             // 
@@ -350,7 +360,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.txtSearchNV.ForeColor = System.Drawing.Color.White;
             this.txtSearchNV.Location = new System.Drawing.Point(39, 6);
             this.txtSearchNV.Name = "txtSearchNV";
-            this.txtSearchNV.Size = new System.Drawing.Size(204, 23);
+            this.txtSearchNV.Size = new System.Drawing.Size(204, 29);
             this.txtSearchNV.TabIndex = 13;
             this.txtSearchNV.TextChanged += new System.EventHandler(this.txtSearchNV_TextChanged);
             // 
@@ -451,7 +461,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.label2.Location = new System.Drawing.Point(3, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(247, 29);
+            this.label2.Size = new System.Drawing.Size(313, 36);
             this.label2.TabIndex = 20;
             this.label2.Text = "Danh sách phiếu kiểm";
             // 
@@ -473,7 +483,7 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.lbTotal.ForeColor = System.Drawing.Color.Black;
             this.lbTotal.Location = new System.Drawing.Point(0, 0);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(150, 18);
+            this.lbTotal.Size = new System.Drawing.Size(191, 23);
             this.lbTotal.TabIndex = 15;
             this.lbTotal.Text = "Tổng số phiếu kiểm: x";
             // 
@@ -514,8 +524,10 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.dataGridViewImageColumn1.HeaderText = "";
             this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.Width = 125;
             // 
             // dataGridViewImageColumn2
             // 
@@ -523,11 +535,13 @@ namespace QuanLyKho_CSharp.GUI.KiemKe
             this.dataGridViewImageColumn2.HeaderText = "";
             this.dataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn2.Image")));
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.MinimumWidth = 6;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 125;
             // 
             // KiemKeGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);

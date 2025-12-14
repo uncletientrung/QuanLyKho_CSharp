@@ -314,7 +314,7 @@ namespace QuanLyKho_CSharp.GUI.SanPham
         {
             
             txtTenSanPham.Text = string.Empty;
-            txtSoLuong.Text = string.Empty;
+            txtSoLuong.Text = "0";
             txtDonGia.Text = string.Empty;
             cboMaChatLieu.SelectedIndex = -1;   
             cboMaKhuVuc.SelectedIndex = -1;

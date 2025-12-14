@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SizeGUI));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txSearch = new System.Windows.Forms.TextBox();
             this.artanButton1 = new QuanLyKho_CSharp.Helper.component.ArtanButton();
@@ -64,7 +64,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.label1.Location = new System.Drawing.Point(3, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 29);
+            this.label1.Size = new System.Drawing.Size(220, 36);
             this.label1.TabIndex = 8;
             this.label1.Text = "Danh sách size";
             // 
@@ -78,7 +78,7 @@
             this.txSearch.ForeColor = System.Drawing.Color.White;
             this.txSearch.Location = new System.Drawing.Point(39, 6);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(258, 23);
+            this.txSearch.Size = new System.Drawing.Size(258, 29);
             this.txSearch.TabIndex = 13;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
@@ -123,7 +123,7 @@
             this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
             this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
             this.lbTotalNV.Name = "lbTotalNV";
-            this.lbTotalNV.Size = new System.Drawing.Size(104, 18);
+            this.lbTotalNV.Size = new System.Drawing.Size(132, 23);
             this.lbTotalNV.TabIndex = 15;
             this.lbTotalNV.Text = "Tổng số size: x";
             // 
@@ -209,14 +209,14 @@
             this.DGVSize.BackgroundColor = System.Drawing.Color.White;
             this.DGVSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGVSize.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVSize.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVSize.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVSize.ColumnHeadersHeight = 30;
             this.DGVSize.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.masize,
@@ -246,6 +246,7 @@
             this.masize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.masize.FillWeight = 10F;
             this.masize.HeaderText = "Mã";
+            this.masize.MinimumWidth = 6;
             this.masize.Name = "masize";
             this.masize.ReadOnly = true;
             this.masize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -255,6 +256,7 @@
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.name.FillWeight = 10F;
             this.name.HeaderText = "Tên size";
+            this.name.MinimumWidth = 6;
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
@@ -263,6 +265,7 @@
             this.trangthai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.trangthai.FillWeight = 20F;
             this.trangthai.HeaderText = "Ghi chú";
+            this.trangthai.MinimumWidth = 6;
             this.trangthai.Name = "trangthai";
             this.trangthai.ReadOnly = true;
             // 
@@ -272,10 +275,11 @@
             this.detail.HeaderText = "";
             this.detail.Image = ((System.Drawing.Image)(resources.GetObject("detail.Image")));
             this.detail.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.detail.MinimumWidth = 6;
             this.detail.Name = "detail";
             this.detail.ReadOnly = true;
             this.detail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.detail.Width = 5;
+            this.detail.Width = 6;
             // 
             // edit
             // 
@@ -283,9 +287,10 @@
             this.edit.HeaderText = "";
             this.edit.Image = ((System.Drawing.Image)(resources.GetObject("edit.Image")));
             this.edit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.edit.MinimumWidth = 6;
             this.edit.Name = "edit";
             this.edit.ReadOnly = true;
-            this.edit.Width = 5;
+            this.edit.Width = 6;
             // 
             // remove
             // 
@@ -293,9 +298,10 @@
             this.remove.HeaderText = "";
             this.remove.Image = ((System.Drawing.Image)(resources.GetObject("remove.Image")));
             this.remove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.remove.MinimumWidth = 6;
             this.remove.Name = "remove";
             this.remove.ReadOnly = true;
-            this.remove.Width = 5;
+            this.remove.Width = 6;
             // 
             // artanPanel1
             // 
@@ -370,7 +376,7 @@
             // 
             // SizeGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);

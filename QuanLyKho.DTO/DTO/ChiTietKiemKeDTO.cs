@@ -67,5 +67,11 @@ namespace QuanLyKho.DTO
             get { return tensp; }
             set { tensp = value; }
         }
+
+
+        public override string ToString()
+        {
+            return $"ChiTietKiemKeDTO{{ Maphieukiemke={Maphieukiemke}, Masp={Masp}, Tonchinhanh={Tonchinhanh}, Tonthucte={Tonthucte}, Ghichu='{Ghichu}', Tensp='{Tensp}' }}";
+        }
     }
 }

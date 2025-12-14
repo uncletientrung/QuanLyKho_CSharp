@@ -49,16 +49,17 @@ namespace QuanLyKho.BUS
         public int getAutoMaPhieuNhap()
         {
             // Lấy mã lớn nhất hiện có và +1
-            if (listPN != null && listPN.Count > 0)
-            {
-                int maxMaPhieu = listPN.Max(pn => pn.Maphieu);
-                return maxMaPhieu + 1;
-            }
-            else
-            {
-                // Nếu không có phiếu nào, trả về 1
-                return 1;
-            }
+            //if (listPN != null && listPN.Count > 0)
+            //{
+            //    int maxMaPhieu = listPN.Max(pn => pn.Maphieu);
+            //    return maxMaPhieu + 1;
+            //}
+            //else
+            //{
+            //    // Nếu không có phiếu nào, trả về 1
+            //    return 1;
+            //}
+            return pnDAO.GetAutoIncrement();
         }
 
         public PhieuNhapDTO getPhieuNhapById(int maPhieu)

@@ -107,6 +107,10 @@ namespace QuanLyKho.BUS
 
             return new BindingList<SizeDTO>(result);
         }
+        public int getAuto()
+        {
+            return sizeDAO.GetAutoIncrement();
+        }
 
     }
 }

@@ -21,6 +21,43 @@ namespace QuanLyKho.DAO
 
         private ChiTietKiemKeDAO() { }
 
+
+        //public int Insert(BindingList<ChiTietKiemKeDTO> list)
+        //{
+        //    if (list == null || list.Count == 0)
+        //        return 0;
+
+        //    int totalAffected = 0;
+
+        //    try
+        //    {
+        //        foreach (ChiTietKiemKeDTO ct in list)
+        //        {
+        //            string ghichu = ct.Ghichu?.Replace("'", "''") ?? "";
+        //            string tensp = ct.Tensp?.Replace("'", "''") ?? "";
+
+        //            string sql = $@"
+        //        INSERT INTO ctkiemke
+        //        (maphieukiemke, masp, tonchinhanh, tonthucte, ghichu, tensp)
+        //        VALUES
+        //        ({ct.Maphieukiemke}, {ct.Masp}, {ct.Tonchinhanh}, {ct.Tonthucte},
+        //         '{ghichu}', '{tensp}')";
+
+        //            int result = ConnectionHelper.getExecuteNonQuery(sql);
+        //            if (result > 0)
+        //                totalAffected++;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Lỗi khi thêm chi tiết kiểm kê: {ex.Message}");
+        //        return 0;
+        //    }
+
+        //    return totalAffected;
+        //}
+
+
         public int Insert(BindingList<ChiTietKiemKeDTO> list)
         {
             int totalAffected = 0;

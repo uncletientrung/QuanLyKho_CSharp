@@ -314,7 +314,7 @@
             this.lbTotalNV.ForeColor = System.Drawing.Color.Black;
             this.lbTotalNV.Location = new System.Drawing.Point(0, 0);
             this.lbTotalNV.Name = "lbTotalNV";
-            this.lbTotalNV.Size = new System.Drawing.Size(157, 18);
+            this.lbTotalNV.Size = new System.Drawing.Size(202, 23);
             this.lbTotalNV.TabIndex = 15;
             this.lbTotalNV.Text = "Tổng số nhóm quyền: x";
             // 
@@ -343,7 +343,7 @@
             this.txSearch.ForeColor = System.Drawing.Color.White;
             this.txSearch.Location = new System.Drawing.Point(39, 6);
             this.txSearch.Name = "txSearch";
-            this.txSearch.Size = new System.Drawing.Size(258, 23);
+            this.txSearch.Size = new System.Drawing.Size(258, 29);
             this.txSearch.TabIndex = 13;
             this.txSearch.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
             // 
@@ -403,13 +403,13 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(248)))));
             this.label1.Location = new System.Drawing.Point(3, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 29);
+            this.label1.Size = new System.Drawing.Size(320, 36);
             this.label1.TabIndex = 8;
             this.label1.Text = "Danh sách khách hàng";
             // 
             // KhachHangGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1113, 556);

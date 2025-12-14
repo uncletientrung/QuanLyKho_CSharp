@@ -109,12 +109,12 @@ namespace QuanLyKho_CSharp
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(212)))));
-            this.lbTitle.Location = new System.Drawing.Point(381, 5);
+            this.lbTitle.Location = new System.Drawing.Point(269, 9);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(349, 33);
+            this.lbTitle.Size = new System.Drawing.Size(519, 41);
             this.lbTitle.TabIndex = 9;
-            this.lbTitle.Text = "HỆ THỐNG QUẢN LÝ TỒN KHO";
+            this.lbTitle.Text = "HỆ THỐNG QUẢN LÝ KHO QUẦN ÁO";
             // 
             // guna2ControlBox3
             // 
@@ -559,7 +559,7 @@ namespace QuanLyKho_CSharp
             this.lbRole.Location = new System.Drawing.Point(52, 25);
             this.lbRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbRole.Name = "lbRole";
-            this.lbRole.Size = new System.Drawing.Size(45, 18);
+            this.lbRole.Size = new System.Drawing.Size(57, 23);
             this.lbRole.TabIndex = 28;
             this.lbRole.Text = "Name";
             // 
@@ -585,7 +585,7 @@ namespace QuanLyKho_CSharp
             this.lbName.Location = new System.Drawing.Point(51, 4);
             this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(57, 23);
+            this.lbName.Size = new System.Drawing.Size(73, 29);
             this.lbName.TabIndex = 0;
             this.lbName.Text = "Name";
             // 
@@ -638,7 +638,7 @@ namespace QuanLyKho_CSharp
             this.lbPage.Location = new System.Drawing.Point(77, 9);
             this.lbPage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbPage.Name = "lbPage";
-            this.lbPage.Size = new System.Drawing.Size(54, 26);
+            this.lbPage.Size = new System.Drawing.Size(68, 33);
             this.lbPage.TabIndex = 29;
             this.lbPage.Text = "Page";
             // 
@@ -678,7 +678,7 @@ namespace QuanLyKho_CSharp
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1365, 729);
