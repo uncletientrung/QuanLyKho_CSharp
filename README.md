@@ -42,7 +42,7 @@
     <table align="center" border="5" cellpadding="10" cellspacing="0">
         <tr>
             <td>
-                <img src="./img/fileKryton.jpg" width="200">
+                <img src="./img/fileKryton.jpg" width="300">
             </td>
         </tr>
     </table>
@@ -62,7 +62,7 @@
 <table align="center" border="5" cellpadding="10" cellspacing="0">
   <tr>
     <td>
-      <img src="./img/login.jpg" width="400">
+      <img src="./img/login.jpg" width="300">
     </td>
   </tr>
 </table>
