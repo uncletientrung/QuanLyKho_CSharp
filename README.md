@@ -34,7 +34,7 @@
    git clone https://github.com/uncletientrung/QuanLyKho_CSharp.git
    ```
 3. Mở xampp và vào trang http://localhost/phpmyadmin/ tạo 1 database mới có tên là quanlikhoquanaom và import cơ sở dữ liệu trong folder QuanLyKho_CSharp -> Database -> file quanlikhoquanaom.sql trong source code.
-4. Chạy chương trình:
+4. Cài thư viện:
     - Clone thư viện giao diện Krypton Toolkit:
     https://github.com/ComponentFactory/Krypton
     - Thêm reference thư viện Krypton vào project `QuanLyKho_CSharp`, `QuanLyKho.DAO`, `QuanLyKho.BUS`, `QuanLyKho.DTO`
@@ -46,6 +46,8 @@
             </td>
         </tr>
     </table>
+5. Chạy chương trình
+    - Run Solution bên trong Project QuanLyKho_CSharp (Không chạy Solution bên ngoài cùng cấp với 4 project)
 
 ## Tài khoản sử dụng
 ### Tài khoản Admin
