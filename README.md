@@ -11,7 +11,7 @@
 
 ## Thành viên & Đóng góp
 | Thành viên | MSSV | Vai trò | Đóng góp | 
-|----|------|--------|----------|----------|
+|----|------|--------|----------|
 | <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="25"> Nguyễn Tiến Trung | 3123410396 | Nhóm trưởng | 26% |
 | <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="25"> Nguyễn Minh Thuận | 3123410365 | Thành viên | 20% |
 | <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="25"> Trương Minh Vũ | 3123410437 | Thành viên | 18% |
@@ -42,7 +42,7 @@
     <table align="center" border="5" cellpadding="10" cellspacing="0">
         <tr>
             <td>
-                <img src="./img/fileKryton.jpg" width="800">
+                <img src="./img/fileKryton.jpg" width="200">
             </td>
         </tr>
     </table>
@@ -62,7 +62,7 @@
 <table align="center" border="5" cellpadding="10" cellspacing="0">
   <tr>
     <td>
-      <img src="./img/login.jpg" width="800">
+      <img src="./img/login.jpg" width="400">
     </td>
   </tr>
 </table>
